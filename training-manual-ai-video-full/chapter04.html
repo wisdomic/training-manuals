@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 4: Google Flow / Veo 2 | AI วิดีโอครบวงจร</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">📖 AI วิดีโอครบวงจร</a>
+            <span class="nav-chapter-text">บทที่ 4: Google Flow / Veo 2</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <div class="chapter-number">บทที่ 4</div>
+                <h1>Google Flow / Veo 2</h1>
+                <p class="chapter-subtitle">สร้างคลิปวิดีโอจากข้อความ/ภาพ, Prompt วิดีโอ, ปรับแต่ง, Export</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เข้าใจการทำงานของ Google Veo 2 ในการสร้างวิดีโอจาก AI</li>
+                    <li>สามารถเขียน Prompt สร้างวิดีโอจากข้อความ (Text-to-Video)</li>
+                    <li>สามารถสร้างวิดีโอจากภาพ (Image-to-Video)</li>
+                    <li>เลือกการตั้งค่าที่เหมาะสมและ Export วิดีโอได้</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">🎬 Google Veo 2 คืออะไร?</h3>
+
+            <p><strong>Google Veo 2</strong> (เข้าถึงผ่าน Google Flow ที่ labs.google) เป็น AI สร้างวิดีโอรุ่นใหม่ของ Google ที่สามารถสร้างวิดีโอคุณภาพสูงจากข้อความหรือภาพนิ่ง โดยมีจุดเด่นคือ:</p>
+
+            <ul>
+                <li>สร้างวิดีโอความละเอียดสูง 1080p</li>
+                <li>เคลื่อนไหวสมจริง ฟิสิกส์ถูกต้อง</li>
+                <li>รองรับทั้ง Text-to-Video และ Image-to-Video</li>
+                <li>ความยาวคลิป 5-8 วินาที ต่อครั้ง</li>
+                <li>ใช้ฟรีผ่าน Google Account (จำกัดจำนวนครั้ง)</li>
+            </ul>
+
+            <div class="info-card">
+                <h5>📋 ข้อมูลพื้นฐาน Veo 2</h5>
+                <div class="table-responsive">
+                    <table class="table table-custom">
+                        <tbody>
+                            <tr><td><strong>เว็บไซต์</strong></td><td>labs.google (Google Flow)</td></tr>
+                            <tr><td><strong>ความละเอียด</strong></td><td>1080p (1920x1080)</td></tr>
+                            <tr><td><strong>ความยาว</strong></td><td>5-8 วินาที/คลิป</td></tr>
+                            <tr><td><strong>Input</strong></td><td>Text หรือ Image + Text</td></tr>
+                            <tr><td><strong>Output</strong></td><td>MP4 video</td></tr>
+                            <tr><td><strong>ค่าใช้จ่าย</strong></td><td>ฟรี (จำกัดจำนวนครั้ง/วัน)</td></tr>
+                            <tr><td><strong>Login</strong></td><td>Google Account</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3 class="section-header">📝 Text-to-Video: สร้างวิดีโอจากข้อความ</h3>
+
+            <p>วิธีที่ 1 คือการพิมพ์อธิบายวิดีโอที่ต้องการ แล้ว Veo 2 จะสร้างคลิปวิดีโอให้อัตโนมัติ</p>
+
+            <div class="step-box">
+                <span class="step-number">1</span>
+                <strong>เปิด labs.google</strong> แล้ว Login ด้วย Google Account
+            </div>
+            <div class="step-box">
+                <span class="step-number">2</span>
+                <strong>เลือก Flow (Video Generation)</strong> จากเมนู
+            </div>
+            <div class="step-box">
+                <span class="step-number">3</span>
+                <strong>พิมพ์ Prompt</strong> อธิบายวิดีโอที่ต้องการเป็นภาษาอังกฤษ
+            </div>
+            <div class="step-box">
+                <span class="step-number">4</span>
+                <strong>เลือกการตั้งค่า:</strong> Aspect Ratio (16:9, 9:16, 1:1)
+            </div>
+            <div class="step-box">
+                <span class="step-number">5</span>
+                <strong>กด Generate</strong> รอ 1-3 นาที แล้วดูตัวอย่าง
+            </div>
+            <div class="step-box">
+                <span class="step-number">6</span>
+                <strong>ดาวน์โหลด</strong> ถ้าถูกใจ หรือ ปรับ Prompt แล้วสร้างใหม่
+            </div>
+
+            <h4 class="section-header-secondary">ตัวอย่าง Prompt Text-to-Video</h4>
+
+            <div class="prompt-box">
+A warm and welcoming Thai government service center,<br>
+staff helping a wheelchair user fill out a form,<br>
+bright modern interior, slow camera pan from left to right,<br>
+soft natural lighting, cinematic quality
+            </div>
+
+            <div class="prompt-box">
+Aerial drone shot slowly descending toward a modern Thai building,<br>
+green trees surrounding, people walking in and out,<br>
+clear blue sky, warm morning sunlight, peaceful atmosphere
+            </div>
+
+            <div class="prompt-box">
+Close-up of hands typing on a laptop keyboard,<br>
+screen showing colorful charts and data,<br>
+office desk with coffee cup, soft bokeh background,<br>
+warm indoor lighting, shallow depth of field
+            </div>
+
+            <h3 class="section-header">🖼️ Image-to-Video: สร้างวิดีโอจากภาพ</h3>
+
+            <p>วิธีที่ 2 คือการนำภาพที่สร้างจาก DALL-E / Whisk (บทที่ 3) มาเป็น "ต้นแบบ" แล้วให้ Veo 2 ทำให้ภาพเคลื่อนไหว</p>
+
+            <div class="info-card">
+                <h5>✨ ข้อดีของ Image-to-Video</h5>
+                <ul>
+                    <li>ควบคุมหน้าตาวิดีโอได้มากกว่า เพราะเริ่มจากภาพที่เราสร้างเอง</li>
+                    <li>ภาพมีสไตล์เดียวกันทั้งวิดีโอ (Consistency)</li>
+                    <li>เหมาะสำหรับ Storyboard ที่เตรียมไว้แล้ว</li>
+                    <li>ผลลัพธ์คาดเดาได้ง่ายกว่า Text-to-Video</li>
+                </ul>
+            </div>
+
+            <h4 class="section-header-secondary">วิธีทำ Image-to-Video</h4>
+
+            <div class="step-box">
+                <span class="step-number">1</span>
+                <strong>เตรียมภาพ:</strong> ใช้ภาพจาก DALL-E / Whisk ที่สร้างไว้ในบทที่ 3
+            </div>
+            <div class="step-box">
+                <span class="step-number">2</span>
+                <strong>อัปโหลดภาพ:</strong> ใน Flow เลือก "Image" แล้วอัปโหลดภาพ
+            </div>
+            <div class="step-box">
+                <span class="step-number">3</span>
+                <strong>เพิ่ม Prompt:</strong> อธิบายการเคลื่อนไหวที่ต้องการ
+            </div>
+            <div class="step-box">
+                <span class="step-number">4</span>
+                <strong>Generate:</strong> กดสร้าง รอ 1-3 นาที
+            </div>
+
+            <h4 class="section-header-secondary">ตัวอย่าง Prompt สำหรับ Image-to-Video</h4>
+
+            <div class="prompt-box">
+The people in the image start moving naturally,<br>
+the staff member gestures while speaking,<br>
+slight camera zoom in, warm lighting remains consistent
+            </div>
+
+            <div class="prompt-box">
+Slow camera pan across the scene from left to right,<br>
+gentle movement of leaves and curtains in the background,<br>
+people blinking and breathing naturally
+            </div>
+
+            <h3 class="section-header">🎯 เทคนิคเขียน Prompt วิดีโอให้ได้ผลดี</h3>
+
+            <div class="info-card">
+                <h5>📐 สูตร Prompt วิดีโอ</h5>
+                <p><code>[การเคลื่อนไหวกล้อง] + [เนื้อหา/ฉาก] + [การเคลื่อนไหวในฉาก] + [แสง/สี] + [คุณภาพ]</code></p>
+            </div>
+
+            <div class="info-card">
+                <h5>📷 คำศัพท์การเคลื่อนไหวกล้อง</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr><th>คำศัพท์</th><th>ความหมาย</th><th>ใช้เมื่อ</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Pan left/right</td><td>กล้องแพนซ้าย/ขวา</td><td>โชว์ภาพรวมห้อง</td></tr>
+                            <tr><td>Zoom in</td><td>ซูมเข้า</td><td>เน้นรายละเอียด</td></tr>
+                            <tr><td>Zoom out</td><td>ซูมออก</td><td>เปิดเผยฉากทั้งหมด</td></tr>
+                            <tr><td>Dolly shot</td><td>กล้องเคลื่อนที่เข้า/ออก</td><td>สร้างความลึก</td></tr>
+                            <tr><td>Tracking shot</td><td>กล้องตามตัวละคร</td><td>ติดตามคน</td></tr>
+                            <tr><td>Static shot</td><td>กล้องนิ่ง</td><td>เน้นเนื้อหา</td></tr>
+                            <tr><td>Aerial/Drone</td><td>มุมสูงจากบน</td><td>โชว์อาคาร สถานที่</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h5>🔬 Lab 4.1: สร้างวิดีโอจากข้อความ (Text-to-Video)</h5>
+                <p><strong>เวลา:</strong> 25 นาที</p>
+                <p><strong>คำสั่ง:</strong> ใช้ Veo 2 สร้างคลิปวิดีโอจาก Prompt ข้อความ</p>
+                <ol>
+                    <li>เปิด labs.google แล้ว Login</li>
+                    <li>เลือก Flow (Video)</li>
+                    <li>ใช้ Prompt ตัวอย่างด้านบน หรือเขียนเอง</li>
+                    <li>เลือก Aspect Ratio: 16:9 (สำหรับวิดีโอ)</li>
+                    <li>กด Generate แล้วรอผล</li>
+                    <li>ดูตัวอย่างวิดีโอ — ถ้าไม่ถูกใจ ปรับ Prompt</li>
+                    <li>ลองเปลี่ยนมุมกล้อง (pan, zoom, static) ดูความแตกต่าง</li>
+                    <li>ดาวน์โหลดคลิปที่ถูกใจ เก็บไว้ในโฟลเดอร์ "video-clips"</li>
+                </ol>
+            </div>
+
+            <div class="exercise-box">
+                <h5>🔬 Lab 4.2: สร้างวิดีโอจากภาพ (Image-to-Video)</h5>
+                <p><strong>เวลา:</strong> 20 นาที</p>
+                <p><strong>คำสั่ง:</strong> นำภาพจากบทที่ 3 มาทำเป็นวิดีโอ</p>
+                <ol>
+                    <li>เลือกภาพ 2-3 ภาพจาก Lab 3.1 ที่สร้างไว้</li>
+                    <li>อัปโหลดภาพแต่ละภาพเข้า Veo 2</li>
+                    <li>เพิ่ม Prompt อธิบายการเคลื่อนไหว เช่น:
+                        <ul>
+                            <li>Scene 1: "slow zoom in, people moving naturally"</li>
+                            <li>Scene 2: "camera pan left to right, soft movement"</li>
+                            <li>Scene 3: "static shot, character gesturing"</li>
+                        </ul>
+                    </li>
+                    <li>Generate แล้วดาวน์โหลด</li>
+                    <li>ตั้งชื่อไฟล์: clip01.mp4, clip02.mp4, clip03.mp4</li>
+                </ol>
+                <p class="mb-0"><strong>💡 ผลลัพธ์:</strong> คลิปวิดีโอ 3-5 คลิป (5-8 วินาที/คลิป) ที่จะนำไปตัดต่อรวมกันในบทที่ 8</p>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5>💡 Tips & Tricks</h5>
+                <ul class="mb-0">
+                    <li><strong>Image-to-Video ดีกว่า:</strong> ผลลัพธ์จากภาพมักดีกว่าจากข้อความอย่างเดียว</li>
+                    <li><strong>อย่าให้ซับซ้อน:</strong> Prompt สั้นๆ ชัดเจน ได้ผลดีกว่ายาวมาก</li>
+                    <li><strong>สร้างหลายเวอร์ชัน:</strong> สร้าง 2-3 คลิปต่อ Scene แล้วเลือกที่ดีที่สุด</li>
+                    <li><strong>Aspect Ratio 16:9:</strong> ใช้สำหรับ YouTube/Facebook, 9:16 สำหรับ TikTok/Reels</li>
+                    <li><strong>5-8 วินาที:</strong> คลิปสั้นไม่เป็นไร เดี๋ยวรวมกันได้ใน CapCut</li>
+                    <li><strong>ถ้ารอนาน:</strong> อาจจะมีคนใช้เยอะ ลองสร้างนอกเวลา Peak</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="summary-card">
+                <h5>📋 สรุปบทที่ 4</h5>
+                <ul class="mb-0">
+                    <li>Veo 2 สร้างวิดีโอได้ 2 แบบ: Text-to-Video และ Image-to-Video</li>
+                    <li>Image-to-Video ให้ผลลัพธ์ที่ควบคุมได้ดีกว่า</li>
+                    <li>Prompt วิดีโอ: การเคลื่อนไหวกล้อง + เนื้อหา + แสง/สี</li>
+                    <li>แต่ละคลิป 5-8 วินาที จะนำไปรวมกันใน CapCut</li>
+                    <li>เก็บคลิปทั้งหมดไว้ในโฟลเดอร์ "video-clips" เพื่อใช้ในบทที่ 8</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="chapter-nav d-flex justify-content-between">
+                <a href="chapter03.html" class="btn btn-outline-secondary">← บทที่ 3</a>
+                <a href="chapter05.html" class="btn btn-primary">บทที่ 5 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

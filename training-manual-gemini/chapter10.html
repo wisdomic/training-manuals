@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 10: สรุป + Workshop + นำเสนอ — คู่มือ Gemini AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark sticky-top" style="background: linear-gradient(135deg, #4285f4, #34a853)">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">📖 คู่มือ Gemini AI</a>
+            <span class="navbar-text text-white">บทที่ 10 — วันที่ 5 บ่าย (3 ชม.)</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <!-- Chapter Header -->
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold text-primary">บทที่ 10</h1>
+            <h2 class="fw-bold">สรุป + Workshop สุดท้าย + นำเสนอผลงาน</h2>
+            <p class="lead text-muted">รวมความรู้ทั้งหมด เลือกเครื่องมือให้เหมาะ สร้างผลงาน + นำเสนอ + ปิดอบรม</p>
+            <span class="badge bg-info fs-6">⏰ วันที่ 5 ภาคบ่าย — 3 ชั่วโมง</span>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-primary mb-5">
+            <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>เปรียบเทียบและเลือกเครื่องมือ Gemini AI ที่เหมาะกับงานแต่ละประเภทได้</li>
+                <li>ใช้ Decision Tree เลือกเครื่องมือได้อย่างถูกต้อง</li>
+                <li>สร้างผลงานจริงด้วย Gemini AI (เลือกระดับตามความถนัด)</li>
+                <li>นำเสนอผลงานต่อเพื่อนร่วมอบรมได้</li>
+                <li>มีแหล่งเรียนรู้เพิ่มเติมสำหรับศึกษาต่อ</li>
+            </ul>
+        </div>
+
+        <!-- Section 10.1 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">10.1 เปรียบเทียบ 4 ภาค: Gemini AI Ecosystem</h3>
+            
+            <p>ตลอด 5 วันที่ผ่านมา เราเรียนรู้ Gemini AI 4 รูปแบบ แต่ละแบบเหมาะกับงานคนละประเภท:</p>
+
+            <div class="table-responsive mb-4">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>หัวข้อ</th>
+                            <th>🌐 Gemini Web</th>
+                            <th>📊 Gemini Workspace</th>
+                            <th>🧪 Google AI Studio</th>
+                            <th>💻 Code Assist</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>เรียนในบท</strong></td>
+                            <td>บทที่ 2-5</td>
+                            <td>บทที่ 6</td>
+                            <td>บทที่ 7</td>
+                            <td>บทที่ 9</td>
+                        </tr>
+                        <tr>
+                            <td><strong>URL</strong></td>
+                            <td>gemini.google.com</td>
+                            <td>(ในแอป Workspace)</td>
+                            <td>aistudio.google.com</td>
+                            <td>VS Code Extension</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ใช้ทำอะไร</strong></td>
+                            <td>ถามตอบ สร้างเนื้อหา วิเคราะห์ข้อมูล สร้างรูป</td>
+                            <td>ทำงานในเอกสาร Sheets Slides Gmail</td>
+                            <td>ทดลอง API สร้าง Chatbot ปรับแต่ง Model</td>
+                            <td>เขียนโค้ด แก้ bug อธิบายโค้ด</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ระดับความยาก</strong></td>
+                            <td>⭐ ง่าย</td>
+                            <td>⭐⭐ ง่าย-ปานกลาง</td>
+                            <td>⭐⭐⭐ ปานกลาง</td>
+                            <td>⭐⭐⭐⭐ ยาก</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ต้องเขียนโค้ด</strong></td>
+                            <td>❌ ไม่ต้อง</td>
+                            <td>❌ ไม่ต้อง</td>
+                            <td>⚠️ เล็กน้อย</td>
+                            <td>✅ ต้อง</td>
+                        </tr>
+                        <tr>
+                            <td><strong>เหมาะกับใคร</strong></td>
+                            <td>ทุกคน</td>
+                            <td>ผู้ใช้ Google Workspace</td>
+                            <td>ผู้สนใจ AI + นักพัฒนา</td>
+                            <td>โปรแกรมเมอร์</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ราคา</strong></td>
+                            <td>ฟรี</td>
+                            <td>ฟรี/จ่าย</td>
+                            <td>ฟรี</td>
+                            <td>ฟรี</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ตัวอย่างงานราชการ</strong></td>
+                            <td>ร่างหนังสือ สรุปประชุม วิเคราะห์นโยบาย</td>
+                            <td>สร้างกราฟ Presentation รายงาน</td>
+                            <td>สร้าง Chatbot FAQ หน่วยงาน</td>
+                            <td>สร้างระบบ Web App GAS</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- สรุป Use Cases -->
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card h-100 border-primary">
+                        <div class="card-body text-center">
+                            <h1>🌐</h1>
+                            <h6 class="fw-bold">Gemini Web</h6>
+                            <small class="text-muted">งานทั่วไปทุกวัน</small>
+                            <hr>
+                            <ul class="list-unstyled small text-start">
+                                <li>✅ ร่างหนังสือราชการ</li>
+                                <li>✅ สรุปเอกสาร</li>
+                                <li>✅ วิเคราะห์ข้อมูล</li>
+                                <li>✅ สร้างรูป AI</li>
+                                <li>✅ แปลภาษา</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 border-success">
+                        <div class="card-body text-center">
+                            <h1>📊</h1>
+                            <h6 class="fw-bold">Workspace</h6>
+                            <small class="text-muted">ทำงานในแอป Google</small>
+                            <hr>
+                            <ul class="list-unstyled small text-start">
+                                <li>✅ สร้างสูตร Sheets</li>
+                                <li>✅ สร้าง Presentation</li>
+                                <li>✅ เขียน Email</li>
+                                <li>✅ ค้นหาไฟล์ Drive</li>
+                                <li>✅ สรุปเอกสาร Docs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 border-warning">
+                        <div class="card-body text-center">
+                            <h1>🧪</h1>
+                            <h6 class="fw-bold">AI Studio</h6>
+                            <small class="text-muted">ปรับแต่ง + API</small>
+                            <hr>
+                            <ul class="list-unstyled small text-start">
+                                <li>✅ ทดลอง prompt</li>
+                                <li>✅ สร้าง Chatbot</li>
+                                <li>✅ Structured prompt</li>
+                                <li>✅ Fine-tune model</li>
+                                <li>✅ สร้าง API Key</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 border-danger">
+                        <div class="card-body text-center">
+                            <h1>💻</h1>
+                            <h6 class="fw-bold">Code Assist</h6>
+                            <small class="text-muted">เขียนโค้ด + สร้างระบบ</small>
+                            <hr>
+                            <ul class="list-unstyled small text-start">
+                                <li>✅ เขียน GAS</li>
+                                <li>✅ สร้าง Web App</li>
+                                <li>✅ แก้ bug</li>
+                                <li>✅ อธิบายโค้ด</li>
+                                <li>✅ Generate code</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10.2 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">10.2 เลือกเครื่องมือ Google AI ให้เหมาะกับงาน (Decision Tree)</h3>
+            
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">🌳 Decision Tree: เลือกเครื่องมือ Gemini</h5>
+                </div>
+                <div class="card-body">
+                    <pre class="bg-dark text-light p-3 rounded"><code>🤔 คุณต้องการทำอะไร?
+│
+├─── 📝 "เขียน/แก้เอกสาร/ร่างหนังสือ"
+│    │
+│    ├── อยู่ใน Google Docs อยู่แล้ว? → 📊 Gemini Workspace
+│    └── งานอิสระ/ไม่ได้เปิด Docs? → 🌐 Gemini Web
+│
+├─── 📊 "ทำงานกับ Spreadsheet/ตัวเลข"
+│    │
+│    ├── ต้องสร้างสูตร/กราฟ/วิเคราะห์? → 📊 Gemini in Sheets
+│    └── ต้องใช้ AI ตอบจากข้อมูล Sheet? → 🧪 AI Studio + API (บทที่ 8)
+│
+├─── 🎨 "สร้าง Presentation"
+│    │
+│    └── → 📊 Gemini in Slides (แนะนำ)
+│         หรือ 🌐 Gemini Web (ร่าง outline ก่อน)
+│
+├─── 🤖 "สร้าง Chatbot/ระบบอัตโนมัติ"
+│    │
+│    ├── ทดลองออกแบบก่อน? → 🧪 Google AI Studio
+│    ├── ต้องต่อกับ Google Sheets/Drive? → 💻 GAS + Gemini API
+│    └── ต้องมีหน้าเว็บ? → 💻 Code Assist + GAS
+│
+├─── 💻 "เขียนโปรแกรม/แก้โค้ด"
+│    │
+│    ├── เขียนโค้ดใน VS Code? → 💻 Gemini Code Assist
+│    ├── ต้องการคำอธิบายโค้ด? → 💻 Code Assist (Explain)
+│    └── ต้องการสร้างระบบเต็ม? → 💻 Code Assist + 🧪 AI Studio
+│
+├─── 🔍 "ค้นหา/สรุปเอกสาร"
+│    │
+│    ├── ไฟล์อยู่ใน Drive? → 📊 Gemini in Drive
+│    ├── ไฟล์ PDF/เอกสารภายนอก? → 🌐 Gemini Web (อัปโหลด)
+│    └── ต้องทำอัตโนมัติหลายไฟล์? → 💻 GAS + Gemini API
+│
+└─── 🎓 "เรียนรู้/ถามตอบทั่วไป"
+     │
+     └── → 🌐 Gemini Web (เริ่มที่นี่เสมอ!)</code></pre>
+                </div>
+            </div>
+
+            <!-- Quick Reference -->
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">⚡ Quick Reference: งานราชการ → เครื่องมือ</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm">
+                            <thead class="table-info">
+                                <tr>
+                                    <th>งานที่ต้องทำ</th>
+                                    <th>เครื่องมือ</th>
+                                    <th>ระดับ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>ร่างหนังสือราชการ</td><td>🌐 Gemini Web</td><td>⭐</td></tr>
+                                <tr><td>สรุปรายงานการประชุม</td><td>🌐 Gemini Web / 📊 Docs</td><td>⭐</td></tr>
+                                <tr><td>แปลเอกสาร ไทย↔อังกฤษ</td><td>🌐 Gemini Web</td><td>⭐</td></tr>
+                                <tr><td>สร้างสูตร Excel/Sheets</td><td>📊 Gemini in Sheets</td><td>⭐⭐</td></tr>
+                                <tr><td>วิเคราะห์ข้อมูลฝึกอบรม</td><td>📊 Gemini in Sheets</td><td>⭐⭐</td></tr>
+                                <tr><td>สร้าง Presentation ผลงาน</td><td>📊 Gemini in Slides</td><td>⭐⭐</td></tr>
+                                <tr><td>สร้าง Chatbot FAQ</td><td>🧪 AI Studio → API</td><td>⭐⭐⭐</td></tr>
+                                <tr><td>ระบบจำแนกเอกสาร</td><td>🧪 AI Studio (Structured)</td><td>⭐⭐⭐</td></tr>
+                                <tr><td>ระบบสรุปเอกสารอัตโนมัติ</td><td>💻 GAS + Gemini API</td><td>⭐⭐⭐⭐</td></tr>
+                                <tr><td>Web App ลงทะเบียน</td><td>💻 Code Assist + GAS</td><td>⭐⭐⭐⭐</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10.3 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">10.3 Workshop สุดท้าย: เลือกสร้างงาน 4 ระดับ</h3>
+            
+            <div class="alert alert-danger">
+                <h5 class="alert-heading">🏋️ Workshop สุดท้าย (60 นาที)</h5>
+                <p class="mb-0">เลือกโจทย์ 1 ข้อ ตามระดับความถนัด สร้างผลงานจริง แล้วนำเสนอ!</p>
+            </div>
+
+            <!-- ระดับ 1: ง่าย -->
+            <div class="card mb-4 border-success">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">⭐ ระดับ 1: ง่าย — ใช้ Gemini Web (เลือก 1 จาก 4 โจทย์)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">1A. ร่างหนังสือราชการ 3 ฉบับ</h6>
+                                    <ul class="small mb-0">
+                                        <li>คำสั่งแต่งตั้งคณะกรรมการฝึกอบรม</li>
+                                        <li>หนังสือเชิญวิทยากร</li>
+                                        <li>รายงานผลการฝึกอบรม</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">1B. สรุปเอกสาร 3 ฉบับ</h6>
+                                    <ul class="small mb-0">
+                                        <li>อัปโหลดเอกสารจริง → สรุป</li>
+                                        <li>สร้าง Mind Map จากเนื้อหา</li>
+                                        <li>เปรียบเทียบ 2 เอกสาร</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">1C. สร้าง Content + รูป AI</h6>
+                                    <ul class="small mb-0">
+                                        <li>เขียน Facebook post 5 โพสต์ประชาสัมพันธ์หลักสูตร</li>
+                                        <li>สร้างรูป AI ประกอบแต่ละโพสต์</li>
+                                        <li>เขียน Caption + Hashtag</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">1D. วิเคราะห์ข้อมูล + สรุป</h6>
+                                    <ul class="small mb-0">
+                                        <li>อัปโหลดข้อมูลผลฝึกอบรม</li>
+                                        <li>ให้ Gemini วิเคราะห์แนวโน้ม</li>
+                                        <li>เขียนข้อเสนอแนะเชิงนโยบาย</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ระดับ 2: ปานกลาง -->
+            <div class="card mb-4 border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">⭐⭐ ระดับ 2: ปานกลาง — ใช้ Gemini Workspace (เลือก 1 จาก 4 โจทย์)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">2A. รายงาน + Presentation ผลงาน</h6>
+                                    <ul class="small mb-0">
+                                        <li>สร้างตาราง Sheets ผลฝึกอบรม</li>
+                                        <li>สร้างสูตร + กราฟ</li>
+                                        <li>สร้าง Slides นำเสนอ 8 สไลด์</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">2B. ระบบติดตามผลฝึกอบรม</h6>
+                                    <ul class="small mb-0">
+                                        <li>Sheets ตารางข้อมูลผู้ฝึก 30 คน</li>
+                                        <li>สูตร VLOOKUP + COUNTIF + IF</li>
+                                        <li>Dashboard กราฟ 3 แบบ</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">2C. คู่มือการใช้งานระบบ</h6>
+                                    <ul class="small mb-0">
+                                        <li>เขียนคู่มือใน Google Docs (Gemini ช่วย)</li>
+                                        <li>สร้าง Infographic ขั้นตอน</li>
+                                        <li>แปลเป็นภาษาอังกฤษ</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">2D. แผนงบประมาณ + รายงาน</h6>
+                                    <ul class="small mb-0">
+                                        <li>ตาราง Sheets งบ 5 โครงการ</li>
+                                        <li>สูตรคำนวณ + กราฟเปรียบเทียบ</li>
+                                        <li>สรุปเป็น Presentation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ระดับ 3: ยาก -->
+            <div class="card mb-4 border-warning">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">⭐⭐⭐ ระดับ 3: ยาก — ใช้ AI Studio + API (เลือก 1 จาก 4 โจทย์)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">3A. Chatbot FAQ หน่วยงาน</h6>
+                                    <ul class="small mb-0">
+                                        <li>ออกแบบ System Instruction ละเอียด</li>
+                                        <li>เพิ่ม FAQ 20+ ข้อ</li>
+                                        <li>ทดสอบ 15+ คำถาม + edge cases</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">3B. ระบบจำแนกเอกสารอัตโนมัติ</h6>
+                                    <ul class="small mb-0">
+                                        <li>Structured Prompt จำแนก 8 ประเภท</li>
+                                        <li>ทดสอบ accuracy 20+ เอกสาร</li>
+                                        <li>Export code + สาธิต</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">3C. Gemini API ใน Sheets (Custom Function)</h6>
+                                    <ul class="small mb-0">
+                                        <li>สร้าง =GEMINI() function</li>
+                                        <li>=GEMINI_TRANSLATE(), =GEMINI_SUMMARIZE()</li>
+                                        <li>ทดสอบกับข้อมูลจริง 10 แถว</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">3D. ระบบสรุปรายงานประชุม</h6>
+                                    <ul class="small mb-0">
+                                        <li>อัปโหลด PDF → สรุปอัตโนมัติ</li>
+                                        <li>สกัดมติ/ผู้รับผิดชอบ/กำหนดส่ง</li>
+                                        <li>ส่ง Email สรุปให้ผู้เกี่ยวข้อง</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ระดับ 4: ท้าทาย -->
+            <div class="card mb-4 border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">⭐⭐⭐⭐ ระดับ 4: ท้าทาย — Code Assist + ระบบเต็ม (เลือก 1 จาก 4 โจทย์)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">4A. Web App ลงทะเบียนฝึกอบรม</h6>
+                                    <ul class="small mb-0">
+                                        <li>HTML Form + Validation + GAS Backend</li>
+                                        <li>บันทึก Sheets + Email ยืนยัน</li>
+                                        <li>Deploy เป็น Web App จริง</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">4B. AI Chatbot ใน Sheets (Full)</h6>
+                                    <ul class="small mb-0">
+                                        <li>Sidebar Chat UI + Gemini API</li>
+                                        <li>อ่านข้อมูลจาก Sheet ตอบคำถาม</li>
+                                        <li>บันทึก log + Analytics</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">4C. ระบบประเมินผลอัจฉริยะ</h6>
+                                    <ul class="small mb-0">
+                                        <li>ฟอร์มประเมิน + GAS + AI วิเคราะห์</li>
+                                        <li>Gemini สรุปข้อเสนอแนะ</li>
+                                        <li>สร้างรายงาน PDF อัตโนมัติ</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">4D. ระบบแจ้งเตือนอัจฉริยะ Line + AI</h6>
+                                    <ul class="small mb-0">
+                                        <li>Trigger อ่านข้อมูล Sheets ทุกวัน</li>
+                                        <li>Gemini วิเคราะห์ + สร้างข้อความ</li>
+                                        <li>ส่ง Line Notify อัตโนมัติ</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10.4 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">10.4 นำเสนอผลงาน</h3>
+            
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">🎤 รูปแบบการนำเสนอ (5 นาที/คน หรือ กลุ่ม)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>ลำดับ</th>
+                                    <th>เนื้อหา</th>
+                                    <th>เวลา</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>แนะนำตัว + โจทย์ที่เลือก</td><td>30 วินาที</td></tr>
+                                <tr><td>2</td><td>แสดงผลงาน (Demo)</td><td>2.5 นาที</td></tr>
+                                <tr><td>3</td><td>เครื่องมือที่ใช้ + ขั้นตอน</td><td>1 นาที</td></tr>
+                                <tr><td>4</td><td>ปัญหาที่พบ + วิธีแก้</td><td>30 วินาที</td></tr>
+                                <tr><td>5</td><td>สิ่งที่ได้เรียนรู้</td><td>30 วินาที</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- เกณฑ์ประเมิน -->
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">📝 เกณฑ์การประเมิน (5 ด้าน — รวม 100 คะแนน)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-warning">
+                                <tr>
+                                    <th>เกณฑ์</th>
+                                    <th>คะแนน</th>
+                                    <th>รายละเอียด</th>
+                                    <th>ดีเยี่ยม (20)</th>
+                                    <th>ดี (15)</th>
+                                    <th>พอใช้ (10)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1. การใช้ Gemini AI</strong></td>
+                                    <td>20</td>
+                                    <td>ใช้ Gemini ได้ถูกเครื่องมือ ถูกวิธี</td>
+                                    <td>ใช้ได้คล่อง หลายฟีเจอร์</td>
+                                    <td>ใช้ได้ถูกต้อง</td>
+                                    <td>ใช้ได้พื้นฐาน</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2. Prompt Engineering</strong></td>
+                                    <td>20</td>
+                                    <td>คุณภาพ prompt ที่ใช้</td>
+                                    <td>Prompt ซับซ้อน ได้ผลดี</td>
+                                    <td>Prompt ชัดเจน</td>
+                                    <td>Prompt พื้นฐาน</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3. ผลงาน</strong></td>
+                                    <td>30</td>
+                                    <td>ความสมบูรณ์ ใช้งานได้จริง</td>
+                                    <td>ครบถ้วน ใช้งานจริงได้</td>
+                                    <td>เกือบครบ ต้องปรับเล็กน้อย</td>
+                                    <td>มีผลงานแต่ไม่ครบ</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4. การนำเสนอ</strong></td>
+                                    <td>15</td>
+                                    <td>ชัดเจน ตรงประเด็น ตรงเวลา</td>
+                                    <td>นำเสนอได้ยอดเยี่ยม</td>
+                                    <td>ชัดเจน ตรงเวลา</td>
+                                    <td>นำเสนอได้แต่ไม่ชัด</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>5. ความคิดสร้างสรรค์</strong></td>
+                                    <td>15</td>
+                                    <td>ประยุกต์ใช้กับงานจริงได้</td>
+                                    <td>มี idea ใหม่ ประยุกต์ได้ดี</td>
+                                    <td>ประยุกต์ได้ตามโจทย์</td>
+                                    <td>ทำตามตัวอย่าง</td>
+                                </tr>
+                                <tr class="table-dark">
+                                    <td><strong>รวม</strong></td>
+                                    <td><strong>100</strong></td>
+                                    <td colspan="4"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="alert alert-info mt-3 mb-0">
+                        <strong>💡 Bonus:</strong> +5 คะแนน ถ้าเลือกระดับสูงกว่าพื้นฐานของตัวเอง | +5 คะแนน ถ้าช่วยเพื่อนในห้อง
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10.5 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">10.5 สรุป + Tips + แหล่งเรียนรู้ + ปิดอบรม</h3>
+            
+            <!-- Tips 10 ข้อ -->
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">💡 10 Tips สำหรับใช้ Gemini AI ในงานราชการ</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <ol>
+                                <li class="mb-2"><strong>เริ่มจาก Gemini Web:</strong> ใช้งานง่าย ฟรี ครอบคลุมงาน 80%</li>
+                                <li class="mb-2"><strong>เขียน Prompt ให้ชัดเจน:</strong> ยิ่งละเอียด ยิ่งได้ผลดี (บริบท + บทบาท + รูปแบบ)</li>
+                                <li class="mb-2"><strong>ตรวจสอบทุกครั้ง:</strong> AI ผิดได้! ต้อง fact-check ก่อนใช้จริง</li>
+                                <li class="mb-2"><strong>ห้ามใส่ข้อมูลลับ:</strong> ข้อมูลส่วนบุคคล ข้อมูลราชการลับ ห้ามส่งให้ AI</li>
+                                <li class="mb-2"><strong>ใช้ Gems/Custom Instructions:</strong> สร้างผู้ช่วยเฉพาะทางสำหรับงานประจำ</li>
+                            </ol>
+                        </div>
+                        <div class="col-md-6">
+                            <ol start="6">
+                                <li class="mb-2"><strong>ฝึกทุกวัน:</strong> ยิ่งใช้บ่อย ยิ่งเขียน prompt เก่งขึ้น</li>
+                                <li class="mb-2"><strong>ใช้ Iterative approach:</strong> ถ้าไม่ได้ผล ปรับ prompt แล้วลองใหม่</li>
+                                <li class="mb-2"><strong>เรียนรู้จากตัวอย่าง:</strong> ดูว่าคนอื่นใช้ AI อย่างไร แล้วประยุกต์</li>
+                                <li class="mb-2"><strong>อัปเดตอยู่เสมอ:</strong> AI พัฒนาเร็วมาก ฟีเจอร์ใหม่ออกทุกเดือน</li>
+                                <li class="mb-2"><strong>แชร์ความรู้:</strong> สอนเพื่อนร่วมงาน ยิ่งแชร์ ยิ่งเก่ง</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- สรุปหลักสูตร -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">📚 สรุปเนื้อหาทั้ง 5 วัน (30 ชั่วโมง)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>วัน</th>
+                                    <th>ช่วง</th>
+                                    <th>บท</th>
+                                    <th>เนื้อหา</th>
+                                    <th>ทักษะที่ได้</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td rowspan="2">1</td><td>เช้า</td><td>1</td><td>AI + Gemini คืออะไร</td><td>ความเข้าใจพื้นฐาน AI</td></tr>
+                                <tr><td>บ่าย</td><td>2</td><td>Gemini Web เบื้องต้น</td><td>ใช้ Gemini ถาม-ตอบได้</td></tr>
+                                <tr><td rowspan="2">2</td><td>เช้า</td><td>3</td><td>Gemini ขั้นสูง</td><td>อัปโหลดไฟล์ สร้างรูป วิเคราะห์</td></tr>
+                                <tr><td>บ่าย</td><td>4</td><td>Gemini + งานราชการ</td><td>ร่างหนังสือ สรุปประชุม</td></tr>
+                                <tr><td rowspan="2">3</td><td>เช้า</td><td>5</td><td>Prompt Engineering</td><td>เขียน prompt ขั้นสูง</td></tr>
+                                <tr><td>บ่าย</td><td>6</td><td>Gemini Workspace</td><td>ใช้ Sheets/Slides/Drive</td></tr>
+                                <tr><td rowspan="2">4</td><td>เช้า</td><td>7</td><td>Google AI Studio</td><td>ทดลอง API สร้าง Chatbot</td></tr>
+                                <tr><td>บ่าย</td><td>8</td><td>Gemini API + GAS</td><td>เขียน code เรียก AI</td></tr>
+                                <tr><td rowspan="2">5</td><td>เช้า</td><td>9</td><td>Gemini Code Assist</td><td>AI ช่วยเขียนโค้ด</td></tr>
+                                <tr><td>บ่าย</td><td>10</td><td>สรุป + นำเสนอ</td><td>ประยุกต์ใช้งานจริง</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- แหล่งเรียนรู้ -->
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">📖 แหล่งเรียนรู้เพิ่มเติม</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="fw-bold">🔗 Official Documentation</h6>
+                    <ul>
+                        <li><a href="https://gemini.google.com" target="_blank">Gemini Web</a> — ใช้งาน Gemini ฟรี</li>
+                        <li><a href="https://aistudio.google.com" target="_blank">Google AI Studio</a> — ทดลอง API + สร้าง Chatbot</li>
+                        <li><a href="https://ai.google.dev" target="_blank">Google AI for Developers</a> — เอกสาร API อย่างเป็นทางการ</li>
+                        <li><a href="https://cloud.google.com/products/gemini/code-assist" target="_blank">Gemini Code Assist</a> — AI Coding Assistant</li>
+                    </ul>
+
+                    <h6 class="fw-bold mt-3">📺 YouTube Channels แนะนำ</h6>
+                    <ul>
+                        <li><strong>Google AI</strong> — ช่อง official ของ Google AI</li>
+                        <li><strong>Google Workspace</strong> — เรียนรู้ Gemini in Workspace</li>
+                        <li><strong>Google for Developers</strong> — เนื้อหาสำหรับนักพัฒนา</li>
+                        <li><strong>คลิปเด็ด AI ไทย</strong> — เนื้อหา AI ภาษาไทย</li>
+                    </ul>
+
+                    <h6 class="fw-bold mt-3">👥 Community + กลุ่มเรียนรู้</h6>
+                    <ul>
+                        <li><strong>Google Developer Groups (GDG)</strong> — กลุ่มนักพัฒนา Google ในไทย</li>
+                        <li><strong>Facebook Group: AI Thailand</strong> — กลุ่ม AI ไทย</li>
+                        <li><strong>Google Cloud Community Thailand</strong> — ชุมชน Google Cloud</li>
+                    </ul>
+
+                    <h6 class="fw-bold mt-3">📧 ติดต่อวิทยากร</h6>
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="mb-1"><strong>นายปัญญา ผาธรรม (อ.ปู)</strong></p>
+                                    <p class="mb-1">เจ้าหน้าที่ฝ่ายแผนงานและสารสนเทศ</p>
+                                    <p class="mb-1">สำนักงานพัฒนาฝีมือแรงงานสุรินทร์</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="mb-1">📞 088-377-8987</p>
+                                    <p class="mb-1">📧 wisdomssk@gmail.com</p>
+                                    <p class="mb-1">📱 Line: wisdomict (@268qhedf)</p>
+                                    <p class="mb-1">🌐 Facebook: <a href="https://www.facebook.com/wisdomict" target="_blank">wisdomict</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- วุฒิบัตร -->
+            <div class="card mb-4 border-warning">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">🏆 วุฒิบัตร (Certificate)</h5>
+                </div>
+                <div class="card-body">
+                    <p>ผู้ที่ผ่านเกณฑ์จะได้รับ <strong>วุฒิบัตรการฝึกอบรม</strong> จากกรมพัฒนาฝีมือแรงงาน:</p>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-warning">
+                                <tr>
+                                    <th>เกณฑ์</th>
+                                    <th>ข้อกำหนด</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>เข้าเรียน</td><td>ไม่น้อยกว่า 80% (24 ชม. จาก 30 ชม.)</td></tr>
+                                <tr><td>ส่งแบบฝึกหัด</td><td>ส่งครบทุกบท (บทที่ 1-10)</td></tr>
+                                <tr><td>Workshop สุดท้าย</td><td>ส่งผลงาน + นำเสนอ</td></tr>
+                                <tr><td>คะแนนรวม</td><td>ไม่น้อยกว่า 60% (60/100 คะแนน)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ปิดอบรม -->
+            <div class="card mb-4 border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">🎉 ปิดอบรม</h5>
+                </div>
+                <div class="card-body text-center">
+                    <h3 class="mb-3">🎊 ขอแสดงความยินดี! 🎊</h3>
+                    <p class="lead">ท่านได้เรียนรู้การใช้ Gemini AI ครบทุกมิติ ตั้งแต่พื้นฐานจนถึงขั้นสูง</p>
+                    
+                    <div class="row g-3 my-4">
+                        <div class="col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <h2>30</h2>
+                                    <small>ชั่วโมงเรียน</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <h2>10</h2>
+                                    <small>บทเรียน</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <h2>4</h2>
+                                    <small>เครื่องมือ AI</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <h2>∞</h2>
+                                    <small>โอกาสใหม่</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success mt-4">
+                        <h5 class="alert-heading">🚀 จากนี้ไป...</h5>
+                        <p class="mb-0">
+                            "AI ไม่ได้มาแทนที่คน แต่คนที่ใช้ AI เป็น จะแทนที่คนที่ใช้ AI ไม่เป็น"<br>
+                            <small class="text-muted">— ท่านกลับไปทำงาน อย่าลืมใช้ Gemini ทุกวัน! 💪</small>
+                        </p>
+                    </div>
+
+                    <hr>
+
+                    <h5 class="mt-4 mb-3">📋 สิ่งที่ต้องทำหลังอบรม</h5>
+                    <div class="text-start">
+                        <ol>
+                            <li class="mb-2">✅ ทำแบบประเมินความพึงพอใจ (QR Code)</li>
+                            <li class="mb-2">✅ ทำแบบทดสอบหลังเรียน (Post-test)</li>
+                            <li class="mb-2">✅ ส่งผลงาน Workshop ทาง Google Drive (แชร์ให้วิทยากร)</li>
+                            <li class="mb-2">✅ เข้ากลุ่ม Line "Gemini AI สนพ.สุรินทร์" (สำหรับถาม-ตอบหลังอบรม)</li>
+                            <li class="mb-2">✅ ทดลองใช้ Gemini ในงานจริง อย่างน้อย 1 งาน/สัปดาห์</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QR Code Section -->
+            <div class="card mb-4">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">📱 QR Codes + Links สำคัญ</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3 text-center">
+                        <div class="col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6>📝 แบบประเมิน</h6>
+                                    <p class="small text-muted">[QR Code]</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6>📂 ส่งผลงาน</h6>
+                                    <p class="small text-muted">[QR Code]</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6>💬 กลุ่ม Line</h6>
+                                    <p class="small text-muted">[QR Code]</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6>📖 คู่มือออนไลน์</h6>
+                                    <p class="small text-muted">[QR Code]</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+            <a href="chapter09.html" class="btn btn-outline-primary">← บทที่ 9: Gemini Code Assist</a>
+            <a href="index.html" class="btn btn-primary">📚 สารบัญ →</a>
+        </nav>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p class="mb-1">คู่มือฝึกอบรม Gemini AI — ใช้ปัญญาประดิษฐ์ Google ทำงานราชการ</p>
+        <p class="mb-0 text-white-50">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

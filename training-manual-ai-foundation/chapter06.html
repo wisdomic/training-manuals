@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 6: Prompt Engineering ที่ใช้งานจริง — พื้นฐาน AI ทุกมิติ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 พื้นฐาน AI ทุกมิติ</a>
+        <span class="text-white nav-text">บทที่ 6</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 6</h1>
+            <h2 class="fw-normal text-muted">Prompt Engineering ที่ใช้งานจริง</h2>
+            <p class="lead">เรียนรู้เทคนิคการเขียนคำสั่งให้ AI เข้าใจ และได้ผลลัพธ์ตรงใจ</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>เขียน Prompt ที่ดีได้ โดยใช้หลัก Role + Context + Task + Format</li>
+                <li>ใช้เทคนิค Zero-shot, Few-shot และ Chain-of-Thought ได้อย่างเหมาะสม</li>
+                <li>ประยุกต์ใช้ Prompt กับงานราชการและงานด้านคนพิการได้จริง</li>
+            </ul>
+        </div>
+
+        <!-- 6.1 Prompt คืออะไร ทำไมสำคัญ -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">6.1 Prompt คืออะไร ทำไมสำคัญ</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>📝 Prompt = วิธีสั่งงานผู้ช่วย AI</h5>
+                <p>ลองนึกภาพว่า AI คือ <strong>"ผู้ช่วยใหม่"</strong> ที่เก่งมากแต่ไม่รู้จักคุณ — ถ้าคุณสั่งงานไม่ชัด ผู้ช่วยก็ทำงานไม่ตรงใจ</p>
+                <p class="mb-0"><strong>Prompt ที่ดี</strong> = สั่งงานชัดเจน → ได้ผลลัพธ์ตรงใจ<br>
+                <strong>Prompt ที่แย่</strong> = สั่งงานคลุมเครือ → ได้ผลลัพธ์ไม่ตรง ต้องถามซ้ำหลายรอบ</p>
+            </div>
+
+            <h5 class="mt-4 mb-3">🔄 เปรียบเทียบ Prompt ดี vs แย่</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th style="width:5%">#</th>
+                            <th style="width:40%">❌ Prompt แย่</th>
+                            <th style="width:40%">✅ Prompt ดี</th>
+                            <th style="width:15%">ทำไมดีกว่า</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><code>"เขียนหนังสือให้หน่อย"</code></td>
+                            <td><code>"เขียนหนังสือราชการถึงผู้ว่าราชการจังหวัดสุรินทร์ เรื่องขอสนับสนุนงบประมาณจัดอบรม AI สำหรับคนพิการ จำนวน 50 คน วันที่ 15 ก.ค. 2569"</code></td>
+                            <td>ระบุผู้รับ เรื่อง รายละเอียดครบ</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><code>"สรุปประชุมให้หน่อย"</code></td>
+                            <td><code>"สรุปรายงานการประชุมเป็น 5 หัวข้อหลัก: ผู้เข้าร่วม วาระ มติ ผู้รับผิดชอบ กำหนดส่ง โดยเขียนกระชับแต่ละหัวข้อไม่เกิน 3 บรรทัด"</code></td>
+                            <td>บอกรูปแบบ จำนวน และความยาว</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><code>"ช่วยแปลภาษา"</code></td>
+                            <td><code>"แปลข้อความนี้จากภาษาอังกฤษเป็นภาษาไทย ใช้ภาษาราชการ ไม่ทับศัพท์ ถ้าจำเป็นต้องใช้คำทับศัพท์ให้วงเล็บคำอังกฤษกำกับ"</code></td>
+                            <td>ระบุภาษาต้นทาง ปลายทาง ระดับภาษา</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 6.2 หลัก 4 อย่างของ Prompt ที่ดี -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">6.2 หลัก 4 อย่างของ Prompt ที่ดี: Role + Context + Task + Format</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <p>Prompt ที่ดีประกอบด้วย 4 ส่วน เหมือน "สูตรอาหาร" — ใส่ครบยิ่งอร่อย:</p>
+            </div>
+
+            <div class="table-responsive mb-4">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>องค์ประกอบ</th>
+                            <th>ความหมาย</th>
+                            <th>เปรียบเทียบ</th>
+                            <th>ตัวอย่าง</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>🎭 Role</strong></td>
+                            <td>กำหนดบทบาทให้ AI</td>
+                            <td>เหมือนบอกว่า "คุณเป็นใคร"</td>
+                            <td>"คุณเป็นผู้เชี่ยวชาญด้านสิทธิคนพิการ"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>📋 Context</strong></td>
+                            <td>ให้ข้อมูลพื้นฐาน/บริบท</td>
+                            <td>เหมือนบอก "สถานการณ์ตอนนี้เป็นยังไง"</td>
+                            <td>"กำลังจัดอบรม AI ให้คนพิการทางสายตา 30 คน"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>✅ Task</strong></td>
+                            <td>สั่งงานที่ต้องทำ</td>
+                            <td>เหมือนบอก "ต้องทำอะไร"</td>
+                            <td>"เขียนกำหนดการอบรม 1 วัน"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>📐 Format</strong></td>
+                            <td>กำหนดรูปแบบผลลัพธ์</td>
+                            <td>เหมือนบอก "ส่งมาในรูปแบบไหน"</td>
+                            <td>"เป็นตาราง มี 3 คอลัมน์: เวลา กิจกรรม ผู้รับผิดชอบ"</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h5>📝 ตัวอย่าง Prompt ที่ใช้หลัก 4 อย่างครบ</h5>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mb-3">
+                <strong>ตัวอย่างที่ 1 — ร่างหนังสือราชการ</strong>
+                <p class="mt-2 mb-0"><code>🎭 Role: คุณเป็นเจ้าหน้าที่ธุรการที่เชี่ยวชาญหนังสือราชการ<br>
+                📋 Context: สนพ.สุรินทร์ จะจัดอบรม "AI สำหรับคนพิการ" วันที่ 20 ส.ค. 2569 ที่ห้องประชุมชั้น 3<br>
+                ✅ Task: เขียนหนังสือเชิญวิทยากรภายนอก (ผศ.ดร.สมชาย ใจดี มหาวิทยาลัยราชภัฏสุรินทร์)<br>
+                📐 Format: รูปแบบหนังสือราชการ มีเลขที่หนังสือ วันที่ เรื่อง เรียน สิ่งที่ส่งมาด้วย</code></p>
+            </div>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mb-3">
+                <strong>ตัวอย่างที่ 2 — สรุปรายงาน</strong>
+                <p class="mt-2 mb-0"><code>🎭 Role: คุณเป็นเลขานุการที่ประชุม<br>
+                📋 Context: ประชุมคณะทำงาน AI เพื่อคนพิการ ครั้งที่ 3/2569 มีผู้เข้าร่วม 12 คน เมื่อวันที่ 10 ก.ค. 2569<br>
+                ✅ Task: สรุปรายงานการประชุมจากบันทึกย่อที่แนบมา<br>
+                📐 Format: แบ่งเป็นหัวข้อ: วาระ, มติ, ผู้รับผิดชอบ, กำหนดส่ง — ใช้ bullet points</code></p>
+            </div>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mb-3">
+                <strong>ตัวอย่างที่ 3 — เขียนโครงการ</strong>
+                <p class="mt-2 mb-0"><code>🎭 Role: คุณเป็นนักวิเคราะห์นโยบายและแผน<br>
+                📋 Context: ต้องเขียนโครงการของบประมาณปี 2570 เรื่องจัดอบรม Digital Literacy ให้คนพิการ จำนวน 5 รุ่น รุ่นละ 30 คน<br>
+                ✅ Task: เขียนโครงการฉบับเต็ม<br>
+                📐 Format: ครบทุกหัวข้อ: ชื่อโครงการ หลักการและเหตุผล วัตถุประสงค์ เป้าหมาย วิธีดำเนินงาน งบประมาณ ตัวชี้วัด ผลที่คาดว่าจะได้รับ</code></p>
+            </div>
+        </section>
+
+        <!-- 6.3 Zero-shot vs Few-shot vs Chain-of-Thought -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">6.3 Zero-shot vs Few-shot vs Chain-of-Thought</h3>
+
+            <p>เทคนิค 3 แบบในการเขียน Prompt — เรียงจากง่ายไปซับซ้อน:</p>
+
+            <div class="row mb-4">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-primary">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h5 class="mb-0">🎯 Zero-shot</h5>
+                            <small>สั่งตรงๆ ไม่ให้ตัวอย่าง</small>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>คำอธิบาย:</strong> บอก AI ว่าต้องทำอะไร โดยไม่ต้องให้ตัวอย่าง</p>
+                            <p><strong>เหมาะกับ:</strong> งานง่ายๆ ตรงไปตรงมา</p>
+                            <p><strong>ข้อดี:</strong> เขียนสั้น รวดเร็ว</p>
+                            <p><strong>ข้อเสีย:</strong> ผลลัพธ์อาจไม่ตรงรูปแบบที่ต้องการ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-success">
+                        <div class="card-header bg-success text-white text-center">
+                            <h5 class="mb-0">📝 Few-shot</h5>
+                            <small>ให้ตัวอย่าง 2-3 ข้อ</small>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>คำอธิบาย:</strong> ให้ตัวอย่างผลลัพธ์ที่ต้องการ 2-3 ข้อ แล้ว AI จะทำตามรูปแบบเดียวกัน</p>
+                            <p><strong>เหมาะกับ:</strong> งานที่ต้องการรูปแบบเฉพาะ</p>
+                            <p><strong>ข้อดี:</strong> ผลลัพธ์ตรงรูปแบบ</p>
+                            <p><strong>ข้อเสีย:</strong> ต้องเขียน Prompt ยาวขึ้น</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-warning">
+                        <div class="card-header bg-warning text-center">
+                            <h5 class="mb-0">🔗 Chain-of-Thought</h5>
+                            <small>ให้ AI คิดทีละขั้น</small>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>คำอธิบาย:</strong> สั่งให้ AI อธิบายขั้นตอนการคิดก่อนตอบ เพื่อให้ได้คำตอบที่ถูกต้องมากขึ้น</p>
+                            <p><strong>เหมาะกับ:</strong> งานวิเคราะห์ ตัดสินใจ คำนวณ</p>
+                            <p><strong>ข้อดี:</strong> คำตอบแม่นยำ ตรวจสอบได้</p>
+                            <p><strong>ข้อเสีย:</strong> ผลลัพธ์ยาว ใช้เวลามากขึ้น</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5>📝 ตัวอย่าง Prompt แต่ละแบบ</h5>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mb-3">
+                <strong>🎯 Zero-shot — สั่งตรงๆ</strong>
+                <p class="mt-2 mb-0"><code>"จัดหมวดหมู่ข้อความนี้ว่าเป็น ร้องเรียน/สอบถาม/ชมเชย: 'ขอสอบถามเรื่องสิทธิบัตรคนพิการครับ ต้องใช้เอกสารอะไรบ้าง'"</code></p>
+            </div>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-success mb-3">
+                <strong>📝 Few-shot — ให้ตัวอย่าง</strong>
+                <p class="mt-2"><code>"จัดหมวดหมู่ข้อความต่อไปนี้:<br><br>
+                ตัวอย่าง 1: 'ทำไมรอนานมากยังไม่ได้บัตร' → ร้องเรียน<br>
+                ตัวอย่าง 2: 'ขอบคุณเจ้าหน้าที่มากครับ บริการดี' → ชมเชย<br>
+                ตัวอย่าง 3: 'อยากทราบว่าต้องเตรียมเอกสารอะไร' → สอบถาม<br><br>
+                ข้อความ: 'ยื่นเรื่องไป 3 เดือนแล้วยังไม่ได้เงินเลย'"</code></p>
+            </div>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-warning mb-3">
+                <strong>🔗 Chain-of-Thought — คิดทีละขั้น</strong>
+                <p class="mt-2 mb-0"><code>"วิเคราะห์ว่าโครงการนี้ควรได้รับอนุมัติหรือไม่:<br>
+                โครงการอบรม AI ให้คนพิการ งบ 200,000 บาท 50 คน 3 วัน<br><br>
+                ให้คิดทีละขั้นตอน:<br>
+                1. ตรวจสอบความสอดคล้องกับนโยบาย<br>
+                2. วิเคราะห์งบประมาณต่อหัว<br>
+                3. ประเมินความคุ้มค่า<br>
+                4. สรุปข้อเสนอแนะ<br>
+                แล้วจึงให้คำตอบสุดท้าย"</code></p>
+            </div>
+        </section>
+
+        <!-- 6.4 เทคนิค Prompt สำหรับงานราชการ -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">6.4 เทคนิค Prompt สำหรับงานราชการโดยเฉพาะ</h3>
+
+            <p>รวม 5 Prompt ที่ใช้บ่อยในงานราชการ — คัดลอกไปใช้ได้เลย:</p>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mb-3">
+                <strong>📄 1. ร่างหนังสือราชการ</strong>
+                <p class="mt-2 mb-0"><code>"คุณเป็นเจ้าหน้าที่ธุรการ สนพ.สุรินทร์ ช่วยร่างหนังสือราชการ เรื่อง ขอเชิญประชุมคณะทำงานโครงการ AI เพื่อคนพิการ ครั้งที่ 1/2569 ถึง คณะทำงานทุกท่าน กำหนดประชุมวันที่ 25 ก.ค. 2569 เวลา 09.00-12.00 น. ห้องประชุมชั้น 2 รูปแบบหนังสือราชการมาตรฐาน มีเลขที่ ลงวันที่ เรียน อ้างถึง สิ่งที่ส่งมาด้วย"</code></p>
+            </div>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mb-3">
+                <strong>📋 2. สรุปรายงานการประชุม</strong>
+                <p class="mt-2 mb-0"><code>"คุณเป็นเลขานุการที่ประชุม สรุปรายงานการประชุมจากข้อมูลต่อไปนี้ โดยแบ่งเป็น: 1) ข้อมูลการประชุม (วันเวลา สถานที่ ผู้เข้าร่วม) 2) วาระที่ 1-2-3 แต่ละวาระมี: เรื่อง สาระสำคัญ มติ 3) เรื่องอื่นๆ 4) กำหนดประชุมครั้งต่อไป — ใช้ภาษาราชการ กระชับ"</code></p>
+            </div>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mb-3">
+                <strong>📊 3. เขียนโครงการ</strong>
+                <p class="mt-2 mb-0"><code>"คุณเป็นนักวิเคราะห์นโยบายและแผน เขียนโครงการ 'พัฒนาทักษะดิจิทัลสำหรับคนพิการด้วย AI' ปีงบ 2570 กลุ่มเป้าหมาย: คนพิการ 150 คน (5 รุ่นๆ ละ 30 คน) งบประมาณ 500,000 บาท ครบทุกหัวข้อ: หลักการเหตุผล วัตถุประสงค์ เป้าหมาย วิธีดำเนินงาน งบประมาณ(แยกรายละเอียด) ตัวชี้วัด ผลที่คาดว่าจะได้รับ"</code></p>
+            </div>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mb-3">
+                <strong>🌐 4. แปลเอกสาร</strong>
+                <p class="mt-2 mb-0"><code>"คุณเป็นนักแปลเอกสารราชการ แปลข้อความต่อไปนี้จากภาษาอังกฤษเป็นภาษาไทย: [วางข้อความ] เงื่อนไข: 1) ใช้ภาษาราชการ 2) คำศัพท์เฉพาะทางให้ใส่วงเล็บภาษาอังกฤษกำกับ 3) ถ้ามีชื่อเฉพาะให้ทับศัพท์ 4) รักษาความหมายเดิมครบถ้วน"</code></p>
+            </div>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mb-3">
+                <strong>📅 5. สร้างกำหนดการ</strong>
+                <p class="mt-2 mb-0"><code>"คุณเป็นผู้จัดอบรม สร้างกำหนดการอบรม 'พื้นฐาน AI สำหรับคนพิการ' ระยะเวลา 2 วัน (09.00-16.30 น.) กลุ่มเป้าหมาย: เจ้าหน้าที่องค์กรคนพิการ ไม่มีพื้นฐาน IT รูปแบบตาราง: เวลา | หัวข้อ | รายละเอียด | วิทยากร รวมพัก tea break เช้า-บ่าย + พักเที่ยง"</code></p>
+            </div>
+        </section>
+
+        <!-- 6.5 ตัวอย่าง Prompt ที่ดีและไม่ดี -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">6.5 ตัวอย่าง Prompt ที่ดีและไม่ดี</h3>
+
+            <p>เปรียบเทียบ 5 คู่ — ลองสังเกตว่า Prompt ดีต่างจาก Prompt แย่อย่างไร:</p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th style="width:5%">#</th>
+                            <th style="width:15%">สถานการณ์</th>
+                            <th style="width:35%">❌ Prompt แย่</th>
+                            <th style="width:35%">✅ Prompt ดี</th>
+                            <th style="width:10%">ปัญหา</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>ร่างอีเมล</td>
+                            <td><code>"เขียนอีเมล"</code></td>
+                            <td><code>"เขียนอีเมลถึงผู้อำนวยการสำนักงานพัฒนาฝีมือแรงงานสุรินทร์ เรื่องขออนุมัติเดินทางไปราชการ วันที่ 5-7 ส.ค. 2569 ที่กรุงเทพฯ เพื่ออบรมหลักสูตร AI — ภาษาสุภาพเป็นทางการ"</code></td>
+                            <td>ไม่บอกรายละเอียด</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>วิเคราะห์ข้อมูล</td>
+                            <td><code>"วิเคราะห์ตัวเลขนี้ให้"</code></td>
+                            <td><code>"วิเคราะห์ข้อมูลจำนวนคนพิการที่ลงทะเบียน 5 ปีย้อนหลัง (2565-2569) หาแนวโน้มเพิ่ม/ลด สาเหตุที่เป็นไปได้ และข้อเสนอแนะเชิงนโยบาย สรุปเป็น 3 ย่อหน้า"</code></td>
+                            <td>ไม่บอกว่าวิเคราะห์อะไร</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>สร้าง Infographic</td>
+                            <td><code>"ทำรูปสวยๆ"</code></td>
+                            <td><code>"สร้างภาพ Infographic สิทธิคนพิการ 7 ด้าน สไตล์ flat design สีม่วง-เหลือง พื้นหลังขาว มี icon แต่ละด้าน ข้อความภาษาไทย ขนาด A4 แนวตั้ง"</code></td>
+                            <td>ไม่บอกเนื้อหา สไตล์ ขนาด</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>ตอบคำถาม</td>
+                            <td><code>"PDPA คืออะไร"</code></td>
+                            <td><code>"อธิบาย PDPA (พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล) สำหรับเจ้าหน้าที่องค์กรคนพิการที่ไม่มีพื้นฐานกฎหมาย สรุป 5 ข้อหลักที่ต้องรู้ ยกตัวอย่างสถานการณ์จริงในการทำงานประกอบ"</code></td>
+                            <td>กว้างเกินไป ไม่บอกระดับ</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>เขียนป้ายประชาสัมพันธ์</td>
+                            <td><code>"เขียนป้ายอบรม"</code></td>
+                            <td><code>"เขียนข้อความสำหรับป้ายประชาสัมพันธ์อบรม 'AI เพื่อคนพิการ' ขนาด banner Facebook (1200x628px) ต้องมี: ชื่องาน วันเวลา สถานที่ กลุ่มเป้าหมาย สิ่งที่ได้รับ วิธีสมัคร — ข้อความสั้นกระชับอ่านจากมือถือได้"</code></td>
+                            <td>ไม่บอกรูปแบบ ช่องทาง</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 6.6 การปรับ Prompt เมื่อผลไม่ตรงใจ -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">6.6 การปรับ Prompt เมื่อผลไม่ตรงใจ</h3>
+
+            <p>ถ้า AI ตอบไม่ตรงใจ ไม่ต้องเริ่มใหม่ — ลอง 5 เทคนิคนี้:</p>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-dark text-white"><strong>1. ➕ เพิ่มบริบท</strong></div>
+                        <div class="card-body">
+                            <p>บอก AI เพิ่มว่า:</p>
+                            <ul>
+                                <li>ผู้อ่านคือใคร</li>
+                                <li>ใช้ที่ไหน</li>
+                                <li>จุดประสงค์คืออะไร</li>
+                            </ul>
+                            <div class="prompt-example bg-light p-2 rounded">
+                                <small><code>"ผู้อ่านคือคนพิการทางสายตา ต้องสรุปสั้นเพราะใช้โปรแกรมอ่านหน้าจอ"</code></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-dark text-white"><strong>2. 🎭 เปลี่ยน Role</strong></div>
+                        <div class="card-body">
+                            <p>เปลี่ยนบทบาท AI:</p>
+                            <ul>
+                                <li>จาก "ผู้เชี่ยวชาญ" → "ครู"</li>
+                                <li>จาก "นักเขียน" → "นักข่าว"</li>
+                                <li>จาก "ทั่วไป" → "เฉพาะทาง"</li>
+                            </ul>
+                            <div class="prompt-example bg-light p-2 rounded">
+                                <small><code>"ตอบในฐานะครูที่สอนคนไม่มีพื้นฐาน IT"</code></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-dark text-white"><strong>3. 📐 ระบุ Format</strong></div>
+                        <div class="card-body">
+                            <p>บอกรูปแบบชัดเจน:</p>
+                            <ul>
+                                <li>"เป็นตาราง 3 คอลัมน์"</li>
+                                <li>"เป็น bullet points 5 ข้อ"</li>
+                                <li>"ยาวไม่เกิน 200 คำ"</li>
+                            </ul>
+                            <div class="prompt-example bg-light p-2 rounded">
+                                <small><code>"สรุปเป็นตาราง: ประเด็น | รายละเอียด | ข้อเสนอ"</code></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-dark text-white"><strong>4. 📝 ให้ตัวอย่าง</strong></div>
+                        <div class="card-body">
+                            <p>แสดงตัวอย่างที่ต้องการ:</p>
+                            <ul>
+                                <li>ให้ตัวอย่าง 1-2 ข้อ</li>
+                                <li>แสดงรูปแบบที่ถูกต้อง</li>
+                                <li>แสดงสิ่งที่ไม่ต้องการ</li>
+                            </ul>
+                            <div class="prompt-example bg-light p-2 rounded">
+                                <small><code>"ตัวอย่างที่ต้องการ: 'สิทธิข้อ 1: การศึกษา — คนพิการมีสิทธิ์เรียนฟรี'"</code></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-dark text-white"><strong>5. 🔄 ถามต่อ (Follow-up)</strong></div>
+                        <div class="card-body">
+                            <p>ไม่ต้องเริ่มใหม่ ถามต่อ:</p>
+                            <ul>
+                                <li>"ปรับให้สั้นกว่านี้"</li>
+                                <li>"เพิ่มรายละเอียดข้อ 3"</li>
+                                <li>"เปลี่ยนภาษาให้ง่ายขึ้น"</li>
+                            </ul>
+                            <div class="prompt-example bg-light p-2 rounded">
+                                <small><code>"ดีแล้ว แต่ช่วยปรับภาษาให้เข้าใจง่ายขึ้น เหมือนพูดกับคนทั่วไป"</code></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lab -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">🔬 Lab ปฏิบัติ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 6.1 — เขียน Prompt ร่างหนังสือราชการ</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>โจทย์:</strong> คุณต้องร่างหนังสือราชการถึงผู้อำนวยการศูนย์คุ้มครองคนไร้ที่พึ่งจังหวัดสุรินทร์ เรื่อง ขอความอนุเคราะห์ส่งเจ้าหน้าที่เข้าร่วมอบรม "การใช้ AI ในงานบริการคนพิการ" จำนวน 5 คน วันที่ 20-21 สิงหาคม 2569 ที่ห้องประชุม สนพ.สุรินทร์
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>เขียน Prompt โดยใช้หลัก Role + Context + Task + Format:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-warning mt-2">
+                        <p class="mb-0">✍️ เขียน Prompt ของคุณที่นี่:<br>
+                        Role: _______________<br>
+                        Context: _______________<br>
+                        Task: _______________<br>
+                        Format: _______________</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>นำ Prompt ไปใช้กับ AI (ChatGPT/Claude/Gemini) แล้วบันทึกผลลัพธ์</strong>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ถ้าผลไม่ตรงใจ → ใช้เทคนิคจากข้อ 6.6 ปรับ Prompt แล้วลองใหม่</strong>
+                </div>
+            </div>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 6.2 — เขียน Prompt สรุปรายงานการประชุม</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>โจทย์:</strong> สรุปรายงานการประชุมจาก bullet points ต่อไปนี้:
+                    <ul class="mt-2">
+                        <li>ประชุมคณะทำงาน AI เพื่อคนพิการ ครั้งที่ 2/2569</li>
+                        <li>วันที่ 10 กรกฎาคม 2569 เวลา 13.30-15.00 น.</li>
+                        <li>ผู้เข้าร่วม 8 คน (นายปัญญา ผาธรรม เป็นประธาน)</li>
+                        <li>วาระ 1: รายงานผลการจัดอบรมรุ่นที่ 1 — ผ่านไปด้วยดี มีผู้เข้าร่วม 45 คน ความพึงพอใจ 4.5/5</li>
+                        <li>วาระ 2: แผนจัดอบรมรุ่นที่ 2 — กำหนด ส.ค. 2569 กลุ่มเป้าหมาย คนพิการทางการเคลื่อนไหว 30 คน</li>
+                        <li>วาระ 3: ของบเพิ่ม 50,000 บาท สำหรับอุปกรณ์ช่วยเหลือ — มติเห็นชอบ มอบฝ่ายแผนดำเนินการ</li>
+                    </ul>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>เขียน Prompt ที่ดีที่สุดที่คิดได้ แล้วทดลองกับ AI</strong>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เปรียบเทียบ: ลองใช้ Zero-shot กับ Few-shot — ผลต่างกันไหม?</strong>
+                </div>
+            </div>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 6.3 — เขียน Prompt สร้างรูปภาพประชาสัมพันธ์</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>โจทย์:</strong> สร้างรูปภาพประชาสัมพันธ์กิจกรรม "วันคนพิการสากล จังหวัดสุรินทร์ ประจำปี 2569" รายละเอียด:
+                    <ul class="mt-2">
+                        <li>กิจกรรม: การแข่งขันกีฬาคนพิการ + นิทรรศการ AI ช่วยเหลือคนพิการ</li>
+                        <li>วันที่: 3 ธันวาคม 2569</li>
+                        <li>สถานที่: สนามกีฬาจังหวัดสุรินทร์</li>
+                        <li>ต้องการรูปสไตล์: สดใส เป็นมิตร แสดงความหลากหลาย</li>
+                    </ul>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>เขียน Prompt สำหรับ AI สร้างรูปภาพ (เช่น ChatGPT DALL-E, Gemini Imagen):</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-warning mt-2">
+                        <p class="mb-0">✍️ เขียน Prompt ภาพของคุณ: _______________<br>
+                        (ระบุ: เนื้อหา สไตล์ สี ขนาด องค์ประกอบ)</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ทดลองสร้างภาพ → ถ้าไม่ตรงใจ ปรับ Prompt แล้วลองใหม่ (อย่างน้อย 3 ครั้ง)</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับบทนี้</h5>
+            <ul class="mb-0">
+                <li><strong>Prompt ยิ่งเฉพาะเจาะจง ยิ่งได้ผลดี</strong> — อย่ากลัวเขียนยาว ยิ่งบอกรายละเอียดมาก ยิ่งได้ผลตรงใจ</li>
+                <li><strong>ใช้ Few-shot เมื่อต้องการรูปแบบเฉพาะ</strong> — ให้ตัวอย่าง 2-3 ข้อ AI จะทำตามแน่นอน</li>
+                <li><strong>ถามต่อได้เสมอ</strong> — ไม่ต้องเริ่มใหม่ทุกครั้ง AI จำบทสนทนาได้</li>
+                <li><strong>ลองหลายแบบ</strong> — Prompt ที่ดีมาจากการทดลอง ไม่มีคำตอบตายตัว</li>
+                <li><strong>เก็บ Prompt ที่ใช้ได้ดี</strong> — สร้างคลัง Prompt ส่วนตัวไว้ใช้ซ้ำ</li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปท้ายบท</h5>
+            <ul>
+                <li><strong>Prompt</strong> = วิธีสั่งงาน AI — ยิ่งสั่งชัด ยิ่งได้ผลดี</li>
+                <li><strong>หลัก 4 อย่าง:</strong> Role (บทบาท) + Context (บริบท) + Task (งาน) + Format (รูปแบบ)</li>
+                <li><strong>Zero-shot</strong> = สั่งตรงๆ | <strong>Few-shot</strong> = ให้ตัวอย่าง | <strong>Chain-of-Thought</strong> = คิดทีละขั้น</li>
+                <li><strong>งานราชการใช้ AI ได้:</strong> ร่างหนังสือ สรุปประชุม เขียนโครงการ แปลเอกสาร สร้างกำหนดการ</li>
+                <li><strong>ผลไม่ตรงใจ?</strong> เพิ่มบริบท / เปลี่ยน Role / ระบุ Format / ให้ตัวอย่าง / ถามต่อ</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="chapter05.html" class="btn btn-outline-dark">← บทที่ 5</a>
+            <a href="chapter07.html" class="btn btn-dark">บทที่ 7 →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 3: สร้างภาพด้วย DALL-E และ Whisk | AI วิดีโอครบวงจร</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">📖 AI วิดีโอครบวงจร</a>
+            <span class="nav-chapter-text">บทที่ 3: สร้างภาพด้วย DALL-E และ Whisk</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <div class="chapter-number">บทที่ 3</div>
+                <h1>สร้างภาพด้วย DALL-E และ Whisk</h1>
+                <p class="chapter-subtitle">สร้างภาพประกอบวิดีโอ, Storyboard, สไตล์ภาพที่เหมาะกับวิดีโอ</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>สามารถใช้ DALL-E สร้างภาพจาก Prompt ภาษาอังกฤษได้</li>
+                    <li>สามารถใช้ Google Whisk สร้างภาพและปรับสไตล์ได้</li>
+                    <li>เข้าใจสไตล์ภาพที่เหมาะสมสำหรับวิดีโอแต่ละประเภท</li>
+                    <li>สร้างชุดภาพ Storyboard จากสคริปต์ในบทที่ 2 ได้</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">🎨 ทำไมต้องสร้างภาพด้วย AI?</h3>
+
+            <p>ภาพประกอบวิดีโอมีความสำคัญมาก เพราะเป็นสิ่งที่ผู้ชมเห็นตลอดทั้งวิดีโอ การใช้ AI สร้างภาพช่วยให้:</p>
+            <ul>
+                <li>ได้ภาพตรงตามความต้องการ ไม่ต้องค้นหาภาพ Stock</li>
+                <li>ภาพมีสไตล์เดียวกันทั้งวิดีโอ (Consistency)</li>
+                <li>ไม่มีปัญหาลิขสิทธิ์ เพราะเป็นภาพที่สร้างขึ้นใหม่</li>
+                <li>ปรับแก้ได้ง่าย แค่เปลี่ยน Prompt</li>
+            </ul>
+
+            <h3 class="section-header">🖼️ DALL-E 3 — สร้างภาพจากข้อความ</h3>
+
+            <p><strong>DALL-E 3</strong> เป็น AI สร้างภาพของ OpenAI ที่ทำงานร่วมกับ ChatGPT โดยตรง สามารถสร้างภาพได้หลากหลายสไตล์ คุณภาพสูง</p>
+
+            <div class="info-card">
+                <h5>📐 ขนาดภาพที่รองรับ</h5>
+                <ul>
+                    <li><strong>1024 x 1024:</strong> สี่เหลี่ยมจัตุรัส — เหมาะกับ Social Media</li>
+                    <li><strong>1792 x 1024:</strong> แนวนอน — เหมาะกับวิดีโอ (16:9)</li>
+                    <li><strong>1024 x 1792:</strong> แนวตั้ง — เหมาะกับ TikTok, Reels</li>
+                </ul>
+                <p class="mb-0"><strong>💡 สำหรับวิดีโอ:</strong> ใช้ 1792 x 1024 (แนวนอน) เป็นหลัก</p>
+            </div>
+
+            <h4 class="section-header-secondary">หลักการเขียน Prompt สร้างภาพ</h4>
+
+            <p>Prompt สร้างภาพที่ดีควรมีองค์ประกอบเหล่านี้:</p>
+
+            <div class="info-card">
+                <h5>🧩 สูตร Prompt สร้างภาพ</h5>
+                <p><code>[สไตล์] + [เนื้อหาหลัก] + [รายละเอียด] + [สี/แสง] + [มุมกล้อง]</code></p>
+                <ul>
+                    <li><strong>สไตล์:</strong> Flat illustration, 3D render, Watercolor, Photorealistic</li>
+                    <li><strong>เนื้อหาหลัก:</strong> คนพิการกำลังทำงาน, อาคารศูนย์บริการ</li>
+                    <li><strong>รายละเอียด:</strong> wheelchair user smiling, modern building</li>
+                    <li><strong>สี/แสง:</strong> warm colors, soft lighting, pastel palette</li>
+                    <li><strong>มุมกล้อง:</strong> wide shot, close-up, bird's eye view</li>
+                </ul>
+            </div>
+
+            <h4 class="section-header-secondary">ตัวอย่าง Prompt ภาพสำหรับวิดีโอองค์กร</h4>
+
+            <div class="prompt-box">
+Flat illustration style, a friendly Thai government service center<br>
+for people with disabilities, staff helping a wheelchair user,<br>
+warm welcoming atmosphere, pastel blue and orange colors,<br>
+modern clean interior, soft lighting, wide angle shot
+            </div>
+
+            <div class="prompt-box">
+Flat illustration, a group of diverse people with disabilities<br>
+(wheelchair user, visually impaired with cane, hearing aid user)<br>
+happy together in a training room, inclusive design,<br>
+warm colors, bright and cheerful mood, wide shot
+            </div>
+
+            <div class="prompt-box">
+Flat illustration style, a Thai person with disability<br>
+learning new job skills on computer, vocational training center,<br>
+supportive environment, warm lighting, medium close-up shot,<br>
+inspirational mood, blue and green color palette
+            </div>
+
+            <h3 class="section-header">🌀 Google Whisk — สร้างภาพแบบ Visual</h3>
+
+            <p><strong>Google Whisk</strong> เป็นเครื่องมือสร้างภาพของ Google ที่มีจุดเด่นคือ สามารถใช้ภาพอ้างอิง (Reference Image) ร่วมกับข้อความได้</p>
+
+            <div class="info-card">
+                <h5>✨ จุดเด่นของ Whisk</h5>
+                <ul>
+                    <li><strong>ใช้ภาพอ้างอิง:</strong> ใส่ภาพตัวอย่างเป็น Subject, Scene, หรือ Style</li>
+                    <li><strong>3 Input:</strong> Subject (ตัวละคร) + Scene (ฉาก) + Style (สไตล์)</li>
+                    <li><strong>ฟรี:</strong> ใช้ได้ฟรีผ่าน Google Account</li>
+                    <li><strong>เว็บไซต์:</strong> labs.google/whisk</li>
+                </ul>
+            </div>
+
+            <h4 class="section-header-secondary">วิธีใช้ Google Whisk</h4>
+
+            <div class="step-box">
+                <span class="step-number">1</span>
+                <strong>ไปที่ labs.google/whisk</strong> แล้ว Login ด้วย Google Account
+            </div>
+            <div class="step-box">
+                <span class="step-number">2</span>
+                <strong>ใส่ Subject:</strong> อัปโหลดภาพตัวละคร หรือพิมพ์อธิบาย
+            </div>
+            <div class="step-box">
+                <span class="step-number">3</span>
+                <strong>ใส่ Scene:</strong> อัปโหลดภาพฉาก หรือพิมพ์อธิบายฉากหลัง
+            </div>
+            <div class="step-box">
+                <span class="step-number">4</span>
+                <strong>ใส่ Style:</strong> อัปโหลดภาพสไตล์ที่ต้องการ หรือเลือก Preset
+            </div>
+            <div class="step-box">
+                <span class="step-number">5</span>
+                <strong>Generate:</strong> กดสร้างภาพ รอ 10-30 วินาที แล้วดาวน์โหลด
+            </div>
+
+            <h3 class="section-header">🎭 สไตล์ภาพที่เหมาะกับวิดีโอ</h3>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h5>🖌️ Flat Illustration</h5>
+                        <p>ภาพวาดแบนๆ สีสดใส</p>
+                        <ul class="mb-0">
+                            <li>เหมาะกับ: วิดีโออธิบาย, PR</li>
+                            <li>ข้อดี: ดูเป็นมิตร ไม่เป็นทางการมาก</li>
+                            <li>Prompt: "flat illustration style"</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h5>🎨 3D Render</h5>
+                        <p>ภาพ 3 มิติ สมจริง</p>
+                        <ul class="mb-0">
+                            <li>เหมาะกับ: วิดีโอ Corporate, Modern</li>
+                            <li>ข้อดี: ดู Professional</li>
+                            <li>Prompt: "3D render, modern style"</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h5>📷 Photorealistic</h5>
+                        <p>ภาพเหมือนถ่ายจริง</p>
+                        <ul class="mb-0">
+                            <li>เหมาะกับ: วิดีโอสารคดี, Report</li>
+                            <li>ข้อดี: ดูสมจริง น่าเชื่อถือ</li>
+                            <li>Prompt: "photorealistic, high quality"</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h5>🌈 Watercolor</h5>
+                        <p>ภาพสีน้ำ อ่อนโยน</p>
+                        <ul class="mb-0">
+                            <li>เหมาะกับ: วิดีโอให้กำลังใจ, อบอุ่น</li>
+                            <li>ข้อดี: ดูอบอุ่น เข้าถึงง่าย</li>
+                            <li>Prompt: "watercolor painting style"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h5>🔬 Lab 3.1: สร้างภาพด้วย DALL-E</h5>
+                <p><strong>เวลา:</strong> 25 นาที</p>
+                <p><strong>คำสั่ง:</strong> ใช้ DALL-E สร้างภาพ Storyboard จากสคริปต์ในบทที่ 2</p>
+                <ol>
+                    <li>เปิด ChatGPT แล้วบอกให้สร้างภาพ DALL-E</li>
+                    <li>ใช้ Prompt ที่ได้จาก Lab 2.1 (ที่ขอให้ ChatGPT เขียน Prompt ภาพ)</li>
+                    <li>สร้างภาพ Scene ที่ 1 ก่อน ดูผลลัพธ์</li>
+                    <li>ถ้าไม่ถูกใจ ปรับ Prompt เช่น เปลี่ยนสี เปลี่ยนมุมกล้อง</li>
+                    <li>สร้างภาพครบทุก Scene (5-6 ภาพ)</li>
+                    <li>ดาวน์โหลดภาพทั้งหมด เก็บไว้ในโฟลเดอร์ "storyboard"</li>
+                </ol>
+                <p class="mb-0"><strong>💡 เคล็ดลับ:</strong> ใส่ "same flat illustration style" ในทุก Prompt เพื่อให้ภาพมีสไตล์เดียวกัน</p>
+            </div>
+
+            <div class="exercise-box">
+                <h5>🔬 Lab 3.2: สร้างภาพด้วย Google Whisk</h5>
+                <p><strong>เวลา:</strong> 20 นาที</p>
+                <p><strong>คำสั่ง:</strong> ลองใช้ Whisk สร้างภาพโดยใช้ Reference Image</p>
+                <ol>
+                    <li>ไปที่ labs.google/whisk</li>
+                    <li>ใส่ Subject: พิมพ์ "Thai person with disability, friendly smile"</li>
+                    <li>ใส่ Scene: พิมพ์ "modern government service center, clean interior"</li>
+                    <li>ใส่ Style: เลือก Flat Design หรืออัปโหลดภาพที่ชอบ</li>
+                    <li>กด Generate แล้วดูผลลัพธ์</li>
+                    <li>ลองเปลี่ยน Style ดูว่าภาพเปลี่ยนอย่างไร</li>
+                    <li>ดาวน์โหลดภาพที่ถูกใจ</li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5>💡 Tips & Tricks</h5>
+                <ul class="mb-0">
+                    <li><strong>สไตล์เดียวกัน:</strong> ใส่คำว่า "same style as before" หรือ copy สไตล์เดิมไปทุก Prompt</li>
+                    <li><strong>ใช้ภาษาอังกฤษ:</strong> DALL-E เข้าใจ Prompt ภาษาอังกฤษดีกว่าไทย</li>
+                    <li><strong>ขนาดแนวนอน:</strong> สำหรับวิดีโอ ใช้ "wide format" หรือ "16:9 aspect ratio"</li>
+                    <li><strong>หลีกเลี่ยงข้อความ:</strong> AI สร้างตัวอักษรในภาพไม่ค่อยดี — ใส่ข้อความทีหลังใน CapCut</li>
+                    <li><strong>สร้างหลายรูป:</strong> สร้าง 2-3 รูปต่อ Scene แล้วเลือกรูปที่ดีที่สุด</li>
+                    <li><strong>ตั้งชื่อไฟล์:</strong> ตั้งชื่อเป็น scene01.png, scene02.png จะหาง่ายตอนตัดต่อ</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="summary-card">
+                <h5>📋 สรุปบทที่ 3</h5>
+                <ul class="mb-0">
+                    <li>DALL-E 3 เหมาะกับการสร้างภาพจาก Prompt ข้อความ ควบคุมรายละเอียดได้มาก</li>
+                    <li>Google Whisk เหมาะกับการใช้ภาพอ้างอิง ปรับสไตล์ได้ง่าย</li>
+                    <li>สูตร Prompt ภาพ: สไตล์ + เนื้อหาหลัก + รายละเอียด + สี + มุมกล้อง</li>
+                    <li>สำหรับวิดีโอ ใช้ขนาดแนวนอน (1792x1024 / 16:9)</li>
+                    <li>ภาพที่ได้จะนำไปใช้ใน Veo 2 (บทที่ 4) และ CapCut (บทที่ 8)</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="chapter-nav d-flex justify-content-between">
+                <a href="chapter02.html" class="btn btn-outline-secondary">← บทที่ 2</a>
+                <a href="chapter04.html" class="btn btn-primary">บทที่ 4 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

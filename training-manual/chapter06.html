@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 6: พื้นฐาน HTML + CSS + Bootstrap — คู่มือ Kiro AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">📖 คู่มือฝึกอบรม Kiro AI</a>
+        <span class="navbar-text text-white">บทที่ 6 | วันที่ 2</span>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+
+            <div class="chapter-header text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">บทที่ 6</h1>
+                <h2 class="h3 text-secondary">พื้นฐาน HTML + CSS + Bootstrap</h2>
+                <p class="lead text-muted">ระยะเวลา: 2 ชั่วโมง | วันที่ 2</p>
+                <hr class="w-50 mx-auto">
+            </div>
+
+            <div class="alert alert-info mb-4">
+                <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เข้าใจโครงสร้าง HTML5 พื้นฐาน</li>
+                    <li>ใช้ CSS จัดรูปแบบหน้าเว็บได้</li>
+                    <li>ใช้ Bootstrap 5 สร้าง UI สวยงามได้อย่างรวดเร็ว</li>
+                    <li>เขียน JavaScript เบื้องต้นสำหรับ GAS Frontend ได้</li>
+                    <li>เข้าใจ Responsive Design</li>
+                </ul>
+            </div>
+
+            <!-- 6.1 โครงสร้าง HTML5 -->
+            <section class="mb-5" id="section-6-1">
+                <h3 class="border-start border-4 border-primary ps-3">6.1 โครงสร้าง HTML5</h3>
+
+                <p>HTML5 คือภาษาสำหรับสร้างโครงสร้างหน้าเว็บ ทุกหน้าเว็บต้องมีโครงสร้างพื้นฐานนี้:</p>
+
+<pre><code class="bg-dark text-light p-3 rounded d-block">&lt;!DOCTYPE html&gt;
+&lt;html lang="th"&gt;
+&lt;head&gt;
+    &lt;!-- meta charset: กำหนดภาษาไทย --&gt;
+    &lt;meta charset="UTF-8"&gt;
+    
+    &lt;!-- viewport: ให้แสดงผลมือถือถูกต้อง --&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    
+    &lt;!-- title: ชื่อแท็บในเบราว์เซอร์ --&gt;
+    &lt;title&gt;ระบบลงทะเบียน&lt;/title&gt;
+    
+    &lt;!-- CSS: ใส่สไตล์ --&gt;
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- เนื้อหาที่แสดงผลอยู่ใน body --&gt;
+    &lt;h1&gt;สวัสดีชาวโลก&lt;/h1&gt;
+    &lt;p&gt;นี่คือย่อหน้าแรก&lt;/p&gt;
+    
+    &lt;!-- JavaScript: ใส่ท้าย body เสมอ --&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+                <h5>แท็ก HTML ที่ใช้บ่อย</h5>
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr><th>แท็ก</th><th>หน้าที่</th><th>ตัวอย่าง</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>&lt;h1&gt;-&lt;h6&gt;</code></td><td>หัวข้อ (ใหญ่→เล็ก)</td><td>&lt;h1&gt;ชื่อระบบ&lt;/h1&gt;</td></tr>
+                        <tr><td><code>&lt;p&gt;</code></td><td>ย่อหน้า</td><td>&lt;p&gt;คำอธิบาย&lt;/p&gt;</td></tr>
+                        <tr><td><code>&lt;div&gt;</code></td><td>กล่องจัดกลุ่ม</td><td>&lt;div class="container"&gt;...&lt;/div&gt;</td></tr>
+                        <tr><td><code>&lt;a&gt;</code></td><td>ลิงก์</td><td>&lt;a href="url"&gt;คลิก&lt;/a&gt;</td></tr>
+                        <tr><td><code>&lt;img&gt;</code></td><td>รูปภาพ</td><td>&lt;img src="pic.jpg" alt="รูป"&gt;</td></tr>
+                        <tr><td><code>&lt;table&gt;</code></td><td>ตาราง</td><td>&lt;table&gt;&lt;tr&gt;&lt;td&gt;...&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</td></tr>
+                        <tr><td><code>&lt;form&gt;</code></td><td>ฟอร์มกรอกข้อมูล</td><td>&lt;form&gt;&lt;input&gt;&lt;button&gt;&lt;/form&gt;</td></tr>
+                        <tr><td><code>&lt;button&gt;</code></td><td>ปุ่ม</td><td>&lt;button class="btn"&gt;บันทึก&lt;/button&gt;</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 6.2 CSS เบื้องต้น -->
+            <section class="mb-5" id="section-6-2">
+                <h3 class="border-start border-4 border-primary ps-3">6.2 CSS เบื้องต้น</h3>
+
+                <p>CSS (Cascading Style Sheets) ใช้จัดรูปแบบ ตกแต่ง สี ขนาด ตำแหน่งของ HTML:</p>
+
+                <h5>3 วิธีใส่ CSS</h5>
+                <table class="table table-bordered">
+                    <thead class="table-primary">
+                        <tr><th>วิธี</th><th>ตัวอย่าง</th><th>เหมาะกับ</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Inline</strong></td>
+                            <td><code>&lt;p style="color: red;"&gt;ข้อความ&lt;/p&gt;</code></td>
+                            <td>แก้ชั่วคราว</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Internal</strong></td>
+                            <td><code>&lt;style&gt; p { color: red; } &lt;/style&gt;</code></td>
+                            <td>GAS (ใส่ใน .html)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>External</strong></td>
+                            <td><code>&lt;link href="style.css" rel="stylesheet"&gt;</code></td>
+                            <td>เว็บทั่วไป</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5>Selectors — เลือก Element ที่จะจัดสไตล์</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">&lt;style&gt;
+/* เลือกทุก p */
+p { color: #333; }
+
+/* เลือกด้วย class (ใช้จุด) */
+.highlight { background-color: yellow; }
+
+/* เลือกด้วย id (ใช้ #) */
+#main-title { font-size: 24px; font-weight: bold; }
+
+/* เลือกลูกของ element */
+.card .card-title { color: blue; }
+&lt;/style&gt;
+
+&lt;h1 id="main-title"&gt;ชื่อระบบ&lt;/h1&gt;
+&lt;p class="highlight"&gt;ข้อความเน้น&lt;/p&gt;
+</code></pre>
+
+                <h5>Properties ที่ใช้บ่อย</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">.my-box {
+  /* สี */
+  color: #333;                  /* สีตัวอักษร */
+  background-color: #f8f9fa;   /* สีพื้นหลัง */
+  
+  /* ขนาด */
+  width: 100%;
+  padding: 16px;               /* ระยะห่างด้านใน */
+  margin: 8px 0;               /* ระยะห่างด้านนอก */
+  
+  /* ขอบ */
+  border: 1px solid #ddd;
+  border-radius: 8px;          /* มุมโค้ง */
+  
+  /* ข้อความ */
+  font-size: 16px;
+  text-align: center;
+}
+</code></pre>
+            </section>
+
+            <!-- 6.3 Bootstrap 5 -->
+            <section class="mb-5" id="section-6-3">
+                <h3 class="border-start border-4 border-primary ps-3">6.3 Bootstrap 5 — Grid System, Components</h3>
+
+                <p>Bootstrap 5 คือ CSS Framework ที่ช่วยสร้างหน้าเว็บสวยงามและ Responsive ได้ทันที:</p>
+
+                <h5>Grid System — จัดวาง Layout</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">&lt;!-- Container: กล่องหลักจัดกลางหน้า --&gt;
+&lt;div class="container"&gt;
+  
+  &lt;!-- Row: แถว --&gt;
+  &lt;div class="row"&gt;
+    
+    &lt;!-- Col: คอลัมน์ (รวม 12 ส่วน) --&gt;
+    &lt;div class="col-md-4"&gt;ซ้าย (4/12)&lt;/div&gt;
+    &lt;div class="col-md-8"&gt;ขวา (8/12)&lt;/div&gt;
+    
+  &lt;/div&gt;
+  
+  &lt;!-- 3 คอลัมน์เท่ากัน --&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-4"&gt;1&lt;/div&gt;
+    &lt;div class="col-md-4"&gt;2&lt;/div&gt;
+    &lt;div class="col-md-4"&gt;3&lt;/div&gt;
+  &lt;/div&gt;
+  
+&lt;/div&gt;
+</code></pre>
+
+                <h5>Components ที่ใช้บ่อยในระบบราชการ</h5>
+
+                <div class="card mb-3">
+                    <div class="card-header bg-primary text-white">Cards — กล่องข้อมูล</div>
+                    <div class="card-body">
+<pre><code class="bg-light p-2 rounded d-block">&lt;div class="card"&gt;
+  &lt;div class="card-header bg-primary text-white"&gt;หัวข้อ&lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;ชื่อ&lt;/h5&gt;
+    &lt;p class="card-text"&gt;รายละเอียด&lt;/p&gt;
+    &lt;button class="btn btn-primary"&gt;ดำเนินการ&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header bg-success text-white">Forms — ฟอร์ม</div>
+                    <div class="card-body">
+<pre><code class="bg-light p-2 rounded d-block">&lt;form&gt;
+  &lt;div class="mb-3"&gt;
+    &lt;label class="form-label"&gt;ชื่อ-สกุล&lt;/label&gt;
+    &lt;input type="text" class="form-control" id="fullName" required&gt;
+  &lt;/div&gt;
+  &lt;div class="mb-3"&gt;
+    &lt;label class="form-label"&gt;หลักสูตร&lt;/label&gt;
+    &lt;select class="form-select" id="course"&gt;
+      &lt;option value=""&gt;-- เลือกหลักสูตร --&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="btn btn-primary"&gt;ลงทะเบียน&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header bg-info text-white">Tables — ตาราง</div>
+                    <div class="card-body">
+<pre><code class="bg-light p-2 rounded d-block">&lt;table class="table table-bordered table-hover"&gt;
+  &lt;thead class="table-dark"&gt;
+    &lt;tr&gt;&lt;th&gt;#&lt;/th&gt;&lt;th&gt;ชื่อ&lt;/th&gt;&lt;th&gt;สถานะ&lt;/th&gt;&lt;th&gt;จัดการ&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;สมชาย ใจดี&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge bg-success"&gt;ยืนยัน&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;button class="btn btn-sm btn-warning"&gt;แก้ไข&lt;/button&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header bg-warning">Alerts + Modals</div>
+                    <div class="card-body">
+<pre><code class="bg-light p-2 rounded d-block">&lt;!-- Alert --&gt;
+&lt;div class="alert alert-success" role="alert"&gt;
+  ✅ บันทึกข้อมูลสำเร็จ!
+&lt;/div&gt;
+
+&lt;!-- Modal (ป๊อปอัพ) --&gt;
+&lt;div class="modal fade" id="confirmModal"&gt;
+  &lt;div class="modal-dialog"&gt;
+    &lt;div class="modal-content"&gt;
+      &lt;div class="modal-header"&gt;
+        &lt;h5 class="modal-title"&gt;ยืนยันการลบ&lt;/h5&gt;
+        &lt;button type="button" class="btn-close" data-bs-dismiss="modal"&gt;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-body"&gt;คุณต้องการลบข้อมูลนี้?&lt;/div&gt;
+      &lt;div class="modal-footer"&gt;
+        &lt;button class="btn btn-secondary" data-bs-dismiss="modal"&gt;ยกเลิก&lt;/button&gt;
+        &lt;button class="btn btn-danger"&gt;ลบ&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header bg-dark text-white">Navbar — แถบนำทาง</div>
+                    <div class="card-body">
+<pre><code class="bg-light p-2 rounded d-block">&lt;nav class="navbar navbar-dark bg-primary sticky-top"&gt;
+  &lt;div class="container"&gt;
+    &lt;a class="navbar-brand" href="#"&gt;🏛️ ระบบลงทะเบียน&lt;/a&gt;
+    &lt;span class="navbar-text text-white"&gt;สนพ.สุรินทร์&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
+
+                <h5>สรุป Class ที่ใช้บ่อยที่สุด</h5>
+                <table class="table table-sm table-bordered">
+                    <thead class="table-primary">
+                        <tr><th>Class</th><th>หน้าที่</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>container</code></td><td>กล่องจัดกลาง มีระยะห่างข้าง</td></tr>
+                        <tr><td><code>row / col-md-*</code></td><td>จัดคอลัมน์ (Grid)</td></tr>
+                        <tr><td><code>btn btn-primary</code></td><td>ปุ่มสีน้ำเงิน</td></tr>
+                        <tr><td><code>form-control / form-select</code></td><td>Input / Dropdown สวยๆ</td></tr>
+                        <tr><td><code>table table-bordered</code></td><td>ตารางมีเส้นขอบ</td></tr>
+                        <tr><td><code>card / card-body</code></td><td>กล่องข้อมูล</td></tr>
+                        <tr><td><code>alert alert-success</code></td><td>กล่องแจ้งเตือนสีเขียว</td></tr>
+                        <tr><td><code>badge bg-warning</code></td><td>ป้ายสถานะสีเหลือง</td></tr>
+                        <tr><td><code>mb-3 / mt-4 / p-3</code></td><td>ระยะห่าง (margin/padding)</td></tr>
+                        <tr><td><code>text-center / fw-bold</code></td><td>จัดกลาง / ตัวหนา</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 6.4 JavaScript เบื้องต้น -->
+            <section class="mb-5" id="section-6-4">
+                <h3 class="border-start border-4 border-primary ps-3">6.4 JavaScript เบื้องต้น (สำหรับ GAS Frontend)</h3>
+
+                <p>JavaScript ที่จำเป็นต้องรู้สำหรับทำ Frontend ใน GAS:</p>
+
+                <h5>ตัวแปร + ฟังก์ชัน</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// ประกาศตัวแปร
+var name = 'สมชาย';        // ข้อความ
+var age = 30;              // ตัวเลข
+var isActive = true;       // จริง/เท็จ
+var courses = [];          // Array (รายการ)
+
+// ฟังก์ชัน
+function showAlert(message) {
+  alert(message);
+}
+
+// เรียกใช้
+showAlert('สวัสดี ' + name);
+</code></pre>
+
+                <h5>DOM Manipulation — เปลี่ยนหน้าเว็บ</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// ดึง element ด้วย id
+var titleEl = document.getElementById('pageTitle');
+titleEl.textContent = 'ชื่อใหม่';           // เปลี่ยนข้อความ
+titleEl.style.color = 'red';               // เปลี่ยนสี
+
+// ดึงหลาย elements ด้วย class
+var items = document.querySelectorAll('.item');
+
+// เปลี่ยน HTML ข้างใน
+document.getElementById('output').innerHTML = '&lt;b&gt;สำเร็จ!&lt;/b&gt;';
+
+// แสดง/ซ่อน
+document.getElementById('loading').style.display = 'block';  // แสดง
+document.getElementById('loading').style.display = 'none';   // ซ่อน
+</code></pre>
+
+                <h5>Event Listeners — ตอบสนองผู้ใช้</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// คลิกปุ่ม
+document.getElementById('btnSave').addEventListener('click', function() {
+  var name = document.getElementById('inputName').value;
+  if (!name) {
+    alert('กรุณากรอกชื่อ');
+    return;
+  }
+  // ส่งข้อมูลไป Backend
+  google.script.run
+    .withSuccessHandler(function() { alert('บันทึกสำเร็จ!'); })
+    .saveData(name);
+});
+
+// กด Enter ในช่อง input
+document.getElementById('searchBox').addEventListener('keyup', function(e) {
+  if (e.key === 'Enter') {
+    searchData(this.value);
+  }
+});
+</code></pre>
+
+                <h5>Fetch — เรียก API (ใน GAS ใช้ google.script.run แทน)</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// ในเว็บทั่วไปใช้ fetch
+// แต่ใน GAS ใช้ google.script.run แทน (ง่ายกว่า)
+
+// ตัวอย่าง pattern ที่ใช้จริงใน GAS frontend:
+function loadData() {
+  showLoading(true);
+  google.script.run
+    .withSuccessHandler(function(data) {
+      showLoading(false);
+      renderTable(data);
+    })
+    .withFailureHandler(function(err) {
+      showLoading(false);
+      showError(err.message);
+    })
+    .getData();
+}
+
+function showLoading(show) {
+  document.getElementById('spinner').style.display = show ? 'block' : 'none';
+}
+</code></pre>
+            </section>
+
+            <!-- 6.5 Responsive Design -->
+            <section class="mb-5" id="section-6-5">
+                <h3 class="border-start border-4 border-primary ps-3">6.5 Responsive Design</h3>
+
+                <p>Responsive Design = หน้าเว็บปรับตัวตามขนาดหน้าจอ (มือถือ, แท็บเล็ต, คอมพิวเตอร์)</p>
+
+                <h5>Breakpoints ของ Bootstrap 5</h5>
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr><th>Prefix</th><th>ขนาดหน้าจอ</th><th>อุปกรณ์</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>(none)</code></td><td>&lt; 576px</td><td>มือถือเล็ก</td></tr>
+                        <tr><td><code>sm</code></td><td>≥ 576px</td><td>มือถือใหญ่</td></tr>
+                        <tr><td><code>md</code></td><td>≥ 768px</td><td>แท็บเล็ต</td></tr>
+                        <tr><td><code>lg</code></td><td>≥ 992px</td><td>แล็ปท็อป</td></tr>
+                        <tr><td><code>xl</code></td><td>≥ 1200px</td><td>คอมพิวเตอร์</td></tr>
+                        <tr><td><code>xxl</code></td><td>≥ 1400px</td><td>จอใหญ่</td></tr>
+                    </tbody>
+                </table>
+
+                <h5>ซ่อน/แสดง ตามขนาดจอ</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">&lt;!-- ซ่อนบนมือถือ แสดงบนแท็บเล็ตขึ้นไป --&gt;
+&lt;div class="d-none d-md-block"&gt;
+  เนื้อหานี้ไม่แสดงบนมือถือ
+&lt;/div&gt;
+
+&lt;!-- แสดงเฉพาะมือถือ ซ่อนบนแท็บเล็ตขึ้นไป --&gt;
+&lt;div class="d-block d-md-none"&gt;
+  เนื้อหานี้แสดงเฉพาะมือถือ
+&lt;/div&gt;
+
+&lt;!-- รูปภาพ Responsive --&gt;
+&lt;img src="photo.jpg" class="img-fluid" alt="รูปภาพ"&gt;
+
+&lt;!-- ตาราง Responsive (เลื่อนซ้ายขวาบนมือถือ) --&gt;
+&lt;div class="table-responsive"&gt;
+  &lt;table class="table"&gt;...&lt;/table&gt;
+&lt;/div&gt;
+</code></pre>
+
+                <h5>ตัวอย่าง: Grid ที่ปรับตามหน้าจอ</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">&lt;div class="row"&gt;
+  &lt;!-- มือถือ: เต็มจอ (12) / แท็บเล็ต: ครึ่งจอ (6) / คอม: 1/3 จอ (4) --&gt;
+  &lt;div class="col-12 col-md-6 col-lg-4 mb-3"&gt;
+    &lt;div class="card"&gt;
+      &lt;div class="card-body"&gt;Card 1&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-12 col-md-6 col-lg-4 mb-3"&gt;
+    &lt;div class="card"&gt;
+      &lt;div class="card-body"&gt;Card 2&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-12 col-md-6 col-lg-4 mb-3"&gt;
+    &lt;div class="card"&gt;
+      &lt;div class="card-body"&gt;Card 3&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+                <div class="alert alert-success">
+                    <strong>💡 เคล็ดลับ:</strong> บอก Kiro ว่า "ให้ทำ Responsive ด้วย Bootstrap, มือถือแสดง 1 คอลัมน์ คอมแสดง 3 คอลัมน์" — Kiro จะใส่ class ให้อัตโนมัติ!
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+                <a href="chapter05.html" class="btn btn-outline-primary btn-lg">← บทที่ 5</a>
+                <a href="chapter07.html" class="btn btn-primary btn-lg">บทที่ 7: Workshop →</a>
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p class="mb-1">คู่มือฝึกอบรม "Kiro AI สร้างระบบราชการด้วยปัญญาประดิษฐ์"</p>
+    <p class="mb-0 text-muted small">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

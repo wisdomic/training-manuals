@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 8: เทคนิค Prompt สำหรับ AI เสียง — AI เสียงและดนตรี</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📖 AI เสียงและดนตรี</span>
+            <span class="nav-text text-light">บทที่ 8: เทคนิค Prompt</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+            <!-- Chapter Header -->
+            <div class="chapter-header text-center">
+                <h1>✍️ บทที่ 8: เทคนิค Prompt สำหรับ AI เสียง</h1>
+                <p class="lead">เขียน Prompt อย่างมืออาชีพ — ได้เพลงและเสียงตรงใจทุกครั้ง</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เข้าใจหลักการเขียน Prompt สำหรับ AI เสียงและเพลง</li>
+                    <li>รู้จัก Keywords สำคัญ: Genre, Mood, Tempo, Instrument</li>
+                    <li>สามารถเขียน Prompt สร้างเพลงได้ตรงใจ</li>
+                    <li>สามารถเขียน Prompt สำหรับเสียงพากย์ที่มีอารมณ์ต่างๆ</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">📘 8.1 หลักการเขียน Prompt ที่ดี</h3>
+            <section>
+                <p>Prompt คือ "คำสั่ง" ที่เราบอก AI ว่าต้องการอะไร ยิ่ง Prompt ชัดเจน ผลลัพธ์ยิ่งตรงใจ หลักการสำคัญ:</p>
+
+                <div class="info-card">
+                    <h5>📐 สูตร Prompt เพลง</h5>
+                    <p class="mb-2"><strong>Genre + Mood + Tempo + Instrument + Vocal + Theme + Duration</strong></p>
+                    <div class="prompt-example">
+                        <strong>ตัวอย่าง:</strong> "Acoustic pop (Genre), inspiring and upbeat (Mood), 120 BPM (Tempo), guitar and piano (Instrument), female vocal (Vocal), about helping disabled community (Theme), 2 minutes (Duration)"
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h5>📐 สูตร Prompt เสียงพากย์</h5>
+                    <p class="mb-2"><strong>Voice Type + Language + Emotion + Speed + Context</strong></p>
+                    <div class="prompt-example">
+                        <strong>ตัวอย่าง:</strong> เลือก "Professional female (Voice Type), Thai (Language)" แล้วปรับ Stability ต่ำสำหรับ emotion สูง, Speed 0.9x สำหรับเนื้อหาจริงจัง
+                    </div>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 8.2 Genre Keywords — คำสำคัญแนวเพลง</h3>
+            <section>
+                <div class="info-card">
+                    <h5>🎵 Genre Keywords ที่ใช้บ่อย</h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6>🎸 Popular</h6>
+                            <ul>
+                                <li><code>pop</code> — ป๊อปทั่วไป</li>
+                                <li><code>rock</code> — ร็อค</li>
+                                <li><code>indie</code> — อินดี้</li>
+                                <li><code>folk</code> — โฟล์ค</li>
+                                <li><code>country</code> — คันทรี่</li>
+                                <li><code>r&b</code> — อาร์แอนด์บี</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>🎹 Electronic</h6>
+                            <ul>
+                                <li><code>EDM</code> — อิเล็กทรอนิกส์</li>
+                                <li><code>lo-fi</code> — โลไฟ ชิลๆ</li>
+                                <li><code>synthwave</code> — ซินธ์เวฟ</li>
+                                <li><code>ambient</code> — บรรยากาศ</li>
+                                <li><code>house</code> — เฮาส์</li>
+                                <li><code>trance</code> — ทรานซ์</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>🎻 Classical & Others</h6>
+                            <ul>
+                                <li><code>classical</code> — คลาสสิก</li>
+                                <li><code>jazz</code> — แจ๊ส</li>
+                                <li><code>orchestral</code> — ออเคสตร้า</li>
+                                <li><code>cinematic</code> — ภาพยนตร์</li>
+                                <li><code>reggae</code> — เร็กเก้</li>
+                                <li><code>bossa nova</code> — บอสซ่าโนวา</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 8.3 Mood Keywords — คำสำคัญอารมณ์</h3>
+            <section>
+                <div class="info-card">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>😊 Positive</h6>
+                            <ul>
+                                <li><code>happy</code></li>
+                                <li><code>upbeat</code></li>
+                                <li><code>cheerful</code></li>
+                                <li><code>joyful</code></li>
+                                <li><code>playful</code></li>
+                                <li><code>celebratory</code></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <h6>💪 Powerful</h6>
+                            <ul>
+                                <li><code>inspiring</code></li>
+                                <li><code>epic</code></li>
+                                <li><code>powerful</code></li>
+                                <li><code>motivational</code></li>
+                                <li><code>triumphant</code></li>
+                                <li><code>heroic</code></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <h6>😌 Calm</h6>
+                            <ul>
+                                <li><code>calm</code></li>
+                                <li><code>peaceful</code></li>
+                                <li><code>relaxing</code></li>
+                                <li><code>gentle</code></li>
+                                <li><code>soothing</code></li>
+                                <li><code>meditative</code></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <h6>😢 Emotional</h6>
+                            <ul>
+                                <li><code>sad</code></li>
+                                <li><code>melancholic</code></li>
+                                <li><code>nostalgic</code></li>
+                                <li><code>dramatic</code></li>
+                                <li><code>emotional</code></li>
+                                <li><code>bittersweet</code></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 8.4 Tempo Keywords — ความเร็วจังหวะ</h3>
+            <section>
+                <div class="info-card">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>BPM</th>
+                                <th>Keywords</th>
+                                <th>ลักษณะ</th>
+                                <th>เหมาะกับ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>60-80</td>
+                                <td><code>slow, ballad, gentle</code></td>
+                                <td>ช้า นุ่มนวล</td>
+                                <td>เพลงบัลลาด, เพลงกล่อมนอน</td>
+                            </tr>
+                            <tr>
+                                <td>80-100</td>
+                                <td><code>moderate, mid-tempo</code></td>
+                                <td>ปานกลาง สบาย</td>
+                                <td>เพลงเล่าเรื่อง, Corporate</td>
+                            </tr>
+                            <tr>
+                                <td>100-120</td>
+                                <td><code>upbeat, groovy</code></td>
+                                <td>คึกคัก</td>
+                                <td>เพลงป๊อป, วิดีโอสนุก</td>
+                            </tr>
+                            <tr>
+                                <td>120-140</td>
+                                <td><code>energetic, driving</code></td>
+                                <td>มีพลัง</td>
+                                <td>โฆษณา, Workout</td>
+                            </tr>
+                            <tr>
+                                <td>140+</td>
+                                <td><code>fast, intense, racing</code></td>
+                                <td>เร็วมาก</td>
+                                <td>EDM, Action, Sports</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 8.5 ตัวอย่าง Prompt เพลงสำหรับงานจริง</h3>
+            <section>
+                <div class="prompt-example">
+                    <strong>🎬 เพลงเปิดวิดีโอองค์กร (Intro 15 วินาที):</strong><br>
+                    "Cinematic orchestral intro, 15 seconds, building energy, inspiring, corporate, no vocal, starts soft and builds to powerful climax"
+                </div>
+
+                <div class="prompt-example">
+                    <strong>📢 เพลงประชาสัมพันธ์กิจกรรม:</strong><br>
+                    "Upbeat Thai pop, cheerful and friendly, acoustic guitar and ukulele, female vocal singing about community event, festival vibe, 2 minutes"
+                </div>
+
+                <div class="prompt-example">
+                    <strong>📊 Background เพลงสำหรับ Presentation:</strong><br>
+                    "Soft ambient corporate music, piano and light strings, calm and professional, instrumental, 3 minutes, loop-friendly, minimal drums"
+                </div>
+
+                <div class="prompt-example">
+                    <strong>🏆 เพลงมอบรางวัล/พิธีการ:</strong><br>
+                    "Grand orchestral celebration music, triumphant fanfare, brass and strings, majestic, 30 seconds, building to climax, award ceremony style"
+                </div>
+
+                <div class="prompt-example">
+                    <strong>📹 เพลงปิดวิดีโอ (Outro):</strong><br>
+                    "Gentle acoustic guitar outro, warm and thankful mood, fade out slowly, 20 seconds, no vocal, calm ending"
+                </div>
+
+                <div class="prompt-example">
+                    <strong>🧘 เพลงสำหรับกิจกรรมผ่อนคลาย:</strong><br>
+                    "Meditation music, ambient pads, nature sounds, flowing water, extremely calm, 5 minutes, no drums, healing frequency, 432 Hz"
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 8.6 เทคนิค Prompt เสียงพากย์</h3>
+            <section>
+                <p>สำหรับ ElevenLabs และ CapCut AI Voice เทคนิคการเขียนข้อความให้ AI อ่านออกเสียงได้ดี:</p>
+
+                <div class="info-card">
+                    <h5>📝 เทคนิคเขียนสคริปต์สำหรับ AI Voice</h5>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>เทคนิค</th>
+                                <th>วิธีทำ</th>
+                                <th>ตัวอย่าง</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>หยุดหายใจ</td>
+                                <td>ใส่ จุด (.) หรือ comma (,)</td>
+                                <td>"สวัสดีครับ, ยินดีต้อนรับ."</td>
+                            </tr>
+                            <tr>
+                                <td>เน้นคำ</td>
+                                <td>ใส่ ... ก่อนคำสำคัญ</td>
+                                <td>"เราพร้อม... ดูแลทุกท่าน"</td>
+                            </tr>
+                            <tr>
+                                <td>หยุดนาน</td>
+                                <td>ใส่ —</td>
+                                <td>"ศูนย์บริการ — เปิดทุกวัน"</td>
+                            </tr>
+                            <tr>
+                                <td>อ่านตัวเลข</td>
+                                <td>เขียนเป็นคำ</td>
+                                <td>"เปิดแปดจุดสามสิบ น."</td>
+                            </tr>
+                            <tr>
+                                <td>ชื่อภาษาอังกฤษ</td>
+                                <td>เขียนเป็นคำอ่าน</td>
+                                <td>"อีเลฟเวน แล็บส์"</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="prompt-example">
+                    <strong>📝 ตัวอย่างสคริปต์ที่ดี vs ไม่ดี:</strong><br><br>
+                    <strong>❌ ไม่ดี:</strong> "ศูนย์บริการคนพิการจังหวัดสุรินทร์เปิดให้บริการวันจันทร์ถึงศุกร์เวลา8.30-16.30น.โทร044-511234"<br><br>
+                    <strong>✅ ดี:</strong> "ศูนย์บริการคนพิการ จังหวัดสุรินทร์, เปิดให้บริการวันจันทร์ถึงศุกร์. เวลาแปดจุดสามสิบ ถึง สิบหกจุดสามสิบ นาฬิกา. โทร ศูนย์สี่สี่, ห้าหนึ่งหนึ่ง, สองสามสี่."
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 8.7 Prompt Template สำเร็จรูป</h3>
+            <section>
+                <div class="info-card">
+                    <h5>📋 Template สำหรับ Copy & Paste</h5>
+                    <p>เปลี่ยนข้อความใน [...] ตามต้องการ:</p>
+                </div>
+
+                <div class="prompt-example">
+                    <strong>🎵 Template เพลง Intro:</strong><br>
+                    "[Genre] intro music, [duration] seconds, [mood], building energy, [instrument], no vocal, starts [soft/quiet] and builds to [powerful/energetic] climax"
+                </div>
+
+                <div class="prompt-example">
+                    <strong>🎵 Template Background Music:</strong><br>
+                    "Soft [genre] background music, [instrument], [mood] and professional, instrumental, [duration] minutes, loop-friendly, minimal drums"
+                </div>
+
+                <div class="prompt-example">
+                    <strong>🎵 Template เพลงมีเนื้อร้อง:</strong><br>
+                    "[Genre], [mood], [tempo] BPM, [instrument], [male/female] vocal, song about [topic], [language] lyrics, [duration]"
+                </div>
+
+                <div class="prompt-example">
+                    <strong>🎵 Template เพลงปิด (Outro):</strong><br>
+                    "Gentle [instrument] outro, [mood] mood, fade out slowly, [duration] seconds, no vocal, calm ending, [genre]"
+                </div>
+            </section>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 8: ฝึกเขียน Prompt เพลงและเสียง</h4>
+                <p><strong>เวลา:</strong> 45 นาที</p>
+                <hr>
+                <p><strong>กิจกรรมที่ 1: เขียน Prompt เพลงตามโจทย์ (15 นาที)</strong></p>
+                <ol>
+                    <li>เขียน Prompt สร้างเพลง Intro 15 วินาที สำหรับวิดีโอองค์กรคนพิการ</li>
+                    <li>เขียน Prompt สร้าง Background Music สำหรับ Presentation 3 นาที</li>
+                    <li>เขียน Prompt สร้างเพลงประชาสัมพันธ์กิจกรรมวันคนพิการ</li>
+                    <li>นำ Prompt ไปสร้างจริงใน Suno หรือ Udio</li>
+                    <li>ฟังผลลัพธ์ แล้วปรับ Prompt ให้ดีขึ้น</li>
+                </ol>
+
+                <p><strong>กิจกรรมที่ 2: ปรับปรุง Prompt ให้ดีขึ้น (15 นาที)</strong></p>
+                <ol>
+                    <li>ใช้ Prompt เดิมจากกิจกรรมที่ 1</li>
+                    <li>เพิ่ม Keywords: เพิ่ม Mood, Tempo, Instrument ที่ชัดเจนขึ้น</li>
+                    <li>สร้างเพลงใหม่ เปรียบเทียบกับเวอร์ชันเดิม</li>
+                    <li>ปรับอีกครั้ง จนได้ผลลัพธ์ที่พอใจ</li>
+                    <li>จดบันทึก Prompt ที่ดีที่สุดไว้ใช้ในอนาคต</li>
+                </ol>
+
+                <p><strong>กิจกรรมที่ 3: เขียนสคริปต์เสียงพากย์ (15 นาที)</strong></p>
+                <ol>
+                    <li>เขียนสคริปต์พากย์วิดีโอ 30 วินาที แนะนำองค์กร</li>
+                    <li>ใส่เครื่องหมายวรรคตอนให้เหมาะสม (จุด, comma, ...)</li>
+                    <li>นำไปสร้างเสียงใน ElevenLabs</li>
+                    <li>ฟังแล้วปรับข้อความ (เว้นจังหวะ, เขียนตัวเลขเป็นคำ)</li>
+                    <li>สร้างใหม่จนได้ผลลัพธ์ที่เป็นธรรมชาติ</li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5>💡 Tips</h5>
+                <ul class="mb-0">
+                    <li><strong>Prompt ภาษาอังกฤษ:</strong> AI เพลงเข้าใจ Prompt อังกฤษได้ดีกว่าไทยมาก</li>
+                    <li><strong>เริ่มจากง่าย:</strong> เริ่มจาก 3-4 Keywords แล้วค่อยเพิ่มรายละเอียด</li>
+                    <li><strong>ใช้ Gemini ช่วย:</strong> ถาม Gemini "ช่วยเขียน Prompt สร้างเพลงสำหรับ..." ได้</li>
+                    <li><strong>เก็บ Prompt Library:</strong> สร้างไฟล์รวม Prompt ที่ใช้ได้ผลดี ไว้ใช้ซ้ำ</li>
+                    <li><strong>ทดลองหลายครั้ง:</strong> Prompt เดียวกัน ผลลัพธ์ต่างกันทุกครั้ง ลองจนพอใจ</li>
+                    <li><strong>Negative Prompt:</strong> ระบุสิ่งที่ไม่ต้องการ เช่น "no drums" หรือ "no vocal"</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card">
+                <h4>📋 สรุปบทที่ 8</h4>
+                <ul>
+                    <li>Prompt ที่ดีต้องมี: Genre + Mood + Tempo + Instrument + Vocal + Theme</li>
+                    <li>ใช้ Keywords ภาษาอังกฤษจะได้ผลดีที่สุด</li>
+                    <li>สคริปต์เสียงพากย์ต้องใส่วรรคตอน และเขียนตัวเลขเป็นคำ</li>
+                    <li>ทดลองหลายครั้ง ปรับ Prompt ทีละนิด จนได้ผลที่ต้องการ</li>
+                    <li>เก็บ Prompt ที่ดีไว้เป็น Library สำหรับใช้ซ้ำ</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-5 mb-4">
+                <a href="chapter07.html" class="btn btn-outline-secondary">← บทที่ 7</a>
+                <a href="chapter09.html" class="btn btn-primary">บทที่ 9 →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

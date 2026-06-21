@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 8: Deploy + Git + การทำงานเป็นทีม — คู่มือ Kiro AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">📖 คู่มือฝึกอบรม Kiro AI</a>
+        <span class="navbar-text text-white">บทที่ 8 | วันที่ 4</span>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+
+            <div class="chapter-header text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">บทที่ 8</h1>
+                <h2 class="h3 text-secondary">Deploy + Git + การทำงานเป็นทีม</h2>
+                <p class="lead text-muted">ระยะเวลา: 3 ชั่วโมง | วันที่ 4</p>
+                <hr class="w-50 mx-auto">
+            </div>
+
+            <div class="alert alert-info mb-4">
+                <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>ใช้ Clasp Push อัปโหลดโค้ดขึ้น Google Apps Script ได้</li>
+                    <li>ใช้ Clasp Deploy เผยแพร่ Web App ได้</li>
+                    <li>ใช้ Git เก็บประวัติโค้ดและทำงานเป็นทีมได้</li>
+                    <li>ใช้ GitHub จัดการโปรเจกต์และสำรองข้อมูลได้</li>
+                </ul>
+            </div>
+
+            <!-- 8.1 Clasp Push -->
+            <section class="mb-5" id="section-8-1">
+                <h3 class="border-start border-4 border-primary ps-3">8.1 Clasp Push — อัปโหลดโค้ดขึ้น GAS</h3>
+
+                <p>Clasp (Command Line Apps Script Projects) ช่วยให้เราเขียนโค้ด GAS บนเครื่องตัวเองแล้วอัปโหลดขึ้น Google ได้:</p>
+
+                <h5>สร้างโปรเจกต์ใหม่</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block"># สร้างโปรเจกต์ Web App ใหม่
+clasp create --type webapp --title "ระบบลงทะเบียนฝึกอบรม"
+
+# หรือเชื่อมกับโปรเจกต์ที่มีอยู่แล้ว
+clasp clone &lt;Script ID&gt;</code></pre>
+
+                <h5>อัปโหลดไฟล์ขึ้น GAS</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block"># Push ไฟล์ทั้งหมดขึ้น Script Editor
+clasp push
+
+# Push แล้วเปิด Script Editor ในเบราว์เซอร์
+clasp push --watch   # (auto push เมื่อไฟล์เปลี่ยน)
+
+# เปิด Script Editor
+clasp open</code></pre>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ สำคัญ:</strong> clasp push จะอัปโหลดไฟล์ <code>.gs</code> และ <code>.html</code> ทุกไฟล์ในโฟลเดอร์ — ไฟล์ที่ไม่ต้องการให้ใส่ใน <code>.claspignore</code>
+                </div>
+
+                <h5>ไฟล์ .clasp.json</h5>
+                <p>ไฟล์กำหนดค่าที่สร้างอัตโนมัติเมื่อ clasp create/clone:</p>
+<pre><code class="bg-dark text-light p-3 rounded d-block">{
+  "scriptId": "1NgnBHE9EaRo5TjtO_32eIIVoM9-Mmce07_a1Q9NWOe7s3AxwpcWDbyoB",
+  "rootDir": "./gas"
+}</code></pre>
+
+                <h5>ไฟล์ .claspignore</h5>
+                <p>ระบุไฟล์ที่ไม่ต้องการ push ขึ้น GAS:</p>
+<pre><code class="bg-dark text-light p-3 rounded d-block"># ไม่ push ขึ้น GAS
+node_modules/**
+.git/**
+README.md
+package.json
+.env
+*.md
+test/**</code></pre>
+
+                <div class="card bg-light mb-3">
+                    <div class="card-header"><strong>📋 สรุปคำสั่ง Clasp Push</strong></div>
+                    <div class="card-body">
+                        <table class="table table-bordered mb-0">
+                            <thead class="table-dark">
+                                <tr><th>คำสั่ง</th><th>หน้าที่</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><code>clasp create --type webapp --title "ชื่อ"</code></td><td>สร้างโปรเจกต์ใหม่</td></tr>
+                                <tr><td><code>clasp clone &lt;scriptId&gt;</code></td><td>ดึงโปรเจกต์ที่มีอยู่</td></tr>
+                                <tr><td><code>clasp push</code></td><td>อัปโหลดไฟล์ทั้งหมด</td></tr>
+                                <tr><td><code>clasp pull</code></td><td>ดึงโค้ดจาก Script Editor</td></tr>
+                                <tr><td><code>clasp open</code></td><td>เปิด Script Editor ในเบราว์เซอร์</td></tr>
+                                <tr><td><code>clasp status</code></td><td>ดูไฟล์ที่จะถูก push</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8.2 Clasp Deploy -->
+            <section class="mb-5" id="section-8-2">
+                <h3 class="border-start border-4 border-primary ps-3">8.2 Clasp Deploy — เผยแพร่ Web App</h3>
+
+                <p>เมื่อ push โค้ดเสร็จแล้ว ต้อง deploy เพื่อให้ผู้อื่นเข้าใช้งานได้:</p>
+
+                <h5>Deploy เวอร์ชันใหม่</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block"># Deploy ครั้งแรก
+clasp deploy --description "v1 — เปิดใช้งานครั้งแรก"
+
+# Deploy เวอร์ชันถัดไป
+clasp deploy --description "v2 — เพิ่มระบบค้นหา"
+
+# ดูรายการ Deploy ทั้งหมด
+clasp deployments
+
+# ผลลัพธ์:
+# - AKfycbz9C1KO... @1 - v1 — เปิดใช้งานครั้งแรก
+# - AKfycbxYZ2AB... @2 - v2 — เพิ่มระบบค้นหา</code></pre>
+
+                <h5>ยกเลิก Deploy</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block"># Undeploy ด้วย Deploy ID
+clasp undeploy AKfycbz9C1KO...
+
+# Undeploy ทั้งหมด
+clasp undeploy --all</code></pre>
+
+                <h5>URL Pattern ของ Web App</h5>
+                <div class="card border-info mb-3">
+                    <div class="card-body">
+                        <p class="mb-2"><strong>Development URL</strong> (ทดสอบ, เปลี่ยนตามโค้ดล่าสุด):</p>
+<pre class="mb-3"><code>https://script.google.com/macros/s/&lt;Script ID&gt;/dev</code></pre>
+                        <p class="mb-2"><strong>Production URL</strong> (ใช้งานจริง, เปลี่ยนเมื่อ deploy ใหม่):</p>
+<pre class="mb-0"><code>https://script.google.com/macros/s/&lt;Deploy ID&gt;/exec</code></pre>
+                    </div>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>💡 เคล็ดลับ:</strong> ใช้ dev URL สำหรับทดสอบ — ไม่ต้อง deploy ใหม่ทุกครั้ง แต่ต้อง <code>clasp push</code> ก่อนทดสอบ
+                </div>
+
+                <h5>🔄 Workflow การ Deploy</h5>
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <ol class="mb-0">
+                            <li>แก้ไขโค้ดบนเครื่อง (VS Code / Kiro)</li>
+                            <li><code>clasp push</code> — อัปโหลดขึ้น GAS</li>
+                            <li>ทดสอบด้วย dev URL</li>
+                            <li>ถ้าโอเค → <code>clasp deploy --description "v3"</code></li>
+                            <li>แจ้ง URL ใหม่ให้ผู้ใช้ (หรือใช้ URL เดิมถ้า deploy ทับ)</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8.3 Git Add, Commit, Push -->
+            <section class="mb-5" id="section-8-3">
+                <h3 class="border-start border-4 border-primary ps-3">8.3 Git Add, Commit, Push</h3>
+
+                <p>Git คือระบบจัดการเวอร์ชันโค้ด — เหมือน "ประวัติย้อนหลัง" ของโค้ดทุกบรรทัด:</p>
+
+                <h5>เริ่มต้นใช้ Git</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block"># สร้าง Git repository ใหม่ (ครั้งแรก)
+git init
+
+# หรือ Clone โปรเจกต์ที่มีอยู่บน GitHub
+git clone https://github.com/username/project-name.git</code></pre>
+
+                <h5>บันทึกการเปลี่ยนแปลง (Commit)</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block"># ดูสถานะไฟล์ที่เปลี่ยน
+git status
+
+# เพิ่มไฟล์ทั้งหมดที่เปลี่ยน
+git add .
+
+# หรือเพิ่มเฉพาะไฟล์ที่ต้องการ
+git add Code.gs
+git add index.html admin.html
+
+# บันทึก commit พร้อมข้อความอธิบาย
+git commit -m "เพิ่มระบบค้นหาผู้ลงทะเบียน"
+
+# ส่งขึ้น GitHub
+git push origin main</code></pre>
+
+                <h5>Best Practices สำหรับ Commit Messages</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-success text-white">✅ ข้อความ commit ที่ดี</div>
+                            <div class="card-body">
+                                <ul class="mb-0">
+                                    <li><code>เพิ่มระบบค้นหาผู้ลงทะเบียน</code></li>
+                                    <li><code>แก้ bug dropdown หลักสูตรไม่แสดง</code></li>
+                                    <li><code>เพิ่ม validation เบอร์โทร 10 หลัก</code></li>
+                                    <li><code>ปรับ UI ตารางให้ responsive</code></li>
+                                    <li><code>เพิ่ม Email แจ้งเตือนลงทะเบียน</code></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-danger h-100">
+                            <div class="card-header bg-danger text-white">❌ ข้อความ commit ที่ไม่ดี</div>
+                            <div class="card-body">
+                                <ul class="mb-0">
+                                    <li><code>fix</code></li>
+                                    <li><code>update</code></li>
+                                    <li><code>แก้ไข</code></li>
+                                    <li><code>asdfsdf</code></li>
+                                    <li><code>test test test</code></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info mt-3">
+                    <strong>📝 สูตร Commit Message:</strong> <code>[ทำอะไร] + [กับอะไร]</code> — ต้องอ่านแล้วเข้าใจว่าเปลี่ยนอะไรบ้าง
+                </div>
+            </section>
+
+            <!-- 8.4 Git Pull -->
+            <section class="mb-5" id="section-8-4">
+                <h3 class="border-start border-4 border-primary ps-3">8.4 Git Pull + การทำงาน 2 เครื่อง</h3>
+
+                <p>เมื่อทำงานหลายเครื่อง (เช่น คอมที่ทำงาน + โน้ตบุ๊คที่บ้าน) ต้อง pull โค้ดล่าสุดก่อนทำงานเสมอ:</p>
+
+                <h5>ดึงโค้ดล่าสุด</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block"># ดึงโค้ดล่าสุดจาก GitHub
+git pull origin main
+
+# ดูประวัติ commit ล่าสุด
+git log --oneline -5</code></pre>
+
+                <h5>⚠️ เมื่อเกิด Conflict (ขัดแย้ง)</h5>
+                <p>เกิดเมื่อ 2 เครื่องแก้ไฟล์เดียวกันแล้ว push ซ้อนกัน:</p>
+<pre><code class="bg-dark text-light p-3 rounded d-block"># Git จะแสดง conflict ในไฟล์:
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+var title = 'ระบบลงทะเบียน v2';
+=======
+var title = 'ระบบลงทะเบียนฝึกอบรม';
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/main
+
+# วิธีแก้:
+# 1. เลือกว่าจะเก็บบรรทัดไหน (ลบ marker ออก)
+# 2. git add . && git commit -m "แก้ conflict"
+# 3. git push origin main</code></pre>
+
+                <h5>Git Stash — เก็บงานชั่วคราว</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block"># เก็บงานที่ยังไม่ commit (ชั่วคราว)
+git stash
+
+# ดึงงานที่เก็บกลับมา
+git stash pop
+
+# ใช้เมื่อ:
+# - ต้อง pull แต่มีงานที่ยังไม่ commit
+# - ต้องสลับ branch แต่ไม่อยาก commit งานที่ยังไม่เสร็จ</code></pre>
+
+                <h5>🔄 Workflow การทำงาน 2 เครื่อง</h5>
+                <div class="card border-primary">
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col">
+                                <span class="badge bg-primary fs-6 mb-2">1. Pull</span>
+                                <p class="small">git pull origin main</p>
+                            </div>
+                            <div class="col">
+                                <span class="badge bg-success fs-6 mb-2">2. Code</span>
+                                <p class="small">แก้ไขโค้ด</p>
+                            </div>
+                            <div class="col">
+                                <span class="badge bg-warning text-dark fs-6 mb-2">3. Commit</span>
+                                <p class="small">git add + commit</p>
+                            </div>
+                            <div class="col">
+                                <span class="badge bg-danger fs-6 mb-2">4. Push</span>
+                                <p class="small">git push origin main</p>
+                            </div>
+                        </div>
+                        <p class="text-center mb-0 mt-2"><strong>ทำซ้ำทุกครั้งที่เปลี่ยนเครื่อง!</strong></p>
+                    </div>
+                </div>
+
+                <div class="alert alert-danger mt-3">
+                    <strong>🚨 กฎเหล็ก:</strong> Pull ก่อน Push เสมอ! ถ้าลืม pull แล้ว push จะเกิด conflict
+                </div>
+            </section>
+
+            <!-- 8.5 GitHub -->
+            <section class="mb-5" id="section-8-5">
+                <h3 class="border-start border-4 border-primary ps-3">8.5 GitHub — จัดการโปรเจกต์</h3>
+
+                <p>GitHub คือเว็บไซต์เก็บ Git repository บน Cloud — ใช้เป็นทั้ง backup และเครื่องมือทำงานเป็นทีม:</p>
+
+                <h5>สร้าง Repository ใหม่</h5>
+                <ol>
+                    <li>ไปที่ <a href="https://github.com" target="_blank">github.com</a> > กดปุ่ม "New repository"</li>
+                    <li>ตั้งชื่อ repository (เช่น <code>training-registration</code>)</li>
+                    <li>เลือก Private (ไม่เปิดสาธารณะ) หรือ Public</li>
+                    <li>ติ๊ก "Add a README file"</li>
+                    <li>เลือก .gitignore template: Node</li>
+                    <li>กด "Create repository"</li>
+                </ol>
+
+                <h5>เชื่อม Local กับ GitHub</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block"># เพิ่ม remote (ครั้งแรก)
+git remote add origin https://github.com/username/project-name.git
+
+# Push ครั้งแรก
+git push -u origin main
+
+# ตรวจสอบ remote
+git remote -v</code></pre>
+
+                <h5>README.md — หน้าแรกของโปรเจกต์</h5>
+                <div class="card bg-light mb-3">
+                    <div class="card-body">
+<pre class="mb-0"><code># 🏛️ ระบบลงทะเบียนฝึกอบรม
+
+ระบบลงทะเบียนฝึกอบรมออนไลน์ สำหรับสำนักงานพัฒนาฝีมือแรงงานสุรินทร์
+
+## เทคโนโลยี
+- Google Apps Script (GAS)
+- Google Sheets (ฐานข้อมูล)
+- Bootstrap 5 (UI)
+
+## การติดตั้ง
+1. Clone: `git clone https://github.com/username/project.git`
+2. ติดตั้ง clasp: `npm install -g @google/clasp`
+3. Login: `clasp login`
+4. Push: `clasp push`
+
+## ผู้พัฒนา
+- นายปัญญา ผาธรรม — สนพ.สุรินทร์</code></pre>
+                    </div>
+                </div>
+
+                <h5>.gitignore — ไฟล์ที่ไม่ต้องเก็บใน Git</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block"># Node
+node_modules/
+
+# Environment
+.env
+.env.local
+
+# Credentials
+credentials/
+*.json.key
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/</code></pre>
+
+                <h5>🛡️ GitHub เป็น Backup</h5>
+                <div class="card border-success">
+                    <div class="card-body">
+                        <h6>ทำไมต้องใช้ GitHub?</h6>
+                        <ul class="mb-0">
+                            <li><strong>Backup อัตโนมัติ</strong> — โค้ดอยู่บน Cloud ปลอดภัย</li>
+                            <li><strong>ประวัติทุก commit</strong> — ย้อนกลับเวอร์ชันเก่าได้ทุกเมื่อ</li>
+                            <li><strong>ทำงานเป็นทีม</strong> — หลายคนแก้โค้ดพร้อมกันได้</li>
+                            <li><strong>ทำงานหลายเครื่อง</strong> — sync โค้ดระหว่างคอมพิวเตอร์</li>
+                            <li><strong>ฟรี!</strong> — Private repo ไม่จำกัดสำหรับบัญชีฟรี</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+                <a href="chapter07.html" class="btn btn-outline-primary btn-lg">← บทที่ 7</a>
+                <a href="chapter09.html" class="btn btn-primary btn-lg">บทที่ 9 →</a>
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p class="mb-1">คู่มือฝึกอบรม "Kiro AI สร้างระบบราชการด้วยปัญญาประดิษฐ์"</p>
+    <p class="mb-0 text-muted small">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

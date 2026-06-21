@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 9: Claude Code ขั้นสูง | คู่มือ Claude AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">📖 คู่มือ Claude AI</a>
+            <span class="text-white">บทที่ 9 | วันที่ 5 เช้า</span>
+        </div>
+    </nav>
+
+    <!-- Chapter Header -->
+    <div class="chapter-header bg-light py-4">
+        <div class="container">
+            <h1 class="display-5 fw-bold">บทที่ 9: Claude Code ขั้นสูง</h1>
+            <p class="lead text-muted">วันที่ 5 เช้า (3 ชั่วโมง) — Custom Commands, CLAUDE.md, Multi-file, MCP, Docker</p>
+            <div class="d-flex gap-2 flex-wrap">
+                <span class="badge bg-dark">Custom Commands</span>
+                <span class="badge bg-dark">CLAUDE.md</span>
+                <span class="badge bg-dark">Multi-file</span>
+                <span class="badge bg-dark">MCP</span>
+                <span class="badge bg-dark">Docker</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+
+        <!-- สารบัญ -->
+        <div class="card mb-5">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">📋 สารบัญบทที่ 9</h5>
+            </div>
+            <div class="card-body">
+                <ul class="toc-list">
+                    <li><a href="#section-9-1">9.1 Custom Commands — สร้างคำสั่งเอง</a></li>
+                    <li><a href="#section-9-2">9.2 CLAUDE.md — กำหนดกฎโปรเจกต์</a></li>
+                    <li><a href="#section-9-3">9.3 Multi-file editing — แก้หลายไฟล์พร้อมกัน</a></li>
+                    <li><a href="#section-9-4">9.4 MCP Connections — เชื่อมต่อ API ภายนอก</a></li>
+                    <li><a href="#section-9-5">9.5 ใช้ Claude Code กับ Docker/Cloud</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 9.1 -->
+        <section id="section-9-1" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">9.1 Custom Commands — สร้างคำสั่งเอง</h3>
+
+            <div class="alert alert-info">
+                <strong>💡 Custom Commands คืออะไร:</strong> คำสั่งลัดที่เราสร้างขึ้นเอง เพื่อให้ Claude Code ทำงานที่ทำซ้ำบ่อยๆ โดยไม่ต้องพิมพ์ยาวทุกครั้ง — เหมือน "macro" หรือ "alias"
+            </div>
+
+            <h5>โครงสร้างไฟล์ Custom Commands</h5>
+<pre><code>โปรเจกต์ของคุณ/
+├── .claude/
+│   └── commands/
+│       ├── deploy.md          # คำสั่ง /project:deploy
+│       ├── test.md            # คำสั่ง /project:test
+│       ├── review.md          # คำสั่ง /project:review
+│       └── gas-push.md        # คำสั่ง /project:gas-push
+└── ... (ไฟล์โปรเจกต์อื่นๆ)</code></pre>
+
+            <h5 class="mt-4">วิธีสร้าง Custom Command</h5>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>ตัวอย่างที่ 1: คำสั่ง Deploy GAS</strong></div>
+                <div class="card-body">
+                    <p>สร้างไฟล์ <code>.claude/commands/gas-push.md</code>:</p>
+<pre><code># GAS Push & Deploy
+
+ทำขั้นตอนต่อไปนี้:
+1. ตรวจสอบว่ามี error ในไฟล์ .gs และ .html ทั้งหมดหรือไม่
+2. ถ้าไม่มี error → รัน `clasp push`
+3. ถ้า push สำเร็จ → รัน `clasp deploy --description "$ARGUMENTS"`
+4. แสดง deploy URL ที่ได้
+5. อัปเดต CHANGELOG.md ด้วยเวอร์ชันใหม่
+
+ถ้าเจอ error ให้แจ้งและหยุด ไม่ deploy</code></pre>
+                    <p class="mt-2"><strong>วิธีใช้:</strong></p>
+<pre><code>> /project:gas-push "v1.2 - เพิ่มระบบ email"
+
+Claude: กำลังตรวจสอบไฟล์...
+✅ ไม่พบ error
+🖥️  Running: clasp push
+✅ Push สำเร็จ (4 files)
+🖥️  Running: clasp deploy --description "v1.2 - เพิ่มระบบ email"
+✅ Deployed: AKfycbz...
+📝 Updated CHANGELOG.md</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>ตัวอย่างที่ 2: คำสั่ง Review Code</strong></div>
+                <div class="card-body">
+                    <p>สร้างไฟล์ <code>.claude/commands/review.md</code>:</p>
+<pre><code># Code Review
+
+อ่านไฟล์ $ARGUMENTS แล้วตรวจสอบ:
+
+1. **Security**: มี input validation ครบไหม, มี XSS protection ไหม
+2. **Error Handling**: มี try-catch ทุกฟังก์ชันไหม
+3. **Performance**: มี loop ที่ไม่จำเป็นไหม, มี cache ที่ควรมีไหม
+4. **GAS Compatibility**: มี template literal ไหม (ห้ามใช้), มี SVG ไหม (ห้ามใช้)
+5. **Best Practices**: ตั้งชื่อตัวแปรดีไหม, มี comment ไหม
+
+สรุปผลเป็นตาราง:
+| หัวข้อ | สถานะ | รายละเอียด |
+
+แล้วเสนอการแก้ไข (ถ้ามี)</code></pre>
+                    <p class="mt-2"><strong>วิธีใช้:</strong></p>
+<pre><code>> /project:review Code.gs
+
+Claude: 📖 Reading Code.gs...
+
+| หัวข้อ | สถานะ | รายละเอียด |
+|--------|--------|-----------|
+| Security | ⚠️ | บรรทัด 45: ไม่ validate courseId |
+| Error Handling | ✅ | มี try-catch ครบ |
+| Performance | ✅ | OK |
+| GAS Compat | ❌ | บรรทัด 89: พบ backtick |
+| Best Practices | ⚠️ | ฟังก์ชัน processData ไม่มี comment |
+
+🔧 แนะนำแก้ไข 2 จุด:
+1. บรรทัด 45: เพิ่ม validation...
+2. บรรทัด 89: เปลี่ยน backtick เป็น string concatenation...</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>ตัวอย่างที่ 3: คำสั่ง Test</strong></div>
+                <div class="card-body">
+                    <p>สร้างไฟล์ <code>.claude/commands/test.md</code>:</p>
+<pre><code># Run Tests
+
+ทำขั้นตอนต่อไปนี้:
+1. รัน `npm test` (หรือ test framework ที่มี)
+2. ถ้ามี test ที่ fail:
+   - อ่านไฟล์ที่เกี่ยวข้อง
+   - วิเคราะห์สาเหตุ
+   - เสนอวิธีแก้ไข
+3. ถ้า test ผ่านหมด:
+   - แสดงสรุป (กี่ test, กี่ suite, เวลาที่ใช้)
+   - แนะนำ test ที่ควรเพิ่ม (ถ้ามี)</code></pre>
+                </div>
+            </div>
+
+            <h5 class="mt-4">คำสั่งที่แนะนำให้สร้างสำหรับงานราชการ</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>คำสั่ง</th>
+                        <th>ประโยชน์</th>
+                        <th>ตัวอย่างใช้งาน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/project:gas-push</code></td>
+                        <td>Deploy GAS อัตโนมัติ</td>
+                        <td>/project:gas-push "v2.0"</td>
+                    </tr>
+                    <tr>
+                        <td><code>/project:review</code></td>
+                        <td>ตรวจสอบโค้ด</td>
+                        <td>/project:review Code.gs</td>
+                    </tr>
+                    <tr>
+                        <td><code>/project:backup</code></td>
+                        <td>สำรองข้อมูลก่อนแก้</td>
+                        <td>/project:backup</td>
+                    </tr>
+                    <tr>
+                        <td><code>/project:doc</code></td>
+                        <td>สร้างเอกสารจากโค้ด</td>
+                        <td>/project:doc Code.gs</td>
+                    </tr>
+                    <tr>
+                        <td><code>/project:changelog</code></td>
+                        <td>อัปเดต CHANGELOG</td>
+                        <td>/project:changelog "เพิ่มฟีเจอร์ X"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-success mt-3">
+                <strong>🎯 แบบฝึกหัด:</strong> สร้าง Custom Command 1 คำสั่งที่เหมาะกับงานของคุณ ใส่ใน <code>.claude/commands/</code>
+            </div>
+        </section>
+
+        <!-- Section 9.2 -->
+        <section id="section-9-2" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">9.2 CLAUDE.md — กำหนดกฎโปรเจกต์</h3>
+
+            <div class="alert alert-info">
+                <strong>💡 CLAUDE.md คืออะไร:</strong> ไฟล์ที่บอก Claude Code ว่า "โปรเจกต์นี้มีกฎอะไรบ้าง" — เหมือน Steering Files ของ Kiro แต่เป็นไฟล์เดียว Claude จะอ่านทุกครั้งที่เปิดโปรเจกต์
+            </div>
+
+            <h5>ตำแหน่งไฟล์ CLAUDE.md</h5>
+<pre><code>โปรเจกต์/
+├── CLAUDE.md              # ← ไฟล์หลัก (root ของโปรเจกต์)
+├── Code.gs
+├── index.html
+└── ...</code></pre>
+
+            <h5 class="mt-4">ตัวอย่าง CLAUDE.md สำหรับ GAS Project</h5>
+            <div class="card mb-3">
+                <div class="card-body">
+<pre><code># CLAUDE.md — กฎโปรเจกต์ระบบลงทะเบียนฝึกอบรม
+
+## ภาพรวม
+- ระบบลงทะเบียนฝึกอบรมออนไลน์ สำหรับ สนพ.สุรินทร์
+- เทคโนโลยี: Google Apps Script + Google Sheets
+- ภาษา: ไทย (comment + UI ทั้งหมด)
+
+## กฎที่ต้องปฏิบัติ (MUST)
+1. ❌ ห้ามใช้ template literal (backtick ` `) — GAS ตีความผิดใน HTML
+2. ❌ ห้ามใช้ SVG ใน HTML — GAS sanitizer ทำลาย viewBox
+3. ❌ ห้ามลบฟังก์ชันเดิมที่ทำงานได้ดีอยู่แล้ว
+4. ✅ ใช้ string concatenation เท่านั้น
+5. ✅ ทุกฟังก์ชันต้องมี try-catch
+6. ✅ ทุก input ต้อง validate ก่อนประมวลผล
+7. ✅ comment ภาษาไทย
+
+## โครงสร้างไฟล์
+- Code.gs — Backend (doGet, doPost, CRUD, Email, Line)
+- index.html — หน้าฟอร์มลงทะเบียน (สาธารณะ)
+- admin.html — หน้า Admin
+- appsscript.json — ตั้งค่า
+
+## Database (Google Sheets)
+- Sheet ID: 1abc...xyz
+- REGISTRATIONS: reg_id, name, org, phone, email, course_id, status, reg_date, approved_date
+- COURSES: course_id, course_name, start_date, max_seats, current_seats, status
+- SETTINGS: key, value
+
+## Coding Standards
+- ตั้งชื่อฟังก์ชันเป็น camelCase
+- ตั้งชื่อ Sheet เป็น UPPER_CASE
+- ใช้ var แทน let/const (compatibility กับ GAS เก่า)
+- String: ใช้ single quote เท่านั้น
+- ฟังก์ชัน private ขึ้นต้นด้วย _ (เช่น _sendLine, _validate)
+
+## Deploy
+- ใช้ clasp push + clasp deploy
+- ทุกครั้งที่ deploy ต้องอัปเดต CHANGELOG.md
+- Test ก่อน deploy ทุกครั้ง
+
+## Line Notify
+- Token ดึงจาก SETTINGS sheet (key: 'line_token')
+- User ID: U95dac59d83dc5e26d99914df3ddc27e2
+- ส่งแจ้งเตือนเมื่อ: ลงทะเบียนใหม่, อนุมัติ, ปฏิเสธ
+
+## Security
+- Rate Limiting: register 3/hr, admin 100/5min
+- Input Validation: maxLength 500, ตรวจ XSS
+- Password: SHA-256 + Salt (ถ้ามี login)
+</code></pre>
+                </div>
+            </div>
+
+            <h5 class="mt-4">เปรียบเทียบ CLAUDE.md vs Kiro Steering</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>คุณสมบัติ</th>
+                        <th>CLAUDE.md (Claude Code)</th>
+                        <th>Steering Files (Kiro)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ตำแหน่งไฟล์</td>
+                        <td>CLAUDE.md ที่ root</td>
+                        <td>.kiro/steering/*.md</td>
+                    </tr>
+                    <tr>
+                        <td>จำนวนไฟล์</td>
+                        <td>1 ไฟล์ (รวมทุกกฎ)</td>
+                        <td>หลายไฟล์ (แยกตามหัวข้อ)</td>
+                    </tr>
+                    <tr>
+                        <td>เวลาที่อ่าน</td>
+                        <td>ทุกครั้งที่เปิด Claude Code</td>
+                        <td>เลือก auto/manual inclusion</td>
+                    </tr>
+                    <tr>
+                        <td>ใช้กับ</td>
+                        <td>Claude Code (CLI) เท่านั้น</td>
+                        <td>Kiro IDE เท่านั้น</td>
+                    </tr>
+                    <tr>
+                        <td>ความยืดหยุ่น</td>
+                        <td>เขียนอิสระ Markdown</td>
+                        <td>มีโครงสร้างเฉพาะ (inclusion, globs)</td>
+                    </tr>
+                    <tr>
+                        <td>ทำงานร่วมกัน</td>
+                        <td>ใส่ใน Git ได้ ทีมใช้ร่วมกัน</td>
+                        <td>ใส่ใน Git ได้ ทีมใช้ร่วมกัน</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="mt-4">วิธีใช้ CLAUDE.md ให้ได้ผลดี</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card h-100 border-success">
+                        <div class="card-header bg-success text-white">✅ ควรใส่</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>กฎที่ต้องปฏิบัติเสมอ (MUST/MUST NOT)</li>
+                                <li>โครงสร้างโปรเจกต์</li>
+                                <li>Coding standards ที่ใช้</li>
+                                <li>ข้อจำกัดทางเทคนิค</li>
+                                <li>วิธี deploy</li>
+                                <li>ข้อมูล database schema</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 border-danger">
+                        <div class="card-header bg-danger text-white">❌ ไม่ควรใส่</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>API Keys / Secrets (ใช้ .env แทน)</li>
+                                <li>รหัสผ่าน</li>
+                                <li>ข้อมูลส่วนตัวที่ sensitive</li>
+                                <li>เนื้อหาที่ยาวเกินไป (>500 บรรทัด)</li>
+                                <li>โค้ดตัวอย่างทั้งไฟล์</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success mt-4">
+                <strong>🎯 แบบฝึกหัด:</strong> สร้าง CLAUDE.md สำหรับโปรเจกต์ที่สร้างใน Workshop 8.3 โดยใส่กฎอย่างน้อย 5 ข้อ
+            </div>
+        </section>
+
+        <!-- Section 9.3 -->
+        <section id="section-9-3" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">9.3 Multi-file editing — แก้หลายไฟล์พร้อมกัน</h3>
+
+            <div class="alert alert-info">
+                <strong>💡 จุดเด่นของ Claude Code:</strong> สามารถอ่านและแก้ไขหลายไฟล์พร้อมกันในคำสั่งเดียว — ทำให้สร้างฟีเจอร์ที่ต้องแก้ทั้ง Backend + Frontend ได้เร็วมาก
+            </div>
+
+            <h5>ตัวอย่างที่ 1: สร้างทั้ง Backend + Frontend ในครั้งเดียว</h5>
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>Prompt: สร้างฟีเจอร์ "ส่งออกรายชื่อเป็น PDF"</strong></div>
+                <div class="card-body">
+<pre><code>> เพิ่มฟีเจอร์ "ส่งออกรายชื่อเป็น PDF" ให้ระบบลงทะเบียน:
+
+Backend (Code.gs):
+- สร้างฟังก์ชัน exportRegistrationsPDF(courseId)
+- ดึงข้อมูลจาก REGISTRATIONS ตาม courseId
+- สร้าง PDF ด้วย Google Docs template
+- Return URL สำหรับดาวน์โหลด
+
+Frontend (admin.html):
+- เพิ่มปุ่ม "📄 ส่งออก PDF" ในหน้า Admin
+- เมื่อคลิก → แสดง dropdown เลือกหลักสูตร
+- เมื่อเลือก → เรียก exportRegistrationsPDF → เปิด PDF
+
+ทำทั้ง 2 ไฟล์พร้อมกัน</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header"><strong>Expected: Claude Code แก้ 2 ไฟล์</strong></div>
+                <div class="card-body">
+<pre><code>Claude: จะเพิ่มฟีเจอร์ส่งออก PDF ให้ครับ ต้องแก้ 2 ไฟล์:
+
+✏️  Editing: Code.gs
++ Added function exportRegistrationsPDF(courseId) (Lines 245-298)
++ Added helper function _createPDFFromTemplate(data) (Lines 300-340)
+
+✏️  Editing: admin.html
++ Added export button in toolbar section (Line 56)
++ Added course dropdown modal (Lines 180-210)
++ Added exportPDF() JavaScript function (Lines 320-345)
+
+✅ เพิ่มฟีเจอร์ส่งออก PDF สำเร็จ (2 files modified)
+
+สรุปการเปลี่ยนแปลง:
+- Code.gs: +55 lines (2 new functions)
+- admin.html: +42 lines (UI + JS)</code></pre>
+                </div>
+            </div>
+
+            <h5 class="mt-4">ตัวอย่างที่ 2: Refactor across files</h5>
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>Prompt: Refactor ย้ายฟังก์ชัน validate ไปไฟล์แยก</strong></div>
+                <div class="card-body">
+<pre><code>> อ่าน Code.gs แล้ว refactor:
+  1. ย้ายฟังก์ชัน validate ทั้งหมดไปไฟล์ใหม่ชื่อ Validation.gs
+  2. ย้ายฟังก์ชัน email ทั้งหมดไปไฟล์ใหม่ชื่อ Email.gs
+  3. ย้ายฟังก์ชัน Line notify ไปไฟล์ใหม่ชื่อ LineNotify.gs
+  4. Code.gs เหลือแค่ doGet, doPost, CRUD
+  5. ตรวจสอบว่าทุกอย่างยังเรียกกันถูกต้อง
+
+Claude:
+📖 Reading: Code.gs (450 lines)
+
+🔍 พบฟังก์ชันที่ต้องย้าย:
+- Validation: validateInput, validateEmail, validatePhone, checkDuplicate (4 functions)
+- Email: sendConfirmEmail, sendApprovalEmail, sendRejectionEmail (3 functions)
+- Line: sendLineNotify, formatLineMessage (2 functions)
+
+✏️  Creating: Validation.gs (65 lines - 4 functions)
+✏️  Creating: Email.gs (89 lines - 3 functions)
+✏️  Creating: LineNotify.gs (35 lines - 2 functions)
+✏️  Editing: Code.gs (removed 189 lines, kept doGet/doPost/CRUD)
+
+✅ Refactored into 4 files:
+- Code.gs: 261 lines (main logic)
+- Validation.gs: 65 lines
+- Email.gs: 89 lines
+- LineNotify.gs: 35 lines
+
+⚠️ หมายเหตุ: ใน GAS ทุกไฟล์ .gs อยู่ใน namespace เดียวกัน
+   ดังนั้นไม่ต้อง import — เรียกข้ามไฟล์ได้เลย</code></pre>
+                </div>
+            </div>
+
+            <h5 class="mt-4">ตัวอย่างที่ 3: สร้างทั้ง Project จาก Scratch</h5>
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>Prompt: สร้างระบบนัดหมาย (Appointment System)</strong></div>
+                <div class="card-body">
+<pre><code>> สร้างระบบนัดหมาย (Appointment Booking) ให้ สนพ.สุรินทร์:
+
+สร้างไฟล์ทั้งหมดในครั้งเดียว:
+
+1. Code.gs — Backend ครบ:
+   - doGet (route: booking, admin, status)
+   - CRUD appointments
+   - Check available slots
+   - Send confirmation email + Line
+
+2. booking.html — หน้าจองนัดหมาย:
+   - เลือกบริการ (ทดสอบมาตรฐาน/สอบรับรอง/ปรึกษา)
+   - เลือกวันที่ (calendar picker)
+   - เลือกเวลา (slots ที่ว่าง)
+   - กรอกข้อมูล
+
+3. admin.html — หน้า Admin:
+   - ปฏิทินนัดหมาย (month view)
+   - ตารางวันนี้
+   - อนุมัติ/เลื่อน/ยกเลิก
+
+4. status.html — ตรวจสถานะ:
+   - กรอกเลขที่/เบอร์โทร → แสดงสถานะ
+
+5. appsscript.json — ตั้งค่า GAS
+
+กฎ: ห้าม backtick, ห้าม SVG, ใช้ Bootstrap 5, comment ไทย</code></pre>
+                </div>
+            </div>
+
+            <div class="alert alert-warning mt-3">
+                <strong>⚠️ ข้อควรระวังเมื่อแก้หลายไฟล์:</strong>
+                <ul class="mb-0">
+                    <li>ตรวจสอบ diff ทุกไฟล์ก่อน accept ("ดู diff ให้หน่อย")</li>
+                    <li>Commit ก่อนแก้ เพื่อย้อนกลับได้</li>
+                    <li>สั่ง Claude ตรวจสอบว่าไฟล์ที่แก้ยังทำงานร่วมกันได้</li>
+                    <li>ถ้าแก้เกิน 5 ไฟล์ ควรแบ่งเป็นหลาย step</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 9.4 -->
+        <section id="section-9-4" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">9.4 MCP Connections — เชื่อมต่อ API ภายนอก</h3>
+
+            <div class="alert alert-info">
+                <strong>💡 MCP (Model Context Protocol) คืออะไร:</strong> มาตรฐานที่ให้ Claude Code เชื่อมต่อกับเครื่องมือภายนอกได้ เช่น อ่าน/เขียนไฟล์, ค้นหาเว็บ, เชื่อม Database — ขยายความสามารถของ Claude ให้ทำได้มากขึ้น
+            </div>
+
+            <h5>MCP ทำงานอย่างไร</h5>
+            <div class="card mb-3">
+                <div class="card-body text-center">
+<pre><code>┌─────────────┐      ┌─────────────┐      ┌─────────────────┐
+│  Claude Code │ ←──→ │  MCP Server │ ←──→ │ External Service │
+│  (AI Agent)  │      │  (Bridge)   │      │ (File/DB/API)   │
+└─────────────┘      └─────────────┘      └─────────────────┘
+
+Claude Code ส่งคำขอ → MCP Server แปลงเป็น API call → ได้ผลลัพธ์กลับ</code></pre>
+                </div>
+            </div>
+
+            <h5 class="mt-4">ตั้งค่า MCP ใน Claude Code</h5>
+            <p>สร้างไฟล์ <code>.claude/mcp.json</code> ในโปรเจกต์:</p>
+
+            <div class="card mb-3">
+                <div class="card-header"><strong>ตัวอย่าง .claude/mcp.json</strong></div>
+                <div class="card-body">
+<pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/project"]
+    },
+    "web-search": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-server-web-search"],
+      "env": {
+        "BRAVE_API_KEY": "your-brave-api-key"
+      }
+    },
+    "google-sheets": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-google-sheets"],
+      "env": {
+        "GOOGLE_SERVICE_ACCOUNT_KEY": "./credentials/service-account.json"
+      }
+    }
+  }
+}</code></pre>
+                </div>
+            </div>
+
+            <h5 class="mt-4">MCP Servers ที่น่าใช้</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>MCP Server</th>
+                        <th>ความสามารถ</th>
+                        <th>ประโยชน์สำหรับงานราชการ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>filesystem</strong></td>
+                        <td>อ่าน/เขียน/ค้นหาไฟล์</td>
+                        <td>จัดการไฟล์โปรเจกต์</td>
+                    </tr>
+                    <tr>
+                        <td><strong>web-search</strong></td>
+                        <td>ค้นหาข้อมูลจากเว็บ</td>
+                        <td>หาข้อมูลระเบียบ กฎหมาย อ้างอิง</td>
+                    </tr>
+                    <tr>
+                        <td><strong>google-sheets</strong></td>
+                        <td>อ่าน/เขียน Google Sheets</td>
+                        <td>จัดการข้อมูลใน Sheets โดยตรง</td>
+                    </tr>
+                    <tr>
+                        <td><strong>google-drive</strong></td>
+                        <td>จัดการไฟล์ใน Drive</td>
+                        <td>อัปโหลด/ดาวน์โหลดเอกสาร</td>
+                    </tr>
+                    <tr>
+                        <td><strong>sqlite</strong></td>
+                        <td>จัดการ SQLite database</td>
+                        <td>ระบบฐานข้อมูลขนาดเล็ก</td>
+                    </tr>
+                    <tr>
+                        <td><strong>github</strong></td>
+                        <td>จัดการ GitHub repos</td>
+                        <td>สร้าง PR, review code, issues</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="mt-4">ตัวอย่างการใช้งาน MCP</h5>
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>ค้นหาเว็บ + สร้างเอกสาร</strong></div>
+                <div class="card-body">
+<pre><code>> ค้นหาเว็บเรื่อง "ระเบียบกรมพัฒนาฝีมือแรงงาน การฝึกอบรม 2567"
+  แล้วสรุปเป็นเอกสาร Markdown
+
+Claude: (ใช้ MCP web-search)
+🔍 Searching: "ระเบียบกรมพัฒนาฝีมือแรงงาน การฝึกอบรม 2567"
+
+พบผลลัพธ์ 5 รายการ:
+1. ระเบียบว่าด้วยการฝึกอบรมฝีมือแรงงาน พ.ศ. 2567
+2. ...
+
+✏️  Creating: docs/regulation-summary.md
+✅ สรุประเบียบเป็น Markdown สำเร็จ</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>อ่าน Google Sheets + สร้าง Report</strong></div>
+                <div class="card-body">
+<pre><code>> อ่านข้อมูลจาก Google Sheets (REGISTRATIONS) 
+  แล้วสร้างรายงานสรุปผู้ลงทะเบียนเดือนนี้
+  เป็นไฟล์ HTML สวยงาม พร้อมกราฟ
+
+Claude: (ใช้ MCP google-sheets)
+📊 Reading: Sheet "REGISTRATIONS"
+Found: 156 rows for this month
+
+✏️  Creating: reports/monthly-report-june.html
+- Summary cards: 156 registrations, 98 approved, 45 pending
+- Chart: registrations by day
+- Table: top 5 courses
+✅ Created monthly report</code></pre>
+                </div>
+            </div>
+
+            <div class="alert alert-warning mt-3">
+                <strong>⚠️ ข้อจำกัดของ MCP:</strong>
+                <ul class="mb-0">
+                    <li>ต้องติดตั้ง MCP server แยก (ผ่าน npm)</li>
+                    <li>บาง server ต้องใช้ API key (มีค่าใช้จ่าย)</li>
+                    <li>ยังเป็น feature ใหม่ — อาจมี bug บ้าง</li>
+                    <li>ต้องระวังเรื่อง security (MCP เข้าถึงข้อมูลจริง)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 9.5 -->
+        <section id="section-9-5" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">9.5 ใช้ Claude Code กับ Docker/Cloud</h3>
+
+            <div class="alert alert-info">
+                <strong>💡 ภาพรวม:</strong> Claude Code สามารถช่วยเขียน Dockerfile, docker-compose, และ deploy ขึ้น Cloud ได้ — เหมาะสำหรับงานที่ต้อง deploy ระบบจริง
+            </div>
+
+            <h5>Docker Basics สำหรับ GAS Developer</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Concept</th>
+                        <th>อธิบายง่ายๆ</th>
+                        <th>เปรียบเทียบ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Docker Image</strong></td>
+                        <td>"แม่พิมพ์" ของแอป (ระบบ + โค้ด + dependencies)</td>
+                        <td>เหมือน ISO ของ Windows</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Container</strong></td>
+                        <td>"แอปที่กำลังรัน" จาก Image</td>
+                        <td>เหมือนเปิด Virtual Machine</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dockerfile</strong></td>
+                        <td>สูตรสร้าง Image (step-by-step)</td>
+                        <td>เหมือน recipe อาหาร</td>
+                    </tr>
+                    <tr>
+                        <td><strong>docker-compose</strong></td>
+                        <td>รัน Container หลายตัวพร้อมกัน</td>
+                        <td>เหมือนสั่งอาหาร set</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="mt-4">ตัวอย่าง: ใช้ Claude Code สร้าง Docker Setup</h5>
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>Prompt: สร้าง Dockerfile สำหรับ Node.js + clasp</strong></div>
+                <div class="card-body">
+<pre><code>> สร้าง Dockerfile สำหรับ development environment ที่มี:
+  - Node.js 20
+  - @google/clasp (GAS CLI tool)
+  - Git
+  - Claude Code (@anthropic-ai/claude-code)
+  - Working directory: /app
+
+Claude:
+✏️  Creating: Dockerfile
+
+FROM node:20-slim
+
+# ติดตั้ง Git
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+
+# ติดตั้ง global tools
+RUN npm install -g @google/clasp @anthropic-ai/claude-code
+
+# Working directory
+WORKDIR /app
+
+# Mount volume สำหรับ source code
+VOLUME ["/app"]
+
+# Default command
+CMD ["bash"]
+
+✏️  Creating: docker-compose.yml
+
+version: '3.8'
+services:
+  dev:
+    build: .
+    volumes:
+      - .:/app
+      - ~/.clasprc.json:/root/.clasprc.json
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    stdin_open: true
+    tty: true
+
+✅ Created Dockerfile + docker-compose.yml</code></pre>
+                </div>
+            </div>
+
+            <h5 class="mt-4">ใช้ Claude Code กับ clasp (GAS CLI)</h5>
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>Workflow: Local Dev → GAS Deploy</strong></div>
+                <div class="card-body">
+<pre><code># ขั้นตอนการทำงาน Local → GAS
+
+# 1. Clone โปรเจกต์ GAS มาที่เครื่อง
+> ช่วย clone GAS project ID: 1abc...xyz มาที่ local
+
+Claude:
+🖥️  Running: clasp clone 1abc...xyz
+✅ Cloned: Code.gs, index.html, admin.html, appsscript.json
+
+# 2. แก้ไขด้วย Claude Code
+> อ่าน Code.gs แล้วเพิ่ม function ส่งออก CSV
+
+Claude:
+✏️  Editing: Code.gs
+✅ Added exportCSV() function
+
+# 3. Push กลับ GAS
+> push ขึ้น GAS แล้ว deploy version ใหม่
+
+Claude:
+🖥️  Running: clasp push
+✅ Pushed 4 files
+🖥️  Running: clasp deploy --description "v1.3 - add CSV export"
+✅ Deployed: https://script.google.com/macros/s/AKfyc.../exec</code></pre>
+                </div>
+            </div>
+
+            <h5 class="mt-4">ภาพรวมการ Deploy สำหรับแต่ละแบบ</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ประเภทระบบ</th>
+                        <th>Deploy ที่ไหน</th>
+                        <th>วิธี Deploy</th>
+                        <th>ค่าใช้จ่าย</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GAS + Sheets</td>
+                        <td>Google Apps Script</td>
+                        <td>clasp deploy</td>
+                        <td>ฟรี</td>
+                    </tr>
+                    <tr>
+                        <td>Static Web (HTML/CSS/JS)</td>
+                        <td>GitHub Pages / Cloudflare Pages</td>
+                        <td>git push</td>
+                        <td>ฟรี</td>
+                    </tr>
+                    <tr>
+                        <td>Node.js App</td>
+                        <td>Railway / Render / Fly.io</td>
+                        <td>git push / Docker</td>
+                        <td>ฟรี tier มี</td>
+                    </tr>
+                    <tr>
+                        <td>Full-stack</td>
+                        <td>AWS / GCP / Azure</td>
+                        <td>Docker / Serverless</td>
+                        <td>ตามการใช้งาน</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-success mt-4">
+                <strong>🎯 สรุปสิ่งที่เรียนในบทนี้:</strong>
+                <ol class="mb-0">
+                    <li><strong>Custom Commands</strong> — สร้างคำสั่งลัดใช้ซ้ำ ประหยัดเวลา</li>
+                    <li><strong>CLAUDE.md</strong> — กำหนดกฎโปรเจกต์ให้ Claude ทำตาม</li>
+                    <li><strong>Multi-file</strong> — สร้าง/แก้หลายไฟล์พร้อมกัน = สร้างระบบเร็ว</li>
+                    <li><strong>MCP</strong> — เชื่อมต่อเครื่องมือภายนอก ขยายความสามารถ</li>
+                    <li><strong>Docker/Cloud</strong> — Deploy ระบบจริงได้</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+            <a href="chapter08.html" class="btn btn-outline-dark">← บทที่ 8: ใช้ Claude Code สร้างระบบ</a>
+            <a href="chapter10.html" class="btn btn-dark">บทที่ 10: สรุป + Workshop + นำเสนอ →</a>
+        </nav>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p>คู่มือฝึกอบรม Claude AI — ใช้ปัญญาประดิษฐ์ทำงานราชการ</p>
+        <p class="opacity-75">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 7: CapCut AI Voice — AI เสียงและดนตรี</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📖 AI เสียงและดนตรี</span>
+            <span class="nav-text text-light">บทที่ 7: CapCut AI Voice</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+            <!-- Chapter Header -->
+            <div class="chapter-header text-center">
+                <h1>🎬 บทที่ 7: CapCut AI Voice</h1>
+                <p class="lead">พากย์เสียง AI ในวิดีโอ — เลือกเสียงไทย ปรับ Speed ใส่ในวิดีโอได้ทันที</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>ใช้ CapCut สร้างเสียงพากย์ AI ภาษาไทยในวิดีโอ</li>
+                    <li>เลือกและปรับแต่งเสียง AI ให้เหมาะกับงาน</li>
+                    <li>ปรับ Speed และ Timing ของเสียงพากย์</li>
+                    <li>ใส่เสียงพากย์ AI ลงในวิดีโอพร้อม Export</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">📘 7.1 CapCut AI Voice คืออะไร?</h3>
+            <section>
+                <p>CapCut เป็นแอปตัดต่อวิดีโอฟรีจาก ByteDance (เจ้าของ TikTok) ที่มีฟีเจอร์ AI Voice ให้ใส่เสียงพากย์ในวิดีโอได้โดยไม่ต้องอัดเสียงเอง:</p>
+                <ul>
+                    <li><strong>ใช้ฟรี</strong> — ไม่ต้องจ่ายเงิน (มี Watermark ใน Free plan)</li>
+                    <li><strong>เสียงไทยหลายแบบ</strong> — ทั้งผู้ชาย ผู้หญิง น้ำเสียงต่างๆ</li>
+                    <li><strong>ปรับ Speed</strong> — เร็ว-ช้าตามต้องการ</li>
+                    <li><strong>ใส่ในวิดีโอได้ทันที</strong> — ไม่ต้องใช้โปรแกรมอื่น</li>
+                    <li><strong>ใช้ได้ทุกแพลตฟอร์ม</strong> — PC, Mac, มือถือ, Web</li>
+                </ul>
+
+                <div class="info-card">
+                    <h5>📊 CapCut vs ElevenLabs</h5>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>คุณสมบัติ</th>
+                                <th>CapCut AI Voice</th>
+                                <th>ElevenLabs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ราคา</td>
+                                <td>ฟรี</td>
+                                <td>ฟรี 10K ตัวอักษร/เดือน</td>
+                            </tr>
+                            <tr>
+                                <td>คุณภาพเสียง</td>
+                                <td>ดี ⭐⭐⭐</td>
+                                <td>ยอดเยี่ยม ⭐⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td>ใส่ในวิดีโอ</td>
+                                <td>✅ ทำได้ทันที</td>
+                                <td>❌ ต้อง Export แล้วนำไปใส่</td>
+                            </tr>
+                            <tr>
+                                <td>Voice Clone</td>
+                                <td>❌ ไม่มี</td>
+                                <td>✅ มี</td>
+                            </tr>
+                            <tr>
+                                <td>เหมาะกับ</td>
+                                <td>ใส่เสียงในวิดีโอ</td>
+                                <td>งานพากย์คุณภาพสูง</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 7.2 เริ่มต้นใช้งาน CapCut</h3>
+            <section>
+                <p><strong>บนคอมพิวเตอร์ (แนะนำ):</strong></p>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิดเว็บ</strong> — ไปที่ <code>https://www.capcut.com</code>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>สมัคร/เข้าสู่ระบบ</strong> — ใช้ Google Account หรือ Email
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>สร้างโปรเจกต์ใหม่</strong> — คลิก "New Video" หรือ "Create"
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>อัปโหลดวิดีโอ</strong> — ลากไฟล์วิดีโอเข้า Timeline
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>พร้อมใช้งาน</strong> — จะเห็นหน้าจอตัดต่อพร้อม Timeline
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 7.3 เลือกเสียง AI ภาษาไทย</h3>
+            <section>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>คลิก "Text" → "Text to Speech"</strong> — ในเมนูด้านซ้าย
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>เลือกภาษา</strong> — เลื่อนหา "Thai" หรือ "ภาษาไทย"
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ฟังตัวอย่างเสียง</strong> — กด ▶️ ฟังเสียงแต่ละตัว
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>เลือกเสียง</strong> — เลือกเสียงที่เหมาะกับงาน
+                </div>
+
+                <div class="info-card">
+                    <h5>🎙️ ประเภทเสียงไทยใน CapCut</h5>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ประเภท</th>
+                                <th>ลักษณะ</th>
+                                <th>เหมาะกับ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ผู้ชาย (ทางการ)</td>
+                                <td>เสียงนิ่ง จริงจัง</td>
+                                <td>วิดีโอราชการ รายงาน</td>
+                            </tr>
+                            <tr>
+                                <td>ผู้ชาย (สบายๆ)</td>
+                                <td>เสียงอบอุ่น เป็นกันเอง</td>
+                                <td>Vlog, แนะนำบริการ</td>
+                            </tr>
+                            <tr>
+                                <td>ผู้หญิง (ทางการ)</td>
+                                <td>เสียงชัด สุภาพ</td>
+                                <td>ประชาสัมพันธ์ ประกาศ</td>
+                            </tr>
+                            <tr>
+                                <td>ผู้หญิง (สดใส)</td>
+                                <td>เสียงร่าเริง มีชีวิตชีวา</td>
+                                <td>โฆษณา กิจกรรม</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 7.4 พิมพ์ข้อความและสร้างเสียง</h3>
+            <section>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>พิมพ์ข้อความ</strong> — ในช่อง Text to Speech พิมพ์สคริปต์ที่ต้องการ
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>กด Generate</strong> — AI จะสร้างเสียงจากข้อความ
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ฟังตรวจสอบ</strong> — กด Play ฟังผลลัพธ์
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>เพิ่มลง Timeline</strong> — ลากเสียงไปวางใน Timeline ตรงจุดที่ต้องการ
+                </div>
+
+                <div class="prompt-example">
+                    <strong>📝 ตัวอย่างสคริปต์พากย์วิดีโอองค์กร:</strong><br><br>
+                    <strong>Intro (5 วินาที):</strong><br>
+                    "สวัสดีครับ ยินดีต้อนรับสู่ศูนย์บริการคนพิการจังหวัดของเรา"<br><br>
+                    <strong>เนื้อหา (15 วินาที):</strong><br>
+                    "เราให้บริการครอบคลุมทั้งด้านการฟื้นฟูสมรรถภาพ การฝึกอาชีพ การให้คำปรึกษาด้านสิทธิ์ และการส่งเสริมการมีส่วนร่วมในชุมชน"<br><br>
+                    <strong>Outro (5 วินาที):</strong><br>
+                    "ติดต่อเราได้ทุกวันจันทร์ถึงศุกร์ เวลา 8.30 ถึง 16.30 น."
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 7.5 ปรับ Speed และ Timing</h3>
+            <section>
+                <div class="info-card">
+                    <h5>⚡ การปรับความเร็วเสียง</h5>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Speed</th>
+                                <th>ผลลัพธ์</th>
+                                <th>เหมาะกับ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0.75x</td>
+                                <td>ช้า ชัดเจน</td>
+                                <td>สอน/อธิบายขั้นตอน</td>
+                            </tr>
+                            <tr>
+                                <td>1.0x</td>
+                                <td>ปกติ</td>
+                                <td>ทั่วไป</td>
+                            </tr>
+                            <tr>
+                                <td>1.25x</td>
+                                <td>เร็วขึ้นเล็กน้อย</td>
+                                <td>วิดีโอสั้น กระชับ</td>
+                            </tr>
+                            <tr>
+                                <td>1.5x</td>
+                                <td>เร็ว กระฉับ</td>
+                                <td>โฆษณา Promo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p><strong>การจัดเรียง Timing:</strong></p>
+                <ul>
+                    <li>ลากเสียงใน Timeline ให้ตรงกับภาพ</li>
+                    <li>แบ่งเสียงเป็นหลายท่อน ใส่ทีละส่วน</li>
+                    <li>เว้นช่วงหยุด 0.5-1 วินาทีระหว่างประโยค</li>
+                    <li>ให้เสียงจบก่อนเปลี่ยนภาพ</li>
+                </ul>
+            </section>
+
+            <h3 class="section-header">📘 7.6 Export วิดีโอพร้อมเสียง</h3>
+            <section>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>ตรวจสอบ</strong> — Play วิดีโอทั้งคลิปจากต้นจนจบ
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>คลิก Export</strong> — ปุ่มมุมขวาบน
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ตั้งค่า</strong> — Resolution: 1080p, Frame Rate: 30fps, Quality: High
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>Export</strong> — รอ Render เสร็จแล้วดาวน์โหลด
+                </div>
+            </section>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 7: พากย์เสียง AI ในวิดีโอด้วย CapCut</h4>
+                <p><strong>เวลา:</strong> 45 นาที</p>
+                <hr>
+                <p><strong>กิจกรรมที่ 1: สร้างวิดีโอพร้อมเสียงพากย์ (20 นาที)</strong></p>
+                <ol>
+                    <li>เปิด CapCut Web หรือแอป</li>
+                    <li>สร้างโปรเจกต์ใหม่ ใช้ Template หรืออัปโหลดรูปภาพ 3-5 รูป</li>
+                    <li>ไปที่ Text → Text to Speech</li>
+                    <li>เลือกเสียงไทย พิมพ์สคริปต์:
+                        <ul>
+                            <li>รูปที่ 1: "ศูนย์บริการคนพิการจังหวัดของเรา"</li>
+                            <li>รูปที่ 2: "ให้บริการครบวงจร ทั้งฟื้นฟูและฝึกอาชีพ"</li>
+                            <li>รูปที่ 3: "เปิดให้บริการทุกวันจันทร์ถึงศุกร์"</li>
+                        </ul>
+                    </li>
+                    <li>วางเสียงให้ตรงกับแต่ละรูป</li>
+                </ol>
+
+                <p><strong>กิจกรรมที่ 2: ปรับแต่งและ Export (15 นาที)</strong></p>
+                <ol>
+                    <li>ปรับ Speed ของเสียงให้เหมาะสม</li>
+                    <li>เพิ่ม Background Music เบาๆ (ใช้เพลงจาก Suno ที่สร้างไว้)</li>
+                    <li>ปรับ Volume: เสียงพากย์ 100%, เพลง 20-30%</li>
+                    <li>ดูตัวอย่างทั้งคลิป</li>
+                    <li>Export เป็น MP4 1080p</li>
+                </ol>
+
+                <p><strong>กิจกรรมที่ 3: เปรียบเทียบเสียง (10 นาที)</strong></p>
+                <ol>
+                    <li>ใช้ข้อความเดียวกัน สร้างเสียง 3 แบบ (ผู้ชายทางการ, ผู้หญิงสดใส, ผู้ชายสบายๆ)</li>
+                    <li>ฟังเปรียบเทียบ</li>
+                    <li>เลือกเสียงที่เหมาะกับวิดีโอประชาสัมพันธ์องค์กร</li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5>💡 Tips</h5>
+                <ul class="mb-0">
+                    <li><strong>เขียนสคริปต์ก่อน:</strong> เขียนบทพากย์ทั้งหมดก่อน แล้วค่อยสร้างเสียงทีเดียว</li>
+                    <li><strong>แบ่งเป็นท่อนสั้น:</strong> แต่ละท่อน 1-2 ประโยค จะจัดเรียง Timing ง่ายกว่า</li>
+                    <li><strong>ลดเสียงเพลง:</strong> เมื่อมีเสียงพากย์ ให้ลด Volume เพลงลงเหลือ 15-25%</li>
+                    <li><strong>เว้นจังหวะ:</strong> อย่าให้เสียงพูดต่อเนื่องไม่หยุด ให้มีช่วงหายใจ</li>
+                    <li><strong>ทดสอบกับหูฟัง:</strong> ฟังด้วยหูฟังก่อน Export จะได้ยินปัญหาชัดเจน</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card">
+                <h4>📋 สรุปบทที่ 7</h4>
+                <ul>
+                    <li>CapCut AI Voice ใส่เสียงพากย์ AI ลงในวิดีโอได้ทันที ไม่ต้องใช้โปรแกรมอื่น</li>
+                    <li>มีเสียงไทยหลายแบบให้เลือก ทั้งผู้ชายและผู้หญิง หลายน้ำเสียง</li>
+                    <li>ปรับ Speed ได้ตาม่ต้องการ (0.75x - 1.5x)</li>
+                    <li>ใส่ร่วมกับ Background Music จาก Suno/Udio ได้</li>
+                    <li>Export เป็น MP4 คุณภาพสูง นำไปใช้งานได้ทันที</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-5 mb-4">
+                <a href="chapter06.html" class="btn btn-outline-secondary">← บทที่ 6</a>
+                <a href="chapter08.html" class="btn btn-primary">บทที่ 8 →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

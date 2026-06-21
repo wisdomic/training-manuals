@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 7: Suno AI — สร้างเพลงประกอบ | AI วิดีโอครบวงจร</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">📖 AI วิดีโอครบวงจร</a>
+            <span class="nav-chapter-text">บทที่ 7: Suno AI — สร้างเพลงประกอบ</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <div class="chapter-number">บทที่ 7</div>
+                <h1>Suno AI — สร้างเพลงประกอบวิดีโอ</h1>
+                <p class="chapter-subtitle">เพลง Intro/Outro, Background Music, ปรับแต่งแนวเพลง, Export</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เข้าใจการทำงานของ Suno AI ในการสร้างเพลง</li>
+                    <li>สามารถเขียน Prompt สร้างเพลงที่เหมาะกับวิดีโอได้</li>
+                    <li>รู้จักประเภทเพลงที่เหมาะกับวิดีโอแต่ละแบบ</li>
+                    <li>สร้างเพลง Intro, Outro, และ Background Music ได้</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">🎵 Suno AI คืออะไร?</h3>
+
+            <p><strong>Suno AI</strong> เป็น AI สร้างเพลงที่สามารถสร้างเพลงเต็มรูปแบบ (ร้อง + ดนตรี) จากข้อความ เหมาะสำหรับทำเพลงประกอบวิดีโอ ทั้ง Intro, Outro, และ Background Music</p>
+
+            <div class="info-card">
+                <h5>✨ จุดเด่นของ Suno AI</h5>
+                <ul>
+                    <li><strong>สร้างเพลงเต็มเพลง:</strong> ทั้งเนื้อร้อง + ดนตรี + จังหวะ</li>
+                    <li><strong>หลายแนวเพลง:</strong> Pop, Jazz, Classical, Electronic, Thai</li>
+                    <li><strong>Instrumental ได้:</strong> สร้างเฉพาะดนตรี ไม่มีเนื้อร้อง</li>
+                    <li><strong>ปรับได้:</strong> เลือกอารมณ์ จังหวะ เครื่องดนตรี</li>
+                    <li><strong>ฟรี 5 เพลง/วัน:</strong> เพียงพอสำหรับการเรียนรู้</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h5>📋 ข้อมูลการใช้งาน</h5>
+                <div class="table-responsive">
+                    <table class="table table-custom">
+                        <tbody>
+                            <tr><td><strong>เว็บไซต์</strong></td><td>suno.com</td></tr>
+                            <tr><td><strong>Free Plan</strong></td><td>50 credits/วัน (≈5 เพลง)</td></tr>
+                            <tr><td><strong>Pro Plan</strong></td><td>$10/เดือน, 500 เพลง/เดือน</td></tr>
+                            <tr><td><strong>ความยาวเพลง</strong></td><td>สูงสุด 4 นาที</td></tr>
+                            <tr><td><strong>Output</strong></td><td>MP3 (ดาวน์โหลดได้)</td></tr>
+                            <tr><td><strong>ลิขสิทธิ์</strong></td><td>Free = non-commercial, Pro = commercial use</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3 class="section-header">🎼 ประเภทเพลงสำหรับวิดีโอ</h3>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h5>🎬 Intro Music</h5>
+                        <p>เพลงเปิดวิดีโอ 5-10 วินาที</p>
+                        <ul class="mb-0">
+                            <li>จังหวะเร็ว กระตุ้น</li>
+                            <li>จำง่าย ติดหู</li>
+                            <li>ใช้เป็น "signature" ของช่อง</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h5>🔚 Outro Music</h5>
+                        <p>เพลงปิดวิดีโอ 10-15 วินาที</p>
+                        <ul class="mb-0">
+                            <li>จังหวะช้าลง ค่อยๆ จบ</li>
+                            <li>ให้ความรู้สึก "สมบูรณ์"</li>
+                            <li>เปิดโอกาสใส่ End Card</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h5>🎶 Background Music</h5>
+                        <p>เพลงพื้นหลังตลอดวิดีโอ</p>
+                        <ul class="mb-0">
+                            <li>เบาๆ ไม่ดังกว่าเสียงพูด</li>
+                            <li>Instrumental (ไม่มีร้อง)</li>
+                            <li>สร้างบรรยากาศ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-header">🚀 ขั้นตอนสร้างเพลงใน Suno</h3>
+
+            <div class="step-box">
+                <span class="step-number">1</span>
+                <strong>Login เข้า Suno</strong>
+                <p class="mb-0 mt-1 text-muted">ไปที่ suno.com > Login (ใช้ Google Account ได้)</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">2</span>
+                <strong>กด "Create"</strong>
+                <p class="mb-0 mt-1 text-muted">กดปุ่ม Create ที่มุมซ้ายบน</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">3</span>
+                <strong>เลือกโหมด</strong>
+                <p class="mb-0 mt-1 text-muted">Simple Mode (พิมพ์อธิบาย) หรือ Custom Mode (ใส่เนื้อเพลง + สไตล์)</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">4</span>
+                <strong>เขียน Prompt / ใส่รายละเอียด</strong>
+                <p class="mb-0 mt-1 text-muted">อธิบายเพลงที่ต้องการ หรือใส่เนื้อเพลง + กำหนดแนว</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">5</span>
+                <strong>ติ๊ก "Instrumental"</strong> (ถ้าต้องการเฉพาะดนตรี)
+                <p class="mb-0 mt-1 text-muted">สำหรับ Background Music ควรเลือก Instrumental</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">6</span>
+                <strong>กด Create</strong>
+                <p class="mb-0 mt-1 text-muted">รอ 30-60 วินาที Suno จะสร้างเพลง 2 เวอร์ชัน</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">7</span>
+                <strong>ฟัง เลือก และ Download</strong>
+                <p class="mb-0 mt-1 text-muted">ฟังทั้ง 2 เวอร์ชัน เลือกที่ชอบ แล้ว Download MP3</p>
+            </div>
+
+            <h3 class="section-header">📝 ตัวอย่าง Prompt สร้างเพลง</h3>
+
+            <h4 class="section-header-secondary">🎬 Prompt สำหรับ Intro Music</h4>
+
+            <div class="prompt-box">
+Upbeat corporate intro music, 10 seconds,<br>
+modern and inspiring, electronic pop style,<br>
+suitable for government organization video,<br>
+energetic start then transition smoothly,<br>
+instrumental only, no vocals
+            </div>
+
+            <h4 class="section-header-secondary">🔚 Prompt สำหรับ Outro Music</h4>
+
+            <div class="prompt-box">
+Gentle outro music, 15 seconds, warm and hopeful,<br>
+acoustic guitar with soft piano,<br>
+gradually fading out, emotional and uplifting,<br>
+suitable for disability service center video,<br>
+instrumental only
+            </div>
+
+            <h4 class="section-header-secondary">🎶 Prompt สำหรับ Background Music</h4>
+
+            <div class="prompt-box">
+Soft background music for corporate video,<br>
+calm and professional, light piano and strings,<br>
+2 minutes long, loopable, not distracting,<br>
+warm atmosphere, moderate tempo (90 BPM),<br>
+instrumental only, no drums, no vocals
+            </div>
+
+            <h4 class="section-header-secondary">🎵 Prompt สำหรับเพลงมีเนื้อร้อง (Custom Mode)</h4>
+
+            <div class="prompt-box">
+[Style: Thai Pop, Inspirational, Warm]<br><br>
+[Verse 1]<br>
+ทุกคนมีสิทธิ์จะฝัน มีสิทธิ์จะก้าวไป<br>
+ไม่ว่าเป็นใครก็ตาม เราอยู่ข้างเธอเสมอ<br><br>
+[Chorus]<br>
+เราดูแลเธอ ด้วยหัวใจ<br>
+ศูนย์บริการคนพิการ พร้อมอยู่เคียงข้าง<br>
+ทุกก้าวที่เดิน ทุกวันที่ผ่าน<br>
+เราจะอยู่ตรงนี้ ดูแลเธอเสมอ
+            </div>
+
+            <h3 class="section-header">🎛️ แนวเพลงที่เหมาะกับวิดีโอ</h3>
+
+            <div class="table-responsive">
+                <table class="table table-custom">
+                    <thead>
+                        <tr><th>ประเภทวิดีโอ</th><th>แนวเพลงแนะนำ</th><th>คำสำคัญใน Prompt</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>PR องค์กร</td><td>Corporate, Upbeat</td><td>corporate, modern, inspiring</td></tr>
+                        <tr><td>ให้ความรู้</td><td>Calm, Ambient</td><td>calm, educational, light</td></tr>
+                        <tr><td>ให้กำลังใจ</td><td>Inspirational, Warm</td><td>hopeful, uplifting, warm</td></tr>
+                        <tr><td>กิจกรรม/Event</td><td>Pop, Energetic</td><td>fun, energetic, celebration</td></tr>
+                        <tr><td>สารคดี</td><td>Cinematic, Orchestral</td><td>cinematic, emotional, strings</td></tr>
+                        <tr><td>Social Media</td><td>Lo-fi, Chill</td><td>chill, trendy, short</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h5>🔬 Lab 7.1: สร้างเพลง Background Music</h5>
+                <p><strong>เวลา:</strong> 20 นาที</p>
+                <p><strong>คำสั่ง:</strong> ใช้ Suno สร้างเพลงพื้นหลังสำหรับวิดีโอ</p>
+                <ol>
+                    <li>Login เข้า Suno (suno.com)</li>
+                    <li>กด Create > เลือก Simple Mode</li>
+                    <li>พิมพ์ Prompt:
+                        <div class="prompt-box" style="margin-top:8px;">
+Soft instrumental background music for Thai disability<br>
+service center promotional video, warm and welcoming,<br>
+piano and gentle strings, 2 minutes, calm tempo
+                        </div>
+                    </li>
+                    <li>ติ๊ก ✅ Instrumental</li>
+                    <li>กด Create > รอสร้างเพลง</li>
+                    <li>ฟังทั้ง 2 เวอร์ชัน เลือกที่เหมาะสม</li>
+                    <li>Download MP3 เก็บไว้ในโฟลเดอร์ "music"</li>
+                    <li>ตั้งชื่อ: bgm_main.mp3</li>
+                </ol>
+            </div>
+
+            <div class="exercise-box">
+                <h5>🔬 Lab 7.2: สร้างเพลง Intro & Outro</h5>
+                <p><strong>เวลา:</strong> 20 นาที</p>
+                <p><strong>คำสั่ง:</strong> สร้างเพลงเปิดและปิดวิดีโอ</p>
+                <ol>
+                    <li>สร้างเพลง Intro (ใช้ Prompt ตัวอย่างด้านบน)</li>
+                    <li>สร้างเพลง Outro (ใช้ Prompt ตัวอย่างด้านบน)</li>
+                    <li>ฟังแล้วตรวจสอบ:
+                        <ul>
+                            <li>Intro ดึงดูดความสนใจไหม?</li>
+                            <li>Outro ให้ความรู้สึก "จบสมบูรณ์" ไหม?</li>
+                            <li>เข้ากับ Background Music ไหม?</li>
+                        </ul>
+                    </li>
+                    <li>Download ตั้งชื่อ: intro_music.mp3, outro_music.mp3</li>
+                    <li>ถ้าไม่ถูกใจ ปรับ Prompt แล้วสร้างใหม่</li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5>💡 Tips & Tricks</h5>
+                <ul class="mb-0">
+                    <li><strong>Instrumental สำหรับ BG:</strong> Background Music ต้องไม่มีเนื้อร้อง เพราะจะรบกวน Voice Over</li>
+                    <li><strong>ความยาวพอดี:</strong> Intro 5-10 วินาที, Outro 10-15 วินาที, BG = ความยาววิดีโอ</li>
+                    <li><strong>ลดเสียงเพลง:</strong> BG ควรเบากว่าเสียงพูด 50-70% (ปรับใน CapCut)</li>
+                    <li><strong>Loopable:</strong> ถ้าเพลงสั้นกว่าวิดีโอ ใส่คำว่า "loopable" เพื่อให้วนซ้ำได้</li>
+                    <li><strong>ลองหลายแนว:</strong> สร้าง 3-4 แนว แล้วเลือกที่เข้ากับวิดีโอมากที่สุด</li>
+                    <li><strong>ความดัง:</strong> เพลงจาก Suno อาจดังไป ไม่ต้องกังวล — ลดเสียงได้ใน CapCut</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="summary-card">
+                <h5>📋 สรุปบทที่ 7</h5>
+                <ul class="mb-0">
+                    <li>Suno AI สร้างเพลงเต็มรูปแบบจากข้อความ ทั้งมีเนื้อร้องและ Instrumental</li>
+                    <li>วิดีโอต้องใช้เพลง 3 ประเภท: Intro, Outro, Background Music</li>
+                    <li>Background Music ต้องเป็น Instrumental ไม่มีเนื้อร้อง</li>
+                    <li>เลือกแนวเพลงให้เหมาะกับประเภทวิดีโอ</li>
+                    <li>ไฟล์เพลงที่ได้จะนำไปรวมกับเสียงพากย์และคลิปวิดีโอใน CapCut (บทที่ 8)</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="chapter-nav d-flex justify-content-between">
+                <a href="chapter06.html" class="btn btn-outline-secondary">← บทที่ 6</a>
+                <a href="chapter08.html" class="btn btn-primary">บทที่ 8 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

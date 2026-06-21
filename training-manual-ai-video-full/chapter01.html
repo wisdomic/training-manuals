@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 1: พื้นฐาน AI Video | AI วิดีโอครบวงจร</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">📖 AI วิดีโอครบวงจร</a>
+            <span class="nav-chapter-text">บทที่ 1: พื้นฐาน AI Video</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <div class="chapter-number">บทที่ 1</div>
+                <h1>พื้นฐาน AI Video</h1>
+                <p class="chapter-subtitle">ภาพรวมกระบวนการสร้างวิดีโอด้วย AI, Workflow 7 ขั้นตอน, เครื่องมือที่ใช้</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เข้าใจภาพรวมของการสร้างวิดีโอด้วย AI ตั้งแต่ต้นจนจบ</li>
+                    <li>รู้จัก Workflow 7 ขั้นตอนการผลิตวิดีโอ AI</li>
+                    <li>สามารถเลือกเครื่องมือ AI ที่เหมาะสมกับแต่ละขั้นตอนได้</li>
+                    <li>เข้าใจข้อดีและข้อจำกัดของ AI ในการผลิตวิดีโอ</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">📺 ทำไมต้องสร้างวิดีโอด้วย AI?</h3>
+
+            <p>ในปัจจุบัน วิดีโอ เป็นสื่อที่ทรงพลังที่สุดในการสื่อสาร ไม่ว่าจะเป็นการประชาสัมพันธ์องค์กร การอธิบายบริการ หรือการให้ความรู้ แต่ปัญหาคือ การผลิตวิดีโอแบบเดิมต้องใช้ทั้งทีมงาน อุปกรณ์ราคาแพง และเวลามาก</p>
+
+            <p><strong>AI เข้ามาเปลี่ยนเกมทั้งหมด</strong> — ตอนนี้คนคนเดียวสามารถสร้างวิดีโอคุณภาพดีได้ภายในไม่กี่ชั่วโมง โดยไม่ต้องมีทักษะด้านวิดีโอมาก่อน</p>
+
+            <div class="info-card">
+                <h5>🔄 เปรียบเทียบ: แบบเดิม vs แบบ AI</h5>
+                <div class="table-responsive">
+                    <table class="table table-custom">
+                        <thead>
+                            <tr>
+                                <th>หัวข้อ</th>
+                                <th>แบบเดิม</th>
+                                <th>แบบ AI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ทีมงาน</td><td>5-10 คน</td><td>1-2 คน</td></tr>
+                            <tr><td>เวลาผลิต</td><td>1-4 สัปดาห์</td><td>1-3 วัน</td></tr>
+                            <tr><td>งบประมาณ</td><td>50,000-500,000 บาท</td><td>0-5,000 บาท</td></tr>
+                            <tr><td>อุปกรณ์</td><td>กล้อง ไฟ ไมค์ สตูดิโอ</td><td>คอมพิวเตอร์ + อินเทอร์เน็ต</td></tr>
+                            <tr><td>ทักษะที่ต้องมี</td><td>ถ่ายภาพ ตัดต่อ ออกแบบ</td><td>พิมพ์ Prompt + ใช้เครื่องมือ AI</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3 class="section-header">🔄 Workflow 7 ขั้นตอน สร้างวิดีโอด้วย AI</h3>
+
+            <p>กระบวนการสร้างวิดีโอด้วย AI ที่เราจะเรียนรู้ตลอด 10 บทนี้ แบ่งออกเป็น 7 ขั้นตอนหลัก:</p>
+
+            <div class="step-box">
+                <span class="step-number">1</span>
+                <strong>วางแผนและเขียนสคริปต์ (ChatGPT)</strong>
+                <p class="mb-0 mt-1 text-muted">กำหนดหัวข้อ กลุ่มเป้าหมาย ความยาว แล้วใช้ ChatGPT เขียนบทพูด แบ่ง Scene</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">2</span>
+                <strong>สร้างภาพประกอบ (DALL-E / Whisk)</strong>
+                <p class="mb-0 mt-1 text-muted">สร้างภาพ Storyboard ภาพประกอบแต่ละ Scene ให้ตรงกับเนื้อหา</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">3</span>
+                <strong>สร้างคลิปวิดีโอ (Google Veo 2)</strong>
+                <p class="mb-0 mt-1 text-muted">แปลงภาพ หรือข้อความ ให้กลายเป็นคลิปวิดีโอสั้นๆ 5-10 วินาที</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">4</span>
+                <strong>สร้าง AI Avatar (HeyGen)</strong>
+                <p class="mb-0 mt-1 text-muted">สร้างตัวละคร AI ที่พูดได้ เหมาะสำหรับเป็นพิธีกรหรือผู้บรรยาย</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">5</span>
+                <strong>สร้างเสียงพากย์ (ElevenLabs)</strong>
+                <p class="mb-0 mt-1 text-muted">สร้างเสียงพากย์ภาษาไทยคุณภาพสูง เลือกน้ำเสียง อารมณ์ได้</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">6</span>
+                <strong>สร้างเพลงประกอบ (Suno AI)</strong>
+                <p class="mb-0 mt-1 text-muted">สร้างเพลง Intro/Outro และ Background Music ที่เหมาะกับวิดีโอ</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">7</span>
+                <strong>ตัดต่อและ Export (CapCut)</strong>
+                <p class="mb-0 mt-1 text-muted">รวมทุกอย่างเข้าด้วยกัน ใส่ซับ ใส่เอฟเฟกต์ แล้ว Export เป็นวิดีโอสมบูรณ์</p>
+            </div>
+
+            <h3 class="section-header">🛠️ เครื่องมือ AI ที่ใช้ในการอบรม</h3>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h5>🤖 ChatGPT (OpenAI)</h5>
+                        <ul>
+                            <li><strong>ใช้ทำ:</strong> เขียนสคริปต์ บทพูด แผนงาน</li>
+                            <li><strong>ข้อดี:</strong> เข้าใจภาษาไทยดี ใช้ง่าย</li>
+                            <li><strong>ค่าใช้จ่าย:</strong> ฟรี (GPT-3.5) หรือ Plus $20/เดือน</li>
+                            <li><strong>เว็บไซต์:</strong> chat.openai.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h5>🎨 DALL-E 3 / Google Whisk</h5>
+                        <ul>
+                            <li><strong>ใช้ทำ:</strong> สร้างภาพจากข้อความ</li>
+                            <li><strong>ข้อดี:</strong> คุณภาพสูง หลายสไตล์</li>
+                            <li><strong>ค่าใช้จ่าย:</strong> ฟรี (Whisk) / Credit (DALL-E)</li>
+                            <li><strong>เว็บไซต์:</strong> labs.google / openai.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h5>🎬 Google Veo 2 (Flow)</h5>
+                        <ul>
+                            <li><strong>ใช้ทำ:</strong> สร้างวิดีโอจาก Text/Image</li>
+                            <li><strong>ข้อดี:</strong> คุณภาพสูง เคลื่อนไหวสมจริง</li>
+                            <li><strong>ค่าใช้จ่าย:</strong> ฟรี (จำกัดครั้ง)</li>
+                            <li><strong>เว็บไซต์:</strong> labs.google</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h5>👤 HeyGen</h5>
+                        <ul>
+                            <li><strong>ใช้ทำ:</strong> สร้าง AI Avatar พูดได้</li>
+                            <li><strong>ข้อดี:</strong> Avatar สมจริง หลายภาษา</li>
+                            <li><strong>ค่าใช้จ่าย:</strong> Free trial / $29/เดือน</li>
+                            <li><strong>เว็บไซต์:</strong> heygen.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h5>🎙️ ElevenLabs</h5>
+                        <ul>
+                            <li><strong>ใช้ทำ:</strong> สร้างเสียงพากย์ AI</li>
+                            <li><strong>ข้อดี:</strong> เสียงเป็นธรรมชาติ Clone ได้</li>
+                            <li><strong>ค่าใช้จ่าย:</strong> ฟรี 10,000 ตัวอักษร/เดือน</li>
+                            <li><strong>เว็บไซต์:</strong> elevenlabs.io</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <h5>🎵 Suno AI</h5>
+                        <ul>
+                            <li><strong>ใช้ทำ:</strong> สร้างเพลงจากข้อความ</li>
+                            <li><strong>ข้อดี:</strong> หลายแนวเพลง คุณภาพดี</li>
+                            <li><strong>ค่าใช้จ่าย:</strong> ฟรี 5 เพลง/วัน</li>
+                            <li><strong>เว็บไซต์:</strong> suno.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h5>✂️ CapCut (ByteDance)</h5>
+                <ul>
+                    <li><strong>ใช้ทำ:</strong> ตัดต่อวิดีโอ รวมทุกชิ้นงาน</li>
+                    <li><strong>ข้อดี:</strong> ฟรี ใช้ง่าย มี AI Caption, Template มากมาย</li>
+                    <li><strong>ค่าใช้จ่าย:</strong> ฟรี (Pro $9.99/เดือน)</li>
+                    <li><strong>แพลตฟอร์ม:</strong> PC, Mac, มือถือ, Web</li>
+                    <li><strong>เว็บไซต์:</strong> capcut.com</li>
+                </ul>
+            </div>
+
+            <h3 class="section-header">📐 การวางแผนก่อนเริ่มทำวิดีโอ</h3>
+
+            <p>ก่อนจะเริ่มใช้เครื่องมือใดๆ สิ่งสำคัญที่สุดคือ <strong>การวางแผน</strong> ให้ชัดเจนก่อน ตอบคำถาม 5 ข้อนี้ให้ได้:</p>
+
+            <div class="info-card">
+                <h5>📝 5 คำถามก่อนเริ่มทำวิดีโอ</h5>
+                <ol>
+                    <li><strong>ทำวิดีโอเรื่องอะไร?</strong> — หัวข้อหลัก เช่น แนะนำบริการ, ประชาสัมพันธ์กิจกรรม</li>
+                    <li><strong>ทำให้ใครดู?</strong> — กลุ่มเป้าหมาย เช่น คนพิการ, ผู้ดูแล, ประชาชนทั่วไป</li>
+                    <li><strong>ความยาวเท่าไหร่?</strong> — แนะนำ 1-3 นาที สำหรับ Social Media</li>
+                    <li><strong>เผยแพร่ที่ไหน?</strong> — YouTube, Facebook, TikTok, เว็บไซต์</li>
+                    <li><strong>สไตล์แบบไหน?</strong> — จริงจัง, สนุกสนาน, อบอุ่น, Professional</li>
+                </ol>
+            </div>
+
+            <h3 class="section-header">🎯 ประเภทวิดีโอที่เหมาะกับงานองค์กร</h3>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="step-box">
+                        <strong>🏢 วิดีโอแนะนำองค์กร</strong>
+                        <p class="text-muted mb-0">แนะนำหน่วยงาน บริการ ภารกิจ 1-2 นาที</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="step-box">
+                        <strong>📢 วิดีโอประชาสัมพันธ์</strong>
+                        <p class="text-muted mb-0">ประกาศกิจกรรม โครงการ 30-60 วินาที</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="step-box">
+                        <strong>📖 วิดีโอให้ความรู้</strong>
+                        <p class="text-muted mb-0">สอนขั้นตอน อธิบายสิทธิ์ 2-5 นาที</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="step-box">
+                        <strong>🎉 วิดีโอกิจกรรม</strong>
+                        <p class="text-muted mb-0">สรุปกิจกรรม Event ที่จัดขึ้น 1-3 นาที</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h5>🔬 Lab 1.1: วางแผนวิดีโอของคุณ</h5>
+                <p><strong>เวลา:</strong> 15 นาที</p>
+                <p><strong>คำสั่ง:</strong> ตอบคำถาม 5 ข้อ สำหรับวิดีโอที่คุณอยากทำ</p>
+                <ol>
+                    <li>เปิด Google Docs หรือ Notepad ขึ้นมา</li>
+                    <li>เขียนตอบ 5 คำถามข้างต้น:
+                        <ul>
+                            <li>หัวข้อวิดีโอ: ..................................</li>
+                            <li>กลุ่มเป้าหมาย: ..................................</li>
+                            <li>ความยาว: ..................................</li>
+                            <li>เผยแพร่ที่: ..................................</li>
+                            <li>สไตล์: ..................................</li>
+                        </ul>
+                    </li>
+                    <li>แชร์กับเพื่อนข้างๆ แล้วให้ feedback กัน</li>
+                    <li>ปรับปรุงตามคำแนะนำ</li>
+                </ol>
+                <p class="mb-0"><strong>💡 ตัวอย่าง:</strong> วิดีโอแนะนำศูนย์บริการคนพิการ จังหวัดของท่าน ความยาว 1.5 นาที สำหรับ Facebook สไตล์อบอุ่นเป็นมิตร</p>
+            </div>
+
+            <div class="exercise-box">
+                <h5>🔬 Lab 1.2: สมัครบัญชีเครื่องมือ AI</h5>
+                <p><strong>เวลา:</strong> 20 นาที</p>
+                <p><strong>คำสั่ง:</strong> สมัครบัญชีเครื่องมือทั้งหมดที่ใช้ในการอบรม</p>
+                <ol>
+                    <li>สมัคร ChatGPT — ไปที่ chat.openai.com > Sign Up</li>
+                    <li>สมัคร Google Account (ถ้ายังไม่มี) — สำหรับใช้ Veo 2 + Whisk</li>
+                    <li>สมัคร HeyGen — ไปที่ heygen.com > Free Trial</li>
+                    <li>สมัคร ElevenLabs — ไปที่ elevenlabs.io > Sign Up</li>
+                    <li>สมัคร Suno AI — ไปที่ suno.com > Sign Up</li>
+                    <li>ดาวน์โหลด CapCut — ไปที่ capcut.com > Download</li>
+                    <li>ทดสอบ Login เข้าแต่ละเครื่องมือให้สำเร็จ</li>
+                </ol>
+                <p class="mb-0"><strong>⚠️ หมายเหตุ:</strong> ใช้ Email เดียวกันสมัครทุกบริการ จะจำง่ายกว่า</p>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5>💡 Tips & Tricks</h5>
+                <ul class="mb-0">
+                    <li><strong>ใช้ Email เดียว:</strong> สมัครทุกบริการด้วย Gmail เดียวกัน จะจัดการง่าย</li>
+                    <li><strong>Bookmark:</strong> บุ๊คมาร์คทุกเว็บไซต์ไว้ในโฟลเดอร์เดียว เช่น "AI Video Tools"</li>
+                    <li><strong>เก็บ Password:</strong> จดรหัสผ่านทุกบริการไว้ในที่ปลอดภัย</li>
+                    <li><strong>ฝึกทีละขั้น:</strong> อย่ารีบ ทำทีละเครื่องมือให้คล่องก่อน แล้วค่อยรวมกัน</li>
+                    <li><strong>อินเทอร์เน็ต:</strong> ต้องมี WiFi ที่เสถียร เพราะทุกเครื่องมือทำงานออนไลน์</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="summary-card">
+                <h5>📋 สรุปบทที่ 1</h5>
+                <ul class="mb-0">
+                    <li>AI ช่วยให้คนคนเดียวสามารถผลิตวิดีโอคุณภาพดีได้ ประหยัดทั้งเวลาและงบประมาณ</li>
+                    <li>Workflow 7 ขั้นตอน: สคริปต์ → ภาพ → วิดีโอ → Avatar → เสียง → เพลง → ตัดต่อ</li>
+                    <li>เครื่องมือหลัก 7 ตัว: ChatGPT, DALL-E, Whisk, Veo 2, HeyGen, ElevenLabs, Suno AI, CapCut</li>
+                    <li>การวางแผนก่อนเริ่มทำ สำคัญที่สุด — ตอบ 5 คำถามให้ได้ก่อน</li>
+                    <li>ทุกเครื่องมือมีแบบฟรีให้ใช้ เพียงพอสำหรับการเรียนรู้</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="chapter-nav d-flex justify-content-between">
+                <a href="index.html" class="btn btn-outline-secondary">← หน้าหลัก</a>
+                <a href="chapter02.html" class="btn btn-primary">บทที่ 2 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

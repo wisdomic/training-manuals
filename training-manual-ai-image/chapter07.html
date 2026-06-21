@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 7: Prompt Engineering สำหรับสร้างภาพ — AI สร้างรูปภาพ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 AI สร้างรูปภาพ</a>
+        <span class="text-white nav-text">บทที่ 7</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 7</h1>
+            <h2 class="fw-normal text-muted">Prompt Engineering สำหรับสร้างภาพ</h2>
+            <p class="lead">เทคนิคเขียนคำสั่งให้ AI สร้างภาพตรงใจที่สุด</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>เข้าใจโครงสร้าง Prompt สร้างภาพที่ดี</li>
+                <li>ใช้องค์ประกอบ 5 ส่วนในการเขียน Prompt ได้</li>
+                <li>เข้าใจ Negative Prompt และการใช้งาน</li>
+                <li>ฝึกเขียน Prompt สร้างภาพ 10 แบบได้</li>
+            </ul>
+        </div>
+
+        <!-- 7.1 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">7.1 โครงสร้าง Prompt สร้างภาพที่ดี</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🧩 5 องค์ประกอบของ Prompt ภาพ</h5>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>องค์ประกอบ</th>
+                                    <th>คำอธิบาย</th>
+                                    <th>ตัวอย่าง</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><strong>Subject</strong></td>
+                                    <td>สิ่งที่ต้องการให้อยู่ในภาพ</td>
+                                    <td>"แมวสีส้ม", "กลุ่มคนพิการ"</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><strong>Style</strong></td>
+                                    <td>สไตล์/เทคนิคการวาด</td>
+                                    <td>"watercolor", "flat design", "realistic"</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><strong>Composition</strong></td>
+                                    <td>มุมกล้อง/การจัดองค์ประกอบ</td>
+                                    <td>"close-up", "bird's eye view", "wide shot"</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td><strong>Mood/Lighting</strong></td>
+                                    <td>บรรยากาศ/แสง</td>
+                                    <td>"warm lighting", "สดใส", "มืดลึกลับ"</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td><strong>Technical</strong></td>
+                                    <td>ขนาด/คุณภาพ</td>
+                                    <td>"16:9", "high resolution", "4K"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>📝 สูตรรวม</h5>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary">
+                    <code>[Subject] + [Style] + [Composition] + [Mood] + [Technical]</code>
+                </div>
+                <p class="mt-3"><strong>ตัวอย่างเต็ม:</strong></p>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary">
+                    <code>"กลุ่มคนพิการทางการมองเห็นกำลังใช้คอมพิวเตอร์อย่างมีความสุข, สไตล์ flat design สีสดใส, มุมกว้าง เห็นทั้งห้อง, บรรยากาศอบอุ่นแสงธรรมชาติ, อัตราส่วน 16:9 ความละเอียดสูง"</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7.2 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">7.2 คำศัพท์สำคัญสำหรับ Prompt ภาพ</h3>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="info-card h-100">
+                        <h5>🎨 Style Keywords</h5>
+                        <ul class="mb-0">
+                            <li><code>realistic</code> — ถ่ายเหมือนจริง</li>
+                            <li><code>cartoon</code> — การ์ตูน</li>
+                            <li><code>watercolor</code> — สีน้ำ</li>
+                            <li><code>oil painting</code> — สีน้ำมัน</li>
+                            <li><code>flat design</code> — แบน เรียบง่าย</li>
+                            <li><code>3D render</code> — สามมิติ</li>
+                            <li><code>minimalist</code> — น้อยแต่มาก</li>
+                            <li><code>vintage</code> — ย้อนยุค</li>
+                            <li><code>cyberpunk</code> — ล้ำอนาคต</li>
+                            <li><code>anime</code> — อนิเมะ</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="info-card h-100">
+                        <h5>📐 Composition Keywords</h5>
+                        <ul class="mb-0">
+                            <li><code>close-up</code> — ถ่ายใกล้</li>
+                            <li><code>wide shot</code> — ถ่ายกว้าง</li>
+                            <li><code>bird's eye view</code> — มุมสูง</li>
+                            <li><code>low angle</code> — มุมต่ำ</li>
+                            <li><code>symmetrical</code> — สมมาตร</li>
+                            <li><code>rule of thirds</code> — กฎสามส่วน</li>
+                            <li><code>centered</code> — อยู่กลาง</li>
+                            <li><code>full body</code> — เต็มตัว</li>
+                            <li><code>portrait</code> — ครึ่งตัว</li>
+                            <li><code>panoramic</code> — กว้างมาก</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="info-card h-100">
+                        <h5>💡 Lighting Keywords</h5>
+                        <ul class="mb-0">
+                            <li><code>natural light</code> — แสงธรรมชาติ</li>
+                            <li><code>golden hour</code> — แสงช่วงเย็น</li>
+                            <li><code>dramatic lighting</code> — แสงเข้ม</li>
+                            <li><code>soft lighting</code> — แสงนุ่ม</li>
+                            <li><code>backlit</code> — แสงข้างหลัง</li>
+                            <li><code>neon</code> — แสงนีออน</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="info-card h-100">
+                        <h5>🎭 Mood Keywords</h5>
+                        <ul class="mb-0">
+                            <li><code>happy, cheerful</code> — สดใส</li>
+                            <li><code>calm, peaceful</code> — สงบ</li>
+                            <li><code>professional</code> — มืออาชีพ</li>
+                            <li><code>mysterious</code> — ลึกลับ</li>
+                            <li><code>futuristic</code> — ล้ำอนาคต</li>
+                            <li><code>warm, cozy</code> — อบอุ่น</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7.3 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">7.3 Negative Prompt คืออะไร</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🚫 Negative Prompt = "สิ่งที่ไม่ต้องการ"</h5>
+                <p>Negative Prompt คือการบอก AI ว่า <strong>"อย่าใส่สิ่งนี้"</strong> ในภาพ — ช่วยหลีกเลี่ยงสิ่งที่ไม่ต้องการ</p>
+
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-danger">
+                    <strong>❌ Negative Prompt ตัวอย่าง:</strong><br>
+                    <code>"ห้ามมีตัวอักษรในภาพ, ไม่ต้องมีกรอบ, ไม่ต้องมีลายน้ำ"</code>
+                </div>
+
+                <p class="mt-3"><strong>วิธีใช้กับ DALL-E (ChatGPT):</strong></p>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary">
+                    <code>"สร้างภาพ... [เนื้อหา] ... ห้ามมีตัวอักษรในภาพ ห้ามมีลายน้ำ"</code>
+                </div>
+
+                <p class="mt-3"><strong>วิธีใช้กับ Firefly:</strong> มีช่อง "Exclude" ให้พิมพ์สิ่งที่ไม่ต้องการแยกต่างหาก</p>
+            </div>
+
+            <div class="alert alert-warning">
+                <h5>💡 Negative Prompt ที่ใช้บ่อย</h5>
+                <ul class="mb-0">
+                    <li><code>no text, no letters</code> — ไม่ต้องมีตัวอักษร</li>
+                    <li><code>no watermark</code> — ไม่ต้องมีลายน้ำ</li>
+                    <li><code>no border, no frame</code> — ไม่ต้องมีกรอบ</li>
+                    <li><code>no blurry</code> — ไม่เบลอ</li>
+                    <li><code>no extra fingers</code> — ไม่ต้องมีนิ้วเกิน (ปัญหาที่พบบ่อย)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 7.4 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">7.4 ตัวอย่าง Prompt สำหรับงานราชการ</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>📋 Prompt พร้อมใช้ 10 แบบ</h5>
+
+                <div class="mb-3">
+                    <strong>1. โปสเตอร์อบรม:</strong>
+                    <div class="prompt-example"><code>"สร้างภาพพื้นหลังโปสเตอร์อบรม AI สีน้ำเงินขาว มีไอคอนเทคโนโลยี สไตล์ flat design มีพื้นที่ว่างตรงกลางสำหรับใส่ข้อความ ขนาดแนวตั้ง"</code></div>
+                </div>
+
+                <div class="mb-3">
+                    <strong>2. Banner Facebook:</strong>
+                    <div class="prompt-example"><code>"สร้างภาพ Banner ขนาด 16:9 สำหรับ Facebook Page องค์กรคนพิการ สีสดใส มีภาพคนหลากหลายใช้เทคโนโลยี สไตล์ modern gradient"</code></div>
+                </div>
+
+                <div class="mb-3">
+                    <strong>3. โปสเตอร์รับสมัคร:</strong>
+                    <div class="prompt-example"><code>"สร้างภาพพื้นหลังประกาศรับสมัคร สีเขียวขาว สดใส มีไอคอนคนทำงาน สไตล์ flat design มืออาชีพ"</code></div>
+                </div>
+
+                <div class="mb-3">
+                    <strong>4. ภาพประกอบรายงาน:</strong>
+                    <div class="prompt-example"><code>"สร้างภาพ illustration คนพิการใช้ AI ในการทำงาน สไตล์ corporate สีน้ำเงินเทา มืออาชีพ"</code></div>
+                </div>
+
+                <div class="mb-3">
+                    <strong>5. ไอคอนโครงการ:</strong>
+                    <div class="prompt-example"><code>"สร้างไอคอนกลมๆ สำหรับโครงการ AI เพื่อคนพิการ สีม่วงน้ำเงิน มีภาพหุ่นยนต์จับมือคน สไตล์ flat minimal พื้นหลังขาว"</code></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lab -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">🔬 Lab ปฏิบัติ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 7.1 — ฝึกเขียน Prompt สร้างภาพ 10 แบบ</h5>
+
+                <p><strong>โจทย์:</strong> เขียน Prompt ตามสูตร 5 องค์ประกอบ แล้วสร้างภาพจริง</p>
+
+                <table class="table table-bordered table-sm">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>งาน</th>
+                            <th>สไตล์ที่กำหนด</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>โปสเตอร์กิจกรรม</td><td>Flat Design</td></tr>
+                        <tr><td>2</td><td>ภาพปก Facebook</td><td>Gradient</td></tr>
+                        <tr><td>3</td><td>ภาพประกอบบทความ</td><td>Watercolor</td></tr>
+                        <tr><td>4</td><td>ไอคอนโครงการ</td><td>3D Render</td></tr>
+                        <tr><td>5</td><td>ภาพคนพิการใช้ AI</td><td>Realistic</td></tr>
+                        <tr><td>6</td><td>Infographic พื้นหลัง</td><td>Minimalist</td></tr>
+                        <tr><td>7</td><td>การ์ดอวยพร</td><td>Cartoon</td></tr>
+                        <tr><td>8</td><td>ภาพหน้าปกรายงาน</td><td>Corporate</td></tr>
+                        <tr><td>9</td><td>สติกเกอร์ LINE</td><td>Cute Anime</td></tr>
+                        <tr><td>10</td><td>QR Code พื้นหลัง</td><td>Abstract</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึกภาพทั้ง 10 แบบ + Prompt ที่ใช้
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับบทนี้</h5>
+            <ul class="mb-0">
+                <li>เริ่มจาก Prompt สั้น → ดูผล → เพิ่มรายละเอียดทีละนิด</li>
+                <li>จด Prompt ที่ได้ผลดีไว้ — ใช้ซ้ำได้เป็น "Prompt Library"</li>
+                <li>ใช้ ChatGPT ช่วยเขียน Prompt ภาษาอังกฤษให้ได้ — "ช่วยเขียน prompt สร้างภาพ..."</li>
+                <li>ถ้า AI ใส่ตัวอักษรในภาพ — เพิ่ม "no text" ใน Prompt</li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปท้ายบท</h5>
+            <ul>
+                <li><strong>5 องค์ประกอบ Prompt ภาพ:</strong> Subject, Style, Composition, Mood, Technical</li>
+                <li><strong>ยิ่งละเอียด ยิ่งตรงใจ</strong> — แต่อย่ายาวเกินไป</li>
+                <li><strong>Negative Prompt:</strong> บอก AI ว่าไม่ต้องการอะไร</li>
+                <li><strong>จด Prompt ที่ดีไว้</strong> — สร้าง Prompt Library ของตัวเอง</li>
+                <li><strong>ฝึกบ่อยๆ</strong> — ยิ่งฝึก ยิ่งเขียน Prompt เก่ง</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="chapter06.html" class="btn btn-outline-dark">← บทที่ 6</a>
+            <a href="chapter08.html" class="btn btn-dark">บทที่ 8 →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

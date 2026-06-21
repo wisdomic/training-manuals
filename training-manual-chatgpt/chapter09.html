@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 9: ChatGPT กับการเขียนโปรแกรม & เว็บไซต์ — คู่มือฝึกอบรม ChatGPT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark sticky-top" style="background:#10a37f;">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ ChatGPT</a>
+        <span class="text-white nav-text">บทที่ 9 — วันที่ 5 เช้า</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+
+    <h1 class="mb-2">บทที่ 9: ChatGPT กับการเขียนโปรแกรม & เว็บไซต์</h1>
+    <p class="text-muted mb-4">วันที่ 5 ภาคเช้า | ระยะเวลา 3 ชั่วโมง | ระดับ: สูง</p>
+
+    <div class="alert alert-info">
+        <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+        <ul class="mb-0">
+            <li>เขียน Google Apps Script ด้วยความช่วยเหลือจาก ChatGPT ได้</li>
+            <li>สร้างเว็บไซต์ HTML/CSS ด้วย ChatGPT ได้</li>
+            <li>ใช้ Code Interpreter (Python) วิเคราะห์ข้อมูลและสร้างกราฟได้</li>
+            <li>ส่งโค้ดที่มีปัญหาให้ ChatGPT ช่วย Debug แก้ไขได้</li>
+        </ul>
+    </div>
+
+    <!-- Section 9.1 -->
+    <div class="section-header">
+        <h2>9.1 Google Apps Script — เขียนสคริปต์อัตโนมัติ</h2>
+        <p>ใช้ ChatGPT เขียนสคริปต์ที่ทำงานร่วมกับ Google Workspace</p>
+    </div>
+
+    <h3>Google Apps Script คืออะไร?</h3>
+    <p><strong>Google Apps Script (GAS)</strong> คือภาษาสคริปต์ที่ใช้ JavaScript เป็นพื้นฐาน ทำงานร่วมกับ Google Workspace ได้อย่างสมบูรณ์ เช่น Google Sheets, Gmail, Drive, Calendar, Forms — สามารถสร้างระบบอัตโนมัติได้โดยไม่ต้องติดตั้งซอฟต์แวร์เพิ่มเติม</p>
+
+    <h3>ตัวอย่างงานที่ทำได้ด้วย Google Apps Script</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>งานที่ทำได้</th>
+                    <th>รายละเอียด</th>
+                    <th>ระดับความยาก</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>ส่งอีเมลอัตโนมัติ</strong></td>
+                    <td>ส่งอีเมลแจ้งเตือนจาก Sheet ตามเงื่อนไข เช่น ใกล้ครบกำหนด</td>
+                    <td>ง่าย</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>สร้างเอกสาร PDF</strong></td>
+                    <td>ดึงข้อมูลจาก Sheet มาสร้างเป็น PDF อัตโนมัติ เช่น ใบประกาศ ใบเสร็จ</td>
+                    <td>กลาง</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>อ่านข้อมูลจาก Google Sheet</strong></td>
+                    <td>ดึงข้อมูล คำนวณ สรุปผล แล้วเขียนกลับลง Sheet</td>
+                    <td>ง่าย</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>สร้าง Google Form อัตโนมัติ</strong></td>
+                    <td>สร้างฟอร์มจาก Sheet โดยกำหนดคำถามและตัวเลือกจากข้อมูลที่มี</td>
+                    <td>กลาง</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>เชื่อมต่อ API ภายนอก</strong></td>
+                    <td>ดึงข้อมูลจาก API ภายนอก เช่น ค่าเงิน สภาพอากาศ หรือส่งข้อมูลไป Line</td>
+                    <td>สูง</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 1 — สร้างสคริปต์ส่งอีเมลอัตโนมัติ</strong>
+        <p class="mt-2 mb-1">ช่วยเขียน Google Apps Script ที่ทำงานดังนี้:</p>
+        <p class="mb-1">1. อ่านข้อมูลจาก Google Sheet ชื่อ "รายชื่อ" ที่มีคอลัมน์: ชื่อ, อีเมล, วันครบกำหนด</p>
+        <p class="mb-1">2. ตรวจสอบว่ามีรายการไหนที่วันครบกำหนดอยู่ภายใน 7 วัน</p>
+        <p class="mb-1">3. ส่งอีเมลแจ้งเตือนไปยังคนที่ใกล้ครบกำหนด</p>
+        <p class="mb-1">4. บันทึกสถานะว่าส่งแล้วในคอลัมน์ "สถานะ"</p>
+        <p class="mb-0">ต้องมี comment อธิบายทุกขั้นตอน เขียนเป็นภาษาไทย</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 2 — สคริปต์อ่านข้อมูลจาก Sheet แล้วสรุป</strong>
+        <p class="mt-2 mb-1">ช่วยเขียน Google Apps Script ที่:</p>
+        <p class="mb-1">1. เปิด Google Sheet ID: "xxxxxxxx" ชีต "ข้อมูลฝึกอบรม"</p>
+        <p class="mb-1">2. อ่านข้อมูลทั้งหมด (คอลัมน์: ชื่อ, หลักสูตร, คะแนน, ผ่าน/ไม่ผ่าน)</p>
+        <p class="mb-1">3. นับจำนวนผู้ผ่านและไม่ผ่าน คำนวณคะแนนเฉลี่ย</p>
+        <p class="mb-1">4. เขียนสรุปผลลง Sheet ใหม่ชื่อ "สรุป"</p>
+        <p class="mb-0">ใส่ comment อธิบายทุกบรรทัด เหมาะสำหรับผู้เริ่มต้น</p>
+    </div>
+
+    <!-- Section 9.2 -->
+    <div class="section-header">
+        <h2>9.2 สร้างเว็บไซต์ HTML/CSS ด้วย ChatGPT</h2>
+        <p>ให้ ChatGPT สร้างหน้าเว็บสมบูรณ์พร้อมใช้งาน</p>
+    </div>
+
+    <p>ChatGPT สามารถสร้างหน้าเว็บ HTML/CSS ที่สมบูรณ์ได้ในคำสั่งเดียว — รวมโครงสร้าง, การจัดวาง, สีสัน, และ Responsive Design สิ่งสำคัญคือต้อง<strong>ระบุรายละเอียดให้ชัดเจน</strong>ว่าต้องการอะไรบ้าง</p>
+
+    <h3>เทคนิคสั่งสร้างเว็บให้ได้ผลดี</h3>
+    <ul>
+        <li><strong>ระบุ Responsive</strong> — บอกว่าต้องรองรับมือถือและคอมพิวเตอร์</li>
+        <li><strong>ระบุสไตล์</strong> — Modern, Minimal, Corporate, ราชการ ฯลฯ</li>
+        <li><strong>ระบุสีธีม</strong> — บอกสีหลัก สีรอง หรือให้ใช้สีของหน่วยงาน</li>
+        <li><strong>ระบุส่วนประกอบ</strong> — Navbar, Hero, Features, Footer ฯลฯ</li>
+        <li><strong>ใช้ Bootstrap หรือ Tailwind</strong> — ระบุ CSS Framework ที่ต้องการ</li>
+    </ul>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 1 — หน้า Landing Page หน่วยงาน</strong>
+        <p class="mt-2 mb-1">สร้างหน้าเว็บ Landing Page สำหรับ "สำนักงานพัฒนาฝีมือแรงงานสุรินทร์" โดย:</p>
+        <p class="mb-1">- ใช้ Bootstrap 5, ภาษาไทย, Responsive</p>
+        <p class="mb-1">- สีธีม: น้ำเงินเข้ม #003366 กับทอง #FFD700</p>
+        <p class="mb-1">- ส่วนประกอบ: Navbar + Logo, Hero Section (ชื่อหน่วยงาน + คำขวัญ), บริการหลัก 4 ข้อ (ฝึกอบรม/ทดสอบ/ส่งเสริม/ให้คำปรึกษา), ข่าวสาร 3 รายการ, ติดต่อ (แผนที่ + เบอร์โทร), Footer</p>
+        <p class="mb-0">- เขียนเป็นไฟล์เดียว (HTML + CSS inline) พร้อมใช้งานทันที</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 2 — แบบฟอร์มลงทะเบียนฝึกอบรม</strong>
+        <p class="mt-2 mb-1">สร้างหน้าแบบฟอร์มลงทะเบียนฝึกอบรมออนไลน์ โดย:</p>
+        <p class="mb-1">- ใช้ Bootstrap 5, Responsive, ดีไซน์สะอาด</p>
+        <p class="mb-1">- ฟิลด์: ชื่อ-นามสกุล, เลขบัตรประชาชน, หน่วยงาน, ตำแหน่ง, อีเมล, โทรศัพท์, หลักสูตรที่สมัคร (Dropdown), อาหาร (ปกติ/มังสวิรัติ/อิสลาม)</p>
+        <p class="mb-1">- มี Validation: ตรวจเลขบัตร 13 หลัก, อีเมลถูกต้อง, เบอร์โทร 10 หลัก</p>
+        <p class="mb-1">- ปุ่มส่ง + ปุ่มล้างข้อมูล</p>
+        <p class="mb-0">- แสดง SweetAlert เมื่อส่งสำเร็จ</p>
+    </div>
+
+    <!-- Section 9.3 -->
+    <div class="section-header">
+        <h2>9.3 Code Interpreter — Python ใน ChatGPT</h2>
+        <p>ใช้ Python รันโค้ดตรงใน ChatGPT เพื่อวิเคราะห์ข้อมูลและสร้างกราฟ</p>
+    </div>
+
+    <h3>สิ่งที่ Code Interpreter ทำได้</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ความสามารถ</th>
+                    <th>ตัวอย่างการใช้งาน</th>
+                    <th>ไลบรารีที่ใช้</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>สร้างกราฟ/แผนภูมิ</strong></td>
+                    <td>กราฟแท่ง วงกลม เส้น จากข้อมูลที่อัปโหลด</td>
+                    <td>Matplotlib, Seaborn, Plotly</td>
+                </tr>
+                <tr>
+                    <td><strong>แปลงไฟล์</strong></td>
+                    <td>CSV → Excel, PDF → ข้อความ, รูป → ขนาดอื่น</td>
+                    <td>Pandas, Pillow, ReportLab</td>
+                </tr>
+                <tr>
+                    <td><strong>คำนวณซับซ้อน</strong></td>
+                    <td>สถิติ, สมการ, พยากรณ์, Machine Learning</td>
+                    <td>NumPy, SciPy, Scikit-learn</td>
+                </tr>
+                <tr>
+                    <td><strong>จัดการข้อมูล</strong></td>
+                    <td>กรอง, เรียง, Pivot, รวมไฟล์, ล้างข้อมูล</td>
+                    <td>Pandas, OpenPyXL</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 1 — สร้างกราฟจากข้อมูล</strong>
+        <p class="mt-2 mb-1">จากไฟล์ Excel ที่แนบ (ข้อมูลผู้เข้าอบรมรายเดือน) ช่วย:</p>
+        <p class="mb-1">1. สร้างกราฟแท่งแสดงจำนวนผู้อบรมแต่ละเดือน</p>
+        <p class="mb-1">2. สร้างกราฟวงกลมแสดงสัดส่วนตามหลักสูตร</p>
+        <p class="mb-1">3. สร้างกราฟเส้นเปรียบเทียบเป้า vs ผลงาน</p>
+        <p class="mb-1">ใช้ฟอนต์ที่รองรับภาษาไทย สีสวยงาม มี Title และ Legend</p>
+        <p class="mb-0">ส่งออกเป็นไฟล์ PNG ความละเอียดสูง (300 DPI)</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 2 — วิเคราะห์และล้างข้อมูล</strong>
+        <p class="mt-2 mb-1">จากไฟล์ CSV ที่แนบ ช่วย:</p>
+        <p class="mb-1">1. ตรวจสอบข้อมูลซ้ำ (Duplicate) และลบออก</p>
+        <p class="mb-1">2. ตรวจหาค่าว่าง (Missing) แจ้งว่ามีกี่เซลล์</p>
+        <p class="mb-1">3. คำนวณสถิติพื้นฐาน (ค่าเฉลี่ย, มัธยฐาน, ค่าสูงสุด-ต่ำสุด)</p>
+        <p class="mb-1">4. สร้าง Summary Table สรุปผล</p>
+        <p class="mb-0">5. ส่งออกเป็นไฟล์ Excel ที่ล้างข้อมูลแล้ว พร้อม Sheet สรุป</p>
+    </div>
+
+    <!-- Section 9.4 -->
+    <div class="section-header">
+        <h2>9.4 Debug & แก้ไขโค้ด</h2>
+        <p>วิธีส่งโค้ดที่มีปัญหาให้ ChatGPT ช่วยหาข้อผิดพลาดและแก้ไข</p>
+    </div>
+
+    <h3>3 ขั้นตอนส่งโค้ดให้ ChatGPT แก้</h3>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 1: วางโค้ดที่มีปัญหา</strong> — Copy โค้ดทั้งหมด (หรือเฉพาะส่วนที่ error) วางใน ChatGPT พร้อมระบุภาษาโปรแกรม เช่น "นี่คือ Google Apps Script" หรือ "นี่คือ HTML/JavaScript"
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 2: บอก Error Message</strong> — วาง Error Message ที่ได้จากระบบ เช่น "TypeError: Cannot read properties of undefined" หรือ "Exception: You do not have permission" — ยิ่งบอก Error ชัดเจน AI ยิ่งแก้ได้แม่น
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 3: อธิบายสิ่งที่ต้องการ</strong> — บอกว่าโค้ดควรทำอะไร (Expected Behavior) vs สิ่งที่เกิดขึ้นจริง (Actual Behavior) เช่น "ต้องการให้ส่งอีเมล แต่มันส่งไม่ออก" หรือ "ควรแสดงตารางแต่หน้าว่างเปล่า"
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 1 — แก้ Google Apps Script Error</strong>
+        <p class="mt-2 mb-1">Google Apps Script ด้านล่างมีปัญหา ช่วยแก้ไขให้หน่อย:</p>
+        <p class="mb-1">[วางโค้ด]</p>
+        <p class="mb-1">Error ที่ได้: "TypeError: Cannot read properties of null (reading 'getRange')"</p>
+        <p class="mb-1">สิ่งที่ต้องการ: สคริปต์ควรอ่านข้อมูลจาก Sheet "รายชื่อ" แล้วส่งอีเมลแจ้งเตือน</p>
+        <p class="mb-0">ช่วยอธิบายสาเหตุของ Error และแก้ไขโค้ดให้ด้วย</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 2 — แก้ HTML ที่แสดงผลผิด</strong>
+        <p class="mt-2 mb-1">HTML ด้านล่างแสดงผลผิดพลาด ช่วยแก้ไข:</p>
+        <p class="mb-1">[วางโค้ด HTML/CSS]</p>
+        <p class="mb-1">ปัญหา: ตารางล้นออกนอกจอมือถือ, ปุ่มกดไม่ทำงาน, รูปไม่แสดง</p>
+        <p class="mb-1">ต้องการ: หน้าเว็บ Responsive, ปุ่มกดแล้วแสดง Alert, รูปแสดงครบ</p>
+        <p class="mb-0">ช่วยแก้โค้ดพร้อมอธิบายว่าแก้ตรงไหนบ้างและทำไม</p>
+    </div>
+
+    <!-- Section 9.5 -->
+    <div class="section-header">
+        <h2>9.5 Excel VBA & Macro</h2>
+        <p>สร้าง Macro อัตโนมัติใน Excel ด้วย AI</p>
+    </div>
+
+    <p><strong>VBA (Visual Basic for Applications)</strong> คือภาษาสคริปต์ใน Microsoft Office ที่ช่วยสร้างระบบอัตโนมัติ — ไม่ต้องเก่งเขียนโค้ด เพียงบอก ChatGPT ว่าต้องการทำอะไร AI จะเขียนโค้ด VBA ให้พร้อมใช้</p>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 1 — Macro จัดรูปแบบตาราง</strong>
+        <p class="mt-2 mb-1">ช่วยเขียน Excel VBA Macro ที่ทำงานดังนี้:</p>
+        <p class="mb-1">1. เลือกข้อมูลทั้งหมดใน Sheet ปัจจุบัน</p>
+        <p class="mb-1">2. จัดรูปแบบเป็นตาราง: หัวตารางสีน้ำเงินเข้มตัวอักษรขาว, แถวสลับสี (ขาว/ฟ้าอ่อน)</p>
+        <p class="mb-1">3. ปรับความกว้างคอลัมน์อัตโนมัติ (AutoFit)</p>
+        <p class="mb-1">4. เพิ่มกรอบตาราง (Border) ทุกเซลล์</p>
+        <p class="mb-0">5. ฟอนต์ TH SarabunPSK ขนาด 14</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 2 — Macro ส่งอีเมลจาก Excel</strong>
+        <p class="mt-2 mb-1">ช่วยเขียน Excel VBA Macro ที่:</p>
+        <p class="mb-1">1. อ่านรายชื่อจากคอลัมน์ A (ชื่อ), คอลัมน์ B (อีเมล), คอลัมน์ C (เนื้อหา)</p>
+        <p class="mb-1">2. ส่งอีเมลผ่าน Outlook ไปทีละคน</p>
+        <p class="mb-1">3. หัวข้อ: "แจ้งเตือนจากสำนักงานพัฒนาฝีมือแรงงานสุรินทร์"</p>
+        <p class="mb-1">4. บันทึกสถานะ "ส่งแล้ว" พร้อมวันที่ ในคอลัมน์ D</p>
+        <p class="mb-0">ต้องมี Error Handling กรณีอีเมลไม่ถูกต้อง</p>
+    </div>
+
+    <!-- Section 9.6 -->
+    <div class="section-header">
+        <h2>9.6 สร้าง Automation / Bot</h2>
+        <p>ตัวอย่างระบบอัตโนมัติที่ ChatGPT ช่วยเขียนได้</p>
+    </div>
+
+    <h3>ตัวอย่างระบบ Automation ที่สร้างได้</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ระบบ</th>
+                    <th>รายละเอียด</th>
+                    <th>เทคโนโลยี</th>
+                    <th>ระดับ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Line Bot ตอบ FAQ</strong></td>
+                    <td>บอทตอบคำถามที่พบบ่อยอัตโนมัติ เช่น เวลาทำการ สถานที่ ค่าธรรมเนียม</td>
+                    <td>Google Apps Script + Line API</td>
+                    <td>กลาง</td>
+                </tr>
+                <tr>
+                    <td><strong>Email Auto-Reply</strong></td>
+                    <td>ตอบอีเมลอัตโนมัติตามเงื่อนไข เช่น ส่งเอกสาร ยืนยันการรับสมัคร</td>
+                    <td>Google Apps Script + Gmail</td>
+                    <td>ง่าย</td>
+                </tr>
+                <tr>
+                    <td><strong>Scheduler / Reminder</strong></td>
+                    <td>แจ้งเตือนงานอัตโนมัติตามตาราง เช่น ก่อนประชุม 30 นาที</td>
+                    <td>Google Apps Script + Calendar</td>
+                    <td>ง่าย</td>
+                </tr>
+                <tr>
+                    <td><strong>Form → Sheet → Email</strong></td>
+                    <td>กรอกฟอร์ม → บันทึกลง Sheet → ส่งอีเมลยืนยัน → แจ้ง Admin</td>
+                    <td>Google Forms + GAS + Gmail</td>
+                    <td>กลาง</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt — สร้าง Line Bot ตอบ FAQ</strong>
+        <p class="mt-2 mb-1">ช่วยเขียน Google Apps Script สำหรับ Line Bot ตอบ FAQ อัตโนมัติ:</p>
+        <p class="mb-1">1. รับ Webhook จาก Line Messaging API</p>
+        <p class="mb-1">2. อ่านคำถาม-คำตอบจาก Google Sheet "FAQ" (คอลัมน์ A: คำถาม, คอลัมน์ B: คำตอบ)</p>
+        <p class="mb-1">3. เมื่อผู้ใช้ส่งข้อความ ให้ค้นหาคำที่ตรงกันใน Sheet แล้วตอบกลับ</p>
+        <p class="mb-1">4. ถ้าไม่พบคำตอบ ให้ตอบว่า "ขออภัย ไม่พบข้อมูล กรุณาติดต่อ 044-511073"</p>
+        <p class="mb-0">5. มี Log บันทึกทุกข้อความที่เข้ามาลง Sheet "Log"</p>
+    </div>
+
+    <!-- Exercises -->
+    <div class="exercise-box">
+        <h4>✏️ แบบฝึกหัดบทที่ 9</h4>
+        <ol>
+            <li><strong>สร้าง Google Apps Script ง่ายๆ 1 ตัว</strong>
+                <p>ใช้ ChatGPT เขียนสคริปต์ที่อ่านข้อมูลจาก Google Sheet แล้วทำอะไรบางอย่าง เช่น ส่งอีเมล, สร้างรายงาน, หรือคำนวณสรุปผล — ทดสอบรันใน Apps Script Editor จริง</p>
+            </li>
+            <li><strong>สร้างหน้าเว็บ HTML 1 หน้า</strong>
+                <p>สั่ง ChatGPT สร้างหน้าเว็บสำหรับหน่วยงานหรือโครงการของท่าน ต้อง Responsive ดูได้ทั้งมือถือและคอมพิวเตอร์ — บันทึกเป็น .html แล้วเปิดดูในเบราว์เซอร์</p>
+            </li>
+            <li><strong>ส่งโค้ดที่มี Error ให้ ChatGPT แก้ไข</strong>
+                <p>หาโค้ดที่มีปัญหา (จากงานจริง หรือสร้างขึ้นมา) ส่งให้ ChatGPT พร้อม Error Message — ตรวจสอบว่า AI แก้ได้ถูกต้องหรือไม่</p>
+            </li>
+            <li><strong>สร้าง Excel Macro 1 ตัว</strong>
+                <p>ใช้ ChatGPT เขียน VBA Macro สำหรับงานที่ทำซ้ำบ่อยๆ ใน Excel เช่น จัดรูปแบบตาราง, สรุปข้อมูล, หรือส่งอีเมล — ทดสอบรันใน Excel จริง</p>
+            </li>
+        </ol>
+    </div>
+
+    <!-- Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter08.html" class="btn btn-chapter-prev">← บทที่ 8</a>
+        <a href="chapter10.html" class="btn btn-chapter-next">บทที่ 10 →</a>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="text-white text-center py-4 mt-5" style="background:#10a37f;">
+    <p>คู่มือฝึกอบรม ChatGPT — เพิ่มประสิทธิภาพการทำงานด้วย AI</p>
+    <p class="opacity-75">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 6: Workshop + นำเสนอ + สรุป — คู่มือ NotebookLM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4)">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ NotebookLM</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter01.html">บทที่ 1</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter02.html">บทที่ 2</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter03.html">บทที่ 3</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter04.html">บทที่ 4</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter05.html">บทที่ 5</a></li>
+                <li class="nav-item"><a class="nav-link active" href="chapter06.html">บทที่ 6</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter07.html">บทที่ 7</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter08.html">บทที่ 8</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter09.html">บทที่ 9</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter10.html">บทที่ 10</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<div class="container mt-4">
+    <div class="mb-4">
+        <span class="day-badge">วันที่ 3</span>
+        <span class="time-badge ms-2">บ่าย 13:00 – 16:00</span>
+    </div>
+    <h1 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">📒 บทที่ 6: Workshop + นำเสนอ + สรุป</h1>
+    <p class="lead text-muted">ปฏิบัติจริง นำเสนอผลงาน สรุปการเรียนรู้ 3 วัน</p>
+
+    <!-- สารบัญบท -->
+    <div class="card p-3 mb-4">
+        <h5>📑 ในบทนี้</h5>
+        <ul class="mb-0">
+            <li><a href="#section-6-1">6.1 สรุปเนื้อหา 3 วัน</a></li>
+            <li><a href="#section-6-2">6.2 Workshop สุดท้าย — เลือก 1 จาก 8 โจทย์</a></li>
+            <li><a href="#section-6-3">6.3 นำเสนอผลงาน</a></li>
+            <li><a href="#section-6-4">6.4 Tips 10 ข้อ + แหล่งเรียนรู้</a></li>
+            <li><a href="#section-6-5">6.5 ปิดอบรม + วุฒิบัตร + ช่องทางติดต่อ</a></li>
+        </ul>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- Section 6.1 -->
+    <!-- ============================================ -->
+    <section id="section-6-1" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">6.1 สรุปเนื้อหา 3 วัน</h2>
+
+        <div class="table-responsive mt-3">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>วัน</th>
+                        <th>ช่วง</th>
+                        <th>เนื้อหา</th>
+                        <th>สิ่งที่ได้เรียนรู้</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2"><strong>วันที่ 1</strong></td>
+                        <td>เช้า</td>
+                        <td>รู้จัก NotebookLM</td>
+                        <td>เข้าใจหลักการ, สมัคร, Interface, Use Cases ราชการ</td>
+                    </tr>
+                    <tr>
+                        <td>บ่าย</td>
+                        <td>Sources + การถามตอบ</td>
+                        <td>อัปโหลดเอกสาร, ถามคำถาม 5 แบบ, Citation, Workshop ระเบียบ</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>วันที่ 2</strong></td>
+                        <td>เช้า</td>
+                        <td>Notebook Guide + สรุป</td>
+                        <td>FAQ, Study Guide, Timeline, Briefing Doc, Workshop ผลงาน</td>
+                    </tr>
+                    <tr>
+                        <td>บ่าย</td>
+                        <td>Audio Overview (Podcast AI)</td>
+                        <td>สร้าง Podcast, Customize, Best Practices, Workshop Podcast</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>วันที่ 3</strong></td>
+                        <td>เช้า</td>
+                        <td>ประยุกต์ใช้ขั้นสูง</td>
+                        <td>Multi-notebook, เตรียมบรรยาย, สรุปประชุม, YouTube, เปรียบเทียบ AI</td>
+                    </tr>
+                    <tr>
+                        <td>บ่าย</td>
+                        <td>Workshop + นำเสนอ</td>
+                        <td>Workshop 8 โจทย์, นำเสนอ, Tips, ปิดอบรม</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mt-4">ทักษะที่ได้รับ (Skill Summary)</h4>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card p-3 text-center h-100">
+                    <h1>📄</h1>
+                    <h6>จัดการเอกสาร</h6>
+                    <p class="small mb-0">อัปโหลด Sources, จัดหมวดหมู่ Notebook, Multi-source management</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3 text-center h-100">
+                    <h1>💬</h1>
+                    <h6>ถาม-ตอบ AI</h6>
+                    <p class="small mb-0">เทคนิคถามคำถาม 5 แบบ, Citation, ตรวจสอบความถูกต้อง</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3 text-center h-100">
+                    <h1>🎙️</h1>
+                    <h6>สร้าง Content</h6>
+                    <p class="small mb-0">FAQ, Study Guide, Briefing Doc, Podcast AI, สื่อ PR</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 6.2 -->
+    <!-- ============================================ -->
+    <section id="section-6-2" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">6.2 Workshop สุดท้าย — เลือก 1 จาก 8 โจทย์</h2>
+
+        <div class="info-box">
+            <p class="mb-0"><strong>⏱️ เวลา:</strong> 90 นาที | <strong>รูปแบบ:</strong> กลุ่ม 4-5 คน (เลือกโจทย์ 1 ข้อ) | <strong>นำเสนอ:</strong> 5 นาที/ทีม</p>
+        </div>
+
+        <p class="mt-3">เลือกทำ 1 โจทย์ ตามระดับความท้าทายที่ต้องการ:</p>
+
+        <!-- Workshop Grid -->
+        <div class="workshop-grid">
+            <!-- ง่าย -->
+            <div class="workshop-card easy">
+                <span class="badge bg-success mb-2">🟢 ง่าย</span>
+                <h5>โจทย์ 1: สร้าง FAQ หน่วยงาน</h5>
+                <p>อัปโหลดคู่มือบริการ + ข้อมูลหน่วยงาน → สร้าง FAQ 15 ข้อ สำหรับตอบประชาชน</p>
+                <ul class="small mb-0">
+                    <li>Sources: คู่มือบริการ, แผ่นพับ</li>
+                    <li>Output: FAQ 15 ข้อ พร้อม citation</li>
+                    <li>เครื่องมือ: Notebook Guide → FAQ + Chat</li>
+                </ul>
+            </div>
+
+            <div class="workshop-card easy">
+                <span class="badge bg-success mb-2">🟢 ง่าย</span>
+                <h5>โจทย์ 2: สรุประเบียบ 5 ฉบับ</h5>
+                <p>อัปโหลดระเบียบ/หนังสือเวียน 5 ฉบับ → สร้างสรุปรวมเป็น 1 หน้า</p>
+                <ul class="small mb-0">
+                    <li>Sources: ระเบียบ/กฎหมาย 5 ฉบับ (PDF)</li>
+                    <li>Output: Study Guide + Briefing Doc</li>
+                    <li>เครื่องมือ: Notebook Guide ทุกอัน</li>
+                </ul>
+            </div>
+
+            <!-- กลาง -->
+            <div class="workshop-card medium">
+                <span class="badge bg-warning text-dark mb-2">🟡 กลาง</span>
+                <h5>โจทย์ 3: Briefing Doc + Podcast</h5>
+                <p>สร้าง Briefing Doc 1 หน้า + Podcast AI สำหรับให้ ผอ. ฟัง</p>
+                <ul class="small mb-0">
+                    <li>Sources: รายงานผลงาน + แผนฯ 3 ฉบับ</li>
+                    <li>Output: Briefing Doc + Audio Overview</li>
+                    <li>เครื่องมือ: Briefing Doc + Audio + Customize</li>
+                </ul>
+            </div>
+
+            <div class="workshop-card medium">
+                <span class="badge bg-warning text-dark mb-2">🟡 กลาง</span>
+                <h5>โจทย์ 4: Study Guide หลักสูตร</h5>
+                <p>สร้างสื่อเตรียมการสอน: Study Guide + Quiz 10 ข้อ + FAQ</p>
+                <ul class="small mb-0">
+                    <li>Sources: เอกสารประกอบการบรรยาย 3-5 ฉบับ</li>
+                    <li>Output: Study Guide + Quiz + FAQ</li>
+                    <li>เครื่องมือ: Chat + Notebook Guide</li>
+                </ul>
+            </div>
+
+            <!-- ยาก -->
+            <div class="workshop-card hard">
+                <span class="badge bg-danger mb-2">🔴 ยาก</span>
+                <h5>โจทย์ 5: Q&A Bot จากเอกสาร 20+ ชิ้น</h5>
+                <p>สร้าง Notebook ที่ตอบคำถามได้ครอบคลุมจากเอกสาร 20+ sources</p>
+                <ul class="small mb-0">
+                    <li>Sources: เอกสารหน่วยงาน 20+ ฉบับ</li>
+                    <li>Output: ทดสอบถาม 20 คำถาม ตรวจ citation ทุกข้อ</li>
+                    <li>เครื่องมือ: Chat + Source management</li>
+                </ul>
+            </div>
+
+            <div class="workshop-card hard">
+                <span class="badge bg-danger mb-2">🔴 ยาก</span>
+                <h5>โจทย์ 6: สรุปนโยบายเทียบผลงาน</h5>
+                <p>เปรียบเทียบนโยบาย/แผนฯ กับผลงานจริง วิเคราะห์ช่องว่าง</p>
+                <ul class="small mb-0">
+                    <li>Sources: แผนยุทธศาสตร์ + รายงานผลงาน</li>
+                    <li>Output: Gap Analysis + ข้อเสนอแนะ + Timeline</li>
+                    <li>เครื่องมือ: Chat (วิเคราะห์) + Timeline + Briefing</li>
+                </ul>
+            </div>
+
+            <!-- ท้าทาย -->
+            <div class="workshop-card challenge">
+                <span class="badge text-white mb-2" style="background:#8b5cf6">🟣 ท้าทาย</span>
+                <h5>โจทย์ 7: Podcast สรุปผลงานปี + สื่อ PR</h5>
+                <p>สร้าง Podcast AI สรุปผลงานทั้งปี + ใช้เป็นสื่อ PR ของหน่วยงาน</p>
+                <ul class="small mb-0">
+                    <li>Sources: รายงานประจำปี + สรุปผลงานเด่น + ภาพรวม</li>
+                    <li>Output: Audio Overview + Customize 3 เวอร์ชัน + เลือกอันดีสุด</li>
+                    <li>เครื่องมือ: Audio Overview + Customize + Briefing Doc</li>
+                </ul>
+            </div>
+
+            <div class="workshop-card challenge">
+                <span class="badge text-white mb-2" style="background:#8b5cf6">🟣 ท้าทาย</span>
+                <h5>โจทย์ 8: Multi-notebook ระบบความรู้องค์กร</h5>
+                <p>ออกแบบระบบ Notebook 5 อัน เป็น Knowledge Base ของหน่วยงาน</p>
+                <ul class="small mb-0">
+                    <li>Sources: เอกสารหลากหลายหมวด 30+ ฉบับ</li>
+                    <li>Output: 5 Notebooks จัดหมวด + FAQ แต่ละหมวด + Briefing รวม</li>
+                    <li>เครื่องมือ: ทุกเครื่องมือ + Multi-notebook strategy</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4 class="mt-4">ขั้นตอนการทำ Workshop</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>จับกลุ่ม 4-5 คน + เลือกโจทย์ (10 นาที)</h5>
+            <p class="mb-0">เลือกโจทย์ที่เหมาะกับทักษะและเอกสารที่มี</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>วางแผน + จัดสรรงาน (10 นาที)</h5>
+            <p class="mb-0">แบ่งงาน: คนเตรียม source, คนสร้าง Notebook, คนทดสอบ, คนสรุป</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>ลงมือทำ (50 นาที)</h5>
+            <p class="mb-0">สร้าง Notebook, อัปโหลด Sources, ทดสอบ, สร้าง Output</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h5>เตรียมนำเสนอ (10 นาที)</h5>
+            <p class="mb-0">สรุปผลงาน, เตรียมหน้าจอ, ซ้อมพูด</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">5</div>
+            <h5>นำเสนอ (5 นาที/ทีม)</h5>
+            <p class="mb-0">แสดงผลงาน + Demo + สรุปข้อค้นพบ</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 6.3 -->
+    <!-- ============================================ -->
+    <section id="section-6-3" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">6.3 นำเสนอผลงาน</h2>
+
+        <div class="info-box">
+            <p class="mb-0"><strong>⏱️ เวลานำเสนอ:</strong> 5 นาที/ทีม + คำถาม 2 นาที</p>
+        </div>
+
+        <h4 class="mt-4">โครงสร้างการนำเสนอ (5 นาที)</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>เวลา</th>
+                        <th>เนื้อหา</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>0:00 - 0:30</td><td>แนะนำทีม + โจทย์ที่เลือก</td></tr>
+                    <tr><td>0:30 - 1:30</td><td>แสดง Notebook + Sources ที่ใช้</td></tr>
+                    <tr><td>1:30 - 3:30</td><td>Demo ผลงาน (FAQ/Briefing/Podcast/อื่นๆ)</td></tr>
+                    <tr><td>3:30 - 4:30</td><td>ข้อค้นพบ + ปัญหาที่เจอ + วิธีแก้</td></tr>
+                    <tr><td>4:30 - 5:00</td><td>แผนนำไปใช้จริงในหน่วยงาน</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mt-4">เกณฑ์ให้คะแนน 5 ด้าน</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>เกณฑ์</th>
+                        <th>รายละเอียด</th>
+                        <th>คะแนน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. ความครบถ้วน</strong></td>
+                        <td>ทำตามโจทย์ครบ, มี Sources เพียงพอ, ผลลัพธ์สมบูรณ์</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. ความถูกต้อง</strong></td>
+                        <td>ข้อมูลตรงกับเอกสาร, Citation ถูกต้อง, ไม่มีข้อผิดพลาด</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. การประยุกต์ใช้</strong></td>
+                        <td>เลือก use case ที่เหมาะสม, มีแผนนำไปใช้จริง, สร้างสรรค์</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. การนำเสนอ</strong></td>
+                        <td>ชัดเจน, อยู่ในเวลา, ทุกคนมีส่วนร่วม, มี Demo</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. ความร่วมมือ</strong></td>
+                        <td>ทำงานเป็นทีม, แบ่งหน้าที่ชัด, ช่วยเหลือกัน</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>รวม</strong></td>
+                        <td><strong>100</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 6.4 -->
+    <!-- ============================================ -->
+    <section id="section-6-4" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">6.4 Tips 10 ข้อ + แหล่งเรียนรู้</h2>
+
+        <h4 class="mt-4">💡 10 เคล็ดลับการใช้ NotebookLM ให้ได้ผลดี</h4>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h6>1️⃣ แบ่ง Notebook ตามหัวข้อ</h6>
+                    <p class="small mb-0">อย่ารวมทุกอย่างใน Notebook เดียว แบ่งตามภารกิจ/หมวดหมู่ จะได้คำตอบแม่นยำกว่า</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h6>2️⃣ ตรวจ Citation ทุกครั้ง</h6>
+                    <p class="small mb-0">อย่าเชื่อคำตอบ 100% คลิกดู citation ตรวจว่าต้นทางถูกต้อง โดยเฉพาะตัวเลข/วันที่</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h6>3️⃣ ถามเจาะจง ดีกว่าถามกว้าง</h6>
+                    <p class="small mb-0">"ค่าวิทยากรเบิกได้เท่าไหร่?" ดีกว่า "สรุปทุกอย่างให้หน่อย"</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h6>4️⃣ ใช้ checkbox เลือก Source</h6>
+                    <p class="small mb-0">เปิดเฉพาะ source ที่เกี่ยวข้องกับคำถาม จะได้คำตอบที่โฟกัสกว่า</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h6>5️⃣ ระบุรูปแบบผลลัพธ์</h6>
+                    <p class="small mb-0">บอกว่าต้องการ "ตาราง" "5 ข้อ" "1 ย่อหน้า" "bullet points" จะได้ output ที่ใช้ได้ทันที</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h6>6️⃣ ถามต่อยอดจากคำตอบ</h6>
+                    <p class="small mb-0">NotebookLM จำบริบทสนทนา ถามต่อเนื่องได้ เช่น "ขยายข้อ 3 ให้หน่อย"</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h6>7️⃣ Save to Note ผลลัพธ์ดีๆ</h6>
+                    <p class="small mb-0">คำตอบที่ดี บันทึกเป็น Note ไว้ ไม่ต้องถามใหม่ทุกครั้ง</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h6>8️⃣ อัปเดต Sources เมื่อมีเอกสารใหม่</h6>
+                    <p class="small mb-0">เพิ่มเอกสารใหม่เข้า Notebook ได้ตลอด ไม่ต้องสร้างใหม่</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h6>9️⃣ ใช้ Customize กับ Audio Overview</h6>
+                    <p class="small mb-0">กำหนดทิศทาง Podcast จะได้ผลลัพธ์ตรงประเด็นกว่าปล่อย auto</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h6>🔟 ระวังเรื่อง Privacy</h6>
+                    <p class="small mb-0">อย่าอัปโหลดเอกสารลับราชการ ใช้เฉพาะเอกสารที่เปิดเผยได้</p>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-5">📚 แหล่งเรียนรู้เพิ่มเติม</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>แหล่ง</th>
+                        <th>ลิงก์</th>
+                        <th>รายละเอียด</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>🌐 NotebookLM เว็บหลัก</strong></td>
+                        <td><a href="https://notebooklm.google.com" target="_blank">notebooklm.google.com</a></td>
+                        <td>เข้าใช้งาน NotebookLM โดยตรง</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📖 Help Center</strong></td>
+                        <td><a href="https://support.google.com/notebooklm" target="_blank">support.google.com/notebooklm</a></td>
+                        <td>คู่มือช่วยเหลือจาก Google</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📝 Google Blog</strong></td>
+                        <td><a href="https://blog.google/technology/ai/notebooklm/" target="_blank">blog.google (NotebookLM)</a></td>
+                        <td>ข่าวอัปเดตฟีเจอร์ใหม่</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎬 YouTube — NotebookLM</strong></td>
+                        <td><a href="https://www.youtube.com/@NotebookLM" target="_blank">youtube.com/@NotebookLM</a></td>
+                        <td>วิดีโอสอนจาก Google</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎬 YouTube — ภาษาไทย</strong></td>
+                        <td>ค้นหา "NotebookLM ภาษาไทย" บน YouTube</td>
+                        <td>บทสอนภาษาไทยจาก YouTuber ไทย</td>
+                    </tr>
+                    <tr>
+                        <td><strong>💬 Reddit Community</strong></td>
+                        <td><a href="https://www.reddit.com/r/NotebookLM/" target="_blank">r/NotebookLM</a></td>
+                        <td>ชุมชนผู้ใช้ แลกเปลี่ยนเทคนิค</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🐦 X (Twitter)</strong></td>
+                        <td>ค้นหา #NotebookLM</td>
+                        <td>ข่าวสาร อัปเดต เทคนิคใหม่</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 6.5 -->
+    <!-- ============================================ -->
+    <section id="section-6-5" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">6.5 ปิดอบรม + วุฒิบัตร + ช่องทางติดต่อ</h2>
+
+        <!-- สรุปปิดอบรม -->
+        <div class="card p-4 mb-4" style="background: linear-gradient(135deg, #ede9fe, #ecfeff);">
+            <h4 class="text-center mb-3">🎓 ขอแสดงความยินดี!</h4>
+            <p class="text-center fs-5">ท่านได้สำเร็จหลักสูตร <strong>"NotebookLM — เปลี่ยนเอกสารเป็นความรู้ด้วย AI"</strong></p>
+            <p class="text-center">3 วัน 18 ชั่วโมง | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์</p>
+        </div>
+
+        <h4 class="mt-4">📜 วุฒิบัตร</h4>
+        <div class="card p-3 mb-4">
+            <ul class="mb-0">
+                <li><strong>ผู้เข้าอบรมที่มีเวลาเรียนครบ 80%</strong> จะได้รับวุฒิบัตรจากกรมพัฒนาฝีมือแรงงาน</li>
+                <li>วุฒิบัตรจะจัดส่งทางไปรษณีย์ภายใน 30 วันหลังอบรม</li>
+                <li>หากต้องการวุฒิบัตรดิจิทัล สามารถแจ้งวิทยากรได้</li>
+            </ul>
+        </div>
+
+        <h4 class="mt-4">👨‍🏫 ช่องทางติดต่อวิทยากร</h4>
+        <div class="card p-4 mb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>นายปัญญา ผาธรรม (อ.ปู)</h5>
+                    <p class="mb-1">เจ้าหน้าที่ฝ่ายแผนงานและสารสนเทศ</p>
+                    <p class="mb-1">สำนักงานพัฒนาฝีมือแรงงานสุรินทร์</p>
+                    <p class="mb-1">กรมพัฒนาฝีมือแรงงาน กระทรวงแรงงาน</p>
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-sm table-borderless">
+                        <tbody>
+                            <tr><td>📱 โทร:</td><td><strong>088-377-8987</strong></td></tr>
+                            <tr><td>📧 Email:</td><td><strong>wisdomssk@gmail.com</strong></td></tr>
+                            <tr><td>💬 Line:</td><td><strong>wisdomict</strong></td></tr>
+                            <tr><td>🌐 Facebook:</td><td><a href="https://www.facebook.com/wisdomict" target="_blank">fb.com/wisdomict</a></td></tr>
+                            <tr><td>🎬 YouTube:</td><td><a href="https://www.youtube.com/@wisdomssk" target="_blank">@wisdomssk</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4">📋 สิ่งที่ควรทำหลังอบรม</h4>
+        <div class="do-box">
+            <ol class="mb-0">
+                <li><strong>สร้าง Notebook สำหรับงานจริง:</strong> เริ่มใช้ NotebookLM กับเอกสารของหน่วยงานทันที</li>
+                <li><strong>สร้าง FAQ หน่วยงาน:</strong> อัปโหลดคู่มือบริการ → สร้าง FAQ → ใช้ตอบประชาชน</li>
+                <li><strong>แนะนำเพื่อนร่วมงาน:</strong> สอนคนในหน่วยงานให้ใช้ NotebookLM เป็น</li>
+                <li><strong>ติดตามอัปเดต:</strong> NotebookLM มีฟีเจอร์ใหม่บ่อย ติดตามข่าวสาร</li>
+                <li><strong>ติดต่อวิทยากร:</strong> หากมีคำถามหรือปัญหา สอบถาม อ.ปู ได้ตลอด</li>
+            </ol>
+        </div>
+
+        <h4 class="mt-4">🙏 ขอบคุณ</h4>
+        <div class="card p-4 text-center" style="background: linear-gradient(135deg, #ede9fe, #ecfeff);">
+            <p class="fs-5 mb-2">ขอบคุณผู้เข้าอบรมทุกท่านที่ตั้งใจเรียนรู้</p>
+            <p class="mb-2">หวังว่า NotebookLM จะช่วยให้การทำงานกับเอกสารง่ายขึ้น เร็วขึ้น แม่นยำขึ้น</p>
+            <p class="fs-4 mb-0">📖 <strong>เปลี่ยนเอกสารเป็นความรู้ด้วย AI</strong> 🚀</p>
+        </div>
+
+        <!-- QR Code สำหรับติดต่อ -->
+        <div class="row g-3 mt-4">
+            <div class="col-md-4">
+                <div class="screenshot-placeholder">
+                    <p>QR Code — Line: wisdomict</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="screenshot-placeholder">
+                    <p>QR Code — Facebook: wisdomict</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="screenshot-placeholder">
+                    <p>QR Code — แบบประเมินความพึงพอใจ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter05.html">← บทที่ 5</a>
+        <a href="chapter07.html">บทที่ 7 →</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p class="mb-1">คู่มือฝึกอบรม NotebookLM — เปลี่ยนเอกสารเป็นความรู้ด้วย AI</p>
+        <p class="mb-0 text-muted">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

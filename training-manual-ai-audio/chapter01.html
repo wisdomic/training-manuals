@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 1: พื้นฐาน AI เสียง — AI เสียงและดนตรี</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📖 AI เสียงและดนตรี</span>
+            <span class="nav-text text-light">บทที่ 1: พื้นฐาน AI เสียง</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+            <!-- Chapter Header -->
+            <div class="chapter-header text-center">
+                <h1>🔊 บทที่ 1: พื้นฐาน AI เสียง</h1>
+                <p class="lead">Text-to-Speech, Speech-to-Text, AI Music Generation คืออะไร และประโยชน์สำหรับคนพิการ</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เข้าใจหลักการทำงานของ AI เสียง 3 ประเภทหลัก</li>
+                    <li>สามารถอธิบายความแตกต่างระหว่าง TTS, STT และ AI Music ได้</li>
+                    <li>เข้าใจประโยชน์ของ AI เสียงสำหรับงานช่วยเหลือคนพิการ</li>
+                    <li>รู้จักเครื่องมือหลักที่จะใช้ตลอดหลักสูตร</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">📘 1.1 AI เสียงคืออะไร?</h3>
+            <section>
+                <p>AI เสียง (AI Audio) คือเทคโนโลยีปัญญาประดิษฐ์ที่เกี่ยวข้องกับการสร้าง แปลง และประมวลผลเสียง ปัจจุบันพัฒนาก้าวหน้ามากจนสามารถ:</p>
+                <ul>
+                    <li><strong>สร้างเสียงพูด</strong> จากข้อความ ฟังเหมือนคนจริง</li>
+                    <li><strong>แปลงเสียงพูด</strong> เป็นข้อความ ได้แม่นยำแม้ภาษาไทย</li>
+                    <li><strong>สร้างเพลง</strong> ทั้งทำนอง เนื้อร้อง และเครื่องดนตรี จาก Prompt</li>
+                    <li><strong>เลียนเสียง</strong> (Voice Clone) จากตัวอย่างเพียง 30 วินาที</li>
+                </ul>
+
+                <div class="info-card">
+                    <h5>🧠 AI เสียง 3 ประเภทหลักที่เราจะเรียน</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>ประเภท</th>
+                                    <th>ชื่อเต็ม</th>
+                                    <th>ทำอะไร</th>
+                                    <th>ตัวอย่างเครื่องมือ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>TTS</strong></td>
+                                    <td>Text-to-Speech</td>
+                                    <td>แปลงข้อความเป็นเสียงพูด</td>
+                                    <td>ElevenLabs, CapCut AI Voice</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>STT</strong></td>
+                                    <td>Speech-to-Text</td>
+                                    <td>แปลงเสียงพูดเป็นข้อความ</td>
+                                    <td>OpenAI Whisper, Google Gemini</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>AI Music</strong></td>
+                                    <td>AI Music Generation</td>
+                                    <td>สร้างเพลงจากคำสั่ง</td>
+                                    <td>Suno AI, Udio AI</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 1.2 Text-to-Speech (TTS) — แปลงข้อความเป็นเสียง</h3>
+            <section>
+                <p>TTS คือเทคโนโลยีที่ให้เราพิมพ์ข้อความภาษาไทยหรืออังกฤษ แล้ว AI จะอ่านออกเสียงให้ฟังเหมือนคนจริง สามารถเลือกได้:</p>
+                <ul>
+                    <li>เสียงผู้ชาย / ผู้หญิง / เด็ก</li>
+                    <li>น้ำเสียง (อารมณ์): สนุกสนาน, จริงจัง, อบอุ่น</li>
+                    <li>ความเร็วในการพูด</li>
+                    <li>ภาษา: ไทย, อังกฤษ, จีน, ญี่ปุ่น ฯลฯ</li>
+                </ul>
+
+                <div class="prompt-example">
+                    <strong>💡 ตัวอย่างการใช้งาน TTS ในงานคนพิการ:</strong><br>
+                    • สร้างเสียงบรรยายวิดีโอแนะนำบริการ<br>
+                    • อ่านเอกสาร/ประกาศ ให้ผู้พิการทางสายตาฟัง<br>
+                    • สร้างสื่อเสียงประชาสัมพันธ์กิจกรรม<br>
+                    • พากย์วิดีโอสอนการใช้บริการ
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 1.3 Speech-to-Text (STT) — แปลงเสียงเป็นข้อความ</h3>
+            <section>
+                <p>STT คือเทคโนโลยีตรงข้ามกับ TTS โดยจะรับเสียงพูด แล้วแปลงเป็นข้อความที่อ่านได้ ประโยชน์:</p>
+                <ul>
+                    <li>ถอดเทปการประชุม → ได้บันทึกเป็นข้อความ</li>
+                    <li>ถอดเทปสัมภาษณ์ → ได้สคริปต์ทันที</li>
+                    <li>ช่วยผู้พิการทางการได้ยิน อ่านเนื้อหาจากเสียง</li>
+                    <li>แปลภาษาจากเสียง → ข้อความภาษาอื่น</li>
+                </ul>
+
+                <div class="prompt-example">
+                    <strong>💡 ตัวอย่างการใช้งาน STT ในงานคนพิการ:</strong><br>
+                    • ถอดเทปการประชุมคณะกรรมการ<br>
+                    • สร้าง Subtitle ภาษาไทยสำหรับวิดีโอ<br>
+                    • ช่วยผู้พิการทางการได้ยินอ่านเนื้อหาจากคลิปเสียง<br>
+                    • จดบันทึกการประชุมอัตโนมัติ
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 1.4 AI Music Generation — สร้างเพลงด้วย AI</h3>
+            <section>
+                <p>AI Music Generation คือเทคโนโลยีที่สร้างเพลงทั้งเพลงจากคำสั่งข้อความ (Prompt) โดย AI จะสร้าง:</p>
+                <ul>
+                    <li><strong>ทำนอง</strong> (Melody) ตามแนวเพลงที่เลือก</li>
+                    <li><strong>เนื้อร้อง</strong> (Lyrics) ตามหัวข้อที่กำหนด</li>
+                    <li><strong>เครื่องดนตรี</strong> (Instrumentation) ทั้งวงครบ</li>
+                    <li><strong>การมิกซ์เสียง</strong> (Mixing) สมดุลสวยงาม</li>
+                </ul>
+
+                <div class="prompt-example">
+                    <strong>💡 ตัวอย่างการใช้ AI Music ในงานคนพิการ:</strong><br>
+                    • สร้างเพลง Intro/Outro สำหรับวิดีโอองค์กร<br>
+                    • สร้าง Background Music สำหรับ Presentation<br>
+                    • สร้างเพลงประกอบกิจกรรม/อีเวนต์<br>
+                    • สร้าง Jingle สำหรับ Line OA หรือ Facebook Page
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 1.5 ประโยชน์ AI เสียงสำหรับคนพิการ</h3>
+            <section>
+                <div class="info-card">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>กลุ่มผู้พิการ</th>
+                                    <th>AI เสียงช่วยอะไรได้</th>
+                                    <th>เครื่องมือที่ใช้</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ผู้พิการทางสายตา</td>
+                                    <td>TTS อ่านเอกสาร/ข่าวสาร/ประกาศให้ฟัง</td>
+                                    <td>ElevenLabs, CapCut</td>
+                                </tr>
+                                <tr>
+                                    <td>ผู้พิการทางการได้ยิน</td>
+                                    <td>STT แปลงเสียงเป็นข้อความ + Subtitle</td>
+                                    <td>Whisper, Gemini</td>
+                                </tr>
+                                <tr>
+                                    <td>ผู้พิการทางการเคลื่อนไหว</td>
+                                    <td>สั่งงานด้วยเสียง ไม่ต้องพิมพ์</td>
+                                    <td>Gemini Live</td>
+                                </tr>
+                                <tr>
+                                    <td>ผู้พิการทางสติปัญญา</td>
+                                    <td>สื่อเสียง/เพลงช่วยเรียนรู้ง่ายขึ้น</td>
+                                    <td>Suno, Udio</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 1.6 เครื่องมือที่ใช้ในหลักสูตรนี้</h3>
+            <section>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <h5>🎙️ สร้างเสียงพากย์</h5>
+                            <ul>
+                                <li><strong>ElevenLabs</strong> — เสียงเหมือนจริงมาก</li>
+                                <li><strong>CapCut AI Voice</strong> — ใส่เสียงในวิดีโอ</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <h5>🎵 สร้างเพลง</h5>
+                            <ul>
+                                <li><strong>Suno AI</strong> — สร้างเพลงพร้อมเนื้อร้อง</li>
+                                <li><strong>Udio AI</strong> — สร้างเพลงคุณภาพสูง</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <h5>🗣️ สนทนาด้วยเสียง</h5>
+                            <ul>
+                                <li><strong>Google Gemini Live</strong> — คุยกับ AI เป็นภาษาไทย</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <h5>📝 แปลงเสียงเป็นข้อความ</h5>
+                            <ul>
+                                <li><strong>OpenAI Whisper</strong> — ถอดเทปแม่นยำ</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 1: ทดลองใช้ AI เสียงเบื้องต้น</h4>
+                <p><strong>เวลา:</strong> 30 นาที</p>
+                <hr>
+                <p><strong>กิจกรรมที่ 1: ทดลอง TTS (10 นาที)</strong></p>
+                <ol>
+                    <li>เปิดเว็บ <code>elevenlabs.io</code></li>
+                    <li>คลิก "Try for free" ที่หน้าแรก (ยังไม่ต้องสมัคร)</li>
+                    <li>พิมพ์ข้อความภาษาไทย: "สวัสดีครับ ยินดีต้อนรับสู่การอบรม AI เสียงและดนตรี"</li>
+                    <li>กดปุ่ม Generate แล้วฟังผลลัพธ์</li>
+                    <li>ลองเปลี่ยนเสียง (Voice) ดูหลายแบบ</li>
+                </ol>
+
+                <p><strong>กิจกรรมที่ 2: ทดลอง AI Music (10 นาที)</strong></p>
+                <ol>
+                    <li>เปิดเว็บ <code>suno.com</code></li>
+                    <li>คลิก "Create" แล้วพิมพ์ Prompt: "Happy Thai pop song about helping people"</li>
+                    <li>กดสร้างเพลง แล้วฟังผลลัพธ์</li>
+                    <li>สังเกตว่า AI สร้างทั้งเนื้อร้องและดนตรีให้</li>
+                </ol>
+
+                <p><strong>กิจกรรมที่ 3: ทดลอง STT (10 นาที)</strong></p>
+                <ol>
+                    <li>เปิด ChatGPT บนมือถือ</li>
+                    <li>กดปุ่มไมโครโฟน แล้วพูดภาษาไทย 2-3 ประโยค</li>
+                    <li>สังเกตว่า AI แปลงเสียงเป็นข้อความได้ถูกต้องแค่ไหน</li>
+                    <li>ลองพูดเร็ว-ช้า สังเกตความแม่นยำ</li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5>💡 Tips สำหรับผู้เริ่มต้น</h5>
+                <ul class="mb-0">
+                    <li><strong>ใช้หูฟัง</strong> — จะได้ยินความแตกต่างของเสียง AI ชัดเจนขึ้น</li>
+                    <li><strong>เริ่มจากข้อความสั้น</strong> — ทดลองทีละประโยคก่อน แล้วค่อยเพิ่ม</li>
+                    <li><strong>ภาษาอังกฤษ</strong> — AI เสียงส่วนใหญ่ทำงานกับภาษาอังกฤษได้ดีกว่า ค่อยๆ ทดลองภาษาไทย</li>
+                    <li><strong>อย่ากังวล</strong> — ทุกเครื่องมือมีแผนฟรีให้ทดลอง ไม่ต้องจ่ายเงิน</li>
+                    <li><strong>จด Prompt ที่ได้ผลดี</strong> — เก็บไว้ใช้ซ้ำในอนาคต</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card">
+                <h4>📋 สรุปบทที่ 1</h4>
+                <ul>
+                    <li><strong>TTS (Text-to-Speech)</strong> = พิมพ์ข้อความ → AI อ่านออกเสียง</li>
+                    <li><strong>STT (Speech-to-Text)</strong> = พูด → AI แปลงเป็นข้อความ</li>
+                    <li><strong>AI Music</strong> = พิมพ์ Prompt → AI สร้างเพลงทั้งเพลง</li>
+                    <li>ทุกเทคโนโลยีช่วยเหลือคนพิการได้ในหลายมิติ</li>
+                    <li>เครื่องมือทั้งหมดมีแผนฟรีให้ใช้ ไม่ต้องลงทุน</li>
+                    <li>บทต่อไปจะเริ่มปฏิบัติจริงกับ ElevenLabs</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-5 mb-4">
+                <a href="index.html" class="btn btn-outline-secondary">← หน้าหลัก</a>
+                <a href="chapter02.html" class="btn btn-primary">บทที่ 2 →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

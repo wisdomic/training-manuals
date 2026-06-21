@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 2: Sources + การถามตอบ — คู่มือ NotebookLM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4)">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ NotebookLM</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter01.html">บทที่ 1</a></li>
+                <li class="nav-item"><a class="nav-link active" href="chapter02.html">บทที่ 2</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter03.html">บทที่ 3</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter04.html">บทที่ 4</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter05.html">บทที่ 5</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter06.html">บทที่ 6</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<div class="container mt-4">
+    <div class="mb-4">
+        <span class="day-badge">วันที่ 1</span>
+        <span class="time-badge ms-2">บ่าย 13:00 – 16:00</span>
+    </div>
+    <h1 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">📘 บทที่ 2: Sources + การถามตอบ</h1>
+    <p class="lead text-muted">อัปโหลดเอกสาร ถามคำถาม รับคำตอบพร้อม Citation</p>
+
+    <!-- สารบัญบท -->
+    <div class="card p-3 mb-4">
+        <h5>📑 ในบทนี้</h5>
+        <ul class="mb-0">
+            <li><a href="#section-2-1">2.1 ประเภท Sources ที่ใส่ได้</a></li>
+            <li><a href="#section-2-2">2.2 วิธีเพิ่ม Sources</a></li>
+            <li><a href="#section-2-3">2.3 การถามตอบจากเอกสาร — Citation System</a></li>
+            <li><a href="#section-2-4">2.4 เทคนิคถามคำถามที่ดี</a></li>
+            <li><a href="#section-2-5">2.5 Workshop: สร้าง Notebook "ระเบียบฝึกอบรม"</a></li>
+        </ul>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- Section 2.1 -->
+    <!-- ============================================ -->
+    <section id="section-2-1" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">2.1 ประเภท Sources ที่ใส่ได้</h2>
+
+        <p class="mt-3">NotebookLM รองรับ sources หลายประเภท รวมได้สูงสุด <strong>50 sources ต่อ 1 notebook</strong> แต่ละ source มีข้อจำกัดขนาดไม่เกิน 500,000 คำ (ประมาณ 200 หน้า A4)</p>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ประเภท</th>
+                        <th>รูปแบบ</th>
+                        <th>ข้อจำกัด</th>
+                        <th>ตัวอย่างการใช้ในราชการ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>📄 PDF</strong></td>
+                        <td>อัปโหลดไฟล์</td>
+                        <td>ไม่เกิน 500,000 คำ/ไฟล์</td>
+                        <td>ระเบียบ, หนังสือเวียน, รายงาน, คู่มือ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📝 Google Docs</strong></td>
+                        <td>เลือกจาก Drive</td>
+                        <td>ไม่เกิน 500,000 คำ</td>
+                        <td>เอกสารร่างนโยบาย, บันทึกข้อความ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📊 Google Slides</strong></td>
+                        <td>เลือกจาก Drive</td>
+                        <td>ไม่เกิน 500,000 คำ</td>
+                        <td>สไลด์นำเสนอ, สไลด์อบรม</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📋 Text (วาง)</strong></td>
+                        <td>Paste text</td>
+                        <td>ไม่เกิน 500,000 คำ</td>
+                        <td>บทความ, ข่าวประชาสัมพันธ์, ข้อความจากเว็บ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🌐 Website URL</strong></td>
+                        <td>วาง URL</td>
+                        <td>1 URL = 1 source</td>
+                        <td>ประกาศบนเว็บ, ข่าวราชกิจจานุเบกษา</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎬 YouTube Video</strong></td>
+                        <td>วาง URL YouTube</td>
+                        <td>ต้องมี transcript</td>
+                        <td>วิดีโอบรรยาย, สัมมนาออนไลน์</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎵 Audio File</strong></td>
+                        <td>อัปโหลดไฟล์เสียง</td>
+                        <td>MP3, WAV ไม่เกิน 200 MB</td>
+                        <td>บันทึกเสียงประชุม, สัมภาษณ์</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="warning-box">
+            <p class="mb-1"><strong>ข้อจำกัดสำคัญ:</strong></p>
+            <ul class="mb-0">
+                <li>ไม่รองรับ Excel, PowerPoint, Word โดยตรง → ต้องแปลงเป็น PDF หรือ Google Docs ก่อน</li>
+                <li>PDF ที่เป็นรูปภาพ (scan) อาจอ่านไม่ได้ → ต้อง OCR ก่อน</li>
+                <li>YouTube ต้องมี subtitle/transcript → วิดีโอที่ไม่มี caption ใช้ไม่ได้</li>
+                <li>เว็บไซต์บางแห่งอาจ block → ใช้ Paste text แทน</li>
+            </ul>
+        </div>
+
+        <div class="tip-box">
+            <p class="mb-0"><strong>สำหรับงานราชการ:</strong> เอกสารราชการส่วนใหญ่เป็น PDF อยู่แล้ว สามารถอัปโหลดได้เลย แต่ถ้าเป็น PDF ที่ได้จากการ scan เอกสารกระดาษ (ภาพถ่าย) ควรใช้เครื่องมือ OCR แปลงเป็นข้อความก่อน</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 2.2 -->
+    <!-- ============================================ -->
+    <section id="section-2-2" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">2.2 วิธีเพิ่ม Sources</h2>
+
+        <p class="mt-3">มี 4 วิธีในการเพิ่ม Sources เข้า Notebook:</p>
+
+        <h4 class="mt-4">วิธีที่ 1: Upload File (อัปโหลดไฟล์)</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>คลิก "+ Add source" ที่แผง Sources ด้านซ้าย</h5>
+            <p class="mb-0">จะเปิดหน้าต่างให้เลือกประเภท source</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>เลือก "Upload" (PDF, txt, md, audio)</h5>
+            <p class="mb-0">คลิกที่ไอคอน Upload เพื่อเลือกไฟล์จากเครื่อง</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>เลือกไฟล์จากเครื่อง → คลิก Open</h5>
+            <p class="mb-0">สามารถเลือกหลายไฟล์พร้อมกันได้ (กด Ctrl ค้างแล้วคลิก)</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h5>รอระบบประมวลผล</h5>
+            <p class="mb-0">จะเห็นสถานะ "Processing..." รอจนเปลี่ยนเป็นชื่อไฟล์ แสดงว่าพร้อมใช้งาน</p>
+        </div>
+
+        <div class="screenshot-placeholder">
+            <p>หน้าต่าง Add Source — แสดงตัวเลือก: Upload, Google Drive, Paste text, Website URL, YouTube</p>
+        </div>
+
+        <h4 class="mt-4">วิธีที่ 2: Google Drive</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>คลิก "+ Add source" → เลือก "Google Drive"</h5>
+            <p class="mb-0">จะแสดง file picker ให้เลือกไฟล์จาก Drive</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>เลือก Google Docs หรือ Google Slides ที่ต้องการ</h5>
+            <p class="mb-0">สามารถค้นหาชื่อไฟล์ได้ หรือเปิดดูตาม Folder</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>คลิก "Insert" หรือ "เลือก"</h5>
+            <p class="mb-0">ระบบจะดึงเนื้อหาจาก Google Docs/Slides เข้ามาเป็น source</p>
+        </div>
+
+        <h4 class="mt-4">วิธีที่ 3: Paste Text (วางข้อความ)</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>คลิก "+ Add source" → เลือก "Copied text"</h5>
+            <p class="mb-0">จะเปิดช่องให้วางข้อความ</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>ตั้งชื่อ Source (Title) และวาง (Paste) ข้อความ</h5>
+            <p class="mb-0">ใส่ชื่อที่จำได้ง่าย เช่น "บทความ-นโยบายปี69"</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>คลิก "Insert"</h5>
+            <p class="mb-0">ข้อความจะกลายเป็น source ใหม่ในรายการ</p>
+        </div>
+
+        <h4 class="mt-4">วิธีที่ 4: Website URL / YouTube</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>คลิก "+ Add source" → เลือก "Website" หรือ "YouTube"</h5>
+            <p class="mb-0">จะเปิดช่องให้วาง URL</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>วาง (Paste) URL ของเว็บไซต์หรือวิดีโอ YouTube</h5>
+            <p class="mb-0">เช่น https://www.mol.go.th/... หรือ https://youtube.com/watch?v=...</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>คลิก "Insert" → รอประมวลผล</h5>
+            <p class="mb-0">ระบบจะดึงเนื้อหาจากเว็บ/transcript จาก YouTube</p>
+        </div>
+
+        <div class="do-box">
+            <ul class="mb-0">
+                <li>ตั้งชื่อ Source ให้ชัดเจน เช่น "ระเบียบค่าใช้จ่ายฝึกอบรม พ.ศ.2549"</li>
+                <li>จัดกลุ่มเอกสารที่เกี่ยวข้องกันไว้ใน Notebook เดียว</li>
+                <li>ตรวจสอบว่า PDF ไม่เป็นรูปภาพ (ลองคัดลอกข้อความได้หรือไม่)</li>
+            </ul>
+        </div>
+
+        <div class="dont-box">
+            <ul class="mb-0">
+                <li>อย่าใส่เอกสารไม่เกี่ยวข้องรวมกัน (จะทำให้คำตอบสับสน)</li>
+                <li>อย่าใส่เกิน 50 sources (ข้อจำกัดสูงสุด)</li>
+                <li>อย่าอัปโหลดเอกสารลับ/เอกสารชั้นความลับราชการ</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 2.3 -->
+    <!-- ============================================ -->
+    <section id="section-2-3" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">2.3 การถามตอบจากเอกสาร — Citation System</h2>
+
+        <p class="mt-3">หัวใจของ NotebookLM คือระบบ Citation ที่ทำให้คำตอบทุกข้อมีหลักฐานอ้างอิงกลับไปยังเอกสารต้นฉบับ</p>
+
+        <h4 class="mt-4">วิธีการทำงานของ Citation</h4>
+
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>พิมพ์คำถามในช่อง Chat</h5>
+            <p class="mb-0">เช่น "สรุปขั้นตอนการขออนุมัติจัดฝึกอบรม"</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>AI ตอบพร้อม citation [1], [2], [3]</h5>
+            <p class="mb-0">แต่ละหมายเลขคือการอ้างอิงไปยังย่อหน้าในเอกสารต้นทาง</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>คลิกหมายเลข citation</h5>
+            <p class="mb-0">เปิดดูย่อหน้าต้นทางในเอกสาร — highlight ส่วนที่ AI เอามาตอบ</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h5>ตรวจสอบความถูกต้อง</h5>
+            <p class="mb-0">อ่านเอกสารต้นทาง ตรวจว่า AI สรุปถูกต้องหรือไม่</p>
+        </div>
+
+        <div class="screenshot-placeholder">
+            <p>ตัวอย่างคำตอบ NotebookLM — แสดง citation [1], [2] + เมื่อคลิก [1] จะ highlight ข้อความในเอกสาร</p>
+        </div>
+
+        <h4 class="mt-4">ตัวอย่าง Citation ในงานราชการ</h4>
+        
+        <div class="prompt-example">
+            <p class="mb-0">ค่าเบี้ยเลี้ยงเดินทางไปราชการ ระดับชำนาญการ เบิกได้วันละเท่าไหร่?</p>
+        </div>
+        <div class="output-example">
+            <p>ตามพระราชกฤษฎีกาค่าใช้จ่ายในการเดินทางไปราชการ (ฉบับที่ 9) พ.ศ. 2560:</p>
+            <p>ข้าราชการระดับชำนาญการ (ระดับ 6-8 เดิม) ได้รับค่าเบี้ยเลี้ยงเดินทาง <strong>วันละ 240 บาท</strong> [1]</p>
+            <p>กรณีเดินทางไม่ถึง 24 ชั่วโมง แต่เกิน 12 ชั่วโมง ให้เบิกได้เต็มวัน กรณีเกิน 6 ชั่วโมง แต่ไม่ถึง 12 ชั่วโมง เบิกได้ครึ่งวัน [2]</p>
+            <p class="text-muted small mb-0">[1] พ.ร.ฎ.ค่าใช้จ่ายเดินทางไปราชการ ฉ.9 พ.ศ.2560, บัญชีหมายเลข 2 ข้อ 1<br>[2] พ.ร.ฎ.ค่าใช้จ่ายเดินทางไปราชการ ฉ.9 พ.ศ.2560, หมวด 2 ข้อ 15</p>
+        </div>
+
+        <div class="info-box">
+            <p class="mb-0"><strong>ทำไม Citation สำคัญ?</strong> ในงานราชการ ทุกคำตอบต้องอ้างอิงกฎหมาย/ระเบียบได้ Citation ช่วยให้ตรวจสอบที่มาได้ทันที ไม่ต้องกลับไปค้นเอกสารเอง ลดเวลาทำงานได้มาก</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 2.4 -->
+    <!-- ============================================ -->
+    <section id="section-2-4" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">2.4 เทคนิคถามคำถามที่ดี</h2>
+
+        <p class="mt-3">การถามคำถามที่ดีจะทำให้ได้คำตอบที่ตรงประเด็นและมีประโยชน์มากขึ้น มี 5 แบบหลักๆ:</p>
+
+        <!-- แบบที่ 1: สรุป -->
+        <div class="card p-4 mb-3">
+            <h5>🔹 แบบที่ 1: สรุป (Summarize)</h5>
+            <p>ใช้เมื่อต้องการสรุปเนื้อหาจากเอกสาร</p>
+            <div class="prompt-example">
+                <p class="mb-0">สรุปสาระสำคัญของระเบียบนี้เป็น 5 หัวข้อหลัก</p>
+            </div>
+            <div class="prompt-example">
+                <p class="mb-0">สรุปแผนปฏิบัติการ ปี 2569 ใน 1 ย่อหน้า ไม่เกิน 200 คำ</p>
+            </div>
+            <div class="prompt-example">
+                <p class="mb-0">สรุปมติที่ประชุมครั้งที่ 3/2569 ทั้งหมด จัดเป็นข้อๆ</p>
+            </div>
+        </div>
+
+        <!-- แบบที่ 2: ดึงข้อมูล -->
+        <div class="card p-4 mb-3">
+            <h5>🔹 แบบที่ 2: ดึงข้อมูลเฉพาะ (Extract)</h5>
+            <p>ใช้เมื่อต้องการข้อมูลเจาะจง</p>
+            <div class="prompt-example">
+                <p class="mb-0">อัตราค่าลงทะเบียนในการทดสอบมาตรฐานฝีมือแรงงานแต่ละสาขาเป็นเท่าไหร่?</p>
+            </div>
+            <div class="prompt-example">
+                <p class="mb-0">ขั้นตอนการยื่นขอหนังสือรับรองความรู้ความสามารถมีอะไรบ้าง?</p>
+            </div>
+            <div class="prompt-example">
+                <p class="mb-0">ดึงรายชื่อผู้รับผิดชอบและกำหนดเวลาดำเนินการจากรายงานการประชุม จัดเป็นตาราง</p>
+            </div>
+        </div>
+
+        <!-- แบบที่ 3: เปรียบเทียบ -->
+        <div class="card p-4 mb-3">
+            <h5>🔹 แบบที่ 3: เปรียบเทียบ (Compare)</h5>
+            <p>ใช้เมื่อมีเอกสารหลายฉบับและต้องการเปรียบเทียบ</p>
+            <div class="prompt-example">
+                <p class="mb-0">เปรียบเทียบเป้าหมายผลผลิตปี 2568 กับปี 2569 มีอะไรเปลี่ยนแปลงบ้าง?</p>
+            </div>
+            <div class="prompt-example">
+                <p class="mb-0">ระเบียบฉบับเดิมกับฉบับแก้ไข มีประเด็นอะไรที่ต่างกัน?</p>
+            </div>
+            <div class="prompt-example">
+                <p class="mb-0">เปรียบเทียบสิทธิประโยชน์ของข้าราชการระดับชำนาญการ กับ ชำนาญการพิเศษ จัดเป็นตาราง</p>
+            </div>
+        </div>
+
+        <!-- แบบที่ 4: วิเคราะห์ -->
+        <div class="card p-4 mb-3">
+            <h5>🔹 แบบที่ 4: วิเคราะห์ (Analyze)</h5>
+            <p>ใช้เมื่อต้องการให้วิเคราะห์เนื้อหาเชิงลึก</p>
+            <div class="prompt-example">
+                <p class="mb-0">วิเคราะห์จุดแข็งและจุดอ่อนของแผนยุทธศาสตร์นี้ จากข้อมูลในเอกสาร</p>
+            </div>
+            <div class="prompt-example">
+                <p class="mb-0">จากรายงานผลงาน 6 เดือน ตัวชี้วัดใดบ้างที่ยังไม่บรรลุเป้าหมาย? เพราะอะไร?</p>
+            </div>
+            <div class="prompt-example">
+                <p class="mb-0">มีความเสี่ยงอะไรบ้างที่ระบุไว้ในแผนบริหารความเสี่ยง? จัดลำดับตามความรุนแรง</p>
+            </div>
+        </div>
+
+        <!-- แบบที่ 5: สร้างเนื้อหา -->
+        <div class="card p-4 mb-3">
+            <h5>🔹 แบบที่ 5: สร้างเนื้อหาจากเอกสาร (Generate)</h5>
+            <p>ใช้เมื่อต้องการสร้างเอกสารใหม่จากข้อมูลที่มี</p>
+            <div class="prompt-example">
+                <p class="mb-0">สร้างร่างบันทึกข้อความ ขอเสนอ ผอ. อนุมัติจัดฝึกอบรม โดยใช้ข้อมูลจากแผนที่ให้ไว้</p>
+            </div>
+            <div class="prompt-example">
+                <p class="mb-0">เขียน FAQ 10 ข้อ สำหรับเจ้าหน้าที่ใหม่ เกี่ยวกับระเบียบการลา โดยอ้างอิงจากระเบียบที่ให้ไว้</p>
+            </div>
+            <div class="prompt-example">
+                <p class="mb-0">สร้างสรุปผลงานแบบ infographic (ข้อความ) 1 หน้า A4 จากรายงานผลงานประจำปี</p>
+            </div>
+        </div>
+
+        <h4 class="mt-4">เทคนิคเพิ่มเติม</h4>
+        <div class="do-box">
+            <ul class="mb-0">
+                <li><strong>ระบุรูปแบบผลลัพธ์:</strong> เช่น "จัดเป็นตาราง" "เป็นข้อๆ" "ไม่เกิน 5 ข้อ"</li>
+                <li><strong>ระบุกลุ่มเป้าหมาย:</strong> เช่น "สำหรับผู้บริหาร" "ภาษาง่ายๆ สำหรับประชาชน"</li>
+                <li><strong>ระบุขอบเขต:</strong> เช่น "เฉพาะหมวด 3" "เฉพาะปี 2569"</li>
+                <li><strong>ถามต่อยอด:</strong> ถามคำถามต่อเนื่องจากคำตอบก่อนหน้า</li>
+            </ul>
+        </div>
+
+        <div class="dont-box">
+            <ul class="mb-0">
+                <li><strong>อย่าถามกว้างเกินไป:</strong> เช่น "สรุปทุกอย่าง" → ถามเจาะจงกว่านี้</li>
+                <li><strong>อย่าถามนอกเนื้อหา:</strong> เช่น ถามเรื่องข่าวปัจจุบันที่ไม่มีใน source</li>
+                <li><strong>อย่าถามคำถามเดียวยาวมาก:</strong> แบ่งเป็นหลายคำถามดีกว่า</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 2.5 -->
+    <!-- ============================================ -->
+    <section id="section-2-5" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">2.5 Workshop: สร้าง Notebook "ระเบียบฝึกอบรม"</h2>
+
+        <div class="info-box">
+            <p class="mb-0"><strong>⏱️ เวลา:</strong> 45 นาที | <strong>รูปแบบ:</strong> ปฏิบัติรายบุคคล</p>
+        </div>
+
+        <h4 class="mt-4">📋 โจทย์ Workshop</h4>
+        <p>สร้าง Notebook สำหรับตอบคำถามเกี่ยวกับระเบียบการฝึกอบรม โดยอัปโหลดเอกสาร PDF 3-5 ฉบับ แล้วถามคำถาม 10 ข้อ พร้อมตรวจสอบ citation</p>
+
+        <h4 class="mt-4">ขั้นตอน</h4>
+
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>สร้าง Notebook ใหม่</h5>
+            <p class="mb-0">ไปที่ notebooklm.google.com → คลิก "Create new" → ตั้งชื่อ "ระเบียบฝึกอบรม"</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>อัปโหลด PDF 3-5 ฉบับ</h5>
+            <p>เอกสารที่แนะนำให้ใช้:</p>
+            <ul class="mb-0">
+                <li>ระเบียบกระทรวงการคลัง ว่าด้วยค่าใช้จ่ายในการฝึกอบรม พ.ศ. 2549</li>
+                <li>ระเบียบกระทรวงการคลัง ว่าด้วยค่าใช้จ่ายในการฝึกอบรม (ฉบับที่ 2) พ.ศ. 2552</li>
+                <li>หนังสือซ้อมความเข้าใจเกี่ยวกับการเบิกค่าใช้จ่าย</li>
+                <li>พ.ร.บ. พัฒนาฝีมือแรงงาน พ.ศ. 2545 (ถ้ามี)</li>
+                <li>คู่มือการจัดฝึกอบรมของหน่วยงาน (ถ้ามี)</li>
+            </ul>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>ถามคำถาม 10 ข้อ (ตามรายการด้านล่าง)</h5>
+            <p class="mb-0">ถามทีละข้อ อ่านคำตอบ ตรวจ citation แต่ละข้อ</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h5>ตรวจ Citation ทุกข้อ</h5>
+            <p class="mb-0">คลิกหมายเลข citation → ตรวจว่า AI ตอบถูกต้องตรงกับเอกสารหรือไม่</p>
+        </div>
+
+        <h4 class="mt-4">10 คำถามที่ต้องถาม:</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>คำถาม</th>
+                        <th>แบบ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>การฝึกอบรมแบ่งเป็นกี่ประเภท? แต่ละประเภทมีลักษณะอย่างไร?</td>
+                        <td>ดึงข้อมูล</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>ค่าอาหารเบิกได้สูงสุดเท่าไหร่ในแต่ละประเภท?</td>
+                        <td>ดึงข้อมูล</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>สรุปขั้นตอนการขออนุมัติจัดฝึกอบรมตั้งแต่ต้นจนจบ</td>
+                        <td>สรุป</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>เปรียบเทียบค่าใช้จ่ายที่เบิกได้ระหว่างการฝึกอบรมประเภท ก กับ ข</td>
+                        <td>เปรียบเทียบ</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>ค่าใช้จ่ายใดบ้างที่เบิกไม่ได้ตามระเบียบ?</td>
+                        <td>ดึงข้อมูล</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>ค่าวิทยากร (บุคคลภายนอก) เบิกได้ชั่วโมงละเท่าไหร่?</td>
+                        <td>ดึงข้อมูล</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>มีข้อยกเว้นหรือกรณีพิเศษอะไรบ้างที่ไม่ต้องปฏิบัติตามระเบียบปกติ?</td>
+                        <td>วิเคราะห์</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>สร้าง FAQ 5 ข้อ สำหรับเจ้าหน้าที่การเงินที่ต้องเบิกค่าฝึกอบรม</td>
+                        <td>สร้างเนื้อหา</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>จัดทำ checklist เอกสารที่ต้องแนบในการเบิกค่าใช้จ่ายฝึกอบรม</td>
+                        <td>สร้างเนื้อหา</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>สรุประเบียบนี้ใน 1 ย่อหน้า สำหรับ ผอ. อ่าน 2 นาที</td>
+                        <td>สรุป</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mt-4">เกณฑ์ประเมิน Workshop</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>เกณฑ์</th>
+                        <th>คะแนน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>สร้าง Notebook + ตั้งชื่อสำเร็จ</td><td>10</td></tr>
+                    <tr><td>อัปโหลด PDF อย่างน้อย 3 ฉบับ</td><td>20</td></tr>
+                    <tr><td>ถามคำถามครบ 10 ข้อ</td><td>30</td></tr>
+                    <tr><td>ตรวจสอบ Citation อย่างน้อย 5 ข้อ</td><td>20</td></tr>
+                    <tr><td>สรุปข้อค้นพบ/ความประทับใจ</td><td>20</td></tr>
+                    <tr><td><strong>รวม</strong></td><td><strong>100</strong></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- แบบฝึกหัดท้ายบท -->
+    <!-- ============================================ -->
+    <section class="mb-5">
+        <div class="exercise-box">
+            <h4>แบบฝึกหัดท้ายบทที่ 2</h4>
+            <ol>
+                <li><strong>ทดลอง Source ทุกประเภท:</strong> ลองเพิ่ม Source ด้วยวิธีต่างๆ อย่างน้อย 3 วิธี (Upload, URL, Paste text)</li>
+                <li><strong>ทดลอง Checkbox:</strong> ลองเปิด/ปิด Source บางรายการ แล้วถามคำถามเดิม ดูว่าคำตอบเปลี่ยนไหม</li>
+                <li><strong>เปรียบเทียบคำถาม:</strong> ถามคำถามเดียวกัน 2 แบบ — แบบกว้าง vs แบบเจาะจง ดูว่าได้คำตอบต่างกันอย่างไร</li>
+                <li><strong>ตรวจ Citation:</strong> เลือก 3 คำตอบ ตรวจ citation ทุกรายการว่าถูกต้องหรือไม่</li>
+                <li><strong>ตั้งคำถามต่อยอด:</strong> ลองถามคำถามซ้อน 3 ชั้น (ถาม → ได้คำตอบ → ถามต่อ → ได้คำตอบ → ถามลึกอีก)</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Chapter Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter01.html">← บทที่ 1</a>
+        <a href="chapter03.html">บทที่ 3: Notebook Guide →</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p class="mb-1">คู่มือฝึกอบรม NotebookLM — เปลี่ยนเอกสารเป็นความรู้ด้วย AI</p>
+        <p class="mb-0 text-muted">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 10: Workshop สร้างวิดีโอ PR — คู่มือ CapCut AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark px-3">
+        <span class="navbar-brand mb-0 h1">📖 CapCut AI ตัดต่อวิดีโอ</span>
+        <span class="nav-text d-none d-md-inline">บทที่ 10: Workshop</span>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <div class="chapter-number">บทที่ 10</div>
+                <h1>🏆 Workshop สร้างวิดีโอ PR องค์กร</h1>
+                <p class="mb-0">สร้างวิดีโอประชาสัมพันธ์ 30-60 วินาที ตั้งแต่ Import จนถึง Export ใช้ทุกฟีเจอร์ AI</p>
+            </div>
+
+            <!-- Objectives -->
+            <div class="alert alert-info">
+                <h5 class="fw-bold">🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>ประยุกต์ใช้ทุกฟีเจอร์ที่เรียนมาสร้างวิดีโอครบขั้นตอน</li>
+                    <li>วางแผนเนื้อหา (Storyboard) ก่อนลงมือทำ</li>
+                    <li>สร้างวิดีโอ PR องค์กร 30-60 วินาทีได้ด้วยตนเอง</li>
+                    <li>Export วิดีโอสำเร็จพร้อมเผยแพร่</li>
+                    <li>นำเสนอผลงานต่อกลุ่ม</li>
+                </ul>
+            </div>
+
+            <!-- Section 1 -->
+            <h3 class="section-header">10.1 ภาพรวม Workshop</h3>
+
+            <p>Workshop นี้เป็นการนำทุกสิ่งที่เรียนมาใน 9 บทมาใช้จริง โดยสร้างวิดีโอ <strong>ประชาสัมพันธ์องค์กร ความยาว 30-60 วินาที</strong></p>
+
+            <p><strong>ข้อกำหนดของวิดีโอ:</strong></p>
+            <ul class="feature-list">
+                <li>ความยาว 30-60 วินาที</li>
+                <li>มีเสียงพากย์ (AI Voice หรือบันทึกเสียงจริง)</li>
+                <li>มีเพลงประกอบ</li>
+                <li>มีซับไตเติ้ล (Auto Caption)</li>
+                <li>มี Transition ระหว่างฉาก</li>
+                <li>ใช้ AI Feature อย่างน้อย 2 อย่าง (เช่น Script to Video, BG Remover, TTS)</li>
+                <li>Export เป็น MP4 1080p</li>
+            </ul>
+
+            <div class="alert alert-warning">
+                <strong>📌 เวลาทำ Workshop:</strong> 60-90 นาที (รวมวางแผน + ทำ + นำเสนอ)
+            </div>
+
+            <!-- Section 2 -->
+            <h3 class="section-header">10.2 วางแผน Storyboard</h3>
+
+            <p>ก่อนลงมือทำ ต้องวางแผนก่อน — ใช้เวลา 10-15 นาที:</p>
+
+            <div class="info-card">
+                <h5>📋 Template Storyboard</h5>
+                <table class="table table-bordered table-sm mb-0">
+                    <thead>
+                        <tr>
+                            <th>ฉากที่</th>
+                            <th>ภาพ/วิดีโอ</th>
+                            <th>เสียง/ข้อความ</th>
+                            <th>ระยะเวลา</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Logo + ชื่อองค์กร</td>
+                            <td>"ยินดีต้อนรับสู่ [ชื่อองค์กร]"</td>
+                            <td>5 วินาที</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>กิจกรรม/บริการ 1</td>
+                            <td>"เราให้บริการ..."</td>
+                            <td>8 วินาที</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>กิจกรรม/บริการ 2</td>
+                            <td>"ด้วยทีมงานมืออาชีพ..."</td>
+                            <td>8 วินาที</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>ภาพผู้รับบริการ</td>
+                            <td>"สร้างโอกาส สร้างอาชีพ..."</td>
+                            <td>8 วินาที</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>ข้อมูลติดต่อ</td>
+                            <td>"ติดต่อเรา โทร..."</td>
+                            <td>6 วินาที</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Logo + Tagline</td>
+                            <td>เพลงดังขึ้น</td>
+                            <td>5 วินาที</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p><strong>หัวข้อที่เลือกได้ (เลือก 1 หัวข้อ):</strong></p>
+            <ol>
+                <li><strong>แนะนำองค์กร:</strong> องค์กรทำอะไร, บริการอะไร, ติดต่อยังไง</li>
+                <li><strong>ประชาสัมพันธ์กิจกรรม:</strong> งานอะไร, วันไหน, ที่ไหน, สมัครยังไง</li>
+                <li><strong>รับสมัครอาสาสมัคร:</strong> ทำอะไร, คุณสมบัติ, สมัครยังไง</li>
+                <li><strong>วิดีโอให้ความรู้:</strong> สิทธิคนพิการ, ขั้นตอนบริการ</li>
+            </ol>
+
+            <!-- Section 3 -->
+            <h3 class="section-header">10.3 ขั้นตอนการทำ Workshop</h3>
+
+            <p>ทำตามขั้นตอนนี้ ใช้เวลา 45-60 นาที:</p>
+
+            <h5 class="fw-bold mt-3">ขั้นที่ 1: เตรียมสื่อ (5 นาที)</h5>
+            <div class="step-item">
+                <span class="step-number">1</span>
+                สร้างโปรเจกต์ใหม่ ชื่อ <strong>"Workshop_PR_[ชื่อ]"</strong> อัตราส่วน 9:16 (Reels/TikTok)
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                Import สื่อ: รูปภาพองค์กร, Logo, หรือใช้ Stock Photo จาก CapCut
+            </div>
+
+            <h5 class="fw-bold mt-3">ขั้นที่ 2: สร้างเนื้อหา (15-20 นาที)</h5>
+            <p>เลือกทำ <strong>วิธี A</strong> หรือ <strong>วิธี B</strong>:</p>
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="info-card h-100">
+                        <h5>📝 วิธี A: Script to Video</h5>
+                        <ol class="mb-0">
+                            <li>เขียนสคริปต์ 5-8 ประโยค</li>
+                            <li>ใช้ Script to Video สร้าง</li>
+                            <li>ปรับแต่งภาพที่ AI เลือก</li>
+                            <li>แก้ไขเสียง/เพลง</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card h-100">
+                        <h5>🎬 วิธี B: ทำเอง Step-by-Step</h5>
+                        <ol class="mb-0">
+                            <li>ลากภาพ/วิดีโอลง Timeline</li>
+                            <li>ใส่ Text-to-Speech</li>
+                            <li>ใส่เพลง + Sound Effect</li>
+                            <li>ใส่ Transition + Effect</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="fw-bold mt-3">ขั้นที่ 3: ใช้ AI Features (10-15 นาที)</h5>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                ใช้ AI Feature อย่างน้อย 2 อย่างจากรายการนี้:
+                <ul class="mt-1 mb-0">
+                    <li>✅ Auto Caption (ซับไตเติ้ลอัตโนมัติ) — <strong>แนะนำ ใช้ทุกคน</strong></li>
+                    <li>✅ Text-to-Speech (เสียงพากย์ AI)</li>
+                    <li>✅ Background Remover (ลบพื้นหลัง)</li>
+                    <li>✅ Script to Video (สคริปต์สู่วิดีโอ)</li>
+                    <li>✅ AI Script Generator (AI เขียนสคริปต์)</li>
+                </ul>
+            </div>
+
+            <h5 class="fw-bold mt-3">ขั้นที่ 4: ตกแต่ง (10-15 นาที)</h5>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                ใส่ Transition ระหว่างทุกฉาก (เลือก 1 แบบ ใช้ทั้งคลิป)
+            </div>
+            <div class="step-item">
+                <span class="step-number">5</span>
+                ใส่ Filter ให้โทนสีสม่ำเสมอ
+            </div>
+            <div class="step-item">
+                <span class="step-number">6</span>
+                ปรับ Volume: เสียงพากย์ 100%, เพลง 20%
+            </div>
+            <div class="step-item">
+                <span class="step-number">7</span>
+                ใส่ Fade In (เพลง) ตอนเริ่ม + Fade Out ตอนจบ
+            </div>
+            <div class="step-item">
+                <span class="step-number">8</span>
+                ตรวจ Auto Caption — แก้คำผิด ปรับ Style
+            </div>
+
+            <h5 class="fw-bold mt-3">ขั้นที่ 5: Export (5 นาที)</h5>
+            <div class="step-item">
+                <span class="step-number">9</span>
+                กด Play ดูตั้งแต่ต้นจนจบ — ตรวจสอบครั้งสุดท้าย
+            </div>
+            <div class="step-item">
+                <span class="step-number">10</span>
+                Export: 1080p / 30fps / MP4 → บันทึก
+            </div>
+
+            <!-- Section 4 -->
+            <h3 class="section-header">10.4 Checklist ตรวจสอบก่อนส่ง</h3>
+
+            <div class="exercise-box">
+                <h4>✅ Checklist ก่อน Export</h4>
+                <ul>
+                    <li>☐ ความยาว 30-60 วินาที</li>
+                    <li>☐ มีเสียงพากย์ (AI Voice หรือเสียงจริง)</li>
+                    <li>☐ มีเพลงประกอบ (Volume ไม่ดังเกินเสียงพากย์)</li>
+                    <li>☐ มีซับไตเติ้ล (ตรวจคำผิดแล้ว)</li>
+                    <li>☐ มี Transition ระหว่างฉาก</li>
+                    <li>☐ ใช้ AI Feature ≥ 2 อย่าง</li>
+                    <li>☐ ไม่มีจอดำ / ช่องว่าง</li>
+                    <li>☐ เพลงมี Fade In/Out</li>
+                    <li>☐ ภาพ+เสียง Sync กัน</li>
+                    <li>☐ เนื้อหาครบถ้วน (เปิดเรื่อง → เนื้อหา → ปิด)</li>
+                </ul>
+            </div>
+
+            <!-- Section 5 -->
+            <h3 class="section-header">10.5 เกณฑ์การให้คะแนน</h3>
+
+            <div class="table-responsive">
+                <table class="table table-manual table-bordered">
+                    <thead>
+                        <tr>
+                            <th>หัวข้อ</th>
+                            <th>คะแนนเต็ม</th>
+                            <th>รายละเอียด</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>เนื้อหาครบถ้วน</strong></td>
+                            <td>20</td>
+                            <td>มีข้อมูลองค์กร สื่อสารชัดเจน</td>
+                        </tr>
+                        <tr>
+                            <td><strong>การใช้ AI Features</strong></td>
+                            <td>20</td>
+                            <td>ใช้ AI ≥ 2 อย่าง อย่างเหมาะสม</td>
+                        </tr>
+                        <tr>
+                            <td><strong>คุณภาพภาพ+เสียง</strong></td>
+                            <td>20</td>
+                            <td>ภาพชัด เสียงชัด Volume สมดุล</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ความสวยงาม</strong></td>
+                            <td>20</td>
+                            <td>Transition, Filter, Effect เหมาะสม</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ความคิดสร้างสรรค์</strong></td>
+                            <td>20</td>
+                            <td>ไอเดียดี น่าสนใจ แตกต่าง</td>
+                        </tr>
+                        <tr class="table-success">
+                            <td><strong>รวม</strong></td>
+                            <td><strong>100</strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Section 6 -->
+            <h3 class="section-header">10.6 นำเสนอผลงาน</h3>
+
+            <p>หลังทำเสร็จ ทุกคนจะนำเสนอผลงาน (3-5 นาที/คน):</p>
+
+            <ol>
+                <li><strong>เปิดวิดีโอให้ทุกคนดู</strong> (ฉายบนจอ Projector)</li>
+                <li><strong>อธิบายสั้นๆ:</strong>
+                    <ul>
+                        <li>หัวข้อวิดีโอคืออะไร?</li>
+                        <li>ใช้ AI Feature อะไรบ้าง?</li>
+                        <li>ส่วนไหนที่ชอบที่สุด?</li>
+                        <li>ส่วนไหนที่อยากปรับปรุง?</li>
+                    </ul>
+                </li>
+                <li><strong>รับ Feedback</strong> จากเพื่อนๆ และวิทยากร</li>
+            </ol>
+
+            <div class="alert alert-success">
+                <strong>💡 Tips นำเสนอ:</strong> ไม่ต้องกังวลว่าวิดีโอจะไม่สมบูรณ์แบบ — เป้าหมายคือ "ทำจนจบ" และ "เรียนรู้กระบวนการ" สำคัญกว่า "ทำสวย"
+            </div>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 10: Workshop — สร้างวิดีโอ PR องค์กร</h4>
+                <p><strong>เวลา:</strong> 60 นาที</p>
+                <p><strong>โจทย์:</strong> สร้างวิดีโอประชาสัมพันธ์องค์กร/หน่วยงาน ความยาว 30-60 วินาที</p>
+                <ol>
+                    <li><strong>[10 นาที]</strong> วางแผน Storyboard — เขียนว่าแต่ละฉากจะมีอะไร</li>
+                    <li><strong>[5 นาที]</strong> สร้างโปรเจกต์ + Import สื่อ</li>
+                    <li><strong>[15 นาที]</strong> สร้างเนื้อหา (Script to Video หรือทำเอง)</li>
+                    <li><strong>[10 นาที]</strong> ใช้ AI Features:
+                        <ul>
+                            <li>Auto Caption → ตรวจ+แก้ข้อความ</li>
+                            <li>Text-to-Speech / BG Remover / Script to Video</li>
+                        </ul>
+                    </li>
+                    <li><strong>[10 นาที]</strong> ตกแต่ง:
+                        <ul>
+                            <li>Transition ทุกจุดต่อ</li>
+                            <li>Filter สม่ำเสมอ</li>
+                            <li>เพลง + Fade In/Out</li>
+                            <li>Sound Effect 1-2 จุด</li>
+                        </ul>
+                    </li>
+                    <li><strong>[5 นาที]</strong> ตรวจสอบ Checklist → Export 1080p MP4</li>
+                    <li><strong>[5 นาที]</strong> เตรียมนำเสนอ</li>
+                </ol>
+                <p class="mb-0"><strong>✅ สำเร็จเมื่อ:</strong> มีไฟล์วิดีโอ .mp4 ที่เปิดดูได้ ความยาว 30-60 วินาที ใช้ AI ≥ 2 อย่าง พร้อมนำเสนอ</p>
+            </div>
+
+            <!-- Section 7 -->
+            <h3 class="section-header">10.7 สิ่งที่เรียนรู้ตลอดหลักสูตร</h3>
+
+            <div class="info-card">
+                <h4>🎓 สรุปทักษะที่ได้รับ</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="fw-bold">พื้นฐาน CapCut:</h6>
+                        <ul>
+                            <li>✅ สมัคร + Login</li>
+                            <li>✅ สร้าง Project</li>
+                            <li>✅ Import สื่อ</li>
+                            <li>✅ ตัด/แบ่ง/ลบ คลิป</li>
+                            <li>✅ จัดการ Timeline</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="fw-bold">AI Features:</h6>
+                        <ul>
+                            <li>✅ Auto Caption</li>
+                            <li>✅ Script to Video</li>
+                            <li>✅ Background Remover</li>
+                            <li>✅ Text-to-Speech</li>
+                            <li>✅ AI Script Generator</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="fw-bold">ตกแต่ง:</h6>
+                        <ul>
+                            <li>✅ เพลง + Sound Effect</li>
+                            <li>✅ Transition + Effect</li>
+                            <li>✅ Filter + Speed Control</li>
+                            <li>✅ Keyframe Animation</li>
+                            <li>✅ Volume + Fade</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="fw-bold">ส่งออก:</h6>
+                        <ul>
+                            <li>✅ ตั้งค่า Resolution/FPS</li>
+                            <li>✅ Export MP4</li>
+                            <li>✅ แชร์ Social Media</li>
+                            <li>✅ วางแผน Storyboard</li>
+                            <li>✅ สร้างวิดีโอ PR ครบขั้นตอน</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5 class="fw-bold">💡 เคล็ดลับสุดท้าย</h5>
+                <ul class="mb-0">
+                    <li><strong>ฝึกทุกวัน:</strong> ยิ่งทำบ่อย ยิ่งเก่ง — ลองสร้างวิดีโอสัปดาห์ละ 1-2 ชิ้น</li>
+                    <li><strong>ดู Reference:</strong> ดูวิดีโอ PR ที่ชอบใน YouTube/TikTok แล้วลองทำตาม</li>
+                    <li><strong>AI ช่วยได้:</strong> ใช้ AI ทำ 80% แล้วปรับแต่ง 20% จะเร็วมาก</li>
+                    <li><strong>CapCut อัปเดตบ่อย:</strong> มีฟีเจอร์ใหม่ทุกเดือน ลองสำรวจเมนูดูเรื่อยๆ</li>
+                    <li><strong>กลุ่ม Line:</strong> หลังอบรม ถามได้ในกลุ่ม Line — วิทยากรพร้อมช่วยเหลือ</li>
+                </ul>
+            </div>
+
+            <!-- Summary -->
+            <div class="info-card">
+                <h4>📝 สรุปบทที่ 10 — Workshop</h4>
+                <table class="table table-sm table-bordered mb-0">
+                    <tr>
+                        <td width="200"><strong>เป้าหมาย</strong></td>
+                        <td>สร้างวิดีโอ PR องค์กร 30-60 วินาที ครบขั้นตอน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AI ที่ต้องใช้</strong></td>
+                        <td>≥ 2 อย่าง (Caption + TTS/BG Remover/Script to Video)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ขั้นตอน</strong></td>
+                        <td>วางแผน → เตรียมสื่อ → สร้างเนื้อหา → AI → ตกแต่ง → Export</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Export</strong></td>
+                        <td>1080p / 30fps / MP4</td>
+                    </tr>
+                    <tr>
+                        <td><strong>นำเสนอ</strong></td>
+                        <td>เปิดวิดีโอ + อธิบาย AI ที่ใช้ + รับ Feedback</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Thank You -->
+            <div class="chapter-header text-center mt-4" style="background: linear-gradient(135deg, #1b5e20, #4caf50);">
+                <h2>🎉 ขอแสดงความยินดี!</h2>
+                <p class="mb-1">คุณเรียนจบหลักสูตร <strong>CapCut AI ตัดต่อวิดีโอ</strong> แล้ว</p>
+                <p class="mb-1">ตอนนี้คุณสามารถสร้างวิดีโอ PR คุณภาพสูงได้ด้วยตัวเอง</p>
+                <p class="mb-0">ขอบคุณที่ร่วมอบรม — ขอให้นำไปใช้ประโยชน์ในงานได้อย่างเต็มที่!</p>
+            </div>
+
+            <div class="info-card text-center mt-3">
+                <h5>📞 ติดต่อวิทยากร (หลังอบรม)</h5>
+                <p class="mb-1"><strong>นายปัญญา ผาธรรม</strong> — สนพ.สุรินทร์ | โทร 088-377-8987</p>
+                <p class="mb-0"><strong>นายพรพจน์ แสวงดี</strong> — สนพ.ยโสธร</p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="nav-buttons">
+                <a href="chapter09.html" class="btn btn-outline-secondary">← บทที่ 9</a>
+                <a href="index.html" class="btn btn-primary">กลับหน้าหลัก</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

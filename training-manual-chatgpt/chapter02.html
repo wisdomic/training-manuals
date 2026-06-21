@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 2: Prompt Engineering เบื้องต้น — คู่มือฝึกอบรม ChatGPT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark sticky-top" style="background:#10a37f;">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ ChatGPT</a>
+        <span class="text-white nav-text">บทที่ 2 — วันที่ 1 บ่าย</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+
+    <h1 class="mb-2">บทที่ 2: Prompt Engineering เบื้องต้น</h1>
+    <p class="text-muted mb-4">วันที่ 1 ภาคบ่าย | ระยะเวลา 3 ชั่วโมง | ระดับ: เริ่มต้น</p>
+
+    <div class="alert alert-info">
+        <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+        <ul class="mb-0">
+            <li>อธิบายความสำคัญของ Prompt ได้</li>
+            <li>เขียน Prompt ตามสูตร RCIF (Role + Context + Instruction + Format) ได้</li>
+            <li>แยกแยะ Prompt ดี vs Prompt แย่ได้</li>
+            <li>ใช้เทคนิค Zero-shot, One-shot, Few-shot ได้</li>
+            <li>กำหนดรูปแบบผลลัพธ์ที่ต้องการได้</li>
+        </ul>
+    </div>
+
+    <!-- Section 2.1 -->
+    <div class="section-header">
+        <h2>2.1 Prompt คืออะไร?</h2>
+        <p>ทำไมถึงสำคัญกว่าเครื่องมือ</p>
+    </div>
+
+    <h3>ความหมายของ Prompt</h3>
+    <p><strong>Prompt</strong> คือ ข้อความ/คำสั่งที่เราพิมพ์ให้ AI เพื่อบอกว่าต้องการอะไร — เปรียบเสมือน<strong>การสั่งงานลูกน้อง</strong> ถ้าสั่งชัด ลูกน้องทำได้ดี ถ้าสั่งกว้างๆ ลูกน้องก็เดาไปเอง</p>
+
+    <div class="alert alert-light border">
+        <p class="mb-0"><strong>หลักการง่ายๆ:</strong> Prompt ดี = ผลลัพธ์ดี | Prompt แย่ = ผลลัพธ์แย่</p>
+    </div>
+
+    <h3>ทำไม Prompt ถึงสำคัญกว่าเครื่องมือ?</h3>
+    <ul>
+        <li>AI ทุกตัว (ChatGPT, Gemini, Claude) ใช้ Prompt เป็นตัวขับเคลื่อน</li>
+        <li>คนที่เขียน Prompt ดี จะได้ผลลัพธ์ดีกว่าคนที่จ่ายเงินซื้อแผน Plus แต่เขียน Prompt ไม่เป็น</li>
+        <li>Prompt Engineering คือทักษะที่ติดตัว — ใช้ได้กับ AI ทุกตัว ทุกยุค</li>
+        <li>เปรียบเหมือนการถ่ายรูป: กล้องดีอย่างเดียวไม่พอ ต้อง<strong>รู้วิธีจัดมุม</strong>ด้วย</li>
+    </ul>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-danger mb-3">
+                <div class="card-header bg-danger text-white"><strong>❌ Prompt แย่</strong></div>
+                <div class="card-body">
+                    <p class="mb-0"><em>"เขียนหนังสือ"</em></p>
+                    <small class="text-muted">→ AI ไม่รู้ว่าหนังสืออะไร เขียนให้ใคร ยาวแค่ไหน</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-success mb-3">
+                <div class="card-header bg-success text-white"><strong>✅ Prompt ดี</strong></div>
+                <div class="card-body">
+                    <p class="mb-0"><em>"คุณเป็นเจ้าหน้าที่ธุรการราชการ ช่วยร่างบันทึกข้อความ เรื่องขออนุมัติจัดซื้อคอมพิวเตอร์ 5 เครื่อง ถึงผู้อำนวยการ รูปแบบหนังสือราชการ"</em></p>
+                    <small class="text-muted">→ AI รู้บทบาท รู้บริบท รู้คำสั่ง รู้รูปแบบ</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2.2 -->
+    <div class="section-header">
+        <h2>2.2 โครงสร้าง Prompt ที่ดี — สูตร RCIF</h2>
+        <p>สูตรลับในการเขียน Prompt ให้ได้ผลลัพธ์ตรงใจ</p>
+    </div>
+
+    <h3>RCIF คืออะไร?</h3>
+    <p>RCIF คือสูตรที่ช่วยให้เขียน Prompt ได้ครบถ้วน ประกอบด้วย 4 องค์ประกอบ:</p>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>องค์ประกอบ</th>
+                    <th>ความหมาย</th>
+                    <th>คำอธิบาย</th>
+                    <th>ตัวอย่าง</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>R — Role</strong></td>
+                    <td>บทบาท</td>
+                    <td>กำหนดว่า AI เป็นใคร มีความเชี่ยวชาญอะไร</td>
+                    <td>"คุณเป็นนักเขียนคอนเทนต์มืออาชีพ"</td>
+                </tr>
+                <tr>
+                    <td><strong>C — Context</strong></td>
+                    <td>บริบท</td>
+                    <td>ให้ข้อมูลพื้นหลัง สถานการณ์ เงื่อนไข</td>
+                    <td>"สำหรับหน่วยงานราชการ กลุ่มเป้าหมายคือข้าราชการอายุ 35-50 ปี"</td>
+                </tr>
+                <tr>
+                    <td><strong>I — Instruction</strong></td>
+                    <td>คำสั่ง</td>
+                    <td>บอกชัดเจนว่าต้องทำอะไร</td>
+                    <td>"เขียนบทความ 500 คำ เรื่องการใช้ AI ในงานราชการ"</td>
+                </tr>
+                <tr>
+                    <td><strong>F — Format</strong></td>
+                    <td>รูปแบบ</td>
+                    <td>กำหนดรูปแบบผลลัพธ์ที่ต้องการ</td>
+                    <td>"แบ่งเป็นหัวข้อ 5 ข้อ แต่ละข้อมีคำอธิบาย 2-3 ประโยค"</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>ตัวอย่าง Prompt เต็มรูปแบบ (สูตร RCIF)</h3>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่างที่ 1 — ร่างบันทึกข้อความ</strong>
+        <p class="mt-2 mb-1"><strong>[R]</strong> คุณเป็นเจ้าหน้าที่ธุรการที่มีประสบการณ์ 10 ปีในหน่วยงานราชการ</p>
+        <p class="mb-1"><strong>[C]</strong> สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ ต้องการจัดซื้อคอมพิวเตอร์โน้ตบุ๊ก 10 เครื่อง สำหรับฝ่ายสารสนเทศ งบประมาณไม่เกิน 200,000 บาท</p>
+        <p class="mb-1"><strong>[I]</strong> ช่วยร่างบันทึกข้อความถึงผู้อำนวยการ เพื่อขออนุมัติจัดซื้อ</p>
+        <p class="mb-0"><strong>[F]</strong> ใช้รูปแบบหนังสือราชการ มีเลขที่หนังสือ วันที่ เรื่อง เรียน สิ่งที่ส่งมาด้วย และลงท้ายด้วยช่องลงนาม</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่างที่ 2 — สร้างแผนฝึกอบรม</strong>
+        <p class="mt-2 mb-1"><strong>[R]</strong> คุณเป็นนักฝึกอบรมมืออาชีพที่เชี่ยวชาญด้านการพัฒนาทักษะดิจิทัล</p>
+        <p class="mb-1"><strong>[C]</strong> หน่วยงานต้องการจัดอบรม "การใช้ AI ในงานราชการ" สำหรับเจ้าหน้าที่ 30 คน ระยะเวลา 2 วัน</p>
+        <p class="mb-1"><strong>[I]</strong> ออกแบบกำหนดการอบรมแบบละเอียด รวมเนื้อหาและกิจกรรม</p>
+        <p class="mb-0"><strong>[F]</strong> จัดเป็นตารางแบ่งเป็นช่วงเช้า-บ่าย แต่ละช่วงระบุหัวข้อ ระยะเวลา วิทยากร และกิจกรรม</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่างที่ 3 — สรุปรายงานประชุม</strong>
+        <p class="mt-2 mb-1"><strong>[R]</strong> คุณเป็นเลขานุการที่ประชุมที่มีความชำนาญในการจดบันทึก</p>
+        <p class="mb-1"><strong>[C]</strong> ประชุมคณะกรรมการบริหารครั้งที่ 3/2569 วันที่ 15 มกราคม 2569 ผู้เข้าร่วม 12 คน วาระหลัก: แผนงบประมาณปี 2570</p>
+        <p class="mb-1"><strong>[I]</strong> สรุปรายงานการประชุมจากข้อมูลที่ให้ไว้</p>
+        <p class="mb-0"><strong>[F]</strong> รูปแบบรายงานการประชุมราชการ มีวาระที่ 1-5 แต่ละวาระมีผู้เสนอ สาระสำคัญ และมติ</p>
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 เคล็ดลับ</h5>
+        <p class="mb-0">ไม่จำเป็นต้องใส่ครบทุกตัว RCIF ทุกครั้ง — แต่ยิ่งใส่ครบ ผลลัพธ์ยิ่งตรงใจ โดยเฉพาะ <strong>I (คำสั่ง)</strong> ที่ขาดไม่ได้เลย</p>
+    </div>
+
+    <!-- Section 2.3 -->
+    <div class="section-header">
+        <h2>2.3 ตัวอย่าง Prompt ดี vs Prompt แย่</h2>
+        <p>เปรียบเทียบให้เห็นชัดว่าอะไรทำให้ Prompt ดีขึ้น</p>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:5%">#</th>
+                    <th style="width:25%">❌ Prompt แย่</th>
+                    <th style="width:45%">✅ Prompt ดี</th>
+                    <th style="width:25%">ทำไมดีกว่า</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>"เขียนหนังสือ"</td>
+                    <td>"คุณเป็นเจ้าหน้าที่ธุรการ ร่างบันทึกข้อความ เรื่องขออนุมัติเดินทางไปราชการจังหวัดนครราชสีมา วันที่ 20-21 ม.ค. 2569 ถึงผู้อำนวยการ รูปแบบหนังสือราชการ"</td>
+                    <td>มีบทบาท + บริบทครบ + ระบุรูปแบบชัด</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>"สรุปให้หน่อย"</td>
+                    <td>"สรุปบทความนี้เป็นภาษาไทย 5 หัวข้อหลัก แต่ละข้อไม่เกิน 2 บรรทัด เน้นประเด็นที่เกี่ยวกับงานราชการ"</td>
+                    <td>บอกจำนวน ความยาว และเงื่อนไข</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>"แปลภาษา"</td>
+                    <td>"แปลข้อความต่อไปนี้จากไทยเป็นอังกฤษ ใช้ภาษาทางการสำหรับหนังสือราชการ: [ข้อความ]"</td>
+                    <td>ระบุภาษาต้นทาง-ปลายทาง + ระดับภาษา</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>"ทำ PowerPoint"</td>
+                    <td>"คุณเป็นนักออกแบบสื่อ ช่วยเขียนเนื้อหาสำหรับ PowerPoint 10 สไลด์ เรื่อง 'AI กับงานราชการ' แต่ละสไลด์มีหัวข้อ + bullet 3-4 ข้อ + คำแนะนำรูปภาพ"</td>
+                    <td>ระบุจำนวนสไลด์ + โครงสร้างแต่ละหน้า</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>"เขียนอีเมล"</td>
+                    <td>"ร่างอีเมลเชิญวิทยากรภายนอก (ผศ.ดร.สมศรี) มาบรรยายเรื่อง Digital Transformation วันที่ 15 ก.พ. 2569 เวลา 09:00-12:00 น. ที่ สนพ.สุรินทร์ น้ำเสียงสุภาพเป็นทางการ ความยาวไม่เกิน 200 คำ"</td>
+                    <td>มีชื่อ วันเวลา สถานที่ + กำหนดน้ำเสียง + ความยาว</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>"วิเคราะห์ข้อมูล"</td>
+                    <td>"วิเคราะห์ข้อมูลผู้เข้าอบรมจากตารางที่แนบ โดย: 1) สรุปจำนวนผู้เข้าอบรมแยกตามหลักสูตร 2) หาหลักสูตรที่มีผู้สมัครมากที่สุด 3) เปรียบเทียบกับปีก่อน แสดงผลเป็นตาราง"</td>
+                    <td>บอกชัดว่าวิเคราะห์อะไร + แบ่งเป็นข้อ + ระบุรูปแบบผลลัพธ์</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-warning">
+        <h5>⚠️ ข้อสังเกต</h5>
+        <p class="mb-0">Prompt แย่ไม่ได้ "ผิด" — AI ยังตอบได้ แต่ผลลัพธ์จะ<strong>กว้าง ไม่ตรงใจ ต้องแก้หลายรอบ</strong> ในขณะที่ Prompt ดี ตอบได้ตรงใจตั้งแต่ครั้งแรก</p>
+    </div>
+
+    <!-- Section 2.4 -->
+    <div class="section-header">
+        <h2>2.4 เทคนิค Zero-shot, One-shot, Few-shot</h2>
+        <p>เทคนิคการให้ตัวอย่างเพื่อควบคุมรูปแบบผลลัพธ์</p>
+    </div>
+
+    <h3>Zero-shot — ถามตรงๆ ไม่ให้ตัวอย่าง</h3>
+    <p>เหมาะกับงานง่ายๆ ที่ AI เข้าใจได้เลย ไม่ต้องชี้แนะ</p>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่าง Zero-shot</strong>
+        <p class="mt-2 mb-0">"จัดหมวดหมู่คำต่อไปนี้เป็นหมวด ผลไม้ หรือ ผัก: แตงโม, ผักกาด, มะม่วง, บร็อคโคลี, ทุเรียน, แครอท"</p>
+    </div>
+
+    <h3>One-shot — ให้ตัวอย่าง 1 ข้อ</h3>
+    <p>เหมาะเมื่อต้องการให้ AI เข้าใจ "รูปแบบ" หรือ "สไตล์" ที่ต้องการ</p>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่าง One-shot</strong>
+        <p class="mt-2 mb-1">เขียนคำขวัญหน่วยงานตามรูปแบบนี้:</p>
+        <p class="mb-1"><strong>ตัวอย่าง:</strong> "พัฒนาฝีมือ เสริมทักษะ สร้างอาชีพ สู่ความยั่งยืน"</p>
+        <p class="mb-0"><strong>เขียนให้:</strong> คำขวัญสำหรับหน่วยงานส่งเสริมการท่องเที่ยวจังหวัด 3 ข้อ</p>
+    </div>
+
+    <h3>Few-shot — ให้ตัวอย่าง 2-3 ข้อ</h3>
+    <p>เหมาะเมื่อต้องการควบคุมรูปแบบอย่างเข้มงวด หรืองานที่มีรูปแบบเฉพาะ</p>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่าง Few-shot</strong>
+        <p class="mt-2 mb-1">เขียนคำอธิบายหลักสูตรอบรมตามรูปแบบนี้:</p>
+        <p class="mb-1"><strong>ตัวอย่าง 1:</strong><br>
+        หลักสูตร: การใช้ Excel ขั้นสูง<br>
+        คำอธิบาย: เรียนรู้สูตรขั้นสูง Pivot Table และ Macro เพื่อจัดการข้อมูลได้เร็วขึ้น 10 เท่า เหมาะสำหรับผู้ที่ใช้ Excel ทุกวัน</p>
+        <p class="mb-1"><strong>ตัวอย่าง 2:</strong><br>
+        หลักสูตร: การถ่ายภาพด้วยสมาร์ทโฟน<br>
+        คำอธิบาย: เทคนิคถ่ายรูปสวยด้วยมือถือ ตั้งแต่จัดองค์ประกอบ แสง จนถึงแต่งรูป เหมาะสำหรับงาน PR และสื่อออนไลน์</p>
+        <p class="mb-1"><strong>ตัวอย่าง 3:</strong><br>
+        หลักสูตร: การเขียนโปรแกรม Python เบื้องต้น<br>
+        คำอธิบาย: เริ่มต้นเขียนโปรแกรมตั้งแต่ศูนย์ ครอบคลุมตัวแปร เงื่อนไข ลูป และการจัดการไฟล์ เหมาะสำหรับผู้เริ่มต้นที่ไม่มีพื้นฐาน</p>
+        <p class="mb-0"><strong>เขียนให้:</strong> หลักสูตร "การใช้ AI ในงานราชการ"</p>
+    </div>
+
+    <h3>เปรียบเทียบ 3 เทคนิค</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>เทคนิค</th>
+                    <th>ให้ตัวอย่าง</th>
+                    <th>เหมาะกับ</th>
+                    <th>ข้อดี</th>
+                    <th>ข้อจำกัด</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Zero-shot</strong></td>
+                    <td>0 ข้อ</td>
+                    <td>งานทั่วไป คำถามตรงๆ</td>
+                    <td>เร็ว กระชับ</td>
+                    <td>ผลลัพธ์อาจไม่ตรงรูปแบบ</td>
+                </tr>
+                <tr>
+                    <td><strong>One-shot</strong></td>
+                    <td>1 ข้อ</td>
+                    <td>ต้องการสไตล์เฉพาะ</td>
+                    <td>AI เข้าใจรูปแบบได้</td>
+                    <td>ตัวอย่างเดียวอาจไม่พอ</td>
+                </tr>
+                <tr>
+                    <td><strong>Few-shot</strong></td>
+                    <td>2-5 ข้อ</td>
+                    <td>งานที่มี pattern ชัด</td>
+                    <td>ควบคุมรูปแบบได้ดีมาก</td>
+                    <td>Prompt ยาว ใช้ Token มาก</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Section 2.5 -->
+    <div class="section-header">
+        <h2>2.5 การกำหนดรูปแบบผลลัพธ์</h2>
+        <p>บอก AI ว่าต้องการผลลัพธ์ในรูปแบบไหน</p>
+    </div>
+
+    <p>การระบุ Format ช่วยให้ AI ตอบในรูปแบบที่พร้อมใช้งาน ไม่ต้องมานั่งจัดเองทีหลัง:</p>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>รูปแบบ</th>
+                    <th>วิธีสั่ง</th>
+                    <th>เหมาะกับ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ตาราง</strong></td>
+                    <td>"แสดงผลเป็นตาราง มีคอลัมน์: ลำดับ, หัวข้อ, รายละเอียด"</td>
+                    <td>เปรียบเทียบข้อมูล, รายการ</td>
+                </tr>
+                <tr>
+                    <td><strong>หัวข้อ (Bullet)</strong></td>
+                    <td>"ตอบเป็นหัวข้อ 5 ข้อ แต่ละข้อ 1-2 ประโยค"</td>
+                    <td>สรุป, ไอเดีย, ข้อดี-ข้อเสีย</td>
+                </tr>
+                <tr>
+                    <td><strong>ย่อหน้า</strong></td>
+                    <td>"เขียนเป็นย่อหน้า ความยาว 200 คำ"</td>
+                    <td>บทความ, รายงาน, คำอธิบาย</td>
+                </tr>
+                <tr>
+                    <td><strong>ขั้นตอน (Step)</strong></td>
+                    <td>"อธิบายเป็นขั้นตอน ขั้นที่ 1, 2, 3..."</td>
+                    <td>วิธีทำ, คู่มือ, Tutorial</td>
+                </tr>
+                <tr>
+                    <td><strong>JSON</strong></td>
+                    <td>"ตอบเป็น JSON format มี key: name, description, category"</td>
+                    <td>ข้อมูลสำหรับโปรแกรม/ระบบ</td>
+                </tr>
+                <tr>
+                    <td><strong>Markdown</strong></td>
+                    <td>"ตอบเป็น Markdown ใช้ heading, bold, bullet"</td>
+                    <td>เอกสาร, README, บทความออนไลน์</td>
+                </tr>
+                <tr>
+                    <td><strong>อีเมล/จดหมาย</strong></td>
+                    <td>"ร่างเป็นอีเมล มีหัวเรื่อง คำขึ้นต้น เนื้อหา ลงท้าย"</td>
+                    <td>การสื่อสารทางการ</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>ตัวอย่าง Prompt ที่ระบุ Format ต่างๆ</h3>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่าง — ขอผลลัพธ์เป็นตาราง</strong>
+        <p class="mt-2 mb-0">"เปรียบเทียบ ChatGPT, Gemini และ Claude ในด้าน: ราคา, ข้อดี, ข้อจำกัด, เหมาะกับงาน — แสดงผลเป็นตาราง"</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่าง — ขอผลลัพธ์เป็นขั้นตอน</strong>
+        <p class="mt-2 mb-0">"อธิบายวิธีสร้าง Google Form สำหรับแบบประเมินความพึงพอใจ เป็นขั้นตอน step-by-step พร้อมคำอธิบายแต่ละขั้น"</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่าง — ขอผลลัพธ์เป็น JSON</strong>
+        <p class="mt-2 mb-0">"สร้างข้อมูลหลักสูตรอบรม 3 หลักสูตร ตอบเป็น JSON array โดยแต่ละ object มี: course_name, duration_hours, level, description"</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่าง — ขอผลลัพธ์แบบผสม</strong>
+        <p class="mt-2 mb-0">"สรุปรายงานประจำปีต่อไปนี้ โดย: 1) ย่อหน้าบทสรุปผู้บริหาร 3 บรรทัด 2) ตารางตัวชี้วัด KPI 5 ข้อ 3) bullet ข้อเสนอแนะ 3 ข้อ"</p>
+    </div>
+
+    <!-- Section 2.6 -->
+    <div class="section-header">
+        <h2>2.6 ข้อผิดพลาดที่พบบ่อย</h2>
+        <p>หลุมพรางที่มือใหม่มักพลาด และวิธีแก้ไข</p>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:5%">#</th>
+                    <th style="width:25%">ข้อผิดพลาด</th>
+                    <th style="width:35%">ตัวอย่าง</th>
+                    <th style="width:35%">วิธีแก้ไข</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>Prompt กว้างเกินไป</strong></td>
+                    <td>"ช่วยเรื่องงาน" — AI ไม่รู้ว่างานอะไร</td>
+                    <td>ระบุให้ชัด: ทำอะไร + เรื่องอะไร + สำหรับใคร</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>ไม่ระบุบริบท</strong></td>
+                    <td>"เขียนจดหมาย" — ไม่รู้จดหมายอะไร ถึงใคร</td>
+                    <td>ใส่ Context: ใคร ทำไม เมื่อไหร่ ที่ไหน</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>ยาวเกินไป (ข้อมูลไม่จำเป็น)</strong></td>
+                    <td>ใส่ประวัติหน่วยงานตั้งแต่ก่อตั้ง 50 ปีก่อนเพื่อขอเขียนอีเมลสั้นๆ</td>
+                    <td>ใส่เฉพาะข้อมูลที่เกี่ยวข้องกับสิ่งที่ต้องการ</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>ไม่บอกรูปแบบผลลัพธ์</strong></td>
+                    <td>"สรุปให้หน่อย" — AI อาจตอบยาว 3 หน้า</td>
+                    <td>ระบุ: กี่ข้อ กี่คำ รูปแบบอะไร</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>ถามหลายเรื่องใน Prompt เดียว</strong></td>
+                    <td>"เขียนจดหมาย + สร้าง PPT + วิเคราะห์ข้อมูล"</td>
+                    <td>แยก 1 Prompt = 1 งาน แล้วทำทีละขั้น</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>ไม่กำหนดบทบาทให้ AI</strong></td>
+                    <td>"เขียนบทความ" — AI ตอบแบบทั่วๆ ไป</td>
+                    <td>เริ่มด้วย "คุณเป็น..." เพื่อให้ AI ตอบเฉพาะทาง</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 Tips รวม — ทำให้ Prompt ดีขึ้นทันที</h5>
+        <ul class="mb-0">
+            <li><strong>เริ่มด้วย Role:</strong> "คุณเป็น..." ช่วยให้ AI เข้าถึงความเชี่ยวชาญที่ต้องการ</li>
+            <li><strong>1 Prompt = 1 งาน:</strong> อย่ายัดหลายเรื่องรวมกัน</li>
+            <li><strong>ระบุตัวเลข:</strong> "5 ข้อ", "200 คำ", "3 ย่อหน้า" — ชัดเจนกว่า "สั้นๆ"</li>
+            <li><strong>บอกสิ่งที่ไม่ต้องการ:</strong> "ห้ามใช้ศัพท์เทคนิค", "ไม่ต้องมีคำนำ"</li>
+            <li><strong>ถ้าไม่ได้ผลตรงใจ:</strong> ลองเพิ่มบริบท หรือให้ตัวอย่าง (One-shot/Few-shot)</li>
+            <li><strong>Iterate:</strong> ถามต่อเนื่องได้ เช่น "ปรับให้สั้นกว่านี้" หรือ "เพิ่มตัวอย่างอีก"</li>
+        </ul>
+    </div>
+
+    <!-- Exercises -->
+    <div class="exercise-box">
+        <h4>✏️ แบบฝึกหัดบทที่ 2</h4>
+        <ol>
+            <li><strong>เขียน Prompt ตามสูตร RCIF 3 ข้อ</strong>
+                <p>เลือกจากงานจริงของท่าน เช่น ร่างหนังสือราชการ สรุปรายงาน เขียนประกาศ — ระบุ R, C, I, F ให้ครบ</p>
+            </li>
+            <li><strong>แปลง Prompt แย่ให้เป็น Prompt ดี</strong>
+                <p>ปรับปรุง Prompt ต่อไปนี้ให้ดีขึ้น:</p>
+                <ul>
+                    <li>"ช่วยทำตาราง"</li>
+                    <li>"เขียนข่าว"</li>
+                    <li>"สรุปเรื่องนี้"</li>
+                </ul>
+            </li>
+            <li><strong>ทดลองเขียน Few-shot Prompt 1 ข้อ</strong>
+                <p>สร้าง Prompt ที่มีตัวอย่าง 2-3 ข้อ เพื่อให้ AI สร้างผลลัพธ์ในรูปแบบเดียวกัน (เช่น คำอธิบายหลักสูตร, ประกาศรับสมัคร, สโลแกน)</p>
+            </li>
+            <li><strong>ถามคำถามเดียวกัน 3 แบบ แล้วเปรียบเทียบ</strong>
+                <p>ถาม ChatGPT คำถามเดียวกัน (เช่น "เขียนอีเมลเชิญประชุม") ด้วย:</p>
+                <ul>
+                    <li>แบบที่ 1: Prompt สั้นๆ (Zero-shot ไม่มี Format)</li>
+                    <li>แบบที่ 2: Prompt แบบ RCIF เต็มรูปแบบ</li>
+                    <li>แบบที่ 3: Prompt แบบ Few-shot + ระบุ Format</li>
+                </ul>
+                <p>บันทึกผลลัพธ์และเปรียบเทียบความแตกต่าง</p>
+            </li>
+        </ol>
+    </div>
+
+    <!-- Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter01.html" class="btn btn-chapter-prev">← บทที่ 1: ทำความรู้จัก AI และ ChatGPT</a>
+        <a href="chapter03.html" class="btn btn-chapter-next">บทที่ 3: เทคนิค Prompt ขั้นสูง →</a>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="text-white text-center py-4 mt-5" style="background:#10a37f;">
+    <p>คู่มือฝึกอบรม ChatGPT — เพิ่มประสิทธิภาพการทำงานด้วย AI</p>
+    <p class="opacity-75">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 10: จริยธรรม AI + โปรเจกต์จริง + นำเสนอ — คู่มือฝึกอบรม ChatGPT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark sticky-top" style="background:#10a37f;">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ ChatGPT</a>
+        <span class="text-white nav-text">บทที่ 10 — วันที่ 5 บ่าย</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+
+    <h1 class="mb-2">บทที่ 10: จริยธรรม AI + โปรเจกต์จริง + นำเสนอ</h1>
+    <p class="text-muted mb-4">วันที่ 5 ภาคบ่าย | ระยะเวลา 3 ชั่วโมง | ระดับ: กลาง</p>
+
+    <div class="alert alert-info">
+        <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+        <ul class="mb-0">
+            <li>เข้าใจข้อจำกัดของ ChatGPT และรู้วิธีรับมือ</li>
+            <li>รู้หลักจริยธรรมและกฎหมายที่เกี่ยวข้องกับ AI</li>
+            <li>ทำโปรเจกต์จริงโดยประยุกต์ทักษะที่เรียนมาทั้ง 5 วัน</li>
+            <li>นำเสนอผลงานและสรุปบทเรียนที่ได้จากหลักสูตร</li>
+        </ul>
+    </div>
+
+    <!-- Section 10.1 -->
+    <div class="section-header">
+        <h2>10.1 ข้อจำกัดของ ChatGPT</h2>
+        <p>สิ่งที่ ChatGPT ทำไม่ได้ดี และวิธีรับมือ</p>
+    </div>
+
+    <p>แม้ ChatGPT จะมีความสามารถหลากหลาย แต่ก็มี<strong>ข้อจำกัดที่ต้องรู้</strong> เพื่อใช้งานอย่างถูกต้องและไม่หลงเชื่อข้อมูลผิดพลาด:</p>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>ข้อจำกัด</th>
+                    <th>อธิบาย</th>
+                    <th>วิธีรับมือ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>Hallucination (แต่งข้อมูล)</strong></td>
+                    <td>AI สร้างข้อมูลที่ดูน่าเชื่อถือแต่ไม่จริง เช่น อ้างกฎหมายที่ไม่มี สร้าง URL ปลอม</td>
+                    <td>ตรวจสอบข้อมูลสำคัญกับแหล่งจริงเสมอ</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>ข้อมูลล้าสมัย (Knowledge Cutoff)</strong></td>
+                    <td>ข้อมูลฝึกมีถึงจุดหนึ่ง ไม่รู้เหตุการณ์ล่าสุดหรือกฎหมายใหม่</td>
+                    <td>ใช้ Browse with Bing / GPT-4o ที่ค้นเว็บได้</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Bias (อคติ)</strong></td>
+                    <td>AI อาจมีอคติจากข้อมูลที่ใช้ฝึก เช่น เพศ เชื้อชาติ วัฒนธรรม</td>
+                    <td>ตรวจสอบความเป็นกลาง ขอมุมมองหลายด้าน</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>คำนวณผิดพลาด</strong></td>
+                    <td>การคำนวณซับซ้อน ตัวเลขหลายหลัก AI อาจให้คำตอบผิด</td>
+                    <td>ใช้ Code Interpreter สำหรับคำนวณ หรือตรวจด้วย Excel</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>ไม่เข้าใจบริบทเฉพาะ</strong></td>
+                    <td>ไม่รู้จักระเบียบภายในหน่วยงาน คำสั่งเฉพาะ หรือกฎที่ไม่เปิดเผย</td>
+                    <td>ให้ข้อมูลบริบท (Context) ที่ชัดเจนใน Prompt</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>ไม่มีความคิดเห็นของตัวเอง</strong></td>
+                    <td>AI ไม่มีจุดยืน ตัดสินใจไม่ได้ ต้องให้มนุษย์ตัดสิน</td>
+                    <td>ใช้ AI เป็นที่ปรึกษา ไม่ใช่ผู้ตัดสินใจ</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Section 10.2 -->
+    <div class="section-header">
+        <h2>10.2 จริยธรรมและกฎหมาย AI</h2>
+        <p>ลิขสิทธิ์ PDPA และแนวปฏิบัติที่ต้องรู้</p>
+    </div>
+
+    <h3>ประเด็นสำคัญที่ต้องเข้าใจ</h3>
+
+    <h4>📋 ลิขสิทธิ์ — ใครเป็นเจ้าของผลงาน AI?</h4>
+    <p>ในประเทศไทย พ.ร.บ. ลิขสิทธิ์ พ.ศ. 2537 กำหนดว่า "ผลงานที่มีลิขสิทธิ์ต้องเกิดจากการสร้างสรรค์ของมนุษย์" — ผลงานที่ AI สร้างขึ้น 100% จึงอาจไม่ได้รับความคุ้มครอง แต่ถ้ามนุษย์มีส่วนร่วมอย่างมีนัยสำคัญ (ดัดแปลง ปรับปรุง เรียบเรียง) อาจถือว่ามีลิขสิทธิ์ได้</p>
+
+    <h4>🔒 PDPA — ข้อมูลส่วนบุคคล</h4>
+    <p>พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล (PDPA) ห้ามส่งข้อมูลส่วนบุคคลเข้า ChatGPT โดยไม่ได้รับความยินยอม เช่น ชื่อ-สกุลจริง เลขบัตรประชาชน ข้อมูลสุขภาพ เงินเดือน</p>
+
+    <h4>🏛️ นโยบายหน่วยงาน</h4>
+    <p>หน่วยงานราชการอาจมีนโยบายเฉพาะเกี่ยวกับการใช้ AI เช่น ห้ามใช้กับเอกสารลับ ต้องตรวจสอบก่อนเผยแพร่ ต้องระบุว่าใช้ AI ช่วย</p>
+
+    <h3>ตาราง Do's & Don'ts</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>✅ Do's (ทำได้)</th>
+                    <th>❌ Don'ts (ห้ามทำ)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ใช้ AI ร่างเอกสารทั่วไป แล้วตรวจสอบก่อนใช้</td>
+                    <td>ส่งเอกสารลับราชการเข้า ChatGPT</td>
+                </tr>
+                <tr>
+                    <td>ใช้ AI ช่วยคิดไอเดีย ระดมความคิด</td>
+                    <td>ส่งข้อมูลส่วนบุคคลของผู้อื่น (ชื่อจริง เลขบัตร)</td>
+                </tr>
+                <tr>
+                    <td>ใช้ AI ช่วยเรียนรู้เรื่องใหม่ๆ</td>
+                    <td>Copy ผลงาน AI ไปใช้โดยไม่ตรวจสอบ</td>
+                </tr>
+                <tr>
+                    <td>ระบุว่า "ร่างด้วย AI ตรวจสอบโดยมนุษย์"</td>
+                    <td>อ้างว่าผลงาน AI เป็นผลงานของตัวเอง 100%</td>
+                </tr>
+                <tr>
+                    <td>ใช้ AI สร้างเทมเพลตแล้วปรับให้เหมาะสม</td>
+                    <td>ใช้ AI ตัดสินใจเรื่องสำคัญแทนมนุษย์</td>
+                </tr>
+                <tr>
+                    <td>ตรวจสอบข้อมูลตัวเลข/กฎหมาย กับแหล่งจริง</td>
+                    <td>เชื่อข้อมูลจาก AI โดยไม่ตรวจสอบ โดยเฉพาะกฎหมาย</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Section 10.3 -->
+    <div class="section-header">
+        <h2>10.3 แนวปฏิบัติที่ดีในหน่วยงานราชการ</h2>
+        <p>10 ข้อปฏิบัติสำหรับการใช้ AI อย่างรับผิดชอบ</p>
+    </div>
+
+    <div class="info-card">
+        <h5>📌 10 ข้อปฏิบัติสำหรับการใช้ AI ในหน่วยงานราชการ</h5>
+        <ol>
+            <li><strong>ตรวจสอบผลลัพธ์จาก AI เสมอ</strong> — ก่อนนำไปใช้ต้องตรวจสอบความถูกต้อง</li>
+            <li><strong>ไม่ส่งข้อมูลลับหรือข้อมูลส่วนบุคคล</strong> — ห้ามส่งเอกสาร ลับ/ลับมาก หรือข้อมูล PDPA</li>
+            <li><strong>อ้างอิงว่าใช้ AI ช่วย</strong> — ระบุในเอกสารว่า "ร่างด้วย AI ตรวจสอบโดย [ชื่อ]"</li>
+            <li><strong>ใช้ AI เป็นตัวช่วย ไม่ใช่ตัวแทน</strong> — มนุษย์ต้องเป็นผู้ตัดสินใจสุดท้าย</li>
+            <li><strong>Cross-check ข้อมูลสำคัญ</strong> — ตัวเลข กฎหมาย ระเบียบ ต้องตรวจจากแหล่งจริง</li>
+            <li><strong>ระวังอคติ (Bias)</strong> — ตรวจสอบว่าผลลัพธ์ไม่เอนเอียงหรือเลือกปฏิบัติ</li>
+            <li><strong>เรียนรู้อย่างต่อเนื่อง</strong> — AI เปลี่ยนแปลงเร็ว ติดตามความรู้ใหม่สม่ำเสมอ</li>
+            <li><strong>แบ่งปันความรู้ในทีม</strong> — สอนเพื่อนร่วมงานใช้ AI อย่างถูกต้อง</li>
+            <li><strong>บันทึก Prompt ที่ใช้ได้ผลดี</strong> — สร้างคลัง Prompt สำหรับหน่วยงาน</li>
+            <li><strong>ปฏิบัติตามนโยบายหน่วยงาน</strong> — ตรวจสอบว่าหน่วยงานมีข้อกำหนดอะไรบ้าง</li>
+        </ol>
+    </div>
+
+    <div class="alert alert-success">
+        <h5>✅ หลักการ "AI + Human = Best Result"</h5>
+        <p class="mb-0">ผลงานที่ดีที่สุดไม่ได้มาจาก AI อย่างเดียว หรือมนุษย์อย่างเดียว — แต่มาจาก<strong>การทำงานร่วมกัน</strong>: ให้ AI ช่วยร่างและทำงานซ้ำๆ ส่วนมนุษย์ตรวจสอบ ตัดสินใจ และเพิ่มความคิดสร้างสรรค์</p>
+    </div>
+
+    <!-- Section 10.4 -->
+    <div class="section-header">
+        <h2>10.4 อนาคตของ AI 2025-2030</h2>
+        <p>แนวโน้มที่จะเปลี่ยนแปลงการทำงานในอนาคต</p>
+    </div>
+
+    <h3>5 แนวโน้มสำคัญ</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>แนวโน้ม</th>
+                    <th>รายละเอียด</th>
+                    <th>ผลกระทบต่อราชการ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>AI Agent (ตัวแทน AI)</strong></td>
+                    <td>AI ที่ทำงานหลายขั้นตอนต่อเนื่องได้เอง ไม่ต้องสั่งทีละขั้น</td>
+                    <td>ระบบราชการอัตโนมัติ ลดขั้นตอนเอกสาร</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Multimodal AI</strong></td>
+                    <td>AI ที่เข้าใจทั้งข้อความ ภาพ เสียง วิดีโอ พร้อมกัน</td>
+                    <td>ประชุมสรุปอัตโนมัติ วิเคราะห์เอกสาร+รูปภาพ</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>AI ในระบบราชการ</strong></td>
+                    <td>รัฐบาลหลายประเทศใช้ AI ในงานบริการประชาชน</td>
+                    <td>Chatbot ตอบคำถาม, ออกเอกสารอัตโนมัติ, วิเคราะห์นโยบาย</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>ทักษะที่ต้องมี (AI Literacy)</strong></td>
+                    <td>Prompt Engineering, Data Literacy, Critical Thinking</td>
+                    <td>ข้าราชการต้องใช้ AI เป็นเหมือนใช้ Word/Excel เป็น</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>ผลกระทบต่อตำแหน่งงาน</strong></td>
+                    <td>งานซ้ำๆ ลดลง งานที่ต้องใช้วิจารณญาณ/ความคิดสร้างสรรค์เพิ่มขึ้น</td>
+                    <td>เปลี่ยนจาก "ทำเอง" เป็น "กำกับ AI + ตรวจสอบ"</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Section 10.5 -->
+    <div class="section-header">
+        <h2>10.5 ทำโปรเจกต์จริง</h2>
+        <p>ประยุกต์ทักษะทั้งหมดที่เรียนมา — เลือกหัวข้อ วางแผน และลงมือทำ</p>
+    </div>
+
+    <h3>เลือกหัวข้อโปรเจกต์ (1 หัวข้อ)</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>หัวข้อโปรเจกต์</th>
+                    <th>รายละเอียด</th>
+                    <th>ระดับ</th>
+                    <th>ทักษะที่ใช้</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>ร่างโครงการฝึกอบรม + งบประมาณ</strong></td>
+                    <td>เขียนโครงการครบองค์ประกอบ พร้อมรายละเอียดงบประมาณ</td>
+                    <td>ง่าย</td>
+                    <td>Prompt, เอกสาร</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>สร้าง Dashboard สรุปผลงาน</strong></td>
+                    <td>ใช้ Excel + AI สร้าง Dashboard สรุปผลงานหน่วยงาน</td>
+                    <td>กลาง</td>
+                    <td>Excel, กราฟ, วิเคราะห์</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>ทำสื่อนำเสนอ 10 สไลด์ + ภาพ</strong></td>
+                    <td>สร้าง Presentation พร้อมเนื้อหาและภาพประกอบจาก AI</td>
+                    <td>กลาง</td>
+                    <td>เนื้อหา, ภาพ, Canva</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>สร้าง Custom GPT ช่วยงาน</strong></td>
+                    <td>สร้าง GPT เฉพาะทาง เช่น ช่วยตอบ FAQ หน่วยงาน</td>
+                    <td>กลาง-สูง</td>
+                    <td>Custom GPT, Prompt</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>เขียน Google Apps Script ระบบอัตโนมัติ</strong></td>
+                    <td>สร้างระบบอัตโนมัติเช่น ส่งอีเมล แจ้ง Line สร้าง PDF</td>
+                    <td>สูง</td>
+                    <td>โปรแกรม, GAS, API</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>เกณฑ์การประเมินผลงาน</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>เกณฑ์</th>
+                    <th>คะแนน</th>
+                    <th>รายละเอียด</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ความสมบูรณ์ของผลงาน</strong></td>
+                    <td>30%</td>
+                    <td>ผลงานครบถ้วนตามที่กำหนด มีองค์ประกอบครบ ใช้งานได้จริง</td>
+                </tr>
+                <tr>
+                    <td><strong>การใช้ AI อย่างมีประสิทธิภาพ</strong></td>
+                    <td>30%</td>
+                    <td>ใช้ Prompt ที่ดี ใช้เทคนิคที่เรียน เลือกใช้ AI ได้เหมาะสม</td>
+                </tr>
+                <tr>
+                    <td><strong>ความคิดสร้างสรรค์</strong></td>
+                    <td>20%</td>
+                    <td>มีไอเดียใหม่ ประยุกต์ใช้กับงานจริง แก้ปัญหาได้อย่างสร้างสรรค์</td>
+                </tr>
+                <tr>
+                    <td><strong>การนำเสนอ</strong></td>
+                    <td>20%</td>
+                    <td>อธิบายชัดเจน ตอบคำถามได้ มีความมั่นใจ</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Section 10.6 -->
+    <div class="section-header">
+        <h2>10.6 นำเสนอผลงาน + สรุปหลักสูตร</h2>
+        <p>นำเสนอโปรเจกต์ สรุปสิ่งที่ได้เรียนรู้ และปิดการอบรม</p>
+    </div>
+
+    <h3>กติกาการนำเสนอ</h3>
+    <ul>
+        <li><strong>เวลา:</strong> 5 นาทีต่อทีม + Q&A 2 นาที</li>
+        <li><strong>รูปแบบ:</strong> แสดงผลงานจริง + อธิบายกระบวนการใช้ AI</li>
+        <li><strong>สิ่งที่ต้องนำเสนอ:</strong> ผลงาน, Prompt ที่ใช้, ปัญหาที่เจอ, สิ่งที่เรียนรู้</li>
+        <li><strong>ผู้ฟัง:</strong> เพื่อนร่วมอบรมและวิทยากรให้ Feedback</li>
+    </ul>
+
+    <h3>สิ่งที่ได้จาก 5 วัน</h3>
+    <div class="info-card">
+        <h5>📚 สรุปทักษะที่ได้เรียนรู้ตลอดหลักสูตร</h5>
+        <ul>
+            <li>✅ เข้าใจ AI และ ChatGPT — รู้ว่าทำอะไรได้ ทำอะไรไม่ได้</li>
+            <li>✅ เขียน Prompt อย่างมืออาชีพ — ใช้เทคนิค Role, Context, Format</li>
+            <li>✅ สร้างเอกสารราชการ — หนังสือ บันทึก รายงาน โครงการ</li>
+            <li>✅ วิเคราะห์ข้อมูล Excel — สูตร กราฟ Dashboard สรุปผล</li>
+            <li>✅ สร้างรายงานวิชาการ — KPI ตัวชี้วัด Executive Summary</li>
+            <li>✅ ใช้ AI สร้างสื่อ — ภาพ Presentation Canva Video</li>
+            <li>✅ สร้าง Custom GPT — GPT เฉพาะทางสำหรับงาน</li>
+            <li>✅ เขียนโปรแกรม — Google Apps Script, HTML, VBA, Bot</li>
+            <li>✅ รู้จริยธรรม AI — ลิขสิทธิ์ PDPA ข้อจำกัด แนวปฏิบัติ</li>
+        </ul>
+    </div>
+
+    <h3>สิ่งที่ได้รับเมื่อจบหลักสูตร</h3>
+    <ul>
+        <li>📄 <strong>Cheat Sheet</strong> — สรุป Prompt ที่ใช้บ่อย + เทคนิคสำคัญ (พิมพ์แจก)</li>
+        <li>🏆 <strong>ใบประกาศนียบัตร</strong> — ผ่านการฝึกอบรมหลักสูตร "การใช้ ChatGPT เพิ่มประสิทธิภาพการทำงาน"</li>
+        <li>📁 <strong>ไฟล์ตัวอย่าง</strong> — Prompt Template, ตัวอย่างเอกสาร, สคริปต์</li>
+    </ul>
+
+    <h3>ช่องทางเรียนรู้เพิ่มเติม</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ช่องทาง</th>
+                    <th>ลิงก์ / รายละเอียด</th>
+                    <th>เนื้อหา</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>OpenAI Official</strong></td>
+                    <td>https://help.openai.com</td>
+                    <td>คู่มือทางการ อัปเดตฟีเจอร์ใหม่</td>
+                </tr>
+                <tr>
+                    <td><strong>YouTube</strong></td>
+                    <td>ค้นหา "ChatGPT Tutorial Thai"</td>
+                    <td>วิดีโอสอนภาษาไทย หลายช่อง</td>
+                </tr>
+                <tr>
+                    <td><strong>Facebook Group</strong></td>
+                    <td>กลุ่ม "ChatGPT Thailand" / "AI for Thai"</td>
+                    <td>ชุมชนแลกเปลี่ยนเทคนิค</td>
+                </tr>
+                <tr>
+                    <td><strong>Prompt Engineering Guide</strong></td>
+                    <td>https://www.promptingguide.ai</td>
+                    <td>คู่มือ Prompt Engineering ฉบับสมบูรณ์</td>
+                </tr>
+                <tr>
+                    <td><strong>Coursera / edX</strong></td>
+                    <td>ค้นหา "Generative AI"</td>
+                    <td>คอร์สออนไลน์จากมหาวิทยาลัยชั้นนำ</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-success">
+        <h5>🎉 ปิดการอบรม</h5>
+        <p class="mb-2">ขอบคุณทุกท่านที่เข้าร่วมหลักสูตร <strong>"การใช้ ChatGPT เพิ่มประสิทธิภาพการทำงาน"</strong> ตลอด 5 วัน (30 ชั่วโมง)</p>
+        <p class="mb-0">สิ่งสำคัญที่สุดคือ<strong>การลงมือใช้จริง</strong> — ยิ่งฝึกมาก ยิ่งเก่ง เริ่มจากงานง่ายๆ แล้วค่อยๆ เพิ่มความซับซ้อน ขอให้ทุกท่านนำความรู้ไปใช้ประโยชน์ในการทำงานจริง 🚀</p>
+    </div>
+
+    <!-- Exercises -->
+    <div class="exercise-box">
+        <h4>✏️ แบบฝึกหัดบทที่ 10 — ทำโปรเจกต์จริง</h4>
+        <ol>
+            <li><strong>เลือกหัวข้อโปรเจกต์</strong>
+                <p>เลือกจาก 5 หัวข้อข้างต้น หรือเสนอหัวข้อของตัวเองที่เกี่ยวข้องกับงานจริง</p>
+            </li>
+            <li><strong>วางแผนการทำงาน</strong>
+                <p>กำหนดขั้นตอน: จะใช้ AI ช่วยอะไรบ้าง? ผลลัพธ์สุดท้ายเป็นอะไร? ใช้เวลาเท่าไร?</p>
+            </li>
+            <li><strong>ลงมือทำด้วย AI</strong>
+                <p>ใช้ ChatGPT + เครื่องมืออื่นๆ ที่เรียนมา สร้างผลงานจริง</p>
+            </li>
+            <li><strong>เตรียมการนำเสนอ</strong>
+                <p>จัดเตรียมผลงาน + อธิบายกระบวนการ + Prompt ที่ใช้ + บทเรียนที่ได้ พร้อมนำเสนอ 5 นาที</p>
+            </li>
+        </ol>
+    </div>
+
+    <!-- Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter09.html" class="btn btn-chapter-prev">← บทที่ 9</a>
+        <a href="index.html" class="btn btn-chapter-next">หน้าหลัก →</a>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="text-white text-center py-4 mt-5" style="background:#10a37f;">
+    <p>คู่มือฝึกอบรม ChatGPT — เพิ่มประสิทธิภาพการทำงานด้วย AI</p>
+    <p class="opacity-75">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

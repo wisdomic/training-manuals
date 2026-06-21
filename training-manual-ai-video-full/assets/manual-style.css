@@ -1,0 +1,390 @@
+/* ===== Training Manual AI Video - Style ===== */
+/* Google Fonts Sarabun loaded via HTML <link> */
+
+:root {
+    --primary: #1a73e8;
+    --primary-dark: #1557b0;
+    --secondary: #34a853;
+    --accent: #fbbc04;
+    --danger: #ea4335;
+    --dark: #202124;
+    --light: #f8f9fa;
+    --gray: #5f6368;
+    --border-radius: 12px;
+    --shadow: 0 2px 8px rgba(0,0,0,0.1);
+    --shadow-lg: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+body {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+    background-color: #f5f7fa;
+}
+
+/* ===== Navbar ===== */
+.navbar-brand {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.nav-chapter-text {
+    color: rgba(255,255,255,0.7) !important;
+    font-size: 0.9rem;
+}
+
+/* ===== Content Area ===== */
+.content-area {
+    min-height: calc(100vh - 130px);
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+/* ===== Chapter Header ===== */
+.chapter-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 2.5rem 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.chapter-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.chapter-header .chapter-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.chapter-header .chapter-number {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Section Headers ===== */
+.section-header {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    border-left: 4px solid var(--primary);
+    padding-left: 1rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-header-secondary {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ===== Info Card ===== */
+.info-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--primary);
+}
+
+.info-card h5 {
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/* ===== Exercise Box ===== */
+.exercise-box {
+    background: linear-gradient(135deg, #fff3e0 0%, #fff8e1 100%);
+    border: 2px solid var(--accent);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.exercise-box h5 {
+    color: #e65100;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.exercise-box .exercise-title {
+    font-size: 1.2rem;
+}
+
+.exercise-box ol, .exercise-box ul {
+    margin-bottom: 0;
+}
+
+.exercise-box li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Prompt Box ===== */
+.prompt-box {
+    background: #263238;
+    color: #e0e0e0;
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    margin: 1rem 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    position: relative;
+    overflow-x: auto;
+}
+
+.prompt-box::before {
+    content: "💡 Prompt";
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background: var(--accent);
+    color: #333;
+    padding: 0 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'Sarabun', sans-serif;
+}
+
+/* ===== Step Box ===== */
+.step-box {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--secondary);
+}
+
+.step-box .step-number {
+    display: inline-block;
+    background: var(--secondary);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+}
+
+/* ===== Tool Card ===== */
+.tool-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s;
+}
+
+.tool-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.tool-card .tool-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.tool-card h6 {
+    font-weight: 700;
+    color: var(--dark);
+}
+
+/* ===== Workflow ===== */
+.workflow-step {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    box-shadow: var(--shadow);
+}
+
+.workflow-step .step-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    min-width: 40px;
+    text-align: center;
+}
+
+.workflow-arrow {
+    text-align: center;
+    color: var(--gray);
+    font-size: 1.2rem;
+    margin: 0.3rem 0;
+}
+
+/* ===== Navigation ===== */
+.chapter-nav {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e0e0e0;
+}
+
+.chapter-nav .btn {
+    border-radius: 8px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+}
+
+/* ===== Alerts Custom ===== */
+.alert {
+    border-radius: var(--border-radius);
+    border: none;
+    padding: 1.2rem 1.5rem;
+}
+
+.alert-info {
+    background: #e3f2fd;
+    color: #0d47a1;
+    border-left: 4px solid var(--primary);
+}
+
+.alert-success {
+    background: #e8f5e9;
+    color: #1b5e20;
+    border-left: 4px solid var(--secondary);
+}
+
+.alert-warning {
+    background: #fff3e0;
+    color: #e65100;
+    border-left: 4px solid var(--accent);
+}
+
+/* ===== Tables ===== */
+.table-custom {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.table-custom thead {
+    background: var(--primary);
+    color: white;
+}
+
+.table-custom th, .table-custom td {
+    padding: 0.8rem 1rem;
+    vertical-align: middle;
+}
+
+/* ===== Footer ===== */
+.footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.7);
+    padding: 1.2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* ===== Summary Card ===== */
+.summary-card {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-left: 4px solid var(--secondary);
+}
+
+.summary-card h5 {
+    color: #1b5e20;
+    font-weight: 700;
+}
+
+/* ===== Index Page ===== */
+.hero-section {
+    background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 50%, #1a237e 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+}
+
+.hero-section h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.hero-section .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.chapter-link-card {
+    display: block;
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 0.8rem;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    color: var(--dark);
+    transition: all 0.2s;
+    border-left: 4px solid var(--primary);
+}
+
+.chapter-link-card:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-lg);
+    color: var(--primary);
+}
+
+.chapter-link-card .chapter-num {
+    font-weight: 700;
+    color: var(--primary);
+    min-width: 80px;
+    display: inline-block;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .chapter-header {
+        padding: 1.5rem 1rem;
+    }
+    .chapter-header h1 {
+        font-size: 1.5rem;
+    }
+    .hero-section h1 {
+        font-size: 1.6rem;
+    }
+    .section-header {
+        font-size: 1.3rem;
+    }
+}
+
+@media print {
+    .navbar, .footer, .chapter-nav {
+        display: none !important;
+    }
+    .content-area {
+        padding: 0;
+    }
+    .chapter-header {
+        background: #333 !important;
+        -webkit-print-color-adjust: exact;
+    }
+}

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 1: รู้จัก NotebookLM — คู่มือ NotebookLM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4)">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ NotebookLM</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                <li class="nav-item"><a class="nav-link active" href="chapter01.html">บทที่ 1</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter02.html">บทที่ 2</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter03.html">บทที่ 3</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter04.html">บทที่ 4</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter05.html">บทที่ 5</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter06.html">บทที่ 6</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<div class="container mt-4">
+    <div class="mb-4">
+        <span class="day-badge">วันที่ 1</span>
+        <span class="time-badge ms-2">เช้า 09:00 – 12:00</span>
+    </div>
+    <h1 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">📗 บทที่ 1: รู้จัก NotebookLM</h1>
+    <p class="lead text-muted">Google's AI Research Assistant — เปลี่ยนเอกสารเป็นคำตอบที่เชื่อถือได้</p>
+
+    <!-- สารบัญบท -->
+    <div class="card p-3 mb-4">
+        <h5>📑 ในบทนี้</h5>
+        <ul class="mb-0">
+            <li><a href="#section-1-1">1.1 NotebookLM คืออะไร</a></li>
+            <li><a href="#section-1-2">1.2 ข้อดี 7 ข้อของ NotebookLM</a></li>
+            <li><a href="#section-1-3">1.3 สมัครใช้งาน</a></li>
+            <li><a href="#section-1-4">1.4 Interface — ส่วนประกอบหน้าจอ</a></li>
+            <li><a href="#section-1-5">1.5 ตัวอย่างการใช้งานในราชการ</a></li>
+        </ul>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- Section 1.1 -->
+    <!-- ============================================ -->
+    <section id="section-1-1" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">1.1 NotebookLM คืออะไร</h2>
+        
+        <p class="mt-3">NotebookLM (เดิมชื่อ Project Tailwind) คือ <strong>AI Research Assistant</strong> จาก Google ที่ใช้เทคโนโลยี Gemini เป็นฐาน แต่มีจุดพิเศษคือ:</p>
+
+        <div class="info-box">
+            <p class="mb-0"><strong>หลักการสำคัญ:</strong> NotebookLM ตอบคำถามจากเอกสารที่เราใส่เข้าไปเท่านั้น (Grounded in your sources) ไม่ดึงข้อมูลจากอินเทอร์เน็ต ไม่แต่งเรื่องเอง และทุกคำตอบมี citation อ้างอิงกลับไปยังย่อหน้าต้นทาง</p>
+        </div>
+
+        <h4 class="mt-4">ความแตกต่างจาก AI ทั่วไป</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>คุณสมบัติ</th>
+                        <th>NotebookLM</th>
+                        <th>Gemini / ChatGPT ปกติ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>แหล่งข้อมูล</td>
+                        <td class="text-success fw-bold">เอกสารที่เราใส่เท่านั้น</td>
+                        <td>ข้อมูลทั่วไปจากอินเทอร์เน็ต</td>
+                    </tr>
+                    <tr>
+                        <td>Citation (อ้างอิง)</td>
+                        <td class="text-success fw-bold">✅ มี — คลิกดูย่อหน้าต้นทางได้</td>
+                        <td>❌ ไม่มี หรือมีแต่ไม่แม่นยำ</td>
+                    </tr>
+                    <tr>
+                        <td>Hallucination (แต่งเรื่อง)</td>
+                        <td class="text-success fw-bold">น้อยมาก — ตอบจาก source เท่านั้น</td>
+                        <td>สูง — อาจแต่งข้อมูลที่ไม่มีอยู่จริง</td>
+                    </tr>
+                    <tr>
+                        <td>ค้นหาเว็บ</td>
+                        <td>❌ ไม่ได้ (ข้อจำกัด)</td>
+                        <td>✅ ค้นหาได้</td>
+                    </tr>
+                    <tr>
+                        <td>Podcast AI</td>
+                        <td class="text-success fw-bold">✅ Audio Overview — สร้างเสียงสรุปอัตโนมัติ</td>
+                        <td>❌ ไม่มี</td>
+                    </tr>
+                    <tr>
+                        <td>ราคา</td>
+                        <td class="text-success fw-bold">ฟรี!</td>
+                        <td>มีทั้งฟรีและเสียเงิน</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="screenshot-placeholder">
+            <p>หน้าจอ NotebookLM — แสดง Notebook ที่มี Sources + Chat panel + Citation</p>
+        </div>
+
+        <div class="tip-box">
+            <p class="mb-0">คิดว่า NotebookLM เหมือน "ผู้ช่วยวิจัยส่วนตัว" ที่อ่านเอกสารทั้งหมดของเราแล้ว พร้อมตอบคำถามพร้อมอ้างอิงหน้า/ย่อหน้าที่เอามา เหมาะกับงานราชการที่ต้องอ้างอิงระเบียบ กฎหมาย มติ ครม. ฯลฯ</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 1.2 -->
+    <!-- ============================================ -->
+    <section id="section-1-2" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">1.2 ข้อดี 7 ข้อของ NotebookLM</h2>
+
+        <div class="row g-3 mt-3">
+            <div class="col-md-6">
+                <div class="card p-3 h-100">
+                    <h5>1️⃣ ตอบจากเอกสารของเรา (Grounded)</h5>
+                    <p class="mb-0">ไม่ดึงข้อมูลจากภายนอก ตอบเฉพาะจากเอกสารที่อัปโหลดเข้าไป ทำให้คำตอบตรงประเด็นและเชื่อถือได้</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3 h-100">
+                    <h5>2️⃣ มี Citation อ้างอิง</h5>
+                    <p class="mb-0">ทุกคำตอบมีหมายเลขอ้างอิง [1], [2] คลิกแล้วเห็นย่อหน้าต้นทางทันที ตรวจสอบความถูกต้องได้</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3 h-100">
+                    <h5>3️⃣ ไม่ Hallucinate (ไม่แต่งเรื่อง)</h5>
+                    <p class="mb-0">เมื่อไม่มีข้อมูลใน sources จะตอบว่า "ไม่พบข้อมูลในเอกสารที่ให้มา" แทนที่จะเดาหรือแต่งคำตอบ</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3 h-100">
+                    <h5>4️⃣ Podcast AI (Audio Overview)</h5>
+                    <p class="mb-0">สร้าง Podcast สรุปเนื้อหาอัตโนมัติ มีพิธีกร 2 คนพูดคุยสรุปเอกสาร เสียงเหมือนคนจริง!</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3 h-100">
+                    <h5>5️⃣ ฟรี!</h5>
+                    <p class="mb-0">ใช้งานได้ฟรีด้วย Google Account ทั่วไป ไม่ต้องจ่ายเงิน ไม่มีค่าสมัคร (มี Plus แต่ไม่บังคับ)</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3 h-100">
+                    <h5>6️⃣ Multi-source (หลายแหล่ง)</h5>
+                    <p class="mb-0">ใส่เอกสารได้หลายประเภท — PDF, Google Docs, Slides, เว็บไซต์, YouTube, ไฟล์เสียง รวมได้สูงสุด 50 sources/notebook</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3 h-100">
+                    <h5>7️⃣ รองรับภาษาไทย</h5>
+                    <p class="mb-0">ถาม-ตอบเป็นภาษาไทยได้ อ่านเอกสารภาษาไทยได้ (Podcast ภาษาไทยอยู่ในช่วงพัฒนา)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 1.3 -->
+    <!-- ============================================ -->
+    <section id="section-1-3" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">1.3 สมัครใช้งาน NotebookLM</h2>
+        
+        <p class="mt-3">NotebookLM ใช้ Google Account เข้าสู่ระบบ ไม่ต้องสมัครแยก ทำตามขั้นตอนด้านล่าง:</p>
+
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>เปิดเบราว์เซอร์ Chrome</h5>
+            <p class="mb-0">แนะนำ Google Chrome เวอร์ชันล่าสุด เพราะเป็นผลิตภัณฑ์ Google ด้วยกัน ทำงานเข้ากันได้ดี</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>ไปที่เว็บไซต์ NotebookLM</h5>
+            <p>เปิด URL: <a href="https://notebooklm.google.com" target="_blank">https://notebooklm.google.com</a></p>
+            <div class="screenshot-placeholder">
+                <p>หน้าแรก NotebookLM — ปุ่ม "Try NotebookLM"</p>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>เข้าสู่ระบบด้วย Google Account</h5>
+            <p>คลิก "Try NotebookLM" → เลือก Google Account ที่ต้องการใช้ (ใช้ Gmail ทั่วไปได้)</p>
+            <div class="warning-box">
+                <p class="mb-0">หากใช้ Account ราชการ (@go.th หรือ Workspace) อาจถูกจำกัดการใช้งานโดย Admin แนะนำใช้ Gmail ส่วนตัวก่อน</p>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h5>ยอมรับเงื่อนไขการใช้งาน</h5>
+            <p class="mb-0">อ่านข้อตกลงการให้บริการ → คลิก "Accept" หรือ "ยอมรับ"</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">5</div>
+            <h5>เข้าสู่หน้า Dashboard</h5>
+            <p class="mb-0">เมื่อเข้าสู่ระบบสำเร็จ จะเห็นหน้า "My Notebooks" ที่ว่างเปล่า พร้อมปุ่ม "+ Create new" สำหรับสร้าง Notebook ใหม่</p>
+            <div class="screenshot-placeholder">
+                <p>หน้า Dashboard — My Notebooks (ว่าง) + ปุ่ม Create new</p>
+            </div>
+        </div>
+
+        <div class="do-box">
+            <ul class="mb-0">
+                <li>ใช้ Gmail ส่วนตัวที่มี Google Drive เพียงพอ</li>
+                <li>ตรวจสอบว่าเบราว์เซอร์อัปเดตล่าสุด</li>
+                <li>ปิด VPN ก่อนใช้งาน (บาง VPN อาจมีปัญหา)</li>
+            </ul>
+        </div>
+
+        <div class="dont-box">
+            <ul class="mb-0">
+                <li>อย่าใช้ Account ที่ Storage เต็ม (Drive full)</li>
+                <li>อย่าใช้ Browser เก่าๆ (IE, Edge เก่า)</li>
+                <li>อย่าอัปโหลดเอกสารลับราชการ (Confidential) เข้า NotebookLM</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 1.4 -->
+    <!-- ============================================ -->
+    <section id="section-1-4" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">1.4 Interface — ส่วนประกอบหน้าจอ</h2>
+        
+        <p class="mt-3">เมื่อเปิด Notebook จะเห็นหน้าจอแบ่งเป็น 3 ส่วนหลัก:</p>
+
+        <div class="screenshot-placeholder">
+            <p>ภาพรวมหน้าจอ NotebookLM — แสดง 3 panels: Sources (ซ้าย), Chat (กลาง), Notebook Guide (ขวา)</p>
+        </div>
+
+        <div class="table-responsive mt-3">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ส่วนประกอบ</th>
+                        <th>ตำแหน่ง</th>
+                        <th>หน้าที่</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>📁 Sources Panel</strong></td>
+                        <td>ซ้าย</td>
+                        <td>แสดงรายการเอกสารที่อัปโหลด สามารถเพิ่ม/ลบ/เปิดดู source ได้</td>
+                    </tr>
+                    <tr>
+                        <td><strong>💬 Chat Panel</strong></td>
+                        <td>กลาง</td>
+                        <td>ช่องถาม-ตอบ พิมพ์คำถาม → AI ตอบพร้อม citation อ้างอิง</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📋 Notebook Guide</strong></td>
+                        <td>ขวา</td>
+                        <td>เครื่องมือสร้างสรุปอัตโนมัติ: FAQ, Study Guide, Timeline, Briefing Doc, Audio Overview</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎵 Audio Overview</strong></td>
+                        <td>ขวา (ใน Notebook Guide)</td>
+                        <td>สร้าง Podcast AI สรุปเนื้อหาเป็นเสียง</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📖 Source Viewer</strong></td>
+                        <td>ด้านบน (เมื่อคลิก source)</td>
+                        <td>เปิดดูเอกสารต้นฉบับพร้อม highlight ส่วนที่ AI อ้างอิง</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mt-4">รายละเอียดแต่ละส่วน</h4>
+
+        <div class="card p-3 mb-3">
+            <h5>📁 Sources Panel (แผงเอกสาร)</h5>
+            <ul>
+                <li><strong>+ Add Source:</strong> เพิ่มเอกสารใหม่ (Upload, Google Drive, URL, Paste text)</li>
+                <li><strong>รายการ Sources:</strong> แสดงชื่อเอกสารที่ใส่ พร้อม checkbox เปิด/ปิด</li>
+                <li><strong>Checkbox:</strong> เลือก/ไม่เลือก source สำหรับใช้ในการถาม (เปิดหมดหรือเฉพาะบางอัน)</li>
+                <li><strong>คลิกชื่อ Source:</strong> เปิดอ่านเอกสารต้นฉบับ</li>
+            </ul>
+        </div>
+
+        <div class="card p-3 mb-3">
+            <h5>💬 Chat Panel (แผงสนทนา)</h5>
+            <ul>
+                <li><strong>ช่องพิมพ์:</strong> พิมพ์คำถามภาษาไทยหรืออังกฤษ</li>
+                <li><strong>คำตอบ:</strong> AI ตอบพร้อมหมายเลข citation [1], [2], [3]</li>
+                <li><strong>Citation:</strong> คลิกหมายเลขเพื่อดูย่อหน้าต้นทาง</li>
+                <li><strong>Suggested Questions:</strong> คำถามแนะนำที่ระบบเสนอ</li>
+                <li><strong>Save to Note:</strong> บันทึกคำตอบเป็น Note ไว้อ้างอิง</li>
+            </ul>
+        </div>
+
+        <div class="card p-3 mb-3">
+            <h5>📋 Notebook Guide (แผงเครื่องมือ)</h5>
+            <ul>
+                <li><strong>FAQ:</strong> สร้างคำถาม-คำตอบอัตโนมัติจากเอกสาร</li>
+                <li><strong>Study Guide:</strong> สร้างสรุปเนื้อหา + หัวข้อสำคัญ</li>
+                <li><strong>Table of Contents:</strong> สร้างสารบัญ</li>
+                <li><strong>Timeline:</strong> สร้างลำดับเหตุการณ์</li>
+                <li><strong>Briefing Doc:</strong> สรุปสำหรับผู้บริหาร (1-2 หน้า)</li>
+                <li><strong>Audio Overview:</strong> สร้าง Podcast AI (เสียง 2 คนสนทนา)</li>
+            </ul>
+        </div>
+
+        <div class="tip-box">
+            <p class="mb-0"><strong>เทคนิค:</strong> สามารถปิด/เปิด Source แต่ละรายการด้วย checkbox ได้ เพื่อจำกัดให้ AI ตอบจากเอกสารเฉพาะที่เราต้องการ เช่น ถ้ามี 10 เอกสาร แต่อยากถามเฉพาะจากระเบียบฉบับที่ 3 ก็เปิดแค่อันเดียว</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 1.5 -->
+    <!-- ============================================ -->
+    <section id="section-1-5" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">1.5 ตัวอย่างการใช้งานในราชการ</h2>
+        
+        <p class="mt-3">NotebookLM มีประโยชน์อย่างมากสำหรับงานราชการที่ต้องจัดการเอกสารจำนวนมาก ต่อไปนี้คือ 5 ตัวอย่างการใช้งานจริง:</p>
+
+        <!-- ตัวอย่างที่ 1 -->
+        <div class="card p-4 mb-3">
+            <h5>📌 ตัวอย่างที่ 1: สรุประเบียบราชการ</h5>
+            <p><strong>สถานการณ์:</strong> ต้องตอบคำถามเจ้าหน้าที่เกี่ยวกับระเบียบค่าใช้จ่ายในการฝึกอบรม</p>
+            <p><strong>วิธีใช้:</strong></p>
+            <ol>
+                <li>อัปโหลดระเบียบกระทรวงการคลัง ว่าด้วยค่าใช้จ่ายในการฝึกอบรม (PDF)</li>
+                <li>อัปโหลดหนังสือซ้อมความเข้าใจที่เกี่ยวข้อง 2-3 ฉบับ</li>
+                <li>ถาม NotebookLM ว่า "ค่าอาหารในการฝึกอบรมเบิกได้สูงสุดวันละเท่าไหร่?"</li>
+            </ol>
+            <div class="prompt-example">
+                <p class="mb-0">ค่าอาหารในการฝึกอบรมประเภท ก (ค้างคืน) เบิกได้สูงสุดไม่เกินวันละเท่าไหร่? ใครเป็นผู้อนุมัติ?</p>
+            </div>
+            <div class="output-example">
+                <p>ตามระเบียบกระทรวงการคลัง ว่าด้วยค่าใช้จ่ายในการฝึกอบรม การจัดงาน และการประชุมระหว่างประเทศ พ.ศ. 2549 หมวด 2 ข้อ 12:</p>
+                <ul>
+                    <li>การฝึกอบรมประเภท ก (ค้างคืน) สามารถเบิกค่าอาหารได้ไม่เกิน <strong>วันละ 1,200 บาท</strong> ต่อคน [1]</li>
+                    <li>ผู้อนุมัติคือ <strong>หัวหน้าส่วนราชการ</strong> ผู้จัดการฝึกอบรม หรือผู้ที่ได้รับมอบหมาย [2]</li>
+                </ul>
+                <p class="text-muted small mb-0">[1] ระเบียบกระทรวงการคลัง ฯ พ.ศ. 2549, หมวด 2 ข้อ 12 (หน้า 8)<br>[2] ระเบียบกระทรวงการคลัง ฯ พ.ศ. 2549, ข้อ 5 (หน้า 3)</p>
+            </div>
+        </div>
+
+        <!-- ตัวอย่างที่ 2 -->
+        <div class="card p-4 mb-3">
+            <h5>📌 ตัวอย่างที่ 2: สร้าง FAQ หน่วยงาน</h5>
+            <p><strong>สถานการณ์:</strong> ต้องทำ FAQ ตอบคำถามประชาชนเกี่ยวกับบริการของ สนพ.สุรินทร์</p>
+            <p><strong>วิธีใช้:</strong></p>
+            <ol>
+                <li>อัปโหลดคู่มือการให้บริการ + แผ่นพับแนะนำหน่วยงาน</li>
+                <li>ใช้ Notebook Guide → FAQ → สร้างอัตโนมัติ</li>
+            </ol>
+            <div class="prompt-example">
+                <p class="mb-0">สร้าง FAQ 10 ข้อ สำหรับประชาชนที่มาติดต่อ สนพ.สุรินทร์ ครอบคลุมเรื่อง: การทดสอบมาตรฐานฝีมือ, การฝึกอบรม, และค่าธรรมเนียม</p>
+            </div>
+        </div>
+
+        <!-- ตัวอย่างที่ 3 -->
+        <div class="card p-4 mb-3">
+            <h5>📌 ตัวอย่างที่ 3: เตรียมการบรรยาย/สอน</h5>
+            <p><strong>สถานการณ์:</strong> ต้องบรรยายเรื่อง "แผนพัฒนาฝีมือแรงงาน ปี 2569" ให้ผู้บริหาร</p>
+            <p><strong>วิธีใช้:</strong></p>
+            <ol>
+                <li>อัปโหลดแผนปฏิบัติการประจำปี + เอกสารยุทธศาสตร์</li>
+                <li>ให้ NotebookLM สร้าง Study Guide + สรุปประเด็นสำคัญ</li>
+                <li>ใช้ Audio Overview ฟังสรุปก่อนบรรยาย</li>
+            </ol>
+            <div class="prompt-example">
+                <p class="mb-0">สรุปประเด็นสำคัญของแผนพัฒนาฝีมือแรงงาน ปี 2569 เป็น 5 หัวข้อหลัก พร้อมตัวชี้วัด (KPI) ของแต่ละหัวข้อ สำหรับนำเสนอผู้บริหารใน 15 นาที</p>
+            </div>
+        </div>
+
+        <!-- ตัวอย่างที่ 4 -->
+        <div class="card p-4 mb-3">
+            <h5>📌 ตัวอย่างที่ 4: วิเคราะห์นโยบาย</h5>
+            <p><strong>สถานการณ์:</strong> ต้องเปรียบเทียบนโยบาย 2 ฉบับ เพื่อหาข้อแตกต่าง</p>
+            <p><strong>วิธีใช้:</strong></p>
+            <ol>
+                <li>อัปโหลดนโยบายปี 2568 + นโยบายปี 2569</li>
+                <li>ถาม NotebookLM เปรียบเทียบ</li>
+            </ol>
+            <div class="prompt-example">
+                <p class="mb-0">เปรียบเทียบเป้าหมายและตัวชี้วัดระหว่างแผนปี 2568 กับแผนปี 2569 ว่ามีอะไรเปลี่ยนแปลงบ้าง? จัดเป็นตาราง</p>
+            </div>
+        </div>
+
+        <!-- ตัวอย่างที่ 5 -->
+        <div class="card p-4 mb-3">
+            <h5>📌 ตัวอย่างที่ 5: สรุปรายงานการประชุม</h5>
+            <p><strong>สถานการณ์:</strong> ประชุม 3 ชั่วโมง มีรายงานการประชุม 20 หน้า ต้องสรุปให้หัวหน้า</p>
+            <p><strong>วิธีใช้:</strong></p>
+            <ol>
+                <li>อัปโหลดรายงานการประชุม (PDF)</li>
+                <li>ใช้ Notebook Guide → Briefing Doc</li>
+                <li>หรือถามเจาะจง: มติ, ผู้รับผิดชอบ, deadlines</li>
+            </ol>
+            <div class="prompt-example">
+                <p class="mb-0">สรุปมติที่ประชุมทั้งหมด พร้อมระบุผู้รับผิดชอบและกำหนดเวลาดำเนินการ จัดเป็นตาราง</p>
+            </div>
+            <div class="output-example">
+                <table class="table table-sm table-striped mt-2">
+                    <thead>
+                        <tr><th>มติ</th><th>ผู้รับผิดชอบ</th><th>กำหนดเวลา</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>อนุมัติแผนฝึกอบรมไตรมาส 3 [1]</td><td>กลุ่มงานพัฒนาฝีมือแรงงาน</td><td>1 ก.ค. 2569</td></tr>
+                        <tr><td>จัดทำรายงานผลงาน 6 เดือน [2]</td><td>ฝ่ายแผนงาน</td><td>15 ก.ค. 2569</td></tr>
+                        <tr><td>ประสานงานจังหวัดเรื่องงบประมาณ [3]</td><td>ผอ. สนพ.</td><td>30 มิ.ย. 2569</td></tr>
+                    </tbody>
+                </table>
+                <p class="text-muted small mb-0">[1] รายงานการประชุม หน้า 5 วาระที่ 4.1<br>[2] รายงานการประชุม หน้า 8 วาระที่ 4.3<br>[3] รายงานการประชุม หน้า 12 วาระที่ 5.1</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- แบบฝึกหัดท้ายบท -->
+    <!-- ============================================ -->
+    <section class="mb-5">
+        <div class="exercise-box">
+            <h4>แบบฝึกหัดท้ายบทที่ 1</h4>
+            <ol>
+                <li><strong>สมัครใช้งาน:</strong> เข้า notebooklm.google.com แล้วลงชื่อเข้าใช้ด้วย Google Account ให้สำเร็จ</li>
+                <li><strong>สร้าง Notebook แรก:</strong> คลิก "Create new" ตั้งชื่อว่า "ทดสอบ NotebookLM"</li>
+                <li><strong>สำรวจ Interface:</strong> ระบุส่วนประกอบหน้าจอ 5 ส่วนให้ครบ (Sources, Chat, Notebook Guide, Audio Overview, Source Viewer)</li>
+                <li><strong>คิดงานที่จะใช้:</strong> เขียนรายชื่อเอกสาร 3 ฉบับที่คิดว่าจะเอามาใช้กับ NotebookLM ในงานราชการของท่าน</li>
+                <li><strong>เขียน Prompt:</strong> คิดคำถาม 3 ข้อ ที่อยากจะถามจากเอกสารที่เตรียมไว้</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Chapter Navigation -->
+    <div class="chapter-nav">
+        <a href="index.html">← สารบัญ</a>
+        <a href="chapter02.html">บทที่ 2: Sources →</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p class="mb-1">คู่มือฝึกอบรม NotebookLM — เปลี่ยนเอกสารเป็นความรู้ด้วย AI</p>
+        <p class="mb-0 text-muted">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

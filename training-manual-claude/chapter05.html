@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 5: Claude Projects — ทำงานเป็นโปรเจกต์ | คู่มือ Claude AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">📖 คู่มือ Claude AI</a>
+            <span class="text-white">บทที่ 5 | วันที่ 3 เช้า</span>
+        </div>
+    </nav>
+
+    <!-- Chapter Header -->
+    <div class="chapter-header bg-light py-4">
+        <div class="container">
+            <h1 class="display-5 fw-bold">บทที่ 5: Claude Projects — ทำงานเป็นโปรเจกต์</h1>
+            <p class="lead text-muted">วันที่ 3 เช้า (3 ชั่วโมง) — สร้าง Knowledge Base ส่วนตัวให้ AI ช่วยงานได้ตรงจุด</p>
+            <div class="d-flex gap-2 flex-wrap">
+                <span class="badge bg-dark">Projects</span>
+                <span class="badge bg-dark">Knowledge Base</span>
+                <span class="badge bg-dark">Custom Instructions</span>
+                <span class="badge bg-dark">Workshop</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+
+        <!-- สารบัญ -->
+        <div class="card mb-5">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">📋 สารบัญบทที่ 5</h5>
+            </div>
+            <div class="card-body">
+                <ul class="toc-list">
+                    <li><a href="#section-5-1">5.1 Projects คืออะไร — Knowledge Base ส่วนตัวให้ AI</a></li>
+                    <li><a href="#section-5-2">5.2 สร้าง Project + ใส่เอกสารอ้างอิง</a></li>
+                    <li><a href="#section-5-3">5.3 Custom Instructions — กำหนดบทบาท AI ประจำโปรเจกต์</a></li>
+                    <li><a href="#section-5-4">5.4 ใช้ Project สำหรับงานประจำ</a></li>
+                    <li><a href="#section-5-5">5.5 Workshop: สร้าง Project "ผู้ช่วยงานฝึกอบรม"</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 5.1 -->
+        <section id="section-5-1" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">5.1 Projects คืออะไร — Knowledge Base ส่วนตัวให้ AI</h3>
+
+            <div class="alert alert-info">
+                <strong>💡 สรุปง่ายๆ:</strong> Projects คือการสร้าง "ห้องทำงาน" ที่มีเอกสารอ้างอิงให้ Claude ใช้ตอบคำถามได้ตรงประเด็นกว่าการถามทั่วไป
+            </div>
+
+            <h5>Projects ทำงานอย่างไร?</h5>
+            <p>ปกติเวลาเราถาม Claude คำถาม AI จะตอบจากความรู้ทั่วไปที่ถูกฝึกมา แต่ถ้าเราต้องการให้ Claude ตอบจาก <strong>เอกสารเฉพาะของหน่วยงาน</strong> เช่น ระเบียบ กฎหมาย คู่มือปฏิบัติงาน — Claude จะไม่รู้ข้อมูลเหล่านี้</p>
+            <p><strong>Projects</strong> แก้ปัญหานี้โดยให้เราอัปโหลดเอกสารเข้าไปเป็น "ฐานข้อมูลความรู้" (Knowledge Base) ให้ Claude อ้างอิงตอบคำถาม</p>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="card border-danger h-100">
+                        <div class="card-header bg-danger text-white">❌ ถาม Claude แบบปกติ</div>
+                        <div class="card-body">
+                            <p><strong>ถาม:</strong> "ระเบียบการจ่ายค่าวิทยากรของ สนพ. จ่ายได้ชั่วโมงละเท่าไร?"</p>
+                            <p><strong>Claude ตอบ:</strong> "ขออภัย ฉันไม่มีข้อมูลระเบียบเฉพาะของสำนักงานพัฒนาฝีมือแรงงาน แนะนำให้ตรวจสอบจากเว็บไซต์หน่วยงาน..."</p>
+                            <p class="text-danger mb-0"><em>→ ตอบไม่ได้ เพราะไม่มีเอกสารอ้างอิง</em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card border-success h-100">
+                        <div class="card-header bg-success text-white">✅ ถาม Claude ใน Project (มีเอกสารอ้างอิง)</div>
+                        <div class="card-body">
+                            <p><strong>ถาม:</strong> "ระเบียบการจ่ายค่าวิทยากรของ สนพ. จ่ายได้ชั่วโมงละเท่าไร?"</p>
+                            <p><strong>Claude ตอบ:</strong> "ตามระเบียบกรมพัฒนาฝีมือแรงงาน ว่าด้วยค่าใช้จ่ายในการฝึกอบรม พ.ศ. 2563 ข้อ 12 กำหนดให้จ่ายค่าตอบแทนวิทยากร ชั่วโมงละ 600 บาท (ภายใน) และ 1,200 บาท (ภายนอก)..."</p>
+                            <p class="text-success mb-0"><em>→ ตอบถูกต้อง อ้างอิงจากเอกสารที่ใส่ไว้ใน Project</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-4">ข้อจำกัด Free vs Pro</h5>
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ฟีเจอร์</th>
+                        <th>Free Plan</th>
+                        <th>Pro Plan ($20/เดือน)</th>
+                        <th>Team Plan ($30/คน/เดือน)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>สร้าง Projects ได้</td>
+                        <td class="text-danger">❌ ไม่ได้</td>
+                        <td class="text-success">✅ ได้</td>
+                        <td class="text-success">✅ ได้</td>
+                    </tr>
+                    <tr>
+                        <td>จำนวน Project</td>
+                        <td>-</td>
+                        <td>ไม่จำกัด</td>
+                        <td>ไม่จำกัด</td>
+                    </tr>
+                    <tr>
+                        <td>ขนาดเอกสารต่อ Project</td>
+                        <td>-</td>
+                        <td>~200,000 tokens (~500 หน้า)</td>
+                        <td>~200,000 tokens (~500 หน้า)</td>
+                    </tr>
+                    <tr>
+                        <td>ไฟล์ที่อัปโหลดได้</td>
+                        <td>-</td>
+                        <td>PDF, TXT, Code, CSV</td>
+                        <td>PDF, TXT, Code, CSV</td>
+                    </tr>
+                    <tr>
+                        <td>Custom Instructions</td>
+                        <td>-</td>
+                        <td>✅ ได้</td>
+                        <td>✅ ได้</td>
+                    </tr>
+                    <tr>
+                        <td>แชร์ Project กับทีม</td>
+                        <td>-</td>
+                        <td>❌ ไม่ได้</td>
+                        <td>✅ ได้</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-warning">
+                <strong>⚠️ หมายเหตุ:</strong> ในการอบรมนี้ ผู้เข้าอบรมจะใช้ Claude Pro Plan ที่สำนักงานจัดเตรียมไว้ให้ เพื่อให้ทุกคนสามารถฝึกปฏิบัติได้จริง
+            </div>
+        </section>
+
+        <!-- Section 5.2 -->
+        <section id="section-5-2" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">5.2 สร้าง Project + ใส่เอกสารอ้างอิง</h3>
+
+            <h5>ขั้นตอนการสร้าง Project</h5>
+
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <strong>เข้า claude.ai แล้วคลิก "Projects"</strong>
+                <p class="mt-2 mb-0">จากหน้าแรก ให้มองที่แถบด้านซ้าย (Sidebar) แล้วคลิก <code>Projects</code></p>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <strong>คลิก "Create Project" หรือ "New Project"</strong>
+                <p class="mt-2 mb-0">คลิกปุ่มสร้างโปรเจกต์ใหม่ที่มุมขวาบน</p>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <strong>ตั้งชื่อ Project</strong>
+                <p class="mt-2">ตั้งชื่อให้สื่อถึงงานที่จะทำ เช่น:</p>
+                <ul>
+                    <li><code>ผู้ช่วยงานฝึกอบรม</code></li>
+                    <li><code>ที่ปรึกษาระเบียบราชการ</code></li>
+                    <li><code>ผู้ช่วยวิเคราะห์งบประมาณ</code></li>
+                    <li><code>FAQ สำนักงาน</code></li>
+                </ul>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <strong>เพิ่มเอกสารอ้างอิง (Knowledge Base)</strong>
+                <p class="mt-2 mb-0">คลิกปุ่ม <code>Add content</code> แล้วเลือก:</p>
+                <ul class="mt-2">
+                    <li><strong>Upload files</strong> — อัปโหลดไฟล์ PDF, TXT, Code</li>
+                    <li><strong>Add text content</strong> — พิมพ์หรือวาง text ลงไป</li>
+                    <li><strong>Add web content</strong> — วาง URL ให้ Claude ดึงเนื้อหา</li>
+                </ul>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">5</span>
+                <strong>เริ่มใช้งาน — คลิก "Start chat"</strong>
+                <p class="mt-2 mb-0">เมื่อใส่เอกสารเสร็จ ก็เริ่มสนทนากับ Claude ได้เลย Claude จะอ้างอิงจากเอกสารที่ใส่ไว้</p>
+            </div>
+
+            <h5 class="mt-4">ประเภทเอกสารที่ใส่ได้</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ประเภทไฟล์</th>
+                        <th>ตัวอย่าง</th>
+                        <th>เหมาะสำหรับ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>PDF</strong></td>
+                        <td>ระเบียบ, คู่มือ, รายงาน, หนังสือเวียน</td>
+                        <td>เอกสารราชการ, กฎหมาย, แบบฟอร์ม</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Text / TXT</strong></td>
+                        <td>บันทึกการประชุม, รายงาน, FAQ</td>
+                        <td>ข้อมูลทั่วไป, เนื้อหาคัดลอกมา</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Code</strong></td>
+                        <td>.js, .py, .gs, .html, .css</td>
+                        <td>ให้ Claude วิเคราะห์โค้ด, หาข้อผิดพลาด</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CSV / Data</strong></td>
+                        <td>ข้อมูลสถิติ, ตาราง Excel ที่ export</td>
+                        <td>วิเคราะห์ข้อมูล, สร้างรายงาน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Markdown</strong></td>
+                        <td>.md, README, Documentation</td>
+                        <td>เอกสารเทคนิค, คู่มือระบบ</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-success">
+                <strong>💡 เคล็ดลับ:</strong> ใส่เอกสารที่เกี่ยวข้องกับงานที่จะทำให้ครบ แต่ไม่ต้องใส่ทุกอย่าง เลือกเฉพาะเอกสารที่สำคัญ เพราะยิ่งเอกสารตรงประเด็น Claude จะตอบได้ดีขึ้น
+            </div>
+
+            <h5 class="mt-4">ตัวอย่างเอกสารที่ควรใส่สำหรับแต่ละงาน</h5>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header"><strong>📋 งานฝึกอบรม</strong></div>
+                        <div class="card-body">
+                            <ul>
+                                <li>หลักสูตรฝึกอบรมทั้งหมด</li>
+                                <li>ระเบียบค่าใช้จ่าย</li>
+                                <li>แบบฟอร์มที่เกี่ยวข้อง</li>
+                                <li>ขั้นตอนการจัดฝึกอบรม</li>
+                                <li>FAQ ที่ถามบ่อย</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header"><strong>📊 วิเคราะห์งบประมาณ</strong></div>
+                        <div class="card-body">
+                            <ul>
+                                <li>แผนงบประมาณปีนี้</li>
+                                <li>ข้อมูลผลเบิกจ่ายที่ผ่านมา</li>
+                                <li>ระเบียบงบประมาณ</li>
+                                <li>หลักเกณฑ์จัดสรร</li>
+                                <li>ตัวชี้วัด KPI</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5.3 -->
+        <section id="section-5-3" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">5.3 Custom Instructions — กำหนดบทบาท AI ประจำโปรเจกต์</h3>
+
+            <p>Custom Instructions คือการ "กำหนดตัวตน" ให้ Claude ก่อนเริ่มสนทนา เหมือนบอก Claude ว่า "คุณเป็นใคร ทำอะไร ตอบแบบไหน" ซึ่งจะทำให้ทุกครั้งที่เปิดแชทใน Project นี้ Claude จะจำบทบาทที่กำหนดไว้</p>
+
+            <div class="alert alert-info">
+                <strong>📌 จุดแตกต่างจาก System Prompt:</strong> Custom Instructions จะ "ติดอยู่กับ Project" ตลอด ไม่ต้องพิมพ์ใหม่ทุกครั้ง ทุก conversation ใน Project จะใช้ Instructions เดียวกัน
+            </div>
+
+            <h5>วิธีตั้ง Custom Instructions</h5>
+            <ol>
+                <li>เปิด Project ที่สร้างไว้</li>
+                <li>คลิก <code>Project settings</code> หรือไอคอนรูปเฟือง</li>
+                <li>หา <code>Custom Instructions</code> แล้วพิมพ์คำสั่งลงไป</li>
+                <li>กด Save</li>
+            </ol>
+
+            <h5 class="mt-4">ตัวอย่าง Custom Instructions สำหรับงานราชการ</h5>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">
+                    <strong>ตัวอย่างที่ 1: ผู้ช่วยงานฝึกอบรม</strong>
+                </div>
+                <div class="card-body">
+<pre><code>คุณเป็นผู้เชี่ยวชาญด้านการฝึกอบรมของสำนักงานพัฒนาฝีมือแรงงานสุรินทร์ 
+กรมพัฒนาฝีมือแรงงาน กระทรวงแรงงาน
+
+หน้าที่ของคุณ:
+- ตอบคำถามเกี่ยวกับหลักสูตรฝึกอบรม
+- ช่วยร่างเอกสาร เช่น โครงการฝึกอบรม แผนการสอน
+- แนะนำขั้นตอนการจัดฝึกอบรมตามระเบียบ
+- อ้างอิงข้อมูลจากเอกสารใน Project เท่านั้น
+
+รูปแบบการตอบ:
+- ตอบเป็นภาษาไทย ใช้คำราชการที่เหมาะสม
+- ถ้ามีข้อมูลในเอกสารอ้างอิง ให้ระบุแหล่งที่มา
+- ถ้าไม่มีข้อมูล ให้บอกตรงๆ ว่าไม่พบในเอกสาร
+- ตอบกระชับ ตรงประเด็น ใช้หัวข้อย่อยเมื่อจำเป็น</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">
+                    <strong>ตัวอย่างที่ 2: ที่ปรึกษากฎหมายแรงงาน</strong>
+                </div>
+                <div class="card-body">
+<pre><code>คุณเป็นที่ปรึกษาด้านกฎหมายแรงงานและระเบียบราชการ
+
+บทบาท:
+- ตอบคำถามเกี่ยวกับ พ.ร.บ. ส่งเสริมการพัฒนาฝีมือแรงงาน
+- อธิบายระเบียบ คำสั่ง หนังสือเวียนที่เกี่ยวข้อง
+- ช่วยตีความข้อกฎหมายให้เข้าใจง่าย
+- แนะนำแนวทางปฏิบัติที่ถูกต้องตามกฎหมาย
+
+ข้อจำกัด:
+- ตอบเฉพาะข้อมูลที่มีในเอกสารอ้างอิงเท่านั้น
+- ถ้าเป็นประเด็นซับซ้อน แนะนำให้ปรึกษานิติกรโดยตรง
+- ไม่ให้คำปรึกษาทางกฎหมายที่อาจก่อให้เกิดความเสียหาย
+- ใช้ภาษาที่เข้าใจง่าย หลีกเลี่ยงศัพท์กฎหมายที่ซับซ้อน</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">
+                    <strong>ตัวอย่างที่ 3: ผู้ช่วยเขียนหนังสือราชการ</strong>
+                </div>
+                <div class="card-body">
+<pre><code>คุณเป็นผู้เชี่ยวชาญด้านการเขียนหนังสือราชการ 
+สังกัดสำนักงานพัฒนาฝีมือแรงงานสุรินทร์
+
+ความสามารถ:
+- ร่างหนังสือราชการทุกประเภท (บันทึกข้อความ, หนังสือภายนอก, คำสั่ง, ประกาศ)
+- ตรวจแก้ไขภาษาราชการให้ถูกต้อง
+- จัดรูปแบบตามระเบียบสำนักนายกรัฐมนตรี ว่าด้วยงานสารบรรณ พ.ศ. 2526
+
+กฎการเขียน:
+- ใช้ภาษาราชการ สุภาพ ชัดเจน กระชับ
+- อ้างอิงระเบียบหรือกฎหมายที่เกี่ยวข้องเสมอ
+- ระบุ ที่, วันที่, เรื่อง, เรียน, อ้างถึง, สิ่งที่ส่งมาด้วย ให้ครบ
+- เสนอตัวเลือกคำลงท้ายที่เหมาะสม</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">
+                    <strong>ตัวอย่างที่ 4: ผู้ช่วยวิเคราะห์ข้อมูลและงบประมาณ</strong>
+                </div>
+                <div class="card-body">
+<pre><code>คุณเป็นนักวิเคราะห์ข้อมูลและงบประมาณ ประจำสำนักงานพัฒนาฝีมือแรงงานสุรินทร์
+
+ความสามารถ:
+- วิเคราะห์ข้อมูลผลการดำเนินงาน เทียบกับเป้าหมาย
+- คำนวณอัตราเบิกจ่ายงบประมาณ
+- สรุปรายงานเป็นตาราง กราฟ หรือ bullet points
+- เสนอแนะแนวทางปรับปรุงผลงาน
+
+รูปแบบผลลัพธ์:
+- ใช้ตารางเมื่อเปรียบเทียบข้อมูล
+- คำนวณเป็นเปอร์เซ็นต์และจำนวน
+- สรุปจุดเด่น จุดที่ต้องปรับปรุง
+- เสนอแนะ 3-5 ข้อ เรียงลำดับความสำคัญ</code></pre>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <strong>💡 เคล็ดลับการเขียน Instructions ที่ดี:</strong>
+                <ol class="mb-0 mt-2">
+                    <li>ระบุบทบาทชัดเจน — Claude เป็นใคร ทำอะไร</li>
+                    <li>กำหนดขอบเขต — ตอบเรื่องอะไรได้/ไม่ได้</li>
+                    <li>กำหนดรูปแบบ — ตอบยาว/สั้น ใช้ภาษาแบบไหน</li>
+                    <li>ระบุข้อจำกัด — สิ่งที่ห้ามทำ เช่น ห้ามแต่งเรื่องเอง</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Section 5.4 -->
+        <section id="section-5-4" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">5.4 ใช้ Project สำหรับงานประจำ</h3>
+
+            <p>Projects มีประโยชน์มากสำหรับงานที่ต้องทำซ้ำๆ หรือต้องใช้ข้อมูลเฉพาะทาง ต่อไปนี้คือตัวอย่าง Use Cases ที่นำไปใช้ได้จริงในงานราชการ:</p>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-primary">
+                        <div class="card-header bg-primary text-white">🤖 Use Case 1: FAQ Bot หน่วยงาน</div>
+                        <div class="card-body">
+                            <p><strong>ปัญหา:</strong> ประชาชนถามคำถามซ้ำๆ เช่น "สมัครฝึกอบรมอย่างไร" "ค่าใช้จ่ายเท่าไร"</p>
+                            <p><strong>วิธีทำ:</strong></p>
+                            <ul>
+                                <li>สร้าง Project "FAQ สนพ.สุรินทร์"</li>
+                                <li>ใส่เอกสาร: รายการหลักสูตร, ขั้นตอนสมัคร, ค่าใช้จ่าย, สถานที่ติดต่อ</li>
+                                <li>ตั้ง Instructions: "ตอบคำถามประชาชนที่สอบถามเกี่ยวกับบริการฝึกอบรม ใช้ภาษาสุภาพ เข้าใจง่าย"</li>
+                            </ul>
+                            <p><strong>ตัวอย่างการใช้:</strong></p>
+<pre><code>ถาม: อยากเรียนช่างไฟฟ้า สมัครยังไง?
+
+Claude ตอบ: สมัครได้ดังนี้ค่ะ
+1. เตรียมสำเนาบัตรประชาชน
+2. มาสมัครที่ สนพ.สุรินทร์ ถ.เลี่ยงเมือง
+   หรือสมัครออนไลน์ที่ www.dsd.go.th
+3. หลักสูตรช่างไฟฟ้า 120 ชม. 
+   เปิดรับรุ่นถัดไป กค. 2569
+4. ไม่เสียค่าใช้จ่าย
+โทร 044-511xxx ในเวลาราชการ</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-success">
+                        <div class="card-header bg-success text-white">📝 Use Case 2: ผู้ช่วยร่างเอกสาร</div>
+                        <div class="card-body">
+                            <p><strong>ปัญหา:</strong> ต้องร่างหนังสือราชการบ่อย ใช้เวลาเยอะกับรูปแบบและภาษา</p>
+                            <p><strong>วิธีทำ:</strong></p>
+                            <ul>
+                                <li>สร้าง Project "ร่างหนังสือราชการ"</li>
+                                <li>ใส่เอกสาร: ตัวอย่างหนังสือราชการเดิม, ระเบียบสารบรรณ, คำขึ้นต้น/ลงท้าย</li>
+                                <li>ตั้ง Instructions: "ร่างหนังสือราชการตามแบบฟอร์มที่กำหนด ใช้ภาษาราชการที่ถูกต้อง"</li>
+                            </ul>
+                            <p><strong>ตัวอย่างการใช้:</strong></p>
+<pre><code>ถาม: ร่างบันทึกข้อความ ขออนุมัติจัดฝึกอบรม
+หลักสูตร "ช่างแอร์เบื้องต้น" 30 คน
+วันที่ 1-5 กค. 2569 งบ 150,000 บาท
+
+Claude ตอบ: [ร่างบันทึกข้อความครบถ้วน
+ตามรูปแบบที่ถูกต้อง พร้อมอ้างอิงระเบียบ]</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-warning">
+                        <div class="card-header bg-warning text-dark">⚖️ Use Case 3: ที่ปรึกษากฎหมาย</div>
+                        <div class="card-body">
+                            <p><strong>ปัญหา:</strong> ต้องตอบคำถามเกี่ยวกับกฎหมายแรงงาน/ฝึกอบรม บ่อยครั้ง</p>
+                            <p><strong>วิธีทำ:</strong></p>
+                            <ul>
+                                <li>สร้าง Project "กฎหมายและระเบียบ"</li>
+                                <li>ใส่เอกสาร: พ.ร.บ. ส่งเสริมการพัฒนาฝีมือแรงงาน, ระเบียบค่าใช้จ่าย, ประกาศกระทรวง</li>
+                                <li>ตั้ง Instructions: "ตอบคำถามกฎหมาย อ้างอิงมาตราที่เกี่ยวข้อง อธิบายเข้าใจง่าย"</li>
+                            </ul>
+                            <p><strong>ตัวอย่างการใช้:</strong></p>
+<pre><code>ถาม: สถานประกอบการที่มีพนักงาน 100 คน 
+ต้องส่งเงินสมทบกองทุนเท่าไร?
+
+Claude ตอบ: ตาม พ.ร.บ. ส่งเสริมฯ มาตรา 29
+สถานประกอบการที่มีลูกจ้าง 100 คนขึ้นไป
+ต้องจัดฝึกอบรมไม่น้อยกว่า 50% ของลูกจ้าง
+หากไม่จัด ต้องส่งเงินสมทบกองทุน...</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-info">
+                        <div class="card-header bg-info text-white">📊 Use Case 4: วิเคราะห์งบประมาณ</div>
+                        <div class="card-body">
+                            <p><strong>ปัญหา:</strong> ต้องวิเคราะห์ข้อมูลงบประมาณ เปรียบเทียบผลงาน ทำรายงาน</p>
+                            <p><strong>วิธีทำ:</strong></p>
+                            <ul>
+                                <li>สร้าง Project "วิเคราะห์งบประมาณ 2569"</li>
+                                <li>ใส่เอกสาร: แผนงบประมาณ, ข้อมูลผลเบิกจ่าย, ตัวชี้วัด KPI, เป้าหมาย</li>
+                                <li>ตั้ง Instructions: "วิเคราะห์ข้อมูลงบประมาณ สรุปเป็นตาราง แนะนำจุดปรับปรุง"</li>
+                            </ul>
+                            <p><strong>ตัวอย่างการใช้:</strong></p>
+<pre><code>ถาม: สรุปผลเบิกจ่ายงบประมาณไตรมาส 1
+เทียบกับเป้าหมาย พร้อมข้อเสนอแนะ
+
+Claude ตอบ: [สรุปเป็นตาราง + กราฟ
++ วิเคราะห์จุดเด่น/จุดอ่อน 
++ ข้อเสนอแนะ 5 ข้อ]</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info mt-3">
+                <strong>💡 แนวคิดเพิ่มเติม:</strong> สร้าง Project แยกตามภารกิจ อย่ารวมทุกอย่างไว้ใน Project เดียว เพราะ Claude จะตอบได้ตรงประเด็นกว่าเมื่อเอกสารอ้างอิงเฉพาะเจาะจง
+            </div>
+        </section>
+
+        <!-- Section 5.5 -->
+        <section id="section-5-5" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">5.5 Workshop: สร้าง Project "ผู้ช่วยงานฝึกอบรม"</h3>
+
+            <div class="alert alert-warning">
+                <strong>⏱️ เวลา:</strong> 45 นาที | <strong>รูปแบบ:</strong> ฝึกปฏิบัติจริงบน claude.ai
+            </div>
+
+            <h5>เป้าหมาย Workshop</h5>
+            <p>ผู้เข้าอบรมจะได้สร้าง Project ที่ใช้งานได้จริง สำหรับช่วยตอบคำถามเกี่ยวกับการฝึกอบรมของหน่วยงาน</p>
+
+            <h5 class="mt-4">ขั้นตอนปฏิบัติ</h5>
+
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <strong>สร้าง Project ใหม่</strong>
+                <ol class="mt-2">
+                    <li>เข้า <code>claude.ai</code> → คลิก <code>Projects</code> (แถบซ้าย)</li>
+                    <li>คลิก <code>Create a project</code></li>
+                    <li>ตั้งชื่อ: <code>ผู้ช่วยงานฝึกอบรม สนพ.สุรินทร์</code></li>
+                    <li>คลิก <code>Create project</code></li>
+                </ol>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <strong>ใส่เอกสารอ้างอิง</strong>
+                <p class="mt-2">คลิก <code>Add content</code> แล้วอัปโหลดหรือวางเอกสารต่อไปนี้:</p>
+                <table class="table table-sm table-bordered mt-2">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th>#</th>
+                            <th>เอกสาร</th>
+                            <th>วิธีใส่</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>รายการหลักสูตรฝึกอบรมปี 2569</td>
+                            <td>Upload PDF หรือ Add text</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>คู่มือขั้นตอนจัดฝึกอบรม</td>
+                            <td>Upload PDF</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>ระเบียบค่าใช้จ่ายในการฝึกอบรม</td>
+                            <td>Upload PDF</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>FAQ คำถามที่ถามบ่อย (เตรียมให้)</td>
+                            <td>Add text content</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>ข้อมูลติดต่อหน่วยงาน</td>
+                            <td>Add text content</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <strong>ตั้ง Custom Instructions</strong>
+                <p class="mt-2">คลิกไอคอนเฟือง (Project settings) แล้ววาง Instructions ต่อไปนี้:</p>
+<pre><code>คุณเป็นผู้ช่วยงานฝึกอบรมของสำนักงานพัฒนาฝีมือแรงงานสุรินทร์
+
+หน้าที่:
+1. ตอบคำถามเกี่ยวกับหลักสูตรฝึกอบรม (ประเภท, ระยะเวลา, คุณสมบัติผู้สมัคร)
+2. แนะนำขั้นตอนการจัดฝึกอบรม
+3. อธิบายระเบียบค่าใช้จ่ายที่เกี่ยวข้อง
+4. ช่วยร่างเอกสารที่เกี่ยวกับการฝึกอบรม
+5. สรุปข้อมูลสถิติผลการฝึกอบรม
+
+กฎ:
+- ตอบภาษาไทย สุภาพ เข้าใจง่าย
+- อ้างอิงจากเอกสารใน Project เท่านั้น
+- ถ้าไม่มีข้อมูล ให้บอกว่า "ไม่พบข้อมูลในเอกสาร กรุณาติดต่อเจ้าหน้าที่"
+- ใช้ bullet points และตารางเมื่อเหมาะสม
+- ระบุแหล่งอ้างอิง (ชื่อเอกสาร, หน้า) เมื่อทำได้</code></pre>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <strong>ทดสอบถามคำถาม</strong>
+                <p class="mt-2">เปิด Chat ใน Project แล้วลองถามคำถามต่อไปนี้:</p>
+                <div class="card bg-light mt-2">
+                    <div class="card-body">
+                        <p><strong>คำถามทดสอบ 1:</strong></p>
+                        <p class="ms-3"><em>"ปีนี้มีหลักสูตรอะไรบ้าง ที่เปิดรับสมัครอยู่?"</em></p>
+                        <p><strong>คำถามทดสอบ 2:</strong></p>
+                        <p class="ms-3"><em>"อยากจัดฝึกอบรมหลักสูตร 30 ชม. ต้องเตรียมเอกสารอะไรบ้าง?"</em></p>
+                        <p><strong>คำถามทดสอบ 3:</strong></p>
+                        <p class="ms-3"><em>"ค่าตอบแทนวิทยากรภายนอก จ่ายได้ชั่วโมงละเท่าไร?"</em></p>
+                        <p><strong>คำถามทดสอบ 4:</strong></p>
+                        <p class="ms-3"><em>"สรุปผลการฝึกอบรมไตรมาส 1 เป็นตาราง"</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">5</span>
+                <strong>ปรับปรุง Instructions (ถ้าจำเป็น)</strong>
+                <p class="mt-2">ถ้าผลลัพธ์ยังไม่ถูกใจ ลองปรับ Instructions เช่น:</p>
+                <ul>
+                    <li>เพิ่ม "ตอบสั้นๆ ไม่เกิน 200 คำ" ถ้าตอบยาวเกินไป</li>
+                    <li>เพิ่ม "ใส่อิโมจิหัวข้อ" ถ้าอยากให้อ่านง่ายขึ้น</li>
+                    <li>เพิ่ม "ถ้าเป็นคำถามที่ไม่เกี่ยวกับฝึกอบรม ให้ปฏิเสธสุภาพ"</li>
+                </ul>
+            </div>
+
+            <h5 class="mt-4">📝 แบบฝึกหัดเพิ่มเติม</h5>
+            <div class="card">
+                <div class="card-body">
+                    <p><strong>แบบฝึกหัด 5.1:</strong> สร้าง Project อีก 1 อัน สำหรับงานที่ท่านรับผิดชอบ (เลือก 1 ข้อ)</p>
+                    <ol>
+                        <li>Project "ที่ปรึกษางานพัสดุ" — ใส่ระเบียบพัสดุ + ตัวอย่างเอกสาร</li>
+                        <li>Project "ผู้ช่วยงานบุคคล" — ใส่ระเบียบบุคคล + แบบฟอร์มลา</li>
+                        <li>Project "สรุปรายงานประชุม" — ใส่ตัวอย่างรายงานเดิม + รูปแบบมาตรฐาน</li>
+                    </ol>
+                    <p><strong>แบบฝึกหัด 5.2:</strong> ทดสอบ Project ที่สร้าง โดยถามคำถาม 5 ข้อ แล้วให้คะแนนความถูกต้องของ Claude (1-5 ดาว)</p>
+                    <p><strong>แบบฝึกหัด 5.3:</strong> แลกเปลี่ยนกับเพื่อนร่วมกลุ่ม ว่าแต่ละคนสร้าง Project อะไร ตั้ง Instructions อย่างไร</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 pt-4 border-top">
+            <a href="chapter04.html" class="btn btn-outline-dark">← บทที่ 4: Prompt ขั้นสูง</a>
+            <a href="chapter06.html" class="btn btn-dark">บทที่ 6: ทำงานเป็นทีมกับ Claude →</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p class="mb-1">คู่มือฝึกอบรม Claude AI — ใช้ปัญญาประดิษฐ์ทำงานราชการ</p>
+        <p class="mb-0 text-white-50">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

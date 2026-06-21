@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 4: Audio Overview — Podcast AI — คู่มือ NotebookLM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4)">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ NotebookLM</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter01.html">บทที่ 1</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter02.html">บทที่ 2</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter03.html">บทที่ 3</a></li>
+                <li class="nav-item"><a class="nav-link active" href="chapter04.html">บทที่ 4</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter05.html">บทที่ 5</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter06.html">บทที่ 6</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<div class="container mt-4">
+    <div class="mb-4">
+        <span class="day-badge">วันที่ 2</span>
+        <span class="time-badge ms-2">บ่าย 13:00 – 16:00</span>
+    </div>
+    <h1 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">📕 บทที่ 4: Audio Overview — Podcast AI</h1>
+    <p class="lead text-muted">สร้าง Podcast AI จากเอกสาร — พิธีกร 2 คนสนทนาสรุปเนื้อหาเสียงเหมือนคนจริง</p>
+
+    <!-- สารบัญบท -->
+    <div class="card p-3 mb-4">
+        <h5>📑 ในบทนี้</h5>
+        <ul class="mb-0">
+            <li><a href="#section-4-1">4.1 Audio Overview คืออะไร</a></li>
+            <li><a href="#section-4-2">4.2 วิธีสร้าง Audio Overview</a></li>
+            <li><a href="#section-4-3">4.3 Customize Audio — กำหนดหัวข้อ/โฟกัส</a></li>
+            <li><a href="#section-4-4">4.4 ตัวอย่างการใช้ในราชการ</a></li>
+            <li><a href="#section-4-5">4.5 ข้อจำกัด + Best Practices</a></li>
+            <li><a href="#section-4-6">4.6 Workshop: สร้าง Podcast สรุปผลงาน</a></li>
+        </ul>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- Section 4.1 -->
+    <!-- ============================================ -->
+    <section id="section-4-1" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">4.1 Audio Overview คืออะไร</h2>
+
+        <p class="mt-3">Audio Overview คือฟีเจอร์เด่นของ NotebookLM ที่สร้าง <strong>Podcast AI</strong> โดยมีพิธีกร 2 คน (ชาย-หญิง) พูดคุยสรุปเนื้อหาจากเอกสาร เหมือน Podcast จริงๆ!</p>
+
+        <div class="info-box">
+            <p><strong>จุดเด่น Audio Overview:</strong></p>
+            <ul class="mb-0">
+                <li>🎙️ เสียงเหมือนคนจริง — ไม่เป็นหุ่นยนต์ มีน้ำเสียง มีอารมณ์</li>
+                <li>👥 พิธีกร 2 คน — คนหนึ่งอธิบาย อีกคนถามต่อยอด</li>
+                <li>📋 สรุปจาก Sources — เนื้อหาอ้างอิงจากเอกสารที่เราใส่</li>
+                <li>⏱️ ความยาว 5-30 นาที — ปรับได้ตามจำนวน source</li>
+                <li>📥 ดาวน์โหลดได้ — เป็นไฟล์ .wav ส่งต่อหรือเปิดฟังทีหลังได้</li>
+            </ul>
+        </div>
+
+        <div class="screenshot-placeholder">
+            <p>หน้าจอ Audio Overview — แสดง player เสียง + ปุ่ม Generate + Customize</p>
+        </div>
+
+        <div class="tip-box">
+            <p class="mb-0"><strong>ทำไมถึงน่าใช้?</strong> ผู้บริหารมีเวลาน้อย การฟัง Podcast 10 นาทีในรถขณะเดินทาง ได้ข้อมูลเท่ากับอ่านรายงาน 20 หน้า สะดวก ประหยัดเวลา เข้าใจง่าย</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 4.2 -->
+    <!-- ============================================ -->
+    <section id="section-4-2" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">4.2 วิธีสร้าง Audio Overview</h2>
+
+        <p class="mt-3">การสร้าง Audio Overview ทำได้ง่ายมาก ทำตามขั้นตอนนี้:</p>
+
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>เตรียม Sources ให้พร้อม</h5>
+            <p class="mb-0">อัปโหลดเอกสารที่ต้องการให้สรุปเป็น Podcast อย่างน้อย 1 source (แนะนำ 2-5 sources เพื่อให้มีเนื้อหาสมบูรณ์)</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>เลือก Sources ที่ต้องการ (ติ๊ก checkbox)</h5>
+            <p class="mb-0">เปิดเฉพาะ source ที่อยากให้สร้าง Podcast จากข้อมูลนั้นๆ</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>คลิก "Audio Overview" ในแผง Notebook Guide</h5>
+            <p class="mb-0">จะเห็นส่วน Audio Overview ที่มีปุ่ม "Generate" และ "Customize"</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h5>คลิก "Generate" เพื่อสร้าง Podcast</h5>
+            <p class="mb-0">ระบบจะเริ่มสร้าง — รอประมาณ 2-5 นาที (ขึ้นอยู่กับจำนวน source)</p>
+            <div class="screenshot-placeholder">
+                <p>สถานะ "Generating audio..." พร้อม progress indicator</p>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">5</div>
+            <h5>ฟัง Podcast ที่ได้</h5>
+            <p class="mb-0">เมื่อสร้างเสร็จ จะเห็น audio player — กดเล่นเพื่อฟัง</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">6</div>
+            <h5>ดาวน์โหลด (ถ้าต้องการ)</h5>
+            <p class="mb-0">คลิกปุ่ม download เพื่อบันทึกเป็นไฟล์เสียง (.wav) ลงเครื่อง</p>
+        </div>
+
+        <div class="warning-box">
+            <p class="mb-0"><strong>หมายเหตุ:</strong> สร้าง Audio Overview ได้ไม่จำกัดจำนวนครั้ง แต่ต้องรอให้อันก่อนหน้าเสร็จก่อนจึงจะสร้างใหม่ได้ และทุกครั้งที่สร้างใหม่ เนื้อหาจะไม่เหมือนเดิม 100%</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 4.3 -->
+    <!-- ============================================ -->
+    <section id="section-4-3" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">4.3 Customize Audio — กำหนดหัวข้อ/โฟกัส</h2>
+
+        <p class="mt-3">นอกจากสร้าง Podcast อัตโนมัติ ยังสามารถ <strong>Customize (กำหนดทิศทาง)</strong> ให้ AI เน้นเรื่องที่เราต้องการได้:</p>
+
+        <h4 class="mt-4">วิธี Customize</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>คลิก "Customize" แทน "Generate"</h5>
+            <p class="mb-0">จะเปิดช่องให้พิมพ์คำสั่งเพิ่มเติม</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>พิมพ์คำสั่ง (Guide the conversation)</h5>
+            <p>ระบุว่าอยากให้เน้นเรื่องอะไร ภาษาอะไร โฟกัสหัวข้อไหน</p>
+            <div class="prompt-example">
+                <p class="mb-0">Focus on the budget allocation and KPI achievements. Discuss in simple language suitable for executives. Keep it under 10 minutes.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>คลิก "Generate" → รอผลลัพธ์</h5>
+            <p class="mb-0">ระบบจะสร้าง Podcast ตามทิศทางที่กำหนด</p>
+        </div>
+
+        <h4 class="mt-4">ตัวอย่างคำสั่ง Customize</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>วัตถุประสงค์</th>
+                        <th>คำสั่ง Customize (แนะนำใช้ภาษาอังกฤษ)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>เน้นเฉพาะงบประมาณ</td>
+                        <td>Focus only on budget and financial data. Ignore other topics.</td>
+                    </tr>
+                    <tr>
+                        <td>สรุปสั้นๆ 5 นาที</td>
+                        <td>Keep the conversation brief, about 5 minutes. Cover only the top 3 key points.</td>
+                    </tr>
+                    <tr>
+                        <td>สำหรับคนที่ไม่มีพื้นฐาน</td>
+                        <td>Explain concepts for someone with no background knowledge. Use simple analogies.</td>
+                    </tr>
+                    <tr>
+                        <td>เปรียบเทียบ 2 เอกสาร</td>
+                        <td>Compare the two documents. Highlight differences and similarities.</td>
+                    </tr>
+                    <tr>
+                        <td>เน้น Action Items</td>
+                        <td>Focus on action items, deadlines, and responsible persons from the meeting report.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tip-box">
+            <p class="mb-0"><strong>เคล็ดลับ:</strong> ใช้ภาษาอังกฤษในคำสั่ง Customize จะได้ผลลัพธ์ที่ดีกว่า เพราะ Audio Overview สร้างเสียงภาษาอังกฤษได้คุณภาพสูงกว่าภาษาไทย ส่วนเนื้อหาในเอกสารจะยังเป็นภาษาไทยตามปกติ</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 4.4 -->
+    <!-- ============================================ -->
+    <section id="section-4-4" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">4.4 ตัวอย่างการใช้ Audio Overview ในราชการ</h2>
+
+        <div class="row g-3 mt-3">
+            <div class="col-md-6">
+                <div class="card p-4 h-100">
+                    <h5>🎙️ สรุปแผนงานให้ผู้บริหารฟัง</h5>
+                    <p><strong>สถานการณ์:</strong> ผอ. ไม่มีเวลาอ่านรายงาน 30 หน้า</p>
+                    <p><strong>วิธีใช้:</strong></p>
+                    <ol>
+                        <li>อัปโหลดรายงานแผนงานปี 2569</li>
+                        <li>Customize: "Summarize for a director. Focus on KPIs, achievements, and problems. Keep it concise."</li>
+                        <li>ส่งไฟล์เสียงให้ ผอ. ฟังในรถ</li>
+                    </ol>
+                    <p class="mb-0"><span class="badge-accent">⏱️ ประมาณ 8-12 นาที</span></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-4 h-100">
+                    <h5>🎙️ สรุประเบียบใหม่ให้เจ้าหน้าที่ฟัง</h5>
+                    <p><strong>สถานการณ์:</strong> ออกระเบียบใหม่ ต้องสื่อสารให้ทุกคนรู้</p>
+                    <p><strong>วิธีใช้:</strong></p>
+                    <ol>
+                        <li>อัปโหลดระเบียบฉบับใหม่ + เก่า</li>
+                        <li>Customize: "Compare old and new regulations. Highlight what changed and what staff need to know."</li>
+                        <li>แชร์ใน Line กลุ่มหน่วยงาน</li>
+                    </ol>
+                    <p class="mb-0"><span class="badge-accent">⏱️ ประมาณ 10-15 นาที</span></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-4 h-100">
+                    <h5>🎙️ สื่อ PR เสียงสำหรับประชาชน</h5>
+                    <p><strong>สถานการณ์:</strong> ต้องทำสื่อประชาสัมพันธ์หลักสูตรฝึกอบรม</p>
+                    <p><strong>วิธีใช้:</strong></p>
+                    <ol>
+                        <li>อัปโหลดรายละเอียดหลักสูตร + สิทธิประโยชน์</li>
+                        <li>Customize: "Create an engaging overview for public. Focus on benefits, who should apply, and how to register."</li>
+                        <li>ใช้เป็นเสียงประกาศหรือโพสต์ในโซเชียลมีเดีย</li>
+                    </ol>
+                    <p class="mb-0"><span class="badge-accent">⏱️ ประมาณ 5-8 นาที</span></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-4 h-100">
+                    <h5>🎙️ สรุปหลักสูตร/การอบรมที่ผ่านมา</h5>
+                    <p><strong>สถานการณ์:</strong> ต้องทำ Knowledge Management จากการอบรม</p>
+                    <p><strong>วิธีใช้:</strong></p>
+                    <ol>
+                        <li>อัปโหลดเอกสารประกอบการอบรม + สรุปผล</li>
+                        <li>Customize: "Summarize the key lessons learned and practical tips from this training."</li>
+                        <li>แชร์ให้เจ้าหน้าที่ที่ไม่ได้เข้าร่วม</li>
+                    </ol>
+                    <p class="mb-0"><span class="badge-accent">⏱️ ประมาณ 10-15 นาที</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 4.5 -->
+    <!-- ============================================ -->
+    <section id="section-4-5" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">4.5 ข้อจำกัด + Best Practices</h2>
+
+        <h4 class="mt-4">ข้อจำกัดของ Audio Overview</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ข้อจำกัด</th>
+                        <th>รายละเอียด</th>
+                        <th>วิธีแก้</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ภาษา</td>
+                        <td>เสียงภาษาอังกฤษคุณภาพดีกว่าไทยมาก ภาษาไทยอยู่ในช่วงพัฒนา</td>
+                        <td>ใช้เอกสารภาษาไทยได้ แต่เสียงออกมาเป็นอังกฤษ หรือรอ update ภาษาไทย</td>
+                    </tr>
+                    <tr>
+                        <td>ความยาว</td>
+                        <td>ไม่เกินประมาณ 30 นาที</td>
+                        <td>เลือก source เฉพาะที่จำเป็น / ใช้ Customize ให้สั้น</td>
+                    </tr>
+                    <tr>
+                        <td>ต้องมี Source</td>
+                        <td>ต้องมี source อย่างน้อย 1 ชิ้น ถึงจะสร้างได้</td>
+                        <td>อัปโหลดเอกสารก่อนสร้าง Audio</td>
+                    </tr>
+                    <tr>
+                        <td>ไม่สามารถแก้ไข</td>
+                        <td>ไม่สามารถแก้ไขเสียงที่สร้างแล้ว ต้องสร้างใหม่</td>
+                        <td>ปรับ Customize ก่อนสร้าง / สร้างหลายครั้งเลือกอันที่ดีที่สุด</td>
+                    </tr>
+                    <tr>
+                        <td>เวลาสร้าง</td>
+                        <td>ใช้เวลา 2-5 นาทีในการสร้าง</td>
+                        <td>เตรียม source ให้พร้อมก่อน กด Generate แล้วรอ</td>
+                    </tr>
+                    <tr>
+                        <td>เนื้อหาเฉพาะทาง</td>
+                        <td>คำศัพท์เฉพาะทาง/คำย่ออาจออกเสียงผิด</td>
+                        <td>ตรวจสอบการออกเสียงก่อนส่งต่อ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mt-4">Best Practices</h4>
+        <div class="do-box">
+            <ul class="mb-0">
+                <li><strong>เลือก Source เฉพาะ:</strong> ติ๊กเฉพาะ source ที่เกี่ยวข้อง อย่าเปิดหมดทุกอัน</li>
+                <li><strong>ใช้ Customize:</strong> กำหนดทิศทางให้ชัด จะได้ Podcast ที่ตรงประเด็น</li>
+                <li><strong>ตรวจสอบก่อนแชร์:</strong> ฟังทั้งหมดก่อนส่งให้ผู้อื่น ตรวจความถูกต้อง</li>
+                <li><strong>ใช้เอกสารที่ชัดเจน:</strong> PDF ที่มีข้อความชัด ให้ผลลัพธ์ดีกว่า scan</li>
+                <li><strong>สร้างหลายครั้ง:</strong> ถ้าไม่พอใจ กด Generate ใหม่ — ทุกครั้งจะได้ผลต่างกัน</li>
+            </ul>
+        </div>
+
+        <div class="dont-box">
+            <ul class="mb-0">
+                <li><strong>อย่าใส่ source เยอะเกินไป:</strong> จะทำให้ Podcast ยาวและไม่โฟกัส</li>
+                <li><strong>อย่าคาดหวังเสียงภาษาไทยสมบูรณ์:</strong> ยังอยู่ในช่วงพัฒนา</li>
+                <li><strong>อย่าใช้แทนเอกสารทางการ:</strong> Podcast เป็นสื่อเสริม ไม่ใช่เอกสารอ้างอิง</li>
+                <li><strong>อย่าใส่เอกสารลับ:</strong> เสียงที่สร้างอาจถูกดาวน์โหลดและแชร์ต่อได้</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 4.6 -->
+    <!-- ============================================ -->
+    <section id="section-4-6" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">4.6 Workshop: สร้าง Podcast AI สรุปผลงาน สนพ.สุรินทร์ ปี 2569</h2>
+
+        <div class="info-box">
+            <p class="mb-0"><strong>⏱️ เวลา:</strong> 60 นาที | <strong>รูปแบบ:</strong> กลุ่ม 4-5 คน</p>
+        </div>
+
+        <h4 class="mt-4">📋 โจทย์ Workshop</h4>
+        <p>สร้าง Podcast AI สรุปผลงานประจำปี สำหรับให้ผู้บริหารฟัง ความยาวไม่เกิน 15 นาที เน้นผลงานเด่น + ปัญหา + แนวทางแก้ไข</p>
+
+        <h4 class="mt-4">ขั้นตอน</h4>
+
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>สร้าง Notebook "Podcast ผลงาน 2569"</h5>
+            <p class="mb-0">หรือใช้ Notebook เดิมจาก Workshop บทที่ 3 ก็ได้</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>อัปโหลด Sources 3-5 ฉบับ</h5>
+            <ul class="mb-0">
+                <li>รายงานผลงานประจำปี (PDF)</li>
+                <li>สรุปผลไตรมาส (PDF)</li>
+                <li>แผนปฏิบัติการ (เปรียบเทียบเป้า vs ผล)</li>
+            </ul>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>ลองสร้าง Audio Overview แบบไม่ Customize ก่อน</h5>
+            <p class="mb-0">กด Generate เลย → ฟังผลลัพธ์ → จดจุดที่ต้องปรับ</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h5>สร้างอีกครั้งด้วย Customize</h5>
+            <p>ใช้คำสั่ง Customize ตามตัวอย่าง:</p>
+            <div class="prompt-example">
+                <p class="mb-0">Create a 10-minute summary for the director. Focus on: (1) top achievements and KPIs, (2) problems encountered, (3) recommendations for next year. Use an engaging conversational style.</p>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">5</div>
+            <h5>เปรียบเทียบ 2 เวอร์ชัน</h5>
+            <p class="mb-0">ฟังทั้ง 2 แบบ — แบบไหนดีกว่า? ทำไม?</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">6</div>
+            <h5>ดาวน์โหลด + แชร์ในกลุ่ม</h5>
+            <p class="mb-0">ดาวน์โหลดเวอร์ชันที่ดีที่สุด → แชร์ให้เพื่อนในกลุ่มฟัง</p>
+        </div>
+
+        <h4 class="mt-4">เกณฑ์ประเมิน Workshop</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>เกณฑ์</th>
+                        <th>คะแนน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>สร้าง Audio Overview สำเร็จ (ไม่ Customize)</td><td>20</td></tr>
+                    <tr><td>สร้าง Audio Overview ด้วย Customize สำเร็จ</td><td>25</td></tr>
+                    <tr><td>เปรียบเทียบ 2 เวอร์ชันได้</td><td>15</td></tr>
+                    <tr><td>เนื้อหาถูกต้องตรงกับเอกสาร</td><td>20</td></tr>
+                    <tr><td>ดาวน์โหลด + แชร์สำเร็จ</td><td>10</td></tr>
+                    <tr><td>แสดงความคิดเห็น/ข้อเสนอแนะ</td><td>10</td></tr>
+                    <tr><td><strong>รวม</strong></td><td><strong>100</strong></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- แบบฝึกหัดท้ายบท -->
+    <!-- ============================================ -->
+    <section class="mb-5">
+        <div class="exercise-box">
+            <h4>แบบฝึกหัดท้ายบทที่ 4</h4>
+            <ol>
+                <li><strong>สร้าง 3 Podcasts:</strong> สร้าง Audio Overview 3 ครั้ง จากเอกสารเดียวกัน — (1) ไม่ Customize, (2) Customize ให้สั้น, (3) Customize ให้เน้นเรื่องเฉพาะ</li>
+                <li><strong>ตรวจสอบความถูกต้อง:</strong> ฟัง Podcast แล้วจดข้อมูลที่พูดถึง → ตรวจกลับกับเอกสารต้นฉบับ ตรงกันหรือไม่?</li>
+                <li><strong>ทดลอง YouTube:</strong> ใส่ URL YouTube เป็น source → สร้าง Audio Overview → ฟังว่าสรุปตรงหรือไม่</li>
+                <li><strong>คิด Use Case:</strong> เขียน 3 สถานการณ์ที่จะนำ Audio Overview ไปใช้ในงานของตนเอง</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Chapter Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter03.html">← บทที่ 3</a>
+        <a href="chapter05.html">บทที่ 5: ประยุกต์ใช้ขั้นสูง →</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p class="mb-1">คู่มือฝึกอบรม NotebookLM — เปลี่ยนเอกสารเป็นความรู้ด้วย AI</p>
+        <p class="mb-0 text-muted">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

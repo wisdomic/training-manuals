@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 10: Workshop รวม | AI สำหรับงานราชการ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">📖 AI สำหรับงานราชการ</a>
+            <span class="navbar-text nav-text text-light">บทที่ 10</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header text-center mb-4">
+                <h1>🏆 บทที่ 10</h1>
+                <h2>Workshop รวม — งานเอกสารราชการครบชุดใน 2 ชั่วโมง</h2>
+                <p class="lead text-muted">ฝึกปฏิบัติจริง สร้างเอกสาร 4 ชิ้นที่เชื่อมโยงกัน ด้วย AI ตั้งแต่ต้นจนจบ</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>บูรณาการทักษะ AI ที่เรียนมาทั้งหมด ประยุกต์ใช้กับงานจริง</li>
+                    <li>สร้างเอกสารราชการ 4 ชิ้นที่เชื่อมโยงกันในกิจกรรมเดียว</li>
+                    <li>ฝึกเลือกเครื่องมือ AI ที่เหมาะสมกับแต่ละงาน</li>
+                    <li>ทำงานได้สำเร็จภายใน 2 ชั่วโมง</li>
+                </ul>
+            </div>
+
+            <!-- 10.1 โจทย์ Workshop -->
+            <section>
+                <h3 class="section-header">10.1 โจทย์ Workshop</h3>
+
+                <div class="info-card">
+                    <h5>📋 สถานการณ์จำลอง</h5>
+                    <p>เลือกกิจกรรมจริงของหน่วยงาน:</p>
+                    <div class="alert alert-primary mb-0">
+                        <h5 class="mb-2">🎪 "จัดงานวันคนพิการสากล 3 ธันวาคม 2569"</h5>
+                        <p class="mb-0">ท่านเป็นเจ้าหน้าที่ผู้รับผิดชอบจัดงานวันคนพิการสากล ประจำปี 2569 ต้องจัดเตรียมเอกสาร 4 ชิ้น ได้แก่ หนังสือเชิญประชุม, กำหนดการจัดงาน, รายงานการประชุม, และโครงการต่อเนื่อง</p>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning mt-3">
+                    <strong>⏰ เวลา:</strong> 2 ชั่วโมง (ชิ้นละ 30 นาที) | <strong>เครื่องมือ:</strong> ChatGPT / Gemini / NotebookLM ตามถนัด
+                </div>
+            </section>
+
+            <!-- 10.2 ชิ้นงาน 4 ชิ้น -->
+            <section>
+                <h3 class="section-header">10.2 ชิ้นงาน 4 ชิ้นที่ต้องสร้าง</h3>
+                <p>ชิ้นงานทั้ง 4 ชิ้น <strong>เชื่อมโยงกัน</strong> ตามลำดับเวลาจริงของการทำงาน:</p>
+
+                <!-- ชิ้นงาน 1 -->
+                <div class="card border-primary mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">📨 ชิ้นงานที่ 1: หนังสือเชิญประชุมเตรียมงาน</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>เขียนหนังสือราชการเชิญคณะทำงานมาประชุมเตรียมจัดงานวันคนพิการสากล</p>
+
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <strong>กำหนดข้อมูล</strong>
+                            <p class="mb-0 mt-2">ผู้เชิญ, ผู้รับเชิญ, วัน-เวลา-สถานที่, วาระประชุม</p>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <strong>ใช้ Prompt สร้างหนังสือ</strong>
+                            <p class="mb-0 mt-2">อ้างอิงทักษะจากบทที่ 4-5 (หนังสือราชการ)</p>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <strong>ตรวจสอบและปรับแก้</strong>
+                            <p class="mb-0 mt-2">ตรวจรูปแบบ, ชื่อ-ตำแหน่ง, เลขที่หนังสือ</p>
+                        </div>
+
+                        <h6 class="mt-3">📝 Prompt แนะนำ:</h6>
+                        <div class="prompt-example">
+                            ช่วยเขียนหนังสือราชการเชิญประชุมคณะทำงานจัดงานวันคนพิการสากล ประจำปี 2569 โดยมีรายละเอียดดังนี้:<br>
+                            - ผู้ส่ง: ผู้อำนวยการสำนักงานพัฒนาฝีมือแรงงานสุรินทร์<br>
+                            - ผู้รับ: คณะทำงานจัดงานวันคนพิการสากล<br>
+                            - ประชุมวันที่ 15 ตุลาคม 2569 เวลา 13.30 น.<br>
+                            - ห้องประชุมชั้น 2 สนพ.สุรินทร์<br>
+                            - วาระ: พิจารณาแผนจัดงาน, งบประมาณ, มอบหมายหน้าที่<br>
+                            - ใช้รูปแบบหนังสือราชการมาตรฐาน
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ชิ้นงาน 2 -->
+                <div class="card border-success mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">📅 ชิ้นงานที่ 2: กำหนดการจัดงาน 1 วัน</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>เขียนกำหนดการจัดงานวันคนพิการสากล 3 ธันวาคม 2569 ตลอดทั้งวัน</p>
+
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <strong>กำหนดกรอบกิจกรรม</strong>
+                            <p class="mb-0 mt-2">พิธีเปิด, กิจกรรม, บูธ, มอบรางวัล, พิธีปิด</p>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <strong>ใช้ Prompt สร้างกำหนดการ</strong>
+                            <p class="mb-0 mt-2">ระบุเวลาเริ่ม-จบ จำนวนผู้เข้าร่วม สถานที่</p>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <strong>ปรับแต่ง</strong>
+                            <p class="mb-0 mt-2">เพิ่มรายละเอียดกิจกรรม ชื่อวิทยากร ผู้กล่าว</p>
+                        </div>
+
+                        <h6 class="mt-3">📝 Prompt แนะนำ:</h6>
+                        <div class="prompt-example">
+                            ช่วยเขียนกำหนดการจัดงานวันคนพิการสากล ประจำปี 2569<br>
+                            วันที่ 3 ธันวาคม 2569 เวลา 08.00 - 16.00 น.<br>
+                            สถานที่: หอประชุม สนพ.สุรินทร์<br>
+                            จำนวนผู้เข้าร่วม: 200 คน (คนพิการ 100 คน + ผู้ดูแล/เจ้าหน้าที่)<br><br>
+                            กิจกรรมที่ต้องมี:<br>
+                            - พิธีเปิดโดยผู้ว่าราชการจังหวัด<br>
+                            - บูธให้ความรู้ 5 บูธ (อาชีพ, สิทธิ์, สุขภาพ, เทคโนโลยี, สวัสดิการ)<br>
+                            - เวทีเสวนา "คนพิการกับโอกาสในยุค AI"<br>
+                            - มอบโล่/ประกาศเกียรติคุณ<br>
+                            - การแสดงของคนพิการ<br>
+                            - จัดเป็นตารางเวลา มีรูปแบบเป็นทางการ
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ชิ้นงาน 3 -->
+                <div class="card border-warning mb-4">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">📋 ชิ้นงานที่ 3: รายงานการประชุม (จาก Bullet → AI สร้างเต็ม)</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>สมมติว่าประชุมเตรียมงานเสร็จแล้ว ใช้ Bullet ที่จดไว้ ให้ AI สร้างรายงานสมบูรณ์</p>
+
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <strong>เตรียม Bullet Points</strong>
+                            <p class="mb-0 mt-2">จดบันทึกย่อตามเทคนิคบทที่ 6 (ใคร พูดอะไร มติอะไร)</p>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <strong>สั่ง AI เขียนรายงานเต็ม</strong>
+                            <p class="mb-0 mt-2">วาง Bullet + Prompt → รายงานครบ 14 องค์ประกอบ</p>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <strong>ตรวจสอบ</strong>
+                            <p class="mb-0 mt-2">ตรวจชื่อ, มติ, ผู้รับผิดชอบ ให้ตรงตาม Bullet ที่จด</p>
+                        </div>
+
+                        <h6 class="mt-3">📝 Prompt แนะนำ:</h6>
+                        <div class="prompt-example">
+                            จากบันทึกย่อการประชุมคณะทำงานจัดงานวันคนพิการสากล ครั้งที่ 1/2569<br>
+                            ช่วยเขียนเป็นรายงานการประชุมฉบับสมบูรณ์ ครบ 14 องค์ประกอบ ภาษาราชการ:<br><br>
+                            บันทึกย่อ:<br>
+                            - 15 ต.ค. 69 เวลา 13.30 ห้องประชุมชั้น 2 สนพ.สุรินทร์<br>
+                            - ประธาน: ผอ.สมชาย, มาครบ 10 คน<br>
+                            - วาระ 1: แจ้งนโยบายกรมฯ จัดงานทุกจังหวัด<br>
+                            - วาระ 4: พิจารณาแผน<br>
+                            - คุณสมศรี: เสนอ 5 บูธ + เวทีเสวนา<br>
+                            - คุณวิชัย: งบ 80,000 เพียงพอ<br>
+                            - คุณมาลี: เสนอเพิ่มการแสดงคนพิการ<br>
+                            - มติ: เห็นชอบแผนทั้งหมด<br>
+                            - มอบ: คุณสมศรี-บูธ, คุณวิชัย-งบ, คุณมาลี-เวที<br>
+                            - กำหนดประชุมครั้งถัดไป 1 พ.ย. 69<br>
+                            - เลิกประชุม 15.30
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ชิ้นงาน 4 -->
+                <div class="card border-info mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">📝 ชิ้นงานที่ 4: โครงการต่อเนื่อง (เขียนโครงการปีหน้า)</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>หลังจัดงานสำเร็จ ให้เขียนโครงการต่อเนื่องสำหรับปีถัดไป เพื่อของบประมาณ</p>
+
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <strong>กำหนดกรอบโครงการ</strong>
+                            <p class="mb-0 mt-2">ชื่อ, หลักการ, วัตถุประสงค์, กลุ่มเป้าหมาย, งบประมาณ</p>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <strong>ใช้ Prompt เขียนโครงการ</strong>
+                            <p class="mb-0 mt-2">สั่ง AI เขียนโครงการตามรูปแบบราชการ</p>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <strong>ปรับแต่งตัวเลขและรายละเอียด</strong>
+                            <p class="mb-0 mt-2">ตรวจงบประมาณ ตัวชี้วัด ระยะเวลา ให้สมจริง</p>
+                        </div>
+
+                        <h6 class="mt-3">📝 Prompt แนะนำ:</h6>
+                        <div class="prompt-example">
+                            ช่วยเขียนโครงการ "จัดงานวันคนพิการสากล ประจำปี 2570"<br>
+                            โดยมีโครงสร้างดังนี้:<br>
+                            1. ชื่อโครงการ<br>
+                            2. หลักการและเหตุผล (อ้างอิง พ.ร.บ.คนพิการ + ผลจัดงานปี 69)<br>
+                            3. วัตถุประสงค์ (3-4 ข้อ)<br>
+                            4. กลุ่มเป้าหมาย: คนพิการ 150 คน + ผู้ดูแล/เจ้าหน้าที่ 100 คน<br>
+                            5. วิธีดำเนินการ<br>
+                            6. ระยะเวลา<br>
+                            7. งบประมาณ: 100,000 บาท (แจกแจงรายละเอียด)<br>
+                            8. ตัวชี้วัดความสำเร็จ<br>
+                            9. ผลที่คาดว่าจะได้รับ<br>
+                            10. ผู้รับผิดชอบ: สนพ.สุรินทร์<br><br>
+                            ใช้ภาษาราชการ รูปแบบโครงการมาตรฐาน
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 10.3 ตารางส่งงาน -->
+            <section>
+                <h3 class="section-header">10.3 ตารางส่งงาน</h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ชิ้นงาน</th>
+                            <th>เสร็จ ✓</th>
+                            <th>เครื่องมือที่ใช้</th>
+                            <th>เวลา</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. หนังสือเชิญประชุม</td>
+                            <td class="text-center">☐</td>
+                            <td>☐ ChatGPT ☐ Gemini ☐ อื่น ๆ</td>
+                            <td>30 นาที</td>
+                        </tr>
+                        <tr>
+                            <td>2. กำหนดการจัดงาน</td>
+                            <td class="text-center">☐</td>
+                            <td>☐ ChatGPT ☐ Gemini ☐ อื่น ๆ</td>
+                            <td>30 นาที</td>
+                        </tr>
+                        <tr>
+                            <td>3. รายงานการประชุม</td>
+                            <td class="text-center">☐</td>
+                            <td>☐ ChatGPT ☐ Gemini ☐ อื่น ๆ</td>
+                            <td>30 นาที</td>
+                        </tr>
+                        <tr>
+                            <td>4. โครงการต่อเนื่อง</td>
+                            <td class="text-center">☐</td>
+                            <td>☐ ChatGPT ☐ Gemini ☐ อื่น ๆ</td>
+                            <td>30 นาที</td>
+                        </tr>
+                        <tr class="table-success">
+                            <td><strong>รวม</strong></td>
+                            <td class="text-center"><strong>☐</strong></td>
+                            <td></td>
+                            <td><strong>2 ชั่วโมง</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 10.4 สรุปภาพรวมหลักสูตร -->
+            <section>
+                <h3 class="section-header">10.4 สรุปภาพรวมหลักสูตร</h3>
+                <p>ตลอด 10 บทเรียน ท่านได้เรียนรู้การใช้ AI สำหรับงานราชการครบทุกด้าน:</p>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>บท</th>
+                            <th>หัวข้อ</th>
+                            <th>สิ่งที่ได้เรียนรู้</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>แนะนำ AI สำหรับงานราชการ</td>
+                            <td>AI คืออะไร, เครื่องมือที่ใช้ได้, ข้อจำกัด</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Prompt Engineering เบื้องต้น</td>
+                            <td>หลักการเขียน Prompt ที่ดี, โครงสร้าง 4 ส่วน</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>การสรุปเอกสาร</td>
+                            <td>สรุปเอกสารยาว, ดึงข้อมูลสำคัญ, สร้าง Bullet Points</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>หนังสือราชการภายใน</td>
+                            <td>บันทึกข้อความ, หนังสือเวียน, คำสั่ง, ประกาศ</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>หนังสือราชการภายนอก</td>
+                            <td>หนังสือเชิญ, ขอความอนุเคราะห์, ตอบรับ</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>รายงานการประชุม</td>
+                            <td>จด Keyword → AI เขียนรายงาน, สรุปมติ</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>คู่มือและระเบียบ</td>
+                            <td>SOP, คู่มือผู้รับบริการ, ระเบียบ, FAQ</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>ถอดเสียงประชุม</td>
+                            <td>Whisper, Gemini Live, แก้ไขข้อผิดพลาด</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>NotebookLM</td>
+                            <td>อัปโหลดเอกสาร → ถาม-ตอบ, Podcast, Multi-doc</td>
+                        </tr>
+                        <tr class="table-success">
+                            <td>10</td>
+                            <td>Workshop รวม</td>
+                            <td>บูรณาการทุกทักษะ สร้างเอกสาร 4 ชิ้นจริง</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🧪 Lab: ส่ง 4 ชิ้นงาน + นำเสนอ 3 นาที</h4>
+                <p><strong>การส่งงาน:</strong></p>
+                <ol>
+                    <li>สร้างชิ้นงานทั้ง 4 ให้ครบ (ตามตารางส่งงาน)</li>
+                    <li>ตรวจสอบความถูกต้อง ครบถ้วน</li>
+                    <li>เตรียมนำเสนอ 3 นาที:
+                        <ul>
+                            <li>แสดงชิ้นงานทั้ง 4</li>
+                            <li>อธิบายว่าใช้เครื่องมืออะไร Prompt อะไร</li>
+                            <li>บอกปัญหาที่พบ และวิธีแก้ไข</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <p><strong>เกณฑ์การให้คะแนน:</strong></p>
+                <table class="table table-bordered table-sm">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>เกณฑ์</th>
+                            <th>คะแนน</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>ครบ 4 ชิ้นงาน</td><td>40 คะแนน</td></tr>
+                        <tr><td>ถูกต้องตามรูปแบบราชการ</td><td>20 คะแนน</td></tr>
+                        <tr><td>เนื้อหาเชื่อมโยงกัน</td><td>20 คะแนน</td></tr>
+                        <tr><td>นำเสนอชัดเจน</td><td>20 คะแนน</td></tr>
+                        <tr class="table-success"><td><strong>รวม</strong></td><td><strong>100 คะแนน</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success mt-4">
+                <h5>💡 Tips</h5>
+                <ul class="mb-0">
+                    <li>ทำชิ้นงานที่ 1 ก่อน แล้วใช้ข้อมูลจากชิ้น 1 ต่อเนื่องไปชิ้น 2, 3, 4</li>
+                    <li>ถ้าติดปัญหา Prompt ไม่ได้ผล ลองปรับคำสั่งให้เจาะจงมากขึ้น</li>
+                    <li>ไม่ต้องสมบูรณ์แบบ 100% — สิ่งสำคัญคือได้ลงมือทำจริง</li>
+                    <li>AI เป็นตัวช่วย ท่านยังต้องตรวจสอบข้อมูลก่อนใช้จริงเสมอ</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card mt-4">
+                <h4>📌 สรุปบทที่ 10 และหลักสูตรทั้งหมด</h4>
+                <ul>
+                    <li>AI ช่วยให้งานเอกสารราชการที่เคยใช้เวลาหลายวัน ทำเสร็จได้ใน 2 ชั่วโมง</li>
+                    <li>เพียงเข้าใจ "วิธีสั่ง" (Prompt) AI ก็ทำงานให้ได้ ไม่ต้องมีพื้นฐาน IT</li>
+                    <li>ทุกครั้งที่ใช้ AI ต้อง "ตรวจสอบ" ก่อนใช้จริง — AI ยังผิดพลาดได้</li>
+                    <li>ฝึกฝนบ่อย ๆ จะยิ่งเร็วและแม่นยำขึ้น</li>
+                    <li>🎉 ยินดีด้วยที่ผ่านหลักสูตรครบทั้ง 10 บท!</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-5 mb-4">
+                <a href="chapter09.html" class="btn btn-outline-dark">← บทที่ 9</a>
+                <a href="index.html" class="btn btn-dark">🏠 หน้าหลัก</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

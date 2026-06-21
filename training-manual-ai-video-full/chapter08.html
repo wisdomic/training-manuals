@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 8: CapCut — ตัดต่อวิดีโอ | AI วิดีโอครบวงจร</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">📖 AI วิดีโอครบวงจร</a>
+            <span class="nav-chapter-text">บทที่ 8: CapCut — ตัดต่อวิดีโอ</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <div class="chapter-number">บทที่ 8</div>
+                <h1>CapCut — ตัดต่อวิดีโอเบื้องต้น</h1>
+                <p class="chapter-subtitle">รวมคลิป+เสียง+เพลง, ใส่ Sub, AI Caption, Transition, Export</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เข้าใจหน้าตาและเครื่องมือพื้นฐานของ CapCut</li>
+                    <li>สามารถนำเข้าไฟล์วิดีโอ เสียง เพลง จากบทก่อนหน้า</li>
+                    <li>ตัดต่อรวมคลิปวิดีโอ ใส่เสียงพากย์ เพลงประกอบ</li>
+                    <li>ใส่ซับไตเติ้ล (AI Caption) และ Transition ได้</li>
+                    <li>Export วิดีโอสมบูรณ์เป็น MP4</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">✂️ CapCut คืออะไร?</h3>
+
+            <p><strong>CapCut</strong> เป็นโปรแกรมตัดต่อวิดีโอฟรี ใช้งานง่าย มีฟีเจอร์ AI ช่วยเหลือ เหมาะสำหรับมือใหม่ มีให้ใช้ทั้งบน PC, Mac, มือถือ และ Web</p>
+
+            <div class="info-card">
+                <h5>✨ จุดเด่นของ CapCut</h5>
+                <ul>
+                    <li><strong>ฟรี:</strong> ใช้งานได้โดยไม่ต้องจ่ายเงิน (มี Pro เสริม)</li>
+                    <li><strong>ใช้ง่าย:</strong> Interface เรียบง่าย เหมาะกับมือใหม่</li>
+                    <li><strong>AI Caption:</strong> ใส่ซับอัตโนมัติ รองรับภาษาไทย</li>
+                    <li><strong>Template มากมาย:</strong> Template สำเร็จรูปหลายร้อยแบบ</li>
+                    <li><strong>Export 1080p/4K:</strong> คุณภาพสูง ไม่มีลายน้ำ (Free)</li>
+                    <li><strong>หลายแพลตฟอร์ม:</strong> PC, Mac, iOS, Android, Web</li>
+                </ul>
+            </div>
+
+            <h3 class="section-header">🖥️ หน้าตา CapCut Desktop</h3>
+
+            <div class="info-card">
+                <h5>📐 ส่วนประกอบหลัก</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr><th>ส่วน</th><th>ตำแหน่ง</th><th>หน้าที่</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Media Panel</strong></td><td>ซ้ายบน</td><td>นำเข้าไฟล์ วิดีโอ เสียง ภาพ</td></tr>
+                            <tr><td><strong>Preview</strong></td><td>กลางบน</td><td>ดูตัวอย่างวิดีโอ</td></tr>
+                            <tr><td><strong>Timeline</strong></td><td>ล่าง</td><td>จัดเรียงคลิป ตัดต่อ ใส่เสียง</td></tr>
+                            <tr><td><strong>Properties</strong></td><td>ขวา</td><td>ตั้งค่าคลิปที่เลือก (ขนาด, สี, เสียง)</td></tr>
+                            <tr><td><strong>Tools Bar</strong></td><td>ซ้าย</td><td>Text, Sticker, Effect, Transition</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3 class="section-header">🚀 ขั้นตอนตัดต่อวิดีโอ</h3>
+
+            <div class="step-box">
+                <span class="step-number">1</span>
+                <strong>สร้าง Project ใหม่</strong>
+                <p class="mb-0 mt-1 text-muted">เปิด CapCut > New Project > เลือก 16:9 (1080p)</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">2</span>
+                <strong>นำเข้าไฟล์ทั้งหมด</strong>
+                <p class="mb-0 mt-1 text-muted">Import: คลิปวิดีโอ (จากบท 4-5) + เสียงพากย์ (บท 6) + เพลง (บท 7) + ภาพ (บท 3)</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">3</span>
+                <strong>จัดเรียงคลิปใน Timeline</strong>
+                <p class="mb-0 mt-1 text-muted">ลากคลิปวิดีโอแต่ละ Scene ลง Video Track ตามลำดับ</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">4</span>
+                <strong>ใส่เสียงพากย์</strong>
+                <p class="mb-0 mt-1 text-muted">ลากไฟล์เสียงพากย์ลง Audio Track ให้ตรงกับ Scene</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">5</span>
+                <strong>ใส่เพลงประกอบ</strong>
+                <p class="mb-0 mt-1 text-muted">ลาก BGM ลง Audio Track 2 > ลดเสียงเหลือ 20-30%</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">6</span>
+                <strong>ใส่ Transition</strong>
+                <p class="mb-0 mt-1 text-muted">เพิ่ม Transition ระหว่างคลิป (Fade, Dissolve, Slide)</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">7</span>
+                <strong>ใส่ข้อความ/ซับ</strong>
+                <p class="mb-0 mt-1 text-muted">ใส่ Title, Lower Third, และ AI Caption (ซับอัตโนมัติ)</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">8</span>
+                <strong>Preview ทั้งหมด</strong>
+                <p class="mb-0 mt-1 text-muted">ดูตัวอย่างทั้งวิดีโอ ตรวจสอบจังหวะ เสียง ข้อความ</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">9</span>
+                <strong>Export</strong>
+                <p class="mb-0 mt-1 text-muted">Export เป็น MP4, 1080p, 30fps</p>
+            </div>
+
+            <h3 class="section-header">📝 AI Caption — ใส่ซับอัตโนมัติ</h3>
+
+            <p>CapCut มีฟีเจอร์ <strong>Auto Captions</strong> ที่ใช้ AI แปลงเสียงพูดเป็นซับไตเติ้ลอัตโนมัติ รองรับภาษาไทย</p>
+
+            <div class="info-card">
+                <h5>📋 วิธีใช้ AI Caption</h5>
+                <ol>
+                    <li>ไปที่ <strong>Text</strong> > <strong>Auto Captions</strong></li>
+                    <li>เลือกภาษา: <strong>Thai</strong></li>
+                    <li>กด <strong>Generate</strong> > รอ AI วิเคราะห์เสียง</li>
+                    <li>ซับไตเติ้ลจะปรากฏใน Timeline อัตโนมัติ</li>
+                    <li>ตรวจสอบ: อ่านซับทีละประโยค แก้คำผิด</li>
+                    <li>ปรับสไตล์: เปลี่ยนฟอนต์ สี ขนาด ตำแหน่ง</li>
+                </ol>
+            </div>
+
+            <h3 class="section-header">🎨 Transition — การเปลี่ยนฉาก</h3>
+
+            <div class="info-card">
+                <h5>📐 Transition ที่แนะนำ</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr><th>ชื่อ</th><th>ลักษณะ</th><th>เหมาะกับ</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Fade</strong></td><td>จางหายไป/จางขึ้นมา</td><td>ทุกประเภท (ปลอดภัยที่สุด)</td></tr>
+                            <tr><td><strong>Dissolve</strong></td><td>ภาพซ้อนแล้วเปลี่ยน</td><td>วิดีโออบอุ่น นุ่มนวล</td></tr>
+                            <tr><td><strong>Slide</strong></td><td>เลื่อนซ้าย/ขวา</td><td>วิดีโอ PR สมัยใหม่</td></tr>
+                            <tr><td><strong>Zoom</strong></td><td>ซูมเข้า/ออก</td><td>เน้นจุดสำคัญ</td></tr>
+                            <tr><td><strong>Cut</strong></td><td>ตัดเปลี่ยนทันที</td><td>วิดีโอเร็ว กระชับ</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mb-0 mt-2"><strong>💡 กฎทอง:</strong> ใช้ Transition น้อยๆ (1-2 แบบ) ทั้งวิดีโอ อย่าใช้หลายแบบ จะดูรก</p>
+            </div>
+
+            <h3 class="section-header">🔊 การปรับเสียง</h3>
+
+            <div class="info-card">
+                <h5>🎛️ ระดับเสียงแนะนำ</h5>
+                <ul>
+                    <li><strong>เสียงพากย์ (Voice Over):</strong> 100% (เสียงหลัก)</li>
+                    <li><strong>เพลง Background:</strong> 15-25% (ได้ยินเบาๆ)</li>
+                    <li><strong>เพลง Intro/Outro:</strong> 60-80% (ช่วงไม่มีเสียงพูด)</li>
+                    <li><strong>Sound Effect:</strong> 40-60%</li>
+                </ul>
+                <p class="mb-0"><strong>📋 วิธีปรับ:</strong> คลิกที่ Audio clip > Properties > Volume slider</p>
+            </div>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h5>🔬 Lab 8.1: ตัดต่อวิดีโอแรก</h5>
+                <p><strong>เวลา:</strong> 40 นาที</p>
+                <p><strong>คำสั่ง:</strong> นำชิ้นงานจากบทก่อนหน้ามารวมกันใน CapCut</p>
+                <ol>
+                    <li>เปิด CapCut > สร้าง Project ใหม่ (16:9, 1080p)</li>
+                    <li>Import ไฟล์ทั้งหมด:
+                        <ul>
+                            <li>คลิปวิดีโอ (clip01-03.mp4 จากบท 4)</li>
+                            <li>วิดีโอ Avatar (จากบท 5)</li>
+                            <li>เสียงพากย์ (voice_scene01-06.mp3 จากบท 6)</li>
+                            <li>เพลง (intro_music.mp3, bgm_main.mp3, outro_music.mp3 จากบท 7)</li>
+                            <li>ภาพ (scene01-06.png จากบท 3)</li>
+                        </ul>
+                    </li>
+                    <li>จัดเรียงใน Timeline:
+                        <ul>
+                            <li>Video Track: Intro clip > Scene 1-5 > Outro clip</li>
+                            <li>Audio Track 1: เสียงพากย์แต่ละ Scene</li>
+                            <li>Audio Track 2: BGM (ลดเสียงเหลือ 20%)</li>
+                        </ul>
+                    </li>
+                    <li>ใส่ Transition: Fade ระหว่างทุก Scene (0.5 วินาที)</li>
+                    <li>Preview ดูทั้งหมด — ปรับจังหวะ ตัดส่วนเกิน</li>
+                </ol>
+            </div>
+
+            <div class="exercise-box">
+                <h5>🔬 Lab 8.2: ใส่ AI Caption + Text</h5>
+                <p><strong>เวลา:</strong> 20 นาที</p>
+                <p><strong>คำสั่ง:</strong> ใส่ซับไตเติ้ลและข้อความบนวิดีโอ</p>
+                <ol>
+                    <li>ใช้ AI Caption:
+                        <ul>
+                            <li>Text > Auto Captions > Thai > Generate</li>
+                            <li>ตรวจสอบซับทุกประโยค แก้คำผิด</li>
+                            <li>ปรับฟอนต์ให้อ่านง่าย (Sarabun, ขนาด 24-28)</li>
+                        </ul>
+                    </li>
+                    <li>ใส่ Title (ชื่อวิดีโอ) ตอนเปิด</li>
+                    <li>ใส่ Lower Third (ชื่อองค์กร) ตอนปิด</li>
+                    <li>ใส่ข้อมูลติดต่อ (เบอร์โทร, เวลาทำการ) ใน Scene สุดท้าย</li>
+                    <li>Preview ทั้งหมดอีกครั้ง</li>
+                </ol>
+            </div>
+
+            <div class="exercise-box">
+                <h5>🔬 Lab 8.3: Export วิดีโอ</h5>
+                <p><strong>เวลา:</strong> 10 นาที</p>
+                <p><strong>คำสั่ง:</strong> Export วิดีโอสมบูรณ์</p>
+                <ol>
+                    <li>กด Export (มุมขวาบน)</li>
+                    <li>ตั้งค่า:
+                        <ul>
+                            <li>Resolution: 1080p</li>
+                            <li>Frame Rate: 30fps</li>
+                            <li>Format: MP4</li>
+                            <li>Quality: High</li>
+                        </ul>
+                    </li>
+                    <li>เลือกที่จัดเก็บ > ตั้งชื่อไฟล์</li>
+                    <li>กด Export > รอจนเสร็จ</li>
+                    <li>เปิดดูวิดีโอที่ Export แล้ว ตรวจสอบคุณภาพ</li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5>💡 Tips & Tricks</h5>
+                <ul class="mb-0">
+                    <li><strong>Save บ่อยๆ:</strong> กด Ctrl+S บ่อยๆ ป้องกันงานหาย</li>
+                    <li><strong>ใช้ Keyboard Shortcut:</strong> Space = Play/Pause, S = Split clip</li>
+                    <li><strong>BGM เบาๆ:</strong> เพลง Background ต้องเบากว่าเสียงพูดมาก (15-25%)</li>
+                    <li><strong>Transition สั้นๆ:</strong> 0.3-0.5 วินาทีพอ อย่ายาวเกิน</li>
+                    <li><strong>ฟอนต์ซับ:</strong> ใช้ฟอนต์หนา (Bold) พื้นสีดำ 50% จะอ่านง่าย</li>
+                    <li><strong>Preview ก่อน Export:</strong> ดูทั้งหมดก่อน Export ทุกครั้ง</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="summary-card">
+                <h5>📋 สรุปบทที่ 8</h5>
+                <ul class="mb-0">
+                    <li>CapCut เป็นโปรแกรมตัดต่อฟรี ใช้ง่าย มี AI ช่วย</li>
+                    <li>ขั้นตอน: นำเข้าไฟล์ → จัดเรียง → ใส่เสียง → Transition → Caption → Export</li>
+                    <li>AI Caption ช่วยสร้างซับอัตโนมัติ ประหยัดเวลามาก</li>
+                    <li>ปรับเสียง: Voice 100%, BGM 20%, Intro/Outro 70%</li>
+                    <li>Export: MP4, 1080p, 30fps สำหรับ YouTube/Facebook</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="chapter-nav d-flex justify-content-between">
+                <a href="chapter07.html" class="btn btn-outline-secondary">← บทที่ 7</a>
+                <a href="chapter09.html" class="btn btn-primary">บทที่ 9 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

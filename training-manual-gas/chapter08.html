@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 8: MailApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📖 Google Apps Script</span>
+            <span class="nav-text text-light">บทที่ 8: MailApp</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <h1>บทที่ 8: MailApp — ส่งอีเมลอัตโนมัติ</h1>
+                <p class="lead">ส่งอีเมลแจ้งเตือน รายงาน และเอกสารอัตโนมัติด้วย GAS</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h4>🎯 วัตถุประสงค์การเรียนรู้</h4>
+                <ul class="mb-0">
+                    <li>ส่งอีเมลด้วย MailApp.sendEmail() ได้</li>
+                    <li>ส่ง HTML Email (อีเมลสวยงาม) ได้</li>
+                    <li>แนบไฟล์จาก Google Drive ได้</li>
+                    <li>สร้างระบบแจ้งเตือนอัตโนมัติตามเงื่อนไข</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h2 class="section-header">📚 MailApp vs GmailApp</h2>
+            <div class="info-card">
+                <table class="table table-bordered mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>MailApp</th>
+                            <th>GmailApp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ส่งอีเมลอย่างเดียว</td>
+                            <td>ส่ง + อ่าน + จัดการ Gmail ทั้งหมด</td>
+                        </tr>
+                        <tr>
+                            <td>ใช้ง่ายกว่า</td>
+                            <td>ฟังก์ชันเยอะกว่า</td>
+                        </tr>
+                        <tr>
+                            <td>เหมาะกับแจ้งเตือนอัตโนมัติ</td>
+                            <td>เหมาะกับจัดการ inbox</td>
+                        </tr>
+                        <tr>
+                            <td>Quota: 100 ฉบับ/วัน (free)</td>
+                            <td>Quota: 100 ฉบับ/วัน (free)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="section-header">📧 ส่งอีเมลพื้นฐาน</h2>
+<pre><code>// ส่งอีเมลแบบง่าย
+function sendSimpleEmail() {
+  MailApp.sendEmail(
+    "recipient@example.com",   // ผู้รับ
+    "หัวข้อทดสอบ",              // Subject
+    "สวัสดีครับ นี่คืออีเมลทดสอบจาก GAS"  // เนื้อหา (Plain text)
+  );
+  Logger.log("ส่งอีเมลสำเร็จ!");
+}
+
+// ส่งแบบมี Option เพิ่มเติม
+function sendEmailWithOptions() {
+  MailApp.sendEmail({
+    to: "recipient@example.com",
+    subject: "รายงานประจำวัน",
+    body: "นี่คือข้อความ plain text (สำหรับ email client เก่า)",
+    htmlBody: "<h2>📊 รายงานประจำวัน</h2><p>วันนี้มีสมาชิกใหม่ 5 คน</p>",
+    name: "ระบบแจ้งเตือนอัตโนมัติ",
+    cc: "cc@example.com",
+    bcc: "bcc@example.com"
+  });
+}
+</code></pre>
+
+            <h2 class="section-header">🎨 ส่ง HTML Email (อีเมลสวยงาม)</h2>
+<pre><code>function sendHtmlEmail(toEmail, memberName, courseName) {
+  var htmlBody = '&lt;div style="font-family: Sarabun, sans-serif; max-width: 600px; margin: 0 auto;"&gt;';
+  htmlBody += '  &lt;div style="background: #4285f4; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;"&gt;';
+  htmlBody += '    &lt;h2&gt;🎉 ยืนยันการลงทะเบียนสำเร็จ&lt;/h2&gt;';
+  htmlBody += '  &lt;/div&gt;';
+  htmlBody += '  &lt;div style="padding: 20px; background: #f9f9f9; border: 1px solid #ddd;"&gt;';
+  htmlBody += '    &lt;p&gt;สวัสดีคุณ &lt;strong&gt;' + memberName + '&lt;/strong&gt;&lt;/p&gt;';
+  htmlBody += '    &lt;p&gt;คุณได้ลงทะเบียนเข้าร่วมหลักสูตร:&lt;/p&gt;';
+  htmlBody += '    &lt;div style="background: white; padding: 15px; border-left: 4px solid #4285f4; margin: 10px 0;"&gt;';
+  htmlBody += '      &lt;strong&gt;' + courseName + '&lt;/strong&gt;&lt;br&gt;';
+  htmlBody += '      📅 20-24 กรกฎาคม 2569&lt;br&gt;';
+  htmlBody += '      📍 โรงแรมฮิลล์ไซด์ เขาใหญ่ จ.ปราจีนบุรี';
+  htmlBody += '    &lt;/div&gt;';
+  htmlBody += '    &lt;p&gt;หากมีข้อสงสัย กรุณาติดต่อ: 088-377-8987&lt;/p&gt;';
+  htmlBody += '  &lt;/div&gt;';
+  htmlBody += '  &lt;div style="text-align: center; padding: 10px; color: #666; font-size: 12px;"&gt;';
+  htmlBody += '    โครงการ AI เพื่อคนพิการ | สนพ.สุรินทร์';
+  htmlBody += '  &lt;/div&gt;';
+  htmlBody += '&lt;/div&gt;';
+  
+  MailApp.sendEmail({
+    to: toEmail,
+    subject: "✅ ยืนยันการลงทะเบียน - " + courseName,
+    htmlBody: htmlBody,
+    name: "ระบบลงทะเบียนอัตโนมัติ"
+  });
+  
+  Logger.log("ส่ง HTML Email ให้ " + memberName + " สำเร็จ");
+}
+</code></pre>
+
+            <h2 class="section-header">📎 แนบไฟล์จาก Google Drive</h2>
+<pre><code>function sendEmailWithAttachment() {
+  // แนบไฟล์จาก Drive (ใช้ File ID)
+  var file = DriveApp.getFileById("FILE_ID_HERE");
+  
+  MailApp.sendEmail({
+    to: "recipient@example.com",
+    subject: "เอกสารแนบ",
+    body: "กรุณาดูเอกสารแนบ",
+    attachments: [file.getAs(MimeType.PDF)]  // แนบเป็น PDF
+  });
+}
+
+// แนบหลายไฟล์
+function sendEmailMultipleAttachments() {
+  var folder = DriveApp.getFolderById("FOLDER_ID");
+  var files = folder.getFiles();
+  var attachments = [];
+  
+  while (files.hasNext()) {
+    var file = files.next();
+    attachments.push(file.getBlob());
+  }
+  
+  MailApp.sendEmail({
+    to: "recipient@example.com",
+    subject: "ไฟล์ทั้งหมดในโฟลเดอร์",
+    body: "แนบ " + attachments.length + " ไฟล์",
+    attachments: attachments
+  });
+}
+
+// สร้าง PDF จาก Spreadsheet แล้วแนบ
+function sendSheetAsPDF() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var pdf = ss.getAs("application/pdf");
+  pdf.setName("รายงาน_" + new Date().toLocaleDateString("th-TH") + ".pdf");
+  
+  MailApp.sendEmail({
+    to: "recipient@example.com",
+    subject: "รายงานประจำวัน (PDF)",
+    body: "กรุณาดูรายงานแนบ",
+    attachments: [pdf]
+  });
+}
+</code></pre>
+
+            <h2 class="section-header">⚡ ส่งอีเมลตามเงื่อนไข</h2>
+<pre><code>// ส่งแจ้งเตือนเมื่อมีข้อมูลใหม่ (ใช้กับ Trigger)
+function checkAndNotify() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("ลงทะเบียน");
+  var data = sheet.getDataRange().getValues();
+  
+  var today = new Date();
+  today.setHours(0, 0, 0, 0);
+  var newRegistrations = [];
+  
+  for (var i = 1; i < data.length; i++) {
+    var regDate = new Date(data[i][4]);  // คอลัมน์วันที่
+    regDate.setHours(0, 0, 0, 0);
+    
+    if (regDate.getTime() === today.getTime()) {
+      newRegistrations.push(data[i]);
+    }
+  }
+  
+  if (newRegistrations.length > 0) {
+    var message = "📋 สรุปการลงทะเบียนวันนี้\n\n";
+    message += "จำนวนใหม่: " + newRegistrations.length + " คน\n\n";
+    
+    for (var i = 0; i < newRegistrations.length; i++) {
+      message += (i + 1) + ". " + newRegistrations[i][1] + " (" + newRegistrations[i][2] + ")\n";
+    }
+    
+    MailApp.sendEmail("admin@example.com", "📊 รายงานลงทะเบียนวันนี้ (" + newRegistrations.length + " คน)", message);
+    Logger.log("ส่งรายงาน: " + newRegistrations.length + " คนใหม่");
+  }
+}
+
+// ตรวจ Quota ที่เหลือ
+function checkEmailQuota() {
+  var remaining = MailApp.getRemainingDailyQuota();
+  Logger.log("อีเมลที่ส่งได้อีก: " + remaining + " ฉบับวันนี้");
+  return remaining;
+}
+</code></pre>
+
+            <h2 class="section-header">📨 ส่ง Email จำนวนมาก (Bulk)</h2>
+<pre><code>function sendBulkEmail() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("ผู้เข้าอบรม");
+  var data = sheet.getDataRange().getValues();
+  
+  var quota = MailApp.getRemainingDailyQuota();
+  var sent = 0;
+  
+  for (var i = 1; i < data.length; i++) {
+    if (sent >= quota - 10) {  // เหลือ 10 ฉบับไว้ใช้อื่น
+      Logger.log("Quota ใกล้หมด! หยุดที่ " + sent + " ฉบับ");
+      break;
+    }
+    
+    var email = data[i][3];  // คอลัมน์ Email
+    var name = data[i][1];
+    
+    if (!email || email.indexOf("@") === -1) continue;  // ข้ามถ้า email ไม่ถูกต้อง
+    
+    try {
+      MailApp.sendEmail({
+        to: email,
+        subject: "📌 แจ้งกำหนดการอบรม",
+        body: "สวัสดีคุณ " + name + "\n\nแจ้งเพื่อทราบ...\n\nขอบคุณครับ",
+        name: "ระบบแจ้งเตือนอัตโนมัติ"
+      });
+      sent++;
+      
+      // บันทึกสถานะส่งแล้ว
+      sheet.getRange(i + 1, 6).setValue("ส่งแล้ว " + new Date().toLocaleString("th-TH"));
+      
+    } catch (err) {
+      sheet.getRange(i + 1, 6).setValue("ส่งไม่สำเร็จ: " + err);
+    }
+    
+    // หน่วงเวลา 1 วินาที ป้องกัน rate limit
+    Utilities.sleep(1000);
+  }
+  
+  Logger.log("ส่งอีเมลสำเร็จ " + sent + " ฉบับ (เหลือ Quota: " + (quota - sent) + ")");
+}
+</code></pre>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 10: สร้างระบบส่งอีเมลแจ้งเตือน</h4>
+                <p><strong>เวลา:</strong> 25 นาที</p>
+                <hr>
+                <p><strong>โจทย์:</strong> สร้างระบบส่งอีเมลยืนยันการลงทะเบียนอบรม</p>
+<pre><code>function lab10_sendConfirmation() {
+  // ข้อมูลทดสอบ (ใช้ email ของตัวเอง!)
+  var myEmail = "YOUR_EMAIL@gmail.com";  // ← เปลี่ยนเป็น email ของคุณ
+  
+  var htmlBody = '';
+  htmlBody += '&lt;div style="max-width:600px; margin:0 auto; font-family:sans-serif;"&gt;';
+  htmlBody += '&lt;div style="background:#198754; color:white; padding:20px; text-align:center;"&gt;';
+  htmlBody += '&lt;h2&gt;✅ ยืนยันการลงทะเบียนสำเร็จ&lt;/h2&gt;&lt;/div&gt;';
+  htmlBody += '&lt;div style="padding:20px; border:1px solid #ddd;"&gt;';
+  htmlBody += '&lt;p&gt;สวัสดีครับ&lt;/p&gt;';
+  htmlBody += '&lt;p&gt;คุณได้ลงทะเบียนเข้าร่วมอบรมหลักสูตร:&lt;/p&gt;';
+  htmlBody += '&lt;h3&gt;📚 การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ&lt;/h3&gt;';
+  htmlBody += '&lt;ul&gt;';
+  htmlBody += '&lt;li&gt;📅 วันที่ 20-24 กรกฎาคม 2569&lt;/li&gt;';
+  htmlBody += '&lt;li&gt;📍 โรงแรมฮิลล์ไซด์ เขาใหญ่ จ.ปราจีนบุรี&lt;/li&gt;';
+  htmlBody += '&lt;li&gt;👨‍🏫 วิทยากร: นายปัญญา ผาธรรม, นายพรพจน์ แสวงดี&lt;/li&gt;';
+  htmlBody += '&lt;/ul&gt;';
+  htmlBody += '&lt;p&gt;กรุณามาลงทะเบียนหน้างานก่อน 08:30 น.&lt;/p&gt;';
+  htmlBody += '&lt;p&gt;ติดต่อสอบถาม: 088-377-8987&lt;/p&gt;';
+  htmlBody += '&lt;/div&gt;';
+  htmlBody += '&lt;div style="text-align:center; padding:10px; color:#666; font-size:12px;"&gt;';
+  htmlBody += 'โครงการ AI เพื่อคนพิการ | สนพ.สุรินทร์&lt;/div&gt;&lt;/div&gt;';
+  
+  MailApp.sendEmail({
+    to: myEmail,
+    subject: "✅ ยืนยันการลงทะเบียนอบรม AI เพื่อคนพิการ",
+    htmlBody: htmlBody,
+    name: "ระบบลงทะเบียนอัตโนมัติ"
+  });
+  
+  var remaining = MailApp.getRemainingDailyQuota();
+  Logger.log("ส่งอีเมลสำเร็จ! (เหลือ Quota: " + remaining + " ฉบับ)");
+  SpreadsheetApp.getUi().alert("ส่งอีเมลสำเร็จ!\nตรวจ Inbox ของคุณ");
+}
+</code></pre>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <p>เปลี่ยน YOUR_EMAIL เป็นอีเมลของคุณ</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <p>รัน lab10_sendConfirmation()</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <p>ตรวจ Inbox — ควรได้รับอีเมล HTML สวยงาม</p>
+                </div>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h4>💡 Tips</h4>
+                <ul class="mb-0">
+                    <li><strong>Quota:</strong> บัญชี Gmail ฟรีส่งได้ 100 ฉบับ/วัน | Google Workspace ส่งได้ 1,500 ฉบับ/วัน</li>
+                    <li><strong>ตรวจ Quota:</strong> ใช้ <code>MailApp.getRemainingDailyQuota()</code> ก่อนส่ง bulk</li>
+                    <li><strong>HTML Email:</strong> ใช้ inline style เท่านั้น (CSS class ใช้ไม่ได้ใน email)</li>
+                    <li><strong>หน่วงเวลา:</strong> <code>Utilities.sleep(1000)</code> ป้องกัน rate limit เมื่อส่งหลายฉบับ</li>
+                    <li><strong>ทดสอบก่อน:</strong> ส่งให้ตัวเองก่อนเสมอ ก่อนส่ง bulk</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card">
+                <h4>📝 สรุปบทที่ 8</h4>
+                <table class="table table-sm">
+                    <tr>
+                        <td><strong>MailApp.sendEmail()</strong></td>
+                        <td>ส่งอีเมล — รองรับ to, subject, body, htmlBody, attachments</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HTML Email</strong></td>
+                        <td>ใช้ htmlBody + inline style สร้างอีเมลสวยงาม</td>
+                    </tr>
+                    <tr>
+                        <td><strong>แนบไฟล์</strong></td>
+                        <td>DriveApp.getFileById() → .getBlob() หรือ .getAs(MimeType.PDF)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quota</strong></td>
+                        <td>100 ฉบับ/วัน (free) — ตรวจด้วย getRemainingDailyQuota()</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bulk Email</strong></td>
+                        <td>วนลูปส่ง + Utilities.sleep() + บันทึกสถานะ</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Navigation -->
+            <div class="nav-buttons">
+                <a href="chapter07.html" class="btn btn-outline-secondary">← บทที่ 7</a>
+                <a href="chapter09.html" class="btn btn-primary">บทที่ 9 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

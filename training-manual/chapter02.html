@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 2: เตรียมเครื่องมือ — คู่มือ Kiro AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">📖 คู่มือฝึกอบรม Kiro AI</a>
+        <span class="navbar-text text-white">บทที่ 2 | วันที่ 1 (บ่าย)</span>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+
+            <div class="chapter-header text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">บทที่ 2</h1>
+                <h2 class="h3 text-secondary">เตรียมเครื่องมือ</h2>
+                <p class="lead text-muted">ระยะเวลา: 3 ชั่วโมง | วันที่ 1 (13:00 - 16:00)</p>
+                <hr class="w-50 mx-auto">
+            </div>
+
+            <div class="alert alert-info mb-4">
+                <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>ติดตั้ง Node.js, Git, Kiro IDE, Clasp ได้สำเร็จ</li>
+                    <li>สร้างบัญชี GitHub และเชื่อมต่อกับเครื่องได้</li>
+                    <li>Login Clasp เชื่อมต่อกับ Google Account ได้</li>
+                    <li>ทดสอบเครื่องมือทั้งหมดผ่าน Checklist</li>
+                </ul>
+            </div>
+
+            <div class="alert alert-warning">
+                <strong>⚠️ สิ่งที่ต้องมีก่อนเริ่ม:</strong>
+                <ul class="mb-0">
+                    <li>คอมพิวเตอร์ Windows 10/11 (หรือ Mac)</li>
+                    <li>อินเทอร์เน็ตที่เสถียร</li>
+                    <li>บัญชี Google (Gmail)</li>
+                    <li>สิทธิ์ Admin ในการติดตั้งโปรแกรม</li>
+                </ul>
+            </div>
+
+            <!-- 2.1 Node.js -->
+            <section class="mb-5" id="section-2-1">
+                <h3 class="border-start border-4 border-primary ps-3">2.1 ติดตั้ง Node.js</h3>
+
+                <p><strong>Node.js</strong> คือ โปรแกรมที่ทำให้คอมพิวเตอร์รัน JavaScript ได้ — จำเป็นสำหรับ Clasp และ npm</p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>ดาวน์โหลด Node.js</strong>
+                    <p class="mb-1">เปิดเว็บ <a href="https://nodejs.org" target="_blank">https://nodejs.org</a></p>
+                    <p class="mb-0">คลิกปุ่ม <strong>"LTS" (Long Term Support)</strong> สีเขียว — เลือกเวอร์ชันที่แนะนำ</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ติดตั้ง</strong>
+                    <p class="mb-1">เปิดไฟล์ที่ดาวน์โหลด (.msi) → คลิก Next ไปเรื่อยๆ → Install → Finish</p>
+                    <p class="mb-0 text-muted">✅ ใช้ค่า default ทั้งหมด ไม่ต้องเปลี่ยนอะไร</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ทดสอบ</strong>
+                    <p class="mb-1">เปิด <strong>PowerShell</strong> (คลิกขวาที่ Start → Windows PowerShell)</p>
+                    <pre><code>node -v
+npm -v</code></pre>
+                    <p class="mb-0">ถ้าแสดงเลขเวอร์ชัน เช่น <code>v20.x.x</code> = สำเร็จ ✅</p>
+                </div>
+
+                <div class="screenshot-placeholder">
+                    📸 ภาพหน้าจอ: ผลลัพธ์ node -v และ npm -v ใน PowerShell
+                </div>
+            </section>
+
+            <!-- 2.2 Git -->
+            <section class="mb-5" id="section-2-2">
+                <h3 class="border-start border-4 border-primary ps-3">2.2 ติดตั้ง Git + สร้าง GitHub Account</h3>
+
+                <h5>Git คืออะไร?</h5>
+                <p><strong>Git</strong> คือ ระบบควบคุมเวอร์ชัน (Version Control) ช่วยเก็บประวัติการแก้ไขโค้ด ทำงานเป็นทีม และสำรองข้อมูลบน Cloud (GitHub)</p>
+
+                <h5>ขั้นตอนที่ 1: สร้าง GitHub Account</h5>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>สมัคร GitHub</strong>
+                    <p class="mb-0">เปิด <a href="https://github.com" target="_blank">https://github.com</a> → คลิก "Sign up" → กรอกข้อมูล → ยืนยัน Email</p>
+                </div>
+
+                <h5 class="mt-4">ขั้นตอนที่ 2: ติดตั้ง Git</h5>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>ดาวน์โหลด Git</strong>
+                    <p class="mb-0">เปิด <a href="https://git-scm.com" target="_blank">https://git-scm.com</a> → คลิก "Download for Windows"</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ติดตั้ง</strong>
+                    <p class="mb-0">เปิดไฟล์ .exe → คลิก Next ไปเรื่อยๆ (ใช้ค่า default) → Install → Finish</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ตั้งค่า Git User</strong>
+                    <p class="mb-1">เปิด PowerShell แล้วรัน:</p>
+                    <pre><code>git --version
+git config --global user.name "ชื่อของคุณ"
+git config --global user.email "email@gmail.com"</code></pre>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>💡 ทำไมต้องตั้ง user.name?</strong> — เพื่อให้ Git รู้ว่าใครเป็นคนแก้ไขโค้ด เวลาทำงานเป็นทีมจะได้รู้ว่าใครทำอะไร
+                </div>
+            </section>
+
+            <!-- 2.3 Kiro IDE -->
+            <section class="mb-5" id="section-2-3">
+                <h3 class="border-start border-4 border-primary ps-3">2.3 ติดตั้ง Kiro IDE</h3>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>ดาวน์โหลด Kiro</strong>
+                    <p class="mb-0">เปิด <a href="https://kiro.dev" target="_blank">https://kiro.dev</a> → คลิก "Download" → เลือก Windows</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ติดตั้ง</strong>
+                    <p class="mb-0">เปิดไฟล์ที่ดาวน์โหลด → ติดตั้งตามขั้นตอน → เปิด Kiro</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>Login</strong>
+                    <p class="mb-1">เมื่อเปิด Kiro ครั้งแรก:</p>
+                    <ul class="mb-0">
+                        <li>คลิก "Sign in" (ด้านซ้ายล่าง)</li>
+                        <li>เลือก Login ด้วย Google, GitHub, หรือ AWS Builder ID</li>
+                        <li>แนะนำใช้ <strong>Google Account</strong> เดียวกับที่ใช้ Google Sheets</li>
+                    </ul>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>เปิดโฟลเดอร์โปรเจกต์</strong>
+                    <p class="mb-0">File → Open Folder → เลือกโฟลเดอร์ที่จะทำงาน (เช่น <code>C:\MyProject</code>)</p>
+                </div>
+
+                <div class="card border-info mb-3">
+                    <div class="card-header bg-info text-white">📌 Interface ของ Kiro</div>
+                    <div class="card-body">
+                        <table class="table table-sm mb-0">
+                            <tr><td><strong>ซ้าย</strong></td><td>Explorer — ดูไฟล์ในโปรเจกต์</td></tr>
+                            <tr><td><strong>กลาง</strong></td><td>Editor — แก้ไขโค้ด</td></tr>
+                            <tr><td><strong>ขวา</strong></td><td>Kiro Chat — สนทนากับ AI</td></tr>
+                            <tr><td><strong>ล่าง</strong></td><td>Terminal — รันคำสั่ง</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2.4 Clasp -->
+            <section class="mb-5" id="section-2-4">
+                <h3 class="border-start border-4 border-primary ps-3">2.4 ติดตั้ง Google Clasp (CLI)</h3>
+
+                <p><strong>Clasp</strong> (Command Line Apps Script Projects) คือเครื่องมือที่ช่วยอัปโหลดโค้ดจากคอมพิวเตอร์ขึ้น Google Apps Script โดยไม่ต้องเปิด Script Editor</p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>ติดตั้ง Clasp</strong>
+                    <p class="mb-1">เปิด Terminal ใน Kiro (หรือ PowerShell) แล้วรัน:</p>
+                    <pre><code>npm install -g @google/clasp</code></pre>
+                    <p class="mb-0">รอจนติดตั้งเสร็จ (อาจใช้เวลา 1-2 นาที)</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ทดสอบ</strong>
+                    <pre><code>clasp --version</code></pre>
+                    <p class="mb-0">ถ้าแสดงเวอร์ชัน เช่น <code>2.4.x</code> = สำเร็จ ✅</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เปิด Apps Script API</strong>
+                    <p class="mb-1">เปิดเว็บ <a href="https://script.google.com/home/usersettings" target="_blank">https://script.google.com/home/usersettings</a></p>
+                    <p class="mb-0">เปิดสวิตช์ <strong>"Google Apps Script API"</strong> ให้เป็น ON</p>
+                </div>
+
+                <div class="screenshot-placeholder">
+                    📸 ภาพหน้าจอ: หน้า Apps Script Settings แสดง API = ON
+                </div>
+            </section>
+
+            <!-- 2.5 Clasp Login -->
+            <section class="mb-5" id="section-2-5">
+                <h3 class="border-start border-4 border-primary ps-3">2.5 clasp login + เชื่อมต่อ Google Account</h3>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>Login Clasp</strong>
+                    <pre><code>clasp login</code></pre>
+                    <p class="mb-0">เบราว์เซอร์จะเปิดขึ้น → เลือกบัญชี Google → กด "Allow" ทุกสิทธิ์</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ยืนยันสำเร็จ</strong>
+                    <p class="mb-0">Terminal จะแสดง <code>Authorization successful.</code> และเบราว์เซอร์จะแสดง "Logged in!"</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ทดสอบ clasp</strong>
+                    <pre><code>clasp list</code></pre>
+                    <p class="mb-0">จะแสดงรายการ Apps Script projects ที่มีในบัญชี (ถ้ามี)</p>
+                </div>
+
+                <div class="alert alert-danger">
+                    <strong>❗ ปัญหาที่พบบ่อย:</strong>
+                    <ul class="mb-0">
+                        <li><strong>"This app isn't verified"</strong> — คลิก "Advanced" → "Go to ... (unsafe)" → Allow</li>
+                        <li><strong>"Apps Script API not enabled"</strong> — กลับไปทำข้อ 2.4 ขั้นตอนที่ 3</li>
+                        <li><strong>"Access denied"</strong> — ตรวจสอบว่า login ถูกบัญชี</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 2.6 Checklist -->
+            <section class="mb-5" id="section-2-6">
+                <h3 class="border-start border-4 border-primary ps-3">2.6 ทดสอบเครื่องมือทั้งหมด (Checklist)</h3>
+
+                <p>รันคำสั่งทั้งหมดนี้ใน Terminal เพื่อตรวจสอบว่าทุกอย่างพร้อม:</p>
+
+                <pre><code>node -v          # ต้องแสดง v20.x.x หรือสูงกว่า
+npm -v           # ต้องแสดง 10.x.x หรือสูงกว่า
+git --version    # ต้องแสดง git version 2.x.x
+clasp --version  # ต้องแสดง 2.4.x หรือสูงกว่า</code></pre>
+
+                <h5 class="mt-4">✅ Checklist ความพร้อม</h5>
+                <table class="table table-bordered">
+                    <thead class="table-success">
+                        <tr><th>รายการ</th><th>สถานะ</th><th>หมายเหตุ</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Node.js ติดตั้งแล้ว</td><td>☐</td><td>node -v แสดงเวอร์ชัน</td></tr>
+                        <tr><td>npm ใช้งานได้</td><td>☐</td><td>npm -v แสดงเวอร์ชัน</td></tr>
+                        <tr><td>Git ติดตั้งแล้ว</td><td>☐</td><td>git --version แสดงเวอร์ชัน</td></tr>
+                        <tr><td>Git user ตั้งค่าแล้ว</td><td>☐</td><td>git config --list แสดงชื่อ+email</td></tr>
+                        <tr><td>GitHub account มีแล้ว</td><td>☐</td><td>login ได้ที่ github.com</td></tr>
+                        <tr><td>Kiro IDE ติดตั้งแล้ว</td><td>☐</td><td>เปิด Kiro ได้ + login แล้ว</td></tr>
+                        <tr><td>Clasp ติดตั้งแล้ว</td><td>☐</td><td>clasp --version แสดงเวอร์ชัน</td></tr>
+                        <tr><td>Clasp login แล้ว</td><td>☐</td><td>clasp list ไม่ error</td></tr>
+                        <tr><td>Apps Script API เปิดแล้ว</td><td>☐</td><td>สวิตช์ ON ในหน้า settings</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="alert alert-success">
+                    <strong>🎉 ถ้าผ่านทั้ง 9 ข้อ = พร้อมเรียนวันที่ 2!</strong>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+                <a href="chapter01.html" class="btn btn-outline-primary btn-lg">← บทที่ 1</a>
+                <a href="chapter03.html" class="btn btn-primary btn-lg">บทที่ 3: รู้จัก Kiro IDE →</a>
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p class="mb-1">คู่มือฝึกอบรม "Kiro AI สร้างระบบราชการด้วยปัญญาประดิษฐ์"</p>
+    <p class="mb-0 text-muted small">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 3: ประเภทและความแตกต่างของ AI — พื้นฐาน AI ทุกมิติ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 พื้นฐาน AI ทุกมิติ</a>
+        <span class="text-white nav-text">บทที่ 3</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 3</h1>
+            <h2 class="fw-normal text-muted">ประเภทและความแตกต่างของ AI</h2>
+            <p class="lead">รู้จักประเภท AI ทั้งหมด เปรียบเทียบเครื่องมือ และเข้าใจ LLM แบบไม่ใช้คณิตศาสตร์</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>แยกแยะ AI แต่ละประเภทได้ (Narrow AI, General AI, Super AI)</li>
+                <li>เปรียบเทียบเครื่องมือ AI หลักได้ (ChatGPT, Claude, Gemini, Copilot)</li>
+                <li>เข้าใจว่า LLM คืออะไร ทำงานอย่างไร (แบบไม่ใช้คณิตศาสตร์)</li>
+            </ul>
+        </div>
+
+        <!-- 3.1 Narrow AI vs General AI vs Super AI -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">3.1 Narrow AI vs General AI vs Super AI</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <p>AI แบ่งได้ 3 ระดับตามความฉลาด — ลองคิดว่าเป็น "ระดับความสามารถ":</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-success">
+                        <div class="card-header bg-success text-white text-center">
+                            <h5 class="mb-0">🎯 Narrow AI</h5>
+                            <small>ทำได้ดีเรื่องเดียว</small>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>คำอธิบาย:</strong> AI ที่เก่งเฉพาะเรื่อง — ทำอย่างอื่นไม่ได้</p>
+                            <p><strong>ตัวอย่าง:</strong></p>
+                            <ul>
+                                <li>ChatGPT (เก่งเรื่องภาษา)</li>
+                                <li>Siri (ผู้ช่วยเสียง)</li>
+                                <li>Face ID (จำหน้าคน)</li>
+                                <li>Google Maps (หาทาง)</li>
+                            </ul>
+                            <div class="alert alert-success py-2 mb-0">
+                                <strong>สถานะ:</strong> ✅ มีแล้ว — ใช้ทุกวัน!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-warning">
+                        <div class="card-header bg-warning text-center">
+                            <h5 class="mb-0">🧠 General AI (AGI)</h5>
+                            <small>ฉลาดเท่ามนุษย์ทุกด้าน</small>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>คำอธิบาย:</strong> AI ที่คิดเอง ตัดสินใจเอง เรียนรู้เรื่องใหม่ได้ทุกเรื่อง เหมือนมนุษย์</p>
+                            <p><strong>ตัวอย่าง:</strong></p>
+                            <ul>
+                                <li>ยังไม่มีตัวอย่างจริง</li>
+                                <li>ในหนัง: Jarvis (Iron Man)</li>
+                                <li>ในหนัง: Samantha (Her)</li>
+                            </ul>
+                            <div class="alert alert-warning py-2 mb-0">
+                                <strong>สถานะ:</strong> ⏳ กำลังพัฒนา — ยังไม่มีจริง
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-danger">
+                        <div class="card-header bg-danger text-white text-center">
+                            <h5 class="mb-0">⚡ Super AI</h5>
+                            <small>เก่งกว่ามนุษย์ทุกด้าน</small>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>คำอธิบาย:</strong> AI ที่ฉลาดกว่ามนุษย์ทุกคนรวมกัน — แก้ปัญหาที่มนุษย์แก้ไม่ได้</p>
+                            <p><strong>ตัวอย่าง:</strong></p>
+                            <ul>
+                                <li>ยังเป็นทฤษฎี</li>
+                                <li>ในหนัง: Skynet (Terminator)</li>
+                                <li>ในหนัง: Ultron (Avengers)</li>
+                            </ul>
+                            <div class="alert alert-danger py-2 mb-0">
+                                <strong>สถานะ:</strong> 🔮 ทฤษฎี — ไม่รู้จะมีจริงไหม
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card p-4 bg-light rounded mt-3">
+                <h6>📌 สรุปง่ายๆ</h6>
+                <table class="table table-bordered table-sm mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ประเภท</th>
+                            <th>คำอธิบาย</th>
+                            <th>ตัวอย่าง</th>
+                            <th>สถานะ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Narrow AI</td>
+                            <td>เก่งเรื่องเดียว</td>
+                            <td>ChatGPT, Siri, Face ID</td>
+                            <td>✅ มีแล้ว</td>
+                        </tr>
+                        <tr>
+                            <td>General AI</td>
+                            <td>ฉลาดเท่าคน</td>
+                            <td>Jarvis (ในหนัง)</td>
+                            <td>⏳ กำลังพัฒนา</td>
+                        </tr>
+                        <tr>
+                            <td>Super AI</td>
+                            <td>เก่งกว่าคน</td>
+                            <td>Skynet (ในหนัง)</td>
+                            <td>🔮 ทฤษฎี</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3.2 AI แบ่งตามประเภทเนื้อหา -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">3.2 AI แบ่งตามประเภทเนื้อหา</h3>
+
+            <p>นอกจากแบ่งตามความฉลาด เรายังแบ่ง AI ตาม <strong>"ทำอะไรได้"</strong> — มี 5 หมวดหลัก:</p>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-primary text-white"><strong>🖊️ Text AI — สร้างข้อความ</strong></div>
+                        <div class="card-body">
+                            <p><strong>ทำอะไรได้:</strong> เขียน แก้ไข สรุป แปล ตอบคำถาม</p>
+                            <p><strong>เครื่องมือยอดนิยม:</strong></p>
+                            <ul class="mb-0">
+                                <li>ChatGPT (OpenAI)</li>
+                                <li>Claude (Anthropic)</li>
+                                <li>Gemini (Google)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-success text-white"><strong>🎨 Image AI — สร้างรูปภาพ</strong></div>
+                        <div class="card-body">
+                            <p><strong>ทำอะไรได้:</strong> วาดรูป แก้ไขรูป ออกแบบ สร้างโลโก้</p>
+                            <p><strong>เครื่องมือยอดนิยม:</strong></p>
+                            <ul class="mb-0">
+                                <li>DALL-E 3 (OpenAI)</li>
+                                <li>Midjourney</li>
+                                <li>Adobe Firefly</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-warning"><strong>🎵 Audio AI — สร้างเสียง/เพลง</strong></div>
+                        <div class="card-body">
+                            <p><strong>ทำอะไรได้:</strong> แต่งเพลง สร้างเสียงพูด ถอดเสียงเป็นข้อความ</p>
+                            <p><strong>เครื่องมือยอดนิยม:</strong></p>
+                            <ul class="mb-0">
+                                <li>ElevenLabs (เสียงพูด)</li>
+                                <li>Suno (แต่งเพลง)</li>
+                                <li>Whisper (ถอดเสียง)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-danger text-white"><strong>🎬 Video AI — สร้างวิดีโอ</strong></div>
+                        <div class="card-body">
+                            <p><strong>ทำอะไรได้:</strong> สร้างวิดีโอ ตัดต่อ ใส่เอฟเฟกต์ สร้าง Avatar</p>
+                            <p><strong>เครื่องมือยอดนิยม:</strong></p>
+                            <ul class="mb-0">
+                                <li>Google Flow (Veo)</li>
+                                <li>CapCut AI</li>
+                                <li>Runway</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-dark text-white"><strong>💻 Code AI — เขียนโปรแกรม</strong></div>
+                        <div class="card-body">
+                            <p><strong>ทำอะไรได้:</strong> เขียนโค้ด แก้บัก สร้างเว็บ สร้างแอป</p>
+                            <p><strong>เครื่องมือยอดนิยม:</strong></p>
+                            <ul class="mb-0">
+                                <li>GitHub Copilot</li>
+                                <li>Cursor</li>
+                                <li>Kiro (Amazon)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ตาราง 5 หมวด -->
+            <div class="table-responsive mt-4">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ประเภท</th>
+                            <th>ทำอะไรได้</th>
+                            <th>เครื่องมือยอดนิยม</th>
+                            <th>ฟรี/เสียเงิน</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🖊️ Text AI</td>
+                            <td>เขียน สรุป แปล ตอบคำถาม</td>
+                            <td>ChatGPT, Claude, Gemini</td>
+                            <td>ฟรี (มี Pro เสริม)</td>
+                        </tr>
+                        <tr>
+                            <td>🎨 Image AI</td>
+                            <td>วาดรูป สร้างภาพจากคำอธิบาย</td>
+                            <td>DALL-E 3, Midjourney, Firefly</td>
+                            <td>ฟรีจำกัด / Pro</td>
+                        </tr>
+                        <tr>
+                            <td>🎵 Audio AI</td>
+                            <td>แต่งเพลง สร้างเสียง ถอดเสียง</td>
+                            <td>ElevenLabs, Suno, Whisper</td>
+                            <td>ฟรีจำกัด / Pro</td>
+                        </tr>
+                        <tr>
+                            <td>🎬 Video AI</td>
+                            <td>สร้าง/ตัดต่อวิดีโอ</td>
+                            <td>Google Flow, CapCut AI, Runway</td>
+                            <td>ฟรีจำกัด / Pro</td>
+                        </tr>
+                        <tr>
+                            <td>💻 Code AI</td>
+                            <td>เขียนโปรแกรม สร้างเว็บ</td>
+                            <td>Copilot, Cursor, Kiro</td>
+                            <td>ฟรี / Pro</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3.3 เปรียบเทียบ ChatGPT vs Claude vs Gemini vs Copilot -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">3.3 เปรียบเทียบ ChatGPT vs Claude vs Gemini vs Copilot</h3>
+
+            <p>ทั้ง 4 ตัวเป็น AI ที่คุยได้ (Text AI) — แต่มีจุดเด่นต่างกัน:</p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>หัวข้อ</th>
+                            <th>ChatGPT</th>
+                            <th>Claude</th>
+                            <th>Gemini</th>
+                            <th>Copilot</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>บริษัทผู้สร้าง</strong></td>
+                            <td>OpenAI (สหรัฐ)</td>
+                            <td>Anthropic (สหรัฐ)</td>
+                            <td>Google (สหรัฐ)</td>
+                            <td>Microsoft (สหรัฐ)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>จุดแข็ง</strong></td>
+                            <td>เก่งรอบด้าน สร้างรูปได้ มี Plugin เยอะ</td>
+                            <td>เขียนยาวได้ดี วิเคราะห์เอกสารเก่ง ปลอดภัย</td>
+                            <td>เชื่อมกับ Google (Gmail, Drive, YouTube)</td>
+                            <td>ค้นเว็บเก่ง อ้างอิงแหล่งข้อมูล ฟรี</td>
+                        </tr>
+                        <tr>
+                            <td><strong>จุดอ่อน</strong></td>
+                            <td>เวอร์ชันฟรีจำกัดมากขึ้น</td>
+                            <td>ไม่ค้นเว็บ ไม่สร้างรูป (ฟรี)</td>
+                            <td>ภาษาไทยยังไม่ดีเท่า</td>
+                            <td>คำตอบอาจสั้นไป</td>
+                        </tr>
+                        <tr>
+                            <td><strong>เหมาะกับงาน</strong></td>
+                            <td>งานทั่วไป สร้างรูป เขียนโค้ด</td>
+                            <td>วิเคราะห์เอกสารยาว งานเขียน งานวิชาการ</td>
+                            <td>ค้นข้อมูลใน Google งาน Google Workspace</td>
+                            <td>ค้นเว็บ สรุปข่าว เขียนอีเมล</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ราคา</strong></td>
+                            <td>ฟรี / Plus $20/เดือน</td>
+                            <td>ฟรี / Pro $20/เดือน</td>
+                            <td>ฟรี / Advanced $20/เดือน</td>
+                            <td>ฟรี (รวมใน Microsoft 365)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ภาษาไทย</strong></td>
+                            <td>⭐⭐⭐⭐⭐ ดีมาก</td>
+                            <td>⭐⭐⭐⭐⭐ ดีมาก</td>
+                            <td>⭐⭐⭐⭐ ดี</td>
+                            <td>⭐⭐⭐⭐ ดี</td>
+                        </tr>
+                        <tr>
+                            <td><strong>สร้างรูปได้ไหม</strong></td>
+                            <td>✅ ได้ (DALL-E 3)</td>
+                            <td>❌ ไม่ได้ (เวอร์ชันฟรี)</td>
+                            <td>✅ ได้ (Imagen)</td>
+                            <td>✅ ได้ (DALL-E 3)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ค้นเว็บได้ไหม</strong></td>
+                            <td>✅ ได้</td>
+                            <td>✅ ได้ (Pro)</td>
+                            <td>✅ ได้ (เชื่อม Google)</td>
+                            <td>✅ ได้ (เชื่อม Bing)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-info mt-3">
+                <h6>💡 แนะนำสำหรับผู้เริ่มต้น:</h6>
+                <ul class="mb-0">
+                    <li><strong>ใช้ ChatGPT</strong> — ถ้าต้องการทำได้ทุกอย่าง (เขียน + สร้างรูป + ค้นเว็บ)</li>
+                    <li><strong>ใช้ Claude</strong> — ถ้าต้องการวิเคราะห์เอกสารยาวๆ หรืองานเขียนคุณภาพสูง</li>
+                    <li><strong>ใช้ Gemini</strong> — ถ้าใช้ Gmail/Google Drive อยู่แล้ว</li>
+                    <li><strong>ใช้ Copilot</strong> — ถ้าต้องการค้นข้อมูลพร้อมอ้างอิง (ฟรี!)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3.4 LLM คืออะไร -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">3.4 LLM คืออะไร ทำงานอย่างไร</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🧠 LLM = Large Language Model (โมเดลภาษาขนาดใหญ่)</h5>
+                <p>LLM คือ "สมอง" ที่อยู่เบื้องหลัง ChatGPT, Claude, Gemini ทุกตัว</p>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary">
+                    <p class="mb-0"><strong>💬 อธิบายแบบไม่ใช้คณิตศาสตร์:</strong><br>
+                    "LLM เหมือนคนที่อ่านหนังสือมาล้านเล่ม แล้วจำ pattern ว่าคำไหนมักตามหลังคำไหน — พอถามอะไร ก็ต่อคำให้เป็นประโยคที่สมเหตุสมผล"</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-dark text-white"><strong>📦 Token คืออะไร?</strong></div>
+                        <div class="card-body">
+                            <p><strong>Token = หน่วยย่อยที่ AI อ่าน</strong></p>
+                            <p>AI ไม่ได้อ่าน "คำ" เหมือนคน — แต่อ่าน "Token" ซึ่งเล็กกว่าคำ</p>
+                            <ul>
+                                <li>ภาษาอังกฤษ: 1 Token ≈ 0.75 คำ</li>
+                                <li>ภาษาไทย: 1 ตัวอักษร ≈ 1-2 Token (เพราะภาษาไทยซับซ้อน)</li>
+                            </ul>
+                            <div class="prompt-example bg-light p-2 rounded">
+                                <small><strong>ตัวอย่าง:</strong> "สวัสดีครับ" → AI อ่านเป็น Token หลายตัว ไม่ใช่คำเดียว</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-dark text-white"><strong>📐 Context Window คืออะไร?</strong></div>
+                        <div class="card-body">
+                            <p><strong>Context Window = ความจำระหว่างสนทนา</strong></p>
+                            <p>เหมือน "กระดาษจดบันทึก" ของ AI — จำได้มากแค่ไหนระหว่างคุยกัน</p>
+                            <ul>
+                                <li>ChatGPT: ~128K Token (≈ หนังสือ 2-3 เล่ม)</li>
+                                <li>Claude: ~200K Token (≈ หนังสือ 4-5 เล่ม)</li>
+                                <li>Gemini: ~1M Token (≈ หนังสือ 20+ เล่ม)</li>
+                            </ul>
+                            <div class="prompt-example bg-light p-2 rounded">
+                                <small><strong>ง่ายๆ:</strong> ยิ่ง Context Window ใหญ่ = AI จำบทสนทนาได้ยาวขึ้น</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card p-4 bg-light rounded mt-3 mb-4">
+                <h5>🌡️ Temperature คืออะไร?</h5>
+                <p><strong>Temperature = ระดับความ "สร้างสรรค์" ของ AI</strong></p>
+                <p>ลองนึกภาพเป็นปุ่มปรับ:</p>
+                <div class="row text-center">
+                    <div class="col-md-4 mb-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>🧊</h4>
+                                <h6>Temperature = 0</h6>
+                                <p class="mb-0 small"><strong>แม่นยำ ตรงประเด็น</strong><br>เหมาะกับ: สรุปเอกสาร, ตอบคำถามที่ต้องถูกต้อง</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>🌤️</h4>
+                                <h6>Temperature = 0.5</h6>
+                                <p class="mb-0 small"><strong>สมดุล</strong><br>เหมาะกับ: งานทั่วไป สรุป + แต่งเล็กน้อย</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>🔥</h4>
+                                <h6>Temperature = 1</h6>
+                                <p class="mb-0 small"><strong>สร้างสรรค์ หลากหลาย</strong><br>เหมาะกับ: แต่งเรื่อง, ไอเดียใหม่, บทกลอน</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-3 mb-0"><strong>💡 สรุป:</strong> Temperature ต่ำ = ตอบตรงๆ ซ้ำได้ | Temperature สูง = ตอบหลากหลาย สร้างสรรค์ แต่อาจ "ฟุ้ง"</p>
+            </div>
+        </section>
+
+        <!-- Lab -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">🔬 Lab ปฏิบัติ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 3.1 — เปรียบเทียบ AI 3 ตัว</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิด AI 3 ตัวพร้อมกัน:</strong>
+                    <ul class="mt-2 mb-0">
+                        <li><a href="https://chat.openai.com" target="_blank">ChatGPT</a> (chat.openai.com)</li>
+                        <li><a href="https://claude.ai" target="_blank">Claude</a> (claude.ai)</li>
+                        <li><a href="https://gemini.google.com" target="_blank">Gemini</a> (gemini.google.com)</li>
+                    </ul>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ถามคำถามเดียวกันทั้ง 3 ตัว:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"สรุปสิทธิของคนพิการตามกฎหมายไทย เป็น 5 ข้อ ภาษาง่ายๆ ไม่ใช้ศัพท์กฎหมาย"</code>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เปรียบเทียบผลลัพธ์:</strong>
+                    <table class="table table-bordered table-sm mt-2">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>เกณฑ์เปรียบเทียบ</th>
+                                <th>ChatGPT</th>
+                                <th>Claude</th>
+                                <th>Gemini</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ความยาวคำตอบ</td><td></td><td></td><td></td></tr>
+                            <tr><td>ความถูกต้อง</td><td></td><td></td><td></td></tr>
+                            <tr><td>ภาษาไทย (อ่านง่ายไหม)</td><td></td><td></td><td></td></tr>
+                            <tr><td>มีอ้างอิงกฎหมายไหม</td><td></td><td></td><td></td></tr>
+                            <tr><td>ให้คะแนน (1-5)</td><td></td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>สรุปว่าตัวไหนชอบที่สุด เพราะอะไร:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-warning mt-2">
+                        <p class="mb-0">AI ที่ชอบที่สุด: _______________ <br>เหตุผล: _______________</p>
+                    </div>
+                </div>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึกหน้าจอคำตอบจากทั้ง 3 AI ไว้เปรียบเทียบ
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับบทนี้</h5>
+            <ul class="mb-0">
+                <li><strong>AI ที่ใช้อยู่ทุกวัน = Narrow AI</strong> — ทำได้ดีเรื่องเดียว ยังไม่ฉลาดเท่าคน</li>
+                <li><strong>ไม่มี AI ตัวไหนดีที่สุดตลอด</strong> — แต่ละตัวเก่งคนละเรื่อง ลองใช้หลายตัว!</li>
+                <li><strong>LLM ไม่ได้ "เข้าใจ" จริง</strong> — แค่ต่อคำได้เก่ง อาจตอบผิดได้ (Hallucination)</li>
+                <li><strong>Context Window ใหญ่ = จำได้มาก</strong> — ถ้าต้องวิเคราะห์เอกสารยาว ให้เลือก AI ที่ Context Window ใหญ่</li>
+                <li><strong>Temperature ต่ำ = แม่นยำ</strong> / <strong>Temperature สูง = สร้างสรรค์</strong></li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปท้ายบท</h5>
+            <ul>
+                <li><strong>Narrow AI</strong> = เก่งเรื่องเดียว (มีแล้ว ใช้ทุกวัน) | <strong>General AI</strong> = ฉลาดเท่าคน (ยังไม่มี) | <strong>Super AI</strong> = เก่งกว่าคน (ทฤษฎี)</li>
+                <li><strong>AI มี 5 หมวด:</strong> Text, Image, Audio, Video, Code — แต่ละหมวดมีเครื่องมือให้เลือกมากมาย</li>
+                <li><strong>ChatGPT</strong> เก่งรอบด้าน | <strong>Claude</strong> เก่งวิเคราะห์ | <strong>Gemini</strong> เชื่อม Google | <strong>Copilot</strong> ค้นเว็บฟรี</li>
+                <li><strong>LLM</strong> คือสมองของ AI — อ่านข้อมูลมหาศาล จำ pattern แล้วต่อคำให้เป็นประโยค</li>
+                <li><strong>Token</strong> = หน่วยย่อย | <strong>Context Window</strong> = ความจำ | <strong>Temperature</strong> = ระดับสร้างสรรค์</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="chapter02.html" class="btn btn-outline-dark">← บทที่ 2</a>
+            <a href="chapter04.html" class="btn btn-dark">บทที่ 4 →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

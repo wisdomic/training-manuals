@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 1: ประวัติความเป็นมาของ AI — พื้นฐาน AI ทุกมิติ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 พื้นฐาน AI ทุกมิติ</a>
+        <span class="text-white nav-text">บทที่ 1</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 1</h1>
+            <h2 class="fw-normal text-muted">ประวัติความเป็นมาของ AI</h2>
+            <p class="lead">เรียนรู้ว่า AI มาจากไหน ใครเป็นผู้เริ่มต้น และผ่านอะไรมาบ้าง</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>อธิบายที่มาของ AI ได้ว่าเริ่มจากไหน เมื่อไหร่</li>
+                <li>รู้จัก Alan Turing บิดาแห่ง AI</li>
+                <li>เข้าใจ AI Winter คืออะไร ทำไม AI ถึงเคย "ตาย"</li>
+                <li>รู้จุดเปลี่ยนสำคัญที่ทำให้ AI กลับมาทรงพลังอีกครั้ง</li>
+            </ul>
+        </div>
+
+        <!-- 1.1 AI กำเนิดมาจากไหน -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">1.1 AI กำเนิดมาจากไหน</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🧠 Alan Turing — บิดาแห่ง AI</h5>
+                <p>ย้อนไปปี <strong>1950</strong> นักคณิตศาสตร์ชาวอังกฤษชื่อ <strong>Alan Turing</strong> เขียนบทความชื่อ <em>"Computing Machinery and Intelligence"</em> ตั้งคำถามง่ายๆ ว่า:</p>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary">
+                    <strong>💬 "เครื่องจักรคิดได้ไหม?" (Can Machines Think?)</strong>
+                </div>
+                <p class="mt-3">คำถามนี้เป็นจุดเริ่มต้นของทุกอย่าง — เป็นครั้งแรกที่มีคนคิดอย่างจริงจังว่า เครื่องจักร (คอมพิวเตอร์) อาจมีความฉลาดได้</p>
+            </div>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🧪 Turing Test คืออะไร?</h5>
+                <p>Turing เสนอวิธีทดสอบว่า AI ฉลาดจริงไหม เรียกว่า <strong>"Turing Test"</strong>:</p>
+                <div class="step-item">
+                    <span class="step-number">1</span> ให้คนคุยกับ "บางสิ่ง" ผ่านแชท (ไม่เห็นหน้า)
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span> "บางสิ่ง" นั้นอาจเป็นคนจริงๆ หรือคอมพิวเตอร์
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span> ถ้าคนแยกไม่ออกว่ากำลังคุยกับคนหรือคอมพิวเตอร์ → แสดงว่าคอมพิวเตอร์นั้น "ฉลาด"
+                </div>
+                <p class="mt-3 mb-0"><strong>💡 เปรียบเทียบง่ายๆ:</strong> เหมือนคุณแชทกับใครสักคนใน LINE — ถ้าแยกไม่ออกว่าเป็นคนจริงหรือ AI → AI นั้นผ่าน Turing Test</p>
+            </div>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🏛️ Dartmouth Conference 1956 — จุดเริ่มต้นอย่างเป็นทางการ</h5>
+                <p>ปี 1956 มีการประชุมกลุ่มนักวิทยาศาสตร์ที่ <strong>Dartmouth College</strong> สหรัฐอเมริกา เพื่อคุยกันว่า "เราจะสร้างเครื่องจักรที่ฉลาดได้ไหม"</p>
+                <p>ในการประชุมครั้งนี้ <strong>John McCarthy</strong> เป็นคนตั้งชื่อว่า <strong>"Artificial Intelligence"</strong> (ปัญญาประดิษฐ์)</p>
+                <ul>
+                    <li><strong>Artificial</strong> = ที่มนุษย์สร้างขึ้น</li>
+                    <li><strong>Intelligence</strong> = ความฉลาด</li>
+                </ul>
+                <p class="mb-0">รวมกันคือ "ความฉลาดที่มนุษย์สร้างขึ้น" — ชื่อนี้ใช้มาถึงทุกวันนี้!</p>
+            </div>
+        </section>
+
+        <!-- 1.2 พัฒนาการ AI -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">1.2 พัฒนาการ AI ตั้งแต่ 1950 จนถึงปัจจุบัน</h3>
+
+            <p>มาดูกันว่า AI เดินทางผ่านอะไรมาบ้างตลอด 70+ ปี:</p>
+
+            <!-- Timeline -->
+            <div class="position-relative ps-4 ms-2" style="border-left: 3px solid #343a40;">
+
+                <div class="mb-4 position-relative">
+                    <div class="position-absolute" style="left: -2.1rem; top: 0; width: 16px; height: 16px; background: #343a40; border-radius: 50%;"></div>
+                    <div class="ps-3">
+                        <h6 class="fw-bold text-dark mb-1">1950 — Turing Test</h6>
+                        <p class="mb-0 text-muted">Alan Turing ตั้งคำถาม "เครื่องจักรคิดได้ไหม?" และเสนอวิธีทดสอบ</p>
+                    </div>
+                </div>
+
+                <div class="mb-4 position-relative">
+                    <div class="position-absolute" style="left: -2.1rem; top: 0; width: 16px; height: 16px; background: #343a40; border-radius: 50%;"></div>
+                    <div class="ps-3">
+                        <h6 class="fw-bold text-dark mb-1">1956 — Dartmouth Conference</h6>
+                        <p class="mb-0 text-muted">การประชุมที่ให้กำเนิดชื่อ "Artificial Intelligence" อย่างเป็นทางการ</p>
+                    </div>
+                </div>
+
+                <div class="mb-4 position-relative">
+                    <div class="position-absolute" style="left: -2.1rem; top: 0; width: 16px; height: 16px; background: #343a40; border-radius: 50%;"></div>
+                    <div class="ps-3">
+                        <h6 class="fw-bold text-dark mb-1">1966 — ELIZA</h6>
+                        <p class="mb-0 text-muted">Chatbot ตัวแรกของโลก! พูดคุยกับคนได้ (แม้จะง่ายมาก) — ถือว่าเป็นปู่ทวดของ ChatGPT</p>
+                    </div>
+                </div>
+
+                <div class="mb-4 position-relative">
+                    <div class="position-absolute" style="left: -2.1rem; top: 0; width: 16px; height: 16px; background: #343a40; border-radius: 50%;"></div>
+                    <div class="ps-3">
+                        <h6 class="fw-bold text-dark mb-1">1997 — Deep Blue ชนะหมากรุก</h6>
+                        <p class="mb-0 text-muted">คอมพิวเตอร์ของ IBM ชนะแชมป์หมากรุกโลก (Garry Kasparov) ครั้งแรกในประวัติศาสตร์!</p>
+                    </div>
+                </div>
+
+                <div class="mb-4 position-relative">
+                    <div class="position-absolute" style="left: -2.1rem; top: 0; width: 16px; height: 16px; background: #343a40; border-radius: 50%;"></div>
+                    <div class="ps-3">
+                        <h6 class="fw-bold text-dark mb-1">2011 — Siri (Apple)</h6>
+                        <p class="mb-0 text-muted">ผู้ช่วยเสียง AI ตัวแรกบน iPhone — พูดสั่งงานได้</p>
+                    </div>
+                </div>
+
+                <div class="mb-4 position-relative">
+                    <div class="position-absolute" style="left: -2.1rem; top: 0; width: 16px; height: 16px; background: #343a40; border-radius: 50%;"></div>
+                    <div class="ps-3">
+                        <h6 class="fw-bold text-dark mb-1">2012 — Deep Learning ปฏิวัติ ImageNet</h6>
+                        <p class="mb-0 text-muted">AI จำแนกรูปภาพได้แม่นยำกว่าที่เคย — จุดเริ่มต้นยุค Deep Learning</p>
+                    </div>
+                </div>
+
+                <div class="mb-4 position-relative">
+                    <div class="position-absolute" style="left: -2.1rem; top: 0; width: 16px; height: 16px; background: #343a40; border-radius: 50%;"></div>
+                    <div class="ps-3">
+                        <h6 class="fw-bold text-dark mb-1">2016 — AlphaGo ชนะโกะ</h6>
+                        <p class="mb-0 text-muted">AI ของ Google ชนะแชมป์โกะโลก — เกมที่ซับซ้อนกว่าหมากรุกหลายเท่า</p>
+                    </div>
+                </div>
+
+                <div class="mb-4 position-relative">
+                    <div class="position-absolute" style="left: -2.1rem; top: 0; width: 16px; height: 16px; background: #0d6efd; border-radius: 50%;"></div>
+                    <div class="ps-3">
+                        <h6 class="fw-bold text-primary mb-1">2022 — ChatGPT เปิดตัว (จุดเปลี่ยนโลก!) 🌟</h6>
+                        <p class="mb-0 text-muted">AI ที่คุยเก่ง เขียนบทความได้ ตอบคำถามได้ — 100 ล้านผู้ใช้ใน 2 เดือน!</p>
+                    </div>
+                </div>
+
+                <div class="mb-4 position-relative">
+                    <div class="position-absolute" style="left: -2.1rem; top: 0; width: 16px; height: 16px; background: #0d6efd; border-radius: 50%;"></div>
+                    <div class="ps-3">
+                        <h6 class="fw-bold text-primary mb-1">2023–2026 — AI ระเบิด!</h6>
+                        <p class="mb-0 text-muted">Claude, Gemini, DALL-E, Sora, Suno — AI ทำได้ทุกอย่าง: เขียน, วาดรูป, สร้างเพลง, สร้างวิดีโอ</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 1.3 AI Winter -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">1.3 AI Winter คืออะไร</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>❄️ AI Winter = "ฤดูหนาวของ AI"</h5>
+                <p>หมายถึง <strong>ช่วงเวลาที่คนเลิกสนใจ AI</strong> — ไม่มีทุน ไม่มีงานวิจัย ไม่มีคนอยากทำ เหมือน AI "ตาย" ไปชั่วคราว</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-primary">
+                        <div class="card-header bg-primary text-white"><strong>❄️ AI Winter ครั้งที่ 1 (1974–1980)</strong></div>
+                        <div class="card-body">
+                            <p><strong>สาเหตุ:</strong> AI ไม่ฉลาดอย่างที่นักวิทยาศาสตร์สัญญาไว้</p>
+                            <ul>
+                                <li>ตอนเริ่มต้น คนตื่นเต้นมาก คิดว่า AI จะฉลาดเหมือนคนใน 20 ปี</li>
+                                <li>แต่จริงๆ AI ทำได้น้อยมาก — แค่เกมง่ายๆ</li>
+                                <li>รัฐบาลหลายประเทศตัดทุนวิจัย</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-danger">
+                        <div class="card-header bg-danger text-white"><strong>❄️ AI Winter ครั้งที่ 2 (1987–1993)</strong></div>
+                        <div class="card-body">
+                            <p><strong>สาเหตุ:</strong> Expert Systems (ระบบผู้เชี่ยวชาญ) ล้มเหลว</p>
+                            <ul>
+                                <li>บริษัทใหญ่ลงทุนหลายล้านสร้าง AI ที่ตอบคำถามเฉพาะทาง</li>
+                                <li>แต่ดูแลยาก เปลี่ยนแปลงยาก ไม่คุ้มค่า</li>
+                                <li>บริษัทเลิกลงทุน → AI ถูกลืมอีกครั้ง</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning mt-3">
+                <h5>🔥 ทำไม AI ถึง "ตาย" แล้ว "ฟื้น" ได้?</h5>
+                <p class="mb-0">AI ฟื้นกลับมาได้เพราะ 3 สิ่งมาพร้อมกัน:</p>
+                <ol class="mb-0 mt-2">
+                    <li><strong>ข้อมูลมหาศาล</strong> — อินเทอร์เน็ตทำให้มีข้อมูลให้ AI เรียนรู้นับล้านล้านคำ</li>
+                    <li><strong>GPU ราคาถูก</strong> — ชิปประมวลผลเร็วมาก ทำให้ AI คำนวณได้เร็ว</li>
+                    <li><strong>Algorithm ใหม่</strong> — วิธีการสอน AI แบบใหม่ (Deep Learning, Transformer) ทำให้ AI ฉลาดขึ้นหลายเท่า</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- 1.4 จุดเปลี่ยนสำคัญ -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">1.4 จุดเปลี่ยนสำคัญ</h3>
+
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <strong>Deep Learning 2012 (Alex Krizhevsky)</strong>
+                <p class="mb-0 mt-2">สร้างระบบจำแนกรูปภาพที่แม่นยำมาก ชนะการแข่งขัน ImageNet — พิสูจน์ว่า Deep Learning ได้ผล!</p>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <strong>Transformer 2017 (Google — "Attention is All You Need")</strong>
+                <p class="mb-0 mt-2">สถาปัตยกรรมใหม่ที่ทำให้ AI เข้าใจภาษาได้ดีมาก — เป็นรากฐานของ ChatGPT, Claude, Gemini ทุกตัว!</p>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <strong>GPT-3 2020 (OpenAI)</strong>
+                <p class="mb-0 mt-2">โมเดลภาษาขนาดใหญ่ที่เขียนบทความ ตอบคำถาม เขียนโค้ดได้ — โลกตื่นตะลึง</p>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <strong>ChatGPT 2022 → 100 ล้านผู้ใช้ใน 2 เดือน!</strong>
+                <p class="mb-0 mt-2">เป็นครั้งแรกที่คนทั่วไปเข้าถึง AI ได้ง่าย — แค่พิมพ์คำถามก็ได้คำตอบ</p>
+            </div>
+
+            <div class="info-card p-4 bg-light rounded mt-4">
+                <h5>⚡ เปรียบเทียบความเร็วในการเข้าถึง 100 ล้านผู้ใช้</h5>
+                <table class="table table-bordered table-striped mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>เทคโนโลยี</th>
+                            <th>เวลาที่ใช้</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>📞 โทรศัพท์</td><td><strong>75 ปี</strong></td></tr>
+                        <tr><td>📱 โทรศัพท์มือถือ</td><td><strong>16 ปี</strong></td></tr>
+                        <tr><td>🌐 อินเทอร์เน็ต</td><td><strong>7 ปี</strong></td></tr>
+                        <tr><td>📘 Facebook</td><td><strong>4.5 ปี</strong></td></tr>
+                        <tr><td>📸 Instagram</td><td><strong>2.5 ปี</strong></td></tr>
+                        <tr class="table-primary"><td>🤖 <strong>ChatGPT</strong></td><td><strong>2 เดือน!</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Lab -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">🔬 Lab ปฏิบัติ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 1.1 — ลองใช้ AI ค้นหาประวัติ AI</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิด ChatGPT หรือ Claude</strong>
+                    <p class="mb-0 mt-1">ไปที่ <a href="https://chat.openai.com" target="_blank">chat.openai.com</a> หรือ <a href="https://claude.ai" target="_blank">claude.ai</a></p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>พิมพ์ Prompt นี้:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"สรุปประวัติ AI ตั้งแต่ 1950 เป็นภาษาไทย เข้าใจง่ายๆ ไม่ใช้ศัพท์เทคนิค"</code>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ลอง Prompt อีกตัว:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"Turing Test คืออะไร อธิบายให้เด็ก 10 ขวบเข้าใจ"</code>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>เปรียบเทียบกับ Wikipedia</strong>
+                    <p class="mb-0 mt-1">ค้นหาใน Wikipedia เรื่อง "AI Winter" แล้วเปรียบเทียบว่า AI ตอบเหมือนหรือต่างจาก Wikipedia อย่างไร</p>
+                </div>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึกหน้าจอผลลัพธ์ที่ได้จาก AI ไว้เปรียบเทียบ
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับบทนี้</h5>
+            <ul class="mb-0">
+                <li>ไม่ต้องจำปีให้ได้ทุกปี — จำแค่จุดสำคัญ: 1950 (Turing), 1956 (ตั้งชื่อ AI), 2022 (ChatGPT)</li>
+                <li>AI "ตาย" แล้ว "ฟื้น" ได้ — เพราะเทคโนโลยีพร้อม (ข้อมูล + GPU + Algorithm)</li>
+                <li>ChatGPT ไม่ได้เกิดจากอะไรก็ได้ — มีประวัติ 70 ปีอยู่เบื้องหลัง</li>
+                <li>ลองใช้ AI เพื่อเรียนรู้เรื่อง AI — เป็นวิธีที่ดีที่สุด!</li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปท้ายบท</h5>
+            <ul>
+                <li><strong>AI เริ่มต้น</strong> จากคำถามของ Alan Turing ปี 1950 "เครื่องจักรคิดได้ไหม?"</li>
+                <li><strong>ชื่อ "Artificial Intelligence"</strong> ตั้งโดย John McCarthy ที่ Dartmouth Conference 1956</li>
+                <li><strong>AI Winter</strong> เกิดขึ้น 2 ครั้ง — AI เคยถูกลืม เพราะทำได้ไม่ดีอย่างที่สัญญา</li>
+                <li><strong>จุดเปลี่ยน</strong> คือ Deep Learning (2012), Transformer (2017), ChatGPT (2022)</li>
+                <li><strong>ปัจจุบัน</strong> AI ทำได้เกือบทุกอย่าง — เขียน, วาดรูป, สร้างเพลง, สร้างวิดีโอ</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="index.html" class="btn btn-outline-dark">← หน้าหลัก</a>
+            <a href="chapter02.html" class="btn btn-dark">บทที่ 2 →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

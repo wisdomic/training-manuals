@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 1: แนะนำ AI กับการพัฒนาระบบ — คู่มือ Kiro AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+<!-- Header -->
+<nav class="navbar navbar-dark bg-primary sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">📖 คู่มือฝึกอบรม Kiro AI</a>
+        <span class="navbar-text text-white">บทที่ 1 | วันที่ 1 (เช้า)</span>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">บทที่ 1</h1>
+                <h2 class="h3 text-secondary">แนะนำ AI กับการพัฒนาระบบ</h2>
+                <p class="lead text-muted">ระยะเวลา: 2 ชั่วโมง | วันที่ 1 (09:00 - 11:00)</p>
+                <hr class="w-50 mx-auto">
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info mb-4">
+                <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>อธิบายความหมายและประเภทของ AI ได้</li>
+                    <li>เปรียบเทียบเครื่องมือ AI Coding แต่ละตัวได้</li>
+                    <li>อธิบายจุดเด่นของ Kiro AI และ Spec-Driven Development ได้</li>
+                    <li>เข้าใจภาพรวมหลักสูตร 5 วันที่จะเรียนรู้</li>
+                </ul>
+            </div>
+
+            <!-- 1.1 AI คืออะไร -->
+            <section class="mb-5" id="section-1-1">
+                <h3 class="border-start border-4 border-primary ps-3">1.1 AI คืออะไร — ภาพรวมปัญญาประดิษฐ์สำหรับผู้เริ่มต้น</h3>
+                
+                <h5 class="mt-4">ความหมายของ AI</h5>
+                <p><strong>ปัญญาประดิษฐ์ (Artificial Intelligence: AI)</strong> คือ เทคโนโลยีที่ทำให้คอมพิวเตอร์สามารถเรียนรู้ คิด วิเคราะห์ และตัดสินใจได้คล้ายมนุษย์ โดยไม่ต้องเขียนโปรแกรมสั่งทุกขั้นตอน</p>
+
+                <div class="card bg-light mb-3">
+                    <div class="card-body">
+                        <h6 class="card-title">🏛️ เปรียบเทียบให้เข้าใจง่าย</h6>
+                        <p class="card-text">ถ้า <strong>คอมพิวเตอร์ทั่วไป</strong> เปรียบเหมือน "ลูกน้องที่ทำตามคำสั่งทุกอย่าง"<br>
+                        <strong>AI</strong> เปรียบเหมือน "ผู้ช่วยที่เรียนรู้ได้ คิดเองได้ และเสนอทางเลือกให้"</p>
+                    </div>
+                </div>
+
+                <h5>ประเภทของ AI</h5>
+                <table class="table table-bordered table-striped">
+                    <thead class="table-primary">
+                        <tr><th>ประเภท</th><th>ตัวอย่าง</th><th>การใช้งาน</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Generative AI</td><td>ChatGPT, Claude, Gemini</td><td>สร้างข้อความ, โค้ด, รูปภาพ</td></tr>
+                        <tr><td>Machine Learning</td><td>แนะนำสินค้า, ตรวจสแปม</td><td>เรียนรู้จากข้อมูล ทำนายผล</td></tr>
+                        <tr><td>Computer Vision</td><td>จดจำใบหน้า, อ่าน OCR</td><td>วิเคราะห์ภาพ</td></tr>
+                        <tr><td>NLP</td><td>แปลภาษา, สรุปเอกสาร</td><td>เข้าใจภาษามนุษย์</td></tr>
+                    </tbody>
+                </table>
+
+                <h5>AI ที่เกี่ยวข้องกับการเขียนโปรแกรม</h5>
+                <p>ในหลักสูตรนี้เราจะเน้น <strong>Generative AI สำหรับเขียนโค้ด</strong> ซึ่งสามารถ:</p>
+                <ul>
+                    <li>เขียนโค้ดจากคำอธิบายภาษาไทย/อังกฤษ</li>
+                    <li>แก้ Bug อัตโนมัติ</li>
+                    <li>อธิบายโค้ดที่ซับซ้อน</li>
+                    <li>สร้างระบบทั้งระบบจาก Requirement</li>
+                    <li>Deploy ขึ้นเซิร์ฟเวอร์ให้</li>
+                </ul>
+
+                <div class="alert alert-success">
+                    <strong>💡 ข้อสรุป:</strong> คุณไม่จำเป็นต้องเป็นโปรแกรมเมอร์ — แค่อธิบายสิ่งที่ต้องการ AI จะเขียนโค้ดให้คุณ!
+                </div>
+            </section>
+
+            <!-- 1.2 AI Coding Tools -->
+            <section class="mb-5" id="section-1-2">
+                <h3 class="border-start border-4 border-primary ps-3">1.2 AI Coding Tools — เปรียบเทียบเครื่องมือ AI สำหรับเขียนโค้ด</h3>
+                
+                <p>ปัจจุบันมีเครื่องมือ AI สำหรับช่วยเขียนโปรแกรมมากมาย แต่ละตัวมีจุดเด่นต่างกัน:</p>
+
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>เครื่องมือ</th>
+                            <th>บริษัท</th>
+                            <th>จุดเด่น</th>
+                            <th>ข้อจำกัด</th>
+                            <th>ราคา</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ChatGPT</strong></td>
+                            <td>OpenAI</td>
+                            <td>สนทนาได้ดี, หลายภาษา</td>
+                            <td>ไม่เชื่อมต่อกับ IDE โดยตรง</td>
+                            <td>ฟรี / $20/เดือน</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Claude</strong></td>
+                            <td>Anthropic</td>
+                            <td>เขียนโค้ดยาวได้ดี, ปลอดภัย</td>
+                            <td>ไม่มี IDE ของตัวเอง</td>
+                            <td>ฟรี / $20/เดือน</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GitHub Copilot</strong></td>
+                            <td>Microsoft</td>
+                            <td>เติมโค้ดอัตโนมัติใน VS Code</td>
+                            <td>ช่วยเป็นบรรทัด ไม่ใช่ทั้งระบบ</td>
+                            <td>$10/เดือน</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cursor</strong></td>
+                            <td>Cursor Inc.</td>
+                            <td>IDE + AI, Composer mode</td>
+                            <td>ค่าใช้จ่ายสูง, เน้น vibe coding</td>
+                            <td>$20/เดือน</td>
+                        </tr>
+                        <tr class="table-success">
+                            <td><strong>Kiro AI ⭐</strong></td>
+                            <td>AWS (Amazon)</td>
+                            <td>Spec-Driven, Deploy ได้, ฟรี!</td>
+                            <td>ใหม่ (2025), ยังพัฒนาอยู่</td>
+                            <td>ฟรี (Preview)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="card border-success mb-3">
+                    <div class="card-header bg-success text-white">
+                        <strong>🏆 ทำไมเราเลือก Kiro AI?</strong>
+                    </div>
+                    <div class="card-body">
+                        <ol>
+                            <li><strong>ฟรี</strong> — ไม่มีค่าใช้จ่ายในช่วง Preview</li>
+                            <li><strong>สร้างทั้งระบบ</strong> — ไม่ใช่แค่เติมโค้ดทีละบรรทัด แต่สร้างทั้ง Backend + Frontend</li>
+                            <li><strong>Deploy ได้</strong> — อัปโหลดขึ้น Google Apps Script ให้เลย</li>
+                            <li><strong>Spec-Driven</strong> — เขียน requirement ภาษาไทย แล้ว AI สร้างระบบให้</li>
+                            <li><strong>AWS backing</strong> — มี Amazon สนับสนุน เชื่อถือได้</li>
+                            <li><strong>ทำงานเป็นทีมได้</strong> — Git + GitHub integration</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 1.3 Kiro AI คืออะไร -->
+            <section class="mb-5" id="section-1-3">
+                <h3 class="border-start border-4 border-primary ps-3">1.3 Kiro AI คืออะไร — ความเป็นมาและความสามารถ</h3>
+
+                <h5>ความเป็นมา</h5>
+                <p><strong>Kiro</strong> เป็น Agentic IDE (สภาพแวดล้อมพัฒนาซอฟต์แวร์ที่ขับเคลื่อนด้วย AI Agent) พัฒนาโดย <strong>Amazon Web Services (AWS)</strong> เปิดตัวกลางปี 2025 โดยสร้างบน Amazon Bedrock ใช้โมเดล Claude Sonnet สำหรับงานวิเคราะห์ และ Amazon Nova สำหรับงานสร้างโค้ด</p>
+
+                <h5>แนวคิดหลัก: Spec-Driven Development</h5>
+                <p>ต่างจาก AI Coding ทั่วไปที่ต้อง "พิมพ์ Prompt ไปเรื่อยๆ" Kiro ใช้แนวคิด <strong>Spec-Driven Development</strong> คือ:</p>
+
+                <div class="row text-center mb-4">
+                    <div class="col-md-3">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <div class="display-6 text-primary mb-2">1️⃣</div>
+                                <h6>Requirements</h6>
+                                <p class="small text-muted">บอก AI ว่าต้องการอะไร</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card h-100 border-info">
+                            <div class="card-body">
+                                <div class="display-6 text-info mb-2">2️⃣</div>
+                                <h6>Design</h6>
+                                <p class="small text-muted">AI ออกแบบระบบให้</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card h-100 border-warning">
+                            <div class="card-body">
+                                <div class="display-6 text-warning mb-2">3️⃣</div>
+                                <h6>Tasks</h6>
+                                <p class="small text-muted">แบ่งงานเป็นขั้นตอน</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-body">
+                                <div class="display-6 text-success mb-2">4️⃣</div>
+                                <h6>Implementation</h6>
+                                <p class="small text-muted">AI เขียนโค้ดให้ทีละ Task</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>ความสามารถหลักของ Kiro</h5>
+                <table class="table table-bordered">
+                    <thead class="table-primary">
+                        <tr><th>ความสามารถ</th><th>รายละเอียด</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>🗣️ Vibe Mode</td><td>สนทนากับ AI สร้างโค้ดได้ทันที (เหมือน ChatGPT แต่เชื่อมกับไฟล์)</td></tr>
+                        <tr><td>📋 Spec Mode</td><td>สร้างระบบแบบมีแบบแปลน (Requirements → Design → Tasks)</td></tr>
+                        <tr><td>📁 File Management</td><td>สร้าง/แก้ไข/ลบไฟล์ได้โดยตรง</td></tr>
+                        <tr><td>💻 Terminal</td><td>รันคำสั่ง command line ได้ (git, clasp, npm)</td></tr>
+                        <tr><td>🔗 MCP</td><td>เชื่อมต่อ API ภายนอก (Database, Cloud Services)</td></tr>
+                        <tr><td>📐 Steering</td><td>กำหนดกฎ/มาตรฐานให้ AI ปฏิบัติตาม</td></tr>
+                        <tr><td>⚡ Hooks</td><td>อัตโนมัติ — ทำงานเมื่อเกิดเหตุการณ์ (บันทึกไฟล์, push code)</td></tr>
+                        <tr><td>🌐 Web Search</td><td>ค้นหาข้อมูลจากอินเทอร์เน็ตได้</td></tr>
+                        <tr><td>🤖 Sub-agents</td><td>มอบหมายงานย่อยให้ AI ตัวอื่นช่วย</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 1.4 ทำไมต้อง Kiro -->
+            <section class="mb-5" id="section-1-4">
+                <h3 class="border-start border-4 border-primary ps-3">1.4 ทำไมต้อง Kiro — จุดเด่นและกรณีศึกษา</h3>
+
+                <h5>จุดเด่นที่แตกต่าง</h5>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card border-danger h-100">
+                            <div class="card-header bg-danger text-white">❌ ปัญหาของ AI Coding ทั่วไป</div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>Prompt ไปเรื่อยๆ ไม่มีโครงสร้าง</li>
+                                    <li>โค้ดไม่สอดคล้องกันทั้งระบบ</li>
+                                    <li>ลืม context เมื่อแชทยาว</li>
+                                    <li>ต้อง copy-paste โค้ดไปวางเอง</li>
+                                    <li>Deploy ต้องทำเอง</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-success text-white">✅ Kiro แก้ปัญหาเหล่านี้</div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>Spec-Driven มีแบบแปลนชัดเจน</li>
+                                    <li>Steering กำหนดมาตรฐานโค้ดทั้งโปรเจกต์</li>
+                                    <li>อ่านไฟล์ทั้งโปรเจกต์ ไม่ลืม context</li>
+                                    <li>แก้ไขไฟล์โดยตรง ไม่ต้อง copy-paste</li>
+                                    <li>Deploy ด้วย clasp ได้จากใน IDE</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>กรณีศึกษา: สนพ.สุรินทร์</h5>
+                <div class="card bg-light mb-3">
+                    <div class="card-body">
+                        <p><strong>อ.ปู (ปัญญา ผาธรรม)</strong> เจ้าหน้าที่ฝ่ายแผนงานและสารสนเทศ สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ ใช้ Kiro AI พัฒนาระบบสำเร็จแล้วกว่า <strong>40+ ระบบ</strong> ได้แก่:</p>
+                        <ul>
+                            <li>ระบบจำหน่ายซอฟต์แวร์ (WISDOM ICT) — หน้าร้าน + Admin + สมาชิก</li>
+                            <li>ระบบประเมินผลฝึกอบรม (Training Evaluation)</li>
+                            <li>ระบบบริหารภาระงาน (WisdomTask)</li>
+                            <li>ระบบลงทะเบียนฝึกอบรม, AI Chatbot, ระบบหนังสือราชการ ฯลฯ</li>
+                        </ul>
+                        <p class="mb-0 text-success"><strong>ทั้งหมดนี้สร้างด้วย Kiro AI + Google Apps Script โดยไม่ต้องเขียนโค้ดเอง!</strong></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 1.5 ภาพรวมหลักสูตร -->
+            <section class="mb-5" id="section-1-5">
+                <h3 class="border-start border-4 border-primary ps-3">1.5 ภาพรวมหลักสูตร — สิ่งที่จะได้เรียนรู้ใน 5 วัน</h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="table-primary">
+                        <tr><th>วัน</th><th>หัวข้อหลัก</th><th>ผลลัพธ์</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge bg-primary">วันที่ 1</span></td>
+                            <td>แนะนำ AI + เตรียมเครื่อง + รู้จัก Kiro</td>
+                            <td>เครื่องพร้อมใช้งาน, เข้าใจ Kiro</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge bg-info">วันที่ 2</span></td>
+                            <td>พื้นฐาน GAS + Sheets + HTML + Bootstrap</td>
+                            <td>สร้าง Hello World Web App ได้</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge bg-warning text-dark">วันที่ 3</span></td>
+                            <td>ใช้ Kiro สร้างระบบจริง (Workshop)</td>
+                            <td>มีระบบลงทะเบียนทำงานได้</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge bg-success">วันที่ 4</span></td>
+                            <td>Deploy + Git + เพิ่มฟีเจอร์</td>
+                            <td>ระบบ online + Admin Panel</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge bg-danger">วันที่ 5</span></td>
+                            <td>ต่อยอด + นำเสนอผลงาน</td>
+                            <td>ระบบสมบูรณ์ + Presentation</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ สิ่งที่ต้องเตรียมมาวันแรก:</strong>
+                    <ul class="mb-0">
+                        <li>Notebook/PC ที่สามารถติดตั้งโปรแกรมได้</li>
+                        <li>บัญชี Google (Gmail)</li>
+                        <li>บัญชี GitHub (สมัครฟรี)</li>
+                        <li>อินเทอร์เน็ตที่เสถียร</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- แบบฝึกหัดท้ายบท -->
+            <section class="mb-5" id="exercise-1">
+                <h3 class="border-start border-4 border-warning ps-3">📝 แบบฝึกหัดท้ายบทที่ 1</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <ol>
+                            <li class="mb-2">AI มีกี่ประเภท? ยกตัวอย่างแต่ละประเภท</li>
+                            <li class="mb-2">Kiro AI แตกต่างจาก ChatGPT อย่างไร? (อย่างน้อย 3 ข้อ)</li>
+                            <li class="mb-2">Spec-Driven Development มีกี่ขั้นตอน? อะไรบ้าง?</li>
+                            <li class="mb-2">เหตุผลที่เลือกใช้ Kiro AI ในหลักสูตรนี้คืออะไร?</li>
+                            <li class="mb-2">หลังจบหลักสูตร 5 วัน คุณคาดหวังว่าจะได้อะไร?</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+                <span></span>
+                <a href="chapter02.html" class="btn btn-primary btn-lg">บทที่ 2: เตรียมเครื่องมือ →</a>
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p class="mb-1">คู่มือฝึกอบรม "Kiro AI สร้างระบบราชการด้วยปัญญาประดิษฐ์"</p>
+    <p class="mb-0 text-muted small">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

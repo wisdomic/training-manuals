@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 5: ChatGPT กับงาน Excel & ข้อมูล — คู่มือฝึกอบรม ChatGPT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark sticky-top" style="background:#10a37f;">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ ChatGPT</a>
+        <span class="text-white nav-text">บทที่ 5 — วันที่ 3 เช้า</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+
+    <h1 class="mb-2">บทที่ 5: ChatGPT กับงาน Excel & ข้อมูล</h1>
+    <p class="text-muted mb-4">วันที่ 3 ภาคเช้า | ระยะเวลา 3 ชั่วโมง | ระดับ: กลาง</p>
+
+    <div class="alert alert-info">
+        <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+        <ul class="mb-0">
+            <li>สร้างสูตร Excel/Google Sheets ด้วย ChatGPT ได้</li>
+            <li>วิเคราะห์ข้อมูลจากตารางด้วย AI ได้</li>
+            <li>ใช้ Code Interpreter สร้างกราฟและวิเคราะห์ไฟล์ได้</li>
+            <li>สร้าง Dashboard Data เพื่อนำเสนอข้อมูลได้</li>
+        </ul>
+    </div>
+
+    <!-- Section 5.1 -->
+    <div class="section-header">
+        <h2>5.1 สร้างสูตร Excel ด้วย ChatGPT</h2>
+        <p>ให้ AI เขียนสูตร VLOOKUP, IF, SUMIFS, INDEX-MATCH แทนเรา</p>
+    </div>
+
+    <h3>สูตร Excel ที่ใช้บ่อยในงานราชการ</h3>
+    <p>หลายคนรู้ว่าอยากได้ผลลัพธ์อะไร แต่ไม่รู้ว่าต้องเขียนสูตรอย่างไร — ChatGPT ช่วยได้ทันที เพียงแค่<strong>อธิบายสิ่งที่ต้องการเป็นภาษาคน</strong></p>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>สูตร</th>
+                    <th>ใช้ทำอะไร</th>
+                    <th>ตัวอย่างงานราชการ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>VLOOKUP</strong></td>
+                    <td>ค้นหาข้อมูลจากตารางอ้างอิง</td>
+                    <td>ค้นชื่อหลักสูตรจากรหัส, ดึงเงินเดือนจากตำแหน่ง</td>
+                </tr>
+                <tr>
+                    <td><strong>IF / IFS</strong></td>
+                    <td>ตัดสินใจตามเงื่อนไข</td>
+                    <td>ตัดเกรดผู้เข้าอบรม, แจ้งสถานะผ่าน/ไม่ผ่าน</td>
+                </tr>
+                <tr>
+                    <td><strong>SUMIFS</strong></td>
+                    <td>รวมยอดตามเงื่อนไขหลายข้อ</td>
+                    <td>รวมงบประมาณเฉพาะหมวดฝึกอบรม ไตรมาส 1</td>
+                </tr>
+                <tr>
+                    <td><strong>INDEX-MATCH</strong></td>
+                    <td>ค้นหาขั้นสูง ยืดหยุ่นกว่า VLOOKUP</td>
+                    <td>ค้นข้อมูลจากหลายเงื่อนไข, ค้นจากขวาไปซ้าย</td>
+                </tr>
+                <tr>
+                    <td><strong>COUNTIFS</strong></td>
+                    <td>นับจำนวนตามเงื่อนไข</td>
+                    <td>นับจำนวนผู้ผ่านการทดสอบ แยกตามจังหวัด</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>ตัวอย่างตารางข้อมูล</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>รหัส</th>
+                    <th>ชื่อ-สกุล</th>
+                    <th>หลักสูตร</th>
+                    <th>คะแนนก่อนอบรม</th>
+                    <th>คะแนนหลังอบรม</th>
+                    <th>ผลการประเมิน</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>T001</td><td>สมชาย ใจดี</td><td>AI เบื้องต้น</td><td>45</td><td>82</td><td>?</td></tr>
+                <tr><td>T002</td><td>สมหญิง รักงาน</td><td>Excel ขั้นสูง</td><td>60</td><td>78</td><td>?</td></tr>
+                <tr><td>T003</td><td>ประสิทธิ์ ทำดี</td><td>AI เบื้องต้น</td><td>35</td><td>55</td><td>?</td></tr>
+                <tr><td>T004</td><td>วิไล สุขสม</td><td>Power BI</td><td>70</td><td>92</td><td>?</td></tr>
+                <tr><td>T005</td><td>อนุชา พัฒนา</td><td>Excel ขั้นสูง</td><td>50</td><td>48</td><td>?</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 1 — สร้างสูตร IF ตัดเกรด</strong>
+        <p class="mt-2 mb-1">ฉันมีตาราง Excel ข้อมูลผู้เข้าอบรม มีคอลัมน์ "คะแนนหลังอบรม" อยู่ที่ E2</p>
+        <p class="mb-1">ต้องการสูตรตัดเกรดในคอลัมน์ F2 ตามเกณฑ์:</p>
+        <p class="mb-1">- 80 ขึ้นไป = "ดีมาก"</p>
+        <p class="mb-1">- 60-79 = "ดี"</p>
+        <p class="mb-1">- 50-59 = "พอใช้"</p>
+        <p class="mb-0">- ต่ำกว่า 50 = "ต้องปรับปรุง"</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 2 — สร้างสูตร SUMIFS รวมงบตามเงื่อนไข</strong>
+        <p class="mt-2 mb-1">ฉันมีตาราง Excel งบประมาณ คอลัมน์ A=หมวดรายจ่าย, B=ไตรมาส, C=จำนวนเงิน</p>
+        <p class="mb-1">ต้องการสูตร SUMIFS ที่รวมเงินเฉพาะ:</p>
+        <p class="mb-1">- หมวด "ฝึกอบรม" (คอลัมน์ A)</p>
+        <p class="mb-1">- ไตรมาส "Q1" (คอลัมน์ B)</p>
+        <p class="mb-0">ช่วยเขียนสูตรพร้อมอธิบายแต่ละส่วนของสูตรด้วย</p>
+    </div>
+
+    <!-- Section 5.2 -->
+    <div class="section-header">
+        <h2>5.2 วิเคราะห์ข้อมูลจากตาราง</h2>
+        <p>Copy-Paste ตารางให้ AI อ่าน แล้วสั่งวิเคราะห์ได้ทันที</p>
+    </div>
+
+    <h3>วิธี Copy-Paste ข้อมูลให้ ChatGPT</h3>
+    <p>ChatGPT สามารถอ่านข้อมูลจากตารางที่เรา Copy มาวางได้ทันที — ไม่ต้องอัปโหลดไฟล์ เพียง<strong>เลือกข้อมูลใน Excel → Ctrl+C → วางใน ChatGPT</strong></p>
+
+    <div class="alert alert-success">
+        <h5>💡 เคล็ดลับ</h5>
+        <ul class="mb-0">
+            <li>ถ้าข้อมูลมากกว่า 50 แถว ให้ตัดมาเฉพาะส่วนที่ต้องการวิเคราะห์</li>
+            <li>บอก ChatGPT ว่าแต่ละคอลัมน์คืออะไร เพื่อให้ AI เข้าใจบริบท</li>
+            <li>ข้อมูลที่วางจะอยู่ในรูปแบบ Tab-separated (แยกด้วย Tab)</li>
+        </ul>
+    </div>
+
+    <h3>ตัวอย่างตารางข้อมูลฝึกอบรม</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>หลักสูตร</th>
+                    <th>รุ่นที่</th>
+                    <th>จำนวนผู้สมัคร</th>
+                    <th>จำนวนผู้เข้าร่วม</th>
+                    <th>ผ่านการประเมิน</th>
+                    <th>ไม่ผ่าน</th>
+                    <th>งบประมาณ (บาท)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>AI เบื้องต้น</td><td>1</td><td>40</td><td>35</td><td>30</td><td>5</td><td>45,000</td></tr>
+                <tr><td>AI เบื้องต้น</td><td>2</td><td>45</td><td>38</td><td>35</td><td>3</td><td>48,000</td></tr>
+                <tr><td>Excel ขั้นสูง</td><td>1</td><td>30</td><td>28</td><td>25</td><td>3</td><td>35,000</td></tr>
+                <tr><td>Power BI</td><td>1</td><td>25</td><td>20</td><td>18</td><td>2</td><td>55,000</td></tr>
+                <tr><td>การตลาดดิจิทัล</td><td>1</td><td>50</td><td>42</td><td>38</td><td>4</td><td>60,000</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt วิเคราะห์ข้อมูลฝึกอบรม</strong>
+        <p class="mt-2 mb-1">นี่คือข้อมูลการจัดฝึกอบรมของสำนักงานพัฒนาฝีมือแรงงานสุรินทร์ ไตรมาส 1/2569:</p>
+        <p class="mb-1">[วางตาราง]</p>
+        <p class="mb-1">ช่วยวิเคราะห์ให้หน่อย:</p>
+        <p class="mb-1">1. อัตราการเข้าร่วมเทียบกับผู้สมัคร คิดเป็นกี่ %</p>
+        <p class="mb-1">2. อัตราการผ่านประเมินแต่ละหลักสูตร</p>
+        <p class="mb-1">3. ต้นทุนต่อหัวของแต่ละหลักสูตร</p>
+        <p class="mb-0">4. ข้อเสนอแนะเพื่อปรับปรุงในรุ่นถัดไป</p>
+    </div>
+
+    <!-- Section 5.3 -->
+    <div class="section-header">
+        <h2>5.3 Code Interpreter — วิเคราะห์ไฟล์และสร้างกราฟ</h2>
+        <p>อัปโหลด CSV/Excel ให้ ChatGPT วิเคราะห์และสร้างกราฟอัตโนมัติ</p>
+    </div>
+
+    <h3>Code Interpreter คืออะไร?</h3>
+    <p><strong>Code Interpreter</strong> (หรือ Advanced Data Analysis) คือความสามารถของ ChatGPT Plus ที่สามารถ<strong>รันโค้ด Python</strong> เพื่อวิเคราะห์ข้อมูล สร้างกราฟ และประมวลผลไฟล์ได้จริง — ไม่ใช่แค่ "เดา" คำตอบ</p>
+
+    <div class="alert alert-light border">
+        <h5>✅ ข้อดีของ Code Interpreter</h5>
+        <ul class="mb-0">
+            <li><strong>แม่นยำ</strong> — คำนวณจากข้อมูลจริง ไม่ใช่การเดา</li>
+            <li><strong>สร้างกราฟได้</strong> — Bar chart, Pie chart, Line chart, Heatmap</li>
+            <li><strong>รองรับหลายไฟล์</strong> — CSV, Excel (.xlsx), PDF, รูปภาพ</li>
+            <li><strong>ดาวน์โหลดผลลัพธ์ได้</strong> — ส่งออกเป็น Excel, CSV, รูปภาพ</li>
+        </ul>
+    </div>
+
+    <h3>ขั้นตอนใช้งาน Code Interpreter</h3>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 1: อัปโหลดไฟล์</strong> — คลิกไอคอน 📎 (แนบไฟล์) ในช่อง ChatGPT แล้วเลือกไฟล์ CSV หรือ Excel ที่ต้องการวิเคราะห์ (รองรับไฟล์สูงสุด 512 MB)
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 2: สั่งวิเคราะห์</strong> — พิมพ์คำสั่งบอกว่าต้องการให้ทำอะไร เช่น "วิเคราะห์ข้อมูลนี้ สรุปภาพรวม แสดงสถิติเบื้องต้น และสร้าง Bar Chart เปรียบเทียบแต่ละหลักสูตร"
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 3: ดาวน์โหลดผลลัพธ์</strong> — ChatGPT จะแสดงกราฟ ตาราง และสรุปผล พร้อมลิงก์ดาวน์โหลดไฟล์ผลลัพธ์ (รูปภาพ .png หรือ Excel .xlsx)
+    </div>
+
+    <!-- Section 5.4 -->
+    <div class="section-header">
+        <h2>5.4 Pivot Table & สรุปข้อมูล</h2>
+        <p>สั่งให้ AI จัดกลุ่ม สรุปภาพรวมข้อมูล แบบ Pivot Table</p>
+    </div>
+
+    <h3>ทำ Pivot Table ด้วย ChatGPT</h3>
+    <p>แทนที่จะสร้าง Pivot Table ใน Excel เอง เราสามารถสั่งให้ ChatGPT จัดกลุ่มและสรุปข้อมูลให้ได้ทันที — เหมาะสำหรับคนที่ไม่ถนัด Pivot Table หรือต้องการผลลัพธ์เร็วๆ</p>
+
+    <div class="prompt-example">
+        <strong>Prompt สร้าง Pivot Table</strong>
+        <p class="mt-2 mb-1">จากข้อมูลการฝึกอบรมต่อไปนี้:</p>
+        <p class="mb-1">[วางตารางข้อมูล]</p>
+        <p class="mb-1">ช่วยสร้างตาราง Pivot สรุปดังนี้:</p>
+        <p class="mb-1">1. สรุปจำนวนผู้เข้าอบรมรวม แยกตามหลักสูตร</p>
+        <p class="mb-1">2. สรุปงบประมาณรวม แยกตามหลักสูตร</p>
+        <p class="mb-1">3. คำนวณอัตราการผ่านเฉลี่ย (%) ของแต่ละหลักสูตร</p>
+        <p class="mb-0">4. เรียงลำดับจากหลักสูตรที่มีอัตราผ่านสูงสุดไปต่ำสุด</p>
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 คำสั่งเพิ่มเติมที่ใช้ได้</h5>
+        <ul class="mb-0">
+            <li>"จัดกลุ่มตาม..." — แยกตามแผนก / ตามเดือน / ตามจังหวัด</li>
+            <li>"สรุปภาพรวมเป็น..." — ตาราง / bullet points / infographic</li>
+            <li>"เปรียบเทียบ..." — ระหว่างไตรมาส / ระหว่างปี / ระหว่างหลักสูตร</li>
+            <li>"หาแนวโน้ม..." — เพิ่มขึ้น-ลดลง / pattern / ค่าผิดปกติ (outlier)</li>
+        </ul>
+    </div>
+
+    <!-- Section 5.5 -->
+    <div class="section-header">
+        <h2>5.5 Google Sheets Formula</h2>
+        <p>สูตร QUERY, IMPORTRANGE, ARRAYFORMULA สำหรับ Google Sheets</p>
+    </div>
+
+    <h3>สูตร Google Sheets ที่ต่างจาก Excel</h3>
+    <p>Google Sheets มีสูตรเฉพาะที่ Excel ไม่มี — ChatGPT สามารถสร้างสูตรเหล่านี้ได้ เพียงบอกว่าใช้ Google Sheets</p>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>สูตร</th>
+                    <th>ใช้ทำอะไร</th>
+                    <th>ตัวอย่างการใช้งาน</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>QUERY</strong></td>
+                    <td>ค้นหา กรอง จัดเรียงข้อมูล (คล้าย SQL)</td>
+                    <td>ดึงรายชื่อผู้อบรมที่คะแนน > 80 เรียงจากมากไปน้อย</td>
+                </tr>
+                <tr>
+                    <td><strong>IMPORTRANGE</strong></td>
+                    <td>ดึงข้อมูลข้าม Google Sheets</td>
+                    <td>ดึงรายชื่อจาก Sheet ฝ่ายบุคคลมาใช้ใน Sheet ฝึกอบรม</td>
+                </tr>
+                <tr>
+                    <td><strong>ARRAYFORMULA</strong></td>
+                    <td>ใช้สูตร 1 ตัวกับทุกแถวอัตโนมัติ</td>
+                    <td>คำนวณ % ให้ทุกแถวโดยไม่ต้อง copy สูตรลง</td>
+                </tr>
+                <tr>
+                    <td><strong>FILTER</strong></td>
+                    <td>กรองข้อมูลแบบ dynamic</td>
+                    <td>แสดงเฉพาะผู้อบรมที่ "ไม่ผ่าน" ทั้งหมด</td>
+                </tr>
+                <tr>
+                    <td><strong>UNIQUE + SORT</strong></td>
+                    <td>หาค่าไม่ซ้ำ + เรียงลำดับ</td>
+                    <td>รายชื่อหลักสูตรทั้งหมดไม่ซ้ำ เรียง ก-ฮ</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt สร้างสูตร QUERY ใน Google Sheets</strong>
+        <p class="mt-2 mb-1">ฉันใช้ Google Sheets มีข้อมูลอยู่ใน Sheet "ฝึกอบรม" ช่วง A1:G100</p>
+        <p class="mb-1">คอลัมน์: A=รหัส, B=ชื่อ, C=หลักสูตร, D=วันที่อบรม, E=คะแนนก่อน, F=คะแนนหลัง, G=สถานะ</p>
+        <p class="mb-1">ต้องการสูตร QUERY ที่:</p>
+        <p class="mb-1">1. ดึงเฉพาะคน "ไม่ผ่าน" (คอลัมน์ G = "ไม่ผ่าน")</p>
+        <p class="mb-1">2. แสดงเฉพาะคอลัมน์ ชื่อ, หลักสูตร, คะแนนหลัง</p>
+        <p class="mb-0">3. เรียงตามคะแนนหลังจากน้อยไปมาก</p>
+    </div>
+
+    <!-- Section 5.6 -->
+    <div class="section-header">
+        <h2>5.6 สร้าง Dashboard Data</h2>
+        <p>จัดข้อมูลให้อยู่ในรูปแบบพร้อมนำเสนอ</p>
+    </div>
+
+    <h3>Dashboard Data คืออะไร?</h3>
+    <p><strong>Dashboard Data</strong> คือการจัดข้อมูลให้อยู่ในรูปแบบที่พร้อมนำเสนอ — ไม่ว่าจะเป็นตาราง KPI, ข้อมูลสรุปผู้บริหาร, หรือตัวเลขสำหรับทำกราฟ โดยให้ ChatGPT ช่วยจัดข้อมูลดิบให้เป็นระเบียบ</p>
+
+    <h3>สิ่งที่ ChatGPT ช่วยได้</h3>
+    <ul>
+        <li><strong>จัดข้อมูลดิบเป็นตาราง KPI</strong> — เป้า vs ผลงาน vs % ความสำเร็จ</li>
+        <li><strong>สรุปตัวเลขสำคัญ</strong> — Top 3, ค่าเฉลี่ย, แนวโน้ม</li>
+        <li><strong>จัดรูปแบบสำหรับ Power BI / Google Data Studio</strong> — ข้อมูลที่พร้อม import</li>
+        <li><strong>สร้าง Summary Card</strong> — ตัวเลขหลัก + การเปลี่ยนแปลง + สัญลักษณ์ ↑↓</li>
+    </ul>
+
+    <div class="prompt-example">
+        <strong>Prompt สร้าง Dashboard Data</strong>
+        <p class="mt-2 mb-1">จากข้อมูลผลการดำเนินงานฝึกอบรม ไตรมาส 1/2569 ต่อไปนี้:</p>
+        <p class="mb-1">[วางตารางข้อมูล]</p>
+        <p class="mb-1">ช่วยจัดข้อมูลเป็น Dashboard สำหรับรายงานผู้บริหาร:</p>
+        <p class="mb-1">1. ตาราง KPI (เป้าหมาย / ผลงาน / %ความสำเร็จ / สถานะ 🟢🟡🔴)</p>
+        <p class="mb-1">2. สรุป Top 3 หลักสูตรที่มีผู้เข้าร่วมมากที่สุด</p>
+        <p class="mb-1">3. สรุปตัวเลขสำคัญ 4 ตัว (จำนวนหลักสูตร, ผู้เข้าร่วมรวม, อัตราผ่านเฉลี่ย, งบที่ใช้)</p>
+        <p class="mb-0">4. ข้อเสนอแนะ 3 ข้อสำหรับปรับปรุงในไตรมาสหน้า</p>
+    </div>
+
+    <div class="info-card">
+        <h5>📌 สรุปแนวทาง Dashboard Data</h5>
+        <div class="table-responsive">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>ประเภท Dashboard</th>
+                        <th>ข้อมูลที่ต้องจัด</th>
+                        <th>รูปแบบผลลัพธ์</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>KPI Dashboard</td><td>เป้า + ผลงาน</td><td>ตาราง + สถานะสี</td></tr>
+                    <tr><td>Executive Summary</td><td>ตัวเลขสำคัญ</td><td>Card 4-6 ตัว</td></tr>
+                    <tr><td>Trend Dashboard</td><td>ข้อมูลรายเดือน</td><td>ข้อมูลสำหรับ Line Chart</td></tr>
+                    <tr><td>Comparison</td><td>หลายหมวด</td><td>ข้อมูลสำหรับ Bar Chart</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Exercises -->
+    <div class="exercise-box">
+        <h4>✏️ แบบฝึกหัดบทที่ 5</h4>
+        <ol>
+            <li><strong>สร้างสูตร Excel 3 สูตร ด้วย ChatGPT</strong>
+                <p>ใช้ข้อมูลงานจริงของท่าน (หรือข้อมูลตัวอย่างข้างต้น) สั่งให้ ChatGPT เขียนสูตร:</p>
+                <ul>
+                    <li>สูตร IF หรือ IFS สำหรับตัดสินผล (ผ่าน/ไม่ผ่าน/ดีมาก/ดี/พอใช้)</li>
+                    <li>สูตร SUMIFS หรือ COUNTIFS รวมยอดตามเงื่อนไข</li>
+                    <li>สูตร VLOOKUP หรือ INDEX-MATCH ค้นหาข้อมูล</li>
+                </ul>
+            </li>
+            <li><strong>Copy ข้อมูลจริงให้ ChatGPT วิเคราะห์</strong>
+                <p>เปิดไฟล์ Excel ที่มีอยู่ เลือกข้อมูล 10-20 แถว Copy แล้ววางใน ChatGPT พร้อมสั่ง:</p>
+                <ul>
+                    <li>สรุปภาพรวมของข้อมูล</li>
+                    <li>หาค่าผิดปกติ (ถ้ามี)</li>
+                    <li>ให้ข้อเสนอแนะ</li>
+                </ul>
+            </li>
+            <li><strong>ใช้ Code Interpreter สร้างกราฟ 1 ชิ้น</strong>
+                <p>อัปโหลดไฟล์ CSV หรือ Excel ให้ ChatGPT แล้วสั่งสร้างกราฟแท่งหรือกราฟวงกลม พร้อมดาวน์โหลดผลลัพธ์</p>
+            </li>
+            <li><strong>สร้าง Dashboard Data สำหรับรายงานผู้บริหาร</strong>
+                <p>ใช้ข้อมูลผลงานหน่วยงาน สั่งให้ ChatGPT จัดรูปแบบเป็น:</p>
+                <ul>
+                    <li>ตาราง KPI พร้อมสถานะสี (🟢🟡🔴)</li>
+                    <li>สรุปตัวเลขสำคัญ 4 ตัว</li>
+                    <li>ข้อเสนอแนะ 3 ข้อ</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <!-- Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter04.html" class="btn btn-chapter-prev">← บทที่ 4</a>
+        <a href="chapter06.html" class="btn btn-chapter-next">บทที่ 6: สร้างรายงานและเอกสารวิชาการ →</a>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="text-white text-center py-4 mt-5" style="background:#10a37f;">
+    <p>คู่มือฝึกอบรม ChatGPT — เพิ่มประสิทธิภาพการทำงานด้วย AI</p>
+    <p class="opacity-75">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

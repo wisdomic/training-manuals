@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 1: รู้จัก Gemini AI — คู่มือ Gemini AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark sticky-top" style="background: linear-gradient(135deg, #4285f4, #34a853);">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ Gemini AI</a>
+        <span class="navbar-text text-white-50">บทที่ 1 | วันที่ 1 เช้า</span>
+    </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">หน้าหลัก</a></li>
+            <li class="breadcrumb-item active">บทที่ 1: รู้จัก Gemini AI</li>
+        </ol>
+    </nav>
+</div>
+
+<!-- Chapter Header -->
+<section class="py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="fw-bold text-google-blue">บทที่ 1: รู้จัก Gemini AI</h1>
+                <p class="lead text-muted">เข้าใจ Google AI, Gemini Models, สมัครใช้งาน และเริ่มต้นสนทนากับ AI</p>
+            </div>
+            <div class="col-md-4 text-end">
+                <span class="badge-day me-2">วันที่ 1 เช้า</span>
+                <span class="badge-hours">3 ชั่วโมง</span>
+            </div>
+        </div>
+        <hr>
+    </div>
+</section>
+
+<!-- สารบัญบท -->
+<section class="pb-4">
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-google-blue text-white">
+                <h5 class="mb-0"><i class="fas fa-list me-2"></i>เนื้อหาในบทนี้</h5>
+            </div>
+            <div class="card-body">
+                <ul class="toc-list">
+                    <li><a href="#section-1-1">1.1 Google AI — ความเป็นมาและพัฒนาการ</a></li>
+                    <li><a href="#section-1-2">1.2 Gemini คืออะไร — ฟรี, Multimodal, เชื่อมกับ Google</a></li>
+                    <li><a href="#section-1-3">1.3 เปรียบเทียบ Gemini vs Claude vs ChatGPT vs Copilot</a></li>
+                    <li><a href="#section-1-4">1.4 สมัครและเริ่มใช้งาน gemini.google.com</a></li>
+                    <li><a href="#section-1-5">1.5 Interface + Extensions + แผน Free vs Advanced</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 1.1 -->
+<section class="py-4" id="section-1-1">
+    <div class="container">
+        <h2 class="section-header">1.1 Google AI — ความเป็นมาและพัฒนาการ</h2>
+
+        <p>Google เป็นผู้นำด้านปัญญาประดิษฐ์มาตั้งแต่ก่อนที่ ChatGPT จะเปิดตัว โดยมีประวัติพัฒนาการที่ยาวนาน:</p>
+
+        <!-- Timeline -->
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>2014 — ซื้อ DeepMind</strong><br>
+                Google ซื้อบริษัท DeepMind (สหราชอาณาจักร) ซึ่งเป็นผู้สร้าง AlphaGo ที่ชนะแชมป์โลก Go ถือเป็นจุดเริ่มต้นที่ Google ลงทุนหนักใน AI
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>2017 — Transformer Architecture</strong><br>
+                Google Brain เผยแพร่งานวิจัย "Attention Is All You Need" ซึ่งเป็นสถาปัตยกรรมพื้นฐานของ AI ทุกตัวในปัจจุบัน (รวมถึง ChatGPT, Claude)
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>2023 (มี.ค.) — เปิดตัว Bard</strong><br>
+                Google เปิดตัว Bard (บาร์ด) เป็น Chatbot AI ตัวแรก ใช้โมเดล PaLM 2 แข่งกับ ChatGPT
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>2023 (ธ.ค.) — เปิดตัว Gemini Model</strong><br>
+                Google เปลี่ยนจาก PaLM 2 มาใช้โมเดลใหม่ชื่อ Gemini ซึ่งเป็น Multimodal ตั้งแต่ต้น (เข้าใจข้อความ, รูป, เสียง, วิดีโอ)
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">5</div>
+            <div class="step-content">
+                <strong>2024 (ก.พ.) — Bard → Gemini</strong><br>
+                เปลี่ยนชื่อจาก Bard เป็น Gemini อย่างเป็นทางการ เปิดตัว Gemini Advanced (เสียเงิน) และ Gemini App บนมือถือ
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">6</div>
+            <div class="step-content">
+                <strong>2025 — Gemini 2.5 Pro / Flash</strong><br>
+                โมเดลรุ่นใหม่ล่าสุดที่ฉลาดขึ้น เร็วขึ้น และรองรับ Context window ขนาดใหญ่ (1M+ tokens)
+            </div>
+        </div>
+
+        <h4 class="mt-4 mb-3">โมเดล Gemini — 4 ขนาด</h4>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>โมเดล</th>
+                        <th>จุดเด่น</th>
+                        <th>ใช้งาน</th>
+                        <th>ราคา</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Gemini Ultra</strong></td>
+                        <td>ฉลาดที่สุด, งานซับซ้อน</td>
+                        <td>Gemini Advanced</td>
+                        <td>$20/เดือน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gemini Pro</strong></td>
+                        <td>สมดุลฉลาด+เร็ว</td>
+                        <td>gemini.google.com (ฟรี)</td>
+                        <td>ฟรี</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gemini Flash</strong></td>
+                        <td>เร็วมาก, ถูก, เหมาะ API</td>
+                        <td>AI Studio / API</td>
+                        <td>ฟรี / ถูกมาก</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gemini Nano</strong></td>
+                        <td>ทำงานบนอุปกรณ์ (on-device)</td>
+                        <td>Pixel Phone, Chrome</td>
+                        <td>ฟรี (ในอุปกรณ์)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box">
+            <strong><i class="fas fa-lightbulb me-2"></i>สรุป:</strong> Google มีพื้นฐาน AI แข็งแกร่งที่สุด (เป็นผู้คิดค้น Transformer) และพัฒนา Gemini ให้ทำงานร่วมกับ Google Services ทั้งหมด ทำให้เป็น AI ที่ "เชื่อมต่อ" ได้มากที่สุด
+        </div>
+    </div>
+</section>
+
+<!-- Section 1.2 -->
+<section class="py-4 bg-light" id="section-1-2">
+    <div class="container">
+        <h2 class="section-header">1.2 Gemini คืออะไร — ฟรี, Multimodal, เชื่อมกับ Google</h2>
+
+        <p><strong>Gemini</strong> คือปัญญาประดิษฐ์ของ Google ที่สามารถ:</p>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-comments fa-2x text-google-blue mb-2"></i>
+                        <h6>สนทนาข้อความ</h6>
+                        <p class="small text-muted mb-0">ถามตอบ, เขียน, วิเคราะห์ภาษาไทยได้ดี</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-image fa-2x text-google-green mb-2"></i>
+                        <h6>เข้าใจรูปภาพ</h6>
+                        <p class="small text-muted mb-0">วิเคราะห์รูป, อ่านข้อความในรูป, สร้างรูป</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-microphone fa-2x text-google-yellow mb-2"></i>
+                        <h6>เข้าใจเสียง</h6>
+                        <p class="small text-muted mb-0">ฟังเสียง, ถอดเสียงเป็นข้อความ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-video fa-2x text-google-red mb-2"></i>
+                        <h6>เข้าใจวิดีโอ</h6>
+                        <p class="small text-muted mb-0">ดูวิดีโอ, สรุปเนื้อหา, ตอบคำถาม</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4 mb-3">ทำไมต้อง Gemini สำหรับงานราชการ?</h4>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="tip-box">
+                    <h6><i class="fas fa-check-circle text-google-green me-2"></i>ข้อดีสำหรับข้าราชการ</h6>
+                    <ul class="mb-0">
+                        <li><strong>ฟรี</strong> — ใช้ได้โดยไม่ต้องจ่ายเงิน (แผน Free เพียงพอ)</li>
+                        <li><strong>ใช้ Google Account ที่มี</strong> — ไม่ต้องสมัครใหม่</li>
+                        <li><strong>เชื่อมกับ Google ทั้งหมด</strong> — Docs, Sheets, Gmail, Drive</li>
+                        <li><strong>ค้นเว็บได้</strong> — ข้อมูลอัพเดทล่าสุดทุกวัน</li>
+                        <li><strong>ภาษาไทยดี</strong> — เข้าใจบริบทราชการไทย</li>
+                        <li><strong>Multimodal</strong> — อัปโหลดรูป/ไฟล์/วิดีโอได้</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="warning-box">
+                    <h6><i class="fas fa-exclamation-triangle text-google-yellow me-2"></i>ข้อจำกัดที่ต้องรู้</h6>
+                    <ul class="mb-0">
+                        <li>ข้อมูลอาจไม่ถูกต้อง 100% — ต้อง fact-check เสมอ</li>
+                        <li>ไม่ควรใส่ข้อมูลลับหรือข้อมูลส่วนบุคคล</li>
+                        <li>แผน Free มีขีดจำกัดจำนวนข้อความต่อวัน</li>
+                        <li>บางฟีเจอร์ต้องใช้ Gemini Advanced ($20/เดือน)</li>
+                        <li>Google อาจใช้ข้อมูลสนทนาปรับปรุงโมเดล</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4 mb-3">Gemini ทำอะไรได้บ้าง? (ภาพรวม)</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>งาน</th>
+                        <th>ตัวอย่าง</th>
+                        <th>ใช้ในราชการ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>เขียนเอกสาร</td>
+                        <td>ร่างหนังสือราชการ, คำสั่ง, บันทึกข้อความ</td>
+                        <td>✅ ทุกวัน</td>
+                    </tr>
+                    <tr>
+                        <td>สรุปเนื้อหา</td>
+                        <td>สรุปรายงาน, ระเบียบ, กฎหมาย</td>
+                        <td>✅ ทุกวัน</td>
+                    </tr>
+                    <tr>
+                        <td>วิเคราะห์ข้อมูล</td>
+                        <td>วิเคราะห์ตาราง, สร้างกราฟ, สรุปสถิติ</td>
+                        <td>✅ งบประมาณ/รายงาน</td>
+                    </tr>
+                    <tr>
+                        <td>แปลภาษา</td>
+                        <td>แปลอังกฤษ↔ไทย, ปรับภาษาทางการ</td>
+                        <td>✅ เอกสาร/อีเมล</td>
+                    </tr>
+                    <tr>
+                        <td>ค้นหาข้อมูล</td>
+                        <td>ค้นระเบียบล่าสุด, ข่าวสาร, ข้อมูลอ้างอิง</td>
+                        <td>✅ ทุกวัน</td>
+                    </tr>
+                    <tr>
+                        <td>สร้างสรรค์</td>
+                        <td>ออกแบบโปสเตอร์, เขียน PR, Social Media</td>
+                        <td>✅ งานประชาสัมพันธ์</td>
+                    </tr>
+                    <tr>
+                        <td>วิเคราะห์ไฟล์</td>
+                        <td>อ่าน PDF, Excel, รูปภาพ, วิดีโอ</td>
+                        <td>✅ ตรวจเอกสาร</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Section 1.3 -->
+<section class="py-4" id="section-1-3">
+    <div class="container">
+        <h2 class="section-header">1.3 เปรียบเทียบ Gemini vs Claude vs ChatGPT vs Copilot</h2>
+
+        <p>ในปี 2025 มี AI หลายตัวให้เลือกใช้ ต่อไปนี้คือตารางเปรียบเทียบเพื่อให้เข้าใจจุดแข็งของแต่ละตัว:</p>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-comparison">
+                <thead>
+                    <tr>
+                        <th>คุณสมบัติ</th>
+                        <th class="text-center">🔵 Gemini<br><small>Google</small></th>
+                        <th class="text-center">🟠 Claude<br><small>Anthropic</small></th>
+                        <th class="text-center">🟢 ChatGPT<br><small>OpenAI</small></th>
+                        <th class="text-center">🔷 Copilot<br><small>Microsoft</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ราคา (แผนฟรี)</strong></td>
+                        <td class="text-center">✅ ฟรีไม่จำกัด*</td>
+                        <td class="text-center">✅ ฟรี (จำกัด)</td>
+                        <td class="text-center">✅ ฟรี (จำกัด)</td>
+                        <td class="text-center">✅ ฟรี</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ราคา (แผนเสียเงิน)</strong></td>
+                        <td class="text-center">$20/เดือน</td>
+                        <td class="text-center">$20/เดือน</td>
+                        <td class="text-center">$20/เดือน</td>
+                        <td class="text-center">$20/เดือน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ค้นเว็บได้</strong></td>
+                        <td class="text-center">✅ ดีมาก (Google)</td>
+                        <td class="text-center">✅ ได้</td>
+                        <td class="text-center">✅ Bing</td>
+                        <td class="text-center">✅ Bing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ภาษาไทย</strong></td>
+                        <td class="text-center">⭐⭐⭐⭐</td>
+                        <td class="text-center">⭐⭐⭐⭐⭐</td>
+                        <td class="text-center">⭐⭐⭐⭐</td>
+                        <td class="text-center">⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>รูปภาพ (Input)</strong></td>
+                        <td class="text-center">✅ หลายรูป</td>
+                        <td class="text-center">✅ หลายรูป</td>
+                        <td class="text-center">✅ หลายรูป</td>
+                        <td class="text-center">✅</td>
+                    </tr>
+                    <tr>
+                        <td><strong>สร้างรูปภาพ</strong></td>
+                        <td class="text-center">✅ Imagen 3</td>
+                        <td class="text-center">❌</td>
+                        <td class="text-center">✅ DALL-E 3</td>
+                        <td class="text-center">✅ DALL-E 3</td>
+                    </tr>
+                    <tr>
+                        <td><strong>วิดีโอ (Input)</strong></td>
+                        <td class="text-center">✅ ดีมาก</td>
+                        <td class="text-center">❌</td>
+                        <td class="text-center">⚠️ จำกัด</td>
+                        <td class="text-center">❌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>เชื่อมกับ Office/Workspace</strong></td>
+                        <td class="text-center">✅ Google Workspace</td>
+                        <td class="text-center">❌</td>
+                        <td class="text-center">❌</td>
+                        <td class="text-center">✅ Microsoft 365</td>
+                    </tr>
+                    <tr>
+                        <td><strong>อัปโหลดไฟล์</strong></td>
+                        <td class="text-center">✅ หลายประเภท</td>
+                        <td class="text-center">✅ PDF/Code</td>
+                        <td class="text-center">✅ หลายประเภท</td>
+                        <td class="text-center">✅ จำกัด</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Context Window</strong></td>
+                        <td class="text-center">1M+ tokens</td>
+                        <td class="text-center">200K tokens</td>
+                        <td class="text-center">128K tokens</td>
+                        <td class="text-center">128K tokens</td>
+                    </tr>
+                    <tr>
+                        <td><strong>จุดเด่น</strong></td>
+                        <td class="text-center text-google-blue">เชื่อมกับ Google ค้นเว็บดี Multimodal</td>
+                        <td class="text-center" style="color:#d97706">เขียนยาวดี ปลอดภัย ละเอียด</td>
+                        <td class="text-center" style="color:#10a37f">Plugin เยอะ รูป+เสียง ผู้ใช้มาก</td>
+                        <td class="text-center" style="color:#0078d4">เชื่อม Microsoft มี Copilot ใน Edge</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box mt-3">
+            <strong><i class="fas fa-info-circle me-2"></i>สรุปสำหรับงานราชการ:</strong>
+            <ul class="mb-0 mt-2">
+                <li><strong>Gemini</strong> — เหมาะมากถ้าใช้ Google Workspace อยู่แล้ว (ส่วนใหญ่หน่วยงานราชการใช้ Gmail/Drive)</li>
+                <li><strong>Claude</strong> — เหมาะกับงานเขียนเอกสารยาว, วิเคราะห์ข้อมูลละเอียด</li>
+                <li><strong>ChatGPT</strong> — เหมาะกับงานทั่วไป, มี Plugin หลากหลาย</li>
+                <li><strong>Copilot</strong> — เหมาะถ้าใช้ Microsoft 365 เป็นหลัก</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Section 1.4 -->
+<section class="py-4 bg-light" id="section-1-4">
+    <div class="container">
+        <h2 class="section-header">1.4 สมัครและเริ่มใช้งาน gemini.google.com</h2>
+
+        <div class="tip-box mb-4">
+            <strong><i class="fas fa-star me-2"></i>ข่าวดี!</strong> ถ้ามี Google Account (Gmail) อยู่แล้ว — ใช้ Gemini ได้ทันทีโดยไม่ต้องสมัครเพิ่ม!
+        </div>
+
+        <h4 class="mb-3">ขั้นตอนเริ่มใช้ Gemini</h4>
+
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>เปิดเบราว์เซอร์ → ไปที่ gemini.google.com</strong><br>
+                แนะนำใช้ Google Chrome เพื่อประสบการณ์ดีที่สุด สามารถใช้มือถือหรือคอมพิวเตอร์ก็ได้
+            </div>
+        </div>
+
+        <div class="screenshot-placeholder">
+            <i class="fas fa-image d-block"></i>
+            <p class="mb-0">📸 ภาพหน้าจอ: gemini.google.com หน้าแรก</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>ลงชื่อเข้าใช้ด้วย Google Account</strong><br>
+                คลิก "Sign in" แล้วเลือก Google Account ที่ใช้งานอยู่ (Gmail ของหน่วยงาน หรือ Gmail ส่วนตัวก็ได้)
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>ยอมรับเงื่อนไขการใช้งาน</strong><br>
+                อ่านและยอมรับ Terms of Service ของ Google (ครั้งแรกเท่านั้น)
+                <div class="warning-box mt-2">
+                    <small><i class="fas fa-exclamation-triangle me-1"></i> หมายเหตุ: Google อาจใช้ข้อมูลสนทนาเพื่อปรับปรุง AI — สามารถปิดได้ในตั้งค่า</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>เริ่มสนทนา!</strong><br>
+                พิมพ์คำถามหรือคำสั่งในช่องข้อความด้านล่าง แล้วกด Enter หรือคลิกปุ่มส่ง
+            </div>
+        </div>
+
+        <div class="screenshot-placeholder">
+            <i class="fas fa-image d-block"></i>
+            <p class="mb-0">📸 ภาพหน้าจอ: หน้าสนทนา Gemini พร้อมใช้งาน</p>
+        </div>
+
+        <h4 class="mt-4 mb-3">ลองส่งข้อความแรก</h4>
+
+        <div class="prompt-example">
+            สวัสดี Gemini ผมเป็นข้าราชการไทย ช่วยแนะนำตัวให้หน่อยว่าคุณทำอะไรได้บ้างสำหรับงานราชการ
+        </div>
+
+        <div class="output-example">
+            <p class="mb-2">สวัสดีครับ! ยินดีที่ได้รู้จักครับ ผมคือ Gemini ปัญญาประดิษฐ์จาก Google สำหรับงานราชการ ผมช่วยได้หลายอย่าง:</p>
+            <ul class="mb-0">
+                <li>ร่างหนังสือราชการ, บันทึกข้อความ, คำสั่ง</li>
+                <li>สรุปเอกสาร, รายงาน, ระเบียบ</li>
+                <li>แปลภาษาอังกฤษ-ไทย</li>
+                <li>วิเคราะห์ข้อมูล, สร้างตาราง</li>
+                <li>ค้นหาข้อมูลล่าสุดจากอินเทอร์เน็ต</li>
+                <li>... และอื่นๆ อีกมากมาย</li>
+            </ul>
+        </div>
+
+        <div class="tip-box mt-3">
+            <strong><i class="fas fa-mobile-alt me-2"></i>บนมือถือ:</strong> ดาวน์โหลด Gemini App จาก Google Play หรือ App Store ได้ฟรี! หรือเรียกใช้ Gemini แทน Google Assistant ได้เลย
+        </div>
+    </div>
+</section>
+
+<!-- Section 1.5 -->
+<section class="py-4" id="section-1-5">
+    <div class="container">
+        <h2 class="section-header">1.5 Interface + Extensions + แผน Free vs Advanced</h2>
+
+        <h4 class="mb-3">ส่วนประกอบของหน้า Gemini</h4>
+
+        <div class="screenshot-placeholder">
+            <i class="fas fa-image d-block"></i>
+            <p class="mb-0">📸 ภาพหน้าจอ: Interface ของ Gemini พร้อมคำอธิบายแต่ละส่วน</p>
+        </div>
+
+        <div class="row g-3 mt-3">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h6><i class="fas fa-bars me-2 text-google-blue"></i>แถบด้านซ้าย (Sidebar)</h6>
+                        <ul class="small mb-0">
+                            <li><strong>New chat</strong> — เริ่มสนทนาใหม่</li>
+                            <li><strong>Recent</strong> — ประวัติสนทนาเก่า</li>
+                            <li><strong>Gems</strong> — Custom AI ส่วนตัว</li>
+                            <li><strong>Settings</strong> — ตั้งค่าต่างๆ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h6><i class="fas fa-keyboard me-2 text-google-blue"></i>ช่องพิมพ์ (Input)</h6>
+                        <ul class="small mb-0">
+                            <li><strong>Text box</strong> — พิมพ์ข้อความ</li>
+                            <li><strong>📎 แนบไฟล์</strong> — อัปโหลดรูป/เอกสาร</li>
+                            <li><strong>🎤 เสียง</strong> — พูดคุยด้วยเสียง</li>
+                            <li><strong>📷 กล้อง</strong> — ถ่ายรูป (มือถือ)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h6><i class="fas fa-reply me-2 text-google-blue"></i>พื้นที่ตอบ (Response)</h6>
+                        <ul class="small mb-0">
+                            <li><strong>คำตอบ</strong> — ข้อความ, ตาราง, โค้ด</li>
+                            <li><strong>Show drafts</strong> — ดูคำตอบทางเลือก</li>
+                            <li><strong>👍👎</strong> — ให้คะแนนคำตอบ</li>
+                            <li><strong>📋 Copy / 🔄 Regenerate</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h6><i class="fas fa-puzzle-piece me-2 text-google-blue"></i>Extensions (ส่วนขยาย)</h6>
+                        <ul class="small mb-0">
+                            <li><strong>@Google Maps</strong> — ค้นหาสถานที่</li>
+                            <li><strong>@YouTube</strong> — ค้นหา/สรุปวิดีโอ</li>
+                            <li><strong>@Google Flights</strong> — ค้นเที่ยวบิน</li>
+                            <li><strong>@Google Hotels</strong> — ค้นที่พัก</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-5 mb-3">เปรียบเทียบ Gemini Free vs Advanced</h4>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width:40%">คุณสมบัติ</th>
+                        <th class="text-center">Gemini Free</th>
+                        <th class="text-center">Gemini Advanced ($20/เดือน)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>โมเดล</td>
+                        <td class="text-center">Gemini Pro / Flash</td>
+                        <td class="text-center">Gemini Ultra / 2.5 Pro</td>
+                    </tr>
+                    <tr>
+                        <td>สนทนา (ข้อจำกัด)</td>
+                        <td class="text-center">มีจำกัดต่อวัน</td>
+                        <td class="text-center">ไม่จำกัด</td>
+                    </tr>
+                    <tr>
+                        <td>อัปโหลดไฟล์</td>
+                        <td class="text-center">✅ ได้</td>
+                        <td class="text-center">✅ ได้ (ไฟล์ใหญ่กว่า)</td>
+                    </tr>
+                    <tr>
+                        <td>สร้างรูปภาพ</td>
+                        <td class="text-center">✅ ได้</td>
+                        <td class="text-center">✅ คุณภาพสูงกว่า</td>
+                    </tr>
+                    <tr>
+                        <td>Gems (Custom AI)</td>
+                        <td class="text-center">❌</td>
+                        <td class="text-center">✅</td>
+                    </tr>
+                    <tr>
+                        <td>Deep Research</td>
+                        <td class="text-center">❌</td>
+                        <td class="text-center">✅</td>
+                    </tr>
+                    <tr>
+                        <td>Google One Storage</td>
+                        <td class="text-center">❌</td>
+                        <td class="text-center">✅ 2TB</td>
+                    </tr>
+                    <tr>
+                        <td>Gemini in Workspace</td>
+                        <td class="text-center">❌</td>
+                        <td class="text-center">✅ Docs/Sheets/Slides/Gmail</td>
+                    </tr>
+                    <tr>
+                        <td>NotebookLM Plus</td>
+                        <td class="text-center">❌</td>
+                        <td class="text-center">✅</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box">
+            <strong><i class="fas fa-lightbulb me-2"></i>แนะนำ:</strong> สำหรับการอบรมนี้ <strong>แผน Free เพียงพอ</strong> สำหรับการเรียนรู้และทดลองใช้งาน หากต้องการใช้ Gemini ใน Google Docs/Sheets จำเป็นต้องใช้ Gemini Advanced หรือ Google Workspace ที่เปิด AI ไว้
+        </div>
+    </div>
+</section>
+
+<!-- แบบฝึกหัด -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="exercise-box">
+            <h5><i class="fas fa-pencil-alt me-2"></i>แบบฝึกหัดท้ายบทที่ 1</h5>
+            <hr>
+            <ol>
+                <li class="mb-3">
+                    <strong>เปิด gemini.google.com</strong> แล้วลงชื่อเข้าใช้ด้วย Google Account ของท่าน
+                    <br><small class="text-muted">✓ เช็คว่าเข้าได้สำเร็จ เห็นหน้าสนทนา</small>
+                </li>
+                <li class="mb-3">
+                    <strong>ทดลองส่งข้อความแรก:</strong> ถาม Gemini ว่า "Gemini ทำอะไรได้บ้าง"
+                    <br><small class="text-muted">✓ อ่านคำตอบ ลองกด Show drafts ดูคำตอบทางเลือก</small>
+                </li>
+                <li class="mb-3">
+                    <strong>ลองถามเรื่องงานราชการ:</strong> "ช่วยร่างบันทึกข้อความเรื่องขออนุมัติจัดฝึกอบรม"
+                    <br><small class="text-muted">✓ ดูว่า Gemini ร่างหนังสือได้ดีแค่ไหน</small>
+                </li>
+                <li class="mb-3">
+                    <strong>สำรวจ Interface:</strong> ลองกดดูส่วนต่างๆ — Sidebar, Settings, Extensions
+                    <br><small class="text-muted">✓ จดบันทึกว่ามีอะไรบ้าง</small>
+                </li>
+                <li class="mb-3">
+                    <strong>เปรียบเทียบ AI:</strong> เปิด Claude (claude.ai) แล้วถามคำถามเดียวกัน เปรียบเทียบคำตอบ
+                    <br><small class="text-muted">✓ สังเกตความแตกต่างของสไตล์การตอบ</small>
+                </li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation -->
+<section class="py-4">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <a href="index.html" class="btn btn-outline-secondary"><i class="fas fa-home me-2"></i>หน้าหลัก</a>
+            <a href="chapter02.html" class="btn btn-primary" style="background: var(--google-blue); border-color: var(--google-blue);">บทที่ 2: เทคนิค Prompt <i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <p class="mb-1">คู่มือฝึกอบรม Gemini AI — ใช้ปัญญาประดิษฐ์ Google ทำงานราชการ</p>
+        <p class="mb-0 text-white-50">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

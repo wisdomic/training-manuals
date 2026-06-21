@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 7: NotebookLM กับงานคนพิการ — คู่มือ NotebookLM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4)">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ NotebookLM</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter01.html">บทที่ 1</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter02.html">บทที่ 2</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter03.html">บทที่ 3</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter04.html">บทที่ 4</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter05.html">บทที่ 5</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter06.html">บทที่ 6</a></li>
+                <li class="nav-item"><a class="nav-link active" href="chapter07.html">บทที่ 7</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter08.html">บทที่ 8</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter09.html">บทที่ 9</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter10.html">บทที่ 10</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<div class="container mt-4">
+    <div class="mb-4">
+        <span class="day-badge">วันที่ 4</span>
+        <span class="time-badge ms-2">เช้า 09:00 – 12:00</span>
+    </div>
+    <h1 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">♿ บทที่ 7: NotebookLM กับงานคนพิการ</h1>
+    <p class="lead text-muted">ใช้ AI วิเคราะห์กฎหมาย สร้าง FAQ สิทธิ์คนพิการ และผลิต Podcast สรุปสิทธิ์</p>
+
+    <!-- สารบัญบท -->
+    <div class="card p-3 mb-4">
+        <h5>📑 ในบทนี้</h5>
+        <ul class="mb-0">
+            <li><a href="#section-7-1">7.1 วิเคราะห์กฎหมาย/ระเบียบด้านคนพิการ</a></li>
+            <li><a href="#section-7-2">7.2 สร้าง FAQ สิทธิ์คนพิการจากเอกสารจริง</a></li>
+            <li><a href="#section-7-3">7.3 วิเคราะห์หลักเกณฑ์การให้บริการ</a></li>
+            <li><a href="#section-7-4">7.4 สร้าง Podcast สรุปสิทธิ์คนพิการ</a></li>
+            <li><a href="#section-7-5">7.5 Lab: สร้าง FAQ + Audio Overview จาก พ.ร.บ. ส่งเสริมฯ</a></li>
+        </ul>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- Section 7.1 -->
+    <!-- ============================================ -->
+    <section id="section-7-1" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">7.1 วิเคราะห์กฎหมาย/ระเบียบด้านคนพิการ</h2>
+
+        <p>กฎหมายด้านคนพิการมีหลายฉบับและมีรายละเอียดซับซ้อน การใช้ NotebookLM ช่วยวิเคราะห์จะทำให้เข้าใจเนื้อหาได้รวดเร็วและถูกต้องกว่าอ่านเอง</p>
+
+        <h4 class="mt-4">กฎหมายหลักที่เกี่ยวข้อง</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>กฎหมาย</th>
+                        <th>เนื้อหาหลัก</th>
+                        <th>ประโยชน์ในการวิเคราะห์</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>พ.ร.บ. ส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ พ.ศ. 2550</strong></td>
+                        <td>สิทธิ์ สวัสดิการ การจ้างงาน กองทุน</td>
+                        <td>สรุปสิทธิ์แต่ละข้อ เปรียบเทียบ ตอบคำถามประชาชน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>พ.ร.บ. ส่งเสริมฯ (ฉบับที่ 2) พ.ศ. 2556</strong></td>
+                        <td>แก้ไขเพิ่มเติมสิทธิ์ เงินสงเคราะห์ การช่วยเหลือ</td>
+                        <td>เปรียบเทียบการแก้ไข ดูข้อเปลี่ยนแปลง</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ระเบียบ พก. ว่าด้วยการให้บริการ</strong></td>
+                        <td>ขั้นตอนการให้บริการ เอกสารที่ต้องใช้ ระยะเวลา</td>
+                        <td>สร้าง Checklist สำหรับเจ้าหน้าที่</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ประกาศกระทรวง เรื่องสิทธิ์สวัสดิการ</strong></td>
+                        <td>เบี้ยความพิการ เงินสงเคราะห์ สิ่งอำนวยความสะดวก</td>
+                        <td>สรุปสิทธิ์แต่ละประเภทความพิการ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mt-4">ขั้นตอนการอัปโหลดกฎหมายเข้า NotebookLM</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>เตรียมไฟล์ PDF กฎหมาย</h5>
+            <p class="mb-0">ดาวน์โหลด พ.ร.บ. ส่งเสริมฯ จากเว็บไซต์ราชกิจจานุเบกษา หรือเว็บ กรมส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ (พก.)</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>สร้าง Notebook ใหม่ชื่อ "กฎหมายคนพิการ"</h5>
+            <p class="mb-0">เข้า NotebookLM → Create new notebook → ตั้งชื่อ "กฎหมายคนพิการ"</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>อัปโหลด Sources ทั้งหมด</h5>
+            <p class="mb-0">อัปโหลด PDF กฎหมาย 3-5 ฉบับ (แต่ละฉบับไม่เกิน 500,000 คำ)</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h5>เริ่มถามคำถามวิเคราะห์</h5>
+            <p class="mb-0">ใช้ Prompt เช่น "สรุปสิทธิ์ของคนพิการตาม พ.ร.บ. นี้เป็นข้อๆ"</p>
+        </div>
+
+        <div class="screenshot-placeholder mt-3">
+            <p>ภาพ: Notebook "กฎหมายคนพิการ" พร้อม Sources ที่อัปโหลด</p>
+        </div>
+
+        <h4 class="mt-4">ตัวอย่าง Prompt วิเคราะห์กฎหมาย</h4>
+        <div class="card p-3 bg-light">
+            <ul class="mb-0">
+                <li>"สรุปสิทธิ์ของคนพิการตาม พ.ร.บ. ส่งเสริมฯ มีกี่ข้อ อะไรบ้าง"</li>
+                <li>"เปรียบเทียบสิทธิ์ตาม พ.ร.บ. ฉบับเดิม กับฉบับแก้ไข"</li>
+                <li>"ใครบ้างที่มีสิทธิ์ได้รับเบี้ยความพิการ เงื่อนไขคืออะไร"</li>
+                <li>"นายจ้างต้องจ้างคนพิการกี่คน ต่อลูกจ้างกี่คน"</li>
+                <li>"กองทุนส่งเสริมฯ มีหน้าที่อะไร ใครขอรับการสนับสนุนได้บ้าง"</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 7.2 -->
+    <!-- ============================================ -->
+    <section id="section-7-2" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">7.2 สร้าง FAQ สิทธิ์คนพิการจากเอกสารจริง</h2>
+
+        <p>FAQ (คำถามที่พบบ่อย) เป็นเครื่องมือสำคัญสำหรับเจ้าหน้าที่ในการตอบคำถามประชาชน ใช้ NotebookLM สร้าง FAQ จากเอกสารจริงเพื่อให้มั่นใจว่าคำตอบถูกต้องตามกฎหมาย</p>
+
+        <h4 class="mt-4">วิธีสร้าง FAQ ด้วย Notebook Guide</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>คลิก Notebook Guide (แถบด้านขวา)</h5>
+            <p class="mb-0">เปิด Notebook Guide → เลือก "FAQ"</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>ระบบจะสร้าง FAQ อัตโนมัติ</h5>
+            <p class="mb-0">NotebookLM จะวิเคราะห์ Sources ทั้งหมดแล้วสร้างคำถาม-คำตอบที่พบบ่อย</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>แก้ไขและเพิ่มเติม FAQ</h5>
+            <p class="mb-0">ปรับแต่งคำถามให้เหมาะกับผู้มาใช้บริการจริง เพิ่มคำถามที่ต้องการ</p>
+        </div>
+
+        <h4 class="mt-4">ตัวอย่าง FAQ สิทธิ์คนพิการ</h4>
+        <div class="card p-4 bg-light">
+            <h5>FAQ — สิทธิ์คนพิการที่ควรรู้</h5>
+            <div class="mt-3">
+                <p><strong>ถาม: คนพิการมีสิทธิ์ได้รับเบี้ยความพิการเดือนละเท่าไหร่?</strong></p>
+                <p class="ms-3 text-muted">ตอบ: คนพิการที่มีบัตรประจำตัวคนพิการจะได้รับเบี้ยความพิการ 800 บาท/เดือน (อัตราปัจจุบัน) โดยลงทะเบียนผ่านองค์กรปกครองส่วนท้องถิ่น [อ้างอิง: มาตรา 20(9)]</p>
+                <hr>
+                <p><strong>ถาม: ต้องใช้เอกสารอะไรบ้างในการทำบัตรคนพิการ?</strong></p>
+                <p class="ms-3 text-muted">ตอบ: 1) ใบรับรองความพิการจากแพทย์ 2) บัตรประจำตัวประชาชน 3) ทะเบียนบ้าน 4) รูปถ่าย 2 ใบ [อ้างอิง: ระเบียบ พก. หมวด 2]</p>
+                <hr>
+                <p><strong>ถาม: นายจ้างต้องจ้างคนพิการกี่คน?</strong></p>
+                <p class="ms-3 text-muted">ตอบ: นายจ้างที่มีลูกจ้างตั้งแต่ 100 คนขึ้นไป ต้องจ้างคนพิการ 1 คน ต่อลูกจ้าง 100 คน หรือส่งเงินเข้ากองทุนฯ แทน [อ้างอิง: มาตรา 33]</p>
+            </div>
+        </div>
+
+        <div class="info-box mt-4">
+            <h5>💡 Tips: ปรับ FAQ ให้เข้าใจง่าย</h5>
+            <ul class="mb-0">
+                <li>ใช้ภาษาง่ายๆ หลีกเลี่ยงศัพท์กฎหมาย</li>
+                <li>ระบุขั้นตอนเป็นข้อๆ ชัดเจน</li>
+                <li>ใส่ข้อมูลติดต่อหน่วยงานที่เกี่ยวข้อง</li>
+                <li>อัปเดต FAQ เมื่อมีการแก้ไขกฎหมาย/ระเบียบ</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 7.3 -->
+    <!-- ============================================ -->
+    <section id="section-7-3" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">7.3 วิเคราะห์หลักเกณฑ์การให้บริการ</h2>
+
+        <p>เจ้าหน้าที่องค์กรเพื่อคนพิการต้องให้บริการตามหลักเกณฑ์ที่กำหนด NotebookLM ช่วยสรุปขั้นตอนและสร้างเอกสารประกอบการให้บริการได้รวดเร็ว</p>
+
+        <h4 class="mt-4">ตัวอย่างการวิเคราะห์หลักเกณฑ์</h4>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="card p-3 h-100">
+                    <h5>📋 การขึ้นทะเบียนคนพิการ</h5>
+                    <p class="small">Prompt: "สรุปขั้นตอนการขึ้นทะเบียนคนพิการ ตั้งแต่เริ่มต้นจนได้บัตร เป็น Flowchart"</p>
+                    <ul class="small mb-0">
+                        <li>เอกสารที่ต้องเตรียม</li>
+                        <li>หน่วยงานที่ต้องติดต่อ</li>
+                        <li>ระยะเวลาดำเนินการ</li>
+                        <li>กรณีพิเศษ/ข้อยกเว้น</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3 h-100">
+                    <h5>💰 การขอรับสิทธิ์สวัสดิการ</h5>
+                    <p class="small">Prompt: "สรุปสวัสดิการที่คนพิการแต่ละประเภทได้รับ เป็นตาราง"</p>
+                    <ul class="small mb-0">
+                        <li>สวัสดิการแยกตามประเภทความพิการ</li>
+                        <li>เงื่อนไขและข้อจำกัด</li>
+                        <li>วิธีการยื่นขอ</li>
+                        <li>หน่วยงานรับผิดชอบ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4">ใช้ NotebookLM สร้าง Checklist สำหรับเจ้าหน้าที่</h4>
+        <div class="card p-3 bg-light">
+            <p><strong>Prompt:</strong> "สร้าง Checklist สำหรับเจ้าหน้าที่ที่ต้องให้บริการคนพิการ แบ่งตามประเภทบริการ ระบุเอกสาร ขั้นตอน และข้อควรระวัง"</p>
+        </div>
+
+        <div class="screenshot-placeholder mt-3">
+            <p>ภาพ: ผลลัพธ์ Checklist ที่ NotebookLM สร้างจากเอกสารระเบียบ</p>
+        </div>
+
+        <h4 class="mt-4">สร้าง Briefing Doc สำหรับผู้บริหาร</h4>
+        <p>ใช้ Notebook Guide → Briefing Doc เพื่อสรุปสถานการณ์คนพิการในพื้นที่ เช่น:</p>
+        <ul>
+            <li>จำนวนคนพิการที่ขึ้นทะเบียนในจังหวัด</li>
+            <li>สิทธิ์ที่ยังไม่ได้รับ / ปัญหาที่พบ</li>
+            <li>แนวทางแก้ไขตามระเบียบ</li>
+            <li>งบประมาณที่ต้องใช้</li>
+        </ul>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 7.4 -->
+    <!-- ============================================ -->
+    <section id="section-7-4" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">7.4 สร้าง Podcast สรุปสิทธิ์คนพิการ</h2>
+
+        <p>Audio Overview เป็นเครื่องมือที่เหมาะมากกับการเผยแพร่ข้อมูลสิทธิ์คนพิการ เพราะคนพิการทางการเห็นสามารถฟังได้โดยไม่ต้องอ่าน และยังเป็นสื่อที่เข้าถึงง่ายสำหรับทุกคน</p>
+
+        <h4 class="mt-4">ข้อดีของ Podcast สิทธิ์คนพิการ</h4>
+        <div class="row g-3">
+            <div class="col-md-3">
+                <div class="card p-3 text-center h-100">
+                    <h1>👁️</h1>
+                    <h6>เข้าถึงได้</h6>
+                    <p class="small mb-0">คนพิการทางการเห็นฟังได้สะดวก</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-3 text-center h-100">
+                    <h1>🚗</h1>
+                    <h6>ฟังได้ทุกที่</h6>
+                    <p class="small mb-0">ฟังระหว่างเดินทาง ไม่ต้องนั่งอ่าน</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-3 text-center h-100">
+                    <h1>🗣️</h1>
+                    <h6>เข้าใจง่าย</h6>
+                    <p class="small mb-0">อธิบายเหมือนคนคุยกัน ไม่ใช้ศัพท์ยาก</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-3 text-center h-100">
+                    <h1>📲</h1>
+                    <h6>แชร์ง่าย</h6>
+                    <p class="small mb-0">ส่งต่อทาง Line / Facebook ได้ทันที</p>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4">ขั้นตอนสร้าง Podcast สิทธิ์คนพิการ</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>เตรียม Notebook ที่มี Sources ครบ</h5>
+            <p class="mb-0">อัปโหลด พ.ร.บ. + ระเบียบ + คู่มือบริการ เข้า Notebook เดียวกัน</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>คลิก Audio Overview → Customize</h5>
+            <p class="mb-0">กำหนดทิศทาง: "อธิบายสิทธิ์คนพิการแบบเข้าใจง่าย เน้นเรื่องที่ประชาชนถามบ่อย ใช้ภาษาที่คนทั่วไปเข้าใจ"</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>Generate Audio Overview</h5>
+            <p class="mb-0">รอประมาณ 2-5 นาที จะได้ Podcast สรุปสิทธิ์คนพิการ</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h5>ดาวน์โหลดและเผยแพร่</h5>
+            <p class="mb-0">ดาวน์โหลดไฟล์เสียง → แชร์ทาง Line OA / Facebook / เว็บไซต์หน่วยงาน</p>
+        </div>
+
+        <div class="info-box mt-4">
+            <h5>💡 Tips: Customize Podcast ให้เหมาะกับกลุ่มเป้าหมาย</h5>
+            <ul class="mb-0">
+                <li><strong>สำหรับคนพิการ:</strong> "อธิบายสิทธิ์ที่ได้รับ วิธีขอรับบริการ และหน่วยงานที่ติดต่อ"</li>
+                <li><strong>สำหรับผู้ดูแล:</strong> "อธิบายวิธีช่วยเหลือคนพิการเข้าถึงสิทธิ์ต่างๆ"</li>
+                <li><strong>สำหรับนายจ้าง:</strong> "อธิบายข้อกฎหมายเรื่องการจ้างงานคนพิการ สิทธิประโยชน์ที่ได้รับ"</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 7.5 -->
+    <!-- ============================================ -->
+    <section id="section-7-5" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">7.5 Lab: สร้าง FAQ + Audio Overview จาก พ.ร.บ. ส่งเสริมฯ</h2>
+
+        <div class="exercise-box">
+            <h4>🧪 Lab ปฏิบัติ: สร้าง FAQ 10 ข้อ + Podcast สิทธิ์คนพิการ</h4>
+            <p><strong>⏱️ เวลา:</strong> 45 นาที | <strong>รูปแบบ:</strong> ปฏิบัติรายบุคคลหรือจับคู่</p>
+            
+            <h5 class="mt-3">📋 โจทย์</h5>
+            <p>อัปโหลด พ.ร.บ. ส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ พ.ศ. 2550 เข้า NotebookLM แล้วสร้าง FAQ 10 ข้อ + Audio Overview สรุปสิทธิ์คนพิการ</p>
+
+            <h5 class="mt-3">📝 ขั้นตอน</h5>
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <h5>ดาวน์โหลด พ.ร.บ. ส่งเสริมฯ (PDF)</h5>
+                <p class="mb-0">ดาวน์โหลดจากเว็บไซต์ พก. หรือ ราชกิจจานุเบกษา (วิทยากรจะแจก link)</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <h5>สร้าง Notebook ชื่อ "สิทธิ์คนพิการ"</h5>
+                <p class="mb-0">เข้า NotebookLM → New Notebook → ตั้งชื่อ → อัปโหลด PDF</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <h5>สร้าง FAQ 10 ข้อ</h5>
+                <p class="mb-0">ใช้ Notebook Guide → FAQ หรือ Chat prompt: "สร้าง FAQ 10 ข้อ เกี่ยวกับสิทธิ์คนพิการ ใช้ภาษาง่ายๆ ที่ประชาชนเข้าใจ"</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <h5>ตรวจสอบ Citation ทุกข้อ</h5>
+                <p class="mb-0">คลิก citation ดูว่าคำตอบตรงกับเนื้อหาใน พ.ร.บ. จริงหรือไม่</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">5</div>
+                <h5>สร้าง Audio Overview</h5>
+                <p class="mb-0">คลิก Audio Overview → Customize: "อธิบายสิทธิ์คนพิการ 10 ข้อสำคัญ แบบเข้าใจง่าย" → Generate</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">6</div>
+                <h5>ฟังและประเมินผล</h5>
+                <p class="mb-0">ฟัง Podcast → ตรวจว่าครบ 10 ข้อหรือไม่ → ประเมินความเข้าใจง่าย</p>
+            </div>
+
+            <h5 class="mt-4">✅ เกณฑ์สำเร็จ</h5>
+            <ul>
+                <li>สร้าง FAQ ได้ครบ 10 ข้อ ภาษาเข้าใจง่าย</li>
+                <li>ทุกข้อมี citation อ้างอิงจาก พ.ร.บ.</li>
+                <li>สร้าง Audio Overview ได้สำเร็จ</li>
+                <li>Podcast อธิบายสิทธิ์ได้ครอบคลุม เข้าใจง่าย</li>
+            </ul>
+        </div>
+
+        <div class="info-box mt-4">
+            <h5>💡 Tips สำหรับ Lab</h5>
+            <ul class="mb-0">
+                <li>หาก FAQ ที่ได้ใช้ภาษายาก ให้ prompt เพิ่ม: "เขียนใหม่ให้เข้าใจง่ายเหมือนอธิบายให้ผู้สูงอายุฟัง"</li>
+                <li>ลองเพิ่ม Source เช่น ระเบียบการจ่ายเบี้ย เพื่อให้ FAQ ครอบคลุมมากขึ้น</li>
+                <li>บันทึก FAQ เป็น Note ใน Notebook เพื่อใช้อ้างอิงในอนาคต</li>
+                <li>Audio Overview สามารถสร้างใหม่ได้หลายครั้งจนได้เวอร์ชันที่พอใจ</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Chapter Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter06.html">← บทที่ 6</a>
+        <a href="chapter08.html">บทที่ 8 →</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p class="mb-1">คู่มือฝึกอบรม NotebookLM — เปลี่ยนเอกสารเป็นความรู้ด้วย AI</p>
+        <p class="mb-0 text-muted">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

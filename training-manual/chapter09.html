@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 9: เพิ่มฟีเจอร์ขั้นสูง — คู่มือ Kiro AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">📖 คู่มือฝึกอบรม Kiro AI</a>
+        <span class="navbar-text text-white">บทที่ 9 | วันที่ 4 บ่าย - วันที่ 5 เช้า</span>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+
+            <div class="chapter-header text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">บทที่ 9</h1>
+                <h2 class="h3 text-secondary">เพิ่มฟีเจอร์ขั้นสูง</h2>
+                <p class="lead text-muted">ระยะเวลา: 6 ชั่วโมง | วันที่ 4 บ่าย - วันที่ 5 เช้า</p>
+                <hr class="w-50 mx-auto">
+            </div>
+
+            <div class="alert alert-info mb-4">
+                <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เพิ่มระบบค้นหาและกรองข้อมูลได้</li>
+                    <li>ส่ง Email และ Line แจ้งเตือนอัตโนมัติได้</li>
+                    <li>สร้างหน้าพิมพ์รายงาน PDF ได้</li>
+                    <li>สร้างระบบ Login และควบคุมสิทธิ์ผู้ใช้ได้</li>
+                    <li>ใส่ Validation และรักษาความปลอดภัยระบบได้</li>
+                </ul>
+            </div>
+
+            <!-- 9.1 ระบบค้นหา + กรอง -->
+            <section class="mb-5" id="section-9-1">
+                <h3 class="border-start border-4 border-primary ps-3">9.1 ระบบค้นหา + กรอง (Search & Filter)</h3>
+
+                <h5>Client-side Search — กรองข้อมูลในตาราง</h5>
+                <p>วิธีนี้เหมาะกับข้อมูลน้อย (ไม่เกิน 500 แถว) — กรองโดยไม่ต้องเรียก Backend:</p>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// กรองตาราง (Client-side)
+function filterTable() {
+  var input = document.getElementById('searchBox').value.toLowerCase();
+  var rows = document.querySelectorAll('#dataTable tbody tr');
+  
+  rows.forEach(function(row) {
+    var text = row.textContent.toLowerCase();
+    row.style.display = text.includes(input) ? '' : 'none';
+  });
+}
+
+// เรียกใช้เมื่อพิมพ์
+document.getElementById('searchBox').addEventListener('keyup', filterTable);</code></pre>
+
+                <h5>Server-side Search — ค้นหาจาก Sheet</h5>
+                <p>วิธีนี้เหมาะกับข้อมูลมาก — ค้นหาที่ Backend แล้วส่งผลลัพธ์กลับ:</p>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// Code.gs — ค้นหาจาก Sheet
+function searchTrainees(keyword) {
+  try {
+    var ss = SpreadsheetApp.openById(SHEET_ID);
+    var sheet = ss.getSheetByName('TRAINEES');
+    var data = sheet.getDataRange().getValues();
+    var headers = data[0];
+    var results = [];
+    
+    for (var i = 1; i &lt; data.length; i++) {
+      var rowText = data[i].join(' ').toLowerCase();
+      if (rowText.indexOf(keyword.toLowerCase()) !== -1) {
+        var obj = {};
+        for (var j = 0; j &lt; headers.length; j++) {
+          obj[headers[j]] = data[i][j];
+        }
+        results.push(obj);
+      }
+    }
+    return { success: true, data: results };
+  } catch (err) {
+    return { success: false, error: err.toString() };
+  }
+}</code></pre>
+
+                <h5>📝 ตัวอย่าง Prompt สำหรับ Kiro</h5>
+                <div class="card bg-light mb-3">
+                    <div class="card-body">
+<pre class="mb-0"><code>เพิ่มระบบค้นหาในหน้า admin.html:
+1. ช่อง input ด้านบนตาราง placeholder "🔍 ค้นหาชื่อ, หลักสูตร, เบอร์โทร..."
+2. กรอง client-side แบบ real-time (keyup event)
+3. ค้นหาทุกคอลัมน์ในตาราง
+4. แสดงจำนวนผลลัพธ์ เช่น "พบ 5 รายการ"
+5. ถ้าไม่พบ แสดง "ไม่พบข้อมูล"</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9.2 Email แจ้งเตือนอัตโนมัติ -->
+            <section class="mb-5" id="section-9-2">
+                <h3 class="border-start border-4 border-primary ps-3">9.2 Email แจ้งเตือนอัตโนมัติ</h3>
+
+                <h5>MailApp.sendEmail() — ส่ง Email จาก GAS</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// ส่ง Email แบบง่าย
+function sendSimpleEmail(to, subject, body) {
+  try {
+    MailApp.sendEmail({
+      to: to,
+      subject: subject,
+      body: body
+    });
+    return { success: true };
+  } catch (err) {
+    return { success: false, error: err.toString() };
+  }
+}</code></pre>
+
+                <h5>HTML Email Template</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// ส่ง Email แบบ HTML (สวยงาม)
+function sendHtmlEmail(to, subject, htmlBody) {
+  try {
+    MailApp.sendEmail({
+      to: to,
+      subject: subject,
+      htmlBody: htmlBody
+    });
+    return { success: true };
+  } catch (err) {
+    return { success: false, error: err.toString() };
+  }
+}
+
+// สร้าง HTML Email Template
+function buildRegistrationEmail(name, courseName, regId) {
+  var html = '&lt;div style="font-family: Sarabun, sans-serif; max-width: 600px; margin: 0 auto;"&gt;';
+  html += '&lt;div style="background: #0d6efd; color: white; padding: 20px; text-align: center;"&gt;';
+  html += '&lt;h2&gt;🏛️ ยืนยันการลงทะเบียน&lt;/h2&gt;&lt;/div&gt;';
+  html += '&lt;div style="padding: 20px; border: 1px solid #ddd;"&gt;';
+  html += '&lt;p&gt;เรียน คุณ' + name + '&lt;/p&gt;';
+  html += '&lt;p&gt;ลงทะเบียนสำเร็จ! รายละเอียด:&lt;/p&gt;';
+  html += '&lt;ul&gt;';
+  html += '&lt;li&gt;หลักสูตร: ' + courseName + '&lt;/li&gt;';
+  html += '&lt;li&gt;รหัสลงทะเบียน: ' + regId + '&lt;/li&gt;';
+  html += '&lt;li&gt;สถานะ: รอยืนยัน&lt;/li&gt;';
+  html += '&lt;/ul&gt;';
+  html += '&lt;p&gt;สำนักงานพัฒนาฝีมือแรงงานสุรินทร์&lt;/p&gt;';
+  html += '&lt;/div&gt;&lt;/div&gt;';
+  return html;
+}</code></pre>
+
+                <h5>ตัวอย่าง: ส่ง Email ยืนยันการลงทะเบียน</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// เรียกใช้ใน registerTrainee() หลังบันทึกข้อมูลสำเร็จ
+function registerTrainee(formData) {
+  try {
+    // ... บันทึกข้อมูล ...
+    
+    // ส่ง Email ยืนยัน
+    if (formData.email) {
+      var htmlBody = buildRegistrationEmail(
+        formData.first_name + ' ' + formData.last_name,
+        formData.course_name,
+        regId
+      );
+      sendHtmlEmail(formData.email, '✅ ยืนยันการลงทะเบียน — สนพ.สุรินทร์', htmlBody);
+    }
+    
+    return { success: true, data: { reg_id: regId } };
+  } catch (err) {
+    return { success: false, error: err.toString() };
+  }
+}</code></pre>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ ข้อจำกัด:</strong> GAS ส่ง Email ได้ไม่เกิน 100 ฉบับ/วัน (บัญชีฟรี) หรือ 1,500 ฉบับ/วัน (Workspace)
+                </div>
+            </section>
+
+            <!-- 9.3 Line Notify -->
+            <section class="mb-5" id="section-9-3">
+                <h3 class="border-start border-4 border-primary ps-3">9.3 Line Notify แจ้งเตือน</h3>
+
+                <p>ส่งข้อความแจ้งเตือนไปยัง Line OA เมื่อมีเหตุการณ์สำคัญ (เช่น มีคนลงทะเบียนใหม่):</p>
+
+                <h5>Line Messaging API — Push Message</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// ฟังก์ชันส่ง Line (ใช้ได้ทุกโปรเจกต์)
+function _sendLine(message) {
+  try {
+    var token = 'YOUR_CHANNEL_ACCESS_TOKEN';
+    var userId = 'YOUR_USER_ID';
+    
+    UrlFetchApp.fetch('https://api.line.me/v2/bot/message/push', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      payload: JSON.stringify({
+        to: userId,
+        messages: [{
+          type: 'text',
+          text: message
+        }]
+      }),
+      muteHttpExceptions: true
+    });
+  } catch (e) {
+    Logger.log('Line error: ' + e.toString());
+  }
+}</code></pre>
+
+                <h5>ตัวอย่างการใช้งาน</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// แจ้งเตือนเมื่อมีคนลงทะเบียนใหม่
+function notifyNewRegistration(name, courseName) {
+  var msg = '📋 ลงทะเบียนใหม่!\n';
+  msg += '👤 ชื่อ: ' + name + '\n';
+  msg += '📚 หลักสูตร: ' + courseName + '\n';
+  msg += '⏰ เวลา: ' + new Date().toLocaleString('th-TH');
+  _sendLine(msg);
+}</code></pre>
+
+                <h5>ขั้นตอนตั้งค่า Line Messaging API</h5>
+                <div class="card bg-light mb-3">
+                    <div class="card-body">
+                        <ol class="mb-0">
+                            <li>ไปที่ <a href="https://developers.line.biz" target="_blank">developers.line.biz</a></li>
+                            <li>สร้าง Provider > สร้าง Channel (Messaging API)</li>
+                            <li>คัดลอก Channel Access Token (long-lived)</li>
+                            <li>ใน Basic Settings — คัดลอก Your User ID</li>
+                            <li>ใส่ Token + User ID ในฟังก์ชัน _sendLine()</li>
+                            <li>ใน GAS: เพิ่ม scope "external_request" ใน appsscript.json</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>💡 เคล็ดลับ:</strong> เก็บ Token ใน Sheet SETTINGS แทนการ hardcode — ง่ายต่อการเปลี่ยนภายหลัง
+                </div>
+            </section>
+
+            <!-- 9.4 พิมพ์รายงาน PDF -->
+            <section class="mb-5" id="section-9-4">
+                <h3 class="border-start border-4 border-primary ps-3">9.4 พิมพ์รายงาน PDF</h3>
+
+                <p>สร้างหน้าพิมพ์รายงานที่ออกแบบสำหรับกระดาษ A4:</p>
+
+                <h5>window.print() + CSS @media print</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">&lt;!-- ปุ่มพิมพ์ --&gt;
+&lt;button onclick="window.print()" class="btn btn-primary no-print"&gt;
+  🖨️ พิมพ์รายงาน
+&lt;/button&gt;
+
+&lt;!-- CSS สำหรับพิมพ์ --&gt;
+&lt;style&gt;
+@media print {
+  /* ซ่อนส่วนที่ไม่ต้องการพิมพ์ */
+  .no-print, .navbar, footer { display: none !important; }
+  
+  /* ตั้งค่ากระดาษ */
+  @page {
+    size: A4 portrait;
+    margin: 2cm;
+  }
+  
+  /* ปรับ font */
+  body { font-size: 12pt; color: #000; }
+  
+  /* ตาราง */
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #000; padding: 4px 8px; }
+  th { background: #eee !important; -webkit-print-color-adjust: exact; }
+  
+  /* หัวข้อ + หัวตาราง ทุกหน้า */
+  thead { display: table-header-group; }
+  
+  /* ไม่ตัดแถวระหว่างหน้า */
+  tr { page-break-inside: avoid; }
+}
+&lt;/style&gt;</code></pre>
+
+                <h5>ตัวอย่างหน้าพิมพ์รายงาน</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">&lt;div class="print-area"&gt;
+  &lt;!-- หัวรายงาน --&gt;
+  &lt;div class="text-center mb-4"&gt;
+    &lt;h3&gt;รายชื่อผู้ลงทะเบียนฝึกอบรม&lt;/h3&gt;
+    &lt;p&gt;หลักสูตร: Kiro AI สร้างระบบราชการ&lt;/p&gt;
+    &lt;p&gt;วันที่พิมพ์: &lt;span id="printDate"&gt;&lt;/span&gt;&lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- ตารางข้อมูล --&gt;
+  &lt;table class="table table-bordered"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;ลำดับ&lt;/th&gt;&lt;th&gt;ชื่อ-สกุล&lt;/th&gt;
+        &lt;th&gt;หน่วยงาน&lt;/th&gt;&lt;th&gt;เบอร์โทร&lt;/th&gt;
+        &lt;th&gt;สถานะ&lt;/th&gt;&lt;th&gt;ลายเซ็น&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody id="printTableBody"&gt;&lt;/tbody&gt;
+  &lt;/table&gt;
+  
+  &lt;!-- ลงชื่อ --&gt;
+  &lt;div class="row mt-5"&gt;
+    &lt;div class="col-6 text-center"&gt;
+      &lt;p&gt;ลงชื่อ ................................&lt;/p&gt;
+      &lt;p&gt;(ผู้จัดทำ)&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="col-6 text-center"&gt;
+      &lt;p&gt;ลงชื่อ ................................&lt;/p&gt;
+      &lt;p&gt;(ผู้อนุมัติ)&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                <div class="alert alert-success">
+                    <strong>💡 เคล็ดลับ:</strong> สร้างหน้าพิมพ์แยกจากหน้าหลัก เช่น <code>?page=print&course=C001</code> — ออกแบบ layout สำหรับกระดาษโดยเฉพาะ
+                </div>
+            </section>
+
+            <!-- 9.5 ระบบ Login -->
+            <section class="mb-5" id="section-9-5">
+                <h3 class="border-start border-4 border-primary ps-3">9.5 ระบบ Login + สิทธิ์ผู้ใช้</h3>
+
+                <h5>Simple Login ด้วย PropertiesService</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// Code.gs — ระบบ Login
+function login(username, password) {
+  try {
+    var ss = SpreadsheetApp.openById(SHEET_ID);
+    var sheet = ss.getSheetByName('USERS');
+    var data = sheet.getDataRange().getValues();
+    
+    for (var i = 1; i &lt; data.length; i++) {
+      if (data[i][1] === username) {
+        // ตรวจรหัสผ่าน (hash)
+        var hash = Utilities.computeDigest(
+          Utilities.DigestAlgorithm.SHA_256,
+          password + data[i][4]  // password + salt
+        );
+        var hashStr = hash.map(function(b) {
+          return ('0' + (b &amp; 0xFF).toString(16)).slice(-2);
+        }).join('');
+        
+        if (hashStr === data[i][2]) {
+          return {
+            success: true,
+            data: {
+              user_id: data[i][0],
+              username: data[i][1],
+              role: data[i][3]  // admin / user
+            }
+          };
+        }
+      }
+    }
+    return { success: false, error: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง' };
+  } catch (err) {
+    return { success: false, error: err.toString() };
+  }
+}</code></pre>
+
+                <h5>localStorage สำหรับ Session</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// Frontend — เก็บ session ใน localStorage
+function handleLogin() {
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
+  
+  google.script.run
+    .withSuccessHandler(function(result) {
+      if (result.success) {
+        // เก็บข้อมูล login
+        localStorage.setItem('user', JSON.stringify(result.data));
+        localStorage.setItem('loginTime', new Date().getTime());
+        showAdminPanel();
+      } else {
+        alert(result.error);
+      }
+    })
+    .login(username, password);
+}
+
+// ตรวจสอบ login เมื่อเปิดหน้า
+function checkLogin() {
+  var user = localStorage.getItem('user');
+  if (!user) {
+    showLoginForm();
+    return;
+  }
+  // ตรวจ session timeout (8 ชม.)
+  var loginTime = localStorage.getItem('loginTime');
+  if (new Date().getTime() - loginTime > 8 * 60 * 60 * 1000) {
+    localStorage.clear();
+    showLoginForm();
+    return;
+  }
+  showAdminPanel();
+}
+
+// Logout
+function logout() {
+  localStorage.clear();
+  showLoginForm();
+}</code></pre>
+
+                <h5>Admin vs User Access Control</h5>
+                <div class="card bg-light mb-3">
+                    <div class="card-body">
+<pre class="mb-0"><code>// ตรวจสิทธิ์ก่อนทำงาน
+function checkRole(requiredRole) {
+  var user = JSON.parse(localStorage.getItem('user') || '{}');
+  if (user.role !== requiredRole &amp;&amp; user.role !== 'admin') {
+    alert('คุณไม่มีสิทธิ์เข้าถึงส่วนนี้');
+    return false;
+  }
+  return true;
+}
+
+// ซ่อน/แสดงเมนูตามสิทธิ์
+function renderMenu() {
+  var user = JSON.parse(localStorage.getItem('user') || '{}');
+  if (user.role === 'admin') {
+    document.getElementById('adminMenu').style.display = 'block';
+  } else {
+    document.getElementById('adminMenu').style.display = 'none';
+  }
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="alert alert-danger">
+                    <strong>🔒 ข้อควรระวัง:</strong> localStorage ไม่ปลอดภัย 100% — ใช้สำหรับระบบภายในเท่านั้น สำหรับระบบที่ต้องการความปลอดภัยสูง ควรใช้ Google OAuth
+                </div>
+            </section>
+
+            <!-- 9.6 Input Validation -->
+            <section class="mb-5" id="section-9-6">
+                <h3 class="border-start border-4 border-primary ps-3">9.6 Input Validation + ความปลอดภัย</h3>
+
+                <h5>Client-side Validation (HTML5 + JavaScript)</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">&lt;!-- HTML5 Validation --&gt;
+&lt;input type="text" id="phone" required 
+  pattern="[0-9]{10}" 
+  title="กรุณากรอกเบอร์โทร 10 หลัก"&gt;
+
+&lt;input type="email" id="email" required&gt;
+
+&lt;input type="text" id="idCard" required 
+  pattern="[0-9]{13}" 
+  title="กรุณากรอกเลขบัตรประชาชน 13 หลัก"&gt;
+
+&lt;!-- JavaScript Validation --&gt;
+&lt;script&gt;
+function validateForm() {
+  var phone = document.getElementById('phone').value;
+  var idCard = document.getElementById('idCard').value;
+  
+  // ตรวจเบอร์โทร
+  if (!/^0[0-9]{9}$/.test(phone)) {
+    alert('เบอร์โทรไม่ถูกต้อง (ต้องขึ้นต้นด้วย 0 และมี 10 หลัก)');
+    return false;
+  }
+  
+  // ตรวจเลขบัตร (Luhn Algorithm)
+  if (!validateIdCard(idCard)) {
+    alert('เลขบัตรประชาชนไม่ถูกต้อง');
+    return false;
+  }
+  
+  return true;
+}
+
+function validateIdCard(id) {
+  if (id.length !== 13) return false;
+  var sum = 0;
+  for (var i = 0; i &lt; 12; i++) {
+    sum += parseInt(id[i]) * (13 - i);
+  }
+  var check = (11 - (sum % 11)) % 10;
+  return check === parseInt(id[12]);
+}
+&lt;/script&gt;</code></pre>
+
+                <h5>Server-side Validation (GAS)</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// Code.gs — ตรวจสอบข้อมูลที่ Backend
+function validateInput(data) {
+  var errors = [];
+  
+  // ตรวจค่าว่าง
+  if (!data.first_name || !data.first_name.trim()) {
+    errors.push('กรุณากรอกชื่อ');
+  }
+  if (!data.last_name || !data.last_name.trim()) {
+    errors.push('กรุณากรอกนามสกุล');
+  }
+  
+  // ตรวจความยาว
+  if (data.first_name && data.first_name.length > 100) {
+    errors.push('ชื่อยาวเกินไป');
+  }
+  
+  // ตรวจ format
+  if (data.phone && !/^0[0-9]{9}$/.test(data.phone)) {
+    errors.push('เบอร์โทรไม่ถูกต้อง');
+  }
+  
+  // ตรวจ XSS
+  var dangerousPattern = /[&lt;&gt;"'&amp;]/;
+  if (dangerousPattern.test(data.first_name) || dangerousPattern.test(data.last_name)) {
+    errors.push('ข้อมูลมีอักขระไม่อนุญาต');
+  }
+  
+  return errors;
+}</code></pre>
+
+                <h5>XSS Prevention</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// ฟังก์ชัน Escape HTML (ป้องกัน XSS)
+function escapeHtml(text) {
+  if (!text) return '';
+  return String(text)
+    .replace(/&amp;/g, '&amp;amp;')
+    .replace(/&lt;/g, '&amp;lt;')
+    .replace(/&gt;/g, '&amp;gt;')
+    .replace(/"/g, '&amp;quot;')
+    .replace(/'/g, '&amp;#39;');
+}
+
+// ใช้ทุกครั้งที่แสดงข้อมูลจากผู้ใช้
+var html = '&lt;td&gt;' + escapeHtml(row.first_name) + '&lt;/td&gt;';</code></pre>
+
+                <h5>Rate Limiting (จำกัดจำนวนครั้ง)</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// Code.gs — จำกัด 5 ครั้ง/5 นาที
+function checkRateLimit(action, limit, windowMinutes) {
+  var cache = CacheService.getScriptCache();
+  var key = 'rate_' + action + '_' + Session.getActiveUser().getEmail();
+  var count = parseInt(cache.get(key) || '0');
+  
+  if (count >= limit) {
+    return false;  // เกินจำนวนที่กำหนด
+  }
+  
+  cache.put(key, String(count + 1), windowMinutes * 60);
+  return true;  // อนุญาต
+}
+
+// ใช้ใน registerTrainee()
+function registerTrainee(data) {
+  if (!checkRateLimit('register', 5, 5)) {
+    return { success: false, error: 'ส่งข้อมูลบ่อยเกินไป กรุณารอ 5 นาที' };
+  }
+  // ... ดำเนินการต่อ
+}</code></pre>
+
+                <div class="card border-primary mt-3">
+                    <div class="card-header bg-primary text-white">📋 Checklist ความปลอดภัย</div>
+                    <div class="card-body">
+                        <div class="form-check"><input class="form-check-input" type="checkbox" disabled><label class="form-check-label"> Client-side validation (UX)</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" disabled><label class="form-check-label"> Server-side validation (Security)</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" disabled><label class="form-check-label"> Escape HTML output (XSS)</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" disabled><label class="form-check-label"> Rate limiting</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" disabled><label class="form-check-label"> Input length limits</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" disabled><label class="form-check-label"> Error handling (try-catch)</label></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+                <a href="chapter08.html" class="btn btn-outline-primary btn-lg">← บทที่ 8</a>
+                <a href="chapter10.html" class="btn btn-primary btn-lg">บทที่ 10 →</a>
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p class="mb-1">คู่มือฝึกอบรม "Kiro AI สร้างระบบราชการด้วยปัญญาประดิษฐ์"</p>
+    <p class="mb-0 text-muted small">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

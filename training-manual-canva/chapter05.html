@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 5: สร้างโบชัวร์ — Canva AI ออกแบบมืออาชีพ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📖 Canva AI ออกแบบมืออาชีพ</span>
+            <span class="nav-text text-light">บทที่ 5: สร้างโบชัวร์</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+            <!-- Chapter Header -->
+            <div class="chapter-header text-center">
+                <h1>บทที่ 5</h1>
+                <h2 class="text-primary">สร้างโบชัวร์ (Brochure)</h2>
+                <p class="lead">ออกแบบแผ่นพับสำหรับแจกในกิจกรรมและงานประชาสัมพันธ์</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ol class="mb-0">
+                    <li>เข้าใจประเภทของโบชัวร์ (Tri-fold, Bi-fold)</li>
+                    <li>สามารถจัดเนื้อหาใน 3 ส่วนของแผ่นพับได้</li>
+                    <li>เลือกภาพประกอบที่เหมาะสม</li>
+                    <li>Export เป็น PDF สำหรับส่งพิมพ์ได้</li>
+                </ol>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">📘 5.1 ประเภทของโบชัวร์</h3>
+            <section>
+                <p>โบชัวร์ (Brochure) หรือแผ่นพับ เป็นสื่อพิมพ์ที่ใช้แจกในงานอีเวนต์ ใส่ในซองจดหมาย หรือวางที่เคาน์เตอร์ มีหลายรูปแบบ:</p>
+
+                <div class="info-card">
+                    <h5>📄 ประเภทโบชัวร์</h5>
+                    <table class="table table-bordered mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ประเภท</th>
+                                <th>ลักษณะ</th>
+                                <th>จำนวนหน้า</th>
+                                <th>เหมาะกับ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Tri-fold (พับ 3)</strong></td>
+                                <td>กระดาษ A4 พับเป็น 3 ตอน</td>
+                                <td>6 หน้า (หน้า-หลัง)</td>
+                                <td>แนะนำบริการ องค์กร</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bi-fold (พับ 2)</strong></td>
+                                <td>กระดาษ A4 พับครึ่ง</td>
+                                <td>4 หน้า (หน้า-หลัง)</td>
+                                <td>เมนู โปรแกรมงาน</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Z-fold</strong></td>
+                                <td>พับเป็นรูปตัว Z</td>
+                                <td>6 หน้า</td>
+                                <td>แผนที่ ไกด์ท่องเที่ยว</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>สำหรับการอบรมนี้ เราจะเน้นที่ <strong>Tri-fold</strong> (พับ 3 ตอน) เพราะนิยมใช้มากที่สุดในองค์กร</p>
+            </section>
+
+            <h3 class="section-header">📘 5.2 โครงสร้างเนื้อหา Tri-fold</h3>
+            <section>
+                <p>โบชัวร์ Tri-fold มี 6 หน้า (ด้านนอก 3 หน้า + ด้านใน 3 หน้า):</p>
+
+                <div class="info-card">
+                    <h5>📖 ด้านนอก (พับแล้วเห็น)</h5>
+                    <table class="table table-bordered mb-0">
+                        <tr>
+                            <td class="text-center" style="width:33%"><strong>หน้าหลัง</strong><br>ที่อยู่ ติดต่อ<br>QR Code</td>
+                            <td class="text-center" style="width:33%"><strong>หน้ากลาง (หลัง)</strong><br>ข้อมูลเพิ่มเติม<br>แผนที่</td>
+                            <td class="text-center" style="width:33%"><strong>หน้าปก</strong><br>ชื่อองค์กร โลโก้<br>สโลแกน</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="info-card">
+                    <h5>📖 ด้านใน (เปิดอ่าน)</h5>
+                    <table class="table table-bordered mb-0">
+                        <tr>
+                            <td class="text-center" style="width:33%"><strong>ส่วนที่ 1</strong><br>แนะนำองค์กร<br>วิสัยทัศน์ พันธกิจ</td>
+                            <td class="text-center" style="width:33%"><strong>ส่วนที่ 2</strong><br>บริการ/กิจกรรม<br>ผลงานเด่น</td>
+                            <td class="text-center" style="width:33%"><strong>ส่วนที่ 3</strong><br>วิธีสมัคร/เข้าร่วม<br>สิทธิประโยชน์</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 5.3 วิธีสร้างโบชัวร์ใน Canva</h3>
+            <section>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>ค้นหา "Brochure" หรือ "Tri-fold brochure"</strong>
+                    <p class="mb-0 mt-2">Canva มี Template โบชัวร์มากมายให้เลือก</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>เลือก Template ที่ตรงกับเนื้อหา</strong>
+                    <p class="mb-0 mt-2">แนะนำ: กรอง "Charity", "Non-profit", "Community"</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>Template จะมี 2 หน้า (ด้านนอก + ด้านใน)</strong>
+                    <p class="mb-0 mt-2">หน้า 1 = ด้านนอกที่พับแล้วเห็น | หน้า 2 = ด้านในเมื่อกางออก</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>แก้ไขเนื้อหาทีละส่วน</strong>
+                    <p class="mb-0 mt-2">ค่อยๆ แก้ไขทีละหน้า ให้เนื้อหาครบตามโครงสร้าง</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>ใส่ภาพประกอบ</strong>
+                    <p class="mb-0 mt-2">ใช้รูปจาก Photos, อัปโหลดเอง, หรือสร้างจาก Magic Media</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">6</span>
+                    <strong>ตรวจสอบความถูกต้อง</strong>
+                    <p class="mb-0 mt-2">อ่านทวน ตรวจตัวสะกด ดูว่าเนื้อหาไม่ล้นกรอบ</p>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 5.4 เนื้อหาตัวอย่าง — โบชัวร์องค์กรเพื่อคนพิการ</h3>
+            <section>
+                <div class="info-card">
+                    <h5>📋 ตัวอย่างเนื้อหาสำหรับแต่ละส่วน</h5>
+                    
+                    <h6 class="mt-3">🔹 หน้าปก:</h6>
+                    <ul>
+                        <li>โลโก้องค์กร</li>
+                        <li>ชื่อ: "[ชื่อองค์กร]"</li>
+                        <li>สโลแกน: "ร่วมสร้างสังคมเท่าเทียม เพื่อคนพิการทุกคน"</li>
+                    </ul>
+
+                    <h6>🔹 ด้านใน ส่วนที่ 1 — เกี่ยวกับเรา:</h6>
+                    <ul>
+                        <li>ประวัติองค์กรสั้นๆ</li>
+                        <li>วิสัยทัศน์ / พันธกิจ</li>
+                        <li>จำนวนผู้รับบริการ</li>
+                    </ul>
+
+                    <h6>🔹 ด้านใน ส่วนที่ 2 — บริการ:</h6>
+                    <ul>
+                        <li>บริการฝึกอาชีพ</li>
+                        <li>บริการให้คำปรึกษา</li>
+                        <li>บริการช่วยเหลือด้านกฎหมาย</li>
+                        <li>กิจกรรมพัฒนาศักยภาพ</li>
+                    </ul>
+
+                    <h6>🔹 ด้านใน ส่วนที่ 3 — วิธีเข้าร่วม:</h6>
+                    <ul>
+                        <li>คุณสมบัติผู้เข้าร่วม</li>
+                        <li>เอกสารที่ต้องใช้</li>
+                        <li>ขั้นตอนสมัคร</li>
+                        <li>สิทธิประโยชน์ที่จะได้รับ</li>
+                    </ul>
+
+                    <h6>🔹 หน้าหลัง — ติดต่อ:</h6>
+                    <ul>
+                        <li>ที่อยู่สำนักงาน</li>
+                        <li>เบอร์โทร / Email / Line</li>
+                        <li>QR Code</li>
+                        <li>เวลาทำการ</li>
+                    </ul>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 5.5 Export สำหรับพิมพ์</h3>
+            <section>
+                <div class="info-card">
+                    <h5>🖨️ การ Export โบชัวร์สำหรับส่งโรงพิมพ์</h5>
+                    <ol>
+                        <li>คลิก <strong>แชร์ → ดาวน์โหลด</strong></li>
+                        <li>เลือก <strong>PDF Print</strong></li>
+                        <li>เปิด <strong>Crop marks and bleed</strong> (เครื่องหมายตัด)</li>
+                        <li>เลือก <strong>Flatten PDF</strong> (รวมเป็นภาพเดียว)</li>
+                        <li>คลิก <strong>ดาวน์โหลด</strong></li>
+                    </ol>
+                </div>
+
+                <div class="alert alert-warning">
+                    <h5>⚠️ ข้อควรระวังเมื่อส่งพิมพ์</h5>
+                    <ul class="mb-0">
+                        <li>ตรวจสอบว่าข้อความไม่อยู่ใกล้ขอบกระดาษเกินไป (เผื่อพื้นที่ตัด)</li>
+                        <li>ใช้ภาพความละเอียดสูง (ไม่แตก)</li>
+                        <li>ตรวจสอบการสะกดคำก่อนส่งพิมพ์</li>
+                        <li>ลองพิมพ์ตัวอย่าง 1 แผ่นก่อน แล้วพับดูว่าเนื้อหาถูกตำแหน่ง</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Lab -->
+            <h3 class="section-header">🔬 Lab: ปฏิบัติ</h3>
+            <div class="exercise-box">
+                <h5>🏋️ แบบฝึกหัดที่ 5.1 — สร้างโบชัวร์แนะนำองค์กร</h5>
+                <p><strong>เวลา:</strong> 45 นาที</p>
+                <p><strong>โจทย์:</strong> สร้างโบชัวร์ Tri-fold แนะนำองค์กรเพื่อคนพิการ</p>
+                <ol>
+                    <li>ค้นหา Template "Tri-fold brochure" เลือกแบบที่ชอบ</li>
+                    <li>แก้ไขเนื้อหาตามโครงสร้าง:
+                        <ul>
+                            <li><strong>หน้าปก:</strong> ชื่อองค์กร + สโลแกน + โลโก้</li>
+                            <li><strong>ด้านใน:</strong> เกี่ยวกับเรา | บริการ | วิธีเข้าร่วม</li>
+                            <li><strong>หน้าหลัง:</strong> ที่อยู่ เบอร์โทร Email</li>
+                        </ul>
+                    </li>
+                    <li>ใส่ภาพประกอบอย่างน้อย 3 รูป</li>
+                    <li>ใช้ฟอนต์ไทย (Sarabun หรือ Prompt)</li>
+                    <li>Export เป็น PDF Print</li>
+                </ol>
+                <div class="prompt-example">
+                    <strong>💡 Prompt สำหรับสร้างภาพ:</strong> "Diverse group of people including wheelchair users in a modern community center, friendly atmosphere, bright colors"
+                </div>
+            </div>
+
+            <div class="exercise-box">
+                <h5>🏋️ แบบฝึกหัดที่ 5.2 — โบชัวร์กิจกรรมอบรม</h5>
+                <p><strong>เวลา:</strong> 30 นาที</p>
+                <p><strong>โจทย์:</strong> สร้างโบชัวร์ Bi-fold สำหรับกิจกรรมอบรม</p>
+                <ol>
+                    <li>ค้นหา Template "Bi-fold brochure"</li>
+                    <li>เนื้อหา:
+                        <ul>
+                            <li><strong>หน้า 1:</strong> ชื่อหลักสูตร "AI เพื่อคนพิการ"</li>
+                            <li><strong>หน้า 2:</strong> เนื้อหาหลักสูตร (10 หัวข้อ)</li>
+                            <li><strong>หน้า 3:</strong> ตารางเวลา วิทยากร</li>
+                            <li><strong>หน้า 4:</strong> สมัคร ติดต่อ QR</li>
+                        </ul>
+                    </li>
+                    <li>ใช้สีองค์กร</li>
+                    <li>Export เป็น PDF</li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success mt-4">
+                <h5>💡 Tips & Tricks บทนี้</h5>
+                <ul class="mb-0">
+                    <li>โบชัวร์ Tri-fold มี <strong>2 หน้า</strong> ใน Canva (ด้านนอก + ด้านใน)</li>
+                    <li><strong>หน้าปก</strong> คือช่องขวาสุดของหน้า 1 (ด้านนอก)</li>
+                    <li>ข้อความขนาด <strong>10-12pt</strong> สำหรับเนื้อหา | <strong>16-20pt</strong> สำหรับหัวข้อ</li>
+                    <li>ทดลอง <strong>พิมพ์แล้วพับ</strong> ก่อนส่งพิมพ์จำนวนมาก</li>
+                    <li>ใช้ <strong>QR Code</strong> แทนการพิมพ์ URL ยาวๆ (สร้างได้ใน Canva: Apps → QR Code)</li>
+                    <li>เนื้อหาต้อง <strong>กระชับ</strong> — โบชัวร์ไม่ใช่หนังสือ ใส่เฉพาะประเด็นสำคัญ</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card">
+                <h5>📝 สรุปบทที่ 5</h5>
+                <ul class="mb-0">
+                    <li>โบชัวร์ Tri-fold พับ 3 ตอน มี 6 หน้า เหมาะแนะนำองค์กร/บริการ</li>
+                    <li>โบชัวร์ Bi-fold พับครึ่ง มี 4 หน้า เหมาะกิจกรรม/โปรแกรม</li>
+                    <li>จัดเนื้อหาเป็นส่วนๆ: แนะนำ → บริการ → วิธีเข้าร่วม → ติดต่อ</li>
+                    <li>Export PDF Print + เปิด Crop marks สำหรับส่งโรงพิมพ์</li>
+                    <li>ทดลองพิมพ์แล้วพับดูก่อนสั่งพิมพ์จำนวนมาก</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-5 mb-4">
+                <a href="chapter04.html" class="btn btn-outline-secondary">← บทที่ 4</a>
+                <a href="chapter06.html" class="btn btn-primary">บทที่ 6 →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

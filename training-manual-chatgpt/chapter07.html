@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 7: สร้างสื่อนำเสนอ & DALL·E — คู่มือฝึกอบรม ChatGPT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark sticky-top" style="background:#10a37f;">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ ChatGPT</a>
+        <span class="text-white nav-text">บทที่ 7 — วันที่ 4 เช้า</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+
+    <h1 class="mb-2">บทที่ 7: สร้างสื่อนำเสนอ & DALL·E</h1>
+    <p class="text-muted mb-4">วันที่ 4 ภาคเช้า | ระยะเวลา 3 ชั่วโมง | ระดับ: กลาง-สูง</p>
+
+    <div class="alert alert-info">
+        <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+        <ul class="mb-0">
+            <li>สร้างโครงสร้าง Presentation ด้วย ChatGPT ได้</li>
+            <li>ใช้ DALL·E สร้างภาพประกอบงานนำเสนอและสื่อประชาสัมพันธ์ได้</li>
+            <li>ทำ Infographic และ Diagram ด้วย AI ได้</li>
+            <li>สร้าง Social Media Content อย่างมืออาชีพได้</li>
+        </ul>
+    </div>
+
+    <!-- Section 7.1 -->
+    <div class="section-header">
+        <h2>7.1 ร่างโครงสร้าง Presentation</h2>
+        <p>ให้ ChatGPT ช่วยสร้าง Outline สไลด์นำเสนอที่มีโครงสร้างชัดเจน</p>
+    </div>
+
+    <h3>เทคนิคการสั่ง ChatGPT สร้างสไลด์</h3>
+    <p>การสร้างงานนำเสนอที่ดี ต้องระบุข้อมูลสำคัญ 3 อย่างให้ ChatGPT:</p>
+    <ul>
+        <li><strong>จำนวนสไลด์</strong> — กำหนดจำนวนที่ต้องการ (เช่น 10 แผ่น, 15 แผ่น)</li>
+        <li><strong>กลุ่มเป้าหมาย</strong> — คนฟังเป็นใคร (ผู้บริหาร, เพื่อนร่วมงาน, ประชาชน)</li>
+        <li><strong>เวลานำเสนอ</strong> — มีเวลากี่นาที (จะได้ปรับความละเอียดของเนื้อหา)</li>
+    </ul>
+
+    <div class="prompt-example">
+        <strong>Prompt สร้างสไลด์ 10 แผ่น</strong>
+        <p class="mt-2 mb-1">คุณเป็นนักออกแบบ Presentation มืออาชีพ ช่วยสร้างโครงร่างสไลด์ 10 แผ่น หัวข้อ "การนำ AI มาใช้ในงานราชการ" โดย:</p>
+        <p class="mb-1">- กลุ่มเป้าหมาย: ผู้บริหารระดับ C ของหน่วยงานรัฐ</p>
+        <p class="mb-1">- เวลานำเสนอ: 20 นาที</p>
+        <p class="mb-1">- สไตล์: ทันสมัย ข้อมูลกระชับ มีตัวเลขประกอบ</p>
+        <p class="mb-1">แต่ละสไลด์ระบุ:</p>
+        <p class="mb-1">1. หัวข้อสไลด์</p>
+        <p class="mb-1">2. Bullet points หลัก (3-5 ข้อ)</p>
+        <p class="mb-1">3. แนะนำภาพประกอบ/กราฟ</p>
+        <p class="mb-0">4. Speaker notes สั้นๆ (สิ่งที่ควรพูดเพิ่ม)</p>
+    </div>
+
+    <div class="info-card">
+        <h5>📌 เทคนิคเพิ่มเติม</h5>
+        <ul class="mb-0">
+            <li>บอก ChatGPT ว่าให้ใช้ "กฎ 6×6" — ไม่เกิน 6 bullet ต่อสไลด์ แต่ละ bullet ไม่เกิน 6 คำ</li>
+            <li>ขอให้สร้าง "สไลด์แรก" ที่ดึงดูดความสนใจ (hook) และ "สไลด์สุดท้าย" ที่มี Call-to-Action</li>
+            <li>สั่งเพิ่ม: "ทุกสไลด์ให้แนะนำ emoji หรือ icon ที่เหมาะกับเนื้อหา"</li>
+        </ul>
+    </div>
+
+    <!-- Section 7.2 -->
+    <div class="section-header">
+        <h2>7.2 สร้างรูปภาพด้วย DALL·E 3</h2>
+        <p>ใช้ AI สร้างภาพคุณภาพสูงจากข้อความ สำหรับงานนำเสนอและสื่อประชาสัมพันธ์</p>
+    </div>
+
+    <h3>DALL·E คืออะไร?</h3>
+    <p><strong>DALL·E 3</strong> คือ AI สร้างภาพจากข้อความ (Text-to-Image) ที่อยู่ใน ChatGPT Plus/Team/Enterprise สามารถสร้างภาพได้หลากหลายสไตล์จาก Prompt ที่เราพิมพ์เข้าไป — ไม่ต้องมีทักษะออกแบบกราฟิก ก็สร้างภาพสวยๆ ได้</p>
+
+    <h3>เทคนิค Prompt สร้างภาพ</h3>
+    <p>Prompt สร้างภาพที่ดีควรมี 4 องค์ประกอบ:</p>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>องค์ประกอบ</th>
+                    <th>คำอธิบาย</th>
+                    <th>ตัวอย่าง</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Style (สไตล์)</strong></td>
+                    <td>รูปแบบศิลปะที่ต้องการ</td>
+                    <td>realistic photo, flat design, watercolor</td>
+                </tr>
+                <tr>
+                    <td><strong>Subject (ตัวแบบ)</strong></td>
+                    <td>สิ่งที่ต้องการให้ปรากฏในภาพ</td>
+                    <td>ข้าราชการไทยกำลังใช้คอมพิวเตอร์</td>
+                </tr>
+                <tr>
+                    <td><strong>Details (รายละเอียด)</strong></td>
+                    <td>รายละเอียดเพิ่มเติม สี พื้นหลัง</td>
+                    <td>สำนักงานทันสมัย, หน้าจอแสดง AI</td>
+                </tr>
+                <tr>
+                    <td><strong>Mood (อารมณ์)</strong></td>
+                    <td>บรรยากาศ/อารมณ์ของภาพ</td>
+                    <td>สดใส, มืออาชีพ, เป็นมิตร</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 1 — โปสเตอร์ฝึกอบรม</strong>
+        <p class="mt-2 mb-0">สร้างภาพโปสเตอร์สำหรับงานฝึกอบรม "AI สำหรับข้าราชการ" สไตล์ flat design สีเขียว-น้ำเงิน มีไอคอนหุ่นยนต์ AI ยิ้มเป็นมิตร กำลังสอนคนทำงาน มีตึกราชการเป็นพื้นหลัง บรรยากาศสดใส ทันสมัย ขนาด 16:9</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 2 — โลโก้กิจกรรม</strong>
+        <p class="mt-2 mb-0">สร้างโลโก้สำหรับโครงการ "Digital Skills for Government" สไตล์ minimal, ใช้สีน้ำเงินเข้มและทอง, มีสัญลักษณ์ gear + brain + circuit board รวมกัน, พื้นหลังขาว, เหมาะสำหรับใช้บนเอกสารราชการ</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 3 — Infographic ประกอบงาน</strong>
+        <p class="mt-2 mb-0">สร้างภาพ Infographic แสดง "5 ขั้นตอนการใช้ AI ในงานสำนักงาน" สไตล์ isometric, สีพาสเทล, แต่ละขั้นตอนมีไอคอนแตกต่างกัน (ค้นหา → วิเคราะห์ → เขียน → ตรวจสอบ → นำเสนอ), จัดเรียงจากซ้ายไปขวา</p>
+    </div>
+
+    <h3>ตารางสไตล์ภาพที่ใช้บ่อย</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>สไตล์</th>
+                    <th>ลักษณะ</th>
+                    <th>เหมาะกับ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Realistic</strong></td>
+                    <td>ภาพสมจริงเหมือนถ่ายจากกล้อง</td>
+                    <td>โปสเตอร์, แบนเนอร์, ภาพหน้าปก</td>
+                </tr>
+                <tr>
+                    <td><strong>Cartoon</strong></td>
+                    <td>ภาพวาดการ์ตูนน่ารัก</td>
+                    <td>สื่อการสอน, คู่มือ, Social Media</td>
+                </tr>
+                <tr>
+                    <td><strong>Watercolor</strong></td>
+                    <td>ภาพสีน้ำ นุ่มนวล ศิลปะ</td>
+                    <td>การ์ดเชิญ, ปกหนังสือ, งานศิลปะ</td>
+                </tr>
+                <tr>
+                    <td><strong>Flat Design</strong></td>
+                    <td>ภาพเรียบง่าย สี Solid ไม่มีเงา</td>
+                    <td>Infographic, ไอคอน, สไลด์</td>
+                </tr>
+                <tr>
+                    <td><strong>Isometric</strong></td>
+                    <td>ภาพ 3 มิติเอียง 30° สไตล์เกม</td>
+                    <td>Diagram, Infographic, แผนผังระบบ</td>
+                </tr>
+                <tr>
+                    <td><strong>3D Render</strong></td>
+                    <td>ภาพ 3 มิติสมจริง มีแสงเงา</td>
+                    <td>ผลิตภัณฑ์, Mockup, ภาพโปรโมท</td>
+                </tr>
+                <tr>
+                    <td><strong>Minimal</strong></td>
+                    <td>ภาพเรียบง่าย น้อยแต่มาก</td>
+                    <td>โลโก้, ไอคอน, แบรนด์</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Section 7.3 -->
+    <div class="section-header">
+        <h2>7.3 ทำ Infographic & Diagram</h2>
+        <p>ใช้ ChatGPT สร้าง Mermaid Diagram Code และใช้ร่วมกับ Canva</p>
+    </div>
+
+    <h3>Mermaid Diagram — สร้างแผนภาพด้วยโค้ด</h3>
+    <p><strong>Mermaid</strong> คือภาษาสร้างแผนภาพจากข้อความ ที่ ChatGPT สามารถสร้างให้ได้ แล้วนำไป render เป็นภาพสวยๆ ผ่านเว็บ <a href="https://mermaid.live" target="_blank">mermaid.live</a> หรือนำไปใช้ใน Notion, GitHub, VS Code ได้ทันที</p>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 1 — Flowchart ขั้นตอนงาน</strong>
+        <p class="mt-2 mb-1">สร้าง Mermaid flowchart แสดงขั้นตอนการขออนุมัติเดินทางไปราชการ ตั้งแต่เขียนบันทึก → หัวหน้างานอนุมัติ → ฝ่ายการเงินตรวจสอบ → ผู้บริหารอนุมัติ → เบิกจ่าย</p>
+        <p class="mb-0">ให้มีจุดตัดสินใจ (diamond) ที่ "อนุมัติหรือไม่" ถ้าไม่อนุมัติให้กลับไปแก้ไข</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 2 — Organization Chart</strong>
+        <p class="mt-2 mb-1">สร้าง Mermaid diagram แสดงโครงสร้างองค์กรของสำนักงานพัฒนาฝีมือแรงงานสุรินทร์ ประกอบด้วย:</p>
+        <p class="mb-1">- ผู้อำนวยการ (บนสุด)</p>
+        <p class="mb-1">- ฝ่ายแผนงานฯ, ฝ่ายพัฒนาฝีมือแรงงาน, ฝ่ายบริหารทั่วไป</p>
+        <p class="mb-0">- แต่ละฝ่ายมีงานย่อย 2-3 งาน</p>
+    </div>
+
+    <h3>ใช้ร่วมกับ Canva</h3>
+    <p>นอกจาก Mermaid แล้ว ยังสามารถใช้ ChatGPT ช่วยคิดโครงสร้าง Infographic แล้วนำไปสร้างจริงใน <strong>Canva</strong> ได้:</p>
+    <ul>
+        <li>สั่งให้ ChatGPT ออกแบบ Layout (จำนวนส่วน, ลำดับข้อมูล, สีที่แนะนำ)</li>
+        <li>นำ Outline ไปเลือก Template ใน Canva ที่ใกล้เคียง</li>
+        <li>ใส่ข้อมูลตาม Outline ที่ ChatGPT สร้างไว้</li>
+    </ul>
+
+    <!-- Section 7.4 -->
+    <div class="section-header">
+        <h2>7.4 Social Media Content</h2>
+        <p>เขียน Caption, วางแผน Content Calendar สำหรับ Facebook, Line, Instagram</p>
+    </div>
+
+    <h3>เขียน Caption สำหรับแต่ละแพลตฟอร์ม</h3>
+    <p>แต่ละแพลตฟอร์มมีสไตล์การเขียนต่างกัน:</p>
+    <ul>
+        <li><strong>Facebook</strong> — เนื้อหาได้ยาว ใส่ emoji ได้เยอะ มี CTA (Call-to-Action)</li>
+        <li><strong>Line Official</strong> — กระชับ ชัดเจน มีลิงก์ ส่งตรงถึงกลุ่มเป้าหมาย</li>
+        <li><strong>Instagram</strong> — เน้นภาพ Caption กระชับ ใช้ Hashtag</li>
+    </ul>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 1 — โพสต์ประชาสัมพันธ์ฝึกอบรม</strong>
+        <p class="mt-2 mb-1">ช่วยเขียนโพสต์ Facebook ประชาสัมพันธ์หลักสูตร "การใช้ AI ChatGPT สำหรับข้าราชการ" โดย:</p>
+        <p class="mb-1">- หน่วยงาน: สำนักงานพัฒนาฝีมือแรงงานสุรินทร์</p>
+        <p class="mb-1">- วันที่: 15-18 กรกฎาคม 2569</p>
+        <p class="mb-1">- กลุ่มเป้าหมาย: ข้าราชการ/บุคลากรภาครัฐ จ.สุรินทร์</p>
+        <p class="mb-1">- จำนวน: 40 คน (ฟรี ไม่มีค่าใช้จ่าย)</p>
+        <p class="mb-1">- สิ่งที่จะได้: วุฒิบัตร + ทักษะ AI จริง</p>
+        <p class="mb-1">สไตล์: สนุก เข้าใจง่าย มี emoji ดึงดูด มีลิงก์สมัคร</p>
+        <p class="mb-0">เขียนให้ 3 เวอร์ชัน (สั้น/กลาง/ยาว)</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 2 — Content Plan 1 สัปดาห์</strong>
+        <p class="mt-2 mb-1">ช่วยวาง Content Plan สำหรับ Facebook Page ของสำนักงานพัฒนาฝีมือแรงงานสุรินทร์ ระยะเวลา 1 สัปดาห์ (จันทร์-ศุกร์) โดย:</p>
+        <p class="mb-1">- เป้าหมาย: เพิ่มการรับรู้บริการฝึกอบรมฟรีของหน่วยงาน</p>
+        <p class="mb-1">- โพสต์วันละ 1 โพสต์ เวลา 10:00 น.</p>
+        <p class="mb-1">แต่ละวันระบุ: หัวข้อ, รูปแบบโพสต์ (ภาพ/วิดีโอ/Carousel), Caption สั้นๆ, Hashtag 5 อัน</p>
+        <p class="mb-0">นำเสนอเป็นตาราง Content Calendar</p>
+    </div>
+
+    <!-- Section 7.5 -->
+    <div class="section-header">
+        <h2>7.5 สร้างวิดีโอสั้นด้วย AI</h2>
+        <p>แนะนำเครื่องมือ AI สร้างวิดีโอ และขั้นตอนการทำวิดีโอ AI</p>
+    </div>
+
+    <h3>เครื่องมือ AI สร้างวิดีโอ</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>เครื่องมือ</th>
+                    <th>จุดเด่น</th>
+                    <th>ราคา</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Runway Gen-3</strong></td>
+                    <td>Text-to-Video คุณภาพสูง, แก้ไข/ต่อคลิปได้, ลบพื้นหลัง</td>
+                    <td>ฟรี 125 Credits / เดือน, Pro $12/เดือน</td>
+                </tr>
+                <tr>
+                    <td><strong>Pika</strong></td>
+                    <td>ใช้ง่าย, สร้างจากภาพ+ข้อความ, เพิ่ม Motion ให้ภาพนิ่ง</td>
+                    <td>ฟรี 250 Credits, Pro $8/เดือน</td>
+                </tr>
+                <tr>
+                    <td><strong>CapCut AI</strong></td>
+                    <td>ตัดต่อ + AI อัตโนมัติ, ซับไตเติ้ลอัตโนมัติ, Template เยอะ, ภาษาไทยดี</td>
+                    <td>ฟรี (มีโฆษณา), Pro $7.99/เดือน</td>
+                </tr>
+                <tr>
+                    <td><strong>Sora (OpenAI)</strong></td>
+                    <td>Text-to-Video คุณภาพสูงมาก, สมจริง, ยาวสูงสุด 1 นาที</td>
+                    <td>รวมใน ChatGPT Plus ($20/เดือน)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>ขั้นตอนทำวิดีโอ AI</h3>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 1: วางแผนเนื้อหา</strong> — ใช้ ChatGPT เขียน Script/Storyboard กำหนดว่าวิดีโอจะพูดอะไร แต่ละฉากเป็นอย่างไร ความยาวเท่าไร
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 2: สร้างภาพ/คลิปด้วย AI</strong> — ใช้ DALL·E สร้างภาพประกอบ หรือใช้ Runway/Pika/Sora สร้างคลิปวิดีโอจาก Prompt
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 3: เพิ่มเสียง</strong> — ใช้ AI Text-to-Speech (เช่น ElevenLabs, ChatGPT Voice) พากย์เสียง หรือใส่เพลงประกอบจาก AI Music
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 4: ตัดต่อรวม</strong> — ใช้ CapCut AI หรือ Runway ตัดต่อ ใส่ซับไตเติ้ลอัตโนมัติ ใส่เอฟเฟกต์ แล้ว Export เป็นไฟล์วิดีโอ
+    </div>
+
+    <!-- Section 7.6 -->
+    <div class="section-header">
+        <h2>7.6 ป้ายประชาสัมพันธ์</h2>
+        <p>ใช้ DALL·E สร้างโปสเตอร์ แบนเนอร์ การ์ดเชิญ สำหรับงานราชการ</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt สร้างโปสเตอร์กิจกรรม</strong>
+        <p class="mt-2 mb-0">สร้างภาพโปสเตอร์ประชาสัมพันธ์กิจกรรม "สัปดาห์พัฒนาฝีมือแรงงาน ปี 2569" สไตล์ flat design สีน้ำเงิน-ส้ม, มีภาพคนทำงานหลากหลายอาชีพ (ช่าง, ช่างเชื่อม, พนักงานออฟฟิศ, เชฟ), มีโลโก้กรมพัฒนาฝีมือแรงงาน, ข้อความ "ฝึกฟรี มีวุฒิบัตร", ขนาด A3 แนวตั้ง</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt สร้างแบนเนอร์ Facebook</strong>
+        <p class="mt-2 mb-0">สร้างภาพแบนเนอร์ Facebook Cover สำหรับหน่วยงานราชการ สไตล์ modern gradient สีเขียว-ฟ้า, มีข้อความ "สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ — พัฒนาคน พัฒนางาน พัฒนาชาติ", มีภาพประกอบคนกำลังเรียนรู้ทักษะใหม่, ขนาด 820×312 px</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt สร้างการ์ดเชิญ</strong>
+        <p class="mt-2 mb-0">สร้างภาพการ์ดเชิญงานสัมมนา "ทิศทางตลาดแรงงานยุค AI" สไตล์ elegant, สีทอง-กรมท่า, มีลวดลายไทยประยุกต์เป็นกรอบ, ตรงกลางมีพื้นที่สำหรับใส่ข้อความ (วัน เวลา สถานที่), บรรยากาศทางการแต่ทันสมัย, ขนาดสี่เหลี่ยมจัตุรัส</p>
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 เคล็ดลับใช้ DALL·E อย่างมีประสิทธิภาพ</h5>
+        <ul class="mb-0">
+            <li><strong>ระบุขนาด</strong> — บอก DALL·E ว่าต้องการขนาดเท่าไร (16:9, 1:1, 9:16, A4, A3)</li>
+            <li><strong>ระบุสไตล์ชัดเจน</strong> — ยิ่งบอกละเอียด ผลลัพธ์ยิ่งตรงใจ</li>
+            <li><strong>สร้างหลายเวอร์ชัน</strong> — ขอให้ ChatGPT สร้าง 2-3 แบบ แล้วเลือกที่ชอบ</li>
+            <li><strong>ปรับแก้ได้</strong> — บอก ChatGPT ว่า "เปลี่ยนสี" "เพิ่มองค์ประกอบ" "ลบ..." ได้</li>
+            <li><strong>ข้อจำกัด</strong> — DALL·E ยังสร้างข้อความภาษาไทยในภาพไม่ได้ ให้สร้างภาพก่อน แล้วไปใส่ข้อความเองใน Canva</li>
+        </ul>
+    </div>
+
+    <!-- Exercises -->
+    <div class="exercise-box">
+        <h4>✏️ แบบฝึกหัดบทที่ 7</h4>
+        <ol>
+            <li><strong>สร้างโครงร่างสไลด์นำเสนอ 10 แผ่น</strong>
+                <p>เลือกหัวข้อที่เกี่ยวกับงานของท่าน สั่ง ChatGPT สร้าง Outline สไลด์ 10 แผ่น พร้อม Speaker Notes โดยระบุกลุ่มเป้าหมายและเวลานำเสนอ</p>
+            </li>
+            <li><strong>สร้างภาพด้วย DALL·E 3 จำนวน 3 ภาพ</strong>
+                <p>สร้างภาพ 3 สไตล์ต่างกัน:</p>
+                <ul>
+                    <li>โปสเตอร์ประชาสัมพันธ์กิจกรรม 1 ภาพ</li>
+                    <li>ภาพประกอบสไลด์ 1 ภาพ</li>
+                    <li>ภาพสำหรับ Social Media 1 ภาพ</li>
+                </ul>
+            </li>
+            <li><strong>สร้าง Mermaid Diagram 1 ชิ้น</strong>
+                <p>สั่ง ChatGPT สร้าง Flowchart ขั้นตอนงานที่ท่านรับผิดชอบ แล้วนำโค้ดไปทดสอบที่ <a href="https://mermaid.live" target="_blank">mermaid.live</a></p>
+            </li>
+            <li><strong>เขียน Content Plan 1 สัปดาห์</strong>
+                <p>วาง Content Calendar สำหรับ Facebook Page ของหน่วยงาน 5 วัน พร้อม Caption และ Hashtag โดยสั่ง ChatGPT ให้นำเสนอเป็นตาราง</p>
+            </li>
+        </ol>
+    </div>
+
+    <!-- Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter06.html" class="btn btn-chapter-prev">← บทที่ 6: สร้างรายงานและเอกสารวิชาการ</a>
+        <a href="chapter08.html" class="btn btn-chapter-next">บทที่ 8: เครื่องมือ AI อื่นที่ควรรู้ →</a>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="text-white text-center py-4 mt-5" style="background:#10a37f;">
+    <p>คู่มือฝึกอบรม ChatGPT — เพิ่มประสิทธิภาพการทำงานด้วย AI</p>
+    <p class="opacity-75">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 10: Workshop รวม — สร้างสื่อประชาสัมพันธ์ครบชุด — พื้นฐาน AI ทุกมิติ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 พื้นฐาน AI ทุกมิติ</a>
+        <span class="text-white nav-text">บทที่ 10</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 10</h1>
+            <h2 class="fw-normal text-muted">Workshop รวม — สร้างสื่อประชาสัมพันธ์ครบชุด</h2>
+            <p class="lead">ประยุกต์ใช้ AI ทุกตัวที่เรียนมา สร้างสื่อจริง 3 ชิ้น ภายใน 1 ชั่วโมง</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>สร้างสื่อประชาสัมพันธ์ครบชุดด้วย AI ได้ภายใน 1 ชั่วโมง</li>
+                <li>ประยุกต์ใช้ AI หลายตัวร่วมกันอย่างมีประสิทธิภาพ</li>
+            </ul>
+        </div>
+
+        <!-- 10.1 Workshop ใหญ่ -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">10.1 Workshop ใหญ่: สร้างสื่อประชาสัมพันธ์กิจกรรมหน่วยงาน</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>📋 โจทย์ Workshop</h5>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-danger">
+                    <p class="mb-0"><strong>🎯 โจทย์:</strong> "สร้างสื่อประชาสัมพันธ์กิจกรรม <strong>วันคนพิการสากล 3 ธันวาคม 2569</strong>"</p>
+                </div>
+                <div class="mt-3">
+                    <h6>📦 ชิ้นงาน 3 ชิ้นที่ต้องส่ง:</h6>
+                    <ol>
+                        <li><strong>โพสต์ Facebook</strong> (ข้อความ + รูปภาพ)</li>
+                        <li><strong>สรุปการประชุม 1 หน้า</strong> (เตรียมงานกิจกรรม)</li>
+                        <li><strong>โบชัวร์ PDF</strong> (แผ่นพับประชาสัมพันธ์)</li>
+                    </ol>
+                </div>
+                <div class="alert alert-warning py-2 mt-3 mb-0">
+                    <strong>⏰ เวลา:</strong> 1 ชั่วโมง (20 นาทีต่อชิ้นงาน)
+                </div>
+            </div>
+
+            <!-- ชิ้นงาน 1: โพสต์ Facebook -->
+            <div class="exercise-box p-4 rounded border border-2 border-primary bg-light mb-4">
+                <h5 class="text-primary">🎨 ชิ้นงาน 1: โพสต์ Facebook (ข้อความ + รูปภาพ)</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เขียน Caption ด้วย ChatGPT</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"เขียนโพสต์ Facebook ประชาสัมพันธ์กิจกรรมวันคนพิการสากล 3 ธันวาคม 2569 จัดโดย สนพ.สุรินทร์ กิจกรรม: นิทรรศการ AI เพื่อคนพิการ, สาธิตเครื่องมือช่วยเหลือ, เสวนาสิทธิคนพิการ โทนสนุก อบอุ่น มี Emoji ความยาว 5-8 บรรทัด มี Hashtag 5 ตัว"</code>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>สร้างรูปภาพด้วย DALL-E (ใน ChatGPT) หรือ Canva AI</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"สร้างภาพโปสเตอร์วันคนพิการสากล สีสันสดใส มีรูปคนพิการหลายประเภทยิ้มแย้ม มีข้อความ 'วันคนพิการสากล' สไตล์ Modern Flat Design"</code>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ปรับขนาดรูปเป็น 1080×1080 pixels</strong>
+                    <p class="mt-1 mb-0 text-muted">→ ใช้ Canva: "Resize" → Custom size 1080×1080 → Download PNG</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>รวมเป็นโพสต์สำเร็จ</strong>
+                    <p class="mt-1 mb-0 text-muted">→ นำ Caption + รูปภาพ มารวมกัน → พร้อมโพสต์!</p>
+                </div>
+
+                <div class="alert alert-success py-2 mt-3 mb-0">
+                    <strong>✅ ผลลัพธ์:</strong> โพสต์ Facebook สมบูรณ์ (ข้อความ + รูป 1080×1080)
+                </div>
+            </div>
+
+            <!-- ชิ้นงาน 2: สรุปการประชุม -->
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">📄 ชิ้นงาน 2: สรุปการประชุม 1 หน้า</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เตรียม Bullet Points ข้อมูลการประชุม</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-success mt-2">
+                        <p class="mb-0">
+                            • ประชุมเตรียมงานวันคนพิการสากล<br>
+                            • วันที่ 15 พ.ย. 2569 เวลา 13:00 ห้องประชุม สนพ.สุรินทร์<br>
+                            • ผู้เข้าร่วม: หัวหน้า, เจ้าหน้าที่ 5 คน, ตัวแทนคนพิการ 3 คน<br>
+                            • มติ: จัดงาน 3 ธ.ค., งบ 50,000, แบ่ง 3 โซน<br>
+                            • มอบหมาย: นายก ดูเวที, นายข ดูนิทรรศการ, นายค ดูอาหาร
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ให้ ChatGPT สร้างรายงานการประชุม</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-success mt-2">
+                        <code>"สร้างรายงานการประชุมจากข้อมูลนี้ [วาง Bullet Points] รูปแบบราชการ มีหัวข้อ: วันเวลา, ผู้เข้าร่วม, วาระ, มติที่ประชุม, ผู้รับผิดชอบ ความยาว 1 หน้า A4"</code>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ปรับแก้ให้ถูกต้อง</strong>
+                    <p class="mt-1 mb-0 text-muted">→ ตรวจชื่อ ตำแหน่ง วันที่ → แก้ไขให้ตรงกับข้อเท็จจริง → Copy ไป Word/Google Docs</p>
+                </div>
+
+                <div class="alert alert-success py-2 mt-3 mb-0">
+                    <strong>✅ ผลลัพธ์:</strong> รายงานการประชุม 1 หน้า A4 รูปแบบราชการ
+                </div>
+            </div>
+
+            <!-- ชิ้นงาน 3: โบชัวร์ PDF -->
+            <div class="exercise-box p-4 rounded border border-2 border-warning bg-light mb-4">
+                <h5 class="text-warning">📰 ชิ้นงาน 3: โบชัวร์ PDF</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เขียนเนื้อหาโบชัวร์ด้วย ChatGPT</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-warning mt-2">
+                        <code>"เขียนเนื้อหาสำหรับแผ่นพับ (Brochure) งานวันคนพิการสากล 3 ธ.ค. 2569 ประกอบด้วย: ชื่องาน, วันเวลาสถานที่, กิจกรรมไฮไลท์ 5 อย่าง, กำหนดการ, ข้อมูลติดต่อ ภาษากระชับ น่าสนใจ"</code>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>สร้าง Design ด้วย Canva หรือ Gamma</strong>
+                    <ul class="mt-2 mb-0">
+                        <li><strong>Canva:</strong> ค้นหา Template "Brochure" → เลือกที่ชอบ → ใส่เนื้อหา</li>
+                        <li><strong>Gamma (gamma.app):</strong> วาง Text → AI สร้าง Design อัตโนมัติ</li>
+                    </ul>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ปรับแต่ง</strong>
+                    <p class="mt-1 mb-0 text-muted">→ เปลี่ยนสี/ฟอนต์ให้เข้ากับหน่วยงาน → ใส่โลโก้ → ตรวจสอบข้อความ</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>Export เป็น PDF</strong>
+                    <p class="mt-1 mb-0 text-muted">→ Canva: Share → Download → PDF Print → ได้ไฟล์ PDF พร้อมพิมพ์!</p>
+                </div>
+
+                <div class="alert alert-success py-2 mt-3 mb-0">
+                    <strong>✅ ผลลัพธ์:</strong> โบชัวร์ PDF สวยงาม พร้อมพิมพ์แจก
+                </div>
+            </div>
+        </section>
+
+        <!-- 10.2 สรุปภาพรวม AI ทั้งหมดที่เรียน -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">10.2 สรุปภาพรวม AI ทั้งหมดที่เรียน</h3>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>บท</th>
+                            <th>หัวข้อ</th>
+                            <th>สิ่งที่ได้เรียน</th>
+                            <th>เครื่องมือที่ใช้</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1</strong></td>
+                            <td>AI คืออะไร</td>
+                            <td>ความหมาย ประวัติ AI รอบตัว</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2</strong></td>
+                            <td>Prompt Engineering</td>
+                            <td>เขียนคำสั่ง AI ให้ได้ผลดี</td>
+                            <td>ChatGPT, Claude</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3</strong></td>
+                            <td>ประเภทของ AI</td>
+                            <td>เปรียบเทียบ AI แต่ละตัว, LLM</td>
+                            <td>ChatGPT, Claude, Gemini</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4</strong></td>
+                            <td>AI สร้างข้อความ</td>
+                            <td>เขียน สรุป แปล ร่างเอกสาร</td>
+                            <td>ChatGPT, Claude</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5</strong></td>
+                            <td>AI สร้างรูปภาพ</td>
+                            <td>สร้างรูป แก้ไขรูป ออกแบบ</td>
+                            <td>DALL-E, Canva AI</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6</strong></td>
+                            <td>AI สร้างเสียง/วิดีโอ</td>
+                            <td>แต่งเพลง สร้างวิดีโอ ตัดต่อ</td>
+                            <td>Suno, CapCut</td>
+                        </tr>
+                        <tr>
+                            <td><strong>7</strong></td>
+                            <td>AI วิเคราะห์เอกสาร</td>
+                            <td>สรุปเอกสาร ถามตอบจากไฟล์</td>
+                            <td>NotebookLM, Claude</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8</strong></td>
+                            <td>AI กับอนาคต</td>
+                            <td>ผลกระทบ AI ต่องาน, แผนพัฒนาตัวเอง</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td><strong>9</strong></td>
+                            <td>เริ่มต้นใช้ AI</td>
+                            <td>สมัคร 7 เครื่องมือ, Workflow, Prompt Library</td>
+                            <td>ทุกตัว</td>
+                        </tr>
+                        <tr class="table-success">
+                            <td><strong>10</strong></td>
+                            <td>Workshop รวม</td>
+                            <td>สร้างสื่อครบชุดด้วย AI</td>
+                            <td>ChatGPT, Canva, DALL-E</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 10.3 แหล่งเรียนรู้เพิ่มเติม -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">10.3 แหล่งเรียนรู้เพิ่มเติม</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <p>การเรียนรู้ AI ไม่จบแค่ 10 บท — ต้องเรียนรู้ต่อเนื่อง! นี่คือแหล่งเรียนรู้ฟรีที่แนะนำ:</p>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>แหล่งเรียนรู้</th>
+                            <th>ประเภท</th>
+                            <th>เนื้อหา</th>
+                            <th>ลิงก์</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>AI for Thai</strong></td>
+                            <td>เว็บไซต์ / คอร์สฟรี</td>
+                            <td>เนื้อหา AI ภาษาไทย สำหรับคนไทย</td>
+                            <td><a href="https://aiforthai.in.th" target="_blank">aiforthai.in.th</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>YouTube — BorntoDev</strong></td>
+                            <td>YouTube</td>
+                            <td>วิดีโอสอน AI, Prompt, เครื่องมือใหม่</td>
+                            <td><a href="https://youtube.com/@BorntoDev" target="_blank">youtube.com/@BorntoDev</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>YouTube — สอนใช้ AI</strong></td>
+                            <td>YouTube</td>
+                            <td>รีวิวเครื่องมือ AI ใหม่ๆ ภาษาไทย</td>
+                            <td>ค้นหา "สอนใช้ AI" บน YouTube</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>Facebook Group — AI Thailand</strong></td>
+                            <td>Facebook Group</td>
+                            <td>ชุมชนคนใช้ AI ในไทย แชร์เทคนิค</td>
+                            <td>ค้นหา "AI Thailand" บน Facebook</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><strong>Google AI Essentials</strong></td>
+                            <td>คอร์สฟรี</td>
+                            <td>คอร์ส AI พื้นฐานจาก Google (มีใบ Certificate)</td>
+                            <td><a href="https://grow.google/intl/th/" target="_blank">grow.google</a></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><strong>Prompt Engineering Guide</strong></td>
+                            <td>เว็บไซต์</td>
+                            <td>คู่มือ Prompt Engineering ละเอียด (อังกฤษ)</td>
+                            <td><a href="https://www.promptingguide.ai" target="_blank">promptingguide.ai</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-info mt-3">
+                <strong>💡 แนะนำ:</strong> ติดตาม 1-2 ช่องทาง แล้วเรียนรู้สม่ำเสมอ สัปดาห์ละ 1-2 ชั่วโมง — ดีกว่าเรียนเยอะแล้วลืม!
+            </div>
+        </section>
+
+        <!-- Lab -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">🔬 Lab ปฏิบัติ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 10.1 — ส่งชิ้นงาน 3 ชิ้น + นำเสนอ</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>สร้างชิ้นงานให้ครบ 3 ชิ้น:</strong>
+                    <div class="table-responsive mt-2">
+                        <table class="table table-bordered table-sm">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>ชิ้นงาน</th>
+                                    <th>เสร็จแล้ว ✅</th>
+                                    <th>เครื่องมือที่ใช้</th>
+                                    <th>เวลาที่ใช้</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1. โพสต์ Facebook</td><td></td><td></td><td></td></tr>
+                                <tr><td>2. สรุปการประชุม</td><td></td><td></td><td></td></tr>
+                                <tr><td>3. โบชัวร์ PDF</td><td></td><td></td><td></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>นำเสนอต่อกลุ่ม (3 นาที):</strong>
+                    <ul class="mt-2">
+                        <li>แสดงชิ้นงานทั้ง 3 ชิ้น</li>
+                        <li>อธิบายว่าใช้ AI ตัวไหนช่วยบ้าง</li>
+                        <li>บอกปัญหาที่พบ + วิธีแก้</li>
+                        <li>สิ่งที่ได้เรียนรู้จาก Workshop นี้</li>
+                    </ul>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ประเมินตัวเอง:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-warning mt-2">
+                        <p class="mb-0">
+                            ความมั่นใจในการใช้ AI (1-10): _____<br>
+                            เครื่องมือที่ชอบที่สุด: _______________<br>
+                            สิ่งที่จะนำไปใช้ในงานจริง: _______________<br>
+                            สิ่งที่อยากเรียนรู้เพิ่มเติม: _______________
+                        </p>
+                    </div>
+                </div>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึกหน้าจอชิ้นงานทั้ง 3 ชิ้น ส่งวิทยากร
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับบทนี้</h5>
+            <ul class="mb-0">
+                <li><strong>ไม่ต้องสมบูรณ์แบบ</strong> — เริ่มจาก "ดีพอ" แล้วค่อยปรับปรุง ดีกว่ารอจนสมบูรณ์</li>
+                <li><strong>ใช้ AI หลายตัวร่วมกัน</strong> — ChatGPT เขียน → Canva ออกแบบ → CapCut ทำวิดีโอ</li>
+                <li><strong>ตรวจสอบทุกครั้ง</strong> — AI อาจให้ข้อมูลผิด ต้อง fact-check ก่อนเผยแพร่</li>
+                <li><strong>เก็บ Prompt ที่ใช้</strong> — ทุก Prompt ที่ใช้วันนี้ให้เก็บไว้ใน Prompt Library</li>
+                <li><strong>ฝึกทุกวัน</strong> — ยิ่งใช้มาก ยิ่งเก่ง ลองทำงานจริงกับ AI ทุกวัน!</li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปท้ายบท — สิ่งที่ได้จากหลักสูตรนี้</h5>
+            <ul>
+                <li><strong>เข้าใจ AI</strong> — รู้ว่า AI คืออะไร ทำอะไรได้ ทำอะไรไม่ได้</li>
+                <li><strong>ใช้ AI ได้จริง</strong> — สมัคร 7 เครื่องมือ เขียน Prompt เก่ง สร้างสื่อได้</li>
+                <li><strong>ประยุกต์ใช้ในงาน</strong> — มี Workflow ประจำวัน มี Prompt Library ส่วนตัว</li>
+                <li><strong>มีแผนพัฒนา</strong> — รู้ว่าต้องเรียนอะไรต่อ มีแหล่งเรียนรู้</li>
+                <li><strong>พร้อมเป็น AI Champion</strong> — ช่วยเพื่อนร่วมงานและคนพิการใช้ AI ได้</li>
+            </ul>
+
+            <div class="text-center mt-4 p-4 bg-white rounded border border-2 border-primary">
+                <h4>🎉 ขอแสดงความยินดี!</h4>
+                <p class="lead mb-0">คุณเรียนจบหลักสูตร <strong>"พื้นฐาน AI ทุกมิติ"</strong> แล้ว!<br>
+                ขอให้นำสิ่งที่เรียนไปใช้ในงานจริง และช่วยเผยแพร่ให้คนอื่นต่อไป 🚀</p>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="chapter09.html" class="btn btn-outline-dark">← บทที่ 9</a>
+            <a href="index.html" class="btn btn-dark">หน้าหลัก →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

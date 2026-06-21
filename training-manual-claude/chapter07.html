@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 7: เริ่มต้น Claude Code | คู่มือ Claude AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">📖 คู่มือ Claude AI</a>
+            <span class="text-white">บทที่ 7 | วันที่ 4 เช้า</span>
+        </div>
+    </nav>
+
+    <!-- Chapter Header -->
+    <div class="chapter-header bg-light py-4">
+        <div class="container">
+            <h1 class="display-5 fw-bold">บทที่ 7: เริ่มต้น Claude Code</h1>
+            <p class="lead text-muted">วันที่ 4 เช้า (3 ชั่วโมง) — CLI tool สำหรับเขียนโค้ดด้วย AI ในเทอร์มินัล</p>
+            <div class="d-flex gap-2 flex-wrap">
+                <span class="badge bg-dark">Claude Code</span>
+                <span class="badge bg-dark">CLI</span>
+                <span class="badge bg-dark">Terminal</span>
+                <span class="badge bg-dark">API</span>
+                <span class="badge bg-dark">Coding</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+
+        <!-- สารบัญ -->
+        <div class="card mb-5">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">📋 สารบัญบทที่ 7</h5>
+            </div>
+            <div class="card-body">
+                <ul class="toc-list">
+                    <li><a href="#section-7-1">7.1 Claude Code คืออะไร — CLI tool สำหรับเขียนโค้ด</a></li>
+                    <li><a href="#section-7-2">7.2 ติดตั้ง Claude Code</a></li>
+                    <li><a href="#section-7-3">7.3 ตั้งค่า API Key + เริ่มใช้งาน</a></li>
+                    <li><a href="#section-7-4">7.4 คำสั่งพื้นฐาน — สร้างไฟล์, แก้ไข, อ่านโค้ด</a></li>
+                    <li><a href="#section-7-5">7.5 เปรียบเทียบ Claude Code vs Kiro vs Cursor vs GitHub Copilot</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 7.1 -->
+        <section id="section-7-1" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">7.1 Claude Code คืออะไร — CLI tool สำหรับเขียนโค้ด</h3>
+
+            <div class="alert alert-info">
+                <strong>💡 สรุปง่ายๆ:</strong> Claude Code เป็นเครื่องมือที่ให้คุณ "คุยกับ AI ในเทอร์มินัล" เพื่อให้ AI ช่วยเขียนโค้ด อ่านไฟล์ แก้ไขไฟล์ และรันคำสั่งต่างๆ ได้โดยตรง
+            </div>
+
+            <h5>Claude Code คืออะไร?</h5>
+            <p><strong>Claude Code</strong> เป็น AI coding assistant แบบ command-line (CLI) ที่พัฒนาโดย Anthropic บริษัทผู้สร้าง Claude สามารถ:</p>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header bg-success text-white">✅ สิ่งที่ Claude Code ทำได้</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>อ่านไฟล์โค้ดแล้ววิเคราะห์/อธิบาย</li>
+                                <li>เขียนโค้ดใหม่ตามที่สั่ง</li>
+                                <li>แก้ไขไฟล์ที่มีอยู่แล้ว</li>
+                                <li>รันคำสั่ง terminal</li>
+                                <li>ค้นหาไฟล์ในโปรเจกต์</li>
+                                <li>หา bug และแก้ไข</li>
+                                <li>Refactor โค้ด</li>
+                                <li>เขียน unit tests</li>
+                                <li>สร้าง Git commits</li>
+                                <li>อธิบายโค้ดเป็นภาษาไทย</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-header bg-secondary text-white">📝 ลักษณะเฉพาะ</div>
+                        <div class="card-body">
+                            <ul>
+                                <li><strong>ทำงานใน Terminal</strong> — ไม่มีหน้าจอ GUI</li>
+                                <li><strong>อ่าน/เขียนไฟล์จริง</strong> — แก้ไขโค้ดของเราได้</li>
+                                <li><strong>เข้าถึง file system</strong> — ดูโครงสร้างโปรเจกต์ได้ทั้งหมด</li>
+                                <li><strong>รันคำสั่งได้</strong> — npm, git, python ฯลฯ</li>
+                                <li><strong>ใช้ API Key</strong> — เสียค่าใช้จ่ายตามการใช้งาน</li>
+                                <li><strong>ทำงาน local</strong> — ไฟล์อยู่ในเครื่องเรา</li>
+                                <li><strong>รองรับทุกภาษา</strong> — JS, Python, Go, Rust ฯลฯ</li>
+                                <li><strong>ไม่ต้องใช้ IDE</strong> — ใช้ terminal อย่างเดียว</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-4">Claude Code ต่างจาก claude.ai อย่างไร?</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>คุณสมบัติ</th>
+                        <th>claude.ai (Web)</th>
+                        <th>Claude Code (CLI)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ใช้งานผ่าน</td>
+                        <td>เว็บเบราว์เซอร์</td>
+                        <td>Terminal / Command Line</td>
+                    </tr>
+                    <tr>
+                        <td>อ่าน/เขียนไฟล์</td>
+                        <td>❌ ไม่ได้โดยตรง</td>
+                        <td>✅ อ่าน/เขียน/ลบ ได้เลย</td>
+                    </tr>
+                    <tr>
+                        <td>รันคำสั่ง</td>
+                        <td>❌ ไม่ได้</td>
+                        <td>✅ รัน terminal commands ได้</td>
+                    </tr>
+                    <tr>
+                        <td>เหมาะสำหรับ</td>
+                        <td>งานทั่วไป ร่างเอกสาร วิเคราะห์</td>
+                        <td>เขียนโค้ด พัฒนาระบบ</td>
+                    </tr>
+                    <tr>
+                        <td>ค่าใช้จ่าย</td>
+                        <td>$20/เดือน (Pro) หรือฟรี</td>
+                        <td>จ่ายตาม API usage</td>
+                    </tr>
+                    <tr>
+                        <td>ต้องติดตั้ง</td>
+                        <td>ไม่ต้อง</td>
+                        <td>ต้องติดตั้ง Node.js + npm</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-warning">
+                <strong>⚠️ หมายเหตุ:</strong> Claude Code เหมาะสำหรับ<strong>นักพัฒนา/โปรแกรมเมอร์</strong>ที่คุ้นเคยกับ terminal ผู้ที่ไม่คุ้นเคยอาจใช้ Kiro หรือ Cursor ซึ่งมีหน้าจอ GUI แทน (จะกล่าวในหัวข้อ 7.5)
+            </div>
+
+            <h5 class="mt-4">ตัวอย่างหน้าจอ Claude Code</h5>
+<pre><code>$ claude
+╭──────────────────────────────────────────╮
+│  Claude Code v1.0.x                       │
+│  Type your message or use /help           │
+╰──────────────────────────────────────────╯
+
+> สร้างไฟล์ hello.py ที่พิมพ์ "สวัสดีชาวสุรินทร์"
+
+Claude: ผมจะสร้างไฟล์ hello.py ให้ครับ
+
+✏️  Creating file: hello.py
+┌─────────────────────────────┐
+│ print("สวัสดีชาวสุรินทร์")     │
+└─────────────────────────────┘
+
+✅ Created hello.py
+
+> รันไฟล์ hello.py ให้ดูผลลัพธ์
+
+Claude: จะรัน hello.py ให้ครับ
+
+🖥️  Running: python hello.py
+Output: สวัสดีชาวสุรินทร์
+
+✅ Done</code></pre>
+        </section>
+
+        <!-- Section 7.2 -->
+        <section id="section-7-2" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">7.2 ติดตั้ง Claude Code</h3>
+
+            <h5>สิ่งที่ต้องมีก่อนติดตั้ง (Prerequisites)</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>รายการ</th>
+                        <th>เวอร์ชันขั้นต่ำ</th>
+                        <th>วิธีตรวจสอบ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Node.js</strong></td>
+                        <td>v18.0.0 ขึ้นไป</td>
+                        <td><code>node --version</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>npm</strong></td>
+                        <td>v9.0.0 ขึ้นไป</td>
+                        <td><code>npm --version</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ระบบปฏิบัติการ</strong></td>
+                        <td>Windows 10+, macOS 12+, Linux</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Anthropic API Key</strong></td>
+                        <td>-</td>
+                        <td>สมัครที่ console.anthropic.com</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="mt-4">ขั้นตอนที่ 1: ติดตั้ง Node.js (ถ้ายังไม่มี)</h5>
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <strong>ดาวน์โหลด Node.js</strong>
+                <p class="mt-2">ไปที่ <code>https://nodejs.org</code> แล้วดาวน์โหลดเวอร์ชัน LTS (Long Term Support)</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <strong>ติดตั้ง</strong>
+                <p class="mt-2">Double-click ไฟล์ที่ดาวน์โหลด แล้ว Next → Next → Install → Finish</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <strong>ตรวจสอบ</strong>
+                <p class="mt-2">เปิด Terminal/Command Prompt แล้วพิมพ์:</p>
+<pre><code>node --version
+# ควรแสดง v18.x.x หรือสูงกว่า
+
+npm --version
+# ควรแสดง v9.x.x หรือสูงกว่า</code></pre>
+            </div>
+
+            <h5 class="mt-4">ขั้นตอนที่ 2: ติดตั้ง Claude Code</h5>
+<pre><code># ติดตั้ง Claude Code แบบ global
+npm install -g @anthropic-ai/claude-code
+
+# ตรวจสอบว่าติดตั้งสำเร็จ
+claude --version</code></pre>
+
+            <div class="alert alert-info mt-3">
+                <strong>💡 สำหรับ Windows:</strong> ใช้ PowerShell หรือ Command Prompt (Run as Administrator) ในการติดตั้ง ถ้าเจอ error เรื่อง permission ให้ใช้คำสั่ง:
+<pre class="mt-2 mb-0"><code>npm install -g @anthropic-ai/claude-code --force</code></pre>
+            </div>
+
+            <div class="alert alert-warning mt-3">
+                <strong>⚠️ ปัญหาที่พบบ่อย:</strong>
+                <ul class="mb-0">
+                    <li><code>'npm' is not recognized</code> → ต้องติดตั้ง Node.js ก่อน หรือเปิด Terminal ใหม่</li>
+                    <li><code>EACCES permission denied</code> → ใช้ <code>sudo</code> (Mac/Linux) หรือ Run as Admin (Windows)</li>
+                    <li><code>node version too old</code> → อัปเดต Node.js เป็นเวอร์ชัน 18+</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 7.3 -->
+        <section id="section-7-3" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">7.3 ตั้งค่า API Key + เริ่มใช้งาน</h3>
+
+            <h5>ขั้นตอนที่ 1: สมัคร Anthropic API Key</h5>
+
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <strong>เข้า Anthropic Console</strong>
+                <p class="mt-2">ไปที่ <code>https://console.anthropic.com</code></p>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <strong>สมัครบัญชี / Login</strong>
+                <p class="mt-2">ใช้ email สมัคร หรือ login ด้วย Google</p>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <strong>สร้าง API Key</strong>
+                <p class="mt-2">ไปที่ <code>Settings</code> → <code>API Keys</code> → <code>Create Key</code></p>
+                <p>ตั้งชื่อ Key เช่น "claude-code-training" แล้วคัดลอก Key ที่ได้ (ขึ้นต้นด้วย <code>sk-ant-...</code>)</p>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <strong>เติมเงิน (Credits)</strong>
+                <p class="mt-2">ไปที่ <code>Billing</code> → <code>Add credits</code> เติมขั้นต่ำ $5 (ประมาณ 175 บาท)</p>
+            </div>
+
+            <div class="alert alert-danger mt-3">
+                <strong>🚨 สำคัญ:</strong> เก็บ API Key ไว้อย่างปลอดภัย ห้ามแชร์ ห้ามวางใน public repository ถ้าหลุดออกไป ให้ revoke ทันที
+            </div>
+
+            <h5 class="mt-4">ขั้นตอนที่ 2: ตั้งค่า API Key</h5>
+
+            <div class="card mb-3">
+                <div class="card-header"><strong>Windows (PowerShell)</strong></div>
+                <div class="card-body">
+<pre><code># ตั้งค่าชั่วคราว (หายเมื่อปิด terminal)
+$env:ANTHROPIC_API_KEY = "sk-ant-api03-xxxxx..."
+
+# ตั้งค่าถาวร
+[System.Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", "sk-ant-api03-xxxxx...", "User")</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header"><strong>macOS / Linux</strong></div>
+                <div class="card-body">
+<pre><code># ตั้งค่าชั่วคราว
+export ANTHROPIC_API_KEY="sk-ant-api03-xxxxx..."
+
+# ตั้งค่าถาวร (เพิ่มในไฟล์ ~/.bashrc หรือ ~/.zshrc)
+echo 'export ANTHROPIC_API_KEY="sk-ant-api03-xxxxx..."' >> ~/.zshrc
+source ~/.zshrc</code></pre>
+                </div>
+            </div>
+
+            <h5 class="mt-4">ขั้นตอนที่ 3: เริ่มใช้งาน</h5>
+<pre><code># เข้า folder โปรเจกต์ที่ต้องการ
+cd C:\MyProject
+
+# เริ่ม Claude Code
+claude
+
+# Claude Code จะแสดงหน้าจอพร้อมรับคำสั่ง
+# พิมพ์สิ่งที่ต้องการแล้วกด Enter</code></pre>
+
+            <h5 class="mt-4">💰 ค่าใช้จ่าย API Pricing</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Model</th>
+                        <th>Input (ต่อ 1M tokens)</th>
+                        <th>Output (ต่อ 1M tokens)</th>
+                        <th>ประมาณค่าใช้จ่าย</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Claude Sonnet 4</td>
+                        <td>$3</td>
+                        <td>$15</td>
+                        <td>~฿1-5 ต่อคำสั่ง</td>
+                    </tr>
+                    <tr>
+                        <td>Claude Opus 4</td>
+                        <td>$15</td>
+                        <td>$75</td>
+                        <td>~฿5-20 ต่อคำสั่ง</td>
+                    </tr>
+                    <tr>
+                        <td>Claude Haiku 3.5</td>
+                        <td>$0.80</td>
+                        <td>$4</td>
+                        <td>~฿0.3-2 ต่อคำสั่ง</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-success">
+                <strong>💡 เคล็ดลับประหยัด:</strong>
+                <ul class="mb-0">
+                    <li>ใช้ Sonnet เป็นหลัก (คุ้มค่าที่สุด)</li>
+                    <li>คำสั่งยาวๆ ละเอียดจะแพงกว่า → พิมพ์กระชับ</li>
+                    <li>ใช้ <code>/compact</code> เพื่อลดขนาด context</li>
+                    <li>ตั้ง spending limit ที่ console เพื่อควบคุมค่าใช้จ่าย</li>
+                    <li>$5 (175 บาท) ใช้ได้ประมาณ 1-2 สัปดาห์สำหรับการเรียนรู้</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 7.4 -->
+        <section id="section-7-4" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">7.4 คำสั่งพื้นฐาน — สร้างไฟล์, แก้ไข, อ่านโค้ด</h3>
+
+            <h5>วิธีเริ่มต้นใช้งาน</h5>
+<pre><code># เปิด Terminal แล้วไปที่ folder โปรเจกต์
+cd C:\Project_DSDSURIN
+
+# เริ่ม Claude Code ในโหมด interactive
+claude</code></pre>
+
+            <p class="mt-3">เมื่อเข้า interactive mode จะเห็น prompt <code>></code> ให้พิมพ์คำสั่งภาษาไทยหรืออังกฤษได้เลย</p>
+
+            <h5 class="mt-4">ตัวอย่างคำสั่งที่ใช้บ่อย</h5>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>📁 สร้างไฟล์ใหม่</strong></div>
+                <div class="card-body">
+<pre><code>> สร้างไฟล์ index.html เป็นเว็บไซต์ สนพ.สุรินทร์ มีหัวข้อ "ยินดีต้อนรับ"
+  แสดงข้อมูลหลักสูตรฝึกอบรม 3 หลักสูตร ใช้ Bootstrap 5
+
+Claude: ผมจะสร้างไฟล์ index.html ให้ครับ
+✏️  Creating file: index.html
+[...แสดงเนื้อหาไฟล์...]
+✅ Created index.html (45 lines)</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>📖 อ่านและอธิบายโค้ด</strong></div>
+                <div class="card-body">
+<pre><code>> อ่าน Code.gs แล้วอธิบายว่าฟังก์ชัน doGet ทำอะไร
+
+Claude: ผมจะอ่านไฟล์ Code.gs ให้ครับ
+📖 Reading: Code.gs
+
+ฟังก์ชัน doGet ทำหน้าที่:
+1. รับ request จากผู้ใช้ (parameter: page)
+2. ตรวจสอบว่าเป็นหน้าไหน (admin/user/form)
+3. สร้าง HtmlOutput ตาม template ที่กำหนด
+4. return หน้า HTML กลับไปให้ browser
+
+โครงสร้าง:
+- ถ้า page = "admin" → แสดง admin.html
+- ถ้า page = "form" → แสดง user-form.html  
+- ถ้าไม่ระบุ → แสดง index.html (หน้าแรก)</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>🐛 หา Bug และแก้ไข</strong></div>
+                <div class="card-body">
+<pre><code>> อ่านไฟล์ script.js แล้วหา bug ที่ทำให้ปุ่ม submit ไม่ทำงาน
+
+Claude: ผมจะตรวจสอบไฟล์ script.js ให้ครับ
+📖 Reading: script.js
+
+🐛 พบปัญหา:
+1. บรรทัดที่ 23: ใช้ getElementById("submitBtn") 
+   แต่ใน HTML ตั้ง id="submit-btn" (มี hyphen)
+   
+2. บรรทัดที่ 45: addEventListener ถูกเรียก
+   ก่อน DOM load เสร็จ
+
+💡 แก้ไข:
+- เปลี่ยน "submitBtn" → "submit-btn"  
+- ย้าย script ไปไว้ก่อน &lt;/body&gt; หรือใช้ DOMContentLoaded
+
+ต้องการให้แก้ไขไฟล์ให้เลยไหมครับ?
+
+> ใช่ แก้ให้เลย
+
+✏️  Editing: script.js
+[...แสดงการแก้ไข...]
+✅ Fixed 2 issues in script.js</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>⚡ รันคำสั่ง</strong></div>
+                <div class="card-body">
+<pre><code>> รัน npm install express แล้วสร้าง server.js อย่างง่าย port 3000
+
+Claude: จะรัน npm install express ให้ครับ
+🖥️  Running: npm install express
+[...output...]
+✅ Installed express
+
+✏️  Creating file: server.js
+[...แสดงเนื้อหา...]
+✅ Created server.js
+
+ต้องการให้รัน server ทดสอบไหมครับ?</code></pre>
+                </div>
+            </div>
+
+            <h5 class="mt-4">Slash Commands ที่สำคัญ</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>คำสั่ง</th>
+                        <th>ความหมาย</th>
+                        <th>ใช้เมื่อ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/help</code></td>
+                        <td>แสดงรายการคำสั่งทั้งหมด</td>
+                        <td>เมื่อจำคำสั่งไม่ได้</td>
+                    </tr>
+                    <tr>
+                        <td><code>/clear</code></td>
+                        <td>ล้างประวัติสนทนาทั้งหมด เริ่มใหม่</td>
+                        <td>เมื่อต้องการเริ่มงานใหม่</td>
+                    </tr>
+                    <tr>
+                        <td><code>/compact</code></td>
+                        <td>สรุป context ให้สั้นลง ประหยัด token</td>
+                        <td>เมื่อสนทนายาวเกินไป</td>
+                    </tr>
+                    <tr>
+                        <td><code>/model</code></td>
+                        <td>เปลี่ยน model (sonnet/opus/haiku)</td>
+                        <td>เมื่อต้องการประหยัดหรือใช้ model ที่ดีกว่า</td>
+                    </tr>
+                    <tr>
+                        <td><code>/cost</code></td>
+                        <td>แสดงค่าใช้จ่ายของ session นี้</td>
+                        <td>ตรวจสอบยอดใช้จ่าย</td>
+                    </tr>
+                    <tr>
+                        <td><code>/permissions</code></td>
+                        <td>ดู/ตั้งค่าสิทธิ์ (อ่าน/เขียน/รัน)</td>
+                        <td>ควบคุมสิ่งที่ Claude ทำได้</td>
+                    </tr>
+                    <tr>
+                        <td><code>Ctrl+C</code></td>
+                        <td>หยุดคำสั่งที่กำลังรัน</td>
+                        <td>เมื่อต้องการยกเลิก</td>
+                    </tr>
+                    <tr>
+                        <td><code>exit</code> หรือ <code>Ctrl+D</code></td>
+                        <td>ออกจาก Claude Code</td>
+                        <td>เลิกใช้งาน</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="mt-4">ตัวอย่างการใช้งานจริง — งาน Google Apps Script</h5>
+            <div class="card bg-light">
+                <div class="card-body">
+<pre><code>> อ่านไฟล์ Code.gs ทั้งหมด แล้วสรุปว่ามีฟังก์ชันอะไรบ้าง จัดเป็นหมวดหมู่
+
+> เพิ่มฟังก์ชัน exportToCSV() ใน Code.gs ที่ export ข้อมูล Sheet "COURSES" 
+  เป็นไฟล์ CSV แล้วส่ง email ไปที่ wisdomssk@gmail.com
+
+> อ่าน admin.html แล้วเพิ่มปุ่ม "ส่งออก CSV" ในหน้า Dashboard
+  ให้เรียกฟังก์ชัน exportToCSV() เมื่อคลิก
+
+> ตรวจสอบ Code.gs หา error ที่อาจเกิดขึ้น แล้วเพิ่ม try-catch ป้องกัน
+
+> สร้าง unit test สำหรับฟังก์ชัน calculateBudget() ด้วย QUnit</code></pre>
+                </div>
+            </div>
+
+            <div class="alert alert-success mt-3">
+                <strong>💡 เคล็ดลับ:</strong>
+                <ul class="mb-0">
+                    <li>พิมพ์ภาษาไทยได้เลย Claude เข้าใจ</li>
+                    <li>ยิ่งบอกรายละเอียดมาก ผลลัพธ์ยิ่งตรง</li>
+                    <li>ถ้าไม่พอใจ ให้บอก "แก้ไขตรงนี้..." Claude จะปรับให้</li>
+                    <li>Claude จะถามก่อนเขียน/ลบไฟล์สำคัญ (ตั้ง permissions ได้)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 7.5 -->
+        <section id="section-7-5" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">7.5 เปรียบเทียบ Claude Code vs Kiro vs Cursor vs GitHub Copilot</h3>
+
+            <p>ปัจจุบันมี AI coding tools หลายตัว แต่ละตัวเหมาะกับการใช้งานต่างกัน:</p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>คุณสมบัติ</th>
+                            <th>Claude Code</th>
+                            <th>Kiro (AWS)</th>
+                            <th>Cursor</th>
+                            <th>GitHub Copilot</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ประเภท</strong></td>
+                            <td>CLI (Terminal)</td>
+                            <td>IDE (VS Code-based)</td>
+                            <td>IDE (VS Code-based)</td>
+                            <td>Extension (VS Code/JetBrains)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>บริษัทผู้พัฒนา</strong></td>
+                            <td>Anthropic</td>
+                            <td>Amazon (AWS)</td>
+                            <td>Anysphere</td>
+                            <td>GitHub / Microsoft</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AI Model</strong></td>
+                            <td>Claude (Sonnet/Opus)</td>
+                            <td>Claude + หลาย Model</td>
+                            <td>Claude + GPT + หลาย Model</td>
+                            <td>GPT-4o / Claude</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ราคา</strong></td>
+                            <td>API usage (~$5-50/เดือน)</td>
+                            <td>ฟรี (ช่วง Beta)</td>
+                            <td>$20/เดือน (Pro)</td>
+                            <td>$10-19/เดือน</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ติดตั้ง</strong></td>
+                            <td>npm install</td>
+                            <td>ดาวน์โหลด IDE</td>
+                            <td>ดาวน์โหลด IDE</td>
+                            <td>ติดตั้ง Extension</td>
+                        </tr>
+                        <tr>
+                            <td><strong>อ่าน/เขียนไฟล์</strong></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅ (จำกัด)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>รันคำสั่ง</strong></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Auto-complete</strong></td>
+                            <td>❌</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅ (จุดเด่น)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Multi-file Edit</strong></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>จำกัด</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Spec-driven</strong></td>
+                            <td>❌</td>
+                            <td>✅ (จุดเด่น)</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td><strong>หน้าจอ GUI</strong></td>
+                            <td>❌ (Terminal only)</td>
+                            <td>✅ (Full IDE)</td>
+                            <td>✅ (Full IDE)</td>
+                            <td>✅ (ใน VS Code)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>เหมาะกับ</strong></td>
+                            <td>Developer ใช้ CLI คล่อง</td>
+                            <td>ทีมพัฒนา ต้องการ workflow ดี</td>
+                            <td>Developer ทั่วไป</td>
+                            <td>เขียนโค้ดเร็วขึ้น</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h5 class="mt-4">จุดเด่นของแต่ละตัว</h5>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header"><strong>⌨️ Claude Code</strong></div>
+                        <div class="card-body">
+                            <p><strong>จุดเด่น:</strong></p>
+                            <ul>
+                                <li>เบา ไม่ต้องติดตั้ง IDE</li>
+                                <li>ทำงานได้ทุกที่ที่มี terminal</li>
+                                <li>ควบคุมได้ละเอียด (permissions)</li>
+                                <li>ใช้ Claude model ตัวล่าสุดเสมอ</li>
+                            </ul>
+                            <p><strong>เหมาะกับ:</strong> โปรแกรมเมอร์ที่ชอบ terminal, ใช้ SSH, server management</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header"><strong>🚀 Kiro (AWS)</strong></div>
+                        <div class="card-body">
+                            <p><strong>จุดเด่น:</strong></p>
+                            <ul>
+                                <li>Spec-driven development (วางแผนก่อนเขียน)</li>
+                                <li>Steering files ควบคุม AI</li>
+                                <li>ฟรี (ช่วง Beta)</li>
+                                <li>ใช้ Claude + รองรับหลาย model</li>
+                            </ul>
+                            <p><strong>เหมาะกับ:</strong> ทีมพัฒนาที่ต้องการ workflow เป็นระบบ, งานระยะยาว</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header"><strong>🖱️ Cursor</strong></div>
+                        <div class="card-body">
+                            <p><strong>จุดเด่น:</strong></p>
+                            <ul>
+                                <li>GUI สวย ใช้ง่าย</li>
+                                <li>เลือก AI model ได้หลายตัว</li>
+                                <li>Chat + Composer + Auto-complete</li>
+                                <li>Community ใหญ่</li>
+                            </ul>
+                            <p><strong>เหมาะกับ:</strong> Developer ทั่วไป ที่อยากได้ AI IDE ครบวงจร</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header"><strong>🤖 GitHub Copilot</strong></div>
+                        <div class="card-body">
+                            <p><strong>จุดเด่น:</strong></p>
+                            <ul>
+                                <li>Auto-complete ดีที่สุด (inline suggestion)</li>
+                                <li>ใช้ใน VS Code / JetBrains ได้เลย</li>
+                                <li>ราคาถูก ($10/เดือน)</li>
+                                <li>ไม่ต้องเปลี่ยน IDE</li>
+                            </ul>
+                            <p><strong>เหมาะกับ:</strong> คนที่ใช้ VS Code อยู่แล้ว ต้องการ autocomplete เร็วขึ้น</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-4">แนะนำตามระดับผู้ใช้</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ระดับ</th>
+                        <th>แนะนำ</th>
+                        <th>เหตุผล</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>เริ่มต้น</strong> (ไม่เคยเขียนโค้ด)</td>
+                        <td>claude.ai (Web) + Kiro</td>
+                        <td>ใช้ง่าย มีหน้าจอ ไม่ต้องตั้งค่าเยอะ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>กลาง</strong> (เขียนโค้ดได้บ้าง)</td>
+                        <td>Cursor หรือ Kiro + Copilot</td>
+                        <td>GUI ช่วยได้เยอะ + autocomplete เร็ว</td>
+                    </tr>
+                    <tr>
+                        <td><strong>สูง</strong> (Developer เต็มตัว)</td>
+                        <td>Claude Code + Kiro</td>
+                        <td>ควบคุมได้ละเอียด ทำงานเร็ว flexible</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ทีม</strong> (ทำงานหลายคน)</td>
+                        <td>Kiro + Claude Team</td>
+                        <td>Spec-driven workflow + แชร์ Projects</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- แบบฝึกหัด -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">📝 แบบฝึกหัดท้ายบทที่ 7</h3>
+
+            <div class="card">
+                <div class="card-body">
+                    <p><strong>แบบฝึกหัด 7.1 (ติดตั้ง):</strong> ติดตั้ง Claude Code บนเครื่องของท่าน แล้วรัน <code>claude --version</code> ให้เห็นผลลัพธ์</p>
+
+                    <p><strong>แบบฝึกหัด 7.2 (ตั้งค่า):</strong> ตั้งค่า API Key แล้วเริ่ม Claude Code ให้เข้า interactive mode ได้สำเร็จ</p>
+
+                    <p><strong>แบบฝึกหัด 7.3 (สร้างไฟล์):</strong> ใช้ Claude Code สร้างไฟล์ต่อไปนี้:</p>
+                    <ol>
+                        <li>สร้าง <code>greeting.html</code> — หน้าเว็บแนะนำตัวเอง (ใช้ Bootstrap 5)</li>
+                        <li>สร้าง <code>calculator.js</code> — ฟังก์ชันคำนวณ บวก ลบ คูณ หาร</li>
+                        <li>สร้าง <code>budget.py</code> — คำนวณงบประมาณฝึกอบรม</li>
+                    </ol>
+
+                    <p><strong>แบบฝึกหัด 7.4 (อ่านโค้ด):</strong> ให้ Claude Code อ่านไฟล์ในโปรเจกต์จริง แล้ว:</p>
+                    <ul>
+                        <li>อธิบายว่าฟังก์ชันหลักทำอะไร</li>
+                        <li>หาจุดที่อาจเป็น bug</li>
+                        <li>แนะนำการปรับปรุง</li>
+                    </ul>
+
+                    <p><strong>แบบฝึกหัด 7.5 (เปรียบเทียบ):</strong> ลองใช้ทั้ง Claude Code (CLI) และ claude.ai (Web) ทำงานเดียวกัน:</p>
+                    <ul>
+                        <li>สั่ง: "สร้าง HTML table แสดงหลักสูตรฝึกอบรม 5 หลักสูตร"</li>
+                        <li>เปรียบเทียบ: ตัวไหนสะดวกกว่า? ผลลัพธ์ต่างกันไหม?</li>
+                        <li>สรุป: สถานการณ์ไหนควรใช้ตัวไหน?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="alert alert-info mt-4">
+                <strong>🎯 สิ่งที่ควรได้จากบทนี้:</strong>
+                <ol class="mb-0">
+                    <li>เข้าใจว่า Claude Code คืออะไร ต่างจาก claude.ai อย่างไร</li>
+                    <li>ติดตั้งและตั้งค่า Claude Code ได้</li>
+                    <li>ใช้คำสั่งพื้นฐาน: สร้างไฟล์, อ่านโค้ด, แก้ bug, รันคำสั่ง</li>
+                    <li>เลือกเครื่องมือ AI coding ที่เหมาะสมกับตนเองได้</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 pt-4 border-top">
+            <a href="chapter06.html" class="btn btn-outline-dark">← บทที่ 6: ทำงานเป็นทีม</a>
+            <a href="chapter08.html" class="btn btn-dark">บทที่ 8: Claude Code ขั้นสูง →</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p class="mb-1">คู่มือฝึกอบรม Claude AI — ใช้ปัญญาประดิษฐ์ทำงานราชการ</p>
+        <p class="mb-0 text-white-50">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 3: Adobe Firefly — สร้างและแก้ไขภาพ — AI สร้างรูปภาพ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 AI สร้างรูปภาพ</a>
+        <span class="text-white nav-text">บทที่ 3</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 3</h1>
+            <h2 class="fw-normal text-muted">Adobe Firefly — สร้างและแก้ไขภาพ</h2>
+            <p class="lead">เรียนรู้ Firefly ที่เก่งทั้งสร้างภาพใหม่และแก้ไขภาพเดิม</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>สมัครและเข้าใช้ Adobe Firefly ได้</li>
+                <li>ใช้ Text to Image สร้างภาพใหม่ได้</li>
+                <li>ใช้ Generative Fill เพิ่ม/ลบองค์ประกอบในภาพได้</li>
+                <li>ใช้ Generative Expand ขยายภาพได้</li>
+            </ul>
+        </div>
+
+        <!-- 3.1 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">3.1 สมัครใช้งาน Adobe Firefly</h3>
+
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <strong>เปิดเว็บ <a href="https://firefly.adobe.com" target="_blank">firefly.adobe.com</a></strong>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <strong>คลิก "Sign up for free"</strong>
+                <p class="mb-0 mt-1">ใช้ Gmail หรือ Apple ID สมัครได้เลย</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <strong>ได้ 25 Credits ฟรี/เดือน</strong>
+                <p class="mb-0 mt-1">สร้างภาพได้ประมาณ 25 ภาพ/เดือน (ฟรี)</p>
+            </div>
+
+            <div class="alert alert-warning mt-3">
+                <h5>⚠️ ข้อควรรู้</h5>
+                <ul class="mb-0">
+                    <li>Firefly ใช้ <strong>ภาษาอังกฤษ</strong> ในการเขียน Prompt (ต่างจาก DALL-E)</li>
+                    <li>ถ้าไม่เก่งอังกฤษ — ใช้ ChatGPT แปล Prompt ให้ก่อน!</li>
+                    <li>ภาพจาก Firefly <strong>ปลอดลิขสิทธิ์</strong> — ใช้เชิงพาณิชย์ได้</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3.2 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">3.2 Text to Image — สร้างภาพจากข้อความ</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>📝 วิธีใช้</h5>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เลือก "Text to Image" จากหน้าแรก</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>พิมพ์ Prompt ภาษาอังกฤษ</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"A modern poster for AI training workshop, blue and white color scheme, technology icons, accessible design"</code>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ตั้งค่าด้านขวา:</strong>
+                    <ul class="mt-1 mb-0">
+                        <li>Aspect Ratio: เลือก 1:1, 16:9, 4:3 ฯลฯ</li>
+                        <li>Content Type: Photo / Art / Graphic</li>
+                        <li>Style: เลือกจาก preset ได้เลย</li>
+                    </ul>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>กด "Generate" — ได้ภาพ 4 ภาพให้เลือก</strong>
+                </div>
+            </div>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🎨 Style Presets ที่น่าสนใจ</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul>
+                            <li><strong>Photo</strong> — เหมือนภาพถ่ายจริง</li>
+                            <li><strong>Art</strong> — งานศิลปะ ภาพวาด</li>
+                            <li><strong>Graphic</strong> — กราฟิกดีไซน์</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li><strong>Digital Art</strong> — ศิลปะดิจิทัล</li>
+                            <li><strong>Watercolor</strong> — สีน้ำ</li>
+                            <li><strong>Flat Design</strong> — แบบแบน</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3.3 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">3.3 Generative Fill — เพิ่ม/ลบของในภาพ</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🪄 Generative Fill คืออะไร?</h5>
+                <p>เป็นฟีเจอร์ที่ให้คุณ <strong>"ระบายพื้นที่"</strong> ในภาพ แล้วบอก AI ว่าต้องการอะไรตรงนั้น — AI จะเติมให้อัตโนมัติ!</p>
+
+                <div class="row mt-3">
+                    <div class="col-md-4 text-center">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>➕ เพิ่มของ</h6>
+                                <p class="small mb-0">ระบายพื้นที่ → พิมพ์ "a flower" → AI ใส่ดอกไม้ให้</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>➖ ลบของ</h6>
+                                <p class="small mb-0">ระบายส่วนที่ไม่ต้องการ → AI ลบออกแล้วเติมพื้นหลังให้</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>🔄 เปลี่ยนของ</h6>
+                                <p class="small mb-0">ระบายวัตถุเดิม → พิมพ์ของใหม่ → AI เปลี่ยนให้</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>📌 ขั้นตอนใช้ Generative Fill</h5>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>อัปโหลดภาพที่ต้องการแก้ไข</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>เลือก Brush แล้วระบาย (Paint) บนพื้นที่ที่ต้องการเปลี่ยน</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>พิมพ์ Prompt บอกว่าต้องการอะไร</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"a green tree" / "remove" / "blue sky with clouds"</code>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>กด Generate — AI แก้ไขให้กลมกลืนกับภาพเดิม</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3.4 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">3.4 Generative Expand — ขยายภาพ</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🖼️ ขยายภาพให้กว้างขึ้น</h5>
+                <p>มีภาพขนาดเล็กหรือครอปมาแน่นเกินไป? Generative Expand ช่วยขยายพื้นที่ภาพได้!</p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>อัปโหลดภาพ</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>เลือก "Generative Expand"</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ลากขอบภาพให้กว้างขึ้น (ด้านไหนก็ได้)</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>AI จะเติมเนื้อหาให้กลมกลืน</strong>
+                </div>
+
+                <p class="mt-3"><strong>ใช้ตอนไหน:</strong></p>
+                <ul>
+                    <li>ภาพแนวตั้ง อยากทำเป็นแนวนอน (สำหรับ Banner)</li>
+                    <li>ภาพเล็ก อยากขยายให้มีพื้นที่ว่างใส่ข้อความ</li>
+                    <li>ภาพครอปมาแน่น อยากเห็นบริบทรอบๆ เพิ่ม</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Lab -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">🔬 Lab ปฏิบัติ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 3.1 — Text to Image ใน Firefly</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิด firefly.adobe.com → Text to Image</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>สร้างภาพด้วย Prompt:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"Professional training workshop with disabled people using laptops, modern bright room, inclusive technology"</code>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ลองเปลี่ยน Style: Photo → Art → Graphic</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>เลือกภาพที่ชอบ กด Download</strong>
+                </div>
+            </div>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 3.2 — Generative Fill ลบพื้นหลัง</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>อัปโหลดภาพถ่ายที่มีพื้นหลังรก</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ระบายพื้นหลังที่ต้องการเปลี่ยน</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>พิมพ์ Prompt:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"clean white office background"</code>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ดูผลลัพธ์ — พื้นหลังเปลี่ยนเป็นสำนักงานสะอาด!</strong>
+                </div>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึก Before / After
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับบทนี้</h5>
+            <ul class="mb-0">
+                <li>Firefly ต้องใช้ภาษาอังกฤษ — ให้ ChatGPT ช่วยแปล Prompt ได้</li>
+                <li>ภาพจาก Firefly ปลอดลิขสิทธิ์ ใช้ในงานราชการได้สบาย</li>
+                <li>Generative Fill เหมาะมากสำหรับแก้ภาพถ่ายที่ไม่สมบูรณ์</li>
+                <li>ถ้า Credit หมด — รอเดือนใหม่ หรือใช้ DALL-E แทนก่อน</li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปท้ายบท</h5>
+            <ul>
+                <li><strong>Adobe Firefly</strong> สมัครฟรี ได้ 25 credits/เดือน</li>
+                <li><strong>Text to Image:</strong> สร้างภาพใหม่จาก Prompt ภาษาอังกฤษ</li>
+                <li><strong>Generative Fill:</strong> เพิ่ม/ลบ/เปลี่ยนองค์ประกอบในภาพ</li>
+                <li><strong>Generative Expand:</strong> ขยายภาพให้กว้างขึ้น</li>
+                <li><strong>จุดเด่น:</strong> ปลอดลิขสิทธิ์ + แก้ไขภาพเดิมได้</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="chapter02.html" class="btn btn-outline-dark">← บทที่ 2</a>
+            <a href="chapter04.html" class="btn btn-dark">บทที่ 4 →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

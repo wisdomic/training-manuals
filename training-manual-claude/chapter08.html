@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 8: ใช้ Claude Code สร้างระบบ | คู่มือ Claude AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">📖 คู่มือ Claude AI</a>
+            <span class="text-white">บทที่ 8 | วันที่ 4 บ่าย</span>
+        </div>
+    </nav>
+
+    <!-- Chapter Header -->
+    <div class="chapter-header bg-light py-4">
+        <div class="container">
+            <h1 class="display-5 fw-bold">บทที่ 8: ใช้ Claude Code สร้างระบบ</h1>
+            <p class="lead text-muted">วันที่ 4 บ่าย (3 ชั่วโมง) — Workshop สร้าง Web App และระบบ GAS + Sheets ด้วย Claude Code</p>
+            <div class="d-flex gap-2 flex-wrap">
+                <span class="badge bg-dark">Claude Code</span>
+                <span class="badge bg-dark">Web App</span>
+                <span class="badge bg-dark">GAS</span>
+                <span class="badge bg-dark">Git</span>
+                <span class="badge bg-dark">Debug</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+
+        <!-- สารบัญ -->
+        <div class="card mb-5">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">📋 สารบัญบทที่ 8</h5>
+            </div>
+            <div class="card-body">
+                <ul class="toc-list">
+                    <li><a href="#section-8-1">8.1 ออกแบบระบบด้วย Claude Code</a></li>
+                    <li><a href="#section-8-2">8.2 Workshop: สร้าง Web App (HTML + CSS + JS)</a></li>
+                    <li><a href="#section-8-3">8.3 Workshop: สร้างระบบ GAS + Sheets</a></li>
+                    <li><a href="#section-8-4">8.4 Git Integration — จัดการ version</a></li>
+                    <li><a href="#section-8-5">8.5 Debug + แก้ Bug ด้วย Claude Code</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 8.1 -->
+        <section id="section-8-1" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">8.1 ออกแบบระบบด้วย Claude Code</h3>
+
+            <div class="alert alert-info">
+                <strong>💡 หลักการสำคัญ:</strong> ก่อนให้ Claude Code เขียนโค้ด ต้อง "อธิบาย requirement" ให้ชัดเจนก่อน เหมือนสั่งงานลูกทีม ยิ่งบอกละเอียด ผลลัพธ์ยิ่งตรงใจ
+            </div>
+
+            <h5>วิธีอธิบาย Requirement ให้ Claude Code เข้าใจ</h5>
+            <p>ใช้สูตร <strong>WHAT-WHO-HOW</strong>:</p>
+
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>องค์ประกอบ</th>
+                        <th>คำอธิบาย</th>
+                        <th>ตัวอย่าง</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>WHAT</strong> — ระบบอะไร</td>
+                        <td>ชื่อระบบ + เป้าหมายหลัก</td>
+                        <td>"ระบบลงทะเบียนฝึกอบรมออนไลน์"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WHO</strong> — ใครใช้</td>
+                        <td>ผู้ใช้ระบบ + สิทธิ์</td>
+                        <td>"ผู้สมัคร (กรอกฟอร์ม) + แอดมิน (ดูข้อมูล)"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HOW</strong> — ทำงานอย่างไร</td>
+                        <td>เทคโนโลยี + ฟีเจอร์</td>
+                        <td>"ใช้ GAS + Google Sheets, มี CRUD, ส่ง Email"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="mt-4">ตัวอย่าง Prompt: ให้ Claude Code วิเคราะห์ Requirement</h5>
+            <div class="card bg-light mb-3">
+                <div class="card-header"><strong>🎯 Prompt สำหรับวิเคราะห์ requirement</strong></div>
+                <div class="card-body">
+<pre><code>> ผมต้องการสร้างระบบลงทะเบียนฝึกอบรมสำหรับ สนพ.สุรินทร์
+  - ผู้สมัคร: กรอกฟอร์ม (ชื่อ, หน่วยงาน, เบอร์โทร, email, หลักสูตร)
+  - แอดมิน: ดูรายชื่อ, อนุมัติ, ส่ง email ยืนยัน
+  - เทคโนโลยี: Google Apps Script + Google Sheets
+  - ต้องมี: validation, กันซ้ำ, ส่ง email อัตโนมัติ, แจ้ง Line
+  
+  ช่วยวิเคราะห์ requirement แล้วเสนอ design:
+  1. โครงสร้าง Sheets (ต้องมี sheet อะไรบ้าง, คอลัมน์อะไร)
+  2. ไฟล์ที่ต้องสร้าง (Code.gs, HTML ต่างๆ)
+  3. ฟังก์ชันหลักที่ต้องมี
+  4. Flow การทำงาน</code></pre>
+                </div>
+            </div>
+
+            <h5 class="mt-3">ตัวอย่างผลลัพธ์ที่ Claude Code จะตอบ</h5>
+            <div class="card mb-3">
+                <div class="card-body">
+<pre><code>Claude: วิเคราะห์ requirement ให้ครับ:
+
+📊 โครงสร้าง Google Sheets:
+┌─────────────────────────────────────────────────────┐
+│ Sheet: REGISTRATIONS                                 │
+│ Columns: reg_id | name | org | phone | email |       │
+│          course | status | reg_date | approved_date  │
+├─────────────────────────────────────────────────────┤
+│ Sheet: COURSES                                       │
+│ Columns: course_id | course_name | start_date |      │
+│          max_seats | current_seats | status          │
+├─────────────────────────────────────────────────────┤
+│ Sheet: SETTINGS                                      │
+│ Columns: key | value                                 │
+│ (admin_email, line_token, org_name ฯลฯ)             │
+└─────────────────────────────────────────────────────┘
+
+📁 ไฟล์ที่ต้องสร้าง:
+1. Code.gs — Backend (doGet, doPost, CRUD, Email, Line)
+2. index.html — หน้าแรก + ฟอร์มลงทะเบียน
+3. admin.html — หน้า Admin ดูข้อมูล/อนุมัติ
+4. appsscript.json — ตั้งค่า GAS
+
+⚙️ ฟังก์ชันหลัก:
+- doGet(e) → route หน้าต่างๆ
+- submitRegistration(data) → บันทึก + ส่ง Email
+- getRegistrations() → ดึงข้อมูลสำหรับ Admin
+- approveRegistration(regId) → อนุมัติ + แจ้ง Email + Line
+- checkDuplicate(email, course) → กันซ้ำ
+
+🔄 Flow:
+ผู้สมัคร → กรอกฟอร์ม → Validate → ตรวจซ้ำ → บันทึก Sheets
+→ ส่ง Email ยืนยัน → แจ้ง Admin (Line)
+→ Admin อนุมัติ → ส่ง Email ยืนยันผู้สมัคร
+
+ต้องการให้เริ่มสร้างไฟล์ไหนก่อนครับ?</code></pre>
+                </div>
+            </div>
+
+            <h5 class="mt-4">เทคนิคการสื่อสารกับ Claude Code</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card h-100 border-success">
+                        <div class="card-header bg-success text-white">✅ Prompt ที่ดี</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>"สร้างระบบ X ใช้เทคโนโลยี Y มีฟีเจอร์ Z"</li>
+                                <li>"อ่านไฟล์ A แล้วเพิ่มฟังก์ชัน B ที่ทำ C"</li>
+                                <li>"แก้ไข function X ให้รองรับกรณี Y ด้วย"</li>
+                                <li>"สร้างไฟล์ตาม pattern เดียวกับ Z แต่เปลี่ยน..."</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 border-danger">
+                        <div class="card-header bg-danger text-white">❌ Prompt ที่ไม่ดี</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>"สร้างระบบให้หน่อย" (ไม่มีรายละเอียด)</li>
+                                <li>"ทำเว็บ" (กว้างเกินไป)</li>
+                                <li>"แก้โค้ดให้ดีขึ้น" (ดีขึ้นยังไง?)</li>
+                                <li>"เขียนใหม่ทั้งหมด" (เสี่ยงเสียโค้ดเดิม)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning mt-4">
+                <strong>⚠️ ข้อควรระวัง:</strong>
+                <ul class="mb-0">
+                    <li>อย่าให้ Claude Code เขียนใหม่ทั้งหมดถ้ามีโค้ดเดิมที่ทำงานได้ดี</li>
+                    <li>สั่งทีละขั้นตอน ดีกว่าสั่งทีเดียวทั้งระบบ</li>
+                    <li>ตรวจสอบผลลัพธ์ทุกครั้งก่อนดำเนินการต่อ</li>
+                    <li>ใช้ Git commit บ่อยๆ เพื่อให้ย้อนกลับได้</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 8.2 -->
+        <section id="section-8-2" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">8.2 Workshop: สร้าง Web App (HTML + CSS + JS)</h3>
+
+            <div class="alert alert-success">
+                <strong>🎯 เป้าหมาย:</strong> ใช้ Claude Code สร้างเว็บไซต์ 3 แบบ — Portfolio, Form, Dashboard ด้วยการสั่งด้วยภาษาไทย
+            </div>
+
+            <!-- Workshop A: Portfolio -->
+            <h5 class="mt-4">🅰️ Workshop A: สร้างหน้าเว็บ Portfolio</h5>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>Step 1: เตรียมโปรเจกต์</strong></div>
+                <div class="card-body">
+<pre><code># สร้าง folder สำหรับ workshop
+> สร้าง folder "workshop-portfolio" แล้วเข้าไปใน folder นั้น
+
+Claude:
+🖥️  Running: mkdir workshop-portfolio
+✅ Created directory: workshop-portfolio</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>Step 2: สร้างหน้า Portfolio</strong></div>
+                <div class="card-body">
+<pre><code>> สร้างเว็บ Portfolio สำหรับข้าราชการ สนพ.สุรินทร์:
+  - ใช้ Bootstrap 5 (CDN)
+  - Header: ชื่อ "นายปัญญา ผาธรรม" ตำแหน่ง "เจ้าหน้าที่ฝ่ายแผนงานและสารสนเทศ"
+  - Section ประวัติการทำงาน (timeline style)
+  - Section ผลงาน/โปรเจกต์ (card grid 3 คอลัมน์)
+  - Section ทักษะ (progress bars: GAS 90%, HTML/CSS 85%, AI Tools 95%)
+  - Section ติดต่อ (email, โทร, Line)
+  - Footer พร้อม social media icons
+  - สีธีม: น้ำเงินกรมท่า (#1a3a5c) + ทอง (#d4a537)
+  - Responsive ทุกขนาดหน้าจอ
+  - มี smooth scroll animation</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>Step 3: ผลลัพธ์ที่คาดหวัง</strong></div>
+                <div class="card-body">
+                    <p>Claude Code จะสร้างไฟล์:</p>
+                    <ul>
+                        <li><code>index.html</code> — โครงสร้าง HTML + Bootstrap</li>
+                        <li><code>style.css</code> — Custom CSS ตามธีมสีที่กำหนด</li>
+                        <li><code>script.js</code> — Smooth scroll + animation</li>
+                    </ul>
+                    <p class="mt-2"><strong>Expected Output:</strong></p>
+<pre><code>✏️  Creating file: workshop-portfolio/index.html (120 lines)
+✏️  Creating file: workshop-portfolio/style.css (85 lines)
+✏️  Creating file: workshop-portfolio/script.js (30 lines)
+✅ Created 3 files for portfolio website</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>Step 4: ปรับแต่งเพิ่มเติม</strong></div>
+                <div class="card-body">
+<pre><code>> เพิ่ม Dark Mode toggle button มุมบนขวา
+  เมื่อคลิกเปลี่ยนสีพื้นหลังเป็นสีเข้ม ตัวอักษรเป็นสีอ่อน
+  จำค่าไว้ใน localStorage
+
+> เพิ่ม section "หลักสูตรที่สอน" แสดงเป็น carousel 
+  มี 5 หลักสูตร: AI, Python, GAS, Web Dev, Data Analysis
+
+> ทำให้มี animation เมื่อ scroll ลงมาถึง section (fade in from bottom)</code></pre>
+                </div>
+            </div>
+
+            <!-- Workshop B: Form -->
+            <h5 class="mt-5">🅱️ Workshop B: สร้าง Form สมัครอบรม</h5>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>Prompt สร้าง Form</strong></div>
+                <div class="card-body">
+<pre><code>> สร้าง Form ลงทะเบียนฝึกอบรม:
+  - ใช้ Bootstrap 5
+  - มี multi-step (3 ขั้นตอน): ข้อมูลส่วนตัว → เลือกหลักสูตร → ยืนยัน
+  - Step 1: ชื่อ-นามสกุล, เลขบัตรประชาชน 13 หลัก (validate), 
+    หน่วยงาน (dropdown), ตำแหน่ง, โทร, email
+  - Step 2: เลือกหลักสูตร (radio buttons) แสดง 5 หลักสูตร
+    พร้อมวันที่ + จำนวนที่นั่งเหลือ
+  - Step 3: สรุปข้อมูล + ปุ่มยืนยัน
+  - มี progress bar ด้านบนแสดงขั้นตอน
+  - Validate ทุก field ก่อนไป step ถัดไป
+  - แสดง error message เป็นภาษาไทย
+  - เมื่อ submit แสดง success message + เลขที่ลงทะเบียน</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header"><strong>Expected: โค้ด JavaScript Validation ที่ Claude Code จะสร้าง</strong></div>
+                <div class="card-body">
+<pre><code>// ตัวอย่าง validation เลขบัตรประชาชน 13 หลัก
+function validateIdCard(id) {
+    if (id.length !== 13) return false;
+    if (!/^\d{13}$/.test(id)) return false;
+    
+    // ตรวจ check digit (หลักที่ 13)
+    let sum = 0;
+    for (let i = 0; i < 12; i++) {
+        sum += parseInt(id[i]) * (13 - i);
+    }
+    let checkDigit = (11 - (sum % 11)) % 10;
+    return checkDigit === parseInt(id[12]);
+}
+
+// Validate เบอร์โทร
+function validatePhone(phone) {
+    return /^0[689]\d{8}$/.test(phone.replace(/-/g, ''));
+}
+
+// Validate email
+function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Workshop C: Dashboard -->
+            <h5 class="mt-5">🅲️ Workshop C: สร้าง Dashboard</h5>
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>Prompt สร้าง Dashboard</strong></div>
+                <div class="card-body">
+<pre><code>> สร้าง Dashboard สำหรับแสดงสถิติฝึกอบรม:
+  - Layout: Sidebar (เมนู) + Main content
+  - สีธีม: Dark sidebar (#2c3e50) + Light content
+  - แถวที่ 1: Summary cards 4 ใบ
+    (ผู้สมัครทั้งหมด, อนุมัติแล้ว, รอดำเนินการ, หลักสูตรที่เปิด)
+  - แถวที่ 2: กราฟแท่ง (Chart.js) แสดงผู้สมัครรายเดือน
+  - แถวที่ 3: กราฟวงกลม (หลักสูตรยอดนิยม) + ตารางล่าสุด
+  - ตาราง: 5 รายการล่าสุด (ชื่อ, หลักสูตร, วันที่, สถานะ)
+  - สถานะเป็น badge สี (เขียว=อนุมัติ, เหลือง=รอ, แดง=ยกเลิก)
+  - ใช้ข้อมูลจำลอง (mock data) ในไฟล์ JS แยก
+  - Responsive: sidebar ซ่อนในมือถือ → เป็น hamburger menu</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header"><strong>Expected: ไฟล์ที่ Claude Code จะสร้าง</strong></div>
+                <div class="card-body">
+<pre><code>workshop-dashboard/
+├── index.html          # โครงสร้าง Dashboard
+├── css/
+│   └── dashboard.css   # Custom styles
+├── js/
+│   ├── app.js          # Logic หลัก
+│   ├── charts.js       # Chart.js configurations
+│   └── mock-data.js    # ข้อมูลจำลอง
+└── README.md           # คำอธิบายโปรเจกต์</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header"><strong>ตัวอย่าง Mock Data ที่จะได้</strong></div>
+                <div class="card-body">
+<pre><code>// mock-data.js
+const mockData = {
+    summary: {
+        totalRegistrations: 847,
+        approved: 623,
+        pending: 189,
+        activeCourses: 12
+    },
+    monthlyRegistrations: [
+        { month: 'ม.ค.', count: 45 },
+        { month: 'ก.พ.', count: 62 },
+        { month: 'มี.ค.', count: 78 },
+        { month: 'เม.ย.', count: 53 },
+        { month: 'พ.ค.', count: 91 },
+        { month: 'มิ.ย.', count: 85 }
+    ],
+    popularCourses: [
+        { name: 'AI สำหรับงานราชการ', count: 156 },
+        { name: 'Google Apps Script', count: 134 },
+        { name: 'Python เบื้องต้น', count: 98 },
+        { name: 'Data Analysis', count: 87 },
+        { name: 'Web Development', count: 72 }
+    ],
+    recentRegistrations: [
+        { name: 'นายสมชาย ใจดี', course: 'AI สำหรับงานราชการ', date: '2569-06-15', status: 'approved' },
+        { name: 'นางสาวสุภา มาลี', course: 'Google Apps Script', date: '2569-06-14', status: 'pending' },
+        { name: 'นายวิชัย ศรีสุข', course: 'Python เบื้องต้น', date: '2569-06-14', status: 'approved' },
+        { name: 'นางปราณี รักษ์ดี', course: 'Data Analysis', date: '2569-06-13', status: 'rejected' },
+        { name: 'นายธนา สร้างสรรค์', course: 'Web Development', date: '2569-06-13', status: 'pending' }
+    ]
+};</code></pre>
+                </div>
+            </div>
+
+            <div class="alert alert-info mt-4">
+                <strong>💡 แบบฝึกหัด:</strong> ให้ผู้เข้าอบรมเลือกสร้าง 1 ใน 3 workshop ข้างต้น โดยใช้ Claude Code สั่งด้วยตัวเอง อาจปรับเปลี่ยนรายละเอียดตามงานจริงของตัวเอง
+            </div>
+        </section>
+
+        <!-- Section 8.3 -->
+        <section id="section-8-3" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">8.3 Workshop: สร้างระบบ GAS + Sheets</h3>
+
+            <div class="alert alert-success">
+                <strong>🎯 เป้าหมาย:</strong> สร้างระบบลงทะเบียนฝึกอบรมเต็มรูปแบบ ด้วย Google Apps Script + Google Sheets ใช้ Claude Code เป็นผู้ช่วยเขียนโค้ด
+            </div>
+
+            <h5>โครงสร้างระบบที่จะสร้าง</h5>
+            <div class="card mb-4">
+                <div class="card-body">
+<pre><code>ระบบลงทะเบียนฝึกอบรม (Training Registration)
+├── Code.gs              # Backend: doGet, doPost, CRUD, Email, Line
+├── index.html           # หน้าฟอร์มลงทะเบียน (สาธารณะ)
+├── admin.html           # หน้า Admin จัดการข้อมูล
+└── appsscript.json      # ตั้งค่า GAS
+
+Google Sheets:
+├── REGISTRATIONS        # ข้อมูลผู้ลงทะเบียน
+├── COURSES              # หลักสูตร
+└── SETTINGS             # ตั้งค่าระบบ</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 1 -->
+            <h5 class="mt-4">Step 1: สร้าง Code.gs (Backend)</h5>
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>Prompt สร้าง Code.gs</strong></div>
+                <div class="card-body">
+<pre><code>> สร้างไฟล์ Code.gs สำหรับระบบลงทะเบียนฝึกอบรม:
+
+1. doGet(e) — route:
+   - ไม่มี parameter → แสดง index.html (ฟอร์มลงทะเบียน)
+   - page=admin → แสดง admin.html (หน้าแอดมิน)
+
+2. doPost(e) — API:
+   - action=register → บันทึกลงทะเบียน
+   - action=getCourses → ดึงรายชื่อหลักสูตร
+   - action=getRegistrations → ดึงข้อมูลผู้ลงทะเบียน (admin)
+   - action=approve → อนุมัติ
+   - action=reject → ปฏิเสธ
+
+3. ฟังก์ชันช่วย:
+   - generateId() → สร้าง REG-XXXXXX
+   - checkDuplicate(email, courseId) → ตรวจสอบซ้ำ
+   - sendConfirmEmail(regData) → ส่ง Email ยืนยัน
+   - sendLineNotify(message) → แจ้ง Admin ผ่าน Line
+   - validateInput(data) → ตรวจสอบข้อมูล
+
+4. ข้อกำหนด:
+   - ใช้ SpreadsheetApp
+   - ห้ามใช้ template literal (backtick)
+   - Input validation ทุก field
+   - try-catch ทุกฟังก์ชัน
+   - comment ภาษาไทย</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header"><strong>Expected: Code.gs ที่จะได้ (บางส่วน)</strong></div>
+                <div class="card-body">
+<pre><code>// ============================================
+// ระบบลงทะเบียนฝึกอบรม — สนพ.สุรินทร์
+// ============================================
+
+var SHEET_ID = 'YOUR_SHEET_ID_HERE';
+
+// ======== Route ========
+function doGet(e) {
+  var page = e && e.parameter && e.parameter.page ? e.parameter.page : '';
+  
+  if (page === 'admin') {
+    return HtmlService.createHtmlOutputFromFile('admin')
+      .setTitle('Admin - ระบบลงทะเบียน')
+      .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  }
+  
+  return HtmlService.createHtmlOutputFromFile('index')
+    .setTitle('ลงทะเบียนฝึกอบรม - สนพ.สุรินทร์')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
+function doPost(e) {
+  try {
+    var data = JSON.parse(e.postData.contents);
+    var action = data.action || '';
+    
+    switch (action) {
+      case 'register':
+        return _jsonResponse(submitRegistration(data));
+      case 'getCourses':
+        return _jsonResponse(getCourses());
+      case 'getRegistrations':
+        return _jsonResponse(getRegistrations());
+      case 'approve':
+        return _jsonResponse(approveRegistration(data.regId));
+      case 'reject':
+        return _jsonResponse(rejectRegistration(data.regId, data.reason));
+      default:
+        return _jsonResponse({ success: false, message: 'Unknown action' });
+    }
+  } catch (err) {
+    return _jsonResponse({ success: false, message: err.toString() });
+  }
+}
+
+// ======== บันทึกลงทะเบียน ========
+function submitRegistration(data) {
+  // Validate
+  var errors = validateInput(data);
+  if (errors.length > 0) {
+    return { success: false, errors: errors };
+  }
+  
+  // ตรวจซ้ำ
+  if (checkDuplicate(data.email, data.courseId)) {
+    return { success: false, message: 'คุณลงทะเบียนหลักสูตรนี้แล้ว' };
+  }
+  
+  // สร้าง ID
+  var regId = generateId();
+  var now = new Date();
+  
+  // บันทึก
+  var ss = SpreadsheetApp.openById(SHEET_ID);
+  var sh = ss.getSheetByName('REGISTRATIONS');
+  sh.appendRow([
+    regId,
+    data.name,
+    data.org,
+    data.phone,
+    data.email,
+    data.courseId,
+    'pending',
+    now.toISOString(),
+    ''
+  ]);
+  
+  // ส่ง Email + Line
+  sendConfirmEmail({ regId: regId, name: data.name, email: data.email });
+  sendLineNotify('📋 ลงทะเบียนใหม่: ' + data.name + ' (' + regId + ')');
+  
+  return { success: true, regId: regId, message: 'ลงทะเบียนสำเร็จ' };
+}
+
+// ======== ช่วยเหลือ ========
+function generateId() {
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  var id = 'REG-';
+  for (var i = 0; i < 6; i++) {
+    id += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return id;
+}
+
+function _jsonResponse(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj))
+    .setMimeType(ContentService.MimeType.JSON);
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <h5 class="mt-4">Step 2: สร้าง index.html (ฟอร์มลงทะเบียน)</h5>
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>Prompt สร้าง index.html</strong></div>
+                <div class="card-body">
+<pre><code>> สร้าง index.html สำหรับฟอร์มลงทะเบียน:
+  - Bootstrap 5 (CDN)
+  - Header: โลโก้ สนพ.สุรินทร์ + ชื่อระบบ
+  - Form fields:
+    * ชื่อ-นามสกุล (required)
+    * หน่วยงาน (dropdown: ราชการ/รัฐวิสาหกิจ/เอกชน/อื่นๆ)
+    * เบอร์โทร (validate: 10 หลัก เริ่ม 0)
+    * Email (validate format)
+    * เลือกหลักสูตร (radio — ดึงจาก API getCourses)
+  - ปุ่ม Submit → เรียก google.script.run.submitRegistration()
+  - แสดง loading spinner ขณะ submit
+  - แสดง success/error message
+  - ห้ามใช้ template literal (backtick)
+  - ใช้ string concatenation เท่านั้น</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <h5 class="mt-4">Step 3: สร้าง admin.html (หน้า Admin)</h5>
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>Prompt สร้าง admin.html</strong></div>
+                <div class="card-body">
+<pre><code>> สร้าง admin.html สำหรับจัดการลงทะเบียน:
+  - Bootstrap 5 + DataTables (CDN)
+  - Header: "Admin — ระบบลงทะเบียน"
+  - Summary cards: จำนวนทั้งหมด / อนุมัติ / รอ / ปฏิเสธ
+  - ตาราง: reg_id, ชื่อ, หน่วยงาน, หลักสูตร, วันที่, สถานะ, actions
+  - Actions: ปุ่มอนุมัติ (เขียว) + ปฏิเสธ (แดง)
+  - Filter: dropdown เลือกสถานะ + ค้นหาชื่อ
+  - เมื่ออนุมัติ: confirm dialog → เรียก API → refresh ตาราง
+  - เมื่อปฏิเสธ: ใส่เหตุผล (modal) → เรียก API → refresh
+  - Auto-refresh ทุก 30 วินาที
+  - ห้ามใช้ template literal</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 4: Deploy -->
+            <h5 class="mt-4">Step 4: Deploy ระบบ</h5>
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white"><strong>ขั้นตอน Deploy GAS</strong></div>
+                <div class="card-body">
+                    <ol>
+                        <li>ไปที่ <code>script.google.com</code> → สร้าง project ใหม่</li>
+                        <li>Copy โค้ดจากไฟล์ที่ Claude Code สร้าง ไปวางใน GAS editor</li>
+                        <li>สร้างไฟล์ HTML ใน GAS (File → New → HTML)</li>
+                        <li>ตั้งค่า Sheet ID ใน Code.gs</li>
+                        <li>Deploy → New deployment → Web app</li>
+                        <li>ตั้งค่า: Execute as = Me, Access = Anyone</li>
+                        <li>Copy URL → ทดสอบ</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="alert alert-info mt-3">
+                <strong>💡 ทางเลือก: ใช้ clasp (CLI tool สำหรับ GAS)</strong>
+<pre class="mt-2 mb-0"><code># ติดตั้ง clasp
+npm install -g @google/clasp
+
+# Login
+clasp login
+
+# Clone project
+clasp clone SCRIPT_ID
+
+# Push ไฟล์ขึ้น GAS
+clasp push
+
+# Deploy
+clasp deploy --description "v1.0"</code></pre>
+            </div>
+        </section>
+
+        <!-- Section 8.4 -->
+        <section id="section-8-4" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">8.4 Git Integration — จัดการ version</h3>
+
+            <div class="alert alert-info">
+                <strong>💡 ทำไมต้องใช้ Git:</strong> Git ช่วยเก็บประวัติการแก้ไข ย้อนกลับได้เมื่อเกิดปัญหา และทำงานร่วมกับคนอื่นได้ — Claude Code ใช้ Git ได้ดีมาก
+            </div>
+
+            <h5>คำสั่ง Git พื้นฐานผ่าน Claude Code</h5>
+
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>สิ่งที่ต้องการทำ</th>
+                        <th>Prompt สั่ง Claude Code</th>
+                        <th>คำสั่ง Git ที่จะรัน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>เริ่มใช้ Git</td>
+                        <td>"เริ่ม git ในโปรเจกต์นี้"</td>
+                        <td><code>git init</code></td>
+                    </tr>
+                    <tr>
+                        <td>ดูสถานะ</td>
+                        <td>"ดูสถานะ git"</td>
+                        <td><code>git status</code></td>
+                    </tr>
+                    <tr>
+                        <td>เพิ่มไฟล์</td>
+                        <td>"เพิ่มไฟล์ทั้งหมดเข้า git"</td>
+                        <td><code>git add .</code></td>
+                    </tr>
+                    <tr>
+                        <td>บันทึก</td>
+                        <td>"commit ว่า 'เพิ่มระบบลงทะเบียน v1.0'"</td>
+                        <td><code>git commit -m "เพิ่มระบบลงทะเบียน v1.0"</code></td>
+                    </tr>
+                    <tr>
+                        <td>ส่งขึ้น GitHub</td>
+                        <td>"push ขึ้น GitHub"</td>
+                        <td><code>git push origin main</code></td>
+                    </tr>
+                    <tr>
+                        <td>ดูประวัติ</td>
+                        <td>"ดูประวัติ commit ล่าสุด 5 รายการ"</td>
+                        <td><code>git log --oneline -5</code></td>
+                    </tr>
+                    <tr>
+                        <td>ย้อนกลับ</td>
+                        <td>"ย้อนกลับไฟล์ Code.gs เป็นเวอร์ชันก่อนหน้า"</td>
+                        <td><code>git checkout HEAD~1 -- Code.gs</code></td>
+                    </tr>
+                    <tr>
+                        <td>สร้าง Branch</td>
+                        <td>"สร้าง branch ใหม่ชื่อ feature-email"</td>
+                        <td><code>git checkout -b feature-email</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="mt-4">ตัวอย่าง Session: ใช้ Claude Code + Git</h5>
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+<pre><code># เริ่มต้นโปรเจกต์
+> เริ่ม git ในโปรเจกต์นี้ แล้วสร้าง .gitignore สำหรับ GAS project
+  (ignore: node_modules, .env, .clasp*, credentials/)
+
+Claude:
+🖥️  Running: git init
+✏️  Creating: .gitignore
+✅ Initialized git repository + created .gitignore
+
+# ทำงานเสร็จ → commit
+> เพิ่มไฟล์ทั้งหมด แล้ว commit ว่า "feat: เพิ่มระบบลงทะเบียน v1.0"
+
+Claude:
+🖥️  Running: git add .
+🖥️  Running: git commit -m "feat: เพิ่มระบบลงทะเบียน v1.0"
+✅ Committed: feat: เพิ่มระบบลงทะเบียน v1.0 (4 files changed)
+
+# เชื่อม GitHub
+> เชื่อม remote กับ GitHub repo: https://github.com/wisdomic/training-reg.git
+  แล้ว push ขึ้นไป
+
+Claude:
+🖥️  Running: git remote add origin https://github.com/wisdomic/training-reg.git
+🖥️  Running: git push -u origin main
+✅ Pushed to GitHub successfully</code></pre>
+                </div>
+            </div>
+
+            <h5 class="mt-4">Commit Message Convention (แนะนำ)</h5>
+            <table class="table table-bordered table-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Prefix</th>
+                        <th>ใช้เมื่อ</th>
+                        <th>ตัวอย่าง</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>feat:</code></td>
+                        <td>เพิ่มฟีเจอร์ใหม่</td>
+                        <td>feat: เพิ่มระบบส่ง email อัตโนมัติ</td>
+                    </tr>
+                    <tr>
+                        <td><code>fix:</code></td>
+                        <td>แก้ bug</td>
+                        <td>fix: แก้ปัญหา dropdown ไม่แสดงหลักสูตร</td>
+                    </tr>
+                    <tr>
+                        <td><code>docs:</code></td>
+                        <td>อัปเดตเอกสาร</td>
+                        <td>docs: อัปเดต README</td>
+                    </tr>
+                    <tr>
+                        <td><code>style:</code></td>
+                        <td>แก้ CSS/format</td>
+                        <td>style: ปรับสีปุ่ม submit</td>
+                    </tr>
+                    <tr>
+                        <td><code>refactor:</code></td>
+                        <td>ปรับโครงสร้างโค้ด</td>
+                        <td>refactor: แยกฟังก์ชัน validate</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-warning mt-3">
+                <strong>⚠️ กฎสำคัญเมื่อใช้ Git กับ Claude Code:</strong>
+                <ul class="mb-0">
+                    <li><strong>Commit บ่อยๆ</strong> — ทุกครั้งที่ทำ feature เสร็จ 1 อัน</li>
+                    <li><strong>อ่าน diff ก่อน commit</strong> — สั่ง "ดู diff ก่อน commit" ให้ Claude แสดง</li>
+                    <li><strong>อย่า push ไฟล์ลับ</strong> — .env, API key, credentials ต้องอยู่ใน .gitignore</li>
+                    <li><strong>Pull ก่อน Push เสมอ</strong> — ป้องกัน conflict เมื่อทำงานหลายเครื่อง</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 8.5 -->
+        <section id="section-8-5" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">8.5 Debug + แก้ Bug ด้วย Claude Code</h3>
+
+            <div class="alert alert-info">
+                <strong>💡 Claude Code เก่งมากเรื่อง Debug:</strong> แค่บอก "อาการ" ที่เกิดขึ้น Claude จะวิเคราะห์สาเหตุและเสนอวิธีแก้ไขให้
+            </div>
+
+            <h5>วิธีบอก Bug ให้ Claude Code เข้าใจ</h5>
+            <p>ใช้สูตร <strong>SAR</strong> (Symptom - Action - Result):</p>
+
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>องค์ประกอบ</th>
+                        <th>คำอธิบาย</th>
+                        <th>ตัวอย่าง</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>S</strong> — Symptom (อาการ)</td>
+                        <td>เกิดอะไรขึ้น</td>
+                        <td>"ปุ่ม Submit กดแล้วไม่มีอะไรเกิดขึ้น"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>A</strong> — Action (สิ่งที่ทำ)</td>
+                        <td>ทำอะไรก่อนเกิดปัญหา</td>
+                        <td>"กรอกฟอร์มครบทุกช่อง แล้วกดปุ่ม"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R</strong> — Result (ผลที่คาดหวัง)</td>
+                        <td>อยากให้เกิดอะไร</td>
+                        <td>"ควรแสดง loading แล้วส่งข้อมูลไป Sheets"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="mt-4">ตัวอย่าง Debug Session</h5>
+
+            <div class="card mb-3">
+                <div class="card-header bg-danger text-white"><strong>🐛 Bug 1: Form submit ไม่ทำงาน</strong></div>
+                <div class="card-body">
+<pre><code>> อ่าน index.html แล้วช่วยหาว่าทำไมปุ่ม Submit กดแล้วไม่ทำงาน
+  อาการ: กดปุ่มแล้วหน้าเว็บ refresh ไม่มี loading ไม่มี error
+  
+Claude:
+📖 Reading: index.html
+
+🐛 พบปัญหา 2 จุด:
+
+1. บรรทัดที่ 45: &lt;form onsubmit="handleSubmit()"&gt;
+   ❌ ไม่ได้ return false หรือ preventDefault
+   → ฟอร์ม submit แบบ HTTP ปกติ (refresh หน้า)
+   
+   ✅ แก้ไข: &lt;form onsubmit="handleSubmit(event)"&gt;
+   + เพิ่ม event.preventDefault() ในฟังก์ชัน
+
+2. บรรทัดที่ 78: function handleSubmit() {
+   ❌ ไม่ได้รับ event parameter
+   
+   ✅ แก้ไข:
+   function handleSubmit(e) {
+     e.preventDefault();  // ← เพิ่มบรรทัดนี้
+     // ... โค้ดเดิม
+   }
+
+ต้องการให้แก้ไขให้เลยไหมครับ?
+
+> แก้ให้เลย
+
+✏️  Editing: index.html (2 changes)
+✅ Fixed form submission issue</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header bg-danger text-white"><strong>🐛 Bug 2: GAS getCourses ไม่ return ข้อมูล</strong></div>
+                <div class="card-body">
+<pre><code>> อ่าน Code.gs ฟังก์ชัน getCourses() 
+  อาการ: เรียก getCourses() แล้วได้ data: [] (array ว่าง)
+  ทั้งที่ใน Sheet COURSES มีข้อมูล 5 แถว
+  
+Claude:
+📖 Reading: Code.gs → getCourses()
+
+🐛 พบปัญหา:
+
+function getCourses() {
+  var sh = ss.getSheetByName('COURSE');  // ❌ ชื่อ Sheet ผิด!
+  // ใน Spreadsheet ชื่อ "COURSES" (มี S)
+}
+
+✅ แก้ไข: เปลี่ยน 'COURSE' → 'COURSES'
+
+นอกจากนี้พบปัญหาเพิ่มเติม:
+- บรรทัดที่ 52: getDataRange().getValues()
+  จะรวม header row ด้วย → ต้อง slice(1) หรือเริ่มจาก row 2
+
+✏️  Editing: Code.gs
+- Line 48: 'COURSE' → 'COURSES'
+- Line 52: .getValues() → .getValues().slice(1)
+✅ Fixed getCourses() - corrected sheet name and removed header</code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header bg-danger text-white"><strong>🐛 Bug 3: Email ส่งไม่ได้</strong></div>
+                <div class="card-body">
+<pre><code>> ฟังก์ชัน sendConfirmEmail ส่ง email ไม่ได้
+  Error: "Exception: Invalid email address"
+  ทั้งที่ email ในตัวแปรมีค่า "test@example.com"
+  
+Claude:
+📖 Reading: Code.gs → sendConfirmEmail()
+
+🐛 พบปัญหา:
+
+function sendConfirmEmail(regData) {
+  var email = regData.email;    // "test@example.com"
+  var subject = '...';
+  var body = '...';
+  
+  MailApp.sendEmail(email, subject, body);  // ❌ ดูเหมือนถูก
+}
+
+🔍 ตรวจสอบเพิ่มเติม...
+พบว่าบรรทัดที่ 23: var email = data.email.trim();
+→ ก่อนเรียก sendConfirmEmail ไม่ได้ trim
+→ ข้อมูลจาก Sheet มี space ต่อท้าย: "test@example.com "
+
+✅ แก้ไข: เพิ่ม .trim() ในฟังก์ชัน sendConfirmEmail
+  var email = String(regData.email || '').trim();
+
+✏️  Editing: Code.gs
+✅ Fixed email validation - added trim()</code></pre>
+                </div>
+            </div>
+
+            <h5 class="mt-4">Common Bug Patterns ใน GAS</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ปัญหา</th>
+                        <th>สาเหตุที่พบบ่อย</th>
+                        <th>วิธีบอก Claude Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ข้อมูลไม่แสดง</td>
+                        <td>ชื่อ Sheet ผิด / คอลัมน์ผิด</td>
+                        <td>"อ่านฟังก์ชัน X แล้วตรวจว่าชื่อ Sheet ถูกไหม"</td>
+                    </tr>
+                    <tr>
+                        <td>Script error</td>
+                        <td>ไม่ได้ parse JSON / null reference</td>
+                        <td>"อ่าน Code.gs บรรทัด XX แล้วหาว่า error อะไร"</td>
+                    </tr>
+                    <tr>
+                        <td>HTML ไม่แสดง</td>
+                        <td>Template literal / SVG / ชื่อไฟล์ผิด</td>
+                        <td>"ตรวจ HTML ว่ามี backtick หรือ SVG ที่ GAS ไม่รองรับไหม"</td>
+                    </tr>
+                    <tr>
+                        <td>Email ไม่ส่ง</td>
+                        <td>Quota เต็ม / email format ผิด</td>
+                        <td>"ตรวจ sendEmail ว่า parameter ถูกต้องไหม"</td>
+                    </tr>
+                    <tr>
+                        <td>Deploy แล้วไม่เห็นเวอร์ชันใหม่</td>
+                        <td>ลืม Deploy ใหม่ / Cache browser</td>
+                        <td>"ตรวจว่า deploy version ล่าสุดคือเท่าไร"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="mt-4">Prompt Templates สำหรับ Debug</h5>
+            <div class="card bg-light">
+                <div class="card-body">
+<pre><code># Template 1: Debug จาก Error Message
+> อ่านไฟล์ [ชื่อไฟล์] ฟังก์ชัน [ชื่อฟังก์ชัน]
+  Error ที่ได้: "[error message]"
+  ช่วยหาสาเหตุและแก้ไข
+
+# Template 2: Debug จากอาการ
+> ระบบ [ชื่อระบบ] มีปัญหา:
+  - อาการ: [อธิบายอาการ]
+  - เกิดเมื่อ: [สถานการณ์]
+  - ควรเป็น: [ผลลัพธ์ที่คาดหวัง]
+  ช่วยหาสาเหตุในไฟล์ [ชื่อไฟล์]
+
+# Template 3: Debug ทั้งระบบ
+> อ่านทุกไฟล์ในโปรเจกต์นี้ แล้วหาปัญหาที่อาจเกิดขึ้น:
+  - Error handling ที่ขาด
+  - Input ที่ไม่ validate
+  - Security holes
+  - Performance issues</code></pre>
+                </div>
+            </div>
+
+            <div class="alert alert-success mt-4">
+                <strong>🎯 แบบฝึกหัด Debug:</strong>
+                <ol class="mb-0">
+                    <li>จงใส่ bug ลงในโค้ดของ Workshop 8.2 หรือ 8.3 แล้วให้ Claude Code หา</li>
+                    <li>ให้ Claude Code ตรวจสอบโค้ดที่สร้างในวันนี้ หาจุดที่อาจมีปัญหา</li>
+                    <li>ให้ Claude Code เพิ่ม error handling ให้โค้ดที่สร้างทั้งหมด</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+            <a href="chapter07.html" class="btn btn-outline-dark">← บทที่ 7: เริ่มต้น Claude Code</a>
+            <a href="chapter09.html" class="btn btn-dark">บทที่ 9: Claude Code ขั้นสูง →</a>
+        </nav>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p>คู่มือฝึกอบรม Claude AI — ใช้ปัญญาประดิษฐ์ทำงานราชการ</p>
+        <p class="opacity-75">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

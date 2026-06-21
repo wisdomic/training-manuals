@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 9: เริ่มต้นใช้ AI อย่างมีประสิทธิภาพ — พื้นฐาน AI ทุกมิติ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 พื้นฐาน AI ทุกมิติ</a>
+        <span class="text-white nav-text">บทที่ 9</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 9</h1>
+            <h2 class="fw-normal text-muted">เริ่มต้นใช้ AI อย่างมีประสิทธิภาพ</h2>
+            <p class="lead">สมัครเครื่องมือ AI ฟรีทุกตัว ตั้งค่าพร้อมใช้งาน และสร้าง Workflow ประจำวัน</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>สมัครเครื่องมือ AI ฟรีได้ทุกตัว (7 เครื่องมือ)</li>
+                <li>ตั้งค่า Account ให้พร้อมใช้งานอย่างมีประสิทธิภาพ</li>
+            </ul>
+        </div>
+
+        <!-- 9.1 สมัครเครื่องมือ AI ฟรี -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">9.1 สมัครเครื่องมือ AI ฟรี — ทีละตัว</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <p><strong>📌 สิ่งที่ต้องเตรียม:</strong> บัญชี Gmail (Google Account) — ใช้สมัครได้เกือบทุกตัว!</p>
+                <p class="mb-0">ถ้ายังไม่มี Gmail → สมัครที่ <a href="https://accounts.google.com" target="_blank">accounts.google.com</a> ก่อน</p>
+            </div>
+
+            <!-- Tool 1: ChatGPT -->
+            <div class="exercise-box p-4 rounded border border-2 border-primary bg-light mb-4">
+                <h5 class="text-primary">1️⃣ ChatGPT — AI เอนกประสงค์ (OpenAI)</h5>
+                <p>🌐 <a href="https://chat.openai.com" target="_blank">chat.openai.com</a></p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิดเว็บ</strong> chat.openai.com
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>กด "Sign up"</strong> → เลือก "Continue with Google"
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เลือก Gmail Account</strong> ของคุณ → อนุญาตเข้าถึง
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ตั้งชื่อ</strong> (ไม่ต้องใช้ชื่อจริง) → เสร็จ! พร้อมใช้งาน
+                </div>
+
+                <div class="alert alert-warning py-2 mt-3 mb-0">
+                    <strong>💡 หมายเหตุ:</strong> เวอร์ชันฟรีใช้ GPT-4o mini / Plus ($20/เดือน) ใช้ GPT-4o เต็ม + สร้างรูปได้
+                </div>
+            </div>
+
+            <!-- Tool 2: Claude -->
+            <div class="exercise-box p-4 rounded border border-2 border-primary bg-light mb-4">
+                <h5 class="text-primary">2️⃣ Claude — AI วิเคราะห์เอกสาร (Anthropic)</h5>
+                <p>🌐 <a href="https://claude.ai" target="_blank">claude.ai</a></p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิดเว็บ</strong> claude.ai
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>กด "Sign up"</strong> → เลือก "Continue with Google"
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เลือก Gmail Account</strong> → ยืนยันอีเมล
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ตั้งชื่อ</strong> → เสร็จ! พร้อมใช้งาน
+                </div>
+
+                <div class="alert alert-warning py-2 mt-3 mb-0">
+                    <strong>💡 จุดเด่น:</strong> วิเคราะห์เอกสารยาวได้ดีมาก อัปโหลดไฟล์ PDF ได้
+                </div>
+            </div>
+
+            <!-- Tool 3: Gemini -->
+            <div class="exercise-box p-4 rounded border border-2 border-primary bg-light mb-4">
+                <h5 class="text-primary">3️⃣ Gemini — AI จาก Google</h5>
+                <p>🌐 <a href="https://gemini.google.com" target="_blank">gemini.google.com</a></p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิดเว็บ</strong> gemini.google.com
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>Login ด้วย Gmail</strong> (ถ้า login อยู่แล้ว → เข้าได้เลย)
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ยอมรับเงื่อนไข</strong> → เสร็จ! พร้อมใช้งาน
+                </div>
+
+                <div class="alert alert-warning py-2 mt-3 mb-0">
+                    <strong>💡 จุดเด่น:</strong> เชื่อมกับ Gmail, Google Drive, YouTube อัตโนมัติ
+                </div>
+            </div>
+
+            <!-- Tool 4: NotebookLM -->
+            <div class="exercise-box p-4 rounded border border-2 border-primary bg-light mb-4">
+                <h5 class="text-primary">4️⃣ NotebookLM — AI สรุปเอกสาร (Google)</h5>
+                <p>🌐 <a href="https://notebooklm.google.com" target="_blank">notebooklm.google.com</a></p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิดเว็บ</strong> notebooklm.google.com
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>Login ด้วย Gmail</strong> → เข้าได้เลย (ใช้ Google Account เดียวกัน)
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>กด "New Notebook"</strong> → อัปโหลดเอกสาร → เริ่มถามคำถามได้
+                </div>
+
+                <div class="alert alert-warning py-2 mt-3 mb-0">
+                    <strong>💡 จุดเด่น:</strong> สรุปเอกสารหลายไฟล์พร้อมกัน + สร้าง Podcast อัตโนมัติ ฟรี 100%!
+                </div>
+            </div>
+
+            <!-- Tool 5: Canva -->
+            <div class="exercise-box p-4 rounded border border-2 border-primary bg-light mb-4">
+                <h5 class="text-primary">5️⃣ Canva — AI ออกแบบกราฟิก</h5>
+                <p>🌐 <a href="https://canva.com" target="_blank">canva.com</a></p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิดเว็บ</strong> canva.com
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>กด "สมัครสมาชิก"</strong> → เลือก "ดำเนินการต่อด้วย Google"
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เลือก Gmail Account</strong> → เลือกประเภทการใช้งาน (ส่วนตัว/ทำงาน)
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>เสร็จ!</strong> ใช้ Template ฟรีได้เลย + มี AI สร้างรูป/ออกแบบ
+                </div>
+
+                <div class="alert alert-warning py-2 mt-3 mb-0">
+                    <strong>💡 จุดเด่น:</strong> Template สวยพร้อมใช้ + AI สร้างรูป + ทำโปสเตอร์/ใบปลิว/Presentation
+                </div>
+            </div>
+
+            <!-- Tool 6: Suno -->
+            <div class="exercise-box p-4 rounded border border-2 border-primary bg-light mb-4">
+                <h5 class="text-primary">6️⃣ Suno — AI แต่งเพลง</h5>
+                <p>🌐 <a href="https://suno.com" target="_blank">suno.com</a></p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิดเว็บ</strong> suno.com
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>กด "Sign up"</strong> → เลือก "Continue with Google"
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เลือก Gmail Account</strong> → เสร็จ! ได้เครดิตฟรีสร้างเพลง
+                </div>
+
+                <div class="alert alert-warning py-2 mt-3 mb-0">
+                    <strong>💡 จุดเด่น:</strong> สร้างเพลงจากข้อความ ฟรีวันละ 5 เพลง มีทั้งร้องและดนตรี!
+                </div>
+            </div>
+
+            <!-- Tool 7: CapCut -->
+            <div class="exercise-box p-4 rounded border border-2 border-primary bg-light mb-4">
+                <h5 class="text-primary">7️⃣ CapCut — AI ตัดต่อวิดีโอ</h5>
+                <p>🌐 <a href="https://capcut.com" target="_blank">capcut.com</a></p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิดเว็บ</strong> capcut.com หรือดาวน์โหลดแอปบนมือถือ
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>กด "Sign up"</strong> → สมัครด้วย Google หรือ TikTok
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ดาวน์โหลดแอป</strong> (แนะนำบนมือถือ) → เริ่มตัดต่อได้เลย
+                </div>
+
+                <div class="alert alert-warning py-2 mt-3 mb-0">
+                    <strong>💡 จุดเด่น:</strong> ตัดต่อวิดีโอฟรี + AI ใส่ซับไตเติ้ลอัตโนมัติ + ลบพื้นหลัง + เปลี่ยนเสียง
+                </div>
+            </div>
+        </section>
+
+        <!-- 9.2 การตั้งค่า Account ที่แนะนำ -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">9.2 การตั้งค่า Account ที่แนะนำ</h3>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>เครื่องมือ</th>
+                            <th>ตั้งค่าอะไร</th>
+                            <th>แนะนำ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ChatGPT</strong></td>
+                            <td>Custom Instructions</td>
+                            <td>ใส่ข้อมูลตัวเอง: "ฉันเป็นเจ้าหน้าที่ราชการ ทำงานด้านคนพิการ ใช้ภาษาไทย"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ChatGPT</strong></td>
+                            <td>ภาษา</td>
+                            <td>Settings → General → ตั้งภาษาเป็น "ไทย"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Claude</strong></td>
+                            <td>Custom Style</td>
+                            <td>ตั้ง Style → "เขียนภาษาไทยกระชับ เข้าใจง่าย"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gemini</strong></td>
+                            <td>Extensions</td>
+                            <td>เปิด Extensions: Google Drive, Gmail, YouTube</td>
+                        </tr>
+                        <tr>
+                            <td><strong>NotebookLM</strong></td>
+                            <td>Notebook แรก</td>
+                            <td>สร้าง Notebook ชื่อ "งานราชการ" → อัปโหลดเอกสารที่ใช้บ่อย</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Canva</strong></td>
+                            <td>Brand Kit</td>
+                            <td>ใส่โลโก้หน่วยงาน + สีหลัก + ฟอนต์ที่ใช้</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Suno</strong></td>
+                            <td>ภาษา</td>
+                            <td>ทดสอบสร้างเพลงภาษาไทย 1 เพลง</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 9.3 Workflow AI สำหรับงานราชการประจำวัน -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">9.3 Workflow AI สำหรับงานราชการประจำวัน</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <p><strong>📌 แนวคิด:</strong> ใช้ AI ช่วยทำงานตั้งแต่เช้าจรดเย็น — แต่ละช่วงเลือกเครื่องมือที่เหมาะสม</p>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ช่วงเวลา</th>
+                            <th>งานที่ทำ</th>
+                            <th>เครื่องมือ AI</th>
+                            <th>วิธีใช้</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-info">
+                            <td><strong>🌅 เช้า (08:30)</strong></td>
+                            <td>เช็คอีเมล + สรุปงาน</td>
+                            <td>Gemini</td>
+                            <td>ให้ Gemini สรุปอีเมลสำคัญวันนี้ + จัดลำดับความสำคัญ</td>
+                        </tr>
+                        <tr class="table-warning">
+                            <td><strong>☀️ สาย (10:00)</strong></td>
+                            <td>ร่างเอกสาร / หนังสือราชการ</td>
+                            <td>ChatGPT</td>
+                            <td>ให้ ChatGPT ร่างหนังสือ → ตรวจแก้ → ส่ง</td>
+                        </tr>
+                        <tr class="table-success">
+                            <td><strong>🌤️ บ่าย (13:00)</strong></td>
+                            <td>สร้างสื่อ / โปสเตอร์ / Presentation</td>
+                            <td>Canva</td>
+                            <td>ใช้ Template Canva + AI สร้างรูป → ปรับแก้ → เผยแพร่</td>
+                        </tr>
+                        <tr class="table-light">
+                            <td><strong>🌆 เย็น (16:00)</strong></td>
+                            <td>สรุปงานวันนี้ + วางแผนพรุ่งนี้</td>
+                            <td>Claude</td>
+                            <td>ให้ Claude สรุปสิ่งที่ทำวันนี้ + จัด To-Do List พรุ่งนี้</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-info mt-3">
+                <strong>💡 เคล็ดลับ:</strong> ไม่จำเป็นต้องใช้ทุกตัวทุกวัน — เริ่มจาก 1-2 ตัวก่อน แล้วค่อยเพิ่ม เมื่อคุ้นเคยแล้ว
+            </div>
+        </section>
+
+        <!-- 9.4 Prompt Library -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">9.4 Prompt Library — จัดเก็บ Prompt ไว้ใช้ซ้ำ</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>📚 ทำไมต้องมี Prompt Library?</h5>
+                <p>เมื่อเขียน Prompt ดีๆ ได้แล้ว ควร <strong>เก็บไว้ใช้ซ้ำ</strong> — ไม่ต้องคิดใหม่ทุกครั้ง ประหยัดเวลามาก!</p>
+                <p class="mb-0"><strong>แนะนำเก็บไว้ที่:</strong> Google Docs / Notion / Notes ในมือถือ / Google Keep</p>
+            </div>
+
+            <h5>ตัวอย่าง Prompt Template ที่ควรเก็บ:</h5>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-primary text-white"><strong>📝 Template 1: ร่างหนังสือราชการ</strong></div>
+                        <div class="card-body">
+                            <div class="prompt-example bg-light p-3 rounded border-start border-4 border-primary">
+                                <code>"ช่วยร่างหนังสือราชการ เรื่อง [หัวข้อ] จาก [หน่วยงาน] ถึง [ผู้รับ] เนื้อหาหลัก: [รายละเอียด] โทนเป็นทางการ ใช้ภาษาราชการ"</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-success text-white"><strong>📊 Template 2: สรุปการประชุม</strong></div>
+                        <div class="card-body">
+                            <div class="prompt-example bg-light p-3 rounded border-start border-4 border-success">
+                                <code>"สรุปรายงานการประชุม จากข้อมูลนี้: [ใส่ bullet points] รูปแบบ: วันที่, ผู้เข้าร่วม, วาระ, มติ, ผู้รับผิดชอบ"</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-warning"><strong>📢 Template 3: โพสต์ประชาสัมพันธ์</strong></div>
+                        <div class="card-body">
+                            <div class="prompt-example bg-light p-3 rounded border-start border-4 border-warning">
+                                <code>"เขียนโพสต์ Facebook ประชาสัมพันธ์กิจกรรม [ชื่อกิจกรรม] วันที่ [วันที่] สถานที่ [สถานที่] กลุ่มเป้าหมาย [กลุ่ม] โทนสนุก เข้าถึงง่าย มี Emoji"</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-info text-white"><strong>🔍 Template 4: วิเคราะห์เอกสาร</strong></div>
+                        <div class="card-body">
+                            <div class="prompt-example bg-light p-3 rounded border-start border-4 border-info">
+                                <code>"วิเคราะห์เอกสารนี้ สรุปประเด็นสำคัญ 5 ข้อ ระบุจุดที่ต้องดำเนินการ และเสนอแนวทางปฏิบัติ ภาษาง่ายๆ ไม่ใช้ศัพท์เทคนิค"</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-dark text-white"><strong>📋 Template 5: แผนงาน/โครงการ</strong></div>
+                        <div class="card-body">
+                            <div class="prompt-example bg-light p-3 rounded border-start border-4 border-dark">
+                                <code>"ช่วยร่างแผนงานโครงการ [ชื่อโครงการ] งบประมาณ [จำนวน] ระยะเวลา [กี่เดือน] กลุ่มเป้าหมาย [กลุ่ม] รูปแบบ: หลักการ/เหตุผล, วัตถุประสงค์, กิจกรรม, ตัวชี้วัด, งบประมาณ"</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success mt-3">
+                <strong>💡 วิธีจัดเก็บ:</strong> สร้าง Google Docs ชื่อ "My Prompt Library" → แบ่งหมวด → Copy-Paste ใช้ได้เลยทุกครั้ง
+            </div>
+        </section>
+
+        <!-- Lab -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">🔬 Lab ปฏิบัติ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 9.1 — ตั้งค่า Account ทุกตัว + ทดสอบใช้งานครั้งแรก</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>สมัครให้ครบทุกตัว (7 เครื่องมือ):</strong>
+                    <div class="table-responsive mt-2">
+                        <table class="table table-bordered table-sm">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>เครื่องมือ</th>
+                                    <th>สมัครแล้ว ✅</th>
+                                    <th>ทดสอบใช้งานแล้ว ✅</th>
+                                    <th>ปัญหาที่พบ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>ChatGPT</td><td></td><td></td><td></td></tr>
+                                <tr><td>Claude</td><td></td><td></td><td></td></tr>
+                                <tr><td>Gemini</td><td></td><td></td><td></td></tr>
+                                <tr><td>NotebookLM</td><td></td><td></td><td></td></tr>
+                                <tr><td>Canva</td><td></td><td></td><td></td></tr>
+                                <tr><td>Suno</td><td></td><td></td><td></td></tr>
+                                <tr><td>CapCut</td><td></td><td></td><td></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ทดสอบใช้งานแต่ละตัว:</strong>
+                    <ul class="mt-2">
+                        <li><strong>ChatGPT:</strong> ถาม "สรุปสิทธิคนพิการ 5 ข้อ"</li>
+                        <li><strong>Claude:</strong> ถาม "ช่วยร่างหนังสือเชิญประชุม"</li>
+                        <li><strong>Gemini:</strong> ถาม "สรุปอีเมลวันนี้ให้หน่อย"</li>
+                        <li><strong>NotebookLM:</strong> อัปโหลดเอกสาร 1 ไฟล์ แล้วถามคำถาม</li>
+                        <li><strong>Canva:</strong> สร้างโปสเตอร์ 1 ใบ</li>
+                        <li><strong>Suno:</strong> สร้างเพลง 1 เพลง</li>
+                        <li><strong>CapCut:</strong> ตัดต่อวิดีโอ 1 คลิป (30 วินาที)</li>
+                    </ul>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ตั้งค่าตามที่แนะนำในหัวข้อ 9.2</strong>
+                </div>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึกหน้าจอ Account ที่สมัครครบทุกตัว
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับบทนี้</h5>
+            <ul class="mb-0">
+                <li><strong>ใช้ Gmail เดียว สมัครได้ทุกตัว</strong> — ไม่ต้องจำ Password หลายอัน</li>
+                <li><strong>สมัครฟรีก่อน</strong> — อย่าเพิ่งจ่ายเงิน ฟรีใช้งานได้ดีมากแล้ว</li>
+                <li><strong>ตั้ง Custom Instructions</strong> — บอก AI ว่าเราเป็นใคร ทำงานอะไร จะได้คำตอบที่ตรงใจ</li>
+                <li><strong>สร้าง Prompt Library ตั้งแต่วันแรก</strong> — ทุกครั้งที่เขียน Prompt ดีๆ ได้ → เก็บไว้!</li>
+                <li><strong>ไม่ต้องใช้ทุกตัวทุกวัน</strong> — เลือก 2-3 ตัวที่เหมาะกับงาน แล้วค่อยขยาย</li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปท้ายบท</h5>
+            <ul>
+                <li><strong>เครื่องมือ AI ฟรี 7 ตัว:</strong> ChatGPT, Claude, Gemini, NotebookLM, Canva, Suno, CapCut — สมัครด้วย Gmail ตัวเดียว</li>
+                <li><strong>ตั้งค่า Custom Instructions</strong> ทุกตัว → บอก AI ว่าเราเป็นใคร ทำงานอะไร</li>
+                <li><strong>Workflow ประจำวัน:</strong> เช้า-Gemini → สาย-ChatGPT → บ่าย-Canva → เย็น-Claude</li>
+                <li><strong>Prompt Library</strong> = คลัง Prompt ส่วนตัว เก็บไว้ใช้ซ้ำ ประหยัดเวลา</li>
+                <li><strong>เริ่มจากง่ายๆ</strong> — ใช้ 1-2 ตัวก่อน แล้วค่อยเพิ่ม ไม่ต้องรีบ!</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="chapter08.html" class="btn btn-outline-dark">← บทที่ 8</a>
+            <a href="chapter10.html" class="btn btn-dark">บทที่ 10 →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

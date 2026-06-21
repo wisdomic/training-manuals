@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 5: พื้นฐาน Google Apps Script — คู่มือ Kiro AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">📖 คู่มือฝึกอบรม Kiro AI</a>
+        <span class="navbar-text text-white">บทที่ 5 | วันที่ 2</span>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+
+            <div class="chapter-header text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">บทที่ 5</h1>
+                <h2 class="h3 text-secondary">พื้นฐาน Google Apps Script</h2>
+                <p class="lead text-muted">ระยะเวลา: 2 ชั่วโมง | วันที่ 2</p>
+                <hr class="w-50 mx-auto">
+            </div>
+
+            <div class="alert alert-info mb-4">
+                <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เข้าใจว่า Google Apps Script คืออะไรและทำงานอย่างไร</li>
+                    <li>สร้าง Web App ด้วย doGet() / doPost() ได้</li>
+                    <li>อ่าน/เขียนข้อมูล Google Sheets ด้วย SpreadsheetApp ได้</li>
+                    <li>เชื่อมต่อ Frontend กับ Backend ด้วย google.script.run ได้</li>
+                    <li>Deploy Web App ครั้งแรกได้</li>
+                </ul>
+            </div>
+
+            <!-- 5.1 Google Apps Script คืออะไร -->
+            <section class="mb-5" id="section-5-1">
+                <h3 class="border-start border-4 border-primary ps-3">5.1 Google Apps Script คืออะไร</h3>
+
+                <p>Google Apps Script (GAS) คือ <strong>JavaScript runtime ของ Google</strong> ที่ทำงานบน Cloud โดยไม่ต้องติดตั้ง Server เอง</p>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">☁️ ทำงานบน Cloud</h5>
+                                <p class="card-text">ไม่ต้องเช่า Server, ไม่ต้องติดตั้งอะไร ใช้ได้ทันทีผ่าน Browser</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-success">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">🔗 เชื่อมกับ Google Services</h5>
+                                <p class="card-text">Sheets, Drive, Gmail, Calendar, Forms ใช้ได้หมดโดยไม่ต้อง config</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-info">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">📝 เป็น JavaScript</h5>
+                                <p class="card-text">ใช้ภาษา JavaScript (ES6+) เขียนได้เลย ไม่ต้องเรียนภาษาใหม่</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>⚡ สรุป:</strong> GAS = JavaScript + Google Services + Free Hosting + Free Database (Sheets) = สร้าง Web App ได้ฟรี!
+                </div>
+            </section>
+
+            <!-- 5.2 Script Editor + โครงสร้างโปรเจกต์ -->
+            <section class="mb-5" id="section-5-2">
+                <h3 class="border-start border-4 border-primary ps-3">5.2 Script Editor + โครงสร้างโปรเจกต์</h3>
+
+                <p>เข้า Script Editor: <code>script.google.com</code> หรือจาก Google Sheets > Extensions > Apps Script</p>
+
+                <h5>โครงสร้างไฟล์ในโปรเจกต์ GAS</h5>
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr><th>ไฟล์</th><th>หน้าที่</th><th>ตัวอย่าง</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>.gs</code></td><td>Backend (Server-side)</td><td>Code.gs, Database.gs, Utils.gs</td></tr>
+                        <tr><td><code>.html</code></td><td>Frontend (Client-side)</td><td>index.html, admin.html, style.html</td></tr>
+                        <tr><td><code>appsscript.json</code></td><td>Config (ตั้งค่าโปรเจกต์)</td><td>scopes, timezone, webapp</td></tr>
+                    </tbody>
+                </table>
+
+                <h5>ตัวอย่าง appsscript.json</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">{
+  "timeZone": "Asia/Bangkok",
+  "dependencies": {},
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "webapp": {
+    "executeAs": "USER_DEPLOYING",
+    "access": "ANYONE"
+  },
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/script.external_request"
+  ]
+}</code></pre>
+
+                <div class="alert alert-success">
+                    <strong>💡 เคล็ดลับ:</strong> แยกไฟล์ .gs ตามหน้าที่ เช่น Code.gs (doGet/doPost), Database.gs (อ่าน/เขียน), Utils.gs (ฟังก์ชันช่วย) — ทำให้โค้ดจัดการง่าย!
+                </div>
+            </section>
+
+            <!-- 5.3 doGet() / doPost() -->
+            <section class="mb-5" id="section-5-3">
+                <h3 class="border-start border-4 border-primary ps-3">5.3 doGet() / doPost() — Web App</h3>
+
+                <p>GAS ใช้ 2 ฟังก์ชันหลักในการรับ request จากผู้ใช้:</p>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="card border-primary h-100">
+                            <div class="card-header bg-primary text-white">doGet(e)</div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>ทำงานเมื่อผู้ใช้<strong>เปิดเว็บ</strong></li>
+                                    <li>รับข้อมูลผ่าน URL parameters</li>
+                                    <li>ใช้แสดงหน้า HTML</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-success text-white">doPost(e)</div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>ทำงานเมื่อผู้ใช้<strong>ส่งข้อมูล</strong></li>
+                                    <li>รับข้อมูลผ่าน request body</li>
+                                    <li>ใช้บันทึกข้อมูล / API</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>ตัวอย่าง doGet() — แสดงหน้าเว็บ</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// Code.gs
+function doGet(e) {
+  // รับ parameter จาก URL เช่น ?page=admin
+  var page = e.parameter.page || 'index';
+  
+  // แสดงหน้า HTML ตาม parameter
+  return HtmlService.createHtmlOutputFromFile(page)
+    .setTitle('ระบบลงทะเบียนฝึกอบรม')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+</code></pre>
+
+                <h5>ตัวอย่าง doPost() — รับข้อมูล API</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// Code.gs
+function doPost(e) {
+  try {
+    var data = JSON.parse(e.postData.contents);
+    var action = data.action;
+    
+    if (action === 'register') {
+      var result = registerTrainee(data);
+      return ContentService.createTextOutput(
+        JSON.stringify({ success: true, data: result })
+      ).setMimeType(ContentService.MimeType.JSON);
+    }
+  } catch (err) {
+    return ContentService.createTextOutput(
+      JSON.stringify({ success: false, error: err.toString() })
+    ).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+</code></pre>
+            </section>
+
+            <!-- 5.4 SpreadsheetApp -->
+            <section class="mb-5" id="section-5-4">
+                <h3 class="border-start border-4 border-primary ps-3">5.4 SpreadsheetApp — อ่าน/เขียนข้อมูล</h3>
+
+                <p>SpreadsheetApp คือ API หลักสำหรับอ่าน/เขียนข้อมูลใน Google Sheets:</p>
+
+                <h5>เปิด Spreadsheet + อ่านข้อมูล</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// เปิด Spreadsheet ด้วย ID
+var ss = SpreadsheetApp.openById('SPREADSHEET_ID_HERE');
+
+// เลือก Sheet ตามชื่อ
+var sheet = ss.getSheetByName('TRAINEES');
+
+// อ่านข้อมูลทั้งหมด
+var data = sheet.getDataRange().getValues();
+// data = [[หัวคอลัมน์], [แถว1], [แถว2], ...]
+
+// อ่านเฉพาะหัวคอลัมน์
+var headers = data[0]; // ['trainee_id', 'prefix', 'first_name', ...]
+
+// อ่านข้อมูล (ไม่รวมหัว)
+var rows = data.slice(1);
+</code></pre>
+
+                <h5>เขียนข้อมูล — เพิ่มแถวใหม่</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// เพิ่มแถวใหม่ท้ายตาราง
+sheet.appendRow([
+  'T002',           // trainee_id
+  'นางสาว',         // prefix
+  'สุดา',           // first_name
+  'รักเรียน',       // last_name
+  '3201xxxxx',     // id_card
+  '09x-xxx-xxxx', // phone
+  'suda@mail.com', // email
+  new Date()       // created_at
+]);
+</code></pre>
+
+                <h5>เขียนข้อมูล — อัปเดตหลายเซลล์</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// อัปเดตข้อมูลในช่วง A2:C4
+var values = [
+  ['T001', 'นาย', 'สมชาย'],
+  ['T002', 'นางสาว', 'สุดา'],
+  ['T003', 'นาง', 'มาลี']
+];
+sheet.getRange(2, 1, 3, 3).setValues(values);
+// getRange(แถวเริ่ม, คอลัมน์เริ่ม, จำนวนแถว, จำนวนคอลัมน์)
+</code></pre>
+
+                <div class="alert alert-info">
+                    <strong>📌 ฟังก์ชันที่ใช้บ่อย:</strong>
+                    <code>openById()</code>, <code>getSheetByName()</code>, <code>getDataRange()</code>, 
+                    <code>getValues()</code>, <code>appendRow()</code>, <code>getRange().setValues()</code>
+                </div>
+            </section>
+
+            <!-- 5.5 HtmlService -->
+            <section class="mb-5" id="section-5-5">
+                <h3 class="border-start border-4 border-primary ps-3">5.5 HtmlService — แสดงผล HTML</h3>
+
+                <p>HtmlService ใช้สร้างหน้าเว็บจากไฟล์ .html ในโปรเจกต์:</p>
+
+                <h5>วิธีที่ 1: createHtmlOutputFromFile (ง่ายสุด)</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">function doGet() {
+  return HtmlService.createHtmlOutputFromFile('index')
+    .setTitle('ระบบลงทะเบียน')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+</code></pre>
+
+                <h5>วิธีที่ 2: createTemplateFromFile (ใส่ข้อมูลได้)</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">function doGet() {
+  var template = HtmlService.createTemplateFromFile('index');
+  template.userName = 'สมชาย';  // ส่งตัวแปรไปหน้า HTML
+  template.courses = getCourses();
+  return template.evaluate()
+    .setTitle('ระบบลงทะเบียน');
+}
+
+// ในไฟล์ index.html ใช้:
+// &lt;p&gt;สวัสดี &lt;?= userName ?&gt;&lt;/p&gt;
+</code></pre>
+
+                <h5>ฟังก์ชัน include() — แยกไฟล์ CSS/JS</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// Code.gs — ฟังก์ชันช่วย include
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+}
+
+// index.html — เรียกใช้
+// &lt;head&gt;
+//   &lt;?!= include('style') ?&gt;    &lt;!-- รวมไฟล์ style.html --&gt;
+// &lt;/head&gt;
+// &lt;body&gt;
+//   ...
+//   &lt;?!= include('script') ?&gt;   &lt;!-- รวมไฟล์ script.html --&gt;
+// &lt;/body&gt;
+</code></pre>
+
+                <div class="alert alert-success">
+                    <strong>💡 Best Practice:</strong> แยก CSS ไว้ในไฟล์ style.html, JavaScript ไว้ใน script.html แล้วใช้ <code>include()</code> รวมเข้ามา — โค้ดจัดการง่ายขึ้นมาก!
+                </div>
+            </section>
+
+            <!-- 5.6 google.script.run -->
+            <section class="mb-5" id="section-5-6">
+                <h3 class="border-start border-4 border-primary ps-3">5.6 google.script.run — เชื่อม Frontend กับ Backend</h3>
+
+                <p><code>google.script.run</code> คือวิธีเรียกฟังก์ชัน Backend (.gs) จาก Frontend (.html):</p>
+
+                <h5>โครงสร้างการเรียก</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">google.script.run
+  .withSuccessHandler(onSuccess)   // เมื่อสำเร็จ
+  .withFailureHandler(onError)     // เมื่อเกิด error
+  .functionName(arg1, arg2);       // ชื่อฟังก์ชันใน .gs
+</code></pre>
+
+                <h5>ตัวอย่างจริง: โหลดรายชื่อหลักสูตร</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// ===== Backend: Code.gs =====
+function getCourses() {
+  var ss = SpreadsheetApp.openById('SHEET_ID');
+  var sheet = ss.getSheetByName('COURSES');
+  var data = sheet.getDataRange().getValues();
+  var headers = data[0];
+  var courses = [];
+  
+  for (var i = 1; i &lt; data.length; i++) {
+    var obj = {};
+    for (var j = 0; j &lt; headers.length; j++) {
+      obj[headers[j]] = data[i][j];
+    }
+    courses.push(obj);
+  }
+  return courses;
+}
+
+// ===== Frontend: index.html =====
+&lt;script&gt;
+// โหลดหลักสูตรเมื่อเปิดหน้า
+document.addEventListener('DOMContentLoaded', function() {
+  google.script.run
+    .withSuccessHandler(function(courses) {
+      // สำเร็จ — แสดงข้อมูล
+      var html = '';
+      courses.forEach(function(c) {
+        html += '&lt;option value="' + c.course_id + '"&gt;' 
+              + c.course_name + '&lt;/option&gt;';
+      });
+      document.getElementById('courseSelect').innerHTML = html;
+    })
+    .withFailureHandler(function(err) {
+      // เกิด error
+      alert('เกิดข้อผิดพลาด: ' + err.message);
+    })
+    .getCourses();
+});
+&lt;/script&gt;
+</code></pre>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ ข้อควรระวัง:</strong>
+                    <ul class="mb-0">
+                        <li><code>google.script.run</code> เป็น <strong>Asynchronous</strong> — ต้องรอ callback ไม่สามารถ return ค่าได้ทันที</li>
+                        <li>ส่งได้เฉพาะ JSON-serializable data (ห้ามส่ง Date object, function)</li>
+                        <li>ขนาดข้อมูลที่ส่งได้ไม่เกิน 256KB</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 5.7 Deploy Web App -->
+            <section class="mb-5" id="section-5-7">
+                <h3 class="border-start border-4 border-primary ps-3">5.7 Deploy Web App ครั้งแรก</h3>
+
+                <p>ขั้นตอนการ Deploy Web App ให้คนอื่นเข้าถึงได้:</p>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>📋 ขั้นตอน Deploy</h5>
+                        <ol class="mb-0">
+                            <li class="mb-2"><strong>Deploy > New deployment</strong> — คลิกปุ่ม Deploy ด้านบนขวา</li>
+                            <li class="mb-2"><strong>Select type > Web app</strong> — เลือกประเภท Web app</li>
+                            <li class="mb-2"><strong>Description</strong> — ใส่คำอธิบาย เช่น "v1 - เปิดใช้งานครั้งแรก"</li>
+                            <li class="mb-2"><strong>Execute as: Me</strong> — ให้ script ทำงานในนามของเรา (เข้าถึง Sheets ได้)</li>
+                            <li class="mb-2"><strong>Who has access: Anyone</strong> — ให้ทุกคนเข้าถึงได้ (ไม่ต้อง login Google)</li>
+                            <li class="mb-2"><strong>Deploy</strong> — คลิก Deploy แล้วจะได้ URL</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h5>URL ที่ได้หลัง Deploy</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">https://script.google.com/macros/s/AKfycbx.../exec
+</code></pre>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card border-info mb-3">
+                            <div class="card-header bg-info text-white">🔄 อัปเดต Deploy</div>
+                            <div class="card-body">
+                                <p class="mb-1">แก้โค้ดแล้วต้อง Deploy ใหม่:</p>
+                                <p class="mb-0"><code>Deploy > Manage deployments > Edit > New version > Deploy</code></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-warning mb-3">
+                            <div class="card-header bg-warning">⚠️ ข้อควรระวัง</div>
+                            <div class="card-body">
+                                <ul class="mb-0">
+                                    <li>แก้โค้ดแล้ว<strong>ต้อง Deploy ใหม่</strong>ทุกครั้ง</li>
+                                    <li>ถ้าไม่ Deploy ใหม่ จะยังใช้โค้ดเวอร์ชันเก่า</li>
+                                    <li>URL จะเปลี่ยนทุกครั้งที่ New deployment</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>🎉 สำเร็จ!</strong> ตอนนี้คุณมี Web App ที่ทุกคนเข้าถึงได้ผ่าน URL — ฟรี ไม่ต้องเช่า Server!
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+                <a href="chapter04.html" class="btn btn-outline-primary btn-lg">← บทที่ 4</a>
+                <a href="chapter06.html" class="btn btn-primary btn-lg">บทที่ 6: HTML + CSS + Bootstrap →</a>
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p class="mb-1">คู่มือฝึกอบรม "Kiro AI สร้างระบบราชการด้วยปัญญาประดิษฐ์"</p>
+    <p class="mb-0 text-muted small">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

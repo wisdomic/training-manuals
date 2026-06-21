@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 4: Udio AI — AI เสียงและดนตรี</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📖 AI เสียงและดนตรี</span>
+            <span class="nav-text text-light">บทที่ 4: Udio AI</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+            <!-- Chapter Header -->
+            <div class="chapter-header text-center">
+                <h1>🎶 บทที่ 4: Udio AI</h1>
+                <p class="lead">สร้างเพลงคุณภาพสูงด้วย Udio — ทางเลือกใหม่จาก Suno</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>สมัครและใช้งาน Udio AI สร้างเพลงได้</li>
+                    <li>เข้าใจความแตกต่างระหว่าง Udio และ Suno</li>
+                    <li>ใช้ Genre/Mood Tags สร้างเพลงตามต้องการ</li>
+                    <li>ใช้ Extend ต่อเพลงให้ยาวขึ้น</li>
+                    <li>Export เพลงนำไปใช้งานได้</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">📘 4.1 Udio AI คืออะไร?</h3>
+            <section>
+                <p>Udio AI เป็นแพลตฟอร์มสร้างเพลงด้วย AI ที่เน้นคุณภาพเสียงสูง พัฒนาโดยอดีตวิศวกรจาก Google DeepMind จุดเด่น:</p>
+                <ul>
+                    <li><strong>คุณภาพเสียงสูง</strong> — เสียงใส คมชัด ใกล้เคียงสตูดิโอ</li>
+                    <li><strong>Genre หลากหลาย</strong> — รองรับมากกว่า 100 แนวเพลง</li>
+                    <li><strong>Extend Feature</strong> — ต่อเพลงให้ยาวขึ้นได้</li>
+                    <li><strong>ภาษาหลากหลาย</strong> — รองรับเนื้อร้องหลายภาษารวมไทย</li>
+                    <li><strong>Community</strong> — ฟังเพลงที่คนอื่นสร้างเป็นแรงบันดาลใจ</li>
+                </ul>
+
+                <div class="info-card">
+                    <h5>📊 แผนราคา Udio AI</h5>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>แผน</th>
+                                <th>ราคา</th>
+                                <th>Credits/เดือน</th>
+                                <th>เพลง (โดยประมาณ)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Free</td>
+                                <td>ฟรี</td>
+                                <td>100 credits</td>
+                                <td>~10 เพลง</td>
+                            </tr>
+                            <tr>
+                                <td>Standard</td>
+                                <td>$10/เดือน</td>
+                                <td>1,200 credits</td>
+                                <td>~120 เพลง</td>
+                            </tr>
+                            <tr>
+                                <td>Pro</td>
+                                <td>$30/เดือน</td>
+                                <td>4,800 credits</td>
+                                <td>~480 เพลง</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 4.2 Suno vs Udio — เลือกตัวไหนดี?</h3>
+            <section>
+                <div class="info-card">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>คุณสมบัติ</th>
+                                <th>Suno AI</th>
+                                <th>Udio AI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>คุณภาพเสียง</td>
+                                <td>ดีมาก ⭐⭐⭐⭐</td>
+                                <td>ยอดเยี่ยม ⭐⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td>ความง่ายในการใช้</td>
+                                <td>ง่ายมาก ⭐⭐⭐⭐⭐</td>
+                                <td>ง่าย ⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td>Custom Lyrics</td>
+                                <td>✅ ได้ดีมาก</td>
+                                <td>✅ ได้ดี</td>
+                            </tr>
+                            <tr>
+                                <td>Extend เพลง</td>
+                                <td>✅ ต่อได้</td>
+                                <td>✅ ต่อได้ + ควบคุมมากกว่า</td>
+                            </tr>
+                            <tr>
+                                <td>ภาษาไทย</td>
+                                <td>พอใช้ได้</td>
+                                <td>พอใช้ได้</td>
+                            </tr>
+                            <tr>
+                                <td>Free Plan</td>
+                                <td>10 เพลง/วัน</td>
+                                <td>~10 เพลง/เดือน</td>
+                            </tr>
+                            <tr>
+                                <td>เหมาะกับ</td>
+                                <td>ผู้เริ่มต้น, สร้างเร็ว</td>
+                                <td>ต้องการคุณภาพสูง</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>💡 คำแนะนำ:</strong> ใช้ทั้ง 2 ตัวร่วมกัน — ใช้ Suno ทดลอง Prompt ก่อน (Free เยอะกว่า) พอได้ Prompt ที่ชอบ ค่อยไปสร้างใน Udio เพื่อคุณภาพสูงสุด
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 4.3 สมัครและเริ่มต้นใช้ Udio</h3>
+            <section>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิดเว็บ</strong> — ไปที่ <code>https://www.udio.com</code>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>สมัคร</strong> — คลิก "Sign In" → เลือก Google / Discord / X
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เข้าหน้า Create</strong> — คลิก "Create" ที่แถบบน
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ใส่ Prompt</strong> — พิมพ์คำอธิบายเพลงในช่อง Prompt
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>เพิ่ม Tags</strong> — ใส่ Genre/Mood Tags เพื่อกำหนดทิศทาง
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 4.4 Genre/Mood Tags ที่ใช้บ่อย</h3>
+            <section>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <h5>🎵 Genre Tags</h5>
+                            <ul>
+                                <li><code>pop</code> — ป๊อป ติดหู</li>
+                                <li><code>rock</code> — ร็อค พลังเยอะ</li>
+                                <li><code>jazz</code> — แจ๊ส ผ่อนคลาย</li>
+                                <li><code>classical</code> — คลาสสิก สง่า</li>
+                                <li><code>electronic</code> — อิเล็กทรอนิกส์</li>
+                                <li><code>folk</code> — โฟล์ค เรียบง่าย</li>
+                                <li><code>r&b</code> — R&B ซาวด์นุ่ม</li>
+                                <li><code>ambient</code> — บรรยากาศ</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <h5>🎭 Mood Tags</h5>
+                            <ul>
+                                <li><code>happy</code> — สดใส สนุก</li>
+                                <li><code>sad</code> — เศร้า ซึ้ง</li>
+                                <li><code>energetic</code> — มีพลัง</li>
+                                <li><code>calm</code> — สงบ</li>
+                                <li><code>inspiring</code> — สร้างแรงบันดาลใจ</li>
+                                <li><code>dramatic</code> — ดราม่า</li>
+                                <li><code>romantic</code> — โรแมนติก</li>
+                                <li><code>epic</code> — ยิ่งใหญ่</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prompt-example">
+                    <strong>📝 ตัวอย่าง Prompt + Tags สำหรับ Udio:</strong><br><br>
+                    <strong>Prompt:</strong> "A song about community support and unity among disabled people"<br>
+                    <strong>Tags:</strong> pop, inspiring, upbeat, female vocal, Thai<br><br>
+                    <strong>Prompt:</strong> "Background music for government presentation"<br>
+                    <strong>Tags:</strong> corporate, ambient, piano, calm, instrumental<br><br>
+                    <strong>Prompt:</strong> "Intro jingle for YouTube channel about disability rights"<br>
+                    <strong>Tags:</strong> electronic, energetic, short, catchy
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 4.5 Extend — ต่อเพลงให้ยาวขึ้น</h3>
+            <section>
+                <p>ฟีเจอร์ Extend ช่วยให้ต่อเพลงที่สร้างแล้วให้ยาวขึ้นได้:</p>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>สร้างเพลงแรก</strong> — ได้เพลงความยาว ~30 วินาที
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>คลิก Extend</strong> — เลือก "Extend" ที่เพลงที่ต้องการ
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เลือกทิศทาง</strong> — "Add to End" (ต่อท้าย) หรือ "Add to Beginning" (เพิ่มหน้า)
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ใส่ Prompt เพิ่ม</strong> — บอก AI ว่าส่วนต่อควรเป็นอย่างไร เช่น "Build up to a powerful chorus"
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>Generate</strong> — AI จะสร้างส่วนต่อที่เข้ากันกับเพลงเดิม
+                </div>
+
+                <div class="prompt-example">
+                    <strong>💡 Prompt สำหรับ Extend:</strong><br>
+                    • "Fade out slowly with soft piano" — สำหรับจบเพลง<br>
+                    • "Build up energy with drums" — เพิ่มพลังก่อน Chorus<br>
+                    • "Quiet bridge section with acoustic guitar" — ส่วน Bridge<br>
+                    • "Repeat chorus one more time then end" — ทวน Chorus แล้วจบ
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 4.6 Export และ Download</h3>
+            <section>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เลือกเพลง</strong> — คลิกเพลงที่ต้องการ
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>คลิก Download</strong> — ไอคอนดาวน์โหลดด้านขวา
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เลือกรูปแบบ</strong> — MP3 (ทั่วไป) หรือ WAV (คุณภาพสตูดิโอ)
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ตั้งชื่อไฟล์</strong> — เช่น "udio-corporate-intro.mp3"
+                </div>
+            </section>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 4: สร้างเพลงด้วย Udio AI</h4>
+                <p><strong>เวลา:</strong> 45 นาที</p>
+                <hr>
+                <p><strong>กิจกรรมที่ 1: สร้างเพลงแรกด้วย Udio (15 นาที)</strong></p>
+                <ol>
+                    <li>สมัคร Udio ด้วย Google Account</li>
+                    <li>ไปที่ Create</li>
+                    <li>ใส่ Prompt: "Upbeat corporate music for promotional video"</li>
+                    <li>เพิ่ม Tags: pop, inspiring, upbeat, instrumental</li>
+                    <li>กด Create แล้วฟังเพลงที่ได้</li>
+                    <li>เปรียบเทียบ 2 เวอร์ชันที่ AI สร้างให้</li>
+                </ol>
+
+                <p><strong>กิจกรรมที่ 2: ทดลอง Extend (15 นาที)</strong></p>
+                <ol>
+                    <li>เลือกเพลงที่ชอบจากกิจกรรมที่ 1</li>
+                    <li>คลิก Extend → Add to End</li>
+                    <li>ใส่ Prompt: "Gradually fade out with soft melody"</li>
+                    <li>ฟังผลลัพธ์ สังเกตว่าต่อเนื่องกันหรือไม่</li>
+                    <li>ลอง Extend อีกครั้งด้วย Prompt ต่างกัน</li>
+                </ol>
+
+                <p><strong>กิจกรรมที่ 3: เปรียบเทียบ Suno vs Udio (15 นาที)</strong></p>
+                <ol>
+                    <li>ใช้ Prompt เดียวกัน: "Calm piano music for meditation, 60 seconds, no vocal"</li>
+                    <li>สร้างใน Suno 1 เพลง</li>
+                    <li>สร้างใน Udio 1 เพลง</li>
+                    <li>ฟังเปรียบเทียบ ตัดสินว่าตัวไหนเหมาะกับงานไหน</li>
+                    <li>Download เพลงที่ชอบเก็บไว้</li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5>💡 Tips</h5>
+                <ul class="mb-0">
+                    <li><strong>ประหยัด Credits:</strong> ฟังตัวอย่างจาก Community ก่อน เพื่อรู้ว่า Prompt แบบไหนได้ผลดี</li>
+                    <li><strong>Tags สำคัญ:</strong> ยิ่งใส่ Tags ชัดเจน AI ยิ่งสร้างได้ตรงใจ</li>
+                    <li><strong>Extend ทีละนิด:</strong> ต่อทีละ 30 วินาที จะควบคุมได้ดีกว่าต่อยาวทีเดียว</li>
+                    <li><strong>"Instrumental" Tag:</strong> ใส่ tag นี้เมื่อไม่ต้องการเสียงร้อง</li>
+                    <li><strong>ใช้ร่วมกับ Suno:</strong> ทดลอง Prompt ใน Suno (Free เยอะ) แล้วสร้างจริงใน Udio</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card">
+                <h4>📋 สรุปบทที่ 4</h4>
+                <ul>
+                    <li>Udio AI เน้นคุณภาพเสียงสูง เหมาะกับงานที่ต้องการคุณภาพระดับสตูดิโอ</li>
+                    <li>ใช้ Genre/Mood Tags ช่วยกำหนดทิศทางเพลง</li>
+                    <li>Extend ช่วยต่อเพลงให้ยาวขึ้น ควบคุมโครงสร้างได้</li>
+                    <li>ใช้ Suno + Udio ร่วมกัน เพื่อประหยัด Credits และได้ผลดีที่สุด</li>
+                    <li>Export เป็น MP3/WAV นำไปใช้งานได้ทันที</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-5 mb-4">
+                <a href="chapter03.html" class="btn btn-outline-secondary">← บทที่ 3</a>
+                <a href="chapter05.html" class="btn btn-primary">บทที่ 5 →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

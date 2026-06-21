@@ -1,0 +1,168 @@
+/* AI Foundation Training Manual - Custom Styles */
+body {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* Navigation text */
+.nav-text {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+/* Content area */
+.content-area {
+    min-height: calc(100vh - 200px);
+}
+
+/* Section header */
+.section-header {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Prompt example box */
+.prompt-example {
+    background: #f8f9fa;
+    border-left: 4px solid #0d6efd;
+    padding: 1rem 1.25rem;
+    border-radius: 0 8px 8px 0;
+    margin: 0.75rem 0;
+    font-size: 0.95rem;
+}
+
+/* Info card */
+.info-card {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #e9ecef;
+}
+
+/* Exercise box */
+.exercise-box {
+    background: #f0fff4;
+    border: 2px solid #198754;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 700;
+}
+.chapter-header {
+    padding: 2rem 0;
+}
+.chapter-header h1 {
+    font-size: 3rem;
+}
+section {
+    padding-top: 1rem;
+}
+section h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+.table {
+    font-size: 0.95rem;
+}
+.card {
+    margin-bottom: 1rem;
+}
+.alert {
+    border-radius: 8px;
+}
+code {
+    background: #f8f9fa;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #d63384;
+}
+pre {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+
+/* Print styles */
+@media print {
+    .navbar, footer, .btn { display: none !important; }
+    body { font-size: 12pt; line-height: 1.6; }
+    .container { max-width: 100% !important; }
+    section { page-break-inside: avoid; }
+    h3 { page-break-after: avoid; }
+    .card { border: 1px solid #ddd !important; }
+    pre { background: #f5f5f5 !important; color: #333 !important; border: 1px solid #ddd; }
+}
+
+/* Step indicators */
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: #343a40;
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    margin-right: 8px;
+}
+.step-item {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #343a40;
+    background: #f8f9fa;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Screenshot placeholder */
+.screenshot-placeholder {
+    background: #e9ecef;
+    border: 2px dashed #6c757d;
+    border-radius: 8px;
+    padding: 3rem;
+    text-align: center;
+    color: #6c757d;
+    margin: 1rem 0;
+}
+
+/* TOC Styles */
+.toc-list {
+    list-style: none;
+    padding-left: 0;
+}
+.toc-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px dotted #ddd;
+}
+.toc-list li a {
+    text-decoration: none;
+    color: #333;
+}
+.toc-list li a:hover {
+    color: #6f42c1;
+}
+
+/* Claude theme accent */
+.border-claude {
+    border-color: #6f42c1 !important;
+}
+.text-claude {
+    color: #6f42c1 !important;
+}
+.bg-claude {
+    background-color: #6f42c1 !important;
+}

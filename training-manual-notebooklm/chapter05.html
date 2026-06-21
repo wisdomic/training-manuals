@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 5: การประยุกต์ใช้ขั้นสูง — คู่มือ NotebookLM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4)">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ NotebookLM</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter01.html">บทที่ 1</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter02.html">บทที่ 2</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter03.html">บทที่ 3</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter04.html">บทที่ 4</a></li>
+                <li class="nav-item"><a class="nav-link active" href="chapter05.html">บทที่ 5</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter06.html">บทที่ 6</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<div class="container mt-4">
+    <div class="mb-4">
+        <span class="day-badge">วันที่ 3</span>
+        <span class="time-badge ms-2">เช้า 09:00 – 12:00</span>
+    </div>
+    <h1 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">📓 บทที่ 5: การประยุกต์ใช้ขั้นสูง</h1>
+    <p class="lead text-muted">Multi-notebook strategy, YouTube integration, เปรียบเทียบ AI Tools</p>
+
+    <!-- สารบัญบท -->
+    <div class="card p-3 mb-4">
+        <h5>📑 ในบทนี้</h5>
+        <ul class="mb-0">
+            <li><a href="#section-5-1">5.1 Multi-notebook Strategy</a></li>
+            <li><a href="#section-5-2">5.2 ใช้ NotebookLM เตรียมการบรรยาย/สอน</a></li>
+            <li><a href="#section-5-3">5.3 ใช้ NotebookLM สรุปรายงานการประชุม</a></li>
+            <li><a href="#section-5-4">5.4 ใช้ NotebookLM กับ YouTube</a></li>
+            <li><a href="#section-5-5">5.5 เปรียบเทียบ AI Tools</a></li>
+            <li><a href="#section-5-6">5.6 ข้อจำกัด + สิ่งที่ทำไม่ได้</a></li>
+        </ul>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- Section 5.1 -->
+    <!-- ============================================ -->
+    <section id="section-5-1" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">5.1 Multi-notebook Strategy — แบ่ง Notebook ตามภารกิจ</h2>
+
+        <p class="mt-3">การใช้ NotebookLM อย่างมีประสิทธิภาพ ไม่ใช่แค่สร้าง Notebook เดียวแล้วยัดเอกสารทุกอย่างลงไป แต่ควร <strong>แบ่ง Notebook ตามภารกิจ/หมวดหมู่</strong> เพื่อให้คำตอบแม่นยำและตรงประเด็น</p>
+
+        <h4 class="mt-4">ตัวอย่างการจัดโครงสร้าง Notebook สำหรับ สนพ.สุรินทร์</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Notebook</th>
+                        <th>เอกสารที่ใส่</th>
+                        <th>ใช้งาน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>📁 ระเบียบ/กฎหมาย</strong></td>
+                        <td>พ.ร.บ.พัฒนาฝีมือ, กฎกระทรวง, ระเบียบค่าใช้จ่าย, หนังสือเวียน</td>
+                        <td>ถามเรื่องสิทธิ์ หน้าที่ ขั้นตอน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📁 FAQ หน่วยงาน</strong></td>
+                        <td>คู่มือบริการ, แผ่นพับ, ข้อมูลหน่วยงาน</td>
+                        <td>ตอบคำถามประชาชน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📁 นโยบาย/ยุทธศาสตร์</strong></td>
+                        <td>แผนยุทธศาสตร์, นโยบายรัฐบาล, แผนปฏิบัติการ</td>
+                        <td>วิเคราะห์นโยบาย เตรียมเสนอ ผอ.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📁 การเงิน/งบประมาณ</strong></td>
+                        <td>งบประมาณ, รายงานการเงิน, ระเบียบเบิกจ่าย</td>
+                        <td>ตรวจสอบงบ เบิกจ่าย</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📁 รายงานผลงาน</strong></td>
+                        <td>รายงานไตรมาส, รายงานประจำปี, KPI</td>
+                        <td>สรุปผลงาน + Briefing Doc</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📁 การประชุม</strong></td>
+                        <td>รายงานการประชุม ครั้งที่ 1-12</td>
+                        <td>สรุปมติ ค้นหาเรื่องที่เคยพิจารณา</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tip-box">
+            <p><strong>หลักการแบ่ง Notebook:</strong></p>
+            <ul class="mb-0">
+                <li>เอกสารที่เกี่ยวข้องกันอยู่ด้วยกัน (ไม่ปนหัวข้อ)</li>
+                <li>1 Notebook = 1 ภารกิจ/หมวดหมู่</li>
+                <li>ถ้าต้องเปรียบเทียบข้ามหมวด → สร้าง Notebook ใหม่ที่รวมเอกสารจากทั้ง 2 หมวด</li>
+                <li>ตั้งชื่อให้ชัดเจน สื่อความหมาย</li>
+            </ul>
+        </div>
+
+        <div class="dont-box">
+            <ul class="mb-0">
+                <li>อย่ายัดเอกสารทุกอย่างลง Notebook เดียว — คำตอบจะสับสน</li>
+                <li>อย่าใส่เอกสารไม่เกี่ยวข้อง — เช่น ระเบียบค่าเดินทาง + รายงานประชุม ในอันเดียวกัน</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 5.2 -->
+    <!-- ============================================ -->
+    <section id="section-5-2" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">5.2 ใช้ NotebookLM เตรียมการบรรยาย/สอน</h2>
+
+        <p class="mt-3">NotebookLM เป็นเครื่องมือที่ดีมากสำหรับเตรียมตัวก่อนบรรยายหรือสอน ขั้นตอนดังนี้:</p>
+
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>ใส่เอกสารประกอบการบรรยาย</h5>
+            <p class="mb-0">อัปโหลดเอกสารทั้งหมดที่เกี่ยวข้อง — สไลด์, คู่มือ, บทความ, กฎหมาย</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>สร้าง Study Guide — สรุปเนื้อหาสำหรับตัวเอง</h5>
+            <p class="mb-0">ใช้ Notebook Guide → Study Guide เพื่อทบทวนเนื้อหาอย่างรวดเร็ว</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>สร้าง Quiz สำหรับผู้เข้าอบรม</h5>
+            <div class="prompt-example">
+                <p class="mb-0">สร้างข้อสอบแบบปรนัย 10 ข้อ จากเนื้อหาในเอกสาร แต่ละข้อมี 4 ตัวเลือก พร้อมเฉลยและอ้างอิง</p>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h5>ใช้ Audio Overview เป็น Preview</h5>
+            <p class="mb-0">ฟัง Podcast สรุปก่อนบรรยาย เพื่อ refresh ความจำ</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">5</div>
+            <h5>เตรียมคำตอบสำหรับคำถามที่อาจถูกถาม</h5>
+            <div class="prompt-example">
+                <p class="mb-0">คิดคำถาม 10 ข้อ ที่ผู้เข้าอบรมน่าจะถามจากเนื้อหานี้ พร้อมเตรียมคำตอบ</p>
+            </div>
+        </div>
+
+        <div class="output-example">
+            <p><strong>ตัวอย่างข้อสอบที่ NotebookLM สร้าง:</strong></p>
+            <p><strong>ข้อ 1:</strong> การฝึกอบรมประเภท ก หมายถึงข้อใด?</p>
+            <ul>
+                <li>ก. ฝึกอบรมไม่เกิน 1 วัน</li>
+                <li>ข. ฝึกอบรมที่มีการพักค้างคืน ✅</li>
+                <li>ค. ฝึกอบรมเฉพาะในสถานที่ราชการ</li>
+                <li>ง. ฝึกอบรมออนไลน์</li>
+            </ul>
+            <p class="text-muted small mb-0">เฉลย: ข [อ้างอิง: ระเบียบฯ ข้อ 4 "การฝึกอบรมประเภท ก หมายถึง การฝึกอบรมที่ผู้เข้ารับการฝึกอบรมต้องเดินทางค้างคืน"]</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 5.3 -->
+    <!-- ============================================ -->
+    <section id="section-5-3" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">5.3 ใช้ NotebookLM สรุปรายงานการประชุม</h2>
+
+        <p class="mt-3">รายงานการประชุมมักยาว 10-30 หน้า NotebookLM ช่วยสกัดข้อมูลสำคัญได้อย่างรวดเร็ว:</p>
+
+        <h4 class="mt-4">Prompts ที่มีประโยชน์สำหรับรายงานการประชุม</h4>
+
+        <div class="prompt-example">
+            <p class="mb-0">สรุปมติที่ประชุมทั้งหมด พร้อมระบุผู้รับผิดชอบและกำหนดเวลา จัดเป็นตาราง</p>
+        </div>
+
+        <div class="prompt-example">
+            <p class="mb-0">เรื่องใดบ้างที่ยังไม่มีข้อสรุป (pending) หรือต้องนำเสนอในที่ประชุมครั้งต่อไป?</p>
+        </div>
+
+        <div class="prompt-example">
+            <p class="mb-0">มีเรื่องที่เกี่ยวข้องกับงบประมาณหรือการเงินอะไรบ้างที่พิจารณาในที่ประชุมนี้?</p>
+        </div>
+
+        <div class="prompt-example">
+            <p class="mb-0">สรุปวาระที่ 5 เรื่อง "โครงการฝึกอบรมไตรมาส 3" ว่ามติเป็นอย่างไร ใครได้รับมอบหมายอะไร</p>
+        </div>
+
+        <h4 class="mt-4">ตัวอย่างผลลัพธ์</h4>
+        <div class="output-example">
+            <h5>📋 สรุปมติที่ประชุม ครั้งที่ 5/2569</h5>
+            <table class="table table-sm table-striped">
+                <thead>
+                    <tr><th>วาระ</th><th>มติ</th><th>ผู้รับผิดชอบ</th><th>กำหนดเวลา</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>4.1 แผนฝึกอบรม Q3</td>
+                        <td>อนุมัติตามที่เสนอ เพิ่มหลักสูตร Digital 2 รุ่น [1]</td>
+                        <td>กลุ่มงานพัฒนาฝีมือ</td>
+                        <td>1 ก.ค. 2569</td>
+                    </tr>
+                    <tr>
+                        <td>4.2 งบประมาณเพิ่มเติม</td>
+                        <td>อนุมัติ 500,000 บาท สำหรับวัสดุฝึก [2]</td>
+                        <td>ฝ่ายการเงิน</td>
+                        <td>15 มิ.ย. 2569</td>
+                    </tr>
+                    <tr>
+                        <td>4.3 ประเมินผลครึ่งปี</td>
+                        <td>ให้ทุกกลุ่มงานส่งรายงานผลงาน 6 เดือน [3]</td>
+                        <td>ทุกกลุ่มงาน</td>
+                        <td>30 มิ.ย. 2569</td>
+                    </tr>
+                    <tr>
+                        <td>5.1 ปัญหาสถานที่ฝึก</td>
+                        <td>ให้ประสาน อบจ. ขอใช้ห้องประชุม [4]</td>
+                        <td>ฝ่ายอำนวยการ</td>
+                        <td>20 มิ.ย. 2569</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-muted small mb-0">[1] รายงานการประชุม หน้า 5 [2] หน้า 8 [3] หน้า 10 [4] หน้า 14</p>
+        </div>
+
+        <div class="tip-box">
+            <p class="mb-0"><strong>เคล็ดลับ:</strong> อัปโหลดรายงานการประชุมหลายครั้งใน Notebook เดียว จะสามารถถามข้ามครั้งได้ เช่น "เรื่องที่ค้างจากการประชุมครั้งที่ 3 ได้ดำเนินการแล้วหรือยังในครั้งที่ 4?"</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 5.4 -->
+    <!-- ============================================ -->
+    <section id="section-5-4" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">5.4 ใช้ NotebookLM กับ YouTube</h2>
+
+        <p class="mt-3">NotebookLM สามารถดึง transcript จาก YouTube มาเป็น Source ได้ ทำให้สรุปวิดีโอยาวๆ ได้ในไม่กี่วินาที</p>
+
+        <h4 class="mt-4">วิธีใช้งาน</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>ค้นหาวิดีโอ YouTube ที่ต้องการ</h5>
+            <p class="mb-0">เช่น วิดีโอบรรยายนโยบาย, สัมมนาออนไลน์, การอบรมที่บันทึกไว้</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>คัดลอก URL ของวิดีโอ</h5>
+            <p class="mb-0">เช่น https://www.youtube.com/watch?v=XXXXXXXXX</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>เพิ่มเป็น Source ใน NotebookLM</h5>
+            <p class="mb-0">คลิก "+ Add source" → "YouTube" → วาง URL → Insert</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h5>ถามคำถามหรือใช้ Notebook Guide</h5>
+            <p class="mb-0">เช่น "สรุปเนื้อหาวิดีโอนี้เป็น 5 ข้อ" หรือ "มีประเด็นอะไรที่เกี่ยวข้องกับงานราชการ?"</p>
+        </div>
+
+        <div class="prompt-example">
+            <p class="mb-0">สรุปประเด็นสำคัญจากวิดีโอนี้ เน้นเฉพาะส่วนที่เกี่ยวข้องกับการพัฒนาทักษะดิจิทัลของข้าราชการ</p>
+        </div>
+
+        <div class="warning-box">
+            <p class="mb-1"><strong>ข้อจำกัด YouTube:</strong></p>
+            <ul class="mb-0">
+                <li>วิดีโอต้องมี subtitle/caption (auto-generated ก็ได้)</li>
+                <li>วิดีโอที่เป็น private/unlisted อาจใช้ไม่ได้</li>
+                <li>Transcript ภาษาไทย auto-generated อาจมีข้อผิดพลาด</li>
+                <li>วิดีโอที่ไม่มีเสียงพูด (เช่น เพลง, animation) ใช้ไม่ได้</li>
+            </ul>
+        </div>
+
+        <h4 class="mt-4">ตัวอย่าง Use Cases</h4>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h6>📹 สรุปสัมมนาออนไลน์</h6>
+                    <p class="mb-0 small">ใส่ URL วิดีโอสัมมนา 2 ชั่วโมง → ถาม "สรุป 5 ประเด็นสำคัญ" → ได้สรุปใน 10 วินาที</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h6>📹 ทำ note จากการอบรม</h6>
+                    <p class="mb-0 small">ใส่ URL วิดีโอการอบรม → สร้าง Study Guide → ได้สรุปเนื้อหาพร้อมหัวข้อ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 5.5 -->
+    <!-- ============================================ -->
+    <section id="section-5-5" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">5.5 เปรียบเทียบ NotebookLM vs AI Tools อื่น</h2>
+
+        <p class="mt-3">NotebookLM ไม่ใช่ AI เดียวในตลาด ต่อไปนี้คือตารางเปรียบเทียบกับ AI Tools ที่คล้ายกัน:</p>
+
+        <div class="table-responsive">
+            <table class="table table-striped comparison-table">
+                <thead>
+                    <tr>
+                        <th>คุณสมบัติ</th>
+                        <th>NotebookLM</th>
+                        <th>Claude Projects</th>
+                        <th>Gemini Gems</th>
+                        <th>ChatGPT GPTs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>บริษัท</strong></td>
+                        <td>Google</td>
+                        <td>Anthropic</td>
+                        <td>Google</td>
+                        <td>OpenAI</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ราคา</strong></td>
+                        <td class="yes">ฟรี</td>
+                        <td>เสียเงิน (Pro $20/เดือน)</td>
+                        <td>เสียเงิน (Advanced)</td>
+                        <td>เสียเงิน (Plus $20/เดือน)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>อัปโหลดเอกสาร</strong></td>
+                        <td class="yes">✅ 50 sources</td>
+                        <td class="yes">✅ 200,000 tokens</td>
+                        <td class="partial">⚠️ จำกัด</td>
+                        <td class="yes">✅ 20 files</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Citation อ้างอิง</strong></td>
+                        <td class="yes">✅ ยอดเยี่ยม</td>
+                        <td class="partial">⚠️ บางครั้ง</td>
+                        <td class="no">❌ ไม่มี</td>
+                        <td class="partial">⚠️ บางครั้ง</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grounded (ตอบจากเอกสาร)</strong></td>
+                        <td class="yes">✅ เฉพาะ source</td>
+                        <td class="partial">⚠️ อาจเสริมความรู้ทั่วไป</td>
+                        <td class="no">❌ ผสม</td>
+                        <td class="partial">⚠️ อาจเสริมความรู้ทั่วไป</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Audio Overview (Podcast)</strong></td>
+                        <td class="yes">✅ มี!</td>
+                        <td class="no">❌</td>
+                        <td class="no">❌</td>
+                        <td class="no">❌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Notebook Guide Tools</strong></td>
+                        <td class="yes">✅ FAQ/Study/Timeline/Briefing</td>
+                        <td class="no">❌</td>
+                        <td class="no">❌</td>
+                        <td class="no">❌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ค้นหาเว็บ</strong></td>
+                        <td class="no">❌</td>
+                        <td class="partial">⚠️ จำกัด</td>
+                        <td class="yes">✅</td>
+                        <td class="yes">✅</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ภาษาไทย</strong></td>
+                        <td class="yes">✅ ดี</td>
+                        <td class="yes">✅ ดีมาก</td>
+                        <td class="yes">✅ ดี</td>
+                        <td class="yes">✅ ดี</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ความเหมาะสม (งานราชการ)</strong></td>
+                        <td class="yes">⭐⭐⭐⭐⭐</td>
+                        <td class="yes">⭐⭐⭐⭐</td>
+                        <td class="partial">⭐⭐⭐</td>
+                        <td class="partial">⭐⭐⭐</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box">
+            <p><strong>สรุปการเลือกใช้:</strong></p>
+            <ul class="mb-0">
+                <li><strong>NotebookLM:</strong> เมื่อต้องตอบจากเอกสารเฉพาะ + ต้อง citation + ต้อง Podcast → <strong>เลือกตัวนี้</strong></li>
+                <li><strong>Claude Projects:</strong> เมื่อต้องเขียนเอกสารยาว/วิเคราะห์ลึก + ภาษาไทยดีมาก</li>
+                <li><strong>Gemini Gems:</strong> เมื่อต้องค้นหาเว็บ + ใช้กับ Google Workspace</li>
+                <li><strong>ChatGPT GPTs:</strong> เมื่อต้องใช้ code/สร้างรูป + ค้นเว็บ</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 5.6 -->
+    <!-- ============================================ -->
+    <section id="section-5-6" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">5.6 ข้อจำกัด + สิ่งที่ NotebookLM ทำไม่ได้</h2>
+
+        <p class="mt-3">แม้ NotebookLM จะมีประโยชน์มาก แต่ก็มีข้อจำกัดที่ต้องรู้:</p>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ข้อจำกัด</th>
+                        <th>รายละเอียด</th>
+                        <th>ทางเลือก</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>❌ ไม่ค้นเว็บ</td>
+                        <td>ไม่สามารถค้นหาข้อมูลจากอินเทอร์เน็ต ตอบได้เฉพาะจาก Sources ที่ใส่</td>
+                        <td>ใช้ Google / Gemini ค้นเว็บก่อน แล้วเอาข้อมูลมาใส่ NotebookLM</td>
+                    </tr>
+                    <tr>
+                        <td>❌ ไม่สร้างข้อมูลใหม่</td>
+                        <td>ไม่แต่งเรื่อง ไม่เดา ถ้าไม่มีใน source ก็ตอบไม่ได้</td>
+                        <td>ใช้ ChatGPT/Claude สำหรับงานที่ต้องการ creative writing</td>
+                    </tr>
+                    <tr>
+                        <td>❌ Podcast ภาษาไทยยังไม่สมบูรณ์</td>
+                        <td>Audio Overview ภาษาอังกฤษคุณภาพดีกว่ามาก ภาษาไทยยังพัฒนาอยู่</td>
+                        <td>ใช้เอกสารภาษาไทยได้ แต่ Podcast จะออกเป็นอังกฤษ</td>
+                    </tr>
+                    <tr>
+                        <td>❌ ไม่รองรับ Excel/Word โดยตรง</td>
+                        <td>ต้องแปลงเป็น PDF หรือ Google Docs ก่อน</td>
+                        <td>Save as PDF จาก Word/Excel ก่อนอัปโหลด</td>
+                    </tr>
+                    <tr>
+                        <td>❌ ไม่อ่านรูปภาพ/แผนภูมิ</td>
+                        <td>ถ้า PDF เป็นรูป scan หรือมีกราฟ จะอ่านไม่ได้</td>
+                        <td>ใช้ OCR แปลงเป็นข้อความก่อน / อธิบายกราฟเป็นข้อความ</td>
+                    </tr>
+                    <tr>
+                        <td>❌ จำกัด 50 Sources</td>
+                        <td>ไม่สามารถใส่เกิน 50 ไฟล์ต่อ Notebook</td>
+                        <td>แบ่งเป็นหลาย Notebook / รวมเอกสารเล็กๆ เป็นไฟล์เดียว</td>
+                    </tr>
+                    <tr>
+                        <td>❌ ไม่มี API</td>
+                        <td>ไม่สามารถเชื่อมต่อกับระบบอื่นแบบ automated</td>
+                        <td>ใช้ manual หรือรอ Google เปิด API ในอนาคต</td>
+                    </tr>
+                    <tr>
+                        <td>❌ ไม่มี sharing/collaboration</td>
+                        <td>Notebook เป็นส่วนตัว แชร์ให้ผู้อื่นได้จำกัด</td>
+                        <td>Export ผลลัพธ์ + share ผ่าน Docs/Email</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="warning-box">
+            <p><strong>สิ่งที่ต้องระวัง:</strong></p>
+            <ul class="mb-0">
+                <li>อย่าใส่เอกสารลับราชการ (ชั้นลับ, ลับมาก, ลับที่สุด) เข้า NotebookLM</li>
+                <li>อย่าเชื่อคำตอบ 100% โดยไม่ตรวจ citation — AI อาจสรุปผิดในบางจุด</li>
+                <li>อย่าใช้ผลลัพธ์เป็นเอกสารทางการโดยไม่ตรวจสอบ</li>
+                <li>ข้อมูลที่อัปโหลดจะถูกเก็บในระบบ Google — พิจารณาเรื่อง privacy</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- แบบฝึกหัดท้ายบท -->
+    <!-- ============================================ -->
+    <section class="mb-5">
+        <div class="exercise-box">
+            <h4>แบบฝึกหัดท้ายบทที่ 5</h4>
+            <ol>
+                <li><strong>Multi-notebook:</strong> สร้าง Notebook 3 อัน ตามหมวดที่เหมาะกับงานของตนเอง ตั้งชื่อให้ชัดเจน</li>
+                <li><strong>YouTube:</strong> ค้นหาวิดีโอบรรยายที่เกี่ยวข้องกับงาน → ใส่เป็น Source → สรุป 5 ข้อ</li>
+                <li><strong>เตรียมบรรยาย:</strong> ใช้ NotebookLM สร้าง Quiz 5 ข้อ + Study Guide จากเอกสารที่เคยใช้สอน</li>
+                <li><strong>สรุปการประชุม:</strong> อัปโหลดรายงานการประชุม → สกัดมติ + ผู้รับผิดชอบ + deadlines</li>
+                <li><strong>เปรียบเทียบ:</strong> ลองใช้ Gemini ถามคำถามเดียวกับ NotebookLM → เปรียบเทียบผลลัพธ์</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Chapter Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter04.html">← บทที่ 4</a>
+        <a href="chapter06.html">บทที่ 6: Workshop สุดท้าย →</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p class="mb-1">คู่มือฝึกอบรม NotebookLM — เปลี่ยนเอกสารเป็นความรู้ด้วย AI</p>
+        <p class="mb-0 text-muted">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

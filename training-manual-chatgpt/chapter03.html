@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 3: เทคนิค Prompt ขั้นสูง — คู่มือฝึกอบรม ChatGPT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark sticky-top" style="background:#10a37f;">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ ChatGPT</a>
+        <span class="text-white nav-text">บทที่ 3 — วันที่ 2 เช้า</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+
+    <h1 class="mb-2">บทที่ 3: เทคนิค Prompt ขั้นสูง</h1>
+    <p class="text-muted mb-4">วันที่ 2 ภาคเช้า | ระยะเวลา 3 ชั่วโมง | ระดับ: กลาง</p>
+
+    <div class="alert alert-info">
+        <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+        <ul class="mb-0">
+            <li>ใช้เทคนิค Chain of Thought ให้ AI คิดอย่างเป็นระบบได้</li>
+            <li>ใช้ Role Playing กำหนดบทบาทผู้เชี่ยวชาญได้</li>
+            <li>สร้าง Prompt Template ที่ใช้ซ้ำได้</li>
+            <li>ใช้ Iterative Prompting ปรับแต่งคำตอบทีละรอบได้</li>
+            <li>ตั้งค่า Custom Instructions และ Memory ได้</li>
+            <li>สร้าง Custom GPT ของตัวเองได้</li>
+        </ul>
+    </div>
+
+    <!-- Section 3.1 -->
+    <div class="section-header">
+        <h2>3.1 Chain of Thought (CoT) — "ให้ AI คิดทีละขั้น"</h2>
+        <p>เทคนิคที่ทำให้ AI แสดงขั้นตอนการคิด ได้คำตอบแม่นยำกว่า</p>
+    </div>
+
+    <h3>หลักการ Chain of Thought</h3>
+    <p><strong>Chain of Thought (CoT)</strong> คือเทคนิคที่สั่งให้ AI "คิดทีละขั้นตอน" แทนที่จะตอบคำตอบสุดท้ายทันที — เปรียบเหมือนการให้ลูกน้อง<strong>อธิบายเหตุผลก่อนสรุป</strong> ทำให้:</p>
+    <ul>
+        <li>ได้คำตอบที่<strong>แม่นยำ</strong>กว่า โดยเฉพาะงานที่ต้องวิเคราะห์</li>
+        <li>เราสามารถ<strong>ตรวจสอบ</strong>กระบวนการคิดของ AI ได้</li>
+        <li>ลดโอกาสที่ AI จะ "เดา" คำตอบผิดๆ</li>
+        <li>เหมาะกับงาน: <strong>วิเคราะห์ ตัดสินใจ คำนวณ วางแผน</strong></li>
+    </ul>
+
+    <div class="alert alert-success">
+        <h5>💡 เคล็ดลับง่ายๆ</h5>
+        <p class="mb-0">เพิ่มคำว่า <strong>"คิดทีละขั้นตอน"</strong> หรือ <strong>"อธิบายเหตุผลก่อนสรุป"</strong> ท้าย Prompt — แค่นี้ก็เปลี่ยนวิธีตอบของ AI ได้ทันที</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่าง CoT ที่ 1 — วิเคราะห์งบประมาณ</strong>
+        <p class="mt-2 mb-1">สำนักงานมีงบประมาณจัดซื้อคอมพิวเตอร์ 500,000 บาท ต้องการซื้อ:</p>
+        <p class="mb-1">- คอมพิวเตอร์ตั้งโต๊ะ เครื่องละ 25,000 บาท จำนวน 10 เครื่อง</p>
+        <p class="mb-1">- เครื่องพิมพ์ เครื่องละ 15,000 บาท จำนวน 5 เครื่อง</p>
+        <p class="mb-1">- UPS เครื่องละ 8,000 บาท จำนวน 10 เครื่อง</p>
+        <p class="mb-1"><strong>คำสั่ง:</strong> ช่วยวิเคราะห์ว่างบประมาณเพียงพอหรือไม่ <strong>คิดทีละขั้นตอน</strong> แสดงการคำนวณทุกรายการ แล้วสรุปผล</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่าง CoT ที่ 2 — ตัดสินใจเลือกวิธีการ</strong>
+        <p class="mt-2 mb-1">หน่วยงานต้องการจัดฝึกอบรม "การใช้ AI ในงานราชการ" มีทางเลือก 3 แบบ:</p>
+        <p class="mb-1">1) จัดอบรมในห้องประชุม 2 วัน (ค่าใช้จ่าย 80,000 บาท, รองรับ 30 คน)</p>
+        <p class="mb-1">2) จัดอบรมออนไลน์ผ่าน Zoom 3 ครั้ง (ค่าใช้จ่าย 20,000 บาท, รองรับ 100 คน)</p>
+        <p class="mb-1">3) จัดแบบ Hybrid ในห้อง + ออนไลน์ (ค่าใช้จ่าย 50,000 บาท, รองรับ 60 คน)</p>
+        <p class="mb-0"><strong>คำสั่ง:</strong> วิเคราะห์ข้อดี-ข้อเสียแต่ละทางเลือก <strong>อธิบายเหตุผลทีละข้อก่อนสรุป</strong> ว่าควรเลือกแบบใด สำหรับหน่วยงานราชการที่มีเจ้าหน้าที่ 45 คน งบจำกัด 60,000 บาท</p>
+    </div>
+
+    <!-- Section 3.2 -->
+    <div class="section-header">
+        <h2>3.2 Role Playing — "กำหนดบทบาทเป็นผู้เชี่ยวชาญ"</h2>
+        <p>AI ตอบได้ดีขึ้นเมื่อ "สวมบทบาท" เฉพาะทาง</p>
+    </div>
+
+    <h3>หลักการ Role Playing</h3>
+    <p>เมื่อเรากำหนดให้ AI <strong>"สวมบทบาท"</strong> เป็นผู้เชี่ยวชาญเฉพาะด้าน AI จะ:</p>
+    <ul>
+        <li>ใช้<strong>คำศัพท์เฉพาะทาง</strong>ของสาขานั้น</li>
+        <li>ตอบใน<strong>มุมมอง</strong>ของผู้เชี่ยวชาญนั้นๆ</li>
+        <li>ให้คำตอบที่<strong>ลึก</strong>กว่าการถามแบบทั่วไป</li>
+        <li>คำนึงถึง<strong>รายละเอียดและข้อควรระวัง</strong>ที่ผู้เชี่ยวชาญจะนึกถึง</li>
+    </ul>
+
+    <h3>8 บทบาทที่ข้าราชการใช้บ่อย</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width:5%">#</th>
+                    <th style="width:15%">บทบาท</th>
+                    <th style="width:40%">Prompt เปิด</th>
+                    <th style="width:40%">เหมาะกับงาน</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>เลขานุการ</strong></td>
+                    <td>"คุณเป็นเลขานุการผู้บริหารที่มีประสบการณ์ 15 ปี"</td>
+                    <td>ร่างหนังสือ จดบันทึก นัดหมาย จัดวาระประชุม</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>นักวิเคราะห์นโยบาย</strong></td>
+                    <td>"คุณเป็นนักวิเคราะห์นโยบายและแผนชำนาญการพิเศษ"</td>
+                    <td>วิเคราะห์ข้อมูล เขียนแผน จัดทำ KPI รายงานผล</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>นักประชาสัมพันธ์</strong></td>
+                    <td>"คุณเป็นนักประชาสัมพันธ์มืออาชีพของหน่วยงานราชการ"</td>
+                    <td>เขียนข่าว โพสต์โซเชียล สร้างสื่อ ร่างสปอต</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>ที่ปรึกษากฎหมาย</strong></td>
+                    <td>"คุณเป็นนิติกรที่เชี่ยวชาญกฎหมายราชการและพัสดุ"</td>
+                    <td>ตรวจสัญญา ตอบข้อหารือ ร่างระเบียบ ให้ความเห็น</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>ครูฝึก</strong></td>
+                    <td>"คุณเป็นวิทยากรฝึกอบรมที่มีความเชี่ยวชาญด้านการถ่ายทอดความรู้"</td>
+                    <td>ออกแบบหลักสูตร สร้างแบบทดสอบ เขียนเอกสารประกอบ</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>นักบัญชี</strong></td>
+                    <td>"คุณเป็นนักบัญชีภาครัฐที่เชี่ยวชาญระบบ GFMIS"</td>
+                    <td>ตรวจเอกสารการเงิน จัดทำรายงาน คำนวณงบ</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><strong>โปรแกรมเมอร์</strong></td>
+                    <td>"คุณเป็นนักพัฒนาซอฟต์แวร์ที่เชี่ยวชาญ Google Apps Script"</td>
+                    <td>เขียนโค้ด สร้างระบบอัตโนมัติ แก้ปัญหาเทคนิค</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><strong>ผู้บริหาร</strong></td>
+                    <td>"คุณเป็นผู้บริหารระดับสูงที่มีประสบการณ์บริหารหน่วยงานราชการ 20 ปี"</td>
+                    <td>วางกลยุทธ์ ตัดสินใจ มอบนโยบาย กล่าวเปิดงาน</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่าง Role Playing ที่ 1 — นักวิเคราะห์นโยบาย</strong>
+        <p class="mt-2 mb-1"><strong>Prompt:</strong> คุณเป็นนักวิเคราะห์นโยบายและแผนชำนาญการพิเศษ ที่มีประสบการณ์ด้านการพัฒนาฝีมือแรงงาน 15 ปี</p>
+        <p class="mb-1">ช่วยวิเคราะห์ผลการดำเนินงานไตรมาส 1/2569 ของสำนักงานพัฒนาฝีมือแรงงานสุรินทร์:</p>
+        <p class="mb-1">- เป้าหมายฝึกอบรม 500 คน ทำได้ 380 คน (76%)</p>
+        <p class="mb-1">- เป้าหมายทดสอบมาตรฐาน 200 คน ทำได้ 150 คน (75%)</p>
+        <p class="mb-0">สรุปปัญหา สาเหตุ และข้อเสนอแนะเพื่อให้บรรลุเป้าหมายใน ไตรมาส 2</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่าง Role Playing ที่ 2 — นักประชาสัมพันธ์</strong>
+        <p class="mt-2 mb-1"><strong>Prompt:</strong> คุณเป็นนักประชาสัมพันธ์มืออาชีพของหน่วยงานราชการ ที่เข้าใจทั้งภาษาทางการและภาษาโซเชียลมีเดีย</p>
+        <p class="mb-1">ช่วยเขียนโพสต์ Facebook ประชาสัมพันธ์หลักสูตรฝึกอบรม "การใช้ AI ในงานสำนักงาน" โดย:</p>
+        <p class="mb-1">- กลุ่มเป้าหมาย: ข้าราชการและบุคลากรภาครัฐอายุ 30-55 ปี</p>
+        <p class="mb-1">- จุดเด่น: ฟรี ไม่มีค่าใช้จ่าย มีใบประกาศ ปฏิบัติจริง</p>
+        <p class="mb-0">- น้ำเสียง: เป็นกันเอง แต่น่าเชื่อถือ ความยาวไม่เกิน 150 คำ พร้อมแนะนำ hashtag 5 ตัว</p>
+    </div>
+
+    <!-- Section 3.3 -->
+    <div class="section-header">
+        <h2>3.3 Prompt Template + ตัวแปร</h2>
+        <p>สร้าง Prompt แม่แบบที่ใช้ซ้ำได้ เปลี่ยนตัวแปรทีหลัง</p>
+    </div>
+
+    <h3>หลักการ Prompt Template</h3>
+    <p><strong>Prompt Template</strong> คือ Prompt แม่แบบที่เราออกแบบไว้ล่วงหน้า โดยมี<strong>ตัวแปร</strong>ใน [วงเล็บ] ที่สามารถเปลี่ยนได้ตามงาน — เหมือนแบบฟอร์มที่เว้นช่องว่างให้กรอก</p>
+
+    <div class="alert alert-light border">
+        <p class="mb-0"><strong>ประโยชน์:</strong> ไม่ต้องเขียน Prompt ใหม่ทุกครั้ง → ประหยัดเวลา → ผลลัพธ์สม่ำเสมอ → แชร์ให้ทีมใช้ร่วมกันได้</p>
+    </div>
+
+    <h3>ตัวอย่าง Template 3 แบบ</h3>
+
+    <div class="prompt-example">
+        <strong>Template 1 — ร่างหนังสือราชการ</strong>
+        <p class="mt-2 mb-1">คุณเป็นเจ้าหน้าที่ธุรการที่เชี่ยวชาญงานสารบรรณ</p>
+        <p class="mb-1">ช่วยร่างหนังสือ <strong>[ประเภท]</strong> เรื่อง <strong>[เรื่อง]</strong> ถึง <strong>[ผู้รับ]</strong></p>
+        <p class="mb-1">วัตถุประสงค์: <strong>[วัตถุประสงค์]</strong></p>
+        <p class="mb-1">รายละเอียดสำคัญ: <strong>[รายละเอียด]</strong></p>
+        <p class="mb-0">รูปแบบ: หนังสือราชการ มีเลขที่ วันที่ เรียน สิ่งที่ส่งมาด้วย เนื้อหา และลงท้าย</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Template 2 — ร่างอีเมลทางการ</strong>
+        <p class="mt-2 mb-1">ร่างอีเมล <strong>[ประเภท: เชิญประชุม/แจ้งผล/ติดตามงาน/ขอบคุณ]</strong></p>
+        <p class="mb-1">ถึง: <strong>[ผู้รับ + ตำแหน่ง]</strong></p>
+        <p class="mb-1">เรื่อง: <strong>[หัวข้อ]</strong></p>
+        <p class="mb-1">รายละเอียด: <strong>[วัน เวลา สถานที่ หรือข้อมูลสำคัญ]</strong></p>
+        <p class="mb-0">น้ำเสียง: <strong>[ทางการ/กึ่งทางการ/เป็นกันเอง]</strong> ความยาวไม่เกิน <strong>[จำนวน]</strong> คำ</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Template 3 — สร้างรายงานสรุป</strong>
+        <p class="mt-2 mb-1">คุณเป็นนักวิเคราะห์ ช่วยสรุปรายงาน <strong>[ประเภทรายงาน]</strong></p>
+        <p class="mb-1">ข้อมูล: <strong>[ข้อมูลหรือตัวเลขที่ต้องวิเคราะห์]</strong></p>
+        <p class="mb-1">ช่วงเวลา: <strong>[ระยะเวลา เช่น ไตรมาส 1/2569]</strong></p>
+        <p class="mb-1">ต้องการ: <strong>[สรุปผล/วิเคราะห์ปัญหา/ข้อเสนอแนะ]</strong></p>
+        <p class="mb-0">รูปแบบ: แบ่งเป็น <strong>[จำนวน]</strong> หัวข้อ พร้อมตาราง KPI</p>
+    </div>
+
+    <h3>วิธีเก็บ Template ไว้ใช้ซ้ำ</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>วิธี</th>
+                    <th>ข้อดี</th>
+                    <th>เหมาะกับ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Apple Notes / Samsung Notes</strong></td>
+                    <td>เปิดเร็ว ค้นหาง่าย</td>
+                    <td>ใช้คนเดียว บนมือถือ</td>
+                </tr>
+                <tr>
+                    <td><strong>Notion</strong></td>
+                    <td>จัดหมวดได้ แชร์ทีมได้</td>
+                    <td>ใช้เป็นทีม มีหลาย Template</td>
+                </tr>
+                <tr>
+                    <td><strong>Google Docs</strong></td>
+                    <td>แชร์ง่าย แก้ไขร่วมกัน</td>
+                    <td>หน่วยงานใช้ Google Workspace</td>
+                </tr>
+                <tr>
+                    <td><strong>ChatGPT Custom Instructions</strong></td>
+                    <td>ใช้อัตโนมัติทุกครั้ง</td>
+                    <td>Template ที่ใช้ประจำ</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Section 3.4 -->
+    <div class="section-header">
+        <h2>3.4 Iterative Prompting — "ปรับแต่งทีละรอบ"</h2>
+        <p>ไม่ต้องได้คำตอบสมบูรณ์จากครั้งแรก ปรับต่อได้เรื่อยๆ</p>
+    </div>
+
+    <h3>หลักการ Iterative Prompting</h3>
+    <p>การใช้ ChatGPT ไม่จำเป็นต้องได้ผลลัพธ์ที่สมบูรณ์แบบตั้งแต่ครั้งแรก — เราสามารถ<strong>ปรับแต่งคำตอบทีละรอบ</strong>ได้ เหมือนการแก้ไขร่างเอกสารกับลูกน้อง:</p>
+    <ul>
+        <li>รอบที่ 1: ขอร่างคร่าวๆ ก่อน</li>
+        <li>รอบที่ 2-3: ปรับแต่งให้ตรงใจ</li>
+        <li>รอบสุดท้าย: ขัดเกลาให้สมบูรณ์</li>
+    </ul>
+
+    <h3>ตัวอย่าง 5 คำสั่งต่อเนื่อง</h3>
+
+    <div class="prompt-example">
+        <strong>รอบที่ 1 — ขอร่างเบื้องต้น</strong>
+        <p class="mt-2 mb-0">"ร่างบทความ 500 คำ เรื่อง 'ประโยชน์ของ AI สำหรับข้าราชการ' แบ่งเป็น 5 หัวข้อ"</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>รอบที่ 2 — ขอปรับเนื้อหา</strong>
+        <p class="mt-2 mb-0">"ปรับให้หัวข้อที่ 3 เน้นตัวอย่างงานพัสดุและการเงินมากขึ้น และเพิ่มตัวเลขสถิติประกอบ"</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>รอบที่ 3 — ขอเพิ่มเติม</strong>
+        <p class="mt-2 mb-0">"เพิ่มบทสรุปท้ายบทความ พร้อม Call to Action เชิญชวนข้าราชการทดลองใช้ AI ภายใน 3 บรรทัด"</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>รอบที่ 4 — ขอย่อ</strong>
+        <p class="mt-2 mb-0">"ลดความยาวลงเหลือ 350 คำ โดยตัดส่วนที่ซ้ำซ้อนออก แต่ยังคงใจความครบ"</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>รอบที่ 5 — ขอเปลี่ยนสไตล์</strong>
+        <p class="mt-2 mb-0">"เปลี่ยนน้ำเสียงให้เป็นกันเองมากขึ้น เหมือนพี่สอนน้อง ลดคำศัพท์ทางการลง แต่ยังน่าเชื่อถือ"</p>
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 Tips คำสั่งที่ใช้ปรับแต่งได้ทันที</h5>
+        <ul class="mb-0">
+            <li><strong>"ปรับให้..."</strong> — สั้นกว่านี้ / เป็นทางการกว่านี้ / เข้าใจง่ายขึ้น</li>
+            <li><strong>"เพิ่ม..."</strong> — ตัวอย่างอีก 2 ข้อ / ตารางสรุป / หัวข้อย่อย</li>
+            <li><strong>"ลดลง..."</strong> — ลดเหลือ 3 ข้อ / ตัดส่วนคำนำออก / ย่อให้เหลือ 1 ย่อหน้า</li>
+            <li><strong>"เปลี่ยนน้ำเสียง..."</strong> — ให้เป็นทางการ / เป็นกันเอง / สนุกสนาน / กระชับ</li>
+        </ul>
+    </div>
+
+    <!-- Section 3.5 -->
+    <div class="section-header">
+        <h2>3.5 Custom Instructions & Memory</h2>
+        <p>ตั้งค่าถาวรให้ ChatGPT จำข้อมูลและพฤติกรรมที่ต้องการ</p>
+    </div>
+
+    <h3>Custom Instructions — ตั้งค่าถาวร</h3>
+    <p><strong>Custom Instructions</strong> คือการตั้งค่าให้ ChatGPT ทำตามทุกครั้งที่สนทนา โดยไม่ต้องพิมพ์ซ้ำ เช่น:</p>
+    <ul>
+        <li>ตอบเป็นภาษาไทยเสมอ</li>
+        <li>ใช้รูปแบบหนังสือราชการ</li>
+        <li>ตอบสั้นกระชับ ไม่เกิน 200 คำ</li>
+        <li>อ้างอิงกฎระเบียบที่เกี่ยวข้อง</li>
+    </ul>
+
+    <h3>ขั้นตอนตั้งค่า Custom Instructions</h3>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 1:</strong> คลิกที่รูปโปรไฟล์มุมขวาบน → เลือก <strong>"Customize ChatGPT"</strong> (หรือ Settings → Personalization)
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 2:</strong> ช่อง <strong>"What would you like ChatGPT to know about you?"</strong> — ใส่ข้อมูลเกี่ยวกับตัวเรา เช่น ตำแหน่ง หน่วยงาน ลักษณะงาน
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 3:</strong> ช่อง <strong>"How would you like ChatGPT to respond?"</strong> — กำหนดพฤติกรรมการตอบ เช่น ภาษา รูปแบบ ความยาว น้ำเสียง
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 4:</strong> กด <strong>"Save"</strong> — การตั้งค่าจะมีผลกับทุกแชทใหม่ (แชทเก่าไม่เปลี่ยน)
+    </div>
+
+    <div class="prompt-example">
+        <strong>ตัวอย่าง Custom Instructions สำหรับข้าราชการ</strong>
+        <p class="mt-2 mb-2"><strong>ช่อง 1 — ข้อมูลเกี่ยวกับฉัน:</strong></p>
+        <p class="mb-1">ฉันเป็นข้าราชการ ตำแหน่งเจ้าหน้าที่ฝ่ายแผนงานและสารสนเทศ สังกัดสำนักงานพัฒนาฝีมือแรงงานสุรินทร์ กรมพัฒนาฝีมือแรงงาน กระทรวงแรงงาน งานหลักคือ วิเคราะห์แผน จัดทำรายงาน ร่างหนังสือราชการ และดูแลระบบ IT ของหน่วยงาน</p>
+        <p class="mb-2"><strong>ช่อง 2 — วิธีตอบที่ต้องการ:</strong></p>
+        <p class="mb-1">- ตอบเป็นภาษาไทยเสมอ ยกเว้นศัพท์เทคนิค</p>
+        <p class="mb-1">- ใช้ภาษาทางการแบบราชการ แต่กระชับเข้าใจง่าย</p>
+        <p class="mb-1">- ถ้าร่างหนังสือ ใช้รูปแบบหนังสือราชการ</p>
+        <p class="mb-1">- ตอบสั้นกระชับ ตรงประเด็น ไม่เกิน 300 คำ</p>
+        <p class="mb-0">- ถ้ามีกฎระเบียบที่เกี่ยวข้อง ให้อ้างอิงด้วย</p>
+    </div>
+
+    <h3>Memory — ChatGPT จำข้อมูลได้</h3>
+    <p><strong>Memory</strong> คือความสามารถของ ChatGPT ในการ<strong>จดจำข้อมูลจากการสนทนาก่อนหน้า</strong> เช่น ชื่อ ตำแหน่ง ความชอบ — โดยไม่ต้องบอกซ้ำทุกครั้ง</p>
+
+    <h3>วิธีจัดการ Memory</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>การดำเนินการ</th>
+                    <th>วิธีทำ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ดู Memory ทั้งหมด</strong></td>
+                    <td>Settings → Personalization → Memory → "Manage" ดูรายการทั้งหมดที่ ChatGPT จำ</td>
+                </tr>
+                <tr>
+                    <td><strong>ลบ Memory บางข้อ</strong></td>
+                    <td>คลิก ❌ ข้างรายการที่ต้องการลบ หรือพิมพ์ "ลืมเรื่อง..."</td>
+                </tr>
+                <tr>
+                    <td><strong>เพิ่ม Memory</strong></td>
+                    <td>พิมพ์ในแชท เช่น "จำไว้ว่าฉันชอบให้ตอบเป็นตาราง" หรือ "จำไว้ว่าฉันทำงานที่ สนพ.สุรินทร์"</td>
+                </tr>
+                <tr>
+                    <td><strong>ปิด Memory</strong></td>
+                    <td>Settings → Personalization → Memory → Toggle Off</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Section 3.6 -->
+    <div class="section-header">
+        <h2>3.6 GPTs (Custom GPT) — สร้าง GPT เฉพาะงาน</h2>
+        <p>สร้าง ChatGPT เวอร์ชันที่ปรับแต่งสำหรับงานเฉพาะด้าน</p>
+    </div>
+
+    <h3>GPTs คืออะไร?</h3>
+    <p><strong>GPTs</strong> (หรือ Custom GPTs) คือ ChatGPT เวอร์ชันที่ปรับแต่งสำหรับงานเฉพาะด้าน — เปรียบเหมือนการสร้าง<strong>"ผู้เชี่ยวชาญเฉพาะทาง"</strong>ที่มีความรู้ คำสั่ง และเครื่องมือที่เหมาะกับงานนั้นๆ โดยไม่ต้องพิมพ์ Prompt ยาวๆ ทุกครั้ง</p>
+
+    <div class="alert alert-warning">
+        <h5>⚠️ ข้อจำกัด</h5>
+        <p class="mb-0">การสร้าง Custom GPTs ต้องมีแผน <strong>ChatGPT Plus</strong> ขึ้นไป (ค่าบริการ $20/เดือน) — แผนฟรีสามารถ<strong>ใช้</strong> GPTs ที่คนอื่นสร้างได้ แต่ไม่สามารถสร้างเองได้</p>
+    </div>
+
+    <h3>ขั้นตอนสร้าง Custom GPT</h3>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 1:</strong> เข้าไปที่ <strong>chat.openai.com</strong> → คลิก <strong>"Explore GPTs"</strong> (เมนูด้านซ้าย) → กด <strong>"+ Create"</strong> มุมขวาบน
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 2:</strong> ในแท็บ <strong>"Create"</strong> — อธิบายให้ GPT Builder ว่าต้องการ GPT แบบไหน เช่น "สร้าง GPT ที่ช่วยร่างหนังสือราชการ ตอบภาษาไทย ใช้รูปแบบราชการ"
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 3:</strong> ในแท็บ <strong>"Configure"</strong> — ปรับแต่งรายละเอียด: ตั้งชื่อ, คำอธิบาย, Instructions (คำสั่งเริ่มต้น), Knowledge (อัปโหลดเอกสารอ้างอิง), Capabilities (เปิด/ปิด Web Browsing, DALL·E, Code Interpreter)
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 4:</strong> ทดสอบในช่อง <strong>"Preview"</strong> ด้านขวา — ลองถามคำถามดูว่าตอบตามที่ต้องการหรือไม่ ปรับ Instructions จนพอใจ
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 5:</strong> กด <strong>"Save"</strong> → เลือกเผยแพร่: Only me (ส่วนตัว) / Anyone with a link (แชร์ลิงก์) / Everyone (ลง GPT Store)
+    </div>
+
+    <h3>ตัวอย่าง GPT ที่น่าสร้างสำหรับงานราชการ</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-success mb-3">
+                <div class="card-header bg-success text-white"><strong>📝 ผู้ช่วยร่างหนังสือราชการ</strong></div>
+                <div class="card-body">
+                    <ul class="mb-0">
+                        <li>ร่างบันทึกข้อความ หนังสือภายนอก คำสั่ง ประกาศ</li>
+                        <li>อัปโหลดระเบียบงานสารบรรณเป็น Knowledge</li>
+                        <li>กำหนดรูปแบบตามหน่วยงาน</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-primary mb-3">
+                <div class="card-header bg-primary text-white"><strong>📊 นักวิเคราะห์สถิติฝึกอบรม</strong></div>
+                <div class="card-body">
+                    <ul class="mb-0">
+                        <li>วิเคราะห์ข้อมูลผู้เข้าอบรม ผลสัมฤทธิ์ KPI</li>
+                        <li>อัปโหลดแผนงานประจำปีเป็น Knowledge</li>
+                        <li>สร้างกราฟ ตาราง รายงานสรุปอัตโนมัติ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exercises -->
+    <div class="exercise-box">
+        <h4>✏️ แบบฝึกหัดบทที่ 3</h4>
+        <ol>
+            <li><strong>เขียน CoT Prompt วิเคราะห์ปัญหางาน 1 ข้อ</strong>
+                <p>เลือกปัญหาในงานจริงของท่าน (เช่น งบไม่พอ คนไม่มา ผลงานไม่ถึงเป้า) แล้วเขียน Prompt ที่สั่งให้ ChatGPT "คิดทีละขั้นตอน" วิเคราะห์สาเหตุและข้อเสนอแนะ</p>
+            </li>
+            <li><strong>สร้าง Prompt Template ใช้ซ้ำ 3 แบบ</strong>
+                <p>ออกแบบ Template สำหรับงานที่ทำบ่อย:</p>
+                <ul>
+                    <li>Template สำหรับร่างเอกสารราชการ</li>
+                    <li>Template สำหรับเขียนอีเมลทางการ</li>
+                    <li>Template สำหรับสรุปรายงาน</li>
+                </ul>
+                <p>แต่ละ Template ต้องมี [ตัวแปร] อย่างน้อย 3 ตัว</p>
+            </li>
+            <li><strong>ทดลอง Iterative Prompting: ร่าง → ปรับ → ขัดเกลา 3 รอบ</strong>
+                <p>เลือกงาน 1 ชิ้น (เช่น ร่างประกาศรับสมัครอบรม) แล้วทำ:</p>
+                <ul>
+                    <li>รอบ 1: ขอร่างเบื้องต้น</li>
+                    <li>รอบ 2: ปรับแก้ให้ตรงใจ (เพิ่ม/ลด/เปลี่ยน)</li>
+                    <li>รอบ 3: ขัดเกลาให้สมบูรณ์พร้อมใช้งาน</li>
+                </ul>
+                <p>บันทึก Prompt ทั้ง 3 รอบ และผลลัพธ์สุดท้าย</p>
+            </li>
+            <li><strong>ตั้ง Custom Instructions ให้เหมาะกับงานตัวเอง</strong>
+                <p>กรอก Custom Instructions ทั้ง 2 ช่อง โดยอ้างอิงจากงานจริง:</p>
+                <ul>
+                    <li>ช่อง 1: ข้อมูลเกี่ยวกับตัวเอง (ตำแหน่ง หน่วยงาน ลักษณะงาน)</li>
+                    <li>ช่อง 2: วิธีที่ต้องการให้ ChatGPT ตอบ (ภาษา รูปแบบ ความยาว)</li>
+                </ul>
+                <p>ลองแชทกับ ChatGPT 3 คำถามแล้วสังเกตว่าคำตอบตรงใจกว่าเดิมหรือไม่</p>
+            </li>
+        </ol>
+    </div>
+
+    <!-- Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter02.html" class="btn btn-chapter-prev">← บทที่ 2: Prompt Engineering เบื้องต้น</a>
+        <a href="chapter04.html" class="btn btn-chapter-next">บทที่ 4 →</a>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="text-white text-center py-4 mt-5" style="background:#10a37f;">
+    <p>คู่มือฝึกอบรม ChatGPT — เพิ่มประสิทธิภาพการทำงานด้วย AI</p>
+    <p class="opacity-75">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

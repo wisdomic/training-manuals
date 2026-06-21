@@ -1,0 +1,262 @@
+/* ===== Google Apps Script Training Manual - Stylesheet ===== */
+/* โครงการ AI เพื่อคนพิการ | สนพ.สุรินทร์ */
+
+/* ===== Base ===== */
+body {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* ===== Navbar ===== */
+.nav-text {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+/* ===== Content Area ===== */
+.content-area {
+    min-height: calc(100vh - 200px);
+}
+
+/* ===== Headings ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.5rem; }
+
+.chapter-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.chapter-header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 50%;
+}
+
+.chapter-header h1 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.chapter-header .lead {
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+/* ===== Section Header ===== */
+.section-header {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #0d6efd;
+    color: #1a1a2e;
+}
+
+/* ===== Prompt / Code Example ===== */
+.prompt-example {
+    background: #f8f9fa;
+    border-left: 4px solid #0d6efd;
+    padding: 1rem 1.25rem;
+    border-radius: 0 8px 8px 0;
+    margin: 0.75rem 0;
+    font-size: 0.95rem;
+}
+
+/* ===== Info Card ===== */
+.info-card {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #e9ecef;
+}
+
+/* ===== Exercise Box ===== */
+.exercise-box {
+    background: #f0fff4;
+    border: 2px solid #198754;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.exercise-box h4 {
+    color: #198754;
+    margin-bottom: 1rem;
+}
+
+/* ===== Step Number ===== */
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: #0d6efd;
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.step-item p {
+    margin-bottom: 0;
+}
+
+/* ===== Screenshot Placeholder ===== */
+.screenshot-placeholder {
+    background: #e9ecef;
+    border: 2px dashed #adb5bd;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    color: #6c757d;
+    margin: 1rem 0;
+}
+
+/* ===== Table of Contents ===== */
+.toc-list {
+    list-style: none;
+    padding: 0;
+}
+
+.toc-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #0d6efd;
+    transition: all 0.2s;
+}
+
+.toc-list li:hover {
+    background: #e7f1ff;
+    transform: translateX(4px);
+}
+
+.toc-list li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.toc-list li a:hover {
+    color: #0d6efd;
+}
+
+/* ===== Code Blocks ===== */
+code {
+    background: #f1f3f5;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #d63384;
+}
+
+pre {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 1.25rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+}
+
+/* ===== Footer ===== */
+footer {
+    background: #1a1a2e;
+    color: rgba(255,255,255,0.8);
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+}
+
+/* ===== Navigation Buttons ===== */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e9ecef;
+}
+
+/* ===== Print Styles ===== */
+@media print {
+    .navbar, footer, .nav-buttons {
+        display: none !important;
+    }
+    .content-area {
+        min-height: auto;
+    }
+    .chapter-header {
+        background: #333 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    pre {
+        background: #f5f5f5 !important;
+        color: #333 !important;
+        border: 1px solid #ddd;
+    }
+    .exercise-box {
+        border: 2px solid #198754;
+        break-inside: avoid;
+    }
+    body {
+        font-size: 14px;
+    }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .chapter-header {
+        padding: 1.5rem 1rem;
+    }
+    .chapter-header h1 {
+        font-size: 1.5rem;
+    }
+    .nav-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

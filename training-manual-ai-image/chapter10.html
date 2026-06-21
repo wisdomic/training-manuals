@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 10: Workshop — สร้างสื่อครบชุดด้วย AI — AI สร้างรูปภาพ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 AI สร้างรูปภาพ</a>
+        <span class="text-white nav-text">บทที่ 10</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 10</h1>
+            <h2 class="fw-normal text-muted">Workshop — สร้างสื่อครบชุดด้วย AI</h2>
+            <p class="lead">ใช้ทุกเครื่องมือที่เรียนมาสร้างชุดสื่อประชาสัมพันธ์ครบ 5 ชิ้น</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>ประยุกต์ใช้เครื่องมือ AI สร้างภาพทุกตัวร่วมกันได้</li>
+                <li>สร้างชุดสื่อประชาสัมพันธ์ครบ 5 ชิ้นได้ด้วยตนเอง</li>
+                <li>วางแผนการใช้ AI สร้างภาพในงานจริงได้</li>
+                <li>นำเสนอผลงานและรับ Feedback ได้</li>
+            </ul>
+        </div>
+
+        <!-- Workshop Brief -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">📋 โจทย์ Workshop</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🎯 โจทย์: สร้างชุดสื่อประชาสัมพันธ์กิจกรรมขององค์กร</h5>
+                <p>เลือกกิจกรรม 1 อย่างขององค์กร แล้วสร้างสื่อครบ 5 ชิ้น:</p>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>ตัวอย่างกิจกรรม:</strong>
+                        <ul>
+                            <li>อบรมทักษะอาชีพคนพิการ</li>
+                            <li>วันคนพิการสากล</li>
+                            <li>รับสมัครอาสาสมัคร</li>
+                            <li>ประชาสัมพันธ์บริการองค์กร</li>
+                            <li>งานวิ่งการกุศล</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>5 ชิ้นงานที่ต้องสร้าง:</strong>
+                        <ol>
+                            <li>🖼️ โปสเตอร์ (A3/A4)</li>
+                            <li>📄 โบชัวร์ 2 พับ</li>
+                            <li>🌐 Banner Facebook/LINE</li>
+                            <li>📱 โพสต์ Instagram/Story</li>
+                            <li>📽️ สไลด์นำเสนอ (5 หน้า)</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ชิ้นที่ 1 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">ชิ้นที่ 1: โปสเตอร์</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">🖼️ สร้างโปสเตอร์กิจกรรม</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>สร้างภาพพื้นหลังด้วย DALL-E 3:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"สร้างภาพพื้นหลังโปสเตอร์ [กิจกรรมของคุณ] สไตล์... มีพื้นที่ว่างสำหรับข้อความ ขนาดแนวตั้ง"</code>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>เปิด Canva → สร้างงาน Poster (A3 หรือ A4)</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>อัปโหลดภาพ AI เป็นพื้นหลัง</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ใส่ข้อมูล: ชื่อกิจกรรม, วันเวลา, สถานที่, ผู้จัด, ติดต่อ</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>Export: PNG + PDF (Print)</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- ชิ้นที่ 2 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">ชิ้นที่ 2: โบชัวร์ 2 พับ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">📄 สร้างโบชัวร์ด้วย Canva</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>Canva → สร้าง "Brochure" (เลือก Tri-fold)</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ใช้ Magic Design สร้าง Template</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ใส่เนื้อหา: ด้านหน้า (ปก + ชื่อ), ด้านใน (รายละเอียด), ด้านหลัง (ติดต่อ)</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ใช้ Magic Media สร้างภาพประกอบ 2-3 ภาพ</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>Export: PDF (Print) สำหรับพิมพ์จริง</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- ชิ้นที่ 3 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">ชิ้นที่ 3: Banner Facebook/LINE</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">🌐 สร้าง Banner ด้วย DALL-E + Canva</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>DALL-E 3: สร้างภาพ 16:9 สำหรับ Banner</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"สร้างภาพ Banner ขนาด 16:9 สำหรับ [กิจกรรม] สไตล์ gradient สีสดใส"</code>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>Canva: สร้างงาน "Facebook Cover" (820x312)</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ใส่ภาพ AI + ข้อความสั้นๆ</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>Resize สำหรับ LINE Banner (1200x400)</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>Export: PNG ทั้ง 2 ขนาด</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- ชิ้นที่ 4 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">ชิ้นที่ 4: โพสต์ Instagram/Story</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">📱 สร้างโพสต์ Social Media</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>Instagram Post (1080x1080):</strong>
+                    <ul class="mt-1">
+                        <li>ใช้ภาพ AI จาก DALL-E หรือ Firefly</li>
+                        <li>ใส่ข้อความสั้นๆ ใน Canva</li>
+                    </ul>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>Instagram Story (1080x1920):</strong>
+                    <ul class="mt-1">
+                        <li>Canva → "Instagram Story" template</li>
+                        <li>ใส่ภาพ AI + ข้อความ + sticker</li>
+                    </ul>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>Export: PNG ทั้ง 2 ขนาด</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- ชิ้นที่ 5 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">ชิ้นที่ 5: สไลด์นำเสนอ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">📽️ สร้างสไลด์ด้วย Gamma</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>Gamma → Create → Presentation → Generate</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>พิมพ์:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"นำเสนอกิจกรรม [ชื่อกิจกรรม] วัตถุประสงค์ กลุ่มเป้าหมาย กิจกรรมหลัก ผลที่คาดหวัง ช่องทางติดต่อ"</code>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เลือก Theme → สร้าง → แก้ไขข้อมูล</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ใส่ภาพ AI จาก DALL-E/Firefly ในสไลด์ 2-3 หน้า</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>Export: PDF + Copy Link</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- การนำเสนอ -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">🎤 นำเสนอผลงาน</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>📣 แนวทางนำเสนอ (5 นาที/คน)</h5>
+                <ol>
+                    <li><strong>แนะนำกิจกรรม</strong> — เลือกทำกิจกรรมอะไร ทำไม</li>
+                    <li><strong>แสดงผลงาน 5 ชิ้น</strong> — โปสเตอร์ โบชัวร์ Banner โพสต์ สไลด์</li>
+                    <li><strong>เครื่องมือที่ใช้</strong> — ใช้ AI ตัวไหนบ้าง ร่วมกันอย่างไร</li>
+                    <li><strong>สิ่งที่เรียนรู้</strong> — อะไรง่าย อะไรยาก</li>
+                    <li><strong>แผนใช้งานจริง</strong> — จะนำไปใช้ในองค์กรอย่างไร</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Checklist -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">✅ Checklist ส่งงาน</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <table class="table table-bordered mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ชิ้นงาน</th>
+                            <th>ขนาด</th>
+                            <th>เครื่องมือ</th>
+                            <th>สถานะ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1. โปสเตอร์</td><td>A3/A4</td><td>DALL-E + Canva</td><td>☐</td></tr>
+                        <tr><td>2. โบชัวร์</td><td>Tri-fold</td><td>Canva AI</td><td>☐</td></tr>
+                        <tr><td>3. Banner FB/LINE</td><td>820x312 / 1200x400</td><td>DALL-E + Canva</td><td>☐</td></tr>
+                        <tr><td>4. โพสต์ IG + Story</td><td>1080x1080 / 1080x1920</td><td>Firefly + Canva</td><td>☐</td></tr>
+                        <tr><td>5. สไลด์ 5 หน้า</td><td>16:9</td><td>Gamma + AI Image</td><td>☐</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับ Workshop</h5>
+            <ul class="mb-0">
+                <li>เริ่มจากสร้างภาพ AI ก่อน → แล้วค่อยนำไปใส่ใน Canva/Gamma</li>
+                <li>ใช้สีและสไตล์เดียวกันทุกชิ้น — เพื่อให้เป็น "ชุด" ที่สอดคล้องกัน</li>
+                <li>ใช้ ChatGPT เขียนข้อความ/Caption ให้ก่อนใส่ในงาน</li>
+                <li>ไม่ต้องสมบูรณ์แบบ — เน้นฝึกใช้เครื่องมือ + สร้างเสร็จครบ 5 ชิ้น</li>
+                <li>เก็บ Prompt ทุกตัวที่ใช้ — เป็น "สูตร" ใช้ซ้ำได้ในอนาคต</li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปคู่มือ AI สร้างรูปภาพ</h5>
+            <ul>
+                <li><strong>DALL-E 3:</strong> สร้างภาพจากจินตนาการ ภาษาไทย ผ่าน ChatGPT</li>
+                <li><strong>Adobe Firefly:</strong> สร้าง+แก้ไขภาพ ปลอดลิขสิทธิ์</li>
+                <li><strong>Google Whisk:</strong> ผสมภาพ+สไตล์ ได้ไอเดียใหม่</li>
+                <li><strong>Canva AI:</strong> ออกแบบครบจบ Template พร้อมใช้</li>
+                <li><strong>Gamma:</strong> สร้างสไลด์สวยจาก AI</li>
+                <li><strong>Prompt:</strong> Subject + Style + Composition + Mood + Technical</li>
+                <li><strong>ขนาดภาพ:</strong> 1:1 (โพสต์), 16:9 (Banner), 9:16 (Story)</li>
+                <li><strong>จริยธรรม:</strong> ไม่ Deepfake, ระบุว่าเป็นภาพ AI, ใช้ Firefly สำหรับงานราชการ</li>
+            </ul>
+        </div>
+
+        <!-- แหล่งเรียนรู้เพิ่ม -->
+        <div class="info-card p-4 bg-light rounded mt-4">
+            <h5>📚 แหล่งเรียนรู้เพิ่มเติม</h5>
+            <ul>
+                <li><a href="https://chat.openai.com" target="_blank">ChatGPT (DALL-E 3)</a> — chat.openai.com</li>
+                <li><a href="https://firefly.adobe.com" target="_blank">Adobe Firefly</a> — firefly.adobe.com</li>
+                <li><a href="https://labs.google/whisk" target="_blank">Google Whisk</a> — labs.google/whisk</li>
+                <li><a href="https://www.canva.com" target="_blank">Canva</a> — www.canva.com</li>
+                <li><a href="https://gamma.app" target="_blank">Gamma</a> — gamma.app</li>
+                <li><a href="https://www.midjourney.com" target="_blank">Midjourney</a> — www.midjourney.com</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="chapter09.html" class="btn btn-outline-dark">← บทที่ 9</a>
+            <a href="index.html" class="btn btn-dark">กลับหน้าหลัก</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

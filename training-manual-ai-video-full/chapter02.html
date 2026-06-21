@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 2: เขียนสคริปต์ด้วย ChatGPT | AI วิดีโอครบวงจร</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">📖 AI วิดีโอครบวงจร</a>
+            <span class="nav-chapter-text">บทที่ 2: เขียนสคริปต์ด้วย ChatGPT</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <div class="chapter-number">บทที่ 2</div>
+                <h1>เขียนสคริปต์ด้วย ChatGPT</h1>
+                <p class="chapter-subtitle">ใช้ AI เขียนบทพูด, โครงสร้างสคริปต์, Prompt สำหรับวิดีโอประชาสัมพันธ์</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เข้าใจโครงสร้างสคริปต์วิดีโอที่ดี (Opening - Body - Closing)</li>
+                    <li>สามารถเขียน Prompt ให้ ChatGPT สร้างสคริปต์ได้ตรงความต้องการ</li>
+                    <li>รู้จักเทคนิคการปรับแต่ง Prompt เพื่อให้ได้ผลลัพธ์ที่ดีขึ้น</li>
+                    <li>สร้างสคริปต์วิดีโอประชาสัมพันธ์องค์กรได้สำเร็จ</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">📝 โครงสร้างสคริปต์วิดีโอ</h3>
+
+            <p>สคริปต์ที่ดีต้องมีโครงสร้างชัดเจน เหมือนเรียงความมี "เกริ่นนำ - เนื้อหา - สรุป" สคริปต์วิดีโอก็เช่นกัน แบ่งเป็น 3 ส่วน:</p>
+
+            <div class="info-card">
+                <h5>📐 โครงสร้าง 3 ส่วนของสคริปต์</h5>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="step-box">
+                            <strong>🎬 Opening (เปิด)</strong>
+                            <p class="text-muted mb-0">5-10 วินาทีแรก — ดึงดูดความสนใจ บอกว่าวิดีโอนี้เกี่ยวกับอะไร</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="step-box">
+                            <strong>📖 Body (เนื้อหา)</strong>
+                            <p class="text-muted mb-0">ส่วนกลาง — อธิบายรายละเอียด แบ่งเป็น Scene ย่อยๆ</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="step-box">
+                            <strong>🔚 Closing (ปิด)</strong>
+                            <p class="text-muted mb-0">10 วินาทีสุดท้าย — สรุป + Call to Action</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-header">🤖 หลักการเขียน Prompt ให้ ChatGPT</h3>
+
+            <p>การเขียน Prompt ที่ดีจะทำให้ได้สคริปต์ที่ตรงใจ โดยใช้สูตร <strong>CRAFT</strong>:</p>
+
+            <div class="info-card">
+                <h5>✨ สูตร CRAFT สำหรับเขียน Prompt</h5>
+                <ul>
+                    <li><strong>C — Context (บริบท):</strong> บอกว่าคุณเป็นใคร ทำงานอะไร</li>
+                    <li><strong>R — Role (บทบาท):</strong> กำหนดบทบาทให้ AI เช่น "คุณเป็นนักเขียนบทวิดีโอมืออาชีพ"</li>
+                    <li><strong>A — Audience (ผู้ชม):</strong> บอกว่าวิดีโอนี้ทำให้ใครดู</li>
+                    <li><strong>F — Format (รูปแบบ):</strong> ระบุรูปแบบผลลัพธ์ เช่น ตาราง, แบ่ง Scene</li>
+                    <li><strong>T — Tone (น้ำเสียง):</strong> กำหนดโทน เช่น เป็นทางการ, อบอุ่น, สนุกสนาน</li>
+                </ul>
+            </div>
+
+            <h4 class="section-header-secondary">ตัวอย่าง Prompt พื้นฐาน</h4>
+
+            <div class="prompt-box">
+เขียนสคริปต์วิดีโอประชาสัมพันธ์ศูนย์บริการคนพิการจังหวัดสุรินทร์<br>
+ความยาว 1 นาที แบ่งเป็น Scene พร้อมบอกภาพประกอบแต่ละ Scene<br>
+กลุ่มเป้าหมาย: คนพิการและครอบครัว<br>
+โทน: อบอุ่น เป็นมิตร ให้กำลังใจ<br>
+รูปแบบ: ตาราง [Scene | เวลา | บทพูด | ภาพประกอบ]
+            </div>
+
+            <h4 class="section-header-secondary">ตัวอย่าง Prompt แบบละเอียด (สูตร CRAFT)</h4>
+
+            <div class="prompt-box">
+[Context] ฉันเป็นเจ้าหน้าที่ศูนย์บริการคนพิการจังหวัดสุรินทร์<br>
+ต้องการทำวิดีโอประชาสัมพันธ์บริการของศูนย์ฯ<br><br>
+[Role] คุณเป็นนักเขียนบทวิดีโอประชาสัมพันธ์มืออาชีพ<br>
+ที่เชี่ยวชาญด้านสื่อสำหรับผู้พิการ<br><br>
+[Audience] กลุ่มเป้าหมาย: คนพิการทุกประเภท และครอบครัว<br>
+ในจังหวัดสุรินทร์ อายุ 20-60 ปี<br><br>
+[Format] เขียนเป็นตาราง แบ่งเป็น 5-6 Scene:<br>
+| Scene | เวลา | บทพูด (Voice Over) | ภาพประกอบที่แนะนำ |<br><br>
+[Tone] น้ำเสียงอบอุ่น เป็นมิตร ให้กำลังใจ<br>
+ใช้ภาษาง่ายๆ ไม่เป็นทางการมาก ความยาวรวม 1.5 นาที
+            </div>
+
+            <h3 class="section-header">🔧 เทคนิคปรับแต่ง Prompt</h3>
+
+            <div class="info-card">
+                <h5>🎯 เทคนิคที่ 1: ขอหลายเวอร์ชัน</h5>
+                <div class="prompt-box">
+เขียนสคริปต์วิดีโอแนะนำบริการศูนย์คนพิการ 2 เวอร์ชัน:<br>
+เวอร์ชัน A: โทนจริงจัง เป็นทางการ สำหรับผู้บริหาร<br>
+เวอร์ชัน B: โทนสนุกสนาน เข้าถึงง่าย สำหรับ Social Media
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h5>🎯 เทคนิคที่ 2: ให้ปรับปรุง</h5>
+                <div class="prompt-box">
+ช่วยปรับสคริปต์ข้างบนให้:<br>
+- ประโยคสั้นลง (ไม่เกิน 20 คำ/ประโยค)<br>
+- เพิ่มคำเชิญชวนให้มาใช้บริการ<br>
+- เปลี่ยน Scene 3 เป็นเรื่องการฝึกอาชีพ
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h5>🎯 เทคนิคที่ 3: ขอ Prompt สำหรับสร้างภาพ</h5>
+                <div class="prompt-box">
+จากสคริปต์ข้างบน ช่วยเขียน Prompt สำหรับสร้างภาพด้วย DALL-E<br>
+ทุก Scene ให้เป็นภาษาอังกฤษ สไตล์ภาพเหมือนกันทุก Scene<br>
+สไตล์: Flat illustration, warm colors, inclusive design
+                </div>
+            </div>
+
+            <h3 class="section-header">📋 รูปแบบสคริปต์สำหรับเครื่องมือต่างๆ</h3>
+
+            <p>สคริปต์ที่เขียนจะถูกนำไปใช้กับเครื่องมือต่างๆ ดังนี้:</p>
+
+            <div class="table-responsive">
+                <table class="table table-custom">
+                    <thead>
+                        <tr>
+                            <th>เครื่องมือ</th>
+                            <th>ส่วนของสคริปต์ที่ใช้</th>
+                            <th>หมายเหตุ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>HeyGen</td><td>บทพูด (Voice Over)</td><td>ใส่ทั้งประโยค Avatar จะพูดให้</td></tr>
+                        <tr><td>ElevenLabs</td><td>บทพูด (Voice Over)</td><td>แปลงเป็นเสียง MP3/WAV</td></tr>
+                        <tr><td>DALL-E / Whisk</td><td>คำอธิบายภาพแต่ละ Scene</td><td>ใช้เป็น Prompt สร้างภาพ</td></tr>
+                        <tr><td>Veo 2</td><td>คำอธิบาย + ภาพ</td><td>ใช้สร้างคลิปวิดีโอ</td></tr>
+                        <tr><td>Suno AI</td><td>ชื่อเพลง + อารมณ์</td><td>สร้างเพลงประกอบ</td></tr>
+                        <tr><td>CapCut</td><td>ใช้ทุกส่วน</td><td>รวมทุกอย่างเข้าด้วยกัน</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="section-header">📄 ตัวอย่างสคริปต์สมบูรณ์</h3>
+
+            <div class="info-card">
+                <h5>🎬 วิดีโอ: แนะนำศูนย์บริการคนพิการจังหวัดสุรินทร์ (1.5 นาที)</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr><th>Scene</th><th>เวลา</th><th>บทพูด</th><th>ภาพ</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td><td>0:00-0:10</td>
+                                <td>"ทุกคนมีสิทธิ์ที่จะมีชีวิตที่ดี ไม่ว่าจะเป็นใครก็ตาม"</td>
+                                <td>ภาพคนพิการยิ้ม ใช้ชีวิตปกติ</td>
+                            </tr>
+                            <tr>
+                                <td>2</td><td>0:10-0:25</td>
+                                <td>"ศูนย์บริการคนพิการจังหวัดสุรินทร์ พร้อมดูแลคุณ ด้วยบริการครบวงจร"</td>
+                                <td>อาคารศูนย์ฯ + เจ้าหน้าที่ยิ้มต้อนรับ</td>
+                            </tr>
+                            <tr>
+                                <td>3</td><td>0:25-0:45</td>
+                                <td>"ไม่ว่าจะเป็นบัตรคนพิการ เงินสงเคราะห์ ฝึกอาชีพ หรือกายอุปกรณ์ เรามีทุกอย่างให้คุณ"</td>
+                                <td>ภาพบริการต่างๆ แบ่ง 4 ช่อง</td>
+                            </tr>
+                            <tr>
+                                <td>4</td><td>0:45-1:05</td>
+                                <td>"ทีมงานของเราพร้อมให้คำปรึกษา ช่วยเหลือ และอำนวยความสะดวกทุกขั้นตอน"</td>
+                                <td>เจ้าหน้าที่กำลังช่วยเหลือคนพิการ</td>
+                            </tr>
+                            <tr>
+                                <td>5</td><td>1:05-1:20</td>
+                                <td>"มาที่ศูนย์ฯ ได้ทุกวันจันทร์ถึงศุกร์ เวลา 8.30-16.30 น. หรือโทร 044-XXX-XXX"</td>
+                                <td>แผนที่ + เบอร์โทร + เวลาทำการ</td>
+                            </tr>
+                            <tr>
+                                <td>6</td><td>1:20-1:30</td>
+                                <td>"ศูนย์บริการคนพิการจังหวัดสุรินทร์ เราดูแลคุณเหมือนคนในครอบครัว"</td>
+                                <td>โลโก้ + Tagline + ช่องทางติดต่อ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h5>🔬 Lab 2.1: เขียนสคริปต์ด้วย ChatGPT</h5>
+                <p><strong>เวลา:</strong> 25 นาที</p>
+                <p><strong>คำสั่ง:</strong> ใช้ ChatGPT เขียนสคริปต์วิดีโอประชาสัมพันธ์องค์กรของคุณ</p>
+                <ol>
+                    <li>เปิด ChatGPT (chat.openai.com)</li>
+                    <li>ใช้สูตร CRAFT เขียน Prompt โดยปรับเป็นข้อมูลองค์กรของท่าน</li>
+                    <li>ส่ง Prompt แล้วอ่านผลลัพธ์</li>
+                    <li>ปรับแต่ง: ขอให้ "สั้นลง" หรือ "เพิ่มรายละเอียด" หรือ "เปลี่ยนโทน"</li>
+                    <li>ขอให้สร้าง Prompt สำหรับภาพแต่ละ Scene</li>
+                    <li>Copy สคริปต์สุดท้ายไปวางใน Google Docs</li>
+                </ol>
+                <p class="mb-0"><strong>💡 ผลลัพธ์ที่ต้องได้:</strong> สคริปต์ 5-6 Scene พร้อม Prompt สร้างภาพ ที่จะนำไปใช้ในบทถัดไป</p>
+            </div>
+
+            <div class="exercise-box">
+                <h5>🔬 Lab 2.2: เขียนสคริปต์แบบ Call to Action</h5>
+                <p><strong>เวลา:</strong> 15 นาที</p>
+                <p><strong>คำสั่ง:</strong> ฝึกเขียน Prompt ให้ ChatGPT สร้างสคริปต์ที่มี Call to Action ชัดเจน</p>
+                <ol>
+                    <li>ใช้ Prompt ด้านล่างเป็นตัวอย่าง:</li>
+                </ol>
+                <div class="prompt-box">
+เขียนสคริปต์วิดีโอ 30 วินาที สำหรับเชิญชวนคนพิการมาลงทะเบียน<br>
+รับสิทธิ์ฝึกอาชีพฟรี ที่ศูนย์บริการคนพิการจังหวัด...<br>
+ต้องมี Call to Action ชัดเจน เช่น "โทรหาเราวันนี้" หรือ "สมัครผ่าน Line"<br>
+โทน: กระตุ้น ให้กำลังใจ แต่ไม่กดดัน
+                </div>
+                <ol start="2">
+                    <li>ปรับเป็นข้อมูลองค์กรของตัวเอง</li>
+                    <li>ลองเปรียบเทียบผลลัพธ์กับคนข้างๆ</li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5>💡 Tips & Tricks</h5>
+                <ul class="mb-0">
+                    <li><strong>1 ประโยค = 1 ความคิด:</strong> อย่าเขียนประโยคยาวเกินไป Voice Over ต้องพูดตาม</li>
+                    <li><strong>ลองอ่านออกเสียง:</strong> อ่านสคริปต์ออกเสียง ถ้าหายใจไม่ทัน = ยาวเกินไป</li>
+                    <li><strong>1 นาที ≈ 100-120 คำไทย:</strong> ใช้เป็นตัวกะความยาว</li>
+                    <li><strong>เริ่มด้วยคำถาม:</strong> Opening ที่ดีมักเริ่มด้วยคำถาม เช่น "คุณรู้ไหมว่า...?"</li>
+                    <li><strong>Save หลายเวอร์ชัน:</strong> อย่าลบเวอร์ชันเก่า เก็บไว้เปรียบเทียบ</li>
+                    <li><strong>ใช้ภาษาพูด:</strong> สคริปต์วิดีโอควรเป็นภาษาพูด ไม่ใช่ภาษาเขียน</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="summary-card">
+                <h5>📋 สรุปบทที่ 2</h5>
+                <ul class="mb-0">
+                    <li>สคริปต์ที่ดีมี 3 ส่วน: Opening (ดึงดูด) → Body (เนื้อหา) → Closing (สรุป + CTA)</li>
+                    <li>ใช้สูตร CRAFT เขียน Prompt: Context, Role, Audience, Format, Tone</li>
+                    <li>ขอหลายเวอร์ชัน แล้วเลือกที่ดีที่สุด</li>
+                    <li>สคริปต์ 1 ชุด ใช้ได้กับหลายเครื่องมือ (HeyGen, ElevenLabs, DALL-E)</li>
+                    <li>เก็บสคริปต์ไว้ใน Google Docs เพื่อใช้ในบทต่อไป</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="chapter-nav d-flex justify-content-between">
+                <a href="chapter01.html" class="btn btn-outline-secondary">← บทที่ 1</a>
+                <a href="chapter03.html" class="btn btn-primary">บทที่ 3 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 5: Gemini ใน Google Docs + Gmail — คู่มือ Gemini AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark sticky-top" style="background: linear-gradient(135deg, #4285f4, #34a853);">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ Gemini AI</a>
+        <span class="navbar-text text-white-50">บทที่ 5 | วันที่ 3 เช้า</span>
+    </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">หน้าหลัก</a></li>
+            <li class="breadcrumb-item active">บทที่ 5: Gemini ใน Google Docs + Gmail</li>
+        </ol>
+    </nav>
+</div>
+
+<!-- Chapter Header -->
+<section class="py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="fw-bold text-google-green">บทที่ 5: Gemini ใน Google Docs + Gmail</h1>
+                <p class="lead text-muted">ใช้ AI ช่วยเขียน แก้ไข สรุปเอกสาร + ร่างอีเมล ตอบกลับ ใน Google Workspace</p>
+            </div>
+            <div class="col-md-4 text-end">
+                <span class="badge-day me-2">วันที่ 3 เช้า</span>
+                <span class="badge-hours">3 ชั่วโมง</span>
+            </div>
+        </div>
+        <hr>
+    </div>
+</section>
+
+<!-- สารบัญ -->
+<section class="pb-4">
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-google-green text-white">
+                <h5 class="mb-0"><i class="fas fa-list me-2"></i>เนื้อหาในบทนี้</h5>
+            </div>
+            <div class="card-body">
+                <ul class="toc-list">
+                    <li><a href="#section-5-1">5.1 เปิดใช้ Gemini ใน Google Workspace</a></li>
+                    <li><a href="#section-5-2">5.2 Gemini ใน Google Docs — Help me write, Refine, Summarize</a></li>
+                    <li><a href="#section-5-3">5.3 Gemini ใน Gmail — Draft, Reply, Summarize</a></li>
+                    <li><a href="#section-5-4">5.4 Gemini ใน Google Meet — Notes, Summary, Action Items</a></li>
+                    <li><a href="#section-5-5">5.5 Workshop: ร่างเอกสารราชการ + Email ด้วย Gemini</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 5.1 -->
+<section class="py-4" id="section-5-1">
+    <div class="container">
+        <h2 class="section-header">5.1 เปิดใช้ Gemini ใน Google Workspace</h2>
+
+        <div class="warning-box mb-4">
+            <h6><i class="fas fa-exclamation-triangle me-2"></i>ข้อกำหนดสำคัญ</h6>
+            <p class="mb-2">การใช้ Gemini <strong>ภายใน</strong> Google Docs / Gmail / Sheets / Slides ต้องมี:</p>
+            <ul class="mb-0">
+                <li><strong>ตัวเลือกที่ 1:</strong> Google Workspace Business Standard/Plus ที่ Admin เปิด Gemini ไว้</li>
+                <li><strong>ตัวเลือกที่ 2:</strong> Google One AI Premium ($20/เดือน = Gemini Advanced)</li>
+                <li><strong>ตัวเลือกที่ 3:</strong> Google Workspace Individual</li>
+            </ul>
+            <p class="mt-2 mb-0 small text-muted">💡 ถ้าหน่วยงานใช้ Google Workspace for Education — ขึ้นอยู่กับ Admin ว่าเปิดให้ใช้หรือไม่</p>
+        </div>
+
+        <h4 class="mb-3">ตรวจสอบว่าเปิดใช้ Gemini ได้หรือไม่</h4>
+
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>เปิด Google Docs → สร้างเอกสารใหม่</strong><br>
+                ไปที่ docs.google.com → คลิก "+" สร้างเอกสารเปล่า
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>มองหาไอคอน ✨ (Gemini) ที่แถบเครื่องมือ</strong><br>
+                ถ้าเห็นปุ่ม "Help me write" หรือไอคอนดาว ✨ = ใช้ได้!<br>
+                ถ้าไม่เห็น = ยังไม่ได้เปิดใช้ (ต้องสมัคร Gemini Advanced หรือให้ Admin เปิด)
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>สำหรับ Gmail — ตรวจสอบเช่นกัน</strong><br>
+                เปิด Gmail → กด Compose → มองหา "Help me write" ✨ ที่ด้านล่างช่องเขียนอีเมล
+            </div>
+        </div>
+
+        <div class="screenshot-placeholder">
+            <i class="fas fa-image d-block"></i>
+            <p class="mb-0">📸 ภาพหน้าจอ: ตำแหน่งไอคอน Gemini ✨ ใน Google Docs และ Gmail</p>
+        </div>
+
+        <div class="info-box mt-3">
+            <strong><i class="fas fa-info-circle me-2"></i>สำหรับการอบรม:</strong> แม้ผู้เข้าอบรมอาจไม่มี Gemini Advanced แต่สามารถเรียนรู้หลักการ + ดูตัวอย่างจากวิทยากร → นำไปใช้เมื่อหน่วยงานเปิดใช้งาน หรือสมัครใช้เองในอนาคต ทั้งนี้ สามารถใช้ <strong>gemini.google.com</strong> (ฟรี) แล้ว copy ผลลัพธ์ไปวางใน Docs/Gmail ได้เช่นกัน
+        </div>
+    </div>
+</section>
+
+<!-- Section 5.2 -->
+<section class="py-4 bg-light" id="section-5-2">
+    <div class="container">
+        <h2 class="section-header">5.2 Gemini ใน Google Docs — Help me write, Refine, Summarize</h2>
+
+        <p>Gemini ใน Google Docs มีฟีเจอร์หลัก 3 อย่าง:</p>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="card text-center h-100 border-primary">
+                    <div class="card-body">
+                        <i class="fas fa-pen fa-2x text-google-blue mb-2"></i>
+                        <h6>Help me write</h6>
+                        <p class="small text-muted mb-0">สร้างเนื้อหาใหม่จากคำสั่ง</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center h-100 border-success">
+                    <div class="card-body">
+                        <i class="fas fa-magic fa-2x text-google-green mb-2"></i>
+                        <h6>Refine</h6>
+                        <p class="small text-muted mb-0">ปรับปรุงเนื้อหาที่มีอยู่</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center h-100 border-warning">
+                    <div class="card-body">
+                        <i class="fas fa-compress-alt fa-2x text-google-yellow mb-2"></i>
+                        <h6>Summarize</h6>
+                        <p class="small text-muted mb-0">สรุปเนื้อหายาวให้สั้น</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help me write -->
+        <h4 class="mt-4 mb-3">✏️ Help me write — สร้างเนื้อหาใหม่</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>คลิกในตำแหน่งที่ต้องการเพิ่มข้อความ</strong><br>
+                วาง cursor ณ ตำแหน่งในเอกสาร
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>คลิกไอคอน ✨ "Help me write" ที่แถบข้าง</strong><br>
+                หรือพิมพ์ "/" แล้วเลือก "Help me write"
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>พิมพ์คำสั่ง → กด "Create"</strong><br>
+                เช่น: "เขียนบันทึกข้อความเรื่องขออนุมัติจัดฝึกอบรม AI 5 วัน 100 คน"
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>ตรวจสอบ → กด "Insert" หรือ "Refine"</strong><br>
+                - <strong>Insert:</strong> แทรกเข้าเอกสาร<br>
+                - <strong>Refine:</strong> ปรับปรุงต่อ (สั้นลง/ยาวขึ้น/เป็นทางการ/ลำลอง)<br>
+                - <strong>Retry:</strong> สร้างใหม่
+            </div>
+        </div>
+
+        <div class="screenshot-placeholder">
+            <i class="fas fa-image d-block"></i>
+            <p class="mb-0">📸 ภาพหน้าจอ: Help me write ใน Google Docs — ช่องพิมพ์คำสั่ง + ผลลัพธ์</p>
+        </div>
+
+        <h5 class="mt-4">ตัวอย่างคำสั่งใน Google Docs</h5>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th style="width:40%">คำสั่ง</th>
+                        <th>ผลลัพธ์</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>"ร่างหนังสือเชิญประชุม วันที่ 15 ก.ค. 2569 เรื่อง แผนอบรม AI"</td>
+                        <td>ได้หนังสือเชิญประชุมรูปแบบราชการ</td>
+                    </tr>
+                    <tr>
+                        <td>"เขียนสรุปผลการดำเนินงานไตรมาส 3 จากข้อมูลต่อไปนี้: ..."</td>
+                        <td>ได้รายงานสรุปพร้อมตาราง</td>
+                    </tr>
+                    <tr>
+                        <td>"สร้างตาราง timeline โครงการ AI ระยะ 6 เดือน"</td>
+                        <td>ได้ตาราง Timeline พร้อมกิจกรรม</td>
+                    </tr>
+                    <tr>
+                        <td>"เขียน job description ตำแหน่ง นักวิชาการคอมพิวเตอร์"</td>
+                        <td>ได้ JD ครบถ้วน</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Refine -->
+        <h4 class="mt-5 mb-3">🔮 Refine — ปรับปรุงเนื้อหา</h4>
+        <p>เลือกข้อความที่มีอยู่แล้ว → คลิกขวา → "Help me write" → เลือกการปรับปรุง:</p>
+
+        <div class="row g-3">
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center">
+                    <div class="card-body py-3">
+                        <strong>Shorten</strong><br>
+                        <small class="text-muted">ทำให้สั้นลง</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center">
+                    <div class="card-body py-3">
+                        <strong>Elaborate</strong><br>
+                        <small class="text-muted">เพิ่มรายละเอียด</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center">
+                    <div class="card-body py-3">
+                        <strong>Formalize</strong><br>
+                        <small class="text-muted">ทำให้ทางการ</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-center">
+                    <div class="card-body py-3">
+                        <strong>Rephrase</strong><br>
+                        <small class="text-muted">เขียนใหม่</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="prompt-example mt-4">
+            <strong>สถานการณ์:</strong> มีย่อหน้ายาว 10 บรรทัด ต้องการสรุปให้สั้น<br><br>
+            1. เลือก (highlight) ข้อความทั้งย่อหน้า<br>
+            2. คลิกไอคอน ✨ → เลือก "Shorten"<br>
+            3. Gemini จะย่อให้สั้นลง → กด "Replace" เพื่อแทนที่
+        </div>
+
+        <!-- Summarize -->
+        <h4 class="mt-5 mb-3">📋 Summarize — สรุปเอกสาร</h4>
+        <p>สำหรับเอกสารยาว สามารถใช้ Gemini สรุปทั้งเอกสารได้:</p>
+
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>เปิด Side Panel (ไอคอน Gemini ✨ ด้านขวา)</strong><br>
+                คลิกไอคอน Gemini ที่มุมขวาบนของ Docs
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>พิมพ์ "สรุปเอกสารนี้" หรือ "Summarize this document"</strong><br>
+                Gemini จะอ่านทั้งเอกสารแล้วสรุปให้
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>ถามคำถามต่อได้</strong><br>
+                เช่น "ประเด็นสำคัญที่สุดคืออะไร?" / "มีอะไรที่ต้องดำเนินการ?" / "สรุปเป็น 3 ข้อ"
+            </div>
+        </div>
+
+        <div class="tip-box mt-3">
+            <strong><i class="fas fa-lightbulb me-2"></i>ใช้ในงานราชการ:</strong> เมื่อได้รับหนังสือ/รายงานยาวๆ → เปิดใน Google Docs → ใช้ Gemini สรุปให้ก่อนอ่านรายละเอียด ช่วยประหยัดเวลาได้มาก!
+        </div>
+    </div>
+</section>
+
+<!-- Section 5.3 -->
+<section class="py-4" id="section-5-3">
+    <div class="container">
+        <h2 class="section-header">5.3 Gemini ใน Gmail — Draft, Reply, Summarize</h2>
+
+        <p>Gemini ใน Gmail ช่วยร่างอีเมล, ตอบกลับ และสรุป email thread ยาวๆ ได้:</p>
+
+        <h4 class="mb-3">📧 ร่างอีเมลใหม่ (Help me write)</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>คลิก "Compose" เขียนอีเมลใหม่</strong><br>
+                กรอก To:, Subject: ตามปกติ
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>คลิกไอคอน ✨ "Help me write" ที่ด้านล่าง</strong><br>
+                จะปรากฏช่องพิมพ์คำสั่ง
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>พิมพ์คำสั่ง</strong><br>
+                เช่น: "เขียนอีเมลเชิญผู้อำนวยการโรงเรียน 5 แห่ง มาร่วมงานอบรม AI วันที่ 1-5 ก.ค. ภาษาทางการ"
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>ตรวจสอบ → Insert / Refine</strong><br>
+                ปรับให้สั้น/ยาว/ทางการ ได้ก่อนส่ง
+            </div>
+        </div>
+
+        <div class="screenshot-placeholder">
+            <i class="fas fa-envelope d-block"></i>
+            <p class="mb-0">📸 ภาพหน้าจอ: Help me write ใน Gmail Compose window</p>
+        </div>
+
+        <h5 class="mt-4">ตัวอย่างคำสั่งร่างอีเมล</h5>
+        <div class="prompt-example">
+            เขียนอีเมลตอบกลับ ขอบคุณที่ตอบรับเป็นวิทยากร แจ้งรายละเอียด:<br>
+            - วันที่ 1 ก.ค. 2569 เวลา 09:00-12:00<br>
+            - สถานที่: ห้องประชุมชั้น 3 สนพ.สุรินทร์<br>
+            - ค่าตอบแทน: ชม.ละ 600 บาท<br>
+            - ขอ bio + รูปภาพสำหรับป้ายไวนิล<br>
+            ภาษาสุภาพ ทางการ
+        </div>
+
+        <h4 class="mt-5 mb-3">↩️ ตอบกลับอีเมล (Reply suggestions)</h4>
+        <p>เมื่อได้รับอีเมล Gemini จะเสนอ "ร่างคำตอบ" ให้เลือก:</p>
+
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>เปิดอีเมลที่ต้องการตอบ → กด Reply</strong><br>
+                Gemini จะวิเคราะห์เนื้อหาอีเมลต้นทาง
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>ดู Suggested replies หรือกด ✨ Help me write</strong><br>
+                Gemini จะเสนอร่างตอบกลับที่เหมาะสมกับเนื้อหา
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>เลือก / แก้ไข → Send</strong><br>
+                ตรวจสอบเนื้อหาก่อนส่งเสมอ!
+            </div>
+        </div>
+
+        <h4 class="mt-5 mb-3">📋 สรุป Email Thread</h4>
+        <p>เมื่อมี email thread ยาว (หลาย reply) Gemini จะแสดงปุ่ม "Summarize this email" ที่ด้านบน:</p>
+
+        <div class="prompt-example">
+            <strong>สถานการณ์:</strong> Email thread 15 replies เรื่องการจัดประชุม<br><br>
+            → กดปุ่ม "Summarize this email" ที่ด้านบน<br>
+            → Gemini สรุป: ใคร, ตกลงอะไร, มีอะไรค้าง, action items<br><br>
+            <strong>ผลลัพธ์:</strong> "สรุป: ประชุมตกลงวันที่ 15 ก.ค. เวลา 13:00 ห้อง A สมาชิก 10 คน รอ A ส่งวาระ รอ B จองห้อง"
+        </div>
+    </div>
+</section>
+
+<!-- Section 5.4 -->
+<section class="py-4 bg-light" id="section-5-4">
+    <div class="container">
+        <h2 class="section-header">5.4 Gemini ใน Google Meet — Notes, Summary, Action Items</h2>
+
+        <p>Gemini ใน Google Meet ช่วยบันทึกการประชุมอัตโนมัติ:</p>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-sticky-note fa-2x text-google-blue mb-2"></i>
+                        <h6>Take notes</h6>
+                        <p class="small text-muted mb-0">บันทึกสรุปการประชุมอัตโนมัติ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-file-alt fa-2x text-google-green mb-2"></i>
+                        <h6>Meeting Summary</h6>
+                        <p class="small text-muted mb-0">สรุปประเด็นหลักเมื่อประชุมเสร็จ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-tasks fa-2x text-google-yellow mb-2"></i>
+                        <h6>Action Items</h6>
+                        <p class="small text-muted mb-0">ดึง action items + ผู้รับผิดชอบ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mb-3">วิธีใช้ Gemini ใน Meet</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>เริ่มประชุมใน Google Meet</strong><br>
+                จะเห็นไอคอน ✨ Gemini ที่แถบเครื่องมือด้านล่าง
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>คลิก "Take notes with Gemini"</strong><br>
+                Gemini จะเริ่มบันทึกและสรุปสิ่งที่พูดในที่ประชุม
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>ระหว่างประชุม — ถามได้</strong><br>
+                พิมพ์คำถาม เช่น "มีอะไรที่ตกลงกันแล้วบ้าง?" Gemini จะสรุปให้
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>หลังประชุม — ได้รับ Meeting Summary</strong><br>
+                จะได้ Email สรุปการประชุม + Action items + บันทึก ส่งให้ผู้เข้าร่วมทุกคน
+            </div>
+        </div>
+
+        <div class="tip-box mt-3">
+            <strong><i class="fas fa-lightbulb me-2"></i>ประโยชน์สำหรับราชการ:</strong>
+            <ul class="mb-0 mt-1">
+                <li>ไม่ต้องจดบันทึกเอง — Gemini จดให้อัตโนมัติ</li>
+                <li>ผู้ที่มาสายได้สรุป "ก่อนหน้านี้คุยอะไรไป" ได้ทันที</li>
+                <li>ได้ Action items ชัดเจน ใครทำอะไร ภายในเมื่อไร</li>
+                <li>สรุปส่ง email อัตโนมัติ — ใช้เป็นรายงานการประชุมได้เลย</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Section 5.5 -->
+<section class="py-4" id="section-5-5">
+    <div class="container">
+        <h2 class="section-header">5.5 Workshop: ร่างเอกสารราชการ + Email ด้วย Gemini</h2>
+
+        <div class="info-box mb-4">
+            <strong><i class="fas fa-laptop me-2"></i>Workshop ปฏิบัติ:</strong> ทดลองใช้ Gemini ช่วยงานจริง — ถ้าไม่มี Gemini ใน Docs/Gmail ให้ใช้ gemini.google.com แล้ว copy-paste ผลลัพธ์
+        </div>
+
+        <h4 class="mb-3">Workshop 1: ร่างบันทึกข้อความ</h4>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h6 class="text-google-blue">โจทย์:</h6>
+                <p>ร่างบันทึกข้อความ เรื่อง ขออนุมัติโครงการ "พัฒนาทักษะ AI สำหรับบุคลากรภาครัฐ"</p>
+                <ul>
+                    <li>จาก: ฝ่ายแผนงานของหน่วยงานท่าน</li>
+                    <li>ถึง: ผู้อำนวยการ/หัวหน้าหน่วยงาน</li>
+                    <li>ระยะเวลา: 5 วัน</li>
+                    <li>ผู้เข้าร่วม: 50-100 คน</li>
+                    <li>งบประมาณ: 100,000-200,000 บาท</li>
+                </ul>
+                <h6 class="text-google-green mt-3">ขั้นตอน:</h6>
+                <ol>
+                    <li>เปิด Google Docs → Help me write</li>
+                    <li>พิมพ์คำสั่งให้ร่างบันทึกข้อความ</li>
+                    <li>ตรวจสอบ → ใช้ Refine ปรับปรุง (Formalize, Elaborate)</li>
+                    <li>ลองให้ "Shorten" สรุปให้สั้นลง</li>
+                    <li>ส่งออก / Copy ไปใช้งาน</li>
+                </ol>
+            </div>
+        </div>
+
+        <h4 class="mb-3">Workshop 2: ร่าง Email เชิญประชุม</h4>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h6 class="text-google-blue">โจทย์:</h6>
+                <p>เขียน email เชิญผู้เกี่ยวข้อง 10 คน เข้าร่วมประชุมเตรียมงานฝึกอบรม</p>
+                <ul>
+                    <li>วันเวลา: ตามสะดวก</li>
+                    <li>วาระ: แบ่งงาน, ตารางเวลา, เตรียมอุปกรณ์</li>
+                    <li>ภาษา: ทางการ แต่เป็นกันเอง</li>
+                </ul>
+                <h6 class="text-google-green mt-3">ขั้นตอน:</h6>
+                <ol>
+                    <li>เปิด Gmail → Compose → Help me write ✨</li>
+                    <li>พิมพ์คำสั่ง → ตรวจสอบ → Insert</li>
+                    <li>ลองกด Refine → "Make more formal" / "Make shorter"</li>
+                    <li>เปรียบเทียบ 2-3 เวอร์ชัน</li>
+                </ol>
+            </div>
+        </div>
+
+        <h4 class="mb-3">Workshop 3: สรุปเอกสารยาว</h4>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h6 class="text-google-blue">โจทย์:</h6>
+                <p>เปิดเอกสารยาว (ระเบียบ/รายงาน/แผน) ใน Google Docs → ใช้ Gemini สรุป</p>
+                <h6 class="text-google-green mt-3">ขั้นตอน:</h6>
+                <ol>
+                    <li>อัปโหลด PDF ไป Google Drive → เปิดด้วย Google Docs</li>
+                    <li>คลิก Gemini Side Panel ✨ (ขวาบน)</li>
+                    <li>พิมพ์ "สรุปเอกสารนี้เป็น 5 ข้อ"</li>
+                    <li>ถามต่อ: "ส่วนไหนสำคัญที่สุดสำหรับ...?"</li>
+                    <li>ลองให้สรุปเป็น action items</li>
+                </ol>
+            </div>
+        </div>
+
+        <h4 class="mb-3">Workshop 4: Proofread + ปรับภาษา</h4>
+        <div class="card">
+            <div class="card-body">
+                <h6 class="text-google-blue">โจทย์:</h6>
+                <p>นำเอกสารที่เขียนไว้ → ให้ Gemini ตรวจสอบภาษา + ปรับปรุง</p>
+                <h6 class="text-google-green mt-3">ขั้นตอน:</h6>
+                <ol>
+                    <li>เลือกข้อความทั้งหมดในเอกสาร</li>
+                    <li>Help me write → "ตรวจคำผิด + ปรับภาษาให้ทางการ"</li>
+                    <li>ใช้ Gemini Side Panel: "ช่วยตรวจเอกสารนี้ มีจุดไหนควรปรับปรุง?"</li>
+                    <li>ลอง: "แปลเป็นภาษาอังกฤษ" / "เปลี่ยนเป็นภาษาลำลอง"</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- แบบฝึกหัด -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="exercise-box">
+            <h5><i class="fas fa-pencil-alt me-2"></i>แบบฝึกหัดท้ายบทที่ 5</h5>
+            <hr>
+            <ol>
+                <li class="mb-3">
+                    <strong>Google Docs:</strong> สร้างเอกสารใหม่ → ใช้ Help me write ร่างหนังสือราชการ 1 ฉบับ → Refine ให้ทางการขึ้น → Summarize
+                    <br><small class="text-muted">✓ ลองทั้ง 3 ฟังก์ชัน: Write + Refine + Summarize</small>
+                </li>
+                <li class="mb-3">
+                    <strong>Gmail:</strong> ร่าง email 2 ฉบับ — (1) ทางการ (เชิญผู้อำนวยการ) (2) ลำลอง (แจ้งทีมงาน)
+                    <br><small class="text-muted">✓ เปรียบเทียบ tone ของทั้ง 2 ฉบับ</small>
+                </li>
+                <li class="mb-3">
+                    <strong>สรุป Email:</strong> เปิด email thread ยาว (ถ้ามี) → ใช้ Summarize → ดูว่าสรุปได้ดีแค่ไหน
+                    <br><small class="text-muted">✓ ถ้าไม่มี email ยาว ให้ใช้ gemini.google.com วาง email แล้วให้สรุป</small>
+                </li>
+                <li class="mb-3">
+                    <strong>Proofread:</strong> นำเอกสารที่เคยเขียน → paste เข้า Docs → ให้ Gemini ตรวจ + ปรับปรุง
+                    <br><small class="text-muted">✓ สังเกตว่า Gemini แก้จุดไหนบ้าง — ตรงใจหรือไม่</small>
+                </li>
+                <li class="mb-3">
+                    <strong>(Bonus) Meet:</strong> ถ้ามีโอกาสประชุมผ่าน Meet → เปิด Gemini Notes → ตรวจสอบสรุป
+                    <br><small class="text-muted">✓ ดูว่าสรุปได้ครบถ้วน/แม่นยำแค่ไหน</small>
+                </li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation -->
+<section class="py-4">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <a href="chapter04.html" class="btn btn-outline-secondary"><i class="fas fa-arrow-left me-2"></i>บทที่ 4</a>
+            <a href="chapter06.html" class="btn btn-success" style="background: var(--google-green); border-color: var(--google-green);">บทที่ 6: Sheets + Slides <i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <p class="mb-1">คู่มือฝึกอบรม Gemini AI — ใช้ปัญญาประดิษฐ์ Google ทำงานราชการ</p>
+        <p class="mb-0 text-white-50">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

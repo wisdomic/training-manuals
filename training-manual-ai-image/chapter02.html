@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 2: DALL-E 3 — สร้างภาพจาก ChatGPT — AI สร้างรูปภาพ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 AI สร้างรูปภาพ</a>
+        <span class="text-white nav-text">บทที่ 2</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 2</h1>
+            <h2 class="fw-normal text-muted">DALL-E 3 — สร้างภาพจาก ChatGPT</h2>
+            <p class="lead">เรียนรู้การใช้ DALL-E 3 สร้างภาพคุณภาพสูงผ่าน ChatGPT</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>เข้าถึงและใช้งาน DALL-E 3 ผ่าน ChatGPT ได้</li>
+                <li>เขียน Prompt สร้างภาพด้วยภาษาไทยได้</li>
+                <li>เลือกสไตล์ภาพให้เหมาะกับงานได้</li>
+                <li>แก้ไขและปรับปรุงภาพด้วยคำสั่งเพิ่มเติมได้</li>
+            </ul>
+        </div>
+
+        <!-- 2.1 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">2.1 DALL-E 3 คืออะไร</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🖼️ DALL-E 3 by OpenAI</h5>
+                <p>DALL-E 3 เป็น AI สร้างภาพรุ่นล่าสุดจาก OpenAI (บริษัทเดียวกับ ChatGPT) มีจุดเด่นคือ:</p>
+                <ul>
+                    <li><strong>เข้าใจภาษาไทย</strong> — ไม่ต้องแปลเป็นอังกฤษ</li>
+                    <li><strong>ใช้ผ่าน ChatGPT</strong> — ไม่ต้องเปิดเว็บอื่น</li>
+                    <li><strong>พูดคุยปรับแก้ได้</strong> — บอกให้เปลี่ยนสี เพิ่มของ ได้เลย</li>
+                    <li><strong>คุณภาพสูง</strong> — ภาพคมชัด สวยงาม</li>
+                </ul>
+            </div>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🆓 วิธีเข้าถึง</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card border-primary">
+                            <div class="card-header bg-primary text-white">ฟรี (ChatGPT Free)</div>
+                            <div class="card-body">
+                                <ul class="mb-0">
+                                    <li>สร้างภาพได้ 2 ภาพ/วัน</li>
+                                    <li>ใช้ DALL-E 3 ได้ปกติ</li>
+                                    <li>เหมาะสำหรับทดลอง</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-success">
+                            <div class="card-header bg-success text-white">Plus ($20/เดือน)</div>
+                            <div class="card-body">
+                                <ul class="mb-0">
+                                    <li>สร้างภาพได้ 50+ ภาพ/วัน</li>
+                                    <li>คุณภาพสูงสุด</li>
+                                    <li>เหมาะสำหรับใช้งานจริง</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2.2 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">2.2 เทคนิคเขียน Prompt สร้างภาพ</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>📝 สูตร Prompt สร้างภาพ</h5>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary">
+                    <strong>สูตร:</strong> [สิ่งที่ต้องการ] + [สไตล์] + [สี/บรรยากาศ] + [รายละเอียดเพิ่ม]
+                </div>
+            </div>
+
+            <h5>ตัวอย่าง Prompt ระดับต่างๆ:</h5>
+
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <strong>Prompt พื้นฐาน (ง่าย)</strong>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                    <code>"สร้างภาพแมวนั่งอ่านหนังสือ"</code>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <strong>Prompt ปานกลาง (มีสไตล์)</strong>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                    <code>"สร้างภาพแมวสีส้มนั่งอ่านหนังสือในห้องสมุด สไตล์การ์ตูนญี่ปุ่น สีอบอุ่น"</code>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <strong>Prompt ระดับสูง (ละเอียด)</strong>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                    <code>"สร้างภาพแมวสีส้มตัวอ้วนนั่งอ่านหนังสือในห้องสมุดเก่า มีแสงแดดส่องผ่านหน้าต่าง มีชั้นหนังสือเป็นพื้นหลัง สไตล์ watercolor สีอบอุ่นโทนเหลืองส้ม อัตราส่วน 16:9"</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2.3 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">2.3 สไตล์ภาพที่เลือกได้</h3>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5>📸 Realistic</h5>
+                            <p>เหมือนภาพถ่ายจริง</p>
+                            <code>"realistic photo style"</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5>🎨 Cartoon</h5>
+                            <p>การ์ตูนน่ารัก</p>
+                            <code>"สไตล์การ์ตูน"</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5>🖌️ Watercolor</h5>
+                            <p>สีน้ำ อ่อนโยน</p>
+                            <code>"watercolor painting"</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5>📐 Flat Design</h5>
+                            <p>แบน เรียบง่าย</p>
+                            <code>"flat design, minimal"</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5>🎮 3D Render</h5>
+                            <p>สามมิติ มีมิติ</p>
+                            <code>"3D render, Pixar style"</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5>✏️ Line Art</h5>
+                            <p>ลายเส้น ขาวดำ</p>
+                            <code>"line art, black and white"</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2.4 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">2.4 การปรับแก้ภาพด้วยคำสั่ง</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🔄 พูดคุยปรับแก้ได้เลย</h5>
+                <p>ข้อดีของ DALL-E ใน ChatGPT คือคุณสามารถพูดคุยปรับแก้ภาพได้ต่อเนื่อง:</p>
+
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mb-2">
+                    <code>"เปลี่ยนพื้นหลังเป็นสีฟ้า"</code>
+                </div>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mb-2">
+                    <code>"เพิ่มดอกไม้ที่มุมซ้ายบน"</code>
+                </div>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mb-2">
+                    <code>"ทำให้สว่างขึ้น"</code>
+                </div>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mb-2">
+                    <code>"เปลี่ยนเป็นแนวตั้ง (portrait)"</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lab -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">🔬 Lab ปฏิบัติ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 2.1 — สร้างโปสเตอร์กิจกรรมด้วย DALL-E 3</h5>
+
+                <p><strong>โจทย์:</strong> สร้างภาพโปสเตอร์สำหรับกิจกรรมอบรม AI ขององค์กร</p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>Prompt ภาษาไทย:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"สร้างภาพโปสเตอร์อบรม AI สำหรับคนพิการ สีน้ำเงินและขาว มีไอคอนหุ่นยนต์ มือ และคอมพิวเตอร์ สไตล์ flat design โมเดิร์น ขนาดแนวตั้ง"</code>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ขอแบบอื่น:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"สร้างอีกแบบ เปลี่ยนเป็นสีเขียว สไตล์ gradient มีภาพคนพิการใช้เทคโนโลยี"</code>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ปรับแก้:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"เพิ่มพื้นที่ว่างด้านบนสำหรับใส่ข้อความ"</code>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>เลือกภาพที่ชอบที่สุด บันทึกไว้</strong>
+                </div>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึกโปสเตอร์ที่สร้างได้ 2-3 แบบ
+                </div>
+            </div>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 2.2 — สร้างภาพ 4 สไตล์จาก Prompt เดียว</h5>
+
+                <p><strong>โจทย์:</strong> ใช้เนื้อหาเดียวกัน แต่เปลี่ยนสไตล์ 4 แบบ</p>
+
+                <p><strong>เนื้อหา:</strong> "คนพิการทางสายตาใช้ AI ช่วยอ่านเอกสาร"</p>
+
+                <div class="row mt-3">
+                    <div class="col-md-6 mb-2">
+                        <div class="prompt-example"><code>สไตล์ 1: "...สไตล์ realistic photo"</code></div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="prompt-example"><code>สไตล์ 2: "...สไตล์การ์ตูน"</code></div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="prompt-example"><code>สไตล์ 3: "...สไตล์ flat design"</code></div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="prompt-example"><code>สไตล์ 4: "...สไตล์ watercolor"</code></div>
+                    </div>
+                </div>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึกภาพ 4 สไตล์ เปรียบเทียบกัน
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับบทนี้</h5>
+            <ul class="mb-0">
+                <li>DALL-E 3 เข้าใจภาษาไทยดีมาก — ใช้ภาษาไทยได้เลย</li>
+                <li>ยิ่ง Prompt ละเอียด ยิ่งได้ภาพตรงใจ</li>
+                <li>ถ้าไม่ชอบ แค่พิมพ์ "สร้างใหม่" หรือ "ลองอีกแบบ"</li>
+                <li>ระบุอัตราส่วนภาพได้: "16:9", "แนวตั้ง", "สี่เหลี่ยมจัตุรัส"</li>
+                <li>ใช้คำว่า "มีพื้นที่ว่างสำหรับใส่ข้อความ" เพื่อเว้นที่ให้เพิ่มตัวอักษรทีหลัง</li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปท้ายบท</h5>
+            <ul>
+                <li><strong>DALL-E 3</strong> ใช้ผ่าน ChatGPT ได้โดยตรง ทั้งแบบฟรีและ Plus</li>
+                <li><strong>สูตร Prompt:</strong> สิ่งที่ต้องการ + สไตล์ + สี/บรรยากาศ + รายละเอียด</li>
+                <li><strong>สไตล์หลัก:</strong> Realistic, Cartoon, Watercolor, Flat Design, 3D, Line Art</li>
+                <li><strong>ปรับแก้</strong> ได้เรื่อยๆ โดยพิมพ์คำสั่งเพิ่มเติม</li>
+                <li><strong>เคล็ดลับ:</strong> เริ่มจาก Prompt สั้นๆ แล้วค่อยเพิ่มรายละเอียด</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="chapter01.html" class="btn btn-outline-dark">← บทที่ 1</a>
+            <a href="chapter03.html" class="btn btn-dark">บทที่ 3 →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

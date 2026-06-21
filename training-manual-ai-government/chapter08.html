@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 8: การถอดเสียงประชุม (Whisper + AI) | AI สำหรับงานราชการ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">📖 AI สำหรับงานราชการ</a>
+            <span class="navbar-text nav-text text-light">บทที่ 8</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header text-center mb-4">
+                <h1>🎙️ บทที่ 8</h1>
+                <h2>การถอดเสียงประชุม (Whisper + AI)</h2>
+                <p class="lead text-muted">เปลี่ยนเสียงประชุมเป็นข้อความ แล้วให้ AI สรุปเป็นรายงานอัตโนมัติ</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เข้าใจว่า Whisper คืออะไร และใช้งานอย่างไร</li>
+                    <li>รู้จัก Gemini Live สำหรับถอดเสียง Real-time</li>
+                    <li>ปฏิบัติตามขั้นตอน: อัดเสียง → ถอดเสียง → แก้ไข → AI สรุป</li>
+                    <li>รู้วิธีแก้ไขข้อผิดพลาดการถอดเสียงภาษาไทย</li>
+                </ul>
+            </div>
+
+            <!-- 8.1 Whisper คืออะไร -->
+            <section>
+                <h3 class="section-header">8.1 Whisper คืออะไร ใช้งานอย่างไร</h3>
+                <p><strong>Whisper</strong> คือระบบ AI ถอดเสียงเป็นข้อความ (Speech-to-Text) พัฒนาโดย OpenAI รองรับภาษาไทยและอีกกว่า 90 ภาษา</p>
+
+                <div class="info-card">
+                    <h5>🔑 จุดเด่นของ Whisper</h5>
+                    <ul>
+                        <li>ฟรี (Open Source) — ใช้ได้ไม่มีค่าใช้จ่าย</li>
+                        <li>รองรับภาษาไทย — แม่นยำสูง</li>
+                        <li>ทำงานออฟไลน์ได้ — ไม่ต้องต่อเน็ตตลอด</li>
+                        <li>รองรับหลายรูปแบบไฟล์เสียง</li>
+                    </ul>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="info-card h-100">
+                            <h6>🌐 ใช้งานผ่านเว็บ (แนะนำ)</h6>
+                            <ul>
+                                <li><a href="https://whisper.ai" target="_blank">whisper.ai</a> — เว็บถอดเสียงออนไลน์</li>
+                                <li>อัปโหลดไฟล์เสียง → รอ → ได้ข้อความ</li>
+                                <li>ไม่ต้องติดตั้งโปรแกรม</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card h-100">
+                            <h6>🔬 ข้อมูลเพิ่มเติม</h6>
+                            <ul>
+                                <li><a href="https://openai.com/research/whisper" target="_blank">openai.com/research/whisper</a></li>
+                                <li>งานวิจัยต้นฉบับของ OpenAI</li>
+                                <li>รองรับกว่า 90 ภาษา</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8.2 Gemini Live ถอดเสียง Real-time -->
+            <section>
+                <h3 class="section-header">8.2 Gemini Live ถอดเสียง Real-time</h3>
+                <p>Google Gemini Live สามารถฟังเสียงและถอดเป็นข้อความได้แบบ Real-time ผ่านมือถือ</p>
+
+                <div class="info-card">
+                    <h5>📱 วิธีเปิดใช้ Gemini Live</h5>
+                    <ol>
+                        <li>เปิดแอป Google Gemini บนมือถือ (Android/iOS)</li>
+                        <li>กดไอคอนไมโครโฟน หรือเลือก "Live"</li>
+                        <li>พูดหรือเปิดเสียงประชุมให้ Gemini ฟัง</li>
+                        <li>Gemini จะถอดเสียงและตอบกลับเป็นข้อความทันที</li>
+                    </ol>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="alert alert-success mb-0">
+                            <h6>✅ ข้อดี</h6>
+                            <ul class="mb-0">
+                                <li>ใช้งานง่าย ไม่ต้องติดตั้งเพิ่ม</li>
+                                <li>ถอดเสียงแบบ Real-time</li>
+                                <li>สรุปเนื้อหาได้ทันที</li>
+                                <li>ฟรี (มีโควตาต่อวัน)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning mb-0">
+                            <h6>⚠️ ข้อจำกัด</h6>
+                            <ul class="mb-0">
+                                <li>ต้องเชื่อมต่ออินเทอร์เน็ต</li>
+                                <li>เสียงรอบข้างรบกวนได้</li>
+                                <li>ภาษาไทยอาจมีข้อผิดพลาดบ้าง</li>
+                                <li>ไม่เหมาะกับประชุมยาว > 1 ชม.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8.3 ขั้นตอน: อัดเสียง → Whisper → แก้ไข → AI สรุป -->
+            <section>
+                <h3 class="section-header">8.3 ขั้นตอน: อัดเสียง → Whisper → แก้ไข → AI สรุป</h3>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>อัดเสียงประชุม</strong>
+                    <p class="mb-0 mt-2">ใช้มือถือหรือเครื่องบันทึกเสียง วางใกล้ผู้พูด แนะนำใช้แอป "Voice Recorder" ของมือถือ บันทึกเป็นไฟล์ MP3/M4A</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>อัปโหลดไฟล์เสียงเข้า Whisper</strong>
+                    <p class="mb-0 mt-2">เปิดเว็บ whisper.ai → อัปโหลดไฟล์เสียง → เลือกภาษาไทย → กด Transcribe</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>รอผลการถอดเสียง</strong>
+                    <p class="mb-0 mt-2">ระบบจะประมวลผล (ขึ้นอยู่กับความยาวไฟล์) ได้ข้อความดิบ (Raw Transcript)</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>แก้ไขข้อผิดพลาด</strong>
+                    <p class="mb-0 mt-2">ตรวจชื่อเฉพาะ (ชื่อคน, สถานที่, ตัวเลข) ที่ AI อาจถอดผิด แก้ไขให้ถูกต้อง</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>ส่งให้ AI สรุปเป็นรายงาน</strong>
+                    <p class="mb-0 mt-2">คัดลอกข้อความที่แก้ไขแล้ว → วางใน ChatGPT/Gemini → ใช้ Prompt จากบทที่ 6 ให้สรุปเป็นรายงานการประชุม</p>
+                </div>
+            </section>
+
+            <!-- 8.4 รูปแบบไฟล์ที่รองรับ -->
+            <section>
+                <h3 class="section-header">8.4 รูปแบบไฟล์ที่รองรับ</h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>รูปแบบไฟล์</th>
+                            <th>นามสกุล</th>
+                            <th>คุณภาพเสียง</th>
+                            <th>ขนาดสูงสุด</th>
+                            <th>หมายเหตุ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>MP3</strong></td>
+                            <td>.mp3</td>
+                            <td>ดี</td>
+                            <td>25 MB</td>
+                            <td>แนะนำ — ไฟล์เล็ก คุณภาพดี</td>
+                        </tr>
+                        <tr>
+                            <td><strong>MP4</strong></td>
+                            <td>.mp4</td>
+                            <td>ดี</td>
+                            <td>25 MB</td>
+                            <td>วิดีโอ — ดึงเฉพาะเสียง</td>
+                        </tr>
+                        <tr>
+                            <td><strong>WAV</strong></td>
+                            <td>.wav</td>
+                            <td>ดีมาก</td>
+                            <td>25 MB</td>
+                            <td>ไฟล์ใหญ่ คุณภาพสูง</td>
+                        </tr>
+                        <tr>
+                            <td><strong>M4A</strong></td>
+                            <td>.m4a</td>
+                            <td>ดี</td>
+                            <td>25 MB</td>
+                            <td>บันทึกจาก iPhone/iPad</td>
+                        </tr>
+                        <tr>
+                            <td><strong>WEBM</strong></td>
+                            <td>.webm</td>
+                            <td>ปานกลาง</td>
+                            <td>25 MB</td>
+                            <td>บันทึกจากเว็บเบราว์เซอร์</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert alert-success">
+                    <strong>💡 Tips:</strong> ถ้าไฟล์เสียงเกิน 25 MB ให้ตัดเป็นท่อน ๆ (ท่อนละ 15-20 นาที) แล้วอัปโหลดทีละท่อน
+                </div>
+            </section>
+
+            <!-- 8.5 วิธีแก้ไขข้อผิดพลาดการถอดเสียงภาษาไทย -->
+            <section>
+                <h3 class="section-header">8.5 วิธีแก้ไขข้อผิดพลาดการถอดเสียงภาษาไทย</h3>
+                <p>การถอดเสียงภาษาไทยมักพบปัญหาเหล่านี้ — มี 5 เทคนิคช่วยแก้ไข:</p>
+
+                <div class="info-card">
+                    <h5>🔧 5 เทคนิคแก้ไขข้อผิดพลาด</h5>
+                    <ol>
+                        <li>
+                            <strong>ตรวจชื่อเฉพาะ (Proper Nouns)</strong>
+                            <p>AI มักถอดชื่อคน ชื่อสถานที่ ชื่อหน่วยงานผิด เช่น "สนพ.สุรินทร์" อาจกลายเป็น "สน พ สุรินทร์"</p>
+                        </li>
+                        <li>
+                            <strong>ตรวจตัวเลขและวันที่</strong>
+                            <p>ตัวเลขงบประมาณ วันที่ เวลา มักถอดผิดบ่อย เช่น "แปดหมื่น" อาจกลายเป็น "8000" แทน "80,000"</p>
+                        </li>
+                        <li>
+                            <strong>ตรวจคำพ้องเสียง</strong>
+                            <p>เช่น "มติ" กับ "มาตี", "วาระ" กับ "วา-ระ" ต้องอ่านบริบทประกอบ</p>
+                        </li>
+                        <li>
+                            <strong>ตรวจการตัดประโยค</strong>
+                            <p>AI อาจตัดประโยคผิดจุด ทำให้ความหมายเปลี่ยน ให้อ่านทวนทั้งย่อหน้า</p>
+                        </li>
+                        <li>
+                            <strong>ใช้ AI ช่วยแก้ไข</strong>
+                            <p>ส่ง Transcript ให้ AI ช่วยแก้คำผิด (ดู Prompt ด้านล่าง)</p>
+                        </li>
+                    </ol>
+                </div>
+
+                <h5 class="mt-4">📝 Prompt ให้ AI ช่วยแก้ไขข้อผิดพลาด</h5>
+                <div class="prompt-example">
+                    ข้อความต่อไปนี้ได้จากการถอดเสียงภาษาไทยด้วย AI (Speech-to-Text) ซึ่งอาจมีข้อผิดพลาด<br>
+                    ช่วยแก้ไขโดย:<br>
+                    1. แก้คำที่สะกดผิดหรือถอดผิด<br>
+                    2. แก้ชื่อเฉพาะที่อาจผิดพลาด<br>
+                    3. จัดย่อหน้าและเครื่องหมายวรรคตอนให้ถูกต้อง<br>
+                    4. แก้ตัวเลข/วันที่ที่ดูผิดปกติ<br>
+                    5. ถ้าไม่แน่ใจคำไหน ให้ใส่ [?] ไว้ให้ตรวจทีหลัง<br><br>
+                    ข้อความถอดเสียง:<br>
+                    [วาง Transcript ที่ได้จาก Whisper]
+                </div>
+            </section>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🧪 Lab: ถอดเสียงประชุมด้วย Whisper</h4>
+                <p><strong>โจทย์:</strong> นำไฟล์เสียงประชุม (หรือบันทึกเสียงเอง 3 นาที) มาถอดเสียง แล้วให้ AI สรุป</p>
+
+                <p><strong>ขั้นตอน:</strong></p>
+                <ol>
+                    <li><strong>เตรียมไฟล์เสียง:</strong> บันทึกเสียงตัวเอง 3 นาที (แนะนำพูดเป็นวาระประชุม) หรือใช้ไฟล์เสียงที่มีอยู่</li>
+                    <li><strong>ถอดเสียง:</strong> อัปโหลดไฟล์ไปที่ whisper.ai หรือใช้ Gemini Live</li>
+                    <li><strong>แก้ไข:</strong> ตรวจสอบข้อผิดพลาดตามเทคนิค 5 ข้อ</li>
+                    <li><strong>สรุป:</strong> ส่งข้อความที่แก้ไขแล้วให้ AI เขียนเป็นรายงานการประชุม</li>
+                    <li><strong>ส่งงาน:</strong> ส่งทั้ง Transcript + รายงานสมบูรณ์</li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success mt-4">
+                <h5>💡 Tips</h5>
+                <ul class="mb-0">
+                    <li>อัดเสียงด้วยมือถือ วางใกล้ผู้พูด 30-50 ซม. จะได้คุณภาพดี</li>
+                    <li>ถ้าห้องเสียงก้อง ให้ใช้ไมค์หนีบปกเสื้อ (Clip Mic) จะชัดขึ้นมาก</li>
+                    <li>ไฟล์เสียงยาว ๆ ควรตัดเป็นท่อน ๆ ผลลัพธ์จะแม่นยำกว่า</li>
+                    <li>หลังถอด ต้องตรวจชื่อคน-สถานที่-ตัวเลขทุกครั้ง AI ยังถอดผิดได้</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card mt-4">
+                <h4>📌 สรุปบทที่ 8</h4>
+                <ul>
+                    <li>Whisper (OpenAI) เป็นเครื่องมือถอดเสียงฟรี รองรับภาษาไทย</li>
+                    <li>Gemini Live ถอดเสียง Real-time ผ่านมือถือ สะดวก</li>
+                    <li>กระบวนการ: อัดเสียง → ถอดเสียง → แก้ไข → AI สรุป</li>
+                    <li>ภาษาไทยมีจุดอ่อน ต้องตรวจชื่อเฉพาะ ตัวเลข คำพ้องเสียง</li>
+                    <li>ใช้ AI ช่วยแก้ไข Transcript ก่อนสร้างรายงานสมบูรณ์</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-5 mb-4">
+                <a href="chapter07.html" class="btn btn-outline-dark">← บทที่ 7</a>
+                <a href="chapter09.html" class="btn btn-outline-dark">บทที่ 9 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

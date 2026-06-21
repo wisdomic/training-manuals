@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 6: Gamma — สร้างสไลด์และเอกสารด้วย AI — AI สร้างรูปภาพ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 AI สร้างรูปภาพ</a>
+        <span class="text-white nav-text">บทที่ 6</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 6</h1>
+            <h2 class="fw-normal text-muted">Gamma — สร้างสไลด์และเอกสารด้วย AI</h2>
+            <p class="lead">สร้าง Presentation สวยๆ จากแค่พิมพ์หัวข้อ</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>เข้าใจว่า Gamma AI ทำอะไรได้บ้าง</li>
+                <li>สร้าง Presentation จาก Prompt ได้</li>
+                <li>สร้างเอกสารและ Webpage สวยๆ ได้</li>
+                <li>แก้ไขและ Export งานได้</li>
+            </ul>
+        </div>
+
+        <!-- 6.1 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">6.1 Gamma AI คืออะไร</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>📊 Gamma — AI สร้างสไลด์สุดง่าย</h5>
+                <p>Gamma เป็นเครื่องมือที่ใช้ AI สร้างงานนำเสนอ (Presentation), เอกสาร (Document), และหน้าเว็บ (Webpage) จากแค่พิมพ์หัวข้อหรือเนื้อหา</p>
+
+                <div class="row mt-3">
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5>📽️ Presentation</h5>
+                                <p class="small mb-0">สไลด์นำเสนอ ใช้แทน PowerPoint</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5>📄 Document</h5>
+                                <p class="small mb-0">เอกสารสวย ใช้แทน Word</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5>🌐 Webpage</h5>
+                                <p class="small mb-0">หน้าเว็บสวย แชร์ได้ด้วยลิงก์</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🆚 Gamma vs PowerPoint</h5>
+                <table class="table table-bordered mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>คุณสมบัติ</th>
+                            <th>Gamma</th>
+                            <th>PowerPoint</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>สร้างจาก AI</td><td>✅ พิมพ์หัวข้อ ได้สไลด์</td><td>❌ ต้องทำเอง</td></tr>
+                        <tr><td>ออกแบบสวย</td><td>✅ อัตโนมัติ</td><td>⚠️ ต้องจัดเอง</td></tr>
+                        <tr><td>ใส่ภาพ AI</td><td>✅ ในตัว</td><td>❌ ต้องหาเอง</td></tr>
+                        <tr><td>แชร์ออนไลน์</td><td>✅ ลิงก์เดียว</td><td>⚠️ ต้องส่งไฟล์</td></tr>
+                        <tr><td>ราคา</td><td>ฟรี (จำกัด) / Pro</td><td>ฟรี (Online)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 6.2 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">6.2 วิธีสร้าง Presentation ด้วย Gamma</h3>
+
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <strong>เปิด <a href="https://gamma.app" target="_blank">gamma.app</a> → สมัครฟรีด้วย Gmail</strong>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <strong>คลิก "Create new" → เลือก "Presentation"</strong>
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <strong>เลือกวิธีสร้าง:</strong>
+                <ul class="mt-1">
+                    <li><strong>Generate:</strong> พิมพ์หัวข้อ AI สร้างให้ทั้งหมด</li>
+                    <li><strong>Paste in text:</strong> วางเนื้อหาที่มีอยู่ AI จัดเป็นสไลด์</li>
+                    <li><strong>Import file:</strong> อัปโหลด PDF/DOCX AI แปลงเป็นสไลด์</li>
+                </ul>
+            </div>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <strong>พิมพ์หัวข้อ (ภาษาไทย):</strong>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                    <code>"โครงการอบรม AI เพื่อคนพิการ — วัตถุประสงค์ เนื้อหา 5 วัน กลุ่มเป้าหมาย ผลที่คาดหวัง"</code>
+                </div>
+            </div>
+            <div class="step-item">
+                <span class="step-number">5</span>
+                <strong>เลือก Theme สี → AI สร้างสไลด์ 8-12 หน้าให้ทันที!</strong>
+            </div>
+            <div class="step-item">
+                <span class="step-number">6</span>
+                <strong>แก้ไข: คลิกข้อความ/ภาพ → แก้ไขได้เลย</strong>
+            </div>
+        </section>
+
+        <!-- 6.3 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">6.3 ฟีเจอร์เด่นของ Gamma</h3>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="info-card h-100">
+                        <h5>🎨 AI Image</h5>
+                        <p class="mb-0">ใส่ภาพ AI ในสไลด์ได้ — คลิกที่ภาพ → "Generate image" → พิมพ์ Prompt</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="info-card h-100">
+                        <h5>📝 AI Edit</h5>
+                        <p class="mb-0">เลือกข้อความ → "AI" → ให้ AI ปรับปรุง ย่อ ขยาย หรือแปลได้</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="info-card h-100">
+                        <h5>📊 Smart Layout</h5>
+                        <p class="mb-0">AI จัดเลย์เอาต์ให้สวยอัตโนมัติ — ไม่ต้องลากจัดเอง</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="info-card h-100">
+                        <h5>🔗 Share Link</h5>
+                        <p class="mb-0">แชร์ด้วยลิงก์เดียว — คนดูไม่ต้องติดตั้งอะไร</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6.4 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">6.4 Export งาน</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <table class="table table-bordered mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>รูปแบบ</th>
+                            <th>วิธี Export</th>
+                            <th>เหมาะกับ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>PDF</td><td>Share → Export → PDF</td><td>พิมพ์/ส่งอีเมล</td></tr>
+                        <tr><td>PowerPoint</td><td>Share → Export → PPTX</td><td>แก้ไขใน PPT ต่อ</td></tr>
+                        <tr><td>Link</td><td>Share → Copy link</td><td>แชร์ออนไลน์ ดูบนมือถือ</td></tr>
+                        <tr><td>Embed</td><td>Share → Embed</td><td>ฝังในเว็บไซต์</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Lab -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">🔬 Lab ปฏิบัติ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 6.1 — สร้างสไลด์นำเสนอโครงการ</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิด gamma.app → Create → Presentation → Generate</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>พิมพ์:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"นำเสนอโครงการอบรม AI เพื่อคนพิการ ระยะเวลา 5 วัน เนื้อหา: AI พื้นฐาน, สร้างภาพ, สร้างเสียง, สร้างวิดีโอ กลุ่มเป้าหมายเจ้าหน้าที่องค์กรคนพิการ"</code>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เลือก Theme สีน้ำเงิน → สร้าง</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>แก้ไขข้อมูลให้ถูกต้อง + ใส่ภาพ AI ในสไลด์ 2-3 หน้า</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>Export เป็น PDF + คัดลอก Link แชร์</strong>
+                </div>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึกสไลด์ 3 หน้าที่สร้างได้
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับบทนี้</h5>
+            <ul class="mb-0">
+                <li>Gamma เข้าใจภาษาไทยดี — พิมพ์ไทยได้เลย</li>
+                <li>ยิ่งให้ข้อมูลละเอียด ยิ่งได้สไลด์ตรงใจ</li>
+                <li>ใช้ "Paste in text" วางเนื้อหาจาก ChatGPT มาสร้างสไลด์ได้ทันที</li>
+                <li>Gamma ฟรีได้ 400 credits — พอใช้สร้างได้ 10+ งาน</li>
+                <li>Export เป็น PPTX แล้วแก้ไขต่อใน PowerPoint ได้</li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปท้ายบท</h5>
+            <ul>
+                <li><strong>Gamma</strong> สร้าง Presentation, Document, Webpage ด้วย AI</li>
+                <li><strong>วิธีใช้:</strong> พิมพ์หัวข้อ/เนื้อหา → AI สร้างสไลด์สวยๆ ทันที</li>
+                <li><strong>ฟีเจอร์เด่น:</strong> AI Image, AI Edit, Smart Layout, Share Link</li>
+                <li><strong>Export:</strong> PDF, PPTX, Link, Embed</li>
+                <li><strong>เหมาะกับ:</strong> นำเสนอโครงการ, สรุปรายงาน, สื่อประชาสัมพันธ์</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="chapter05.html" class="btn btn-outline-dark">← บทที่ 5</a>
+            <a href="chapter07.html" class="btn btn-dark">บทที่ 7 →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

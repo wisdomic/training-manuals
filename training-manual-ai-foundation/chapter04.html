@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 4: AI ในแต่ละสายงาน — พื้นฐาน AI ทุกมิติ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 พื้นฐาน AI ทุกมิติ</a>
+        <span class="text-white nav-text">บทที่ 4</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 4</h1>
+            <h2 class="fw-normal text-muted">AI ในแต่ละสายงาน</h2>
+            <p class="lead">รู้ว่า AI ช่วยงานแต่ละสายงานอย่างไร และเทคโนโลยี AI สำหรับคนพิการ</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>รู้ว่า AI ช่วยงานแต่ละสายงานอย่างไร (ราชการ, การแพทย์, การศึกษา, เกษตร, ธุรกิจ, งานสร้างสรรค์)</li>
+                <li>เข้าใจเทคโนโลยี AI สำหรับคนพิการ และเลือกใช้ได้เหมาะสม</li>
+            </ul>
+        </div>
+
+        <!-- 4.1 AI ในงานราชการและภาครัฐ -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">4.1 AI ในงานราชการและภาครัฐ</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <p>งานราชการมีเอกสารเยอะ ประชุมบ่อย ต้องวิเคราะห์ข้อมูลจำนวนมาก — AI ช่วยได้ทุกขั้นตอน:</p>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>งานที่ AI ช่วยได้</th>
+                            <th>ตัวอย่างการใช้งาน</th>
+                            <th>เครื่องมือแนะนำ</th>
+                            <th>ประโยชน์</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>ร่างหนังสือราชการ</td>
+                            <td>ร่างบันทึกข้อความ หนังสือเวียน คำสั่ง ประกาศ</td>
+                            <td>ChatGPT, Claude</td>
+                            <td>ลดเวลาร่างเอกสารจาก 2 ชม. เหลือ 10 นาที</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>สรุปรายงานการประชุม</td>
+                            <td>ถอดเสียงประชุม → สรุปเป็นรายงาน + มติที่ประชุม</td>
+                            <td>Whisper + ChatGPT</td>
+                            <td>ไม่ต้องจดเอง ได้รายงานครบถ้วน</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>วิเคราะห์ข้อมูลสถิติ</td>
+                            <td>วิเคราะห์ข้อมูลผู้พิการรายจังหวัด สร้างกราฟ</td>
+                            <td>ChatGPT, Gemini</td>
+                            <td>เห็นภาพรวมข้อมูลได้ทันที ไม่ต้องใช้ Excel ซับซ้อน</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>แปลเอกสาร</td>
+                            <td>แปลเอกสารต่างประเทศ หรือแปลเป็นภาษาง่ายๆ</td>
+                            <td>ChatGPT, DeepL</td>
+                            <td>แปลเร็ว แม่นยำ ปรับโทนได้</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>สร้างแบบสำรวจ/ฟอร์ม</td>
+                            <td>ออกแบบแบบสอบถาม แบบประเมิน ข้อคำถาม</td>
+                            <td>ChatGPT, Claude</td>
+                            <td>ได้แบบสำรวจที่ครบถ้วน ถูกหลักวิชาการ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-3">
+                <strong>💬 ตัวอย่าง Prompt:</strong><br>
+                <code>"ช่วยร่างบันทึกข้อความ เรื่อง ขออนุมัติจัดอบรม AI สำหรับเจ้าหน้าที่ผู้พิการ วันที่ 15 ก.ค. 2569 ที่ สนพ.สุรินทร์"</code>
+            </div>
+        </section>
+
+        <!-- 4.2 AI ในงานการแพทย์และสุขภาพ -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">4.2 AI ในงานการแพทย์และสุขภาพ</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <p>AI กำลังเปลี่ยนวงการแพทย์ — ช่วยหมอวินิจฉัยแม่นยำขึ้น เร็วขึ้น เข้าถึงง่ายขึ้น:</p>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>การใช้งาน AI</th>
+                            <th>ตัวอย่าง</th>
+                            <th>ประโยชน์</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>วินิจฉัยโรคเบื้องต้น</td>
+                            <td>AI วิเคราะห์อาการ → แนะนำโรคที่อาจเป็น</td>
+                            <td>คัดกรองเบื้องต้น ลดเวลารอพบหมอ</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>อ่านภาพ X-ray / CT Scan</td>
+                            <td>AI ตรวจจับจุดผิดปกติในภาพถ่ายรังสี</td>
+                            <td>แม่นยำ 95%+ ตรวจเร็วกว่าคน 100 เท่า</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>แนะนำยาและการรักษา</td>
+                            <td>AI ตรวจปฏิกิริยาระหว่างยา แนะนำขนาดยา</td>
+                            <td>ลดข้อผิดพลาดจากการจ่ายยา</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>ดูแลสุขภาพจิต</td>
+                            <td>Chatbot ให้คำปรึกษาเบื้องต้น ติดตามอารมณ์</td>
+                            <td>เข้าถึงได้ 24 ชม. ไม่มีตีตรา</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-warning mt-3">
+                <strong>⚠️ ข้อควรระวัง:</strong> AI ไม่สามารถแทนแพทย์ได้ — ใช้เป็นเครื่องมือช่วยเท่านั้น การตัดสินใจสุดท้ายต้องเป็นของแพทย์
+            </div>
+        </section>
+
+        <!-- 4.3 AI ในงานการศึกษา -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">4.3 AI ในงานการศึกษา</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <p>AI ช่วยครูสอนดีขึ้น และช่วยนักเรียนเรียนรู้ได้ตรงจุดมากขึ้น:</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-primary">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h6 class="mb-0">📝 สร้างข้อสอบ</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul class="mb-0">
+                                <li>สร้างข้อสอบจากเนื้อหาที่กำหนด</li>
+                                <li>ปรับระดับความยากได้</li>
+                                <li>สร้างเฉลย + เกณฑ์การให้คะแนน</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-success">
+                        <div class="card-header bg-success text-white text-center">
+                            <h6 class="mb-0">👨‍🏫 ติวเตอร์ส่วนตัว</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul class="mb-0">
+                                <li>อธิบายเรื่องยากแบบง่ายๆ</li>
+                                <li>ตอบคำถามได้ 24 ชม.</li>
+                                <li>ปรับการสอนตามผู้เรียน</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-warning">
+                        <div class="card-header bg-warning text-center">
+                            <h6 class="mb-0">🌐 แปลบทเรียน</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul class="mb-0">
+                                <li>แปลเนื้อหาจากต่างประเทศ</li>
+                                <li>สรุปบทเรียนเป็นภาษาง่ายๆ</li>
+                                <li>สร้างสื่อการสอนหลายภาษา</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-3">
+                <strong>💬 ตัวอย่าง Prompt:</strong><br>
+                <code>"สร้างข้อสอบปรนัย 10 ข้อ เรื่อง สิทธิคนพิการตาม พ.ร.บ.ส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ ระดับง่าย-ปานกลาง พร้อมเฉลย"</code>
+            </div>
+        </section>
+
+        <!-- 4.4 AI ในงานเกษตรกรรม -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">4.4 AI ในงานเกษตรกรรม</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <p>แม้ดูเหมือนไม่เกี่ยวกัน แต่ AI ช่วยเกษตรกรได้มากจริงๆ — โดยเฉพาะพื้นที่ จ.สุรินทร์:</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h1>🌱</h1>
+                            <h6>วิเคราะห์ดิน</h6>
+                            <p class="small mb-0">AI วิเคราะห์รูปถ่ายดิน → แนะนำปุ๋ย แนะนำพืชที่เหมาะสม</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h1>📊</h1>
+                            <h6>พยากรณ์ผลผลิต</h6>
+                            <p class="small mb-0">AI คาดการณ์ผลผลิตข้าว มันสำปะหลัง จากข้อมูลสภาพอากาศ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h1>🚁</h1>
+                            <h6>โดรนอัจฉริยะ</h6>
+                            <p class="small mb-0">โดรน AI ตรวจจับโรคพืช ฉีดยา ให้ปุ๋ยอัตโนมัติ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-3">
+                <strong>💬 ตัวอย่าง Prompt:</strong><br>
+                <code>"ถ่ายรูปใบข้าวที่มีจุดสีน้ำตาล ช่วยวิเคราะห์ว่าเป็นโรคอะไร และแนะนำวิธีรักษา"</code>
+            </div>
+        </section>
+
+        <!-- 4.5 AI ในงานธุรกิจและการเงิน -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">4.5 AI ในงานธุรกิจและการเงิน</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <p>ภาคธุรกิจใช้ AI เยอะที่สุดในปัจจุบัน — ตั้งแต่ร้านค้าเล็กๆ จนถึงธนาคารใหญ่:</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-info">
+                        <div class="card-header bg-info text-white text-center">
+                            <h6 class="mb-0">💬 Chatbot ลูกค้า</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>ตอบคำถามลูกค้า 24 ชม. รับออเดอร์ นัดหมาย ให้ข้อมูลสินค้า</p>
+                            <p class="small text-muted mb-0">ตัวอย่าง: Line Chatbot ร้านค้า, Chatbot ธนาคาร</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-info">
+                        <div class="card-header bg-info text-white text-center">
+                            <h6 class="mb-0">📈 วิเคราะห์ตลาด</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>AI วิเคราะห์แนวโน้มตลาด พฤติกรรมลูกค้า คาดการณ์ยอดขาย</p>
+                            <p class="small text-muted mb-0">ตัวอย่าง: Google Analytics AI, วิเคราะห์ข้อมูลขาย</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-info">
+                        <div class="card-header bg-info text-white text-center">
+                            <h6 class="mb-0">🔍 ตรวจจับฉ้อโกง</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>AI ตรวจจับธุรกรรมผิดปกติ ป้องกันการโกงบัตรเครดิต มิจฉาชีพ</p>
+                            <p class="small text-muted mb-0">ตัวอย่าง: ระบบตรวจจับของธนาคาร, แอป True Money</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4.6 AI ในงานสร้างสรรค์ -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">4.6 AI ในงานสร้างสรรค์</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <p>AI สร้างสรรค์ผลงานได้เหมือนศิลปิน — ไม่ต้องมีทักษะวาดรูป แต่งเพลง หรือตัดต่อวิดีโอ:</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h1>🎨</h1>
+                            <h6>ศิลปะ & ออกแบบ</h6>
+                            <p class="small">สร้างภาพจากคำอธิบาย ออกแบบโลโก้ โปสเตอร์ อินโฟกราฟิก</p>
+                            <span class="badge bg-primary">DALL-E 3, Midjourney</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h1>🎵</h1>
+                            <h6>ดนตรี</h6>
+                            <p class="small">แต่งเพลง สร้างดนตรีประกอบ ทำ Jingle โฆษณา</p>
+                            <span class="badge bg-success">Suno, Udio</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h1>🎬</h1>
+                            <h6>วิดีโอ</h6>
+                            <p class="small">สร้างวิดีโอจากข้อความ ตัดต่ออัตโนมัติ ใส่ซับไตเติ้ล</p>
+                            <span class="badge bg-danger">Google Flow, CapCut AI</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h1>✍️</h1>
+                            <h6>เขียนบท & เนื้อหา</h6>
+                            <p class="small">เขียนบทละคร สคริปต์วิดีโอ บทความ สโลแกน</p>
+                            <span class="badge bg-dark">ChatGPT, Claude</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h1>🖌️</h1>
+                            <h6>ออกแบบ UI/UX</h6>
+                            <p class="small">ออกแบบหน้าจอแอป เว็บไซต์ Presentation</p>
+                            <span class="badge bg-warning text-dark">Canva AI, Gamma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4.7 AI กับคนพิการ -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">4.7 AI กับคนพิการ — เทคโนโลยีสิ่งอำนวยความสะดวก</h3>
+
+            <div class="alert alert-danger">
+                <h5>⭐ หัวข้อสำคัญที่สุดของบทนี้!</h5>
+                <p class="mb-0">AI สามารถเปลี่ยนชีวิตคนพิการได้จริง — เทคโนโลยีเหล่านี้ช่วยให้คนพิการทำสิ่งที่เคยทำไม่ได้ ให้ทำได้</p>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>เทคโนโลยี</th>
+                            <th>ทำอะไรได้</th>
+                            <th>ช่วยใคร</th>
+                            <th>ตัวอย่างเครื่องมือ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-light">
+                            <td><strong>1</strong></td>
+                            <td><strong>🔊 Text-to-Speech (TTS)</strong></td>
+                            <td>อ่านออกเสียงข้อความ หนังสือ เว็บไซต์ เอกสาร</td>
+                            <td>ผู้พิการทางสายตา</td>
+                            <td>ElevenLabs, Google TTS, NVDA</td>
+                        </tr>
+                        <tr class="table-light">
+                            <td><strong>2</strong></td>
+                            <td><strong>🎤 Speech-to-Text (STT)</strong></td>
+                            <td>แปลงเสียงพูดเป็นข้อความ ซับไตเติ้ลอัตโนมัติ</td>
+                            <td>ผู้พิการทางการได้ยิน</td>
+                            <td>Whisper, Google Live Transcribe</td>
+                        </tr>
+                        <tr class="table-light">
+                            <td><strong>3</strong></td>
+                            <td><strong>🖼️ Image Description</strong></td>
+                            <td>อธิบายภาพด้วย AI — บอกว่าในรูปมีอะไร</td>
+                            <td>ผู้พิการทางสายตา</td>
+                            <td>Be My Eyes (GPT-4), Seeing AI</td>
+                        </tr>
+                        <tr class="table-light">
+                            <td><strong>4</strong></td>
+                            <td><strong>🗺️ Navigation AI</strong></td>
+                            <td>นำทางด้วยเสียง ตรวจจับสิ่งกีดขวาง แจ้งเตือนอันตราย</td>
+                            <td>ผู้พิการทางสายตา</td>
+                            <td>Soundscape, Lazarillo, Google Maps Voice</td>
+                        </tr>
+                        <tr class="table-light">
+                            <td><strong>5</strong></td>
+                            <td><strong>🤟 Sign Language AI</strong></td>
+                            <td>แปลภาษามือเป็นข้อความ หรือข้อความเป็นภาษามือ</td>
+                            <td>ผู้พิการทางการได้ยิน</td>
+                            <td>SignAll, Hand Talk, Google Sign Language</td>
+                        </tr>
+                        <tr class="table-light">
+                            <td><strong>6</strong></td>
+                            <td><strong>⚙️ Adaptive Interfaces</strong></td>
+                            <td>ปรับหน้าจอ ขนาดตัวอักษร สีพื้นหลัง ตามความพิการ</td>
+                            <td>คนพิการทุกประเภท</td>
+                            <td>iOS Accessibility, Android TalkBack</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6 mb-3">
+                    <div class="card border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <strong>👁️ สำหรับผู้พิการทางสายตา</strong>
+                        </div>
+                        <div class="card-body">
+                            <ul class="mb-0">
+                                <li><strong>Be My Eyes + GPT-4:</strong> ถ่ายรูป AI จะบอกว่าเห็นอะไร</li>
+                                <li><strong>NVDA / VoiceOver:</strong> อ่านทุกอย่างบนหน้าจอ</li>
+                                <li><strong>Seeing AI (Microsoft):</strong> อ่านป้าย อ่านเอกสาร บอกสี</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card border-success">
+                        <div class="card-header bg-success text-white">
+                            <strong>👂 สำหรับผู้พิการทางการได้ยิน</strong>
+                        </div>
+                        <div class="card-body">
+                            <ul class="mb-0">
+                                <li><strong>Google Live Transcribe:</strong> แปลงเสียงเป็นข้อความทันที</li>
+                                <li><strong>Otter.ai:</strong> ถอดเสียงประชุม สร้างซับไตเติ้ล</li>
+                                <li><strong>Hand Talk:</strong> แปลข้อความเป็นภาษามือ 3D</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-3">
+                <strong>💬 ตัวอย่าง Prompt (ทดลองกับ ChatGPT):</strong><br>
+                <code>"ช่วยแนะนำแอป AI ฟรีที่ช่วยผู้พิการทางสายตาอ่านเอกสารราชการได้ ใช้งานง่าย รองรับภาษาไทย"</code>
+            </div>
+        </section>
+
+        <!-- Lab -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">🔬 Lab ปฏิบัติ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 4.1 — ค้นหา Use Case AI ในสายงานตัวเอง</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิด ChatGPT หรือ Claude แล้วถาม:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"ฉันทำงานที่ [องค์กรเพื่อคนพิการ / สำนักงานจังหวัด / โรงเรียน / อื่นๆ] งานที่ทำทุกวันคือ [ระบุงาน] — AI ช่วยอะไรได้บ้าง แนะนำ 5 วิธี พร้อมเครื่องมือฟรี"</code>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>จดผลลัพธ์ที่ได้:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-warning mt-2">
+                        <p class="mb-0">
+                            สายงาน: _______________ <br>
+                            AI ช่วยได้ข้อที่ 1: _______________ <br>
+                            AI ช่วยได้ข้อที่ 2: _______________ <br>
+                            AI ช่วยได้ข้อที่ 3: _______________
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ทดลอง Text-to-Speech:</strong>
+                    <ul class="mt-2">
+                        <li>เปิด <a href="https://elevenlabs.io" target="_blank">ElevenLabs</a> (ฟรี)</li>
+                        <li>พิมพ์ข้อความภาษาไทย เช่น "สิทธิคนพิการ 7 ประการ"</li>
+                        <li>กดเปลี่ยนเสียง ลองฟังว่า AI อ่านออกเสียงได้ดีแค่ไหน</li>
+                        <li>ลองจินตนาการว่า ผู้พิการทางสายตาจะใช้ประโยชน์จากเทคโนโลยีนี้อย่างไร</li>
+                    </ul>
+                </div>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึกหน้าจอผลลัพธ์ Text-to-Speech
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับบทนี้</h5>
+            <ul class="mb-0">
+                <li><strong>ทุกสายงานใช้ AI ได้</strong> — ไม่ว่าจะราชการ, การแพทย์, การศึกษา, เกษตร หรือธุรกิจ</li>
+                <li><strong>เริ่มจากงานที่ทำทุกวัน</strong> — ลองถาม AI ว่า "ช่วยงานนี้ได้อย่างไร" แล้วทดลองทำจริง</li>
+                <li><strong>AI สำหรับคนพิการมีให้ใช้ฟรี</strong> — หลายแอปไม่มีค่าใช้จ่าย (Be My Eyes, Google TTS, Live Transcribe)</li>
+                <li><strong>เจ้าหน้าที่ต้องรู้</strong> — เพื่อแนะนำเทคโนโลยีที่เหมาะสมให้คนพิการที่มาใช้บริการ</li>
+                <li><strong>Text-to-Speech ภาษาไทยดีขึ้นมาก</strong> — ลองใช้ ElevenLabs หรือ Google TTS ฟรี</li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปท้ายบท</h5>
+            <ul>
+                <li><strong>งานราชการ:</strong> AI ร่างหนังสือ สรุปประชุม วิเคราะห์ข้อมูล แปลเอกสาร สร้างแบบสำรวจ</li>
+                <li><strong>การแพทย์:</strong> วินิจฉัยโรค อ่านภาพ X-ray แนะนำยา ดูแลสุขภาพจิต</li>
+                <li><strong>การศึกษา:</strong> สร้างข้อสอบ ติวเตอร์ส่วนตัว แปลบทเรียน</li>
+                <li><strong>เกษตรกรรม:</strong> วิเคราะห์ดิน พยากรณ์ผลผลิต โดรนอัจฉริยะ</li>
+                <li><strong>ธุรกิจ:</strong> Chatbot ลูกค้า วิเคราะห์ตลาด ตรวจจับฉ้อโกง</li>
+                <li><strong>งานสร้างสรรค์:</strong> สร้างภาพ ดนตรี วิดีโอ เขียนบท ออกแบบ</li>
+                <li><strong>คนพิการ:</strong> TTS (อ่านให้ฟัง), STT (แปลงเสียง), Image Description, Navigation AI, Sign Language AI, Adaptive Interfaces</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="chapter03.html" class="btn btn-outline-dark">← บทที่ 3</a>
+            <a href="chapter05.html" class="btn btn-dark">บทที่ 5 →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

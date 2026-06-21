@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 8: ขนาดภาพสำหรับทุก Social Media — AI สร้างรูปภาพ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 AI สร้างรูปภาพ</a>
+        <span class="text-white nav-text">บทที่ 8</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 8</h1>
+            <h2 class="fw-normal text-muted">ขนาดภาพสำหรับทุก Social Media</h2>
+            <p class="lead">รู้ขนาดภาพที่ถูกต้อง สร้างสื่อให้พอดีทุกแพลตฟอร์ม</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>รู้ขนาดภาพที่ถูกต้องของทุก Social Media</li>
+                <li>ตั้งค่าขนาดภาพใน DALL-E, Canva, Firefly ได้</li>
+                <li>สร้างภาพ 1 ครั้งใช้ได้หลายแพลตฟอร์ม</li>
+                <li>สร้างชุดภาพครบทุก Social Media ได้</li>
+            </ul>
+        </div>
+
+        <!-- 8.1 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">8.1 ขนาดภาพ Facebook</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>📘 Facebook — ขนาดภาพ 2025-2026</h5>
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ประเภท</th>
+                            <th>ขนาด (px)</th>
+                            <th>อัตราส่วน</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>โพสต์ทั่วไป (Feed)</td><td><strong>1200 x 630</strong></td><td>1.91:1</td></tr>
+                        <tr><td>โพสต์สี่เหลี่ยม</td><td><strong>1080 x 1080</strong></td><td>1:1</td></tr>
+                        <tr><td>ภาพปก (Cover)</td><td><strong>820 x 312</strong></td><td>2.63:1</td></tr>
+                        <tr><td>โปรไฟล์</td><td><strong>170 x 170</strong></td><td>1:1</td></tr>
+                        <tr><td>Story / Reels</td><td><strong>1080 x 1920</strong></td><td>9:16</td></tr>
+                        <tr><td>Event Cover</td><td><strong>1920 x 1005</strong></td><td>1.91:1</td></tr>
+                        <tr><td>Shared Link</td><td><strong>1200 x 630</strong></td><td>1.91:1</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 8.2 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">8.2 ขนาดภาพ Instagram</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>📸 Instagram — ขนาดภาพ 2025-2026</h5>
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ประเภท</th>
+                            <th>ขนาด (px)</th>
+                            <th>อัตราส่วน</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>โพสต์สี่เหลี่ยม</td><td><strong>1080 x 1080</strong></td><td>1:1</td></tr>
+                        <tr><td>โพสต์แนวตั้ง</td><td><strong>1080 x 1350</strong></td><td>4:5</td></tr>
+                        <tr><td>โพสต์แนวนอน</td><td><strong>1080 x 566</strong></td><td>1.91:1</td></tr>
+                        <tr><td>Story / Reels</td><td><strong>1080 x 1920</strong></td><td>9:16</td></tr>
+                        <tr><td>Carousel</td><td><strong>1080 x 1080</strong></td><td>1:1</td></tr>
+                        <tr><td>โปรไฟล์</td><td><strong>320 x 320</strong></td><td>1:1</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 8.3 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">8.3 ขนาดภาพ LINE, YouTube, TikTok</h3>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-success text-white"><strong>💚 LINE</strong></div>
+                        <div class="card-body">
+                            <ul class="small mb-0">
+                                <li>Rich Menu: <strong>2500 x 1686</strong></li>
+                                <li>Rich Message: <strong>1040 x 1040</strong></li>
+                                <li>Banner: <strong>1200 x 400</strong></li>
+                                <li>Chat Image: <strong>1024 x 1024</strong> (max)</li>
+                                <li>Profile: <strong>480 x 480</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-danger text-white"><strong>▶️ YouTube</strong></div>
+                        <div class="card-body">
+                            <ul class="small mb-0">
+                                <li>Thumbnail: <strong>1280 x 720</strong></li>
+                                <li>Channel Banner: <strong>2560 x 1440</strong></li>
+                                <li>Profile: <strong>800 x 800</strong></li>
+                                <li>Shorts: <strong>1080 x 1920</strong></li>
+                                <li>End Screen: <strong>1920 x 1080</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-dark text-white"><strong>🎵 TikTok</strong></div>
+                        <div class="card-body">
+                            <ul class="small mb-0">
+                                <li>Video/Image: <strong>1080 x 1920</strong></li>
+                                <li>Profile: <strong>200 x 200</strong></li>
+                                <li>อัตราส่วน: <strong>9:16</strong></li>
+                                <li>Carousel: <strong>1080 x 1920</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8.4 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">8.4 วิธีตั้งขนาดในแต่ละเครื่องมือ</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🔧 ตั้งค่าขนาดภาพ</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>DALL-E 3 (ChatGPT)</strong>
+                    <p class="mb-0 mt-1">ระบุในPrompt: <code>"ขนาด 1080x1080"</code> หรือ <code>"อัตราส่วน 16:9"</code> หรือ <code>"แนวตั้ง 9:16"</code></p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>Adobe Firefly</strong>
+                    <p class="mb-0 mt-1">คลิก "Aspect Ratio" ด้านขวา → เลือก 1:1, 16:9, 4:3, 3:4 ฯลฯ</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>Canva</strong>
+                    <p class="mb-0 mt-1">สร้างงานใหม่ → "Custom size" → ใส่ขนาด px ที่ต้องการ หรือเลือก Preset (Facebook Post, Instagram Story ฯลฯ)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8.5 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">8.5 เคล็ดลับ: ภาพเดียวใช้ได้หลายแพลตฟอร์ม</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🎯 วิธีประหยัดเวลา</h5>
+                <ol>
+                    <li><strong>สร้างภาพขนาดใหญ่ก่อน</strong> (เช่น 1920x1920 หรือ 2048x2048)</li>
+                    <li><strong>ใช้ Canva Resize</strong> — ย่อ/ครอป ให้พอดีแต่ละ Social</li>
+                    <li>หรือใช้ <strong>Firefly Expand</strong> ขยายภาพให้พอดีขนาดที่ต้องการ</li>
+                </ol>
+
+                <div class="alert alert-success mb-0 mt-3">
+                    <strong>💡 สูตรลัด:</strong> สร้างภาพ <strong>1:1 (สี่เหลี่ยม)</strong> ก่อน → ครอป/ขยาย เป็น 16:9 หรือ 9:16 ทีหลัง — ได้ 3 ขนาดจากภาพเดียว!
+                </div>
+            </div>
+        </section>
+
+        <!-- Lab -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">🔬 Lab ปฏิบัติ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 8.1 — สร้างชุดภาพครบทุก Social Media</h5>
+
+                <p><strong>โจทย์:</strong> สร้างภาพสำหรับประชาสัมพันธ์กิจกรรม "อบรม AI เพื่อคนพิการ" ครบทุก Social</p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>สร้างภาพต้นฉบับด้วย DALL-E 3 ขนาด 1:1</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"สร้างภาพโมเดิร์นสำหรับโครงการอบรม AI เพื่อคนพิการ สีน้ำเงินม่วง gradient มีไอคอน AI สไตล์ flat design ขนาดสี่เหลี่ยมจัตุรัส"</code>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>เปิด Canva → อัปโหลดภาพ → Resize เป็น:</strong>
+                    <ul class="mt-1">
+                        <li>Facebook Post (1200x630)</li>
+                        <li>Instagram Post (1080x1080)</li>
+                        <li>Story/Reels (1080x1920)</li>
+                        <li>YouTube Thumbnail (1280x720)</li>
+                        <li>LINE Rich Message (1040x1040)</li>
+                    </ul>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ใส่ข้อความในแต่ละขนาด (ใช้ Canva)</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>Export ทั้งหมดเป็น PNG</strong>
+                </div>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึกภาพ 5 ขนาดที่สร้าง
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับบทนี้</h5>
+            <ul class="mb-0">
+                <li>จำแค่ 3 ขนาดหลัก: 1:1 (โพสต์), 16:9 (Banner/Thumbnail), 9:16 (Story/Reels)</li>
+                <li>Canva มี Preset ขนาดทุก Social ให้เลือก — ไม่ต้องจำตัวเลข</li>
+                <li>สร้างภาพใหญ่ก่อน แล้วครอปทีหลัง — ประหยัดเวลาที่สุด</li>
+                <li>Safe Zone: วางข้อความสำคัญตรงกลาง 80% — ป้องกันโดนครอป</li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปท้ายบท</h5>
+            <ul>
+                <li><strong>ขนาดหลัก:</strong> FB Post 1200x630, IG 1080x1080, Story 1080x1920</li>
+                <li><strong>YouTube Thumbnail:</strong> 1280x720 (สำคัญมาก!)</li>
+                <li><strong>LINE:</strong> Rich Menu 2500x1686, Message 1040x1040</li>
+                <li><strong>วิธีประหยัด:</strong> สร้าง 1:1 ก่อน → ครอป/ขยาย เป็นขนาดอื่น</li>
+                <li><strong>ใช้ Canva Preset</strong> เพื่อความสะดวก ไม่ต้องจำตัวเลข</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="chapter07.html" class="btn btn-outline-dark">← บทที่ 7</a>
+            <a href="chapter09.html" class="btn btn-dark">บทที่ 9 →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

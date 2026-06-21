@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 1: Google Apps Script คืออะไร</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📖 Google Apps Script</span>
+            <span class="nav-text text-light">บทที่ 1: Google Apps Script คืออะไร</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <h1>บทที่ 1: Google Apps Script คืออะไร</h1>
+                <p class="lead">ทำความรู้จัก GAS — เครื่องมือสร้างระบบอัตโนมัติของ Google ที่ใช้ฟรี 100%</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h4>🎯 วัตถุประสงค์การเรียนรู้</h4>
+                <ul class="mb-0">
+                    <li>อธิบายได้ว่า Google Apps Script (GAS) คืออะไร และทำอะไรได้บ้าง</li>
+                    <li>เปิด Script Editor และเขียนโปรแกรมแรกได้</li>
+                    <li>ใช้ Logger.log() เพื่อแสดงผลลัพธ์ได้</li>
+                    <li>เข้าใจความแตกต่างระหว่าง GAS กับ VBA และ Python</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h2 class="section-header">📚 Google Apps Script (GAS) คืออะไร?</h2>
+            <p>Google Apps Script (GAS) คือ <strong>ภาษาโปรแกรมที่ Google สร้างขึ้น</strong> เพื่อให้เราสั่งงาน Google Workspace (Sheets, Docs, Forms, Gmail ฯลฯ) แบบอัตโนมัติ โดยใช้ภาษา JavaScript เป็นพื้นฐาน</p>
+
+            <div class="info-card">
+                <h4>🔑 จุดเด่นของ GAS</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul>
+                            <li><strong>ฟรี 100%</strong> — ไม่มีค่าใช้จ่ายใดๆ</li>
+                            <li><strong>ไม่ต้องติดตั้ง</strong> — เขียนในเบราว์เซอร์ได้เลย</li>
+                            <li><strong>ไม่ต้องเช่า Server</strong> — Google ดูแลให้</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li><strong>เชื่อมต่อ Google ทั้งหมด</strong> — Sheets, Docs, Gmail, Drive</li>
+                            <li><strong>ทำ Web App ได้</strong> — สร้างหน้าเว็บฟรี</li>
+                            <li><strong>ส่ง Line/Email อัตโนมัติ</strong> — แจ้งเตือนทันที</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-header">🔄 เปรียบเทียบ GAS กับเครื่องมืออื่น</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>หัวข้อ</th>
+                            <th>Google Apps Script</th>
+                            <th>VBA (Excel)</th>
+                            <th>Python</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ค่าใช้จ่าย</td>
+                            <td>✅ ฟรี</td>
+                            <td>💰 ซื้อ Office</td>
+                            <td>✅ ฟรี (แต่ต้องเช่า Server)</td>
+                        </tr>
+                        <tr>
+                            <td>ติดตั้ง</td>
+                            <td>✅ ไม่ต้อง</td>
+                            <td>❌ ต้องติดตั้ง Office</td>
+                            <td>❌ ต้องติดตั้ง Python</td>
+                        </tr>
+                        <tr>
+                            <td>Server</td>
+                            <td>✅ Google ดูแล</td>
+                            <td>❌ ทำ Web ไม่ได้</td>
+                            <td>❌ ต้องเช่า/ดูแลเอง</td>
+                        </tr>
+                        <tr>
+                            <td>เชื่อมต่อ Google</td>
+                            <td>✅ ง่ายมาก (built-in)</td>
+                            <td>❌ ยาก</td>
+                            <td>⚠️ ต้องตั้งค่า API</td>
+                        </tr>
+                        <tr>
+                            <td>ความยากในการเรียน</td>
+                            <td>⭐⭐ ง่าย</td>
+                            <td>⭐⭐ ง่าย</td>
+                            <td>⭐⭐⭐ ปานกลาง</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="section-header">🖥️ วิธีเปิด Script Editor</h2>
+            <p>มี 2 วิธีในการเปิด Script Editor:</p>
+
+            <h4>วิธีที่ 1: เปิดจาก Google Sheets</h4>
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <p>เปิด Google Sheets ที่ <a href="https://sheets.google.com" target="_blank">sheets.google.com</a></p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <p>สร้างหรือเปิด Spreadsheet ที่ต้องการ</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <p>ไปที่เมนู <strong>ส่วนขยาย (Extensions)</strong> → <strong>Apps Script</strong></p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <p>จะเปิดหน้าต่าง Script Editor ขึ้นมาในแท็บใหม่</p>
+            </div>
+
+            <h4 class="mt-4">วิธีที่ 2: เปิดจาก script.google.com โดยตรง</h4>
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <p>เปิดเบราว์เซอร์ไปที่ <a href="https://script.google.com" target="_blank">script.google.com</a></p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <p>คลิก <strong>"โปรเจกต์ใหม่" (New Project)</strong></p>
+            </div>
+
+            <h2 class="section-header">✍️ เขียนโปรแกรมแรก: Hello World</h2>
+            <p>มาเขียนโปรแกรมแรกกัน! พิมพ์โค้ดนี้ลงใน Script Editor:</p>
+
+<pre><code>function myFirstFunction() {
+  // แสดงข้อความ Hello World
+  Logger.log("สวัสดี Google Apps Script!");
+  
+  // แสดงกล่องข้อความ (ถ้าเปิดจาก Sheets)
+  SpreadsheetApp.getUi().alert("สวัสดีครับ! นี่คือโปรแกรมแรกของผม");
+}
+</code></pre>
+
+            <h4>วิธีรันโปรแกรม:</h4>
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <p>เลือกฟังก์ชัน <code>myFirstFunction</code> จาก dropdown ด้านบน</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <p>กดปุ่ม <strong>▶ Run</strong> (หรือกด Ctrl+R)</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <p>ครั้งแรกจะขอ Permission — กด <strong>"Review Permissions"</strong> → เลือกบัญชี → <strong>"Allow"</strong></p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <p>ดูผลลัพธ์ที่ <strong>Execution Log</strong> ด้านล่าง</p>
+            </div>
+
+            <h2 class="section-header">📋 Logger.log() — เครื่องมือตรวจสอบผลลัพธ์</h2>
+            <p><code>Logger.log()</code> คือคำสั่งที่ใช้ "พิมพ์" ข้อความออกมาดูใน Log เหมือนการจดบันทึกว่าโปรแกรมทำอะไรอยู่</p>
+
+<pre><code>function testLogger() {
+  Logger.log("ข้อความธรรมดา");
+  Logger.log(123);                    // ตัวเลข
+  Logger.log(10 + 20);               // คำนวณ = 30
+  Logger.log("ชื่อ: " + "ปัญญา");    // ต่อข้อความ
+  
+  var today = new Date();
+  Logger.log("วันนี้: " + today);     // แสดงวันที่
+}
+</code></pre>
+
+            <div class="alert alert-success">
+                <h4>💡 Tips</h4>
+                <ul class="mb-0">
+                    <li><code>Logger.log()</code> ใช้ตรวจสอบค่าขณะพัฒนา — เหมือน "ส่องดู" ว่าตัวแปรเก็บค่าอะไร</li>
+                    <li>ดู Log ได้ที่ <strong>View → Logs</strong> หรือดูที่ <strong>Execution Log</strong> ด้านล่างหน้าจอ</li>
+                    <li>ใช้ <code>console.log()</code> ก็ได้เหมือนกัน (GAS รองรับทั้งคู่)</li>
+                </ul>
+            </div>
+
+            <h2 class="section-header">📐 โครงสร้างพื้นฐานของ GAS</h2>
+<pre><code>// 1. ฟังก์ชัน — กล่องคำสั่งที่เราสร้างขึ้น
+function ชื่อฟังก์ชัน() {
+  // คำสั่งที่ต้องการให้ทำ
+}
+
+// 2. ตัวแปร — กล่องเก็บข้อมูล
+var name = "ปัญญา";          // ข้อความ (String)
+var age = 30;                // ตัวเลข (Number)
+var isActive = true;         // จริง/เท็จ (Boolean)
+
+// 3. เงื่อนไข — ถ้า...แล้ว...
+if (age >= 18) {
+  Logger.log("เป็นผู้ใหญ่");
+} else {
+  Logger.log("เป็นเด็ก");
+}
+
+// 4. วนซ้ำ — ทำซ้ำหลายรอบ
+for (var i = 0; i < 5; i++) {
+  Logger.log("รอบที่ " + (i + 1));
+}
+</code></pre>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 1: ทดลองเขียนโปรแกรมแรก</h4>
+                <p><strong>เวลา:</strong> 15 นาที</p>
+                <hr>
+                <p><strong>ขั้นตอน:</strong></p>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <p>เปิด Google Sheets → Extensions → Apps Script</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <p>ลบโค้ดเดิมทั้งหมด แล้วพิมพ์โค้ดต่อไปนี้:</p>
+                </div>
+<pre><code>function lab1_helloWorld() {
+  // แสดงชื่อของคุณ
+  var myName = "ใส่ชื่อคุณตรงนี้";
+  Logger.log("สวัสดีครับ ผมชื่อ " + myName);
+  
+  // คำนวณอายุ
+  var birthYear = 2537;  // เปลี่ยนเป็น พ.ศ. เกิดของคุณ
+  var currentYear = 2569;
+  var age = currentYear - birthYear;
+  Logger.log("อายุ " + age + " ปี");
+  
+  // แสดงวันเวลาปัจจุบัน
+  var now = new Date();
+  Logger.log("ตอนนี้เวลา: " + now);
+}
+</code></pre>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <p>กด <strong>▶ Run</strong> แล้วดูผลลัพธ์ที่ Execution Log</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <p>ลองเปลี่ยนชื่อและปีเกิด แล้วรันอีกครั้ง</p>
+                </div>
+                <p class="mt-3"><strong>🎯 ผลที่คาดหวัง:</strong> เห็นชื่อ อายุ และเวลาปัจจุบันใน Log</p>
+            </div>
+
+            <!-- Lab 2 -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 2: แสดง Alert ใน Google Sheets</h4>
+                <p><strong>เวลา:</strong> 10 นาที</p>
+                <hr>
+<pre><code>function lab1_showAlert() {
+  var ui = SpreadsheetApp.getUi();
+  
+  // ถามชื่อ
+  var response = ui.prompt("กรุณาใส่ชื่อของคุณ:");
+  var name = response.getResponseText();
+  
+  // แสดงข้อความต้อนรับ
+  ui.alert("ยินดีต้อนรับ " + name + " สู่ Google Apps Script!");
+  
+  Logger.log("ผู้ใช้กรอกชื่อ: " + name);
+}
+</code></pre>
+                <p><strong>หมายเหตุ:</strong> ฟังก์ชันนี้ต้องรันจาก Sheets เท่านั้น (ไม่ใช่ script.google.com) เพราะใช้ UI ของ Sheets</p>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card">
+                <h4>📝 สรุปบทที่ 1</h4>
+                <table class="table table-sm">
+                    <tr>
+                        <td><strong>GAS คือ</strong></td>
+                        <td>ภาษาโปรแกรมของ Google สำหรับ Automate งาน — ฟรี ไม่ต้องติดตั้ง</td>
+                    </tr>
+                    <tr>
+                        <td><strong>เปิด Script Editor</strong></td>
+                        <td>Sheets → Extensions → Apps Script หรือ script.google.com</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Logger.log()</strong></td>
+                        <td>ใช้แสดงผลลัพธ์/ตรวจสอบค่าใน Execution Log</td>
+                    </tr>
+                    <tr>
+                        <td><strong>โครงสร้างพื้นฐาน</strong></td>
+                        <td>ฟังก์ชัน, ตัวแปร, เงื่อนไข (if), วนซ้ำ (for)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Navigation -->
+            <div class="nav-buttons">
+                <a href="index.html" class="btn btn-outline-secondary">← หน้าหลัก</a>
+                <a href="chapter02.html" class="btn btn-primary">บทที่ 2 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 6: สร้างรายงานและเอกสารวิชาการ — คู่มือฝึกอบรม ChatGPT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark sticky-top" style="background:#10a37f;">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ ChatGPT</a>
+        <span class="text-white nav-text">บทที่ 6 — วันที่ 3 บ่าย</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+
+    <h1 class="mb-2">บทที่ 6: สร้างรายงานและเอกสารวิชาการ</h1>
+    <p class="text-muted mb-4">วันที่ 3 ภาคบ่าย | ระยะเวลา 3 ชั่วโมง | ระดับ: กลาง</p>
+
+    <div class="alert alert-info">
+        <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+        <ul class="mb-0">
+            <li>เขียนรายงานผลการดำเนินงานด้วย ChatGPT ได้</li>
+            <li>เขียนโครงการ/แผนงานที่มีองค์ประกอบครบถ้วนได้</li>
+            <li>สร้าง KPI และตัวชี้วัดที่วัดผลได้จริง</li>
+            <li>ตรวจสอบ Hallucination (AI แต่งข้อมูล) ได้</li>
+        </ul>
+    </div>
+
+    <!-- Section 6.1 -->
+    <div class="section-header">
+        <h2>6.1 เขียนรายงานผลการดำเนินงาน</h2>
+        <p>ร่างรายงานรายเดือน ไตรมาส และรายปี ด้วย ChatGPT</p>
+    </div>
+
+    <h3>โครงสร้างรายงานผลการดำเนินงาน</h3>
+    <p>รายงานผลการดำเนินงานที่ดีควรมีโครงสร้างครบถ้วน ChatGPT สามารถช่วยร่างได้ เพียงให้ข้อมูลตัวเลขและบอกรูปแบบที่ต้องการ:</p>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ส่วนประกอบ</th>
+                    <th>รายเดือน</th>
+                    <th>ไตรมาส</th>
+                    <th>รายปี</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>หน้าปก + สารบัญ</strong></td><td>ไม่จำเป็น</td><td>✅</td><td>✅</td></tr>
+                <tr><td><strong>บทสรุปผู้บริหาร</strong></td><td>1 ย่อหน้า</td><td>1 หน้า</td><td>2-3 หน้า</td></tr>
+                <tr><td><strong>ผลงานตามตัวชี้วัด (KPI)</strong></td><td>ตาราง</td><td>ตาราง + กราฟ</td><td>ตาราง + กราฟ + วิเคราะห์</td></tr>
+                <tr><td><strong>ปัญหา/อุปสรรค</strong></td><td>สรุปสั้น</td><td>วิเคราะห์สาเหตุ</td><td>วิเคราะห์เชิงลึก</td></tr>
+                <tr><td><strong>แผนดำเนินงานต่อไป</strong></td><td>เดือนหน้า</td><td>ไตรมาสหน้า</td><td>ปีหน้า</td></tr>
+                <tr><td><strong>ภาคผนวก</strong></td><td>ไม่จำเป็น</td><td>ถ้ามี</td><td>✅</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 1 — รายงานผลรายเดือน</strong>
+        <p class="mt-2 mb-1">คุณเป็นนักวิเคราะห์นโยบายและแผน ช่วยเขียนรายงานผลการดำเนินงานประจำเดือนมีนาคม 2569 ของสำนักงานพัฒนาฝีมือแรงงานสุรินทร์</p>
+        <p class="mb-1">ข้อมูลผลงาน:</p>
+        <p class="mb-1">- ฝึกอบรม: เป้า 80 คน ทำได้ 75 คน (93.75%)</p>
+        <p class="mb-1">- ทดสอบมาตรฐาน: เป้า 50 คน ทำได้ 42 คน (84%)</p>
+        <p class="mb-1">- ส่งเสริมสถานประกอบการ: เป้า 10 แห่ง ทำได้ 8 แห่ง (80%)</p>
+        <p class="mb-1">- งบประมาณใช้ไป 320,000 จาก 500,000 บาท (64%)</p>
+        <p class="mb-1">รูปแบบ: มีตาราง KPI, สรุปปัญหา, แผนเดือนหน้า</p>
+        <p class="mb-0">ความยาว: ไม่เกิน 2 หน้า A4</p>
+    </div>
+
+    <div class="prompt-example">
+        <strong>Prompt ที่ 2 — รายงานผลไตรมาส</strong>
+        <p class="mt-2 mb-1">ช่วยเขียนรายงานผลการดำเนินงานไตรมาส 1/2569 (ต.ค.-ธ.ค. 2568) ของสำนักงานพัฒนาฝีมือแรงงานสุรินทร์ โดย:</p>
+        <p class="mb-1">1. บทสรุปผู้บริหาร (ไม่เกิน 1 หน้า)</p>
+        <p class="mb-1">2. ตาราง KPI ทุกตัวชี้วัด (เป้า/ผลงาน/%/สถานะ)</p>
+        <p class="mb-1">3. วิเคราะห์ผลงานเด่น 3 ข้อ</p>
+        <p class="mb-1">4. ปัญหา/อุปสรรค พร้อมสาเหตุ 3 ข้อ</p>
+        <p class="mb-0">5. ข้อเสนอแนะและแผนไตรมาสหน้า</p>
+    </div>
+
+    <!-- Section 6.2 -->
+    <div class="section-header">
+        <h2>6.2 เขียนโครงการ/แผนงาน</h2>
+        <p>ร่างโครงการครบองค์ประกอบ: หลักการ วัตถุประสงค์ ขั้นตอน งบประมาณ ตัวชี้วัด</p>
+    </div>
+
+    <h3>องค์ประกอบของโครงการที่สมบูรณ์</h3>
+    <p>โครงการราชการที่ดีต้องมีองค์ประกอบครบถ้วน ChatGPT ช่วยร่างโครงสร้างทั้งหมดได้ เพียงบอกชื่อโครงการ กลุ่มเป้าหมาย และงบประมาณ:</p>
+    <ol>
+        <li><strong>ชื่อโครงการ</strong> — ชัดเจน กระชับ สื่อเป้าหมาย</li>
+        <li><strong>หลักการและเหตุผล</strong> — ทำไมต้องทำ อ้างอิงนโยบาย/สถิติ</li>
+        <li><strong>วัตถุประสงค์</strong> — SMART (Specific, Measurable, Achievable, Relevant, Time-bound)</li>
+        <li><strong>กลุ่มเป้าหมาย</strong> — ใคร จำนวนเท่าไร</li>
+        <li><strong>ขั้นตอนการดำเนินงาน</strong> — กิจกรรม ระยะเวลา ผู้รับผิดชอบ</li>
+        <li><strong>งบประมาณ</strong> — รายละเอียด แยกหมวด</li>
+        <li><strong>ตัวชี้วัดความสำเร็จ</strong> — Output / Outcome / Impact</li>
+        <li><strong>ผลที่คาดว่าจะได้รับ</strong> — ระยะสั้น / ระยะยาว</li>
+    </ol>
+
+    <div class="prompt-example">
+        <strong>Prompt เขียนโครงการ</strong>
+        <p class="mt-2 mb-1">คุณเป็นนักวิเคราะห์นโยบายและแผนชำนาญการ ช่วยเขียนโครงการฝึกอบรม "การใช้ AI ในงานสำนักงาน" ให้ครบองค์ประกอบ:</p>
+        <p class="mb-1">- หน่วยงาน: สำนักงานพัฒนาฝีมือแรงงานสุรินทร์</p>
+        <p class="mb-1">- กลุ่มเป้าหมาย: ข้าราชการและบุคลากรภาครัฐจังหวัดสุรินทร์ 40 คน</p>
+        <p class="mb-1">- ระยะเวลา: 3 วัน (18 ชั่วโมง)</p>
+        <p class="mb-1">- งบประมาณ: 120,000 บาท</p>
+        <p class="mb-1">- อ้างอิงนโยบาย: แผนพัฒนาดิจิทัลเพื่อเศรษฐกิจและสังคม / Thailand 4.0</p>
+        <p class="mb-0">ต้องการ: หลักการและเหตุผล, วัตถุประสงค์ 3 ข้อ, ขั้นตอน (Gantt), งบประมาณ (แยกหมวด), ตัวชี้วัด 5 ข้อ, ผลที่คาดว่าจะได้รับ</p>
+    </div>
+
+    <!-- Section 6.3 -->
+    <div class="section-header">
+        <h2>6.3 สร้าง KPI และตัวชี้วัด</h2>
+        <p>ให้ ChatGPT ช่วยคิด KPI ที่วัดผลได้จริงและสอดคล้องกับเป้าหมาย</p>
+    </div>
+
+    <h3>ตัวอย่าง KPI 5 ข้อ สำหรับงานฝึกอบรม</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>ตัวชี้วัด (KPI)</th>
+                    <th>เป้าหมาย</th>
+                    <th>วิธีวัด</th>
+                    <th>ประเภท</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>จำนวนผู้ผ่านการฝึกอบรม</td>
+                    <td>≥ 80% ของผู้สมัคร</td>
+                    <td>นับจำนวนใบประกาศที่ออก</td>
+                    <td>Output</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>คะแนนหลังอบรมเพิ่มขึ้น</td>
+                    <td>≥ 20% จากก่อนอบรม</td>
+                    <td>เปรียบเทียบ Pre-test / Post-test</td>
+                    <td>Outcome</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>ความพึงพอใจผู้เข้าอบรม</td>
+                    <td>≥ 4.0 จาก 5.0</td>
+                    <td>แบบประเมินความพึงพอใจ</td>
+                    <td>Outcome</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>ผู้เข้าอบรมนำไปใช้งานจริง</td>
+                    <td>≥ 60% ภายใน 3 เดือน</td>
+                    <td>แบบติดตามผล (Follow-up)</td>
+                    <td>Impact</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>การใช้จ่ายงบประมาณ</td>
+                    <td>≥ 90% ของงบที่ได้รับ</td>
+                    <td>รายงานการเงิน</td>
+                    <td>Output</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>วิธีสั่ง ChatGPT ให้คิด KPI</h3>
+
+    <div class="prompt-example">
+        <strong>Prompt สร้าง KPI</strong>
+        <p class="mt-2 mb-1">คุณเป็นผู้เชี่ยวชาญด้านการวางแผนยุทธศาสตร์ ช่วยออกแบบตัวชี้วัด (KPI) สำหรับโครงการ "ฝึกอบรมการใช้ AI ในงานราชการ" โดย:</p>
+        <p class="mb-1">- กลุ่มเป้าหมาย: ข้าราชการ 40 คน อบรม 3 วัน</p>
+        <p class="mb-1">- ต้องการ KPI อย่างน้อย 5 ข้อ แบ่งเป็น:</p>
+        <p class="mb-1">&nbsp;&nbsp;• Output (ผลผลิต) 2 ข้อ</p>
+        <p class="mb-1">&nbsp;&nbsp;• Outcome (ผลลัพธ์) 2 ข้อ</p>
+        <p class="mb-1">&nbsp;&nbsp;• Impact (ผลกระทบ) 1 ข้อ</p>
+        <p class="mb-1">แต่ละ KPI ต้องมี: ชื่อตัวชี้วัด, เป้าหมาย (ตัวเลข), วิธีวัด, แหล่งข้อมูล</p>
+        <p class="mb-0">นำเสนอเป็นตาราง พร้อมอธิบายเหตุผลว่าทำไมถึงเลือก KPI แต่ละข้อ</p>
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 เคล็ดลับสร้าง KPI ที่ดี</h5>
+        <ul class="mb-0">
+            <li><strong>SMART</strong> — ชัดเจน วัดได้ ทำได้จริง ตรงประเด็น มีกรอบเวลา</li>
+            <li><strong>แบ่ง 3 ระดับ</strong> — Output (ทำอะไร), Outcome (ผลที่ได้), Impact (เปลี่ยนแปลงอะไร)</li>
+            <li><strong>ระบุแหล่งข้อมูล</strong> — จะเก็บข้อมูลจากไหน ใครเป็นคนเก็บ</li>
+            <li><strong>ตั้งค่าเป้าหมายที่ท้าทายแต่ทำได้</strong> — ไม่ง่ายเกินไป ไม่ยากจนเป็นไปไม่ได้</li>
+        </ul>
+    </div>
+
+    <!-- Section 6.4 -->
+    <div class="section-header">
+        <h2>6.4 เขียนบทสรุปผู้บริหาร (Executive Summary)</h2>
+        <p>สรุปข้อมูลซับซ้อนเป็นเอกสาร 1 หน้า สำหรับผู้บริหาร</p>
+    </div>
+
+    <h3>เทคนิคเขียน Executive Summary ที่ดี</h3>
+    <p><strong>บทสรุปผู้บริหาร</strong>คือเอกสาร 1 หน้าที่ผู้บริหารอ่านแล้วเข้าใจภาพรวมทั้งหมด — ต้องกระชับ ตรงประเด็น มีตัวเลขสำคัญ และข้อเสนอแนะที่ชัดเจน</p>
+
+    <ul>
+        <li><strong>ย่อหน้าที่ 1:</strong> ภาพรวมและสถานะปัจจุบัน (2-3 ประโยค)</li>
+        <li><strong>ย่อหน้าที่ 2:</strong> ผลงานเด่น + ตัวเลขสำคัญ (3-5 ข้อ)</li>
+        <li><strong>ย่อหน้าที่ 3:</strong> ปัญหาและความเสี่ยง (2-3 ข้อ)</li>
+        <li><strong>ย่อหน้าที่ 4:</strong> ข้อเสนอแนะ / สิ่งที่ต้องตัดสินใจ (2-3 ข้อ)</li>
+    </ul>
+
+    <div class="prompt-example">
+        <strong>Prompt เขียน Executive Summary</strong>
+        <p class="mt-2 mb-1">ช่วยเขียนบทสรุปผู้บริหาร (Executive Summary) จากรายงานต่อไปนี้ ให้ความยาวไม่เกิน 1 หน้า A4:</p>
+        <p class="mb-1">[วางข้อมูลรายงาน หรือตัวเลขสำคัญ]</p>
+        <p class="mb-1">รูปแบบที่ต้องการ:</p>
+        <p class="mb-1">1. สรุปภาพรวม 2-3 ประโยค (สถานะ: ดี/น่าเป็นห่วง/ปกติ)</p>
+        <p class="mb-1">2. ผลงานเด่น 3-5 ข้อ พร้อมตัวเลข</p>
+        <p class="mb-1">3. ปัญหาสำคัญ 2-3 ข้อ พร้อมสาเหตุสั้นๆ</p>
+        <p class="mb-1">4. ข้อเสนอแนะ 3 ข้อ ที่ผู้บริหารต้องตัดสินใจ</p>
+        <p class="mb-0">ภาษา: ทางการ กระชับ เหมาะสำหรับผู้บริหารที่มีเวลาน้อย</p>
+    </div>
+
+    <!-- Section 6.5 -->
+    <div class="section-header">
+        <h2>6.5 อัปโหลดไฟล์ให้ ChatGPT วิเคราะห์</h2>
+        <p>ส่งไฟล์ PDF, CSV, Word, รูปภาพ ให้ ChatGPT อ่านและวิเคราะห์</p>
+    </div>
+
+    <h3>ขั้นตอนอัปโหลดไฟล์</h3>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 1:</strong> คลิกไอคอน 📎 (แนบไฟล์) ในช่อง ChatGPT หรือลากไฟล์มาวาง (Drag & Drop)
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 2:</strong> รอให้ ChatGPT ประมวลผลไฟล์ (อาจใช้เวลา 5-30 วินาทีขึ้นอยู่กับขนาด)
+    </div>
+
+    <div class="step-item">
+        <strong>ขั้นที่ 3:</strong> พิมพ์คำสั่งบอกว่าต้องการให้ทำอะไรกับไฟล์ เช่น "สรุปเนื้อหาหลัก" "วิเคราะห์ข้อมูล" "แปลเป็นไทย"
+    </div>
+
+    <h3>ตารางประเภทไฟล์ที่รองรับ</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ประเภทไฟล์</th>
+                    <th>นามสกุล</th>
+                    <th>สิ่งที่ ChatGPT ทำได้</th>
+                    <th>ข้อจำกัด</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>PDF</strong></td>
+                    <td>.pdf</td>
+                    <td>อ่านข้อความ, สรุป, แปล, วิเคราะห์</td>
+                    <td>PDF ที่เป็นรูปภาพอาจอ่านไม่ได้ทั้งหมด</td>
+                </tr>
+                <tr>
+                    <td><strong>Excel</strong></td>
+                    <td>.xlsx, .xls</td>
+                    <td>วิเคราะห์ข้อมูล, สร้างกราฟ, สรุปสถิติ</td>
+                    <td>Macro ไม่ทำงาน, ขนาดสูงสุด 512 MB</td>
+                </tr>
+                <tr>
+                    <td><strong>CSV</strong></td>
+                    <td>.csv</td>
+                    <td>วิเคราะห์ข้อมูล, สร้างกราฟ, กรอง</td>
+                    <td>Encoding ภาษาไทยบางครั้งอ่านผิด</td>
+                </tr>
+                <tr>
+                    <td><strong>Word</strong></td>
+                    <td>.docx</td>
+                    <td>อ่าน, สรุป, ปรับแก้, แปล</td>
+                    <td>รูปภาพในไฟล์อาจไม่แสดง</td>
+                </tr>
+                <tr>
+                    <td><strong>รูปภาพ</strong></td>
+                    <td>.jpg, .png, .gif</td>
+                    <td>อ่านข้อความ (OCR), อธิบายภาพ, วิเคราะห์กราฟ</td>
+                    <td>ลายมือเขียนอาจอ่านไม่ชัด</td>
+                </tr>
+                <tr>
+                    <td><strong>PowerPoint</strong></td>
+                    <td>.pptx</td>
+                    <td>อ่านเนื้อหาแต่ละสไลด์, สรุป</td>
+                    <td>Animation/Video ไม่ทำงาน</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-info">
+        <h5>💡 Prompt ที่ใช้บ่อยหลังอัปโหลดไฟล์</h5>
+        <ul class="mb-0">
+            <li>"สรุปเนื้อหาหลักของเอกสารนี้ เป็น 5 bullet points"</li>
+            <li>"วิเคราะห์ข้อมูลในไฟล์นี้ สรุปภาพรวม หาจุดเด่นและจุดอ่อน"</li>
+            <li>"แปลเอกสารนี้เป็นภาษาไทย คงรูปแบบเดิม"</li>
+            <li>"เปรียบเทียบข้อมูลปีนี้กับปีที่แล้ว มีอะไรเปลี่ยนแปลงบ้าง"</li>
+            <li>"ตรวจสอบข้อมูลในตาราง มีค่าผิดปกติหรือไม่"</li>
+        </ul>
+    </div>
+
+    <!-- Section 6.6 -->
+    <div class="section-header">
+        <h2>6.6 ตรวจสอบ Hallucination — AI แต่งข้อมูลหรือไม่?</h2>
+        <p>วิธีเช็คว่า ChatGPT ตอบถูกต้องหรือ "แต่งเรื่อง" ขึ้นมา</p>
+    </div>
+
+    <div class="alert alert-warning">
+        <h5>⚠️ คำเตือนสำคัญ</h5>
+        <p class="mb-0"><strong>Hallucination</strong> คือปรากฏการณ์ที่ AI "แต่งข้อมูล" ขึ้นมาอย่างน่าเชื่อถือ — ตอบด้วยความมั่นใจ แต่ข้อมูลผิด อ้างอิงที่ไม่มีจริง หรือสร้างตัวเลขขึ้นมาเอง <strong>โดยเฉพาะงานราชการที่ต้องอ้างอิงข้อกฎหมายหรือตัวเลขจริง ต้องตรวจสอบทุกครั้ง</strong></p>
+    </div>
+
+    <h3>5 วิธีตรวจสอบ Hallucination</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>วิธีตรวจสอบ</th>
+                    <th>วิธีทำ</th>
+                    <th>เหมาะกับ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>ถาม AI ว่ามั่นใจแค่ไหน</strong></td>
+                    <td>ถามว่า "ข้อมูลนี้มั่นใจกี่ % หรือเป็นการคาดเดา?" — ถ้า AI ตอบว่าไม่แน่ใจ ให้ตรวจสอบเพิ่ม</td>
+                    <td>ข้อมูลทั่วไป</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>ขอแหล่งอ้างอิง</strong></td>
+                    <td>ถาม "ข้อมูลนี้มาจากแหล่งไหน ให้ลิงก์อ้างอิง" — แล้วตรวจว่าลิงก์มีจริงหรือไม่</td>
+                    <td>ข้อกฎหมาย ระเบียบ สถิติ</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Cross-check กับ Google</strong></td>
+                    <td>นำตัวเลขหรือข้อมูลสำคัญไปค้นใน Google ว่าตรงกันหรือไม่</td>
+                    <td>ตัวเลขสถิติ ชื่อบุคคล วันที่</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>ถามซ้ำเรื่องเดิม</strong></td>
+                    <td>ถามคำถามเดิมในแชทใหม่ ถ้าคำตอบเปลี่ยน แสดงว่า AI ไม่แน่ใจ</td>
+                    <td>ข้อมูลที่ต้องแม่นยำ</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>ใช้ Web Browsing ตรวจสอบ</strong></td>
+                    <td>เปิด ChatGPT ที่มี Browse ให้ค้นอินเทอร์เน็ตยืนยันข้อมูล</td>
+                    <td>ข้อมูลที่ต้อง up-to-date</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-danger">
+        <h5>🚫 สิ่งที่ AI มักแต่ง (Hallucination บ่อย)</h5>
+        <ul class="mb-0">
+            <li><strong>ลิงก์ URL</strong> — AI สร้าง URL ที่ดูสมจริงแต่ไม่มีอยู่จริง</li>
+            <li><strong>เลขกฎหมาย / ระเบียบ</strong> — อ้าง พ.ร.บ. มาตรา ข้อ ที่ไม่มีจริง</li>
+            <li><strong>ตัวเลขสถิติ</strong> — สร้างตัวเลข % หรือจำนวนที่ฟังดูสมจริง</li>
+            <li><strong>ชื่อบุคคล / ผลงานวิจัย</strong> — อ้างชื่อนักวิจัยหรืองานวิจัยที่ไม่มีจริง</li>
+            <li><strong>วันที่ / เหตุการณ์</strong> — ระบุวันที่หรือเหตุการณ์ที่คลาดเคลื่อน</li>
+        </ul>
+    </div>
+
+    <div class="info-card">
+        <h5>📌 หลักการ "Trust but Verify" — เชื่อแต่ต้องตรวจ</h5>
+        <p>ใช้ ChatGPT เป็น<strong>ตัวช่วยร่าง</strong>ไม่ใช่แหล่งอ้างอิงสุดท้าย:</p>
+        <ul class="mb-0">
+            <li>ข้อมูลทั่วไป → ใช้ได้เลย (80-90% ถูก)</li>
+            <li>ตัวเลข/สถิติ → ต้อง Cross-check เสมอ</li>
+            <li>กฎหมาย/ระเบียบ → ต้องตรวจจากราชกิจจานุเบกษาหรือแหล่งอ้างอิงจริง</li>
+            <li>ลิงก์/อ้างอิง → ต้องคลิกตรวจว่ามีจริง</li>
+        </ul>
+    </div>
+
+    <!-- Exercises -->
+    <div class="exercise-box">
+        <h4>✏️ แบบฝึกหัดบทที่ 6</h4>
+        <ol>
+            <li><strong>เขียนรายงานผลการดำเนินงาน 1 ฉบับ</strong>
+                <p>ใช้ข้อมูลงานจริงของหน่วยงาน (หรือข้อมูลสมมติ) สั่งให้ ChatGPT เขียนรายงานผลประจำเดือน โดยต้องมี:</p>
+                <ul>
+                    <li>ตาราง KPI (เป้า/ผลงาน/%/สถานะ)</li>
+                    <li>ปัญหาและสาเหตุ</li>
+                    <li>แผนดำเนินงานเดือนหน้า</li>
+                </ul>
+            </li>
+            <li><strong>เขียนโครงการ 1 โครงการ</strong>
+                <p>สั่งให้ ChatGPT ร่างโครงการที่เกี่ยวกับงานของท่าน ครบ 8 องค์ประกอบ (ชื่อ หลักการ วัตถุประสงค์ กลุ่มเป้าหมาย ขั้นตอน งบ ตัวชี้วัด ผลที่คาดว่าจะได้รับ)</p>
+            </li>
+            <li><strong>อัปโหลดไฟล์ให้ ChatGPT วิเคราะห์</strong>
+                <p>เลือกไฟล์ 1 ไฟล์ (PDF รายงาน, Excel ข้อมูล, หรือรูปภาพกราฟ) อัปโหลดให้ ChatGPT แล้วสั่ง:</p>
+                <ul>
+                    <li>สรุปเนื้อหาหลัก</li>
+                    <li>วิเคราะห์จุดเด่น/จุดอ่อน</li>
+                    <li>ให้ข้อเสนอแนะ</li>
+                </ul>
+            </li>
+            <li><strong>ทดสอบ Hallucination</strong>
+                <p>ถาม ChatGPT คำถามเกี่ยวกับกฎหมายหรือระเบียบราชการ 3 ข้อ แล้วตรวจสอบคำตอบว่าถูกต้องหรือไม่ โดย:</p>
+                <ul>
+                    <li>ถาม AI ว่ามั่นใจแค่ไหน</li>
+                    <li>ขอแหล่งอ้างอิง</li>
+                    <li>Cross-check กับ Google หรือเอกสารจริง</li>
+                </ul>
+                <p>บันทึกว่าพบ Hallucination กี่ข้อจาก 3 ข้อ</p>
+            </li>
+        </ol>
+    </div>
+
+    <!-- Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter05.html" class="btn btn-chapter-prev">← บทที่ 5: ChatGPT กับงาน Excel & ข้อมูล</a>
+        <a href="chapter07.html" class="btn btn-chapter-next">บทที่ 7: สร้างสื่อนำเสนอ & DALL·E →</a>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="text-white text-center py-4 mt-5" style="background:#10a37f;">
+    <p>คู่มือฝึกอบรม ChatGPT — เพิ่มประสิทธิภาพการทำงานด้วย AI</p>
+    <p class="opacity-75">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 2: เทคนิค Prompt + Gemini Features — คู่มือ Gemini AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark sticky-top" style="background: linear-gradient(135deg, #4285f4, #34a853);">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ Gemini AI</a>
+        <span class="navbar-text text-white-50">บทที่ 2 | วันที่ 1 บ่าย</span>
+    </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">หน้าหลัก</a></li>
+            <li class="breadcrumb-item active">บทที่ 2: เทคนิค Prompt + Gemini Features</li>
+        </ol>
+    </nav>
+</div>
+
+<!-- Chapter Header -->
+<section class="py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="fw-bold text-google-blue">บทที่ 2: เทคนิค Prompt + Gemini Features</h1>
+                <p class="lead text-muted">เรียนรู้การเขียน Prompt ที่ดี และฟีเจอร์เด่นของ Gemini — ค้นเว็บ, รูปภาพ, YouTube, Gems</p>
+            </div>
+            <div class="col-md-4 text-end">
+                <span class="badge-day me-2">วันที่ 1 บ่าย</span>
+                <span class="badge-hours">3 ชั่วโมง</span>
+            </div>
+        </div>
+        <hr>
+    </div>
+</section>
+
+<!-- สารบัญ -->
+<section class="pb-4">
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-google-blue text-white">
+                <h5 class="mb-0"><i class="fas fa-list me-2"></i>เนื้อหาในบทนี้</h5>
+            </div>
+            <div class="card-body">
+                <ul class="toc-list">
+                    <li><a href="#section-2-1">2.1 เทคนิค Prompt สำหรับ Gemini</a></li>
+                    <li><a href="#section-2-2">2.2 Gemini + Google Search — ค้นหาข้อมูลล่าสุด</a></li>
+                    <li><a href="#section-2-3">2.3 Gemini + รูปภาพ/วิดีโอ — วิเคราะห์ + สร้างรูป</a></li>
+                    <li><a href="#section-2-4">2.4 Gemini + YouTube — สรุปวิดีโอ</a></li>
+                    <li><a href="#section-2-5">2.5 Gems — สร้าง Custom AI ส่วนตัว</a></li>
+                    <li><a href="#section-2-6">2.6 เขียนเอกสารราชการ + วิเคราะห์ + แปลภาษา</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 2.1 -->
+<section class="py-4" id="section-2-1">
+    <div class="container">
+        <h2 class="section-header">2.1 เทคนิค Prompt สำหรับ Gemini</h2>
+
+        <p>Prompt (คำสั่ง) คือ "สิ่งที่เราพิมพ์ให้ AI" — ยิ่งเขียน Prompt ดี ยิ่งได้คำตอบที่ตรงใจ</p>
+
+        <h4 class="mt-4 mb-3">หลัก 5 ข้อ สำหรับ Prompt ที่ดี</h4>
+
+        <div class="row g-3">
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <div class="step-number mx-auto mb-2" style="position:relative; left:0;">1</div>
+                        <h6>บอกบทบาท (Role)</h6>
+                        <p class="small text-muted mb-0">"คุณเป็นผู้เชี่ยวชาญด้าน..." ช่วยให้ AI ตอบในมุมมองที่ต้องการ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <div class="step-number mx-auto mb-2" style="position:relative; left:0;">2</div>
+                        <h6>บอกงาน (Task)</h6>
+                        <p class="small text-muted mb-0">"ช่วยร่าง/สรุป/วิเคราะห์/เปรียบเทียบ..." บอกชัดว่าต้องการอะไร</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <div class="step-number mx-auto mb-2" style="position:relative; left:0;">3</div>
+                        <h6>ให้บริบท (Context)</h6>
+                        <p class="small text-muted mb-0">"สำหรับหน่วยงานราชการ..." ข้อมูลเพิ่มเติมให้ AI เข้าใจสถานการณ์</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <div class="step-number mx-auto mb-2" style="position:relative; left:0;">4</div>
+                        <h6>กำหนดรูปแบบ (Format)</h6>
+                        <p class="small text-muted mb-0">"ตอบเป็นตาราง/หัวข้อ/ย่อหน้า/5 ข้อ..." กำหนดรูปร่างคำตอบ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <div class="step-number mx-auto mb-2" style="position:relative; left:0;">5</div>
+                        <h6>กำหนดโทน (Tone)</h6>
+                        <p class="small text-muted mb-0">"ภาษาทางการ/เข้าใจง่าย/สั้นกระชับ..." กำหนดสไตล์ภาษา</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center border-warning">
+                    <div class="card-body">
+                        <i class="fas fa-star fa-2x text-google-yellow mb-2"></i>
+                        <h6>จุดเด่น Gemini</h6>
+                        <p class="small text-muted mb-0">สามารถ "ค้นเว็บ" ได้เลย ข้อมูลอัพเดท + มีแหล่งอ้างอิง!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-5 mb-3">ตัวอย่าง Prompt — งานราชการ</h4>
+
+        <!-- Prompt 1 -->
+        <h6 class="text-google-blue mt-4">ตัวอย่างที่ 1: ร่างหนังสือราชการ</h6>
+        <div class="prompt-example">
+            คุณเป็นผู้เชี่ยวชาญด้านงานสารบรรณราชการไทย<br><br>
+            ช่วยร่างบันทึกข้อความ เรื่อง ขออนุมัติจัดฝึกอบรมหลักสูตร "การใช้ AI สำหรับงานราชการ"<br>
+            - จาก: ฝ่ายแผนงานและสารสนเทศ<br>
+            - ถึง: ผู้อำนวยการสำนักงานพัฒนาฝีมือแรงงานสุรินทร์<br>
+            - ระยะเวลา: 5 วัน (30 ชั่วโมง)<br>
+            - ผู้เข้าอบรม: 100 คน<br>
+            - งบประมาณ: 150,000 บาท<br><br>
+            ใช้รูปแบบหนังสือราชการ ภาษาทางการ
+        </div>
+
+        <!-- Prompt 2 -->
+        <h6 class="text-google-blue mt-4">ตัวอย่างที่ 2: วิเคราะห์ข้อมูลผู้เข้าอบรม</h6>
+        <div class="prompt-example">
+            ช่วยวิเคราะห์ข้อมูลผู้เข้าอบรมต่อไปนี้ แล้วสรุปเป็นตาราง:<br><br>
+            - ชาย 45 คน หญิง 55 คน<br>
+            - อายุ: 20-30 ปี 25%, 31-40 ปี 40%, 41-50 ปี 25%, 51+ ปี 10%<br>
+            - การศึกษา: ป.ตรี 60%, ป.โท 30%, อื่นๆ 10%<br>
+            - หน่วยงาน: ราชการ 70%, เอกชน 20%, อิสระ 10%<br><br>
+            สรุปเป็น:<br>
+            1. ตารางข้อมูลรวม<br>
+            2. จุดเด่นของกลุ่มผู้เข้าอบรม<br>
+            3. ข้อเสนอแนะในการจัดหลักสูตรให้เหมาะสม
+        </div>
+
+        <!-- Prompt 3 -->
+        <h6 class="text-google-blue mt-4">ตัวอย่างที่ 3: สรุประเบียบ</h6>
+        <div class="prompt-example">
+            ค้นหาและสรุประเบียบกระทรวงการคลังว่าด้วยการเบิกค่าใช้จ่ายในการฝึกอบรม ฉบับล่าสุด<br><br>
+            สรุปเป็นหัวข้อสั้นๆ:<br>
+            - อัตราค่าใช้จ่ายที่เบิกได้<br>
+            - ค่าอาหาร/ค่าที่พัก/ค่าวิทยากร<br>
+            - เอกสารที่ต้องใช้ประกอบ<br>
+            - ข้อจำกัดที่ต้องระวัง
+        </div>
+
+        <!-- Prompt 4 -->
+        <h6 class="text-google-blue mt-4">ตัวอย่างที่ 4: เขียนโพสต์ประชาสัมพันธ์</h6>
+        <div class="prompt-example">
+            ช่วยเขียนโพสต์ Facebook ประชาสัมพันธ์การฝึกอบรม:<br><br>
+            - หลักสูตร: "การใช้ Gemini AI สำหรับงานราชการ"<br>
+            - วันที่: 1-5 กรกฎาคม 2569<br>
+            - สถานที่: ห้องประชุม สนพ.สุรินทร์<br>
+            - ฟรี! ไม่มีค่าใช้จ่าย<br>
+            - เป้าหมาย: ข้าราชการ/เจ้าหน้าที่ในจังหวัดสุรินทร์<br><br>
+            เขียนให้น่าสนใจ ใช้ emoji ความยาวพอเหมาะ พร้อม hashtag
+        </div>
+
+        <!-- Prompt 5 -->
+        <h6 class="text-google-blue mt-4">ตัวอย่างที่ 5: แปลภาษาทางการ</h6>
+        <div class="prompt-example">
+            แปลข้อความต่อไปนี้เป็นภาษาอังกฤษ ใช้ภาษาทางการ (Formal English) เหมาะสำหรับจดหมายราชการ:<br><br>
+            "สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ ขอเรียนเชิญท่านเข้าร่วมการฝึกอบรมหลักสูตรการใช้ปัญญาประดิษฐ์สำหรับการปฏิบัติงาน ซึ่งจะจัดขึ้นระหว่างวันที่ 1-5 กรกฎาคม 2569"
+        </div>
+
+        <!-- Do / Don't -->
+        <h4 class="mt-5 mb-3">✅ ทำ / ❌ ไม่ควรทำ — เมื่อเขียน Prompt</h4>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="do-box">
+                    <h6>✅ ควรทำ</h6>
+                    <ul class="small mb-0">
+                        <li>บอกบริบทชัดเจน — ใคร ทำอะไร เพื่อใคร</li>
+                        <li>กำหนดรูปแบบผลลัพธ์ — ตาราง/หัวข้อ/ย่อหน้า</li>
+                        <li>ให้ตัวอย่าง — "เช่น..." ช่วยให้ AI เข้าใจ</li>
+                        <li>ถามต่อเนื่อง — "ปรับให้สั้นลง" / "เพิ่มรายละเอียด"</li>
+                        <li>ใช้ภาษาธรรมดา — ไม่ต้องเขียนเป็นทางการ</li>
+                        <li>บอกจำนวน — "สรุป 5 ข้อ" / "ไม่เกิน 200 คำ"</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="dont-box">
+                    <h6>❌ ไม่ควรทำ</h6>
+                    <ul class="small mb-0">
+                        <li>Prompt สั้นเกินไป — "ร่างหนังสือ" (ร่างอะไร? ให้ใคร?)</li>
+                        <li>ใส่ข้อมูลลับ — รหัสผ่าน, เลขบัตร, ข้อมูลส่วนบุคคล</li>
+                        <li>เชื่อ 100% — ต้อง fact-check ข้อมูลสำคัญเสมอ</li>
+                        <li>Copy-paste ทั้งหมด — ควรตรวจทานก่อนใช้จริง</li>
+                        <li>ถามหลายเรื่องในข้อความเดียว — แยกถามทีละเรื่อง</li>
+                        <li>ใช้แทนผู้เชี่ยวชาญจริง — AI เป็นเครื่องมือช่วย ไม่ใช่ผู้ตัดสินใจ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 2.2 -->
+<section class="py-4 bg-light" id="section-2-2">
+    <div class="container">
+        <h2 class="section-header">2.2 Gemini + Google Search — ค้นหาข้อมูลล่าสุด</h2>
+
+        <p><strong>จุดเด่นสำคัญของ Gemini</strong> คือสามารถค้นเว็บได้โดยตรง ทำให้ตอบคำถามที่ต้องการข้อมูลล่าสุดได้ ต่างจาก AI อื่นๆ ที่ข้อมูลหยุดอยู่ ณ วันที่ฝึก</p>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-search fa-2x text-google-blue mb-2"></i>
+                        <h6>ค้นข้อมูลล่าสุด</h6>
+                        <p class="small text-muted mb-0">ข่าวสาร, ประกาศ, ระเบียบล่าสุดที่เพิ่งออก</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-check-double fa-2x text-google-green mb-2"></i>
+                        <h6>Fact-Check</h6>
+                        <p class="small text-muted mb-0">ตรวจสอบข้อมูล อ้างอิงแหล่งที่มา</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-link fa-2x text-google-yellow mb-2"></i>
+                        <h6>แหล่งอ้างอิง</h6>
+                        <p class="small text-muted mb-0">แสดงลิงก์แหล่งที่มาให้ตรวจสอบต่อ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h5 class="mt-4">ตัวอย่างการใช้ Gemini ค้นเว็บ</h5>
+
+        <div class="prompt-example">
+            ค้นหาข่าวล่าสุดเกี่ยวกับนโยบาย AI ของรัฐบาลไทยในปี 2569 มีความคืบหน้าอะไรบ้าง
+        </div>
+
+        <div class="output-example">
+            <p class="mb-2">จากการค้นหาข้อมูลล่าสุด พบว่า:</p>
+            <ul>
+                <li>กระทรวง DE เปิดตัวแผนยุทธศาสตร์ AI แห่งชาติ ปี 2569-2573...</li>
+                <li>สำนักงาน ก.พ. ออกหลักเกณฑ์การใช้ AI ในงานราชการ...</li>
+                <li>กรมพัฒนาฝีมือแรงงาน จัดอบรม AI ให้ข้าราชการทั่วประเทศ...</li>
+            </ul>
+            <p class="small text-muted mb-0">📎 แหล่งอ้างอิง: [1] www.mdes.go.th/... [2] www.ocsc.go.th/...</p>
+        </div>
+
+        <div class="tip-box mt-3">
+            <strong><i class="fas fa-lightbulb me-2"></i>เคล็ดลับ:</strong> Gemini จะแสดง "Google it" หรือ "Check response" button ให้คลิกเพื่อตรวจสอบว่าข้อมูลในคำตอบถูกต้องหรือไม่ — ใช้ feature นี้เสมอเมื่อต้องการความถูกต้อง!
+        </div>
+
+        <div class="prompt-example mt-4">
+            ค้นหาว่า สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ มีหลักสูตรฝึกอบรมอะไรเปิดรับสมัครอยู่ตอนนี้
+        </div>
+    </div>
+</section>
+
+<!-- Section 2.3 -->
+<section class="py-4" id="section-2-3">
+    <div class="container">
+        <h2 class="section-header">2.3 Gemini + รูปภาพ/วิดีโอ — วิเคราะห์ + สร้างรูป</h2>
+
+        <h4 class="mb-3">วิเคราะห์รูปภาพ</h4>
+        <p>Gemini สามารถ "ดู" รูปภาพและตอบคำถามเกี่ยวกับรูปได้ เพียงอัปโหลดรูปพร้อมพิมพ์คำถาม:</p>
+
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>คลิกไอคอน 📎 (แนบไฟล์) ในช่องพิมพ์</strong><br>
+                เลือก "Upload file" แล้วเลือกรูปภาพจากเครื่อง
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>พิมพ์คำถามหรือคำสั่ง</strong><br>
+                เช่น "อธิบายรูปนี้" / "อ่านข้อความในรูป" / "แปลข้อความในรูปเป็นไทย"
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>กด Enter — รอ Gemini วิเคราะห์</strong><br>
+                Gemini จะอธิบายเนื้อหาในรูป, อ่านข้อความ, หรือตอบคำถามตามที่สั่ง
+            </div>
+        </div>
+
+        <h5 class="mt-4">ตัวอย่างการใช้รูปภาพในงานราชการ</h5>
+
+        <div class="prompt-example">
+            [📎 แนบรูปตาราง Excel ที่ถ่ายจากหน้าจอ]<br><br>
+            อ่านข้อมูลจากตารางนี้ แล้วสรุปเป็นตารางใหม่พร้อมคำนวณรวม
+        </div>
+
+        <div class="prompt-example">
+            [📎 แนบรูปหนังสือราชการ]<br><br>
+            อ่านหนังสือราชการในรูปนี้ แล้วสรุปประเด็นสำคัญเป็นข้อๆ
+        </div>
+
+        <h4 class="mt-5 mb-3">สร้างรูปภาพด้วย Gemini (Imagen)</h4>
+        <p>Gemini สามารถสร้างรูปภาพจากข้อความ (Text-to-Image) โดยใช้ AI ชื่อ <strong>Imagen 3</strong>:</p>
+
+        <div class="prompt-example">
+            สร้างรูปภาพ: โปสเตอร์ฝึกอบรม AI สไตล์โมเดิร์น สีน้ำเงิน-เขียว มีไอคอนคอมพิวเตอร์ และหุ่นยนต์ พื้นหลังสะอาดตา
+        </div>
+
+        <div class="screenshot-placeholder">
+            <i class="fas fa-image d-block"></i>
+            <p class="mb-0">📸 ตัวอย่างรูปที่ Gemini สร้างจาก Prompt ข้างต้น</p>
+        </div>
+
+        <div class="warning-box mt-3">
+            <h6><i class="fas fa-exclamation-triangle me-2"></i>ข้อจำกัดการสร้างรูป</h6>
+            <ul class="small mb-0">
+                <li>ห้ามสร้างรูปบุคคลจริง (ใบหน้าคนจริง)</li>
+                <li>ห้ามสร้างเนื้อหาที่ไม่เหมาะสม รุนแรง หรือผิดกฎหมาย</li>
+                <li>รูปจะมี watermark ของ Google (SynthID)</li>
+                <li>บางครั้งข้อความภาษาไทยในรูปอาจผิดพลาด</li>
+            </ul>
+        </div>
+
+        <h4 class="mt-5 mb-3">วิเคราะห์วิดีโอ</h4>
+        <p>Gemini Advanced สามารถอัปโหลดวิดีโอแล้วถามคำถามเกี่ยวกับเนื้อหาในวิดีโอได้:</p>
+
+        <div class="prompt-example">
+            [📎 แนบวิดีโอบรรยาย 10 นาที]<br><br>
+            สรุปเนื้อหาหลักจากวิดีโอนี้เป็นหัวข้อสำคัญ 5 ข้อ
+        </div>
+    </div>
+</section>
+
+<!-- Section 2.4 -->
+<section class="py-4 bg-light" id="section-2-4">
+    <div class="container">
+        <h2 class="section-header">2.4 Gemini + YouTube — สรุปวิดีโอ</h2>
+
+        <p>Gemini สามารถเข้าถึง YouTube ได้โดยตรงผ่าน <strong>YouTube Extension</strong> ทำให้สรุปวิดีโอหรือถามคำถามจากเนื้อหาในวิดีโอได้:</p>
+
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>พิมพ์ @YouTube ในช่อง Prompt</strong><br>
+                หรือวางลิงก์ YouTube โดยตรง — Gemini จะเข้าถึงเนื้อหาอัตโนมัติ
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>พิมพ์คำสั่ง</strong><br>
+                เช่น "สรุปวิดีโอนี้" / "วิดีโอนี้พูดถึงอะไรบ้าง" / "หา timestamp ที่พูดเรื่อง..."
+            </div>
+        </div>
+
+        <h5 class="mt-4">ตัวอย่าง Prompt กับ YouTube</h5>
+
+        <div class="prompt-example">
+            @YouTube ค้นหาวิดีโอสอนใช้ Gemini AI ภาษาไทย แล้วสรุปเนื้อหา 3 วิดีโอแรกให้หน่อย
+        </div>
+
+        <div class="prompt-example">
+            สรุปวิดีโอนี้เป็นภาษาไทย:<br>
+            https://youtube.com/watch?v=xxxxxx<br><br>
+            สรุปเป็น:<br>
+            1. ประเด็นหลัก<br>
+            2. สิ่งที่เรียนรู้ได้<br>
+            3. แนะนำให้ใครดู
+        </div>
+
+        <div class="tip-box mt-3">
+            <strong><i class="fas fa-lightbulb me-2"></i>ใช้ในงานราชการ:</strong>
+            <ul class="mb-0 mt-1">
+                <li>สรุปวิดีโอประชุม/บรรยายที่ยาว → เอาประเด็นหลัก</li>
+                <li>ค้นหาวิดีโอสอนเรื่องที่ต้องการ → สรุปให้เลือกดู</li>
+                <li>วิเคราะห์เนื้อหาวิดีโอต่างประเทศ → แปลสรุปเป็นไทย</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Section 2.5 -->
+<section class="py-4" id="section-2-5">
+    <div class="container">
+        <h2 class="section-header">2.5 Gems — สร้าง Custom AI ส่วนตัว</h2>
+
+        <p><strong>Gems</strong> คือฟีเจอร์ให้สร้าง "AI ส่วนตัว" ที่มีบุคลิกและความเชี่ยวชาญเฉพาะ คล้ายกับ Projects ของ Claude หรือ GPTs ของ ChatGPT</p>
+
+        <div class="warning-box mb-4">
+            <i class="fas fa-crown me-2"></i> <strong>หมายเหตุ:</strong> Gems ต้องใช้ Gemini Advanced ($20/เดือน) — ผู้ใช้แผน Free ไม่สามารถสร้างได้ แต่สามารถเข้าใจหลักการเพื่อนำไปประยุกต์ใช้
+        </div>
+
+        <h4 class="mb-3">วิธีสร้าง Gem</h4>
+
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>คลิก "Gem manager" ในแถบด้านซ้าย</strong><br>
+                หรือไปที่ gemini.google.com/gems
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>คลิก "New Gem"</strong><br>
+                ตั้งชื่อ Gem เช่น "ผู้ช่วยสารบรรณ" หรือ "นักวิเคราะห์ข้อมูล"
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>เขียน Instructions (คำสั่ง)</strong><br>
+                บอกว่า Gem นี้เป็นใคร ทำอะไร ตอบอย่างไร เช่น:<br>
+                <code>"คุณเป็นผู้เชี่ยวชาญด้านสารบรรณราชการไทย ช่วยร่างหนังสือราชการ ใช้รูปแบบตามระเบียบสำนักนายกรัฐมนตรี ภาษาทางการ"</code>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>บันทึก → ใช้งาน</strong><br>
+                Gem จะปรากฏใน Sidebar ให้เลือกใช้ได้ตลอด ไม่ต้องพิมพ์คำสั่งซ้ำ
+            </div>
+        </div>
+
+        <h5 class="mt-4">ไอเดีย Gems สำหรับงานราชการ</h5>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>ชื่อ Gem</th>
+                        <th>Instructions</th>
+                        <th>ใช้งาน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>📝 ผู้ช่วยสารบรรณ</td>
+                        <td>เชี่ยวชาญร่างหนังสือราชการทุกประเภท ตามระเบียบสำนักนายกฯ</td>
+                        <td>ร่างหนังสือ, คำสั่ง, ประกาศ</td>
+                    </tr>
+                    <tr>
+                        <td>📊 นักวิเคราะห์ข้อมูล</td>
+                        <td>เชี่ยวชาญวิเคราะห์ตัวเลข สรุปสถิติ เสนอแนะจากข้อมูล</td>
+                        <td>วิเคราะห์งบประมาณ, ผลงาน</td>
+                    </tr>
+                    <tr>
+                        <td>🌐 นักแปล</td>
+                        <td>แปลอังกฤษ↔ไทย ภาษาทางการ เหมาะกับเอกสารราชการ</td>
+                        <td>แปลเอกสาร, อีเมล, รายงาน</td>
+                    </tr>
+                    <tr>
+                        <td>📢 นัก PR</td>
+                        <td>เขียนข่าว PR, โพสต์ Facebook, สรุปผลงาน น่าสนใจ กระชับ</td>
+                        <td>ประชาสัมพันธ์กิจกรรม</td>
+                    </tr>
+                    <tr>
+                        <td>📋 ผู้ช่วยวางแผน</td>
+                        <td>เชี่ยวชาญวางแผนโครงการ, Timeline, Gantt Chart, Risk Assessment</td>
+                        <td>เขียนโครงการ, แผนงาน</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Section 2.6 -->
+<section class="py-4 bg-light" id="section-2-6">
+    <div class="container">
+        <h2 class="section-header">2.6 เขียนเอกสารราชการ + วิเคราะห์ข้อมูล + แปลภาษา</h2>
+
+        <p>มาดูตัวอย่างการใช้ Gemini ในงานราชการจริงๆ ที่ใช้ได้ทุกวัน:</p>
+
+        <h4 class="mt-4 mb-3">📝 เขียนเอกสารราชการ</h4>
+
+        <div class="prompt-example">
+            ร่างบันทึกข้อความ (ภายใน) เรื่อง ขอความอนุเคราะห์วิทยากร<br><br>
+            - จาก: ฝ่ายพัฒนาฝีมือแรงงาน<br>
+            - ถึง: ผู้อำนวยการ<br>
+            - เรื่อง: ขอเชิญวิทยากรจากภายนอก (ผู้เชี่ยวชาญ AI) มาบรรยายในหลักสูตร AI<br>
+            - วันที่: 1 ก.ค. 2569<br>
+            - ค่าตอบแทน: ตามระเบียบฯ (ชม.ละ 600 บาท)<br><br>
+            ใช้รูปแบบบันทึกข้อความมาตรฐาน
+        </div>
+
+        <div class="output-example">
+            <p class="mb-1"><strong>บันทึกข้อความ</strong></p>
+            <p class="mb-1"><strong>ส่วนราชการ</strong> ฝ่ายพัฒนาฝีมือแรงงาน สำนักงานพัฒนาฝีมือแรงงานสุรินทร์</p>
+            <p class="mb-1"><strong>ที่</strong> สร ๐๐๐๐/.... <strong>วันที่</strong> .... มิถุนายน ๒๕๖๙</p>
+            <p class="mb-1"><strong>เรื่อง</strong> ขอความอนุเคราะห์เชิญวิทยากรภายนอก</p>
+            <p class="mb-1"><strong>เรียน</strong> ผู้อำนวยการสำนักงานพัฒนาฝีมือแรงงานสุรินทร์</p>
+            <p class="mb-2">ด้วยฝ่ายพัฒนาฝีมือแรงงาน กำหนดจัดฝึกอบรมหลักสูตร "การใช้ปัญญาประดิษฐ์สำหรับงานราชการ" ในวันที่ ๑ กรกฎาคม ๒๕๖๙ ...</p>
+            <p class="small text-muted mb-0">... (เนื้อหาเต็มรูปแบบ)</p>
+        </div>
+
+        <h4 class="mt-5 mb-3">📊 วิเคราะห์ข้อมูล</h4>
+
+        <div class="prompt-example">
+            วิเคราะห์ผลการฝึกอบรมต่อไปนี้:<br><br>
+            หลักสูตร: การใช้คอมพิวเตอร์สำนักงาน<br>
+            ผู้เข้าอบรม: 80 คน<br>
+            คะแนน Pre-test เฉลี่ย: 45/100<br>
+            คะแนน Post-test เฉลี่ย: 78/100<br>
+            ผ่านเกณฑ์ (60%): 72 คน (90%)<br>
+            ความพึงพอใจเฉลี่ย: 4.5/5.0<br><br>
+            สรุป:<br>
+            1. วิเคราะห์ผลสัมฤทธิ์<br>
+            2. เปรียบเทียบ Pre/Post<br>
+            3. ข้อเสนอแนะ<br>
+            4. สรุปเป็นตาราง<br>
+            ใช้ภาษาทางการ เหมาะใส่ในรายงานสรุปผล
+        </div>
+
+        <h4 class="mt-5 mb-3">🌐 แปลภาษา</h4>
+
+        <div class="prompt-example">
+            แปลเอกสารต่อไปนี้เป็นภาษาอังกฤษ ใช้ภาษาทางการ (Formal) เหมาะกับจดหมายราชการระหว่างประเทศ:<br><br>
+            "ด้วยสำนักงานพัฒนาฝีมือแรงงานสุรินทร์ กรมพัฒนาฝีมือแรงงาน กระทรวงแรงงาน ประสงค์จะส่งเจ้าหน้าที่จำนวน 3 ราย เดินทางไปศึกษาดูงานด้านการพัฒนาทักษะแรงงานด้วยปัญญาประดิษฐ์ ณ ประเทศญี่ปุ่น ระหว่างวันที่ 15-20 สิงหาคม 2569"
+        </div>
+
+        <div class="tip-box mt-4">
+            <strong><i class="fas fa-lightbulb me-2"></i>เคล็ดลับ:</strong> สามารถถามต่อเนื่องได้ เช่น "ปรับให้สั้นลง", "เพิ่มรายละเอียดเรื่อง...", "เปลี่ยนเป็นภาษาลำลอง" — Gemini จำบริบทการสนทนาก่อนหน้าได้
+        </div>
+    </div>
+</section>
+
+<!-- แบบฝึกหัด -->
+<section class="py-5">
+    <div class="container">
+        <div class="exercise-box">
+            <h5><i class="fas fa-pencil-alt me-2"></i>แบบฝึกหัดท้ายบทที่ 2</h5>
+            <hr>
+            <ol>
+                <li class="mb-3">
+                    <strong>ฝึกเขียน Prompt:</strong> ร่างบันทึกข้อความ เรื่อง ขออนุมัติเดินทางไปราชการ (กำหนดรายละเอียดเอง)
+                    <br><small class="text-muted">✓ ใช้หลัก 5 ข้อ: Role + Task + Context + Format + Tone</small>
+                </li>
+                <li class="mb-3">
+                    <strong>ค้นเว็บ:</strong> ถาม Gemini ว่า "ค้นหาระเบียบกรมพัฒนาฝีมือแรงงานเรื่องการจัดฝึกอบรม ฉบับล่าสุด"
+                    <br><small class="text-muted">✓ สังเกตว่ามีแหล่งอ้างอิงให้ตรวจสอบหรือไม่</small>
+                </li>
+                <li class="mb-3">
+                    <strong>รูปภาพ:</strong> อัปโหลดรูปถ่ายเอกสาร/ตาราง แล้วให้ Gemini อ่าน + สรุปข้อมูล
+                    <br><small class="text-muted">✓ ลองถ่ายรูปตาราง Excel → ให้ Gemini คำนวณผลรวม</small>
+                </li>
+                <li class="mb-3">
+                    <strong>YouTube:</strong> ค้นหาวิดีโอสอน AI ภาษาไทย แล้วให้ Gemini สรุปเนื้อหา
+                    <br><small class="text-muted">✓ ใช้ @YouTube หรือวางลิงก์โดยตรง</small>
+                </li>
+                <li class="mb-3">
+                    <strong>เขียนโพสต์ PR:</strong> ให้ Gemini เขียนโพสต์ Facebook ประชาสัมพันธ์กิจกรรมของหน่วยงานท่าน
+                    <br><small class="text-muted">✓ ลองปรับ: "สั้นลง", "เพิ่ม emoji", "เป็นทางการมากขึ้น"</small>
+                </li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation -->
+<section class="py-4">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <a href="chapter01.html" class="btn btn-outline-secondary"><i class="fas fa-arrow-left me-2"></i>บทที่ 1</a>
+            <a href="chapter03.html" class="btn btn-primary" style="background: var(--google-blue); border-color: var(--google-blue);">บทที่ 3: Files + Canvas <i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <p class="mb-1">คู่มือฝึกอบรม Gemini AI — ใช้ปัญญาประดิษฐ์ Google ทำงานราชการ</p>
+        <p class="mb-0 text-white-50">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

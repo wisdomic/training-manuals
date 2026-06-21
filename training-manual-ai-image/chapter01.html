@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 1: พื้นฐาน AI สร้างรูปภาพ — AI สร้างรูปภาพ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 AI สร้างรูปภาพ</a>
+        <span class="text-white nav-text">บทที่ 1</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 1</h1>
+            <h2 class="fw-normal text-muted">พื้นฐาน AI สร้างรูปภาพ</h2>
+            <p class="lead">เข้าใจหลักการทำงานของ AI ที่เปลี่ยนข้อความเป็นรูปภาพ</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>อธิบายหลักการทำงานของ AI สร้างภาพ (Text-to-Image) ได้</li>
+                <li>รู้จักเครื่องมือ AI สร้างภาพยอดนิยมและความแตกต่าง</li>
+                <li>เข้าใจข้อดีและข้อจำกัดของแต่ละเครื่องมือ</li>
+                <li>สร้างภาพแรกด้วย AI ได้ด้วยตัวเอง</li>
+            </ul>
+        </div>
+
+        <!-- 1.1 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">1.1 AI สร้างภาพคืออะไร</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🎨 Text-to-Image AI</h5>
+                <p>AI สร้างภาพ คือเทคโนโลยีที่แปลง <strong>"คำสั่งข้อความ" (Prompt)</strong> ให้กลายเป็น <strong>"รูปภาพ"</strong> โดยอัตโนมัติ</p>
+                <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary">
+                    <strong>💬 ตัวอย่าง:</strong> พิมพ์ว่า "แมวสีส้มนั่งอ่านหนังสือในห้องสมุด สไตล์การ์ตูน" → AI สร้างภาพออกมาให้ทันที!
+                </div>
+            </div>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🧠 หลักการทำงานแบบง่าย</h5>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เรียนรู้จากภาพหลายพันล้านภาพ</strong>
+                    <p class="mb-0 mt-1">AI ถูกฝึกด้วยภาพและคำอธิบายภาพจำนวนมหาศาล จนเข้าใจว่า "แมว" หน้าตาเป็นอย่างไร "ห้องสมุด" มีลักษณะอย่างไร</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>เข้าใจคำสั่งของเรา</strong>
+                    <p class="mb-0 mt-1">เมื่อเราพิมพ์ Prompt, AI จะวิเคราะห์ว่าเราต้องการอะไร — วัตถุอะไร, สไตล์ไหน, บรรยากาศแบบไหน</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>สร้างภาพจากศูนย์</strong>
+                    <p class="mb-0 mt-1">AI ไม่ได้ "ค้นหา" ภาพจากอินเทอร์เน็ต แต่ "สร้างภาพใหม่" ที่ไม่เคยมีมาก่อน เหมือนจิตรกรวาดภาพใหม่ทุกครั้ง</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1.2 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">1.2 เครื่องมือ AI สร้างภาพยอดนิยม</h3>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>เครื่องมือ</th>
+                            <th>บริษัท</th>
+                            <th>จุดเด่น</th>
+                            <th>ราคา</th>
+                            <th>ความยาก</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>DALL-E 3</strong></td>
+                            <td>OpenAI</td>
+                            <td>ใช้ง่าย ผ่าน ChatGPT เข้าใจภาษาไทย</td>
+                            <td>ฟรี (จำกัด) / Plus $20/เดือน</td>
+                            <td>⭐ ง่ายมาก</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adobe Firefly</strong></td>
+                            <td>Adobe</td>
+                            <td>แก้ไขภาพเก่ง, Generative Fill</td>
+                            <td>ฟรี (จำกัด) / Premium</td>
+                            <td>⭐⭐ ปานกลาง</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Google Whisk</strong></td>
+                            <td>Google</td>
+                            <td>ผสมภาพ+สไตล์ ได้ผลลัพธ์แปลกใหม่</td>
+                            <td>ฟรี</td>
+                            <td>⭐ ง่ายมาก</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Canva AI</strong></td>
+                            <td>Canva</td>
+                            <td>ออกแบบครบจบ มี Template พร้อมใช้</td>
+                            <td>ฟรี / Pro 399 บ./เดือน</td>
+                            <td>⭐ ง่ายมาก</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gamma</strong></td>
+                            <td>Gamma Tech</td>
+                            <td>สร้างสไลด์+เอกสารสวยจาก AI</td>
+                            <td>ฟรี (จำกัด) / Plus</td>
+                            <td>⭐ ง่ายมาก</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Midjourney</strong></td>
+                            <td>Midjourney Inc.</td>
+                            <td>ภาพสวยมาก สไตล์ศิลปะ</td>
+                            <td>$10/เดือนขึ้นไป</td>
+                            <td>⭐⭐⭐ ยาก</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-success">
+                <h5>💡 แนะนำสำหรับผู้เริ่มต้น</h5>
+                <p class="mb-0">ในหลักสูตรนี้เราจะเน้น <strong>DALL-E 3, Firefly, Whisk, Canva AI, Gamma</strong> เพราะใช้ง่าย ฟรี (หรือราคาถูก) และเหมาะกับงานราชการ/องค์กร</p>
+            </div>
+        </section>
+
+        <!-- 1.3 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">1.3 ข้อดีและข้อจำกัด</h3>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-success">
+                        <div class="card-header bg-success text-white"><strong>✅ ข้อดี</strong></div>
+                        <div class="card-body">
+                            <ul class="mb-0">
+                                <li>ไม่ต้องเป็นนักออกแบบก็สร้างภาพสวยได้</li>
+                                <li>เร็วมาก — ได้ภาพใน 10-30 วินาที</li>
+                                <li>ประหยัดค่าจ้างนักออกแบบ</li>
+                                <li>สร้างภาพได้ไม่จำกัดจำนวน</li>
+                                <li>ปรับแก้ได้ง่าย แค่เปลี่ยน Prompt</li>
+                                <li>ไม่ต้องติดตั้งโปรแกรม (ใช้ผ่านเว็บ)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-danger">
+                        <div class="card-header bg-danger text-white"><strong>⚠️ ข้อจำกัด</strong></div>
+                        <div class="card-body">
+                            <ul class="mb-0">
+                                <li>ตัวอักษรไทยในภาพมักผิดเพี้ยน</li>
+                                <li>นิ้วมือ/ใบหน้าอาจผิดปกติ</li>
+                                <li>ควบคุมรายละเอียดเล็กๆ ได้ยาก</li>
+                                <li>ภาพเดิมซ้ำไม่ได้ 100% (สุ่มทุกครั้ง)</li>
+                                <li>ลิขสิทธิ์ยังเป็นประเด็นถกเถียง</li>
+                                <li>ต้องตรวจสอบก่อนใช้งานจริง</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1.4 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">1.4 เลือกเครื่องมือให้เหมาะกับงาน</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <table class="table table-bordered mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ต้องการทำอะไร</th>
+                            <th>แนะนำใช้</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>สร้างภาพจากจินตนาการ</td><td>DALL-E 3</td></tr>
+                        <tr><td>แก้ไขภาพถ่ายเดิม (ลบพื้นหลัง, เพิ่มของ)</td><td>Adobe Firefly</td></tr>
+                        <tr><td>ผสมสไตล์ภาพแปลกใหม่</td><td>Google Whisk</td></tr>
+                        <tr><td>ออกแบบโปสเตอร์/โบชัวร์พร้อมใช้</td><td>Canva AI</td></tr>
+                        <tr><td>สร้างสไลด์นำเสนอ</td><td>Gamma</td></tr>
+                        <tr><td>ภาพศิลปะระดับสูง</td><td>Midjourney</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Lab -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">🔬 Lab ปฏิบัติ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 1.1 — สร้างภาพแรกด้วย DALL-E 3</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิด ChatGPT</strong>
+                    <p class="mb-0 mt-1">ไปที่ <a href="https://chat.openai.com" target="_blank">chat.openai.com</a> เข้าสู่ระบบ</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>พิมพ์ Prompt สร้างภาพ:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"สร้างภาพโปสเตอร์กิจกรรม AI เพื่อคนพิการ สไตล์โมเดิร์น สีน้ำเงินและขาว มีไอคอนเทคโนโลยี"</code>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ลองเปลี่ยนสไตล์:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <code>"สร้างภาพเดิม แต่เปลี่ยนเป็นสไตล์การ์ตูนน่ารัก สีสดใส"</code>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>บันทึกผลลัพธ์</strong>
+                    <p class="mb-0 mt-1">คลิกขวาที่ภาพ → Save Image As → ตั้งชื่อไฟล์</p>
+                </div>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึกภาพที่สร้างได้ เปรียบเทียบ 2 สไตล์
+                </div>
+            </div>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 1.2 — ทดลอง Adobe Firefly</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิด Adobe Firefly</strong>
+                    <p class="mb-0 mt-1">ไปที่ <a href="https://firefly.adobe.com" target="_blank">firefly.adobe.com</a> สมัครฟรีด้วย Gmail</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>เลือก "Text to Image"</strong>
+                    <p class="mb-0 mt-1">พิมพ์ Prompt ภาษาอังกฤษ: <code>"A group of happy disabled people using AI technology, modern office, bright colors"</code></p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ปรับ Style ด้านขวา</strong>
+                    <p class="mb-0 mt-1">ลองเลือก Style: Photo, Art, Digital Art ดูความแตกต่าง</p>
+                </div>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึกภาพจาก Firefly เปรียบเทียบ 3 สไตล์
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับบทนี้</h5>
+            <ul class="mb-0">
+                <li>DALL-E 3 เข้าใจภาษาไทย — แต่ Firefly ต้องใช้ภาษาอังกฤษ</li>
+                <li>ภาพที่ AI สร้าง เป็นภาพใหม่ทุกครั้ง ไม่ได้ copy จากอินเทอร์เน็ต</li>
+                <li>ถ้าภาพไม่ถูกใจ แค่กด Generate ใหม่ หรือปรับ Prompt</li>
+                <li>เริ่มจาก Prompt สั้นๆ ก่อน แล้วค่อยเพิ่มรายละเอียด</li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปท้ายบท</h5>
+            <ul>
+                <li><strong>AI สร้างภาพ</strong> คือเทคโนโลยี Text-to-Image ที่แปลงข้อความเป็นรูปภาพใหม่</li>
+                <li><strong>เครื่องมือหลัก</strong> ในคู่มือนี้: DALL-E 3, Firefly, Whisk, Canva AI, Gamma</li>
+                <li><strong>ข้อดี:</strong> เร็ว ง่าย ประหยัด ไม่ต้องมีพื้นฐานออกแบบ</li>
+                <li><strong>ข้อจำกัด:</strong> ตัวอักษรไทยผิด นิ้วมือผิดปกติ ต้องตรวจสอบก่อนใช้</li>
+                <li><strong>เลือกเครื่องมือ</strong> ให้เหมาะกับงาน — ไม่มีตัวไหนดีที่สุดสำหรับทุกงาน</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="index.html" class="btn btn-outline-dark">← หน้าหลัก</a>
+            <a href="chapter02.html" class="btn btn-dark">บทที่ 2 →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 7: ใช้ Kiro สร้างระบบจริง (Workshop) — คู่มือ Kiro AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">📖 คู่มือฝึกอบรม Kiro AI</a>
+        <span class="navbar-text text-white">บทที่ 7 | วันที่ 3 (Workshop)</span>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+
+            <div class="chapter-header text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">บทที่ 7</h1>
+                <h2 class="h3 text-secondary">ใช้ Kiro สร้างระบบจริง (Workshop)</h2>
+                <p class="lead text-muted">ระยะเวลา: 3 ชั่วโมง | วันที่ 3 (Workshop)</p>
+                <hr class="w-50 mx-auto">
+            </div>
+
+            <div class="alert alert-info mb-4">
+                <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เขียน Prompt ที่มีประสิทธิภาพให้ Kiro สร้างโค้ดได้</li>
+                    <li>ตั้งค่า Steering เพื่อควบคุมคุณภาพโค้ด</li>
+                    <li>สร้างระบบลงทะเบียนฝึกอบรมครบทั้ง Backend + Frontend ด้วย Kiro</li>
+                    <li>ทดสอบและแก้ Bug ด้วย Kiro ได้</li>
+                </ul>
+            </div>
+
+            <!-- 7.1 เทคนิคเขียน Prompt ที่ดี -->
+            <section class="mb-5" id="section-7-1">
+                <h3 class="border-start border-4 border-primary ps-3">7.1 เทคนิคเขียน Prompt ที่ดี</h3>
+
+                <p>Prompt ที่ดีจะทำให้ Kiro สร้างโค้ดได้ตรงตามต้องการ ประหยัดเวลาแก้ไข:</p>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-success text-white">✅ Do — ควรทำ</div>
+                            <div class="card-body">
+                                <ol>
+                                    <li><strong>ชัดเจน</strong> — บอกว่าต้องการอะไร ทำอะไร</li>
+                                    <li><strong>ระบุเทคโนโลยี</strong> — GAS, Sheets, Bootstrap 5</li>
+                                    <li><strong>ให้ตัวอย่าง</strong> — โครงสร้างข้อมูล, output ที่คาดหวัง</li>
+                                    <li><strong>แบ่งขั้นตอน</strong> — ทำทีละส่วน ไม่สั่งรวดเดียว</li>
+                                    <li><strong>ระบุข้อจำกัด</strong> — ห้ามใช้อะไร, ต้องรองรับอะไร</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-danger h-100">
+                            <div class="card-header bg-danger text-white">❌ Don't — ไม่ควรทำ</div>
+                            <div class="card-body">
+                                <ol>
+                                    <li><strong>คลุมเครือ</strong> — "ทำระบบให้หน่อย"</li>
+                                    <li><strong>ไม่ระบุเทคโนโลยี</strong> — อาจได้ Node.js แทน GAS</li>
+                                    <li><strong>สั่งรวดเดียว</strong> — "ทำทุกอย่างเลย" (ผลลัพธ์จะไม่ดี)</li>
+                                    <li><strong>ไม่ให้บริบท</strong> — ไม่บอกโครงสร้าง Sheet</li>
+                                    <li><strong>คาดหวังสมบูรณ์ครั้งเดียว</strong> — ต้อง iterate</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>📝 สูตร Prompt ที่ดี</h5>
+                <div class="card bg-light mb-3">
+                    <div class="card-body">
+<pre class="mb-0"><code>[บทบาท] + [เทคโนโลยี] + [สิ่งที่ต้องการ] + [รายละเอียด] + [ข้อจำกัด]
+
+ตัวอย่าง:
+"สร้างฟังก์ชัน Google Apps Script ชื่อ getTrainees()
+ที่อ่านข้อมูลจาก Sheet 'TRAINEES' (Sheet ID: xxx)
+return เป็น Array of Objects
+คอลัมน์: trainee_id, prefix, first_name, last_name, phone, email
+ข้อจำกัด: ห้ามใช้ template literal"</code></pre>
+                    </div>
+                </div>
+
+                <h5>ตัวอย่าง Prompt ที่ดี vs ไม่ดี</h5>
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr><th>❌ ไม่ดี</th><th>✅ ดี</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"ทำหน้าฟอร์มให้หน่อย"</td>
+                            <td>"สร้างหน้า HTML ฟอร์มลงทะเบียนด้วย Bootstrap 5 มี field: คำนำหน้า (dropdown), ชื่อ, นามสกุล, เบอร์โทร, เลือกหลักสูตร (dropdown โหลดจาก Backend)"</td>
+                        </tr>
+                        <tr>
+                            <td>"ทำ Backend"</td>
+                            <td>"สร้าง Code.gs สำหรับระบบลงทะเบียน มี doGet() แสดง index.html, ฟังก์ชัน getCourses() อ่านจาก Sheet COURSES, ฟังก์ชัน registerTrainee(data) เขียนลง Sheet TRAINEES"</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 7.2 ตั้งค่า Steering -->
+            <section class="mb-5" id="section-7-2">
+                <h3 class="border-start border-4 border-primary ps-3">7.2 ตั้งค่า Steering สำหรับโปรเจกต์</h3>
+
+                <p>Steering คือไฟล์กฎที่บอก Kiro ว่าโปรเจกต์นี้ใช้เทคโนโลยีอะไร มีข้อจำกัดอะไร เพื่อให้ Kiro สร้างโค้ดได้ถูกต้องทุกครั้ง:</p>
+
+                <h5>ขั้นตอนสร้าง Steering</h5>
+                <ol>
+                    <li>สร้างโฟลเดอร์ <code>.kiro/steering/</code> ในโปรเจกต์</li>
+                    <li>สร้างไฟล์ <code>project-rules.md</code></li>
+                    <li>ใส่กฎตามตัวอย่างด้านล่าง</li>
+                </ol>
+
+                <h5>ตัวอย่าง .kiro/steering/project-rules.md</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block"># Project Rules — ระบบลงทะเบียนฝึกอบรม
+
+## เทคโนโลยี
+- Google Apps Script (GAS)
+- Google Sheets เป็นฐานข้อมูล
+- Bootstrap 5 สำหรับ Frontend
+- Font: Sarabun (Google Fonts)
+
+## โครงสร้าง Sheets
+- COURSES: course_id, course_name, hours, start_date, end_date, max_seats, status
+- TRAINEES: trainee_id, prefix, first_name, last_name, id_card, phone, email, created_at
+- REGISTRATIONS: reg_id, trainee_id, course_id, reg_date, status
+
+## กฎการเขียนโค้ด
+- ห้ามใช้ template literal (backtick) ใน HTML files
+- ใช้ var แทน let/const ใน .gs files
+- ทุกฟังก์ชันต้องมี try-catch
+- return ข้อมูลเป็น JSON format: { success: true/false, data: ..., error: ... }
+- ภาษาไทยในตัวแปร UI, ภาษาอังกฤษในชื่อฟังก์ชัน/ตัวแปร
+
+## ข้อจำกัด GAS
+- ห้ามใช้ SVG (GAS sanitizer ทำลาย)
+- ลิงก์ข้ามหน้าต้องมี target="_top"
+- ขนาดข้อมูลผ่าน google.script.run ไม่เกิน 256KB
+
+## Sheet ID
+- Spreadsheet ID: YOUR_SHEET_ID_HERE
+</code></pre>
+
+                <div class="alert alert-success">
+                    <strong>💡 ประโยชน์ Steering:</strong> เมื่อตั้งค่าแล้ว ทุกครั้งที่สั่ง Kiro สร้างโค้ด มันจะปฏิบัติตามกฎเหล่านี้โดยอัตโนมัติ — ไม่ต้องพิมพ์ซ้ำทุกครั้ง!
+                </div>
+            </section>
+
+            <!-- 7.3 Workshop: ออกแบบระบบ -->
+            <section class="mb-5" id="section-7-3">
+                <h3 class="border-start border-4 border-primary ps-3">7.3 Workshop: ออกแบบระบบลงทะเบียนฝึกอบรม</h3>
+
+                <div class="alert alert-warning">
+                    <strong>🛠️ Workshop เริ่มต้น!</strong> ตั้งแต่ส่วนนี้ ให้ผู้เรียนลงมือทำจริงตามขั้นตอน
+                </div>
+
+                <h5>ขั้นตอนที่ 1: กำหนด Requirements</h5>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h6>ระบบต้องทำอะไรได้บ้าง?</h6>
+                        <ul>
+                            <li>ผู้ใช้ลงทะเบียนเข้าอบรมได้ (เลือกหลักสูตร, กรอกข้อมูล)</li>
+                            <li>แสดงรายชื่อหลักสูตรที่เปิดรับสมัคร</li>
+                            <li>Admin ดูรายชื่อผู้ลงทะเบียน, แก้ไข, ลบ, เปลี่ยนสถานะ</li>
+                            <li>Admin ค้นหาข้อมูลได้</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h5>ขั้นตอนที่ 2: ออกแบบ Sheets (ฐานข้อมูล)</h5>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="card border-primary h-100">
+                            <div class="card-header bg-primary text-white">Sheet: COURSES</div>
+                            <div class="card-body">
+                                <ul class="small mb-0">
+                                    <li>course_id (C001)</li>
+                                    <li>course_name</li>
+                                    <li>hours</li>
+                                    <li>start_date</li>
+                                    <li>end_date</li>
+                                    <li>max_seats</li>
+                                    <li>status (เปิดรับ/ปิดรับ)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-success text-white">Sheet: TRAINEES</div>
+                            <div class="card-body">
+                                <ul class="small mb-0">
+                                    <li>trainee_id (T001)</li>
+                                    <li>prefix</li>
+                                    <li>first_name</li>
+                                    <li>last_name</li>
+                                    <li>id_card</li>
+                                    <li>phone</li>
+                                    <li>email</li>
+                                    <li>organization</li>
+                                    <li>created_at</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card border-info h-100">
+                            <div class="card-header bg-info text-white">Sheet: REGISTRATIONS</div>
+                            <div class="card-body">
+                                <ul class="small mb-0">
+                                    <li>reg_id (R001)</li>
+                                    <li>trainee_id</li>
+                                    <li>course_id</li>
+                                    <li>reg_date</li>
+                                    <li>status (รอยืนยัน/ยืนยัน/ยกเลิก)</li>
+                                    <li>note</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>ขั้นตอนที่ 3: สร้าง Google Sheets</h5>
+                <ol>
+                    <li>ไปที่ <code>sheets.google.com</code> > สร้าง Spreadsheet ใหม่</li>
+                    <li>ตั้งชื่อ "ระบบลงทะเบียนฝึกอบรม"</li>
+                    <li>สร้าง 3 Sheets: COURSES, TRAINEES, REGISTRATIONS</li>
+                    <li>ใส่หัวคอลัมน์แถวแรกตามที่ออกแบบ</li>
+                    <li>จด Sheet ID จาก URL (ส่วนหลัง /d/ ก่อน /edit)</li>
+                </ol>
+            </section>
+
+            <!-- 7.4 Workshop: Code.gs -->
+            <section class="mb-5" id="section-7-4">
+                <h3 class="border-start border-4 border-primary ps-3">7.4 Workshop: ให้ Kiro สร้าง Code.gs (Backend)</h3>
+
+                <h5>📝 Prompt ที่ใช้สั่ง Kiro:</h5>
+                <div class="card bg-light mb-3">
+                    <div class="card-header"><strong>Prompt #1 — สร้าง Backend หลัก</strong></div>
+                    <div class="card-body">
+<pre class="mb-0"><code>สร้างไฟล์ Code.gs สำหรับระบบลงทะเบียนฝึกอบรม ด้วย Google Apps Script
+
+Sheet ID: [ใส่ Sheet ID ของคุณ]
+
+ต้องมีฟังก์ชันดังนี้:
+1. doGet(e) — แสดง index.html (หน้าลงทะเบียน) หรือ admin.html (ถ้า ?page=admin)
+2. include(filename) — สำหรับ include ไฟล์ CSS/JS
+3. getCourses() — อ่านหลักสูตรจาก Sheet COURSES ที่ status = "เปิดรับ"
+   return: [{ course_id, course_name, hours, start_date, end_date }]
+4. registerTrainee(data) — รับข้อมูลผู้สมัคร + หลักสูตร
+   - สร้าง trainee_id ใหม่ (T + running number)
+   - เขียนลง TRAINEES
+   - สร้าง reg_id ใหม่ (R + running number)
+   - เขียนลง REGISTRATIONS (status = "รอยืนยัน")
+   - return: { success: true, reg_id: 'R001' }
+5. getRegistrations() — อ่านการลงทะเบียนทั้งหมด JOIN กับ TRAINEES + COURSES
+6. updateStatus(reg_id, newStatus) — เปลี่ยนสถานะลงทะเบียน
+7. deleteRegistration(reg_id) — ลบการลงทะเบียน
+
+กฎ:
+- ใช้ var (ไม่ใช้ let/const)
+- ทุกฟังก์ชันมี try-catch
+- return JSON format: { success: true/false, data/error }
+- ห้ามใช้ template literal</code></pre>
+                    </div>
+                </div>
+
+                <h5>✅ ผลลัพธ์ที่คาดหวังจาก Kiro:</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// Code.gs — ระบบลงทะเบียนฝึกอบรม
+
+var SHEET_ID = 'YOUR_SHEET_ID';
+
+function doGet(e) {
+  try {
+    var page = (e && e.parameter && e.parameter.page) || 'index';
+    var html = HtmlService.createTemplateFromFile(page);
+    return html.evaluate()
+      .setTitle('ระบบลงทะเบียนฝึกอบรม')
+      .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  } catch (err) {
+    return HtmlService.createHtmlOutput('Error: ' + err.toString());
+  }
+}
+
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+}
+
+function getCourses() {
+  try {
+    var ss = SpreadsheetApp.openById(SHEET_ID);
+    var sheet = ss.getSheetByName('COURSES');
+    var data = sheet.getDataRange().getValues();
+    var headers = data[0];
+    var courses = [];
+    
+    for (var i = 1; i &lt; data.length; i++) {
+      if (String(data[i][6]) === 'เปิดรับ') {  // status column
+        var obj = {};
+        for (var j = 0; j &lt; headers.length; j++) {
+          obj[headers[j]] = data[i][j];
+        }
+        courses.push(obj);
+      }
+    }
+    return { success: true, data: courses };
+  } catch (err) {
+    return { success: false, error: err.toString() };
+  }
+}
+
+function registerTrainee(formData) {
+  try {
+    var ss = SpreadsheetApp.openById(SHEET_ID);
+    
+    // สร้าง trainee_id
+    var tSheet = ss.getSheetByName('TRAINEES');
+    var tData = tSheet.getDataRange().getValues();
+    var traineeId = 'T' + String(tData.length).padStart(3, '0');
+    
+    // เขียนลง TRAINEES
+    tSheet.appendRow([
+      traineeId, formData.prefix, formData.first_name,
+      formData.last_name, formData.id_card, formData.phone,
+      formData.email, formData.organization, new Date()
+    ]);
+    
+    // สร้าง reg_id + เขียนลง REGISTRATIONS
+    var rSheet = ss.getSheetByName('REGISTRATIONS');
+    var rData = rSheet.getDataRange().getValues();
+    var regId = 'R' + String(rData.length).padStart(3, '0');
+    
+    rSheet.appendRow([
+      regId, traineeId, formData.course_id,
+      new Date(), 'รอยืนยัน', ''
+    ]);
+    
+    return { success: true, data: { reg_id: regId, trainee_id: traineeId } };
+  } catch (err) {
+    return { success: false, error: err.toString() };
+  }
+}
+</code></pre>
+            </section>
+
+            <!-- 7.5 Workshop: index.html -->
+            <section class="mb-5" id="section-7-5">
+                <h3 class="border-start border-4 border-primary ps-3">7.5 Workshop: ให้ Kiro สร้าง index.html (Frontend)</h3>
+
+                <h5>📝 Prompt ที่ใช้สั่ง Kiro:</h5>
+                <div class="card bg-light mb-3">
+                    <div class="card-header"><strong>Prompt #2 — สร้างหน้าลงทะเบียน</strong></div>
+                    <div class="card-body">
+<pre class="mb-0"><code>สร้างไฟล์ index.html สำหรับระบบลงทะเบียนฝึกอบรม
+
+ใช้ Bootstrap 5 CDN + Google Fonts Sarabun
+มี 2 ส่วนหลัก:
+
+1. ฟอร์มลงทะเบียน:
+   - คำนำหน้า (dropdown: นาย, นาง, นางสาว)
+   - ชื่อ (required)
+   - นามสกุล (required)
+   - เลขบัตรประชาชน 13 หลัก (required, validate)
+   - เบอร์โทร (required)
+   - Email
+   - หน่วยงาน
+   - เลือกหลักสูตร (dropdown โหลดจาก getCourses())
+   - ปุ่มลงทะเบียน
+
+2. ตารางแสดงผู้ลงทะเบียนล่าสุด 10 คน:
+   - คอลัมน์: #, ชื่อ-สกุล, หลักสูตร, วันที่, สถานะ
+   - Badge สี: รอยืนยัน=warning, ยืนยัน=success, ยกเลิก=danger
+
+ใช้ google.script.run เชื่อมกับ Backend
+มี Loading spinner ตอนโหลดข้อมูล
+ห้ามใช้ template literal
+Navbar: สีน้ำเงิน ชื่อ "🏛️ ระบบลงทะเบียนฝึกอบรม | สนพ.สุรินทร์"</code></pre>
+                    </div>
+                </div>
+
+                <h5>✅ โครงสร้างผลลัพธ์ที่คาดหวัง:</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">&lt;!DOCTYPE html&gt;
+&lt;html lang="th"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;ระบบลงทะเบียนฝึกอบรม&lt;/title&gt;
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&amp;display=swap" rel="stylesheet"&gt;
+    &lt;style&gt;
+        body { font-family: 'Sarabun', sans-serif; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;nav class="navbar navbar-dark bg-primary sticky-top"&gt;
+    &lt;div class="container"&gt;
+        &lt;span class="navbar-brand"&gt;🏛️ ระบบลงทะเบียนฝึกอบรม | สนพ.สุรินทร์&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class="container my-4"&gt;
+  &lt;div class="row"&gt;
+    &lt;!-- ฟอร์มลงทะเบียน --&gt;
+    &lt;div class="col-lg-5 mb-4"&gt;
+      &lt;div class="card"&gt;
+        &lt;div class="card-header bg-primary text-white"&gt;📝 ลงทะเบียนฝึกอบรม&lt;/div&gt;
+        &lt;div class="card-body"&gt;
+          &lt;form id="regForm"&gt;
+            &lt;!-- fields ตาม prompt --&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- ตารางผู้ลงทะเบียน --&gt;
+    &lt;div class="col-lg-7"&gt;
+      &lt;div class="card"&gt;
+        &lt;div class="card-header bg-success text-white"&gt;📋 ผู้ลงทะเบียนล่าสุด&lt;/div&gt;
+        &lt;div class="card-body"&gt;
+          &lt;div id="loading" class="text-center"&gt;
+            &lt;div class="spinner-border text-primary"&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;table class="table table-bordered table-hover" id="regTable"&gt;
+            &lt;!-- ข้อมูลจาก Backend --&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+  loadCourses();
+  loadRegistrations();
+});
+
+function loadCourses() {
+  google.script.run
+    .withSuccessHandler(function(result) {
+      if (result.success) {
+        var html = '&lt;option value=""&gt;-- เลือกหลักสูตร --&lt;/option&gt;';
+        result.data.forEach(function(c) {
+          html += '&lt;option value="' + c.course_id + '"&gt;' + c.course_name + '&lt;/option&gt;';
+        });
+        document.getElementById('course').innerHTML = html;
+      }
+    })
+    .getCourses();
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </section>
+
+            <!-- 7.6 Workshop: admin.html -->
+            <section class="mb-5" id="section-7-6">
+                <h3 class="border-start border-4 border-primary ps-3">7.6 Workshop: ให้ Kiro สร้าง admin.html (Admin Panel)</h3>
+
+                <h5>📝 Prompt ที่ใช้สั่ง Kiro:</h5>
+                <div class="card bg-light mb-3">
+                    <div class="card-header"><strong>Prompt #3 — สร้างหน้า Admin</strong></div>
+                    <div class="card-body">
+<pre class="mb-0"><code>สร้างไฟล์ admin.html สำหรับจัดการระบบลงทะเบียน
+
+ใช้ Bootstrap 5 + Sarabun font
+เปิดด้วย URL: ?page=admin
+
+ฟีเจอร์:
+1. ตารางแสดงการลงทะเบียนทั้งหมด
+   คอลัมน์: reg_id, ชื่อ-สกุล, หลักสูตร, วันที่, สถานะ, จัดการ
+   
+2. ปุ่มจัดการในแต่ละแถว:
+   - เปลี่ยนสถานะ (dropdown: รอยืนยัน/ยืนยัน/ยกเลิก)
+   - ลบ (มี confirm ก่อน)
+
+3. ช่องค้นหา (search) — กรองข้อมูลในตาราง
+
+4. แสดงสถิติด้านบน:
+   - จำนวนทั้งหมด
+   - รอยืนยัน (สีเหลือง)
+   - ยืนยัน (สีเขียว)
+   - ยกเลิก (สีแดง)
+
+5. ปุ่ม Export Excel (bonus)
+
+ใช้ google.script.run เชื่อมกับ getRegistrations(), updateStatus(), deleteRegistration()
+ห้ามใช้ template literal
+มี Loading state</code></pre>
+                    </div>
+                </div>
+
+                <h5>✅ ฟีเจอร์ที่ Kiro จะสร้างให้:</h5>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6>📊 Dashboard Stats</h6>
+<pre><code class="bg-light p-2 rounded d-block small">&lt;div class="row mb-4"&gt;
+  &lt;div class="col-md-3"&gt;
+    &lt;div class="card bg-primary text-white"&gt;
+      &lt;div class="card-body text-center"&gt;
+        &lt;h3 id="totalCount"&gt;0&lt;/h3&gt;
+        &lt;p&gt;ทั้งหมด&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- ... อีก 3 cards --&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6>🔍 Search + Table</h6>
+<pre><code class="bg-light p-2 rounded d-block small">&lt;input type="text" class="form-control mb-3" 
+  id="searchBox" placeholder="🔍 ค้นหา..."&gt;
+
+&lt;table class="table table-bordered"&gt;
+  &lt;thead class="table-dark"&gt;
+    &lt;tr&gt;
+      &lt;th&gt;#&lt;/th&gt;&lt;th&gt;ชื่อ&lt;/th&gt;&lt;th&gt;หลักสูตร&lt;/th&gt;
+      &lt;th&gt;สถานะ&lt;/th&gt;&lt;th&gt;จัดการ&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody id="tableBody"&gt;&lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>💡 CRUD Pattern ใน GAS</h5>
+<pre><code class="bg-dark text-light p-3 rounded d-block">// ฟังก์ชันเปลี่ยนสถานะ (Frontend)
+function changeStatus(regId, newStatus) {
+  if (!confirm('ต้องการเปลี่ยนสถานะเป็น "' + newStatus + '"?')) return;
+  
+  showLoading(true);
+  google.script.run
+    .withSuccessHandler(function(result) {
+      showLoading(false);
+      if (result.success) {
+        showAlert('success', 'เปลี่ยนสถานะสำเร็จ');
+        loadData(); // โหลดข้อมูลใหม่
+      } else {
+        showAlert('danger', 'เกิดข้อผิดพลาด: ' + result.error);
+      }
+    })
+    .withFailureHandler(function(err) {
+      showLoading(false);
+      showAlert('danger', err.message);
+    })
+    .updateStatus(regId, newStatus);
+}
+
+// ฟังก์ชันลบ (Frontend)
+function deleteReg(regId) {
+  if (!confirm('⚠️ ยืนยันลบ ' + regId + '?')) return;
+  
+  google.script.run
+    .withSuccessHandler(function(result) {
+      if (result.success) {
+        showAlert('success', 'ลบสำเร็จ');
+        loadData();
+      }
+    })
+    .deleteRegistration(regId);
+}
+</code></pre>
+            </section>
+
+            <!-- 7.7 ทดสอบ + แก้ Bug -->
+            <section class="mb-5" id="section-7-7">
+                <h3 class="border-start border-4 border-primary ps-3">7.7 ทดสอบ + แก้ Bug ด้วย Kiro</h3>
+
+                <h5>วิธี Debug ใน GAS</h5>
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr><th>วิธี</th><th>ใช้เมื่อไร</th><th>วิธีทำ</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Logger.log()</code></td>
+                            <td>ดูค่าตัวแปรใน Backend</td>
+                            <td>View > Logs ใน Script Editor</td>
+                        </tr>
+                        <tr>
+                            <td><code>console.log()</code></td>
+                            <td>ดูค่าตัวแปรใน Frontend</td>
+                            <td>F12 > Console ในเบราว์เซอร์</td>
+                        </tr>
+                        <tr>
+                            <td><code>try-catch</code></td>
+                            <td>จับ error ไม่ให้ระบบล่ม</td>
+                            <td>ใส่ครอบทุกฟังก์ชัน</td>
+                        </tr>
+                        <tr>
+                            <td><code>alert()</code></td>
+                            <td>แสดงค่าแบบ popup (ชั่วคราว)</td>
+                            <td>ใส่ตรงจุดที่สงสัย</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5>📝 ตัวอย่าง Prompt แก้ Bug</h5>
+
+                <div class="card bg-light mb-3">
+                    <div class="card-header"><strong>Bug: Dropdown หลักสูตรไม่แสดงข้อมูล</strong></div>
+                    <div class="card-body">
+<pre class="mb-0"><code>ช่วยแก้ bug:
+- ปัญหา: dropdown เลือกหลักสูตร ไม่แสดงรายการ (ว่างเปล่า)
+- สิ่งที่ตรวจแล้ว: 
+  - Sheet COURSES มีข้อมูล 3 หลักสูตร status = "เปิดรับ"
+  - Console ไม่มี error
+  - getCourses() เมื่อ run ใน Script Editor ได้ข้อมูลถูกต้อง
+- คาดว่า: อาจเป็นปัญหา column index ใน getCourses() หรือ element id ไม่ตรงกัน
+
+กรุณาตรวจสอบ:
+1. getCourses() - column index ของ status ถูกต้องไหม
+2. index.html - id ของ select element ตรงกับ JS ไหม
+3. loadCourses() - withSuccessHandler ทำงานถูกไหม</code></pre>
+                    </div>
+                </div>
+
+                <div class="card bg-light mb-3">
+                    <div class="card-header"><strong>Bug: ลงทะเบียนแล้วข้อมูลไม่เข้า Sheet</strong></div>
+                    <div class="card-body">
+<pre class="mb-0"><code>ช่วยแก้ bug:
+- ปัญหา: กดปุ่มลงทะเบียนแล้วแสดง "สำเร็จ" แต่ข้อมูลไม่เข้า Sheet TRAINEES
+- สิ่งที่ตรวจแล้ว:
+  - Sheet TRAINEES มี header ครบ
+  - ไม่มี error ใน Console
+  - registerTrainee() ใน Code.gs ดูถูกต้อง
+- คาดว่า: อาจส่ง data ไม่ครบ หรือ field name ไม่ตรง
+
+กรุณา:
+1. ตรวจว่า form ส่ง field name ตรงกับที่ Backend รับ
+2. เพิ่ม Logger.log(JSON.stringify(formData)) ใน registerTrainee() เพื่อดูข้อมูลที่ได้รับ
+3. ตรวจ permission ของ Sheet (ต้อง Editor)</code></pre>
+                    </div>
+                </div>
+
+                <h5>🔄 ขั้นตอนแก้ Bug ด้วย Kiro</h5>
+                <div class="card border-primary">
+                    <div class="card-body">
+                        <ol>
+                            <li><strong>อธิบายอาการ</strong> — เกิดอะไร, คาดหวังอะไร</li>
+                            <li><strong>บอกสิ่งที่ตรวจแล้ว</strong> — ลดเวลาที่ Kiro ต้องค้นหา</li>
+                            <li><strong>แนบ error message</strong> — copy จาก Console/Logs</li>
+                            <li><strong>ระบุไฟล์/บรรทัด</strong> — ถ้ารู้ว่าปัญหาอยู่ตรงไหน</li>
+                            <li><strong>ให้ Kiro แก้ทีละจุด</strong> — อย่าแก้หลายอย่างพร้อมกัน</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="alert alert-success mt-3">
+                    <strong>🎉 จบ Workshop!</strong> ตอนนี้คุณมีระบบลงทะเบียนฝึกอบรมที่ทำงานได้จริง สร้างด้วย Kiro AI — จากศูนย์สู่ระบบที่ใช้งานได้ภายใน 3 ชั่วโมง!
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+                <a href="chapter06.html" class="btn btn-outline-primary btn-lg">← บทที่ 6</a>
+                <a href="chapter08.html" class="btn btn-primary btn-lg">บทที่ 8 →</a>
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p class="mb-1">คู่มือฝึกอบรม "Kiro AI สร้างระบบราชการด้วยปัญญาประดิษฐ์"</p>
+    <p class="mb-0 text-muted small">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

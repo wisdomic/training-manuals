@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 5: กำหนดการและตารางเวลา — AI สำหรับงานราชการ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">📖 AI สำหรับงานราชการ</a>
+            <span class="navbar-text text-light nav-text">บทที่ 5</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header text-center mb-4">
+                <h1>🗓️ บทที่ 5</h1>
+                <h2 class="text-muted">กำหนดการและตารางเวลา</h2>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info" role="alert">
+                <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>สร้างกำหนดการประชุม/สัมมนา/ฝึกอบรมที่มีรายละเอียดครบถ้วน</li>
+                    <li>ใช้ AI สร้างตารางปฏิบัติงานรายสัปดาห์/รายเดือน</li>
+                    <li>ร่างกำหนดการต้อนรับผู้บริหาร/แขกสำคัญได้</li>
+                    <li>ให้ AI สร้าง Gantt Chart อย่างง่ายในรูปแบบ HTML</li>
+                    <li>มี Prompt สำเร็จรูปสำหรับกำหนดการ 5 ประเภท</li>
+                </ul>
+            </div>
+
+            <!-- 5.1 กำหนดการประชุม/สัมมนา/ฝึกอบรม -->
+            <section>
+                <h3 class="section-header">5.1 กำหนดการประชุม/สัมมนา/ฝึกอบรม</h3>
+                <p>กำหนดการ (Agenda/Schedule) เป็นเอกสารที่ใช้แจ้งลำดับกิจกรรมตามเวลา ช่วยให้ผู้เข้าร่วมเตรียมตัวได้ มีโครงสร้างดังนี้:</p>
+
+                <div class="info-card">
+                    <h6 class="fw-bold">📋 โครงสร้างกำหนดการ</h6>
+                    <ul class="mb-0">
+                        <li><strong>หัวกระดาษ:</strong> ชื่อกิจกรรม + วันที่ + สถานที่</li>
+                        <li><strong>รายการ:</strong> เวลา | กิจกรรม | วิทยากร/ผู้รับผิดชอบ</li>
+                        <li><strong>หมายเหตุ:</strong> ข้อมูลเพิ่มเติม (การแต่งกาย, สิ่งที่ต้องเตรียม)</li>
+                    </ul>
+                </div>
+
+                <!-- Prompt 1 วัน -->
+                <h5 class="mt-4 mb-3">Prompt Template: กำหนดการ 1 วัน</h5>
+                <div class="prompt-example">
+                    <strong>Prompt:</strong><br>
+                    สร้างกำหนดการประชุม/สัมมนา 1 วัน ดังนี้:<br><br>
+                    - ชื่อกิจกรรม: [ชื่อ]<br>
+                    - วันที่: [วัน เดือน ปี]<br>
+                    - เวลา: [เริ่ม] - [สิ้นสุด] น.<br>
+                    - สถานที่: [ห้อง/สถานที่]<br>
+                    - วาระ/หัวข้อ: [รายการหัวข้อ]<br>
+                    - วิทยากร: [ชื่อวิทยากร + หัวข้อ]<br>
+                    - พักเบรก: เช้า + บ่าย, พักกลางวัน 12.00-13.00 น.<br><br>
+                    แสดงเป็นตาราง มีคอลัมน์: เวลา, กิจกรรม, วิทยากร/ผู้รับผิดชอบ
+                </div>
+
+                <!-- Prompt 3 วัน -->
+                <h5 class="mt-4 mb-3">Prompt Template: กำหนดการ 3 วัน</h5>
+                <div class="prompt-example">
+                    <strong>Prompt:</strong><br>
+                    สร้างกำหนดการอบรม 3 วัน ดังนี้:<br><br>
+                    - ชื่อหลักสูตร: [ชื่อ]<br>
+                    - วันที่: [วันเริ่ม - วันสิ้นสุด]<br>
+                    - สถานที่: [สถานที่]<br>
+                    - กลุ่มเป้าหมาย: [ใคร จำนวน]<br>
+                    - เนื้อหาวันที่ 1: [หัวข้อ]<br>
+                    - เนื้อหาวันที่ 2: [หัวข้อ]<br>
+                    - เนื้อหาวันที่ 3: [หัวข้อ]<br>
+                    - เวลา: 08.30-16.30 น. ทุกวัน<br>
+                    - พัก: เช้า 10.30, กลางวัน 12.00-13.00, บ่าย 14.30<br><br>
+                    แสดงเป็นตาราง แยกวัน มีคอลัมน์: เวลา, กิจกรรม, วิทยากร
+                </div>
+
+                <!-- Prompt 5 วัน -->
+                <h5 class="mt-4 mb-3">Prompt Template: กำหนดการ 5 วัน</h5>
+                <div class="prompt-example">
+                    <strong>Prompt:</strong><br>
+                    สร้างกำหนดการอบรม 5 วัน ดังนี้:<br><br>
+                    - ชื่อหลักสูตร: [ชื่อ]<br>
+                    - วันที่: [วันเริ่ม - วันสิ้นสุด]<br>
+                    - สถานที่: [สถานที่]<br>
+                    - กลุ่มเป้าหมาย: [ใคร จำนวน]<br>
+                    - วันที่ 1: [หัวข้อ/ธีม]<br>
+                    - วันที่ 2: [หัวข้อ/ธีม]<br>
+                    - วันที่ 3: [หัวข้อ/ธีม]<br>
+                    - วันที่ 4: [หัวข้อ/ธีม]<br>
+                    - วันที่ 5: [หัวข้อ/ธีม + สรุป + มอบวุฒิบัตร]<br>
+                    - เวลา: 08.30-16.30 น. ทุกวัน<br>
+                    - รูปแบบ: 30% บรรยาย + 70% ปฏิบัติ<br><br>
+                    แสดงเป็นตาราง แยกวัน มีคอลัมน์: เวลา, กิจกรรม, วิทยากร/หมายเหตุ
+                </div>
+            </section>
+
+            <!-- 5.2 ตารางปฏิบัติงาน -->
+            <section>
+                <h3 class="section-header">5.2 ตารางการปฏิบัติงานรายสัปดาห์/รายเดือน</h3>
+                <p>ตารางปฏิบัติงานช่วยวางแผนการทำงานล่วงหน้า ใช้ AI สร้างได้ง่ายมาก:</p>
+
+                <div class="prompt-example">
+                    <strong>Prompt ตารางรายสัปดาห์:</strong><br>
+                    สร้างตารางปฏิบัติงานรายสัปดาห์ สัปดาห์ที่ [สัปดาห์] เดือน [เดือน ปี] ของ [ตำแหน่ง/ฝ่าย]:<br><br>
+                    - งานประจำ: [รายการงานประจำ]<br>
+                    - งานเร่งด่วน: [รายการ]<br>
+                    - ประชุม: [วัน/เวลา/เรื่อง]<br>
+                    - กำหนดส่งงาน: [รายการ + วันที่]<br><br>
+                    แสดงเป็นตาราง แยกวัน จันทร์-ศุกร์ มีช่วงเช้า/บ่าย
+                </div>
+
+                <div class="prompt-example mt-3">
+                    <strong>Prompt ตารางรายเดือน:</strong><br>
+                    สร้างตารางปฏิบัติงานรายเดือน เดือน [เดือน ปี] ของ [หน่วยงาน/ฝ่าย]:<br><br>
+                    - โครงการ/กิจกรรมที่ต้องทำ: [รายการ]<br>
+                    - กำหนดส่งรายงาน: [รายการ + วันที่]<br>
+                    - ประชุมประจำ: [วัน/เวลา]<br>
+                    - วันหยุด/วันสำคัญ: [รายการ]<br><br>
+                    แสดงเป็นตาราง สัปดาห์ที่ 1-4 มีรายการกิจกรรมแต่ละสัปดาห์
+                </div>
+
+                <h5 class="mt-4 mb-3">ตัวอย่าง</h5>
+                <div class="info-card">
+                    <p class="small mb-0"><strong>ตัวอย่าง Prompt จริง:</strong> "สร้างตารางปฏิบัติงานรายสัปดาห์ สัปดาห์ที่ 3 เดือนกรกฎาคม 2569 ของฝ่ายแผนงานและสารสนเทศ สนพ.สุรินทร์ มีงาน: เตรียมจัดอบรม AI, ประชุมทีมวันจันทร์ 09.00, ส่งรายงานประจำเดือนวันศุกร์, เตรียมเอกสารเดินทางไปเขาใหญ่"</p>
+                </div>
+            </section>
+
+            <!-- 5.3 กำหนดการต้อนรับผู้บริหาร -->
+            <section>
+                <h3 class="section-header">5.3 กำหนดการต้อนรับผู้บริหาร/แขกสำคัญ</h3>
+                <p>กำหนดการต้อนรับเป็นเอกสารที่ต้องละเอียดเป็นพิเศษ เพราะเกี่ยวข้องกับพิธีการและการเตรียมการหลายฝ่าย:</p>
+
+                <div class="prompt-example">
+                    <strong>Prompt:</strong><br>
+                    สร้างกำหนดการต้อนรับ [ตำแหน่ง + ชื่อ] ที่เดินทางมา [วัตถุประสงค์] ดังนี้:<br><br>
+                    - ผู้มาเยือน: [ตำแหน่ง ชื่อ + คณะ จำนวนคน]<br>
+                    - วันที่: [วัน เดือน ปี]<br>
+                    - เวลาเดินทางถึง: [เวลา]<br>
+                    - สถานที่: [หน่วยงาน/สถานที่]<br>
+                    - กิจกรรม: [ตรวจเยี่ยม/ประชุม/มอบนโยบาย/เยี่ยมชม]<br>
+                    - พิธีการ: [ต้อนรับ/บรรยายสรุป/ชมนิทรรศการ/ถ่ายรูป]<br>
+                    - เวลาเดินทางกลับ: [เวลา]<br>
+                    - ผู้ประสาน: [ชื่อ + โทร]<br><br>
+                    แสดงเป็นตาราง ละเอียดทุก 15-30 นาที มีคอลัมน์: เวลา, กิจกรรม, สถานที่, ผู้รับผิดชอบ
+                </div>
+
+                <h5 class="mt-4 mb-3">ตัวอย่าง</h5>
+                <div class="info-card">
+                    <p class="small mb-0"><strong>ตัวอย่าง Prompt จริง:</strong> "สร้างกำหนดการต้อนรับอธิบดีกรมพัฒนาฝีมือแรงงาน ที่เดินทางมาตรวจเยี่ยมและมอบนโยบายที่ สนพ.สุรินทร์ วันพุธที่ 15 ก.ค. 2569 เดินทางถึง 09.00 น. กิจกรรม: ต้อนรับ, บรรยายสรุป, ชมการฝึก, มอบวุฒิบัตร, ถ่ายรูป, รับประทานอาหารกลางวัน, เดินทางกลับ 14.00 น."</p>
+                </div>
+            </section>
+
+            <!-- 5.4 Gantt Chart -->
+            <section>
+                <h3 class="section-header">5.4 การสร้าง Gantt Chart อย่างง่าย</h3>
+                <p>Gantt Chart ช่วยแสดงภาพรวมของกิจกรรมตามเวลา ทำให้เห็นว่างานไหนทำพร้อมกัน งานไหนต้องทำก่อน-หลัง AI สามารถสร้างเป็นตาราง HTML ได้:</p>
+
+                <div class="prompt-example">
+                    <strong>Prompt สร้าง Gantt Chart:</strong><br>
+                    ช่วยสร้างตาราง Gantt Chart แสดงแผนดำเนินงาน [ชื่อโครงการ] เป็นรูปแบบตาราง HTML ดังนี้:<br><br>
+                    - ระยะเวลา: [เดือนเริ่มต้น] ถึง [เดือนสิ้นสุด]<br>
+                    - กิจกรรม:<br>
+                    &nbsp;&nbsp;1. [กิจกรรม 1] — เดือน [เดือน]<br>
+                    &nbsp;&nbsp;2. [กิจกรรม 2] — เดือน [เดือน]<br>
+                    &nbsp;&nbsp;3. [กิจกรรม 3] — เดือน [เดือน]<br>
+                    &nbsp;&nbsp;...<br><br>
+                    แสดงเป็นตาราง คอลัมน์ = เดือน, แถว = กิจกรรม, ใช้สีแสดงช่วงเวลาที่ดำเนินการ
+                </div>
+
+                <div class="alert alert-info mt-3">
+                    <strong>💡 เคล็ดลับ:</strong> สั่ง AI ว่า "สร้างเป็น HTML table ที่มีสีพื้นหลังแสดงช่วงเวลา" จะได้ตารางสวยงามพร้อม copy ไปวางในเอกสาร Word หรือ PowerPoint
+                </div>
+
+                <h5 class="mt-4 mb-3">ตัวอย่าง Gantt Chart อย่างง่าย</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm text-center">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>กิจกรรม</th>
+                                <th>เม.ย.</th>
+                                <th>พ.ค.</th>
+                                <th>มิ.ย.</th>
+                                <th>ก.ค.</th>
+                                <th>ส.ค.</th>
+                                <th>ก.ย.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-start">1. วางแผน/เสนอโครงการ</td>
+                                <td style="background:#198754;color:white;">●</td>
+                                <td style="background:#198754;color:white;">●</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="text-start">2. เตรียมหลักสูตร/สถานที่</td>
+                                <td></td>
+                                <td style="background:#0d6efd;color:white;">●</td>
+                                <td style="background:#0d6efd;color:white;">●</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="text-start">3. ประสานกลุ่มเป้าหมาย</td>
+                                <td></td>
+                                <td></td>
+                                <td style="background:#ffc107;">●</td>
+                                <td style="background:#ffc107;">●</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="text-start">4. ดำเนินการอบรม</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td style="background:#dc3545;color:white;">●</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="text-start">5. สรุปผล/รายงาน</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td style="background:#6f42c1;color:white;">●</td>
+                                <td style="background:#6f42c1;color:white;">●</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 5.5 Prompt สำเร็จรูป 5 ประเภท -->
+            <section>
+                <h3 class="section-header">5.5 Prompt สำเร็จรูปกำหนดการ 5 ประเภท</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>ประเภทกำหนดการ</th>
+                                <th>Prompt สำเร็จรูป</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>กำหนดการประชุม</td>
+                                <td><code>สร้างกำหนดการประชุม [เรื่อง] วันที่ [วัน] เวลา [เวลา] ณ [สถานที่] วาระ: [1. 2. 3.] ผู้เข้าร่วม [จำนวน] คน แสดงเป็นตาราง</code></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>กำหนดการฝึกอบรม</td>
+                                <td><code>สร้างกำหนดการอบรม "[ชื่อ]" จำนวน [จำนวน] วัน วันที่ [วัน] ณ [สถานที่] หัวข้อ: [รายการ] วิทยากร: [ชื่อ] เวลา 08.30-16.30 น.</code></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>กำหนดการศึกษาดูงาน</td>
+                                <td><code>สร้างกำหนดการศึกษาดูงานที่ [สถานที่] วันที่ [วัน] จำนวน [คน] คน รวมเวลาเดินทาง [ต้นทาง] ถึง [ปลายทาง] กิจกรรม: [ชมงาน/แลกเปลี่ยน/สรุป]</code></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>กำหนดการต้อนรับ</td>
+                                <td><code>สร้างกำหนดการต้อนรับ [ตำแหน่ง] ที่มา [วัตถุประสงค์] วันที่ [วัน] เวลา [มาถึง]-[กลับ] กิจกรรม: [ต้อนรับ/บรรยาย/เยี่ยมชม/ถ่ายรูป]</code></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>กำหนดการพิธีเปิด/ปิด</td>
+                                <td><code>สร้างกำหนดการพิธี [เปิด/ปิด] [กิจกรรม] วันที่ [วัน] เวลา [เวลา] ณ [สถานที่] ประธาน: [ตำแหน่ง] ลำดับ: [ลงทะเบียน/รายงาน/กล่าวเปิด/บรรยายพิเศษ]</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Lab -->
+            <section>
+                <div class="exercise-box">
+                    <h4>🔬 Lab: สร้างกำหนดการอบรม 5 วัน "AI เพื่อคนพิการ"</h4>
+
+                    <div class="info-card mt-3">
+                        <h5 class="fw-bold">📌 โจทย์</h5>
+                        <p>สร้างกำหนดการอบรมหลักสูตร <strong>"AI สำหรับงานราชการ — โครงการ AI เพื่อคนพิการ"</strong></p>
+                        <ul>
+                            <li><strong>วันที่:</strong> 20-24 กรกฎาคม 2569</li>
+                            <li><strong>สถานที่:</strong> โรงแรมฮิลล์ไซด์ เขาใหญ่ จ.ปราจีนบุรี</li>
+                            <li><strong>กลุ่มเป้าหมาย:</strong> เจ้าหน้าที่องค์กรเพื่อคนพิการ 30 คน</li>
+                            <li><strong>เวลา:</strong> 08.30-16.30 น. ทุกวัน</li>
+                            <li><strong>รูปแบบ:</strong> 30% บรรยาย + 70% ปฏิบัติ</li>
+                            <li><strong>เนื้อหา 5 วัน:</strong>
+                                <ul>
+                                    <li>วันที่ 1 (20 ก.ค.): ภาพรวม AI + หนังสือราชการภายใน</li>
+                                    <li>วันที่ 2 (21 ก.ค.): หนังสือราชการภายนอก + โครงการ</li>
+                                    <li>วันที่ 3 (22 ก.ค.): กำหนดการ + รายงานการประชุม</li>
+                                    <li>วันที่ 4 (23 ก.ค.): คู่มือ + ถอดเสียง Whisper + NotebookLM</li>
+                                    <li>วันที่ 5 (24 ก.ค.): Workshop รวม + นำเสนอ + มอบวุฒิบัตร</li>
+                                </ul>
+                            </li>
+                            <li><strong>วิทยากร:</strong> นายปัญญา ผาธรรม (สนพ.สุรินทร์)</li>
+                        </ul>
+                    </div>
+
+                    <h5 class="mt-3">ขั้นตอน</h5>
+                    <div class="step-item">
+                        <span class="step-number">1</span>
+                        ใช้ Prompt Template กำหนดการ 5 วัน จากหัวข้อ 5.1 (5 นาที)
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">2</span>
+                        ตรวจสอบเวลา: ลงทะเบียน, พักเบรก, กลางวัน, ปิดท้ายวัน (3 นาที)
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">3</span>
+                        เพิ่มรายละเอียด: พิธีเปิดวันแรก + มอบวุฒิบัตรวันสุดท้าย (5 นาที)
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">4</span>
+                        สั่ง AI สร้าง Gantt Chart สำหรับแผนเตรียมการอบรม (5 นาที)
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">5</span>
+                        ปรับแต่งให้สมจริง — ดูว่าเนื้อหาแต่ละช่วงพอดีกับเวลาหรือไม่ (7 นาที)
+                    </div>
+
+                    <p class="mt-3 mb-0"><strong>⏱️ เวลา:</strong> 25 นาที</p>
+                </div>
+            </section>
+
+            <!-- Tips -->
+            <div class="alert alert-success mt-4">
+                <h5 class="alert-heading">💡 Tips</h5>
+                <ul class="mb-0">
+                    <li>กำหนดการที่ดีต้องมี "เวลาพัก" เพียงพอ — อย่าจัดกิจกรรมต่อเนื่องเกิน 2 ชม.</li>
+                    <li>ใส่เวลาลงทะเบียน 30 นาทีก่อนเริ่ม (โดยเฉพาะวันแรก)</li>
+                    <li>หลังได้กำหนดการแล้ว ลองสั่ง "ปรับเป็นรูปแบบทางการ พร้อมพิมพ์เป็นเอกสารแนบ"</li>
+                    <li>สำหรับกำหนดการต้อนรับ ให้ละเอียดทุก 10-15 นาที เพราะผิดพลาดไม่ได้</li>
+                    <li>ใช้ Gemini สร้าง Gantt Chart ได้ดี เพราะจัดตารางเป็นระเบียบ</li>
+                </ul>
+            </div>
+
+            <!-- สรุปท้ายบท -->
+            <section>
+                <h3 class="section-header">📝 สรุปท้ายบท</h3>
+                <div class="info-card">
+                    <ul class="mb-0">
+                        <li>กำหนดการ 3 ส่วนหลัก: หัว (ชื่อ+วัน+สถานที่), เนื้อหา (ตารางเวลา), หมายเหตุ</li>
+                        <li>มี Prompt Template สำหรับ 1 วัน, 3 วัน, 5 วัน — เปลี่ยนข้อมูลใช้ได้เลย</li>
+                        <li>ตารางปฏิบัติงาน: สั่ง AI สร้างรายสัปดาห์/เดือนได้ทันที</li>
+                        <li>กำหนดการต้อนรับ: ต้องละเอียดทุก 15 นาที</li>
+                        <li>Gantt Chart: ให้ AI สร้างเป็น HTML table พร้อมสีแสดงช่วงเวลา</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-5 mb-4">
+                <a href="chapter04.html" class="btn btn-outline-dark">← บทที่ 4</a>
+                <a href="#" class="btn btn-dark">บทที่ 6 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <small>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 1: ทำความรู้จัก AI และ ChatGPT — คู่มือฝึกอบรม ChatGPT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark sticky-top" style="background:#10a37f;">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ ChatGPT</a>
+        <span class="text-white nav-text">บทที่ 1 — วันที่ 1 เช้า</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+
+    <h1 class="mb-2">บทที่ 1: ทำความรู้จัก AI และ ChatGPT</h1>
+    <p class="text-muted mb-4">วันที่ 1 ภาคเช้า | ระยะเวลา 3 ชั่วโมง | ระดับ: เริ่มต้น</p>
+
+    <div class="alert alert-info">
+        <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+        <ul class="mb-0">
+            <li>อธิบายความหมายของ AI, Machine Learning และ LLM ได้</li>
+            <li>เข้าใจว่า ChatGPT คืออะไร ทำงานอย่างไร</li>
+            <li>สมัครและเริ่มใช้งาน ChatGPT ได้ด้วยตนเอง</li>
+            <li>รู้จักส่วนประกอบหน้าจอและฟีเจอร์ทั้งหมดของ ChatGPT</li>
+            <li>เข้าใจความแตกต่างระหว่างแผน Free / Plus / Team</li>
+            <li>รู้ขอบเขตความสามารถของ ChatGPT</li>
+        </ul>
+    </div>
+
+    <!-- Section 1.1 -->
+    <div class="section-header">
+        <h2>1.1 AI คืออะไร?</h2>
+        <p>ปัญญาประดิษฐ์ — เทคโนโลยีที่เปลี่ยนโลกการทำงาน</p>
+    </div>
+
+    <h3>ความหมายของ AI (Artificial Intelligence)</h3>
+    <p><strong>AI (ปัญญาประดิษฐ์)</strong> คือ ระบบคอมพิวเตอร์ที่ถูกออกแบบให้สามารถทำงานที่ปกติต้องใช้สติปัญญาของมนุษย์ เช่น การเรียนรู้ การตัดสินใจ การเข้าใจภาษา การจดจำรูปภาพ และการแก้ปัญหา</p>
+
+    <h3>ประเภทของ AI</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ประเภท</th>
+                    <th>คำอธิบาย</th>
+                    <th>ตัวอย่าง</th>
+                    <th>สถานะ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Narrow AI</strong><br>(AI เฉพาะทาง)</td>
+                    <td>ทำงานได้ดีในเรื่องเดียว</td>
+                    <td>ChatGPT, Siri, Google Translate, Face ID</td>
+                    <td><span class="badge bg-success">มีแล้ว</span></td>
+                </tr>
+                <tr>
+                    <td><strong>General AI</strong><br>(AI ทั่วไป)</td>
+                    <td>ฉลาดเทียบเท่ามนุษย์ ทำได้ทุกเรื่อง</td>
+                    <td>ยังไม่มี (กำลังพัฒนา)</td>
+                    <td><span class="badge bg-warning text-dark">อนาคต</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Super AI</strong><br>(AI เหนือมนุษย์)</td>
+                    <td>ฉลาดกว่ามนุษย์ทุกด้าน</td>
+                    <td>ทฤษฎี/ภาพยนตร์</td>
+                    <td><span class="badge bg-secondary">ทฤษฎี</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>AI ที่เราใช้อยู่ทุกวัน (โดยไม่รู้ตัว)</h3>
+    <ul>
+        <li><strong>Google Search</strong> — AI จัดอันดับผลค้นหาให้ตรงใจ</li>
+        <li><strong>YouTube / Netflix</strong> — AI แนะนำวิดีโอที่น่าสนใจ</li>
+        <li><strong>Facebook / TikTok</strong> — AI เลือกโพสต์มาแสดงใน Feed</li>
+        <li><strong>Google Maps</strong> — AI คำนวณเส้นทาง + คาดเดาเวลาถึง</li>
+        <li><strong>Siri / Google Assistant</strong> — AI เข้าใจเสียงพูดและตอบคำถาม</li>
+        <li><strong>ธนาคาร</strong> — AI ตรวจจับธุรกรรมผิดปกติ (Fraud Detection)</li>
+    </ul>
+
+    <h3>Machine Learning & Deep Learning</h3>
+    <div class="alert alert-light border">
+        <p><strong>Machine Learning (ML)</strong> = AI ที่ "เรียนรู้" จากข้อมูล แทนที่จะเขียนกฎทุกอย่าง</p>
+        <p><strong>Deep Learning</strong> = ML ที่ใช้ "โครงข่ายประสาท" (Neural Network) หลายชั้น ทำให้เข้าใจข้อมูลซับซ้อนได้</p>
+        <p class="mb-0"><strong>LLM (Large Language Model)</strong> = โมเดลภาษาขนาดใหญ่ที่ฝึกจากข้อความมหาศาล สามารถเข้าใจและสร้างภาษาได้ — <strong>ChatGPT คือ LLM</strong></p>
+    </div>
+
+    <div class="screenshot-placeholder">
+        📸 ภาพ: แผนภาพแสดงความสัมพันธ์ AI → Machine Learning → Deep Learning → LLM → ChatGPT
+    </div>
+
+    <!-- Section 1.2 -->
+    <div class="section-header">
+        <h2>1.2 ChatGPT คืออะไร?</h2>
+        <p>ทำความรู้จักกับ AI ที่ทรงพลังที่สุดตัวหนึ่งในโลก</p>
+    </div>
+
+    <h3>OpenAI — บริษัทผู้สร้าง ChatGPT</h3>
+    <p>OpenAI ก่อตั้งปี 2015 โดย Sam Altman และทีมงาน (รวมถึง Elon Musk ในช่วงแรก) มีเป้าหมายพัฒนา AI ที่ปลอดภัยและเป็นประโยชน์</p>
+    <ul>
+        <li><strong>GPT</strong> = Generative Pre-trained Transformer (โมเดลที่สร้างข้อความจากการฝึกล่วงหน้า)</li>
+        <li><strong>Chat</strong> = โหมดสนทนาแบบถาม-ตอบ</li>
+        <li><strong>ChatGPT</strong> = Application ที่ให้คนทั่วไปใช้งาน GPT ได้ง่ายๆ ผ่านหน้าเว็บ/แอป</li>
+    </ul>
+
+    <h3>เวอร์ชันของ ChatGPT (2025)</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>โมเดล</th>
+                    <th>ลักษณะ</th>
+                    <th>ใช้กับแผน</th>
+                    <th>เหมาะกับ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>GPT-4o</strong></td>
+                    <td>รุ่นท็อป ฉลาดสุด เร็ว รับได้ทั้งข้อความ/ภาพ/เสียง</td>
+                    <td>Free (จำกัด) / Plus</td>
+                    <td>งานทุกประเภท</td>
+                </tr>
+                <tr>
+                    <td><strong>GPT-4o mini</strong></td>
+                    <td>รุ่นเบา เร็วมาก ฉลาดพอใช้</td>
+                    <td>Free (ไม่จำกัด)</td>
+                    <td>งานง่ายๆ ที่ต้องการเร็ว</td>
+                </tr>
+                <tr>
+                    <td><strong>o1 / o1-pro</strong></td>
+                    <td>รุ่น "คิดลึก" ใช้เวลานาน แต่ตอบซับซ้อนได้ดี</td>
+                    <td>Plus / Pro</td>
+                    <td>คณิตศาสตร์ วิทยาศาสตร์ โค้ดซับซ้อน</td>
+                </tr>
+                <tr>
+                    <td><strong>DALL·E 3</strong></td>
+                    <td>สร้างรูปภาพจากข้อความ</td>
+                    <td>Plus</td>
+                    <td>ออกแบบ สื่อ โปสเตอร์</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>ChatGPT ทำอะไรได้บ้าง?</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-success mb-3">
+                <div class="card-header bg-success text-white"><strong>✅ ทำได้ดี</strong></div>
+                <div class="card-body">
+                    <ul class="mb-0">
+                        <li>เขียน/ร่างเอกสาร ทุกประเภท</li>
+                        <li>สรุปข้อมูลยาวๆ ให้กระชับ</li>
+                        <li>แปลภาษา (ดีกว่า Google Translate)</li>
+                        <li>วิเคราะห์ข้อมูล/ตาราง</li>
+                        <li>เขียนโปรแกรม/โค้ด</li>
+                        <li>ตอบคำถามความรู้ทั่วไป</li>
+                        <li>ระดมความคิด/Brainstorm</li>
+                        <li>สร้างรูปภาพ (DALL·E)</li>
+                        <li>อ่านไฟล์ PDF/Word/Excel/รูปภาพ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-danger mb-3">
+                <div class="card-header bg-danger text-white"><strong>❌ ข้อจำกัด</strong></div>
+                <div class="card-body">
+                    <ul class="mb-0">
+                        <li>อาจ "แต่งเรื่อง" (Hallucination)</li>
+                        <li>ข้อมูลอาจไม่ใช่ปัจจุบันที่สุด</li>
+                        <li>ไม่มี "ความรู้สึก" หรือ "ความเห็น" จริง</li>
+                        <li>คำนวณตัวเลขซับซ้อนอาจผิด</li>
+                        <li>ไม่สามารถเข้าถึงอินเทอร์เน็ตแบบ real-time (ยกเว้นเปิด Browse)</li>
+                        <li>ไม่เข้าใจบริบทองค์กรเฉพาะ (ถ้าไม่บอก)</li>
+                        <li>อาจตอบแบบ "เห็นด้วย" มากเกินไป</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 จำง่ายๆ</h5>
+        <p class="mb-0">ChatGPT เหมือน "เลขาฯ อัจฉริยะ" ที่ร่างงานเร็วมาก แต่คุณต้อง <strong>ตรวจทาน</strong> ก่อนใช้เสมอ — เหมือนมีลูกน้องเก่งแต่ต้องตรวจงานก่อนส่ง</p>
+    </div>
+
+    <!-- Section 1.3 -->
+    <div class="section-header">
+        <h2>1.3 สมัครบัญชี ChatGPT + ตั้งค่าเริ่มต้น</h2>
+        <p>ขั้นตอนสมัครบัญชีและเริ่มใช้งาน ChatGPT</p>
+    </div>
+
+    <div class="step-item">
+        <span class="step-number">1</span>
+        <strong>เปิดเว็บไซต์ ChatGPT</strong>
+        <p>เปิด Browser (Chrome/Edge) แล้วพิมพ์ <code>https://chat.openai.com</code> หรือค้นหา "ChatGPT" ใน Google</p>
+    </div>
+
+    <div class="step-item">
+        <span class="step-number">2</span>
+        <strong>คลิก "Sign Up"</strong>
+        <p>หน้าแรกจะมีปุ่ม "Sign up" (สมัคร) และ "Log in" (เข้าสู่ระบบ) — คลิก Sign up</p>
+    </div>
+
+    <div class="step-item">
+        <span class="step-number">3</span>
+        <strong>เลือกวิธีสมัคร</strong>
+        <p>มี 3 ทางเลือก:</p>
+        <ul>
+            <li><strong>Continue with Google</strong> — แนะนำ! ง่ายที่สุด ใช้ Gmail ที่มีอยู่</li>
+            <li><strong>Continue with Microsoft</strong> — ใช้บัญชี Outlook/Hotmail</li>
+            <li><strong>Continue with Apple</strong> — ใช้ Apple ID</li>
+            <li><strong>Email</strong> — สมัครด้วย Email + ตั้งรหัสผ่านเอง</li>
+        </ul>
+    </div>
+
+    <div class="step-item">
+        <span class="step-number">4</span>
+        <strong>กรอกชื่อ + วันเกิด</strong>
+        <p>กรอกชื่อ-นามสกุล (ภาษาอังกฤษ) และวันเกิด เพื่อยืนยันอายุ 13+ ปี</p>
+    </div>
+
+    <div class="step-item">
+        <span class="step-number">5</span>
+        <strong>ยืนยัน Email (ถ้าสมัครด้วย Email)</strong>
+        <p>เปิดกล่อง Email → คลิกลิงก์ยืนยัน → กลับมาที่หน้าเว็บ</p>
+    </div>
+
+    <div class="step-item">
+        <span class="step-number">6</span>
+        <strong>เริ่มใช้งานได้ทันที!</strong>
+        <p>เข้าสู่หน้า Chat → พิมพ์คำถามแรก เช่น "สวัสดีครับ ChatGPT"</p>
+    </div>
+
+    <div class="screenshot-placeholder">
+        📸 ภาพหน้าจอ: หน้าสมัครสมาชิก ChatGPT — ปุ่ม "Continue with Google"
+    </div>
+
+    <h3>ตั้งค่าเบื้องต้นหลังสมัครเสร็จ</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>การตั้งค่า</th>
+                    <th>ตำแหน่ง</th>
+                    <th>แนะนำ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ภาษาหน้าจอ</td>
+                    <td>Settings → General → Language</td>
+                    <td>ตั้งเป็น "ไทย" หรือ "Auto-detect"</td>
+                </tr>
+                <tr>
+                    <td>Custom Instructions</td>
+                    <td>Settings → Personalization</td>
+                    <td>ใส่ "ตอบเป็นภาษาไทย สุภาพ กระชับ"</td>
+                </tr>
+                <tr>
+                    <td>Theme</td>
+                    <td>Settings → General → Theme</td>
+                    <td>Light / Dark / System ตามชอบ</td>
+                </tr>
+                <tr>
+                    <td>Data Controls</td>
+                    <td>Settings → Data Controls</td>
+                    <td>ตรวจสอบว่าเปิด/ปิด Chat History</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 เคล็ดลับสำหรับข้าราชการ</h5>
+        <p class="mb-0">แนะนำใช้ Email ส่วนตัว (@gmail.com) ในการสมัคร เพราะ Email ราชการบางหน่วยงานอาจถูกบล็อก หรือใช้ Google Account ที่มีอยู่แล้วเพื่อความสะดวก</p>
+    </div>
+
+    <!-- Section 1.4 -->
+    <div class="section-header">
+        <h2>1.4 ทัวร์หน้าจอ ChatGPT</h2>
+        <p>ส่วนประกอบหน้าจอที่ต้องรู้จัก</p>
+    </div>
+
+    <div class="screenshot-placeholder">
+        📸 ภาพหน้าจอ: Interface ของ ChatGPT — แสดง Sidebar, Chat area, และปุ่มต่างๆ
+    </div>
+
+    <h4>1. Sidebar (แถบด้านซ้าย)</h4>
+    <ul>
+        <li><strong>New Chat</strong> — เริ่มบทสนทนาใหม่</li>
+        <li><strong>ประวัติสนทนา</strong> — รายการ Chat ที่เคยคุยไว้ (เรียงตามวันที่)</li>
+        <li><strong>Explore GPTs</strong> — ร้านค้า GPT เฉพาะทาง (GPT Store)</li>
+        <li><strong>Projects</strong> — จัดกลุ่มงานเป็นโปรเจกต์ (Plus)</li>
+    </ul>
+
+    <h4>2. Chat Area (พื้นที่สนทนา)</h4>
+    <ul>
+        <li><strong>ช่องพิมพ์</strong> — อยู่ด้านล่าง พิมพ์แล้วกด Enter ส่ง</li>
+        <li><strong>ประวัติข้อความ</strong> — คำถามของคุณ (ขวา) + คำตอบ ChatGPT (ซ้าย)</li>
+        <li><strong>ปุ่ม Copy</strong> — คัดลอกคำตอบ</li>
+        <li><strong>ปุ่ม Regenerate</strong> — ให้ ChatGPT ตอบใหม่</li>
+        <li><strong>ปุ่ม Like/Dislike</strong> — ให้ feedback คำตอบ</li>
+    </ul>
+
+    <h4>3. ปุ่มและไอคอนสำคัญ</h4>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ปุ่ม/ไอคอน</th>
+                    <th>ฟีเจอร์</th>
+                    <th>หน้าที่</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>📎</td>
+                    <td>Attach file</td>
+                    <td>แนบไฟล์ (PDF, รูป, Word, Excel, CSV, ข้อความ)</td>
+                </tr>
+                <tr>
+                    <td>🌐</td>
+                    <td>Search the web</td>
+                    <td>ให้ ChatGPT ค้นเว็บแบบ real-time</td>
+                </tr>
+                <tr>
+                    <td>🎨</td>
+                    <td>Create image</td>
+                    <td>สร้างรูปด้วย DALL·E 3 (Plus)</td>
+                </tr>
+                <tr>
+                    <td>💻</td>
+                    <td>Code</td>
+                    <td>Code Interpreter / รันโค้ด Python (Plus)</td>
+                </tr>
+                <tr>
+                    <td>🎙️</td>
+                    <td>Voice</td>
+                    <td>พูดคุยด้วยเสียง (Advanced Voice Mode)</td>
+                </tr>
+                <tr>
+                    <td>📷</td>
+                    <td>Camera / Vision</td>
+                    <td>ถ่ายรูป/อัปโหลดรูปให้ AI ดู</td>
+                </tr>
+                <tr>
+                    <td>⚙️</td>
+                    <td>Settings</td>
+                    <td>ตั้งค่าบัญชี, Theme, Memory, Data Controls</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h4>4. GPT Store — ร้านค้า GPT เฉพาะทาง</h4>
+    <p>GPT Store คือคลัง "Custom GPT" ที่คนอื่นสร้างไว้ ใช้งานได้ฟรี เช่น:</p>
+    <ul>
+        <li><strong>Canva GPT</strong> — ออกแบบกราฟิกผ่าน ChatGPT</li>
+        <li><strong>Data Analyst</strong> — วิเคราะห์ข้อมูลเชิงลึก</li>
+        <li><strong>Consensus</strong> — ค้นหางานวิจัยทางวิชาการ</li>
+        <li><strong>Write for Me</strong> — ช่วยเขียนบทความ/เอกสาร</li>
+    </ul>
+
+    <!-- Section 1.5 -->
+    <div class="section-header">
+        <h2>1.5 เปรียบเทียบแผน Free vs Plus vs Team</h2>
+        <p>เลือกแผนที่เหมาะกับการใช้งาน</p>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ฟีเจอร์</th>
+                    <th><span class="badge badge-plan badge-free">Free</span></th>
+                    <th><span class="badge badge-plan badge-plus">Plus ($20/เดือน)</span></th>
+                    <th><span class="badge badge-plan badge-team">Team ($25/คน/เดือน)</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>GPT-4o</strong></td>
+                    <td>จำกัดจำนวน/วัน</td>
+                    <td>5x มากกว่า Free</td>
+                    <td>เหมือน Plus</td>
+                </tr>
+                <tr>
+                    <td><strong>GPT-4o mini</strong></td>
+                    <td>✅ ไม่จำกัด</td>
+                    <td>✅ ไม่จำกัด</td>
+                    <td>✅ ไม่จำกัด</td>
+                </tr>
+                <tr>
+                    <td><strong>DALL·E (สร้างรูป)</strong></td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td><strong>Code Interpreter</strong></td>
+                    <td>จำกัด</td>
+                    <td>✅ เต็มที่</td>
+                    <td>✅ เต็มที่</td>
+                </tr>
+                <tr>
+                    <td><strong>Browse (ค้นเว็บ)</strong></td>
+                    <td>✅</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td><strong>อัปโหลดไฟล์</strong></td>
+                    <td>✅</td>
+                    <td>✅ (ไฟล์ใหญ่กว่า)</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td><strong>Custom GPTs</strong></td>
+                    <td>ใช้ของคนอื่นได้</td>
+                    <td>✅ สร้างเองได้</td>
+                    <td>✅ แชร์ในทีม</td>
+                </tr>
+                <tr>
+                    <td><strong>Advanced Voice</strong></td>
+                    <td>จำกัด</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td><strong>o1 (Reasoning)</strong></td>
+                    <td>❌</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td><strong>ข้อมูลใช้ Train AI</strong></td>
+                    <td>อาจถูกใช้</td>
+                    <td>เลือกปิดได้</td>
+                    <td>❌ ไม่ใช้</td>
+                </tr>
+                <tr>
+                    <td><strong>Admin Console</strong></td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>✅ จัดการทีม</td>
+                </tr>
+                <tr>
+                    <td><strong>เหมาะกับ</strong></td>
+                    <td>ทดลอง, งานเบาๆ</td>
+                    <td>ใช้ทุกวัน, งานจริง</td>
+                    <td>ทีม 5+ คน</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 คำแนะนำสำหรับหน่วยงานราชการ</h5>
+        <ul class="mb-0">
+            <li><strong>เริ่มต้น:</strong> ใช้แผน Free ทดลองก่อน — ได้ GPT-4o mini ไม่จำกัด + GPT-4o จำกัด/วัน</li>
+            <li><strong>ใช้จริงทุกวัน:</strong> Plus คุ้มค่า ($20 ≈ 700 บาท/เดือน) ได้ DALL·E + Code Interpreter</li>
+            <li><strong>ทั้งหน่วยงาน:</strong> Team เหมาะถ้ามี 5+ คน มี Admin + ข้อมูลไม่ถูกนำไป Train</li>
+        </ul>
+    </div>
+
+    <!-- Section 1.6 -->
+    <div class="section-header">
+        <h2>1.6 ความสามารถของ ChatGPT — 7 โหมดหลัก</h2>
+        <p>ภาพรวมทุกอย่างที่ ChatGPT ทำได้</p>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>โหมด</th>
+                    <th>คำอธิบาย</th>
+                    <th>ตัวอย่างการใช้งาน</th>
+                    <th>แผน</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>💬 Text</strong></td>
+                    <td>ถาม-ตอบ ข้อความ</td>
+                    <td>ร่างเอกสาร, สรุป, แปล, ถามความรู้</td>
+                    <td>ทุกแผน</td>
+                </tr>
+                <tr>
+                    <td><strong>🌐 Browse</strong></td>
+                    <td>ค้นหาข้อมูลจากอินเทอร์เน็ต</td>
+                    <td>หาข่าวล่าสุด, ราคาหุ้น, สภาพอากาศ</td>
+                    <td>ทุกแผน</td>
+                </tr>
+                <tr>
+                    <td><strong>🎨 DALL·E</strong></td>
+                    <td>สร้างรูปภาพจากข้อความ</td>
+                    <td>โปสเตอร์, โลโก้, Infographic, ภาพประกอบ</td>
+                    <td>Plus+</td>
+                </tr>
+                <tr>
+                    <td><strong>💻 Code</strong></td>
+                    <td>เขียน/รันโค้ด Python</td>
+                    <td>วิเคราะห์ CSV, สร้างกราฟ, คำนวณ</td>
+                    <td>Plus+</td>
+                </tr>
+                <tr>
+                    <td><strong>📎 Files</strong></td>
+                    <td>อัปโหลดไฟล์ให้อ่าน</td>
+                    <td>สรุป PDF, อ่านรูป, วิเคราะห์ Excel</td>
+                    <td>ทุกแผน</td>
+                </tr>
+                <tr>
+                    <td><strong>🎙️ Voice</strong></td>
+                    <td>สนทนาด้วยเสียง</td>
+                    <td>ฝึกภาษา, ถามตอบแบบ hands-free</td>
+                    <td>ทุกแผน (จำกัด)</td>
+                </tr>
+                <tr>
+                    <td><strong>👁️ Vision</strong></td>
+                    <td>อ่าน/วิเคราะห์รูปภาพ</td>
+                    <td>OCR, อธิบายกราฟ, อ่านป้าย, แก้สมการ</td>
+                    <td>ทุกแผน</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-warning">
+        <h5>⚠️ ข้อควรระวังเรื่องข้อมูลราชการ</h5>
+        <ul class="mb-0">
+            <li><strong>ห้ามส่งข้อมูลลับ</strong> / ข้อมูลส่วนบุคคล / ข้อมูลมั่นคง ขึ้น AI ทุกตัว</li>
+            <li>ข้อมูลที่พิมพ์อาจถูกเก็บไว้ในเซิร์ฟเวอร์ต่างประเทศ</li>
+            <li>ใช้ข้อมูลทั่วไป ข้อมูลสาธารณะ หรือ<strong>ข้อมูลตัวอย่าง</strong>เท่านั้น</li>
+            <li>ตรวจสอบ<strong>นโยบายหน่วยงาน</strong>ก่อนใช้ AI กับงานราชการ</li>
+            <li>ปิด "Improve the model for everyone" ใน Settings → Data Controls ถ้าไม่อยากให้ข้อมูลถูกนำไป Train</li>
+        </ul>
+    </div>
+
+    <!-- Exercises -->
+    <div class="exercise-box">
+        <h4>✏️ แบบฝึกหัดบทที่ 1</h4>
+        <ol>
+            <li><strong>สมัคร ChatGPT</strong> — สมัครบัญชีด้วย Google Account ให้สำเร็จ</li>
+            <li><strong>ตั้งค่า</strong> — ตั้ง Language, Custom Instructions ("ตอบภาษาไทย กระชับ สุภาพ")</li>
+            <li><strong>ทดลอง 5 คำถาม</strong>:
+                <ul>
+                    <li>"สวัสดีครับ ChatGPT แนะนำตัวหน่อย"</li>
+                    <li>"อธิบายเรื่อง AI ให้เข้าใจง่ายๆ เหมือนอธิบายให้เด็กฟัง"</li>
+                    <li>"ช่วยร่างหนังสือเชิญประชุมสั้นๆ"</li>
+                    <li>"แปลคำว่า 'สำนักงานพัฒนาฝีมือแรงงาน' เป็นอังกฤษ"</li>
+                    <li>"สรุปข้อดีของ ChatGPT ในงานราชการ 5 ข้อ"</li>
+                </ul>
+            </li>
+            <li><strong>สำรวจ GPT Store</strong> — เปิด Explore GPTs ค้นหา "Data Analysis" แล้วลองใช้</li>
+            <li><strong>ทดลอง Voice</strong> — กดไอคอนไมค์แล้วพูด "ช่วยอธิบายเรื่อง AI หน่อย"</li>
+        </ol>
+    </div>
+
+    <!-- Navigation -->
+    <div class="chapter-nav">
+        <a href="index.html" class="btn btn-chapter-prev">← หน้าหลัก</a>
+        <a href="chapter02.html" class="btn btn-chapter-next">บทที่ 2: Prompt Engineering →</a>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="text-white text-center py-4 mt-5" style="background:#10a37f;">
+    <p>คู่มือฝึกอบรม ChatGPT — เพิ่มประสิทธิภาพการทำงานด้วย AI</p>
+    <p class="opacity-75">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

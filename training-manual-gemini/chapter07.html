@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 7: Google AI Studio — คู่มือ Gemini AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark sticky-top" style="background: linear-gradient(135deg, #4285f4, #34a853)">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">📖 คู่มือ Gemini AI</a>
+            <span class="navbar-text text-white">บทที่ 7 — วันที่ 4 เช้า (3 ชม.)</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <!-- Chapter Header -->
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold text-primary">บทที่ 7</h1>
+            <h2 class="fw-bold">Google AI Studio</h2>
+            <p class="lead text-muted">Playground สำหรับทดลอง Gemini API ฟรี — สร้าง Structured Prompts, Chatbot และ Fine-tune Model</p>
+            <span class="badge bg-info fs-6">⏰ วันที่ 4 ภาคเช้า — 3 ชั่วโมง</span>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-primary mb-5">
+            <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>เข้าใจว่า Google AI Studio คืออะไร ใช้ทำอะไรได้บ้าง</li>
+                <li>สร้าง API Key และทดลอง Prompt ใน Playground ได้</li>
+                <li>สร้าง Structured Prompts แบบมีโครงสร้างได้</li>
+                <li>สร้าง Chat Prompts สำหรับ Chatbot ได้</li>
+                <li>เข้าใจ Tuning (Fine-tuning) เบื้องต้น</li>
+            </ul>
+        </div>
+
+        <!-- Section 7.1 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">7.1 Google AI Studio คืออะไร</h3>
+            
+            <p>Google AI Studio เป็น <strong>Web-based IDE/Playground</strong> ที่ให้ทดลองใช้งาน Gemini API ฟรี โดยไม่ต้องเขียนโค้ด เหมาะสำหรับ:</p>
+
+            <div class="row g-4 mb-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-primary">
+                        <div class="card-body text-center">
+                            <h1>🧪</h1>
+                            <h5 class="card-title">ทดลอง Prompt</h5>
+                            <p class="card-text">ทดสอบ prompt ต่างๆ กับ Gemini โดยตรง ปรับแต่ง parameter ได้</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-success">
+                        <div class="card-body text-center">
+                            <h1>🔑</h1>
+                            <h5 class="card-title">สร้าง API Key</h5>
+                            <p class="card-text">สร้าง API Key ฟรี เพื่อนำไปใช้ในโค้ดของเรา</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-warning">
+                        <div class="card-body text-center">
+                            <h1>🤖</h1>
+                            <h5 class="card-title">สร้าง Chatbot</h5>
+                            <p class="card-text">ออกแบบ Chatbot ง่ายๆ ทดสอบได้ทันที</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <h5 class="alert-heading">🌐 เข้าใช้งานได้ที่</h5>
+                <p class="mb-0"><strong>URL:</strong> <code>https://aistudio.google.com</code> — ใช้ Google Account ฟรี (ไม่ต้องเสียเงิน!)</p>
+            </div>
+
+            <!-- เปรียบเทียบ Gemini Web vs AI Studio -->
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">📊 เปรียบเทียบ: Gemini Web vs Google AI Studio</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>หัวข้อ</th>
+                                    <th>Gemini Web (gemini.google.com)</th>
+                                    <th>Google AI Studio (aistudio.google.com)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>กลุ่มเป้าหมาย</strong></td>
+                                    <td>ผู้ใช้ทั่วไป</td>
+                                    <td>นักพัฒนา / ผู้ต้องการปรับแต่ง</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ราคา</strong></td>
+                                    <td>ฟรี (Pro ต้องจ่าย)</td>
+                                    <td>ฟรี (มี Quota)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ปรับ Parameter</strong></td>
+                                    <td>❌ ไม่ได้</td>
+                                    <td>✅ Temperature, Top-P, Top-K, Max tokens</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>API Key</strong></td>
+                                    <td>❌ ไม่มี</td>
+                                    <td>✅ สร้างได้ฟรี</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>System Instruction</strong></td>
+                                    <td>❌ ไม่มี (ใช้ Gems แทน)</td>
+                                    <td>✅ กำหนดได้เอง</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Few-shot Examples</strong></td>
+                                    <td>❌ ไม่รองรับ</td>
+                                    <td>✅ เพิ่ม input/output ตัวอย่างได้</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Export Code</strong></td>
+                                    <td>❌ ไม่มี</td>
+                                    <td>✅ Export เป็น Python, JavaScript, cURL</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Fine-tuning</strong></td>
+                                    <td>❌ ไม่มี</td>
+                                    <td>✅ Tune model ได้</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7.2 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">7.2 เริ่มต้นใช้งาน Google AI Studio</h3>
+            
+            <!-- Step 1: Login -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">📌 ขั้นตอนที่ 1: Login เข้า Google AI Studio</h5>
+                </div>
+                <div class="card-body">
+                    <div class="step-item bg-light p-3 rounded">
+                        <ol>
+                            <li>เปิดเบราว์เซอร์ → ไปที่ <code>https://aistudio.google.com</code></li>
+                            <li>คลิก "Sign in with Google" → เลือก Google Account</li>
+                            <li>ยอมรับ Terms of Service</li>
+                            <li>จะเห็นหน้า Dashboard ของ AI Studio</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="alert alert-warning mt-3">
+                        <strong>⚠️ หมายเหตุ:</strong> 
+                        <ul class="mb-0">
+                            <li>ใช้ Google Account ส่วนตัว (Gmail) ก็ได้</li>
+                            <li>ถ้าใช้ Workspace Account อาจต้องให้ Admin เปิดสิทธิ์</li>
+                            <li>รองรับทุกเบราว์เซอร์ (แนะนำ Chrome)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Create API Key -->
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">🔑 ขั้นตอนที่ 2: สร้าง API Key</h5>
+                </div>
+                <div class="card-body">
+                    <div class="step-item bg-light p-3 rounded">
+                        <ol>
+                            <li>ที่เมนูด้านซ้าย คลิก <strong>"Get API key"</strong></li>
+                            <li>คลิก <strong>"Create API key"</strong></li>
+                            <li>เลือก Google Cloud Project (หรือสร้างใหม่)</li>
+                            <li>คลิก <strong>"Create API key in new project"</strong></li>
+                            <li>จะได้ API Key หน้าตาแบบนี้: <code>AIzaSy...</code></li>
+                            <li><strong>คัดลอกเก็บไว้!</strong> (จะใช้ในบทที่ 8)</li>
+                        </ol>
+                    </div>
+
+                    <div class="alert alert-danger mt-3">
+                        <strong>🔐 ความปลอดภัย API Key:</strong>
+                        <ul class="mb-0">
+                            <li>❌ ห้าม share API Key ในที่สาธารณะ (GitHub, Facebook)</li>
+                            <li>❌ ห้ามใส่ API Key ในโค้ดฝั่ง Client (JavaScript ที่ผู้ใช้เห็น)</li>
+                            <li>✅ เก็บไว้ใน Environment Variable หรือ Properties Service (GAS)</li>
+                            <li>✅ ถ้ารั่วไหล สามารถ Revoke แล้วสร้างใหม่ได้</li>
+                        </ul>
+                    </div>
+
+                    <!-- Pricing -->
+                    <div class="card mt-3 border-info">
+                        <div class="card-body">
+                            <h6 class="card-title text-info">💰 ราคา Gemini API (Free Tier 2569)</h6>
+                            <div class="table-responsive">
+                                <table class="table table-sm table-bordered">
+                                    <thead class="table-info">
+                                        <tr>
+                                            <th>Model</th>
+                                            <th>Free Tier</th>
+                                            <th>Rate Limit (ฟรี)</th>
+                                            <th>Pay-as-you-go</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Gemini 2.5 Flash</td>
+                                            <td>✅ ฟรี</td>
+                                            <td>15 RPM / 1M tokens/นาที</td>
+                                            <td>$0.15/1M input tokens</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gemini 2.5 Pro</td>
+                                            <td>✅ ฟรี</td>
+                                            <td>5 RPM / 1M tokens/นาที</td>
+                                            <td>$1.25/1M input tokens</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gemini 2.0 Flash</td>
+                                            <td>✅ ฟรี</td>
+                                            <td>15 RPM / 1M tokens/นาที</td>
+                                            <td>$0.10/1M input tokens</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-muted mb-0"><small>RPM = Requests Per Minute | ข้อมูล ณ มิถุนายน 2569</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Playground -->
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">🎮 ขั้นตอนที่ 3: ทดลอง Prompt ใน Playground</h5>
+                </div>
+                <div class="card-body">
+                    <p>Playground มี 3 โหมด:</p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <div class="card bg-light h-100">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">1. Freeform</h6>
+                                    <p class="small mb-0">พิมพ์ prompt อิสระ เหมือน Gemini Web แต่ปรับ parameter ได้</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-light h-100">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">2. Structured</h6>
+                                    <p class="small mb-0">กำหนด input/output ตัวอย่าง (Few-shot)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-light h-100">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">3. Chat</h6>
+                                    <p class="small mb-0">สร้าง Chatbot มี System Instruction</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold">Parameter ที่ปรับได้:</h6>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>ค่าเริ่มต้น</th>
+                                    <th>ช่วง</th>
+                                    <th>อธิบาย</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Temperature</strong></td>
+                                    <td>1.0</td>
+                                    <td>0.0 – 2.0</td>
+                                    <td>ยิ่งสูง = ยิ่งสร้างสรรค์/สุ่ม | ยิ่งต่ำ = ยิ่งแม่นยำ/ซ้ำ</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Top-P</strong></td>
+                                    <td>0.95</td>
+                                    <td>0.0 – 1.0</td>
+                                    <td>ความหลากหลายของคำตอบ (nucleus sampling)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Top-K</strong></td>
+                                    <td>40</td>
+                                    <td>1 – 100</td>
+                                    <td>จำนวน token ที่พิจารณาในแต่ละ step</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Max Output Tokens</strong></td>
+                                    <td>8192</td>
+                                    <td>1 – 65,536</td>
+                                    <td>ความยาวคำตอบสูงสุด</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="alert alert-info mt-3">
+                        <strong>💡 เคล็ดลับ:</strong>
+                        <ul class="mb-0">
+                            <li>งานเขียนสร้างสรรค์: Temperature 1.0-1.5</li>
+                            <li>งานสรุป/แปลภาษา: Temperature 0.2-0.5</li>
+                            <li>งานถูก-ผิดชัดเจน (เช่น code): Temperature 0.0-0.3</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workshop: ทดลอง Playground -->
+            <div class="card border-success mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-success">🏋️ ฝึกปฏิบัติ: ทดลอง Playground (15 นาที)</h5>
+                    <ol>
+                        <li>เข้า AI Studio → เลือก Freeform</li>
+                        <li>พิมพ์ prompt: <code>"สรุปหน้าที่ของสำนักงานพัฒนาฝีมือแรงงานจังหวัด 5 ข้อ"</code></li>
+                        <li>ลองเปลี่ยน Temperature เป็น 0.2 → Run อีกครั้ง → เปรียบเทียบผลลัพธ์</li>
+                        <li>ลองเปลี่ยน Temperature เป็น 1.8 → Run อีกครั้ง → สังเกตความแตกต่าง</li>
+                        <li>ลองเพิ่ม System Instruction: <code>"คุณเป็นผู้เชี่ยวชาญด้านพัฒนาฝีมือแรงงาน ตอบเป็นภาษาราชการ"</code></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7.3 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">7.3 Structured Prompts — สร้าง Prompt แบบมีโครงสร้าง</h3>
+            
+            <p>Structured Prompts คือการสอน Gemini ด้วย <strong>ตัวอย่าง input/output</strong> (Few-shot learning) ทำให้ได้ผลลัพธ์ที่สม่ำเสมอและตรงตามรูปแบบที่ต้องการ</p>
+
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">📝 โครงสร้างของ Structured Prompt</h5>
+                </div>
+                <div class="card-body">
+                    <pre class="bg-dark text-light p-3 rounded"><code>┌─────────────────────────────────────┐
+│  System Instruction (คำสั่งระบบ)     │
+├─────────────────────────────────────┤
+│  Examples (ตัวอย่าง input → output)  │
+│  ├── Example 1: Input → Output      │
+│  ├── Example 2: Input → Output      │
+│  └── Example 3: Input → Output      │
+├─────────────────────────────────────┤
+│  Test Input (ข้อมูลจริงที่ต้องการ)    │
+└─────────────────────────────────────┘</code></pre>
+                </div>
+            </div>
+
+            <!-- ตัวอย่าง 1: จำแนกหนังสือราชการ -->
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">ตัวอย่าง 1: จำแนกประเภทหนังสือราชการ</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="fw-bold">System Instruction:</h6>
+                    <div class="bg-light p-3 rounded mb-3">
+                        <code>"จำแนกประเภทหนังสือราชการ ตอบเฉพาะประเภท: คำสั่ง | ประกาศ | หนังสือเวียน | บันทึกข้อความ | หนังสือภายนอก"</code>
+                    </div>
+
+                    <h6 class="fw-bold">ตัวอย่าง (Examples):</h6>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm">
+                            <thead class="table-success">
+                                <tr>
+                                    <th>Input</th>
+                                    <th>Output</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>เรื่อง แต่งตั้งคณะกรรมการดำเนินการฝึกอบรม</td>
+                                    <td>คำสั่ง</td>
+                                </tr>
+                                <tr>
+                                    <td>เรื่อง รับสมัครบุคคลเพื่อเลือกสรรเป็นพนักงานราชการ</td>
+                                    <td>ประกาศ</td>
+                                </tr>
+                                <tr>
+                                    <td>เรื่อง ขอเชิญประชุมประจำเดือน</td>
+                                    <td>บันทึกข้อความ</td>
+                                </tr>
+                                <tr>
+                                    <td>เรื่อง ขอความร่วมมือสำรวจข้อมูลแรงงาน</td>
+                                    <td>หนังสือภายนอก</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6 class="fw-bold mt-3">Test Input:</h6>
+                    <div class="bg-light p-3 rounded">
+                        <code>"เรื่อง กำหนดวันหยุดราชการเพิ่มเติมเป็นกรณีพิเศษ"</code>
+                    </div>
+                    <p class="mt-2"><strong>→ Output:</strong> <span class="badge bg-primary">ประกาศ</span></p>
+                </div>
+            </div>
+
+            <!-- ตัวอย่าง 2: สร้างรหัสหลักสูตร -->
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">ตัวอย่าง 2: สร้างรหัสหลักสูตรอัตโนมัติ</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="fw-bold">System Instruction:</h6>
+                    <div class="bg-light p-3 rounded mb-3">
+                        <code>"สร้างรหัสหลักสูตร สนพ.สุรินทร์ ตามรูปแบบ: [ประเภท 2 ตัว]-[ปี 2 หลัก]-[ลำดับ 3 หลัก] ประเภท: ฝก=ฝึกอบรม, ทด=ทดสอบ, ปม=ประเมิน"</code>
+                    </div>
+
+                    <h6 class="fw-bold">ตัวอย่าง:</h6>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm">
+                            <thead class="table-warning">
+                                <tr>
+                                    <th>Input</th>
+                                    <th>Output</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>หลักสูตรฝึกอบรมช่างเชื่อม ปี 2569 ลำดับที่ 5</td>
+                                    <td>ฝก-69-005</td>
+                                </tr>
+                                <tr>
+                                    <td>ทดสอบมาตรฐานฝีมือช่างไฟ ปี 2569 ลำดับที่ 12</td>
+                                    <td>ทด-69-012</td>
+                                </tr>
+                                <tr>
+                                    <td>ประเมินความรู้ผู้ประกอบอาหาร ปี 2570 ลำดับที่ 1</td>
+                                    <td>ปม-70-001</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ตัวอย่าง 3: สกัดข้อมูลจากข้อความ -->
+            <div class="card mb-4">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">ตัวอย่าง 3: สกัดข้อมูลจากข้อความ (Entity Extraction)</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="fw-bold">System Instruction:</h6>
+                    <div class="bg-light p-3 rounded mb-3">
+                        <code>"สกัดข้อมูลจากข้อความ คืนผลเป็น JSON format: {name, position, organization, phone, email}"</code>
+                    </div>
+
+                    <h6 class="fw-bold">ตัวอย่าง:</h6>
+                    <p><strong>Input:</strong></p>
+                    <div class="bg-light p-3 rounded mb-2">
+                        <code>"ติดต่อ นายสมชาย ใจดี ตำแหน่งนักวิชาการพัฒนาฝีมือแรงงาน สนพ.สุรินทร์ โทร 044-511-259 อีเมล somchai@dsd.go.th"</code>
+                    </div>
+                    <p><strong>Output:</strong></p>
+                    <pre class="bg-dark text-light p-3 rounded"><code>{
+  "name": "นายสมชาย ใจดี",
+  "position": "นักวิชาการพัฒนาฝีมือแรงงาน",
+  "organization": "สนพ.สุรินทร์",
+  "phone": "044-511-259",
+  "email": "somchai@dsd.go.th"
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="step-item bg-light p-3 rounded mb-4">
+                <h6 class="fw-bold">📝 ขั้นตอนสร้าง Structured Prompt ใน AI Studio:</h6>
+                <ol>
+                    <li>คลิก <strong>"Create new"</strong> → เลือก <strong>"Structured prompt"</strong></li>
+                    <li>เขียน System Instruction ด้านบน</li>
+                    <li>เพิ่มตัวอย่าง: คลิก "Add example" → กรอก Input และ Output</li>
+                    <li>เพิ่มอย่างน้อย 3 ตัวอย่าง (ยิ่งมากยิ่งดี)</li>
+                    <li>ทดสอบด้วยข้อมูลใหม่ใน "Test" section</li>
+                    <li>ถ้าพอใจ คลิก "Get code" เพื่อ export เป็น Python/JS/cURL</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Section 7.4 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">7.4 Chat Prompts — สร้าง Chatbot ง่ายๆ</h3>
+            
+            <p>Chat Prompts ใน AI Studio ช่วยให้ออกแบบ Chatbot ที่มี "บุคลิก" เฉพาะตัว โดยกำหนด System Instruction เป็นตัวกำกับพฤติกรรม</p>
+
+            <!-- ตัวอย่าง: Chatbot ตอบคำถามงานฝึกอบรม -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">🤖 ตัวอย่าง: Chatbot ตอบคำถามงาน สนพ.สุรินทร์</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="fw-bold">System Instruction:</h6>
+                    <pre class="bg-dark text-light p-3 rounded"><code>คุณเป็น "น้องฝีมือ" ผู้ช่วย AI ของสำนักงานพัฒนาฝีมือแรงงานสุรินทร์
+
+หน้าที่ของคุณ:
+1. ตอบคำถามเกี่ยวกับหลักสูตรฝึกอบรม
+2. ให้ข้อมูลการสมัครเรียน คุณสมบัติ เอกสาร
+3. แนะนำหลักสูตรที่เหมาะสมตามความสนใจ
+4. ให้ข้อมูลติดต่อ สนพ.สุรินทร์
+
+กฎ:
+- ตอบเป็นภาษาไทย สุภาพ เป็นกันเอง
+- ถ้าไม่แน่ใจ ให้แนะนำโทรสอบถาม 044-511-259
+- ห้ามให้ข้อมูลที่ไม่เกี่ยวกับงาน สนพ.
+- ถ้าถูกถามเรื่องนอกเหนือหน้าที่ ให้บอกว่า "ขอโทษค่ะ น้องฝีมือช่วยได้เฉพาะเรื่องฝึกอบรมค่ะ"
+
+ข้อมูลหลักสูตรปัจจุบัน:
+- ช่างเชื่อม MAG (30 ชม.) — เปิดรับ
+- คอมพิวเตอร์สำนักงาน (30 ชม.) — เปิดรับ
+- ช่างไฟฟ้าภายในอาคาร (30 ชม.) — เต็ม
+- ตัดผมชาย (60 ชม.) — เปิดรับ</code></pre>
+
+                    <h6 class="fw-bold mt-3">ทดสอบบทสนทนา:</h6>
+                    <div class="border rounded p-3 bg-white">
+                        <div class="mb-3">
+                            <span class="badge bg-secondary">User:</span>
+                            <span>มีหลักสูตรอะไรเปิดรับบ้างครับ</span>
+                        </div>
+                        <div class="mb-3 ps-3 border-start border-primary">
+                            <span class="badge bg-primary">น้องฝีมือ:</span>
+                            <span>สวัสดีค่ะ 😊 ตอนนี้ สนพ.สุรินทร์ มีหลักสูตรที่เปิดรับดังนี้ค่ะ:<br>
+                            1. ช่างเชื่อม MAG (30 ชม.) - ยังมีที่ว่าง<br>
+                            2. คอมพิวเตอร์สำนักงาน (30 ชม.) - ยังมีที่ว่าง<br>
+                            3. ตัดผมชาย (60 ชม.) - ยังมีที่ว่าง<br>
+                            ส่วนช่างไฟฟ้าภายในอาคารเต็มแล้วค่ะ สนใจหลักสูตรไหนคะ?</span>
+                        </div>
+                        <div class="mb-3">
+                            <span class="badge bg-secondary">User:</span>
+                            <span>สมัครช่างเชื่อมต้องใช้เอกสารอะไรบ้าง</span>
+                        </div>
+                        <div class="ps-3 border-start border-primary">
+                            <span class="badge bg-primary">น้องฝีมือ:</span>
+                            <span>สำหรับการสมัครหลักสูตรช่างเชื่อม MAG ใช้เอกสารดังนี้ค่ะ:<br>
+                            1. สำเนาบัตรประชาชน 1 ฉบับ<br>
+                            2. สำเนาทะเบียนบ้าน 1 ฉบับ<br>
+                            3. รูปถ่าย 1 นิ้ว 2 รูป<br>
+                            4. วุฒิการศึกษา (ถ้ามี)<br>
+                            มาสมัครได้ที่ สนพ.สุรินทร์ วันจันทร์-ศุกร์ 08:30-16:30 น. หรือโทร 044-511-259 ค่ะ 📞</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-item bg-light p-3 rounded mb-4">
+                <h6 class="fw-bold">📝 ขั้นตอนสร้าง Chat Prompt ใน AI Studio:</h6>
+                <ol>
+                    <li>คลิก <strong>"Create new"</strong> → เลือก <strong>"Chat prompt"</strong></li>
+                    <li>เขียน System Instruction (บุคลิก + กฎ + ข้อมูล)</li>
+                    <li>เพิ่ม Example Conversations (ถ้ามี)</li>
+                    <li>ทดสอบโดยพิมพ์คำถามในช่อง Chat</li>
+                    <li>ปรับแต่ง Temperature (แนะนำ 0.5-0.7 สำหรับ Chatbot)</li>
+                    <li>Export code เพื่อนำไปใช้จริง</li>
+                </ol>
+            </div>
+
+            <!-- Workshop Chat -->
+            <div class="card border-success mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-success">🏋️ Workshop: สร้าง Chatbot ของหน่วยงาน (25 นาที)</h5>
+                    <p><strong>โจทย์:</strong> สร้าง Chatbot สำหรับหน่วยงานของคุณ</p>
+                    <ol>
+                        <li>คิดชื่อ Chatbot (เช่น "น้องฝีมือ", "พี่ช่าง", "ผู้ช่วยฝึก")</li>
+                        <li>เขียน System Instruction ที่ครอบคลุม: บุคลิก, หน้าที่, กฎ, ข้อมูล</li>
+                        <li>ทดสอบด้วยคำถามอย่างน้อย 10 คำถาม</li>
+                        <li>ทดสอบ "edge cases" (ถามเรื่องนอกเหนือหน้าที่)</li>
+                        <li>ปรับปรุง System Instruction ตามผลทดสอบ</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7.5 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">7.5 Tuning — ปรับแต่ง Model ด้วยข้อมูลของเรา</h3>
+            
+            <p>Tuning (Fine-tuning) คือการ "สอน" Gemini ด้วยข้อมูลเฉพาะทางของเรา เพื่อให้ตอบได้ตรงตามความต้องการมากขึ้น</p>
+
+            <div class="alert alert-info mb-4">
+                <h5 class="alert-heading">📚 ทำความเข้าใจ Tuning</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="fw-bold">🔹 Prompt Engineering (ไม่ tune)</h6>
+                        <ul>
+                            <li>บอกทุกอย่างใน prompt</li>
+                            <li>ง่าย ไม่ต้องเตรียมข้อมูล</li>
+                            <li>Prompt ยาว = ค่าใช้จ่ายสูง</li>
+                            <li>เหมาะกับงานทั่วไป</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="fw-bold">🔸 Fine-tuning (tune)</h6>
+                        <ul>
+                            <li>สอน model ล่วงหน้า</li>
+                            <li>ต้องเตรียมข้อมูลฝึก 100+ ตัวอย่าง</li>
+                            <li>Prompt สั้น ตอบได้ทันที</li>
+                            <li>เหมาะกับงานเฉพาะทาง</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ขั้นตอน Tuning -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">🔧 ขั้นตอน Tuning ใน AI Studio</h5>
+                </div>
+                <div class="card-body">
+                    <div class="step-item bg-light p-3 rounded mb-3">
+                        <ol>
+                            <li><strong>เตรียมข้อมูลฝึก:</strong> สร้างไฟล์ CSV/JSON มีคู่ input-output อย่างน้อย 100 ตัวอย่าง</li>
+                            <li><strong>สร้าง Tuning Job:</strong> ไปที่ AI Studio → "New tuned model"</li>
+                            <li><strong>อัปโหลดข้อมูล:</strong> เลือกไฟล์ข้อมูลฝึก</li>
+                            <li><strong>ตั้งค่า:</strong> เลือก base model, จำนวน epochs, learning rate</li>
+                            <li><strong>เริ่ม Tuning:</strong> คลิก "Start tuning" (ใช้เวลา 15-60 นาที)</li>
+                            <li><strong>ทดสอบ:</strong> ใช้ tuned model ทดสอบกับข้อมูลใหม่</li>
+                        </ol>
+                    </div>
+
+                    <h6 class="fw-bold">ตัวอย่างข้อมูลฝึก (Training Data) สำหรับงาน สนพ.:</h6>
+                    <pre class="bg-dark text-light p-3 rounded"><code>// training_data.jsonl
+{"input": "อยากฝึกอาชีพช่างเชื่อม ต้องทำอย่างไร", "output": "สมัครที่ สนพ.สุรินทร์ ใช้บัตรประชาชน+ทะเบียนบ้าน+รูปถ่าย อายุ 18+ ไม่จำกัดวุฒิ ฝึกฟรี"}
+{"input": "ค่าใช้จ่ายฝึกอบรมเท่าไหร่", "output": "ไม่มีค่าใช้จ่าย ฝึกฟรีทุกหลักสูตร รัฐบาลสนับสนุน"}
+{"input": "ฝึกกี่วัน", "output": "ขึ้นอยู่กับหลักสูตร ปกติ 18-30 ชม. (3-5 วัน) บางหลักสูตร 60 ชม. (10 วัน)"}
+{"input": "ได้ใบรับรองไหม", "output": "ได้ครับ เมื่อฝึกครบชั่วโมงและผ่านการประเมิน จะได้วุฒิบัตรจากกรมพัฒนาฝีมือแรงงาน"}
+// ... (ต้องมีอย่างน้อย 100 ตัวอย่าง)</code></pre>
+
+                    <div class="alert alert-warning mt-3">
+                        <strong>⚠️ ข้อจำกัดของ Tuning:</strong>
+                        <ul class="mb-0">
+                            <li>ต้องเตรียมข้อมูลคุณภาพ — garbage in = garbage out</li>
+                            <li>Free tier: tune ได้ จำกัดจำนวน model</li>
+                            <li>รองรับเฉพาะ Gemini Flash (ไม่ tune Pro ได้ใน free tier)</li>
+                            <li>ผลลัพธ์ขึ้นกับคุณภาพและจำนวนตัวอย่าง</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- เมื่อไรควร Tune -->
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">🤔 เมื่อไรควร Fine-tune vs ใช้ Prompt Engineering</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>สถานการณ์</th>
+                                    <th>แนะนำ</th>
+                                    <th>เหตุผล</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ตอบคำถามทั่วไป</td>
+                                    <td>Prompt Engineering</td>
+                                    <td>Gemini รู้อยู่แล้ว แค่สั่งให้ดี</td>
+                                </tr>
+                                <tr>
+                                    <td>แปลภาษาราชการเฉพาะทาง</td>
+                                    <td>Fine-tuning</td>
+                                    <td>ศัพท์เฉพาะที่ Gemini ไม่รู้</td>
+                                </tr>
+                                <tr>
+                                    <td>จำแนกเอกสาร 5-10 ประเภท</td>
+                                    <td>Structured Prompt</td>
+                                    <td>ตัวอย่าง 3-5 อันก็พอ</td>
+                                </tr>
+                                <tr>
+                                    <td>จำแนกเอกสาร 50+ ประเภท</td>
+                                    <td>Fine-tuning</td>
+                                    <td>ตัวอย่างเยอะเกินใส่ใน prompt</td>
+                                </tr>
+                                <tr>
+                                    <td>สร้าง Chatbot ตอบ FAQ 10 ข้อ</td>
+                                    <td>Chat Prompt</td>
+                                    <td>ข้อมูลน้อย ใส่ใน instruction ได้</td>
+                                </tr>
+                                <tr>
+                                    <td>Chatbot ตอบ FAQ 500+ ข้อ</td>
+                                    <td>Fine-tuning + RAG</td>
+                                    <td>ข้อมูลเยอะเกินไป</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- แบบฝึกหัดท้ายบท -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">แบบฝึกหัดท้ายบท</h3>
+            
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">📝 แบบฝึกหัดบทที่ 7</h5>
+                    <ol>
+                        <li class="mb-2"><strong>Playground:</strong> ทดลองเปลี่ยน Temperature 5 ค่า (0.0, 0.5, 1.0, 1.5, 2.0) กับ prompt เดียวกัน จด screenshots ผลลัพธ์</li>
+                        <li class="mb-2"><strong>Structured Prompt:</strong> สร้าง prompt ที่จำแนกหมวดค่าใช้จ่ายราชการ (ค่าวัสดุ/ค่าครุภัณฑ์/ค่าสาธารณูปโภค/ค่าจ้าง/ค่าใช้สอย)</li>
+                        <li class="mb-2"><strong>Chat Prompt:</strong> สร้าง Chatbot ตอบคำถาม "น้องฝีมือ" พร้อม System Instruction ที่ละเอียด</li>
+                        <li class="mb-2"><strong>API Key:</strong> สร้าง API Key ของตัวเอง เก็บไว้ใช้ในบทที่ 8</li>
+                        <li class="mb-2"><strong>วิเคราะห์:</strong> คิดงาน 3 อย่างในหน่วยงานของคุณที่เหมาะจะใช้ Structured Prompt พร้อมเหตุผล</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+            <a href="chapter06.html" class="btn btn-outline-primary">← บทที่ 6: Gemini ใน Sheets + Slides</a>
+            <a href="chapter08.html" class="btn btn-primary">บทที่ 8: Gemini API + สร้างแอป →</a>
+        </nav>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p class="mb-1">คู่มือฝึกอบรม Gemini AI — ใช้ปัญญาประดิษฐ์ Google ทำงานราชการ</p>
+        <p class="mb-0 text-white-50">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

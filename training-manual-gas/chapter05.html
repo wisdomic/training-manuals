@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 5: Trigger</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📖 Google Apps Script</span>
+            <span class="nav-text text-light">บทที่ 5: Trigger</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <h1>บทที่ 5: Trigger — ตั้งเวลาทำงานอัตโนมัติ</h1>
+                <p class="lead">ให้โปรแกรมทำงานเองโดยไม่ต้องกดปุ่ม — ทั้งตามเวลาและตามเหตุการณ์</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h4>🎯 วัตถุประสงค์การเรียนรู้</h4>
+                <ul class="mb-0">
+                    <li>เข้าใจแนวคิด Trigger (ตัวจุดชนวน) ใน GAS</li>
+                    <li>สร้าง Time-based Trigger (ทำงานตามเวลา)</li>
+                    <li>สร้าง Event-based Trigger (onOpen, onEdit, onFormSubmit)</li>
+                    <li>จัดการ Trigger ด้วยโค้ด (สร้าง/ลบ)</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h2 class="section-header">📚 Trigger คืออะไร?</h2>
+            <p>Trigger คือ "นาฬิกาปลุก" ของ GAS — สั่งให้ฟังก์ชันทำงาน <strong>โดยอัตโนมัติ</strong> ตามเงื่อนไขที่กำหนด เช่น:</p>
+            <ul>
+                <li>ทุกวันเวลา 08:00 → ส่งรายงานอีเมล</li>
+                <li>ทุก 1 ชั่วโมง → ตรวจสอบข้อมูลใหม่</li>
+                <li>เมื่อเปิด Sheet → แสดงเมนูพิเศษ</li>
+                <li>เมื่อแก้ไขเซลล์ → คำนวณใหม่อัตโนมัติ</li>
+            </ul>
+
+            <div class="info-card">
+                <h4>📋 ประเภทของ Trigger</h4>
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ประเภท</th>
+                            <th>ทำงานเมื่อ</th>
+                            <th>ตัวอย่างการใช้</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Time-based</strong></td>
+                            <td>ตามเวลาที่กำหนด</td>
+                            <td>ส่งรายงานทุกเช้า, สำรองข้อมูลทุกคืน</td>
+                        </tr>
+                        <tr>
+                            <td><strong>onOpen</strong></td>
+                            <td>เปิด Spreadsheet</td>
+                            <td>สร้างเมนูพิเศษ, แสดงข้อความต้อนรับ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>onEdit</strong></td>
+                            <td>แก้ไขเซลล์</td>
+                            <td>ใส่ Timestamp อัตโนมัติ, คำนวณราคา</td>
+                        </tr>
+                        <tr>
+                            <td><strong>onFormSubmit</strong></td>
+                            <td>ส่ง Google Form</td>
+                            <td>ส่งอีเมลยืนยัน, สร้างเอกสาร</td>
+                        </tr>
+                        <tr>
+                            <td><strong>onChange</strong></td>
+                            <td>โครงสร้าง Sheet เปลี่ยน</td>
+                            <td>เพิ่ม/ลบ Sheet, ย้ายแถว</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="section-header">⏰ Time-based Trigger (Cron)</h2>
+<pre><code>// สร้าง Trigger ทำงานทุกวัน เวลา 08:00-09:00
+function createDailyTrigger() {
+  ScriptApp.newTrigger("sendDailyReport")
+    .timeBased()
+    .atHour(8)           // 08:00-09:00 น.
+    .everyDays(1)        // ทุก 1 วัน
+    .create();
+  Logger.log("สร้าง Daily Trigger สำเร็จ!");
+}
+
+// ทำงานทุก 1 ชั่วโมง
+function createHourlyTrigger() {
+  ScriptApp.newTrigger("checkNewData")
+    .timeBased()
+    .everyHours(1)
+    .create();
+}
+
+// ทำงานทุก 30 นาที
+function createMinuteTrigger() {
+  ScriptApp.newTrigger("quickCheck")
+    .timeBased()
+    .everyMinutes(30)    // 1, 5, 10, 15, 30
+    .create();
+}
+
+// ทำงานทุกสัปดาห์ วันจันทร์
+function createWeeklyTrigger() {
+  ScriptApp.newTrigger("sendWeeklyReport")
+    .timeBased()
+    .onWeekDay(ScriptApp.WeekDay.MONDAY)
+    .atHour(9)
+    .create();
+}
+</code></pre>
+
+            <h2 class="section-header">📋 Event-based Trigger</h2>
+
+            <h4>onOpen — เมื่อเปิด Spreadsheet</h4>
+<pre><code>// Simple Trigger (ไม่ต้องสร้าง — แค่ตั้งชื่อ onOpen)
+function onOpen() {
+  var ui = SpreadsheetApp.getUi();
+  
+  // สร้างเมนูพิเศษ
+  ui.createMenu("🛠️ เครื่องมือ")
+    .addItem("ส่งรายงาน", "sendReport")
+    .addItem("สำรองข้อมูล", "backupData")
+    .addSeparator()
+    .addItem("เกี่ยวกับ", "showAbout")
+    .addToUi();
+    
+  Logger.log("สร้างเมนูสำเร็จ");
+}
+
+function showAbout() {
+  SpreadsheetApp.getUi().alert(
+    "ระบบจัดการข้อมูล v1.0\nพัฒนาโดย: นายปัญญา ผาธรรม\nสนพ.สุรินทร์"
+  );
+}
+</code></pre>
+
+            <h4 class="mt-4">onEdit — เมื่อแก้ไขเซลล์</h4>
+<pre><code>// Simple Trigger — ใส่ Timestamp อัตโนมัติ
+function onEdit(e) {
+  var sheet = e.source.getActiveSheet();
+  var range = e.range;
+  
+  // ถ้าแก้ไขคอลัมน์ B (ชื่อ) → ใส่เวลาในคอลัมน์ F
+  if (range.getColumn() === 2 && sheet.getName() === "สมาชิก") {
+    var row = range.getRow();
+    if (row > 1) {  // ไม่ใช่ header
+      sheet.getRange(row, 6).setValue(new Date());
+      Logger.log("อัปเดตเวลาแก้ไขแถว " + row);
+    }
+  }
+}
+</code></pre>
+
+            <h4 class="mt-4">Installable Trigger (ต้องสร้างเอง — มีสิทธิ์มากกว่า)</h4>
+<pre><code>// onEdit แบบ Installable — สามารถส่ง Email, เข้าถึง Service อื่นได้
+function onEditInstallable(e) {
+  var sheet = e.source.getActiveSheet();
+  var range = e.range;
+  
+  // ถ้าเปลี่ยนสถานะเป็น "อนุมัติ" → ส่งแจ้งเตือน
+  if (range.getColumn() === 5 && range.getValue() === "อนุมัติ") {
+    var name = sheet.getRange(range.getRow(), 2).getValue();
+    var email = sheet.getRange(range.getRow(), 4).getValue();
+    
+    MailApp.sendEmail(email, "อนุมัติแล้ว!", "คุณ " + name + " ได้รับการอนุมัติแล้วครับ");
+    Logger.log("ส่งแจ้งเตือนอนุมัติให้ " + name);
+  }
+}
+
+// สร้าง Installable onEdit Trigger
+function setupEditTrigger() {
+  ScriptApp.newTrigger("onEditInstallable")
+    .forSpreadsheet(SpreadsheetApp.getActiveSpreadsheet())
+    .onEdit()
+    .create();
+}
+</code></pre>
+
+            <h2 class="section-header">🗑️ จัดการ Trigger (ดู/ลบ)</h2>
+<pre><code>// ดู Trigger ทั้งหมด
+function listAllTriggers() {
+  var triggers = ScriptApp.getProjectTriggers();
+  Logger.log("จำนวน Trigger: " + triggers.length);
+  
+  for (var i = 0; i < triggers.length; i++) {
+    var t = triggers[i];
+    Logger.log((i+1) + ". " + t.getHandlerFunction() + " | " + t.getEventType());
+  }
+}
+
+// ลบ Trigger ทั้งหมด
+function deleteAllTriggers() {
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    ScriptApp.deleteTrigger(triggers[i]);
+  }
+  Logger.log("ลบ Trigger ทั้งหมด (" + triggers.length + " ตัว) สำเร็จ");
+}
+
+// ลบ Trigger เฉพาะฟังก์ชัน
+function deleteTriggerByName(functionName) {
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    if (triggers[i].getHandlerFunction() === functionName) {
+      ScriptApp.deleteTrigger(triggers[i]);
+      Logger.log("ลบ Trigger: " + functionName);
+    }
+  }
+}
+</code></pre>
+
+            <div class="alert alert-warning">
+                <strong>⚠️ ข้อจำกัดของ Trigger</strong>
+                <ul class="mb-0">
+                    <li>แต่ละ Script มี Trigger ได้สูงสุด <strong>20 ตัว</strong></li>
+                    <li>Time-based จะทำงาน <strong>ภายใน ±15 นาที</strong> ของเวลาที่กำหนด</li>
+                    <li>Simple Trigger (onOpen, onEdit) <strong>ส่ง Email หรือเข้าถึง Service อื่นไม่ได้</strong></li>
+                    <li>ต้องใช้ Installable Trigger ถ้าต้องการสิทธิ์เพิ่มเติม</li>
+                </ul>
+            </div>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 7: สร้างระบบแจ้งเตือนอัตโนมัติ</h4>
+                <p><strong>เวลา:</strong> 25 นาที</p>
+                <hr>
+                <p><strong>โจทย์:</strong> สร้าง Trigger 3 แบบ</p>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <p>สร้างเมนูพิเศษเมื่อเปิด Sheet (onOpen)</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <p>ใส่ Timestamp อัตโนมัติเมื่อแก้ไข (onEdit)</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <p>ส่งรายงานสรุปทุกวัน (Time-based)</p>
+                </div>
+<pre><code>// ===== Lab 7: ระบบ Trigger ครบชุด =====
+
+function onOpen() {
+  SpreadsheetApp.getUi().createMenu("⚙️ ระบบ")
+    .addItem("📊 ดูสรุป", "showSummary")
+    .addItem("⏰ ตั้ง Trigger", "setupAllTriggers")
+    .addItem("🗑️ ลบ Trigger ทั้งหมด", "deleteAllTriggers")
+    .addToUi();
+}
+
+function onEdit(e) {
+  var sheet = e.source.getActiveSheet();
+  var row = e.range.getRow();
+  var col = e.range.getColumn();
+  
+  // ใส่เวลาแก้ไขที่คอลัมน์สุดท้าย
+  if (row > 1 && col < 6) {
+    var lastCol = sheet.getLastColumn();
+    sheet.getRange(row, lastCol).setValue(new Date());
+  }
+}
+
+function showSummary() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var lastRow = sheet.getLastRow();
+  SpreadsheetApp.getUi().alert(
+    "📊 สรุป\n\nจำนวนข้อมูล: " + (lastRow - 1) + " รายการ\n" +
+    "Sheet: " + sheet.getName()
+  );
+}
+
+function sendDailyReport() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var lastRow = sheet.getLastRow();
+  var message = "📊 รายงานประจำวัน\n";
+  message += "วันที่: " + new Date().toLocaleDateString("th-TH") + "\n";
+  message += "จำนวนข้อมูลทั้งหมด: " + (lastRow - 1) + " รายการ\n";
+  Logger.log(message);
+  // MailApp.sendEmail("your@email.com", "รายงานประจำวัน", message);
+}
+
+function setupAllTriggers() {
+  // ลบ Trigger เดิมก่อน
+  deleteAllTriggers();
+  
+  // สร้าง Daily Report เวลา 08:00
+  ScriptApp.newTrigger("sendDailyReport")
+    .timeBased()
+    .atHour(8)
+    .everyDays(1)
+    .create();
+  
+  SpreadsheetApp.getUi().alert("ตั้ง Trigger สำเร็จ! 🎉");
+}
+</code></pre>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h4>💡 Tips</h4>
+                <ul class="mb-0">
+                    <li><strong>ลบ Trigger เดิมก่อนสร้างใหม่:</strong> ป้องกัน Trigger ซ้ำซ้อน</li>
+                    <li><strong>Simple vs Installable:</strong> Simple (onOpen, onEdit) ง่ายแต่สิทธิ์จำกัด, Installable สิทธิ์เต็มแต่ต้องสร้างเอง</li>
+                    <li><strong>ทดสอบด้วย Logger.log ก่อน:</strong> แล้วค่อยเปิด Email/Line จริง</li>
+                    <li><strong>ดู Trigger ที่หน้า Triggers:</strong> คลิก ⏰ ด้านซ้ายของ Script Editor</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card">
+                <h4>📝 สรุปบทที่ 5</h4>
+                <table class="table table-sm">
+                    <tr>
+                        <td><strong>Time-based</strong></td>
+                        <td>everyMinutes(), everyHours(), everyDays(), onWeekDay()</td>
+                    </tr>
+                    <tr>
+                        <td><strong>onOpen</strong></td>
+                        <td>ทำงานเมื่อเปิด Sheet — สร้างเมนู</td>
+                    </tr>
+                    <tr>
+                        <td><strong>onEdit</strong></td>
+                        <td>ทำงานเมื่อแก้ไขเซลล์ — e.range, e.value</td>
+                    </tr>
+                    <tr>
+                        <td><strong>onFormSubmit</strong></td>
+                        <td>ทำงานเมื่อส่ง Form — e.values</td>
+                    </tr>
+                    <tr>
+                        <td><strong>จัดการ</strong></td>
+                        <td>getProjectTriggers(), deleteTrigger()</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Navigation -->
+            <div class="nav-buttons">
+                <a href="chapter04.html" class="btn btn-outline-secondary">← บทที่ 4</a>
+                <a href="chapter06.html" class="btn btn-primary">บทที่ 6 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

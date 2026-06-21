@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 8: Transition และ Effect — คู่มือ CapCut AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark px-3">
+        <span class="navbar-brand mb-0 h1">📖 CapCut AI ตัดต่อวิดีโอ</span>
+        <span class="nav-text d-none d-md-inline">บทที่ 8: Transition และ Effect</span>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <div class="chapter-number">บทที่ 8</div>
+                <h1>✨ Transition และ Effect</h1>
+                <p class="mb-0">ใส่ Transition ระหว่างคลิป, Video Effect, Filter, Speed Control, Keyframe</p>
+            </div>
+
+            <!-- Objectives -->
+            <div class="alert alert-info">
+                <h5 class="fw-bold">🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>ใส่ Transition ระหว่างคลิปได้อย่างเหมาะสม</li>
+                    <li>ใช้ Video Effect เพิ่มความน่าสนใจให้วิดีโอได้</li>
+                    <li>ใช้ Filter ปรับโทนสีวิดีโอได้</li>
+                    <li>ปรับ Speed (ความเร็ว) ของคลิปได้</li>
+                    <li>เข้าใจหลักการ Keyframe Animation เบื้องต้น</li>
+                </ul>
+            </div>
+
+            <!-- Section 1 -->
+            <h3 class="section-header">8.1 Transition คืออะไร?</h3>
+
+            <p><strong>Transition</strong> คือเอฟเฟกต์เปลี่ยนฉาก ใส่ตรงจุดต่อระหว่าง 2 คลิป ช่วยให้การเปลี่ยนฉากนุ่มนวล ไม่ "กระโดด" แบบกะทันหัน</p>
+
+            <p><strong>ประเภท Transition ที่นิยม:</strong></p>
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-4">
+                    <div class="info-card h-100">
+                        <h5>🔄 Basic</h5>
+                        <ul class="mb-0">
+                            <li>Fade — จาง+เข้า</li>
+                            <li>Dissolve — ละลาย</li>
+                            <li>Wipe — กวาด</li>
+                            <li>Slide — เลื่อน</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card h-100">
+                        <h5>🌊 Dynamic</h5>
+                        <ul class="mb-0">
+                            <li>Zoom — ซูมเข้า/ออก</li>
+                            <li>Spin — หมุน</li>
+                            <li>Glitch — สั่น/เบลอ</li>
+                            <li>Flash — แฟลช</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card h-100">
+                        <h5>🎨 Creative</h5>
+                        <ul class="mb-0">
+                            <li>Shape — รูปทรง</li>
+                            <li>Ink — หยดหมึก</li>
+                            <li>Particle — อนุภาค</li>
+                            <li>MK — Motion Key</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2 -->
+            <h3 class="section-header">8.2 วิธีใส่ Transition</h3>
+
+            <div class="step-item">
+                <span class="step-number">1</span>
+                ตรวจสอบว่ามีคลิป 2 ชิ้นขึ้นไปเรียงต่อกันใน Timeline
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                คลิกแท็บ <strong>"Transitions"</strong> (แถบซ้าย)
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                เลื่อนดูหมวดหมู่ หรือค้นหา Transition ที่ต้องการ
+            </div>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <strong>ลากวาง</strong> Transition ไปวางตรงจุดต่อระหว่าง 2 คลิป
+            </div>
+            <div class="step-item">
+                <span class="step-number">5</span>
+                ปรับ <strong>Duration</strong> (ความยาว) — แนะนำ 0.3-0.8 วินาที
+            </div>
+            <div class="step-item">
+                <span class="step-number">6</span>
+                กด Play ดูตัวอย่าง → เปลี่ยนถ้าไม่ชอบ (ลากใหม่ทับได้)
+            </div>
+
+            <div class="alert alert-warning">
+                <strong>📌 หลักการ:</strong> ใช้ Transition ให้เหมาะกับเนื้อหา — วิดีโอทางการใช้ Fade/Dissolve, วิดีโอสนุกใช้ Dynamic/Creative ไม่ควรใช้หลายแบบในวิดีโอเดียวกัน (เลือก 1-2 แบบ ใช้ทั้งคลิป)
+            </div>
+
+            <!-- Section 3 -->
+            <h3 class="section-header">8.3 Video Effect</h3>
+
+            <p><strong>Video Effect</strong> คือเอฟเฟกต์ที่ใส่ทับบนคลิป ทำให้วิดีโอดูน่าสนใจขึ้น:</p>
+
+            <div class="step-item">
+                <span class="step-number">1</span>
+                คลิกแท็บ <strong>"Effects"</strong> (แถบซ้าย) → <strong>"Video effects"</strong>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                เลือกหมวด: Basic, Party, Retro, Comic, Lens ฯลฯ
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                คลิกเพื่อดูตัวอย่าง → คลิก "+" หรือลากลง Timeline
+            </div>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                Effect จะปรากฏเป็น Track ใหม่ — ลากปรับความยาวตามต้องการ
+            </div>
+
+            <p><strong>Effect ที่ใช้บ่อยในงาน PR:</strong></p>
+            <ul>
+                <li><strong>Lens Flare:</strong> แสงแฟลร์ ดูหรูหรา</li>
+                <li><strong>Particle:</strong> อนุภาคกระจาย สวยงาม</li>
+                <li><strong>Light Leak:</strong> แสงรั่ว โทนอบอุ่น</li>
+                <li><strong>Blur:</strong> เบลอพื้นหลัง เน้นตัวบุคคล</li>
+                <li><strong>Vignette:</strong> ขอบมืด เน้นจุดกลาง</li>
+            </ul>
+
+            <!-- Section 4 -->
+            <h3 class="section-header">8.4 Filter (ฟิลเตอร์สี)</h3>
+
+            <p><strong>Filter</strong> คือการปรับโทนสีภาพรวมของวิดีโอ ทำให้ดูเป็นสไตล์เฉพาะ:</p>
+
+            <ol>
+                <li>คลิกเลือกคลิปใน Timeline</li>
+                <li>แถบขวา → แท็บ <strong>"Filter"</strong></li>
+                <li>เลือกหมวด: Portrait, Landscape, Film, Food, B&W ฯลฯ</li>
+                <li>คลิกเพื่อใช้ Filter → ปรับ <strong>Intensity</strong> (ความเข้ม 0-100%)</li>
+            </ol>
+
+            <p><strong>Filter แนะนำสำหรับงาน PR:</strong></p>
+            <ul>
+                <li><strong>Natural:</strong> ธรรมชาติ ไม่เปลี่ยนสีมาก</li>
+                <li><strong>Warm:</strong> โทนอุ่น สร้างบรรยากาศเป็นมิตร</li>
+                <li><strong>Clean:</strong> ใส สะอาด เหมาะกับองค์กร</li>
+                <li><strong>Film:</strong> โทนหนัง ดูเป็นมืออาชีพ</li>
+            </ul>
+
+            <!-- Section 5 -->
+            <h3 class="section-header">8.5 Speed Control (ปรับความเร็ว)</h3>
+
+            <p>ปรับความเร็วของคลิปเพื่อสร้างเอฟเฟกต์:</p>
+
+            <h5 class="fw-bold mt-3">ปรับความเร็วทั้งคลิป:</h5>
+            <ol>
+                <li>คลิกเลือกคลิป → แถบขวา → <strong>"Speed"</strong></li>
+                <li>เลือก <strong>"Normal"</strong> → ลาก slider ปรับความเร็ว</li>
+                <li><strong>0.5x:</strong> Slow Motion (ช้าลง 2 เท่า)</li>
+                <li><strong>2x:</strong> Fast Forward (เร็วขึ้น 2 เท่า)</li>
+                <li><strong>4x – 8x:</strong> Time-lapse effect</li>
+            </ol>
+
+            <h5 class="fw-bold mt-3">Speed Curve (ปรับเร็ว-ช้าภายในคลิป):</h5>
+            <ol>
+                <li>คลิกเลือกคลิป → Speed → <strong>"Curve"</strong></li>
+                <li>เลือก Preset: Montage, Hero, Bullet ฯลฯ</li>
+                <li>หรือ Custom — ลากจุดบน Curve ปรับเอง</li>
+                <li>ทำให้ส่วนหนึ่งของคลิปช้า อีกส่วนเร็ว (Smooth speed ramp)</li>
+            </ol>
+
+            <!-- Section 6 -->
+            <h3 class="section-header">8.6 Keyframe Animation (เบื้องต้น)</h3>
+
+            <p><strong>Keyframe</strong> คือการกำหนดจุดเริ่มต้นและจุดสิ้นสุดของ Animation CapCut จะเติมการเคลื่อนไหวระหว่าง 2 จุดให้อัตโนมัติ:</p>
+
+            <p><strong>ตัวอย่างที่ทำได้:</strong></p>
+            <ul>
+                <li><strong>Zoom In:</strong> ภาพค่อยๆ ซูมเข้า (จุดเริ่ม = 100% → จุดจบ = 150%)</li>
+                <li><strong>Pan:</strong> กล้องเลื่อนจากซ้ายไปขวา</li>
+                <li><strong>Opacity:</strong> ค่อยๆ จาง (100% → 0%)</li>
+                <li><strong>Position:</strong> วัตถุเคลื่อนที่จากจุด A ไป จุด B</li>
+            </ul>
+
+            <div class="step-item">
+                <span class="step-number">1</span>
+                คลิกเลือกคลิป → เลื่อน Playhead ไปจุดเริ่มต้น
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                แถบขวา → คลิกไอคอน <strong>◆ (Diamond)</strong> ข้าง property ที่ต้องการ (Scale, Position ฯลฯ)
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                เลื่อน Playhead ไปจุดสิ้นสุด
+            </div>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                เปลี่ยนค่า property (เช่น ขยายขนาด) → Keyframe ที่ 2 จะถูกสร้างอัตโนมัติ
+            </div>
+            <div class="step-item">
+                <span class="step-number">5</span>
+                กด Play → คลิปจะ Animate ระหว่าง 2 Keyframe
+            </div>
+
+            <div class="alert alert-success">
+                <strong>💡 Tips:</strong> เริ่มจาก Keyframe ง่ายๆ เช่น Zoom In ก่อน พอชำนาญแล้วค่อยทำ Animation ซับซ้อน
+            </div>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 8: Transition + Effect + Speed</h4>
+                <p><strong>เวลา:</strong> 25 นาที</p>
+                <ol>
+                    <li>สร้างโปรเจกต์ใหม่ ชื่อ <strong>"Lab08_Effects_[ชื่อ]"</strong></li>
+                    <li>Import วิดีโอ/ภาพ 4-5 คลิป ลง Timeline เรียงต่อกัน</li>
+                    <li><strong>Transition:</strong> ใส่ Transition ระหว่างทุกคลิป
+                        <ul>
+                            <li>จุดที่ 1-2: ใช้ Fade (0.5 วินาที)</li>
+                            <li>จุดที่ 2-3: ใช้ Dissolve (0.5 วินาที)</li>
+                            <li>จุดที่ 3-4: ใช้ Zoom (0.3 วินาที)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Filter:</strong> ใส่ Filter "Warm" ให้คลิปทั้งหมด (Intensity 50%)</li>
+                    <li><strong>Effect:</strong> ใส่ Light Leak effect ทับคลิปที่ 1 (3 วินาทีแรก)</li>
+                    <li><strong>Speed:</strong> ปรับคลิปที่ 3 เป็น Slow Motion (0.5x)</li>
+                    <li><strong>Keyframe:</strong> ทำ Zoom In ให้คลิปสุดท้าย (100% → 130% ใน 3 วินาที)</li>
+                    <li>ใส่เพลงประกอบ + Fade Out</li>
+                    <li>กด Play ดูตัวอย่างทั้งหมด</li>
+                    <li>ปรับแต่งจนพอใจ</li>
+                </ol>
+                <p class="mb-0"><strong>✅ สำเร็จเมื่อ:</strong> วิดีโอมี Transition ≥ 3 จุด, Filter, Effect ≥ 1, Speed Change ≥ 1, Keyframe ≥ 1</p>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5 class="fw-bold">💡 เคล็ดลับบทที่ 8</h5>
+                <ul class="mb-0">
+                    <li><strong>Less is More:</strong> ใส่ Effect/Transition แต่พอดี อย่ามากจนรกตา</li>
+                    <li><strong>ความสม่ำเสมอ:</strong> ใช้ Transition แบบเดียวกันทั้งวิดีโอ ดูเป็นมืออาชีพกว่า</li>
+                    <li><strong>Duration:</strong> Transition 0.3-0.8 วินาที (สั้นเกินจะไม่เห็น ยาวเกินจะเบื่อ)</li>
+                    <li><strong>Copy Keyframe:</strong> กด <kbd>Ctrl</kbd> + <kbd>C</kbd> ที่ Keyframe แล้ว Paste ไปคลิปอื่น</li>
+                    <li><strong>Apply to All:</strong> คลิกขวาที่ Transition → "Apply to all" ใส่ทุกจุดต่อเลย</li>
+                </ul>
+            </div>
+
+            <!-- Summary -->
+            <div class="info-card">
+                <h4>📝 สรุปบทที่ 8</h4>
+                <table class="table table-sm table-bordered mb-0">
+                    <tr>
+                        <td width="200"><strong>Transition</strong></td>
+                        <td>เอฟเฟกต์เปลี่ยนฉาก (Fade, Dissolve, Zoom, Slide)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Video Effect</strong></td>
+                        <td>Effects → Video effects (Lens Flare, Particle, Blur)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Filter</strong></td>
+                        <td>ปรับโทนสีภาพรวม (Warm, Clean, Film)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Speed</strong></td>
+                        <td>0.5x = Slow Mo, 2x = Fast, Curve = Speed Ramp</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Keyframe</strong></td>
+                        <td>กำหนดจุดเริ่ม-จบ → AI เติม Animation ให้</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Navigation -->
+            <div class="nav-buttons">
+                <a href="chapter07.html" class="btn btn-outline-secondary">← บทที่ 7</a>
+                <a href="chapter09.html" class="btn btn-primary">บทที่ 9 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

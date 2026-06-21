@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 10: สรุป + Workshop + นำเสนอ | คู่มือ Claude AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">📖 คู่มือ Claude AI</a>
+            <span class="text-white">บทที่ 10 | วันที่ 5 บ่าย</span>
+        </div>
+    </nav>
+
+    <!-- Chapter Header -->
+    <div class="chapter-header bg-light py-4">
+        <div class="container">
+            <h1 class="display-5 fw-bold">บทที่ 10: สรุป + Workshop + นำเสนอ</h1>
+            <p class="lead text-muted">วันที่ 5 บ่าย (3 ชั่วโมง) — เปรียบเทียบเครื่องมือ, Workshop สร้างงานจริง, นำเสนอผลงาน</p>
+            <div class="d-flex gap-2 flex-wrap">
+                <span class="badge bg-dark">สรุป</span>
+                <span class="badge bg-dark">เปรียบเทียบ</span>
+                <span class="badge bg-dark">Workshop</span>
+                <span class="badge bg-dark">นำเสนอ</span>
+                <span class="badge bg-dark">ปิดอบรม</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+
+        <!-- สารบัญ -->
+        <div class="card mb-5">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">📋 สารบัญบทที่ 10</h5>
+            </div>
+            <div class="card-body">
+                <ul class="toc-list">
+                    <li><a href="#section-10-1">10.1 เปรียบเทียบ Claude AI vs Co-Work vs Code</a></li>
+                    <li><a href="#section-10-2">10.2 เลือกเครื่องมือให้เหมาะกับงาน</a></li>
+                    <li><a href="#section-10-3">10.3 Workshop: ผู้เข้าอบรมเลือกสร้างงาน/ระบบ</a></li>
+                    <li><a href="#section-10-4">10.4 นำเสนอผลงาน</a></li>
+                    <li><a href="#section-10-5">10.5 Tips + แหล่งเรียนรู้ + ปิดอบรม</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 10.1 -->
+        <section id="section-10-1" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">10.1 เปรียบเทียบ Claude AI vs Co-Work vs Code</h3>
+
+            <div class="alert alert-info">
+                <strong>💡 สรุป 3 ภาคที่เรียนมา:</strong> ตลอด 5 วันที่ผ่านมา เราเรียนรู้ Claude 3 รูปแบบ — แต่ละรูปแบบเหมาะกับงานคนละประเภท
+            </div>
+
+            <h5>ตารางเปรียบเทียบ 3 ภาค</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th style="width: 20%">หัวข้อ</th>
+                            <th style="width: 27%">ภาค 1: Claude AI (Web)</th>
+                            <th style="width: 27%">ภาค 2: Claude Co-Work (Kiro)</th>
+                            <th style="width: 27%">ภาค 3: Claude Code (CLI)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>เรียนวันที่</strong></td>
+                            <td>วันที่ 1-2 (12 ชม.)</td>
+                            <td>วันที่ 3 (6 ชม.)</td>
+                            <td>วันที่ 4-5 (12 ชม.)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ใช้ผ่าน</strong></td>
+                            <td>เว็บเบราว์เซอร์ (claude.ai)</td>
+                            <td>IDE (Kiro Desktop App)</td>
+                            <td>Terminal / Command Line</td>
+                        </tr>
+                        <tr>
+                            <td><strong>เหมาะกับ</strong></td>
+                            <td>งานทั่วไป ร่างเอกสาร วิเคราะห์</td>
+                            <td>พัฒนาระบบเป็นทีม + workflow</td>
+                            <td>เขียนโค้ด + สร้างระบบเร็ว</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ใครใช้</strong></td>
+                            <td>ทุกคน (ไม่ต้องมีพื้นฐาน IT)</td>
+                            <td>Developer + ทีมพัฒนา</td>
+                            <td>Developer ที่ใช้ CLI คล่อง</td>
+                        </tr>
+                        <tr>
+                            <td><strong>จุดเด่น</strong></td>
+                            <td>ง่าย เข้าใจทันที ใช้ได้เลย</td>
+                            <td>Spec-driven, มีแผนก่อนเขียน</td>
+                            <td>เร็ว ทรงพลัง ควบคุมได้ละเอียด</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ข้อจำกัด</strong></td>
+                            <td>ไม่เข้าถึงไฟล์จริง ไม่รันโค้ดได้</td>
+                            <td>ต้องติดตั้ง IDE + เรียนรู้ workflow</td>
+                            <td>ต้องใช้ terminal ไม่มี GUI</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ราคา</strong></td>
+                            <td>ฟรี / $20/เดือน (Pro)</td>
+                            <td>ฟรี (Beta)</td>
+                            <td>ตาม API usage (~$5-50/เดือน)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>อ่าน/เขียนไฟล์</strong></td>
+                            <td>❌ (แค่ copy-paste)</td>
+                            <td>✅ (ในโปรเจกต์)</td>
+                            <td>✅ (ในโปรเจกต์)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>รันคำสั่ง</strong></td>
+                            <td>❌</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>หน้าจอ GUI</strong></td>
+                            <td>✅ (Web)</td>
+                            <td>✅ (IDE)</td>
+                            <td>❌ (Terminal)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ตัวอย่างงาน</strong></td>
+                            <td>ร่างหนังสือ สรุปประชุม แปลเอกสาร</td>
+                            <td>สร้างระบบ + manage project</td>
+                            <td>เขียน GAS, สร้างเว็บ, debug</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h5 class="mt-4">สรุปแบบง่าย</h5>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-primary">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h5 class="mb-0">🌐 Claude AI (Web)</h5>
+                        </div>
+                        <div class="card-body text-center">
+                            <p class="display-6">💬</p>
+                            <p><strong>"คุยกับ AI ผ่านเว็บ"</strong></p>
+                            <p class="text-muted">เหมือนมีเลขาส่วนตัว<br>ช่วยร่าง/แปล/สรุป/วิเคราะห์</p>
+                            <hr>
+                            <p class="small"><strong>ใช้เมื่อ:</strong> งานเอกสาร งานวิเคราะห์ งานทั่วไป</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-success">
+                        <div class="card-header bg-success text-white text-center">
+                            <h5 class="mb-0">🤝 Co-Work (Kiro)</h5>
+                        </div>
+                        <div class="card-body text-center">
+                            <p class="display-6">🏗️</p>
+                            <p><strong>"ทำงานร่วมกับ AI ใน IDE"</strong></p>
+                            <p class="text-muted">เหมือนมีสถาปนิก<br>วางแผน + สร้างระบบ</p>
+                            <hr>
+                            <p class="small"><strong>ใช้เมื่อ:</strong> พัฒนาระบบใหญ่ ต้องการ workflow</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-warning">
+                        <div class="card-header bg-warning text-dark text-center">
+                            <h5 class="mb-0">⌨️ Claude Code (CLI)</h5>
+                        </div>
+                        <div class="card-body text-center">
+                            <p class="display-6">🚀</p>
+                            <p><strong>"สั่ง AI ใน Terminal"</strong></p>
+                            <p class="text-muted">เหมือนมีโปรแกรมเมอร์<br>เขียน/แก้/deploy ได้เลย</p>
+                            <hr>
+                            <p class="small"><strong>ใช้เมื่อ:</strong> เขียนโค้ด แก้ bug สร้างระบบเร็ว</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10.2 -->
+        <section id="section-10-2" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">10.2 เลือกเครื่องมือให้เหมาะกับงาน</h3>
+
+            <h5>Decision Tree: ถ้างาน X → ใช้เครื่องมือ Y</h5>
+            <div class="card mb-4">
+                <div class="card-body">
+<pre><code>                    ┌─────────────────┐
+                    │   งานที่ต้องทำ?   │
+                    └────────┬────────┘
+                             │
+              ┌──────────────┼──────────────┐
+              ▼              ▼              ▼
+        ┌──────────┐  ┌──────────┐  ┌──────────┐
+        │ งานเอกสาร │  │ พัฒนาระบบ │  │ เขียนโค้ด │
+        │ /วิเคราะห์ │  │  ใหญ่/ทีม  │  │  /แก้ bug  │
+        └─────┬────┘  └─────┬────┘  └─────┬────┘
+              │              │              │
+              ▼              ▼              ▼
+        ┌──────────┐  ┌──────────┐  ┌──────────┐
+        │Claude AI │  │   Kiro    │  │Claude Code│
+        │  (Web)   │  │ (Co-Work) │  │  (CLI)   │
+        └──────────┘  └──────────┘  └──────────┘</code></pre>
+                </div>
+            </div>
+
+            <h5>Flowchart: เลือกเครื่องมือตามสถานการณ์</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ถ้าคุณต้องการ...</th>
+                        <th>→ ใช้</th>
+                        <th>เหตุผล</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ร่างหนังสือราชการ</td>
+                        <td><span class="badge bg-primary">Claude AI</span></td>
+                        <td>ง่ายที่สุด copy-paste ได้เลย</td>
+                    </tr>
+                    <tr>
+                        <td>สรุปเอกสาร PDF 50 หน้า</td>
+                        <td><span class="badge bg-primary">Claude AI</span></td>
+                        <td>อัปโหลดไฟล์ได้ สรุปทันที</td>
+                    </tr>
+                    <tr>
+                        <td>วิเคราะห์ข้อมูล Excel</td>
+                        <td><span class="badge bg-primary">Claude AI</span></td>
+                        <td>อัปโหลด + ถามคำถามได้</td>
+                    </tr>
+                    <tr>
+                        <td>สร้างเว็บไซต์ 1 หน้า</td>
+                        <td><span class="badge bg-warning text-dark">Claude Code</span></td>
+                        <td>สร้างไฟล์จริงได้เลย</td>
+                    </tr>
+                    <tr>
+                        <td>สร้างระบบ GAS + Sheets</td>
+                        <td><span class="badge bg-warning text-dark">Claude Code</span></td>
+                        <td>เขียน/แก้ไฟล์ + deploy ได้</td>
+                    </tr>
+                    <tr>
+                        <td>สร้างระบบใหญ่ (10+ ไฟล์)</td>
+                        <td><span class="badge bg-success">Kiro</span></td>
+                        <td>มี Spec workflow จัดระบบได้ดี</td>
+                    </tr>
+                    <tr>
+                        <td>ทำงานเป็นทีม 3+ คน</td>
+                        <td><span class="badge bg-success">Kiro</span></td>
+                        <td>มี Steering ควบคุม + ทำงานร่วมกัน</td>
+                    </tr>
+                    <tr>
+                        <td>Debug โค้ดที่มี error</td>
+                        <td><span class="badge bg-warning text-dark">Claude Code</span></td>
+                        <td>อ่าน error + แก้ไฟล์จริงได้</td>
+                    </tr>
+                    <tr>
+                        <td>เขียนบทความ / สื่อประชาสัมพันธ์</td>
+                        <td><span class="badge bg-primary">Claude AI</span></td>
+                        <td>ถนัดงานเขียน ปรับแต่งง่าย</td>
+                    </tr>
+                    <tr>
+                        <td>สร้าง Automation script</td>
+                        <td><span class="badge bg-warning text-dark">Claude Code</span></td>
+                        <td>เขียน + รันทดสอบได้ทันที</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="mt-4">ใช้ร่วมกัน (Combo) ได้ผลดีที่สุด</h5>
+            <div class="card bg-light">
+                <div class="card-body">
+                    <p><strong>Workflow แนะนำ:</strong></p>
+                    <ol>
+                        <li><strong>Claude AI</strong> — วางแผน + ร่าง requirement + ออกแบบ (คุย brainstorm)</li>
+                        <li><strong>Kiro</strong> — สร้าง Spec + Requirements + Design (ถ้าเป็นระบบใหญ่)</li>
+                        <li><strong>Claude Code</strong> — เขียนโค้ดจริง + deploy + debug</li>
+                        <li><strong>Claude AI</strong> — เขียนเอกสาร/คู่มือผู้ใช้</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10.3 -->
+        <section id="section-10-3" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">10.3 Workshop: ผู้เข้าอบรมเลือกสร้างงาน/ระบบ</h3>
+
+            <div class="alert alert-success">
+                <strong>🎯 กิจกรรม (1.5 ชั่วโมง):</strong> ผู้เข้าอบรมเลือกโจทย์ 1 ข้อ แล้วสร้างด้วย Claude AI หรือ Claude Code — ทำคนเดียว/ทีม 2-3 คน
+            </div>
+
+            <h5>รายการฟีเจอร์ 4 ระดับ</h5>
+
+            <!-- ระดับง่าย -->
+            <div class="card mb-3 border-success">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">🟢 ระดับง่าย (ใช้ Claude AI เป็นหลัก) — 30 นาที</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>โจทย์</th>
+                                <th>ใช้เครื่องมือ</th>
+                                <th>ผลลัพธ์</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>ร่างหนังสือเชิญวิทยากร (พร้อมใช้)</td>
+                                <td>Claude AI</td>
+                                <td>เอกสาร Word/PDF</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>สรุปรายงานผลการดำเนินงาน (จาก PDF ที่ให้)</td>
+                                <td>Claude AI</td>
+                                <td>สรุป 1 หน้า</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>สร้างแบบสอบถาม 20 ข้อ (Google Forms style)</td>
+                                <td>Claude AI</td>
+                                <td>เนื้อหาคำถาม + ตัวเลือก</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>เขียนโพสต์ประชาสัมพันธ์หลักสูตร (5 โพสต์)</td>
+                                <td>Claude AI</td>
+                                <td>เนื้อหา Social Media</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ระดับปานกลาง -->
+            <div class="card mb-3 border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">🔵 ระดับปานกลาง (Claude AI + Artifacts) — 45 นาที</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>โจทย์</th>
+                                <th>ใช้เครื่องมือ</th>
+                                <th>ผลลัพธ์</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5</td>
+                                <td>สร้าง Dashboard HTML แสดงสถิติฝึกอบรม</td>
+                                <td>Claude AI (Artifact)</td>
+                                <td>หน้าเว็บ + กราฟ</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>สร้างแผนการฝึกอบรม 3 วัน (ตารางเวลาสวยๆ)</td>
+                                <td>Claude AI (Artifact)</td>
+                                <td>HTML schedule</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>สร้าง Quiz Interactive (10 ข้อ) วัดความรู้ AI</td>
+                                <td>Claude AI (Artifact)</td>
+                                <td>Web quiz + คะแนน</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>วิเคราะห์ข้อมูล Excel แล้วสร้าง Infographic</td>
+                                <td>Claude AI</td>
+                                <td>สรุป + Visualization</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ระดับยาก -->
+            <div class="card mb-3 border-warning">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">🟡 ระดับยาก (Claude Code) — 60 นาที</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>โจทย์</th>
+                                <th>ใช้เครื่องมือ</th>
+                                <th>ผลลัพธ์</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>9</td>
+                                <td>สร้างเว็บ Portfolio หน่วยงาน (Responsive + Animation)</td>
+                                <td>Claude Code</td>
+                                <td>เว็บ 1 หน้า</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>สร้างระบบลงชื่อเข้าอบรม (GAS + Sheets)</td>
+                                <td>Claude Code</td>
+                                <td>ระบบ CRUD</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>สร้าง Multi-step Form + Validation (HTML/JS)</td>
+                                <td>Claude Code</td>
+                                <td>ฟอร์ม 3 ขั้นตอน</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>สร้าง Admin Dashboard + ตาราง DataTables</td>
+                                <td>Claude Code</td>
+                                <td>หน้า Admin</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ระดับท้าทาย -->
+            <div class="card mb-3 border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">🔴 ระดับท้าทาย (Claude Code + Full System) — 90 นาที</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>โจทย์</th>
+                                <th>ใช้เครื่องมือ</th>
+                                <th>ผลลัพธ์</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>13</td>
+                                <td>ระบบจองห้องประชุม (ปฏิทิน + ตรวจว่าง + แจ้งเตือน)</td>
+                                <td>Claude Code + GAS</td>
+                                <td>ระบบเต็ม 3 หน้า</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>ระบบแจ้งซ่อม/IT Helpdesk (ฟอร์ม + Admin + สถานะ + Line)</td>
+                                <td>Claude Code + GAS</td>
+                                <td>ระบบ + Line Notify</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>ระบบยืม-คืน วัสดุ/ครุภัณฑ์ (Stock + History + Report)</td>
+                                <td>Claude Code + GAS</td>
+                                <td>ระบบเต็ม + PDF</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>ระบบ KPI Dashboard (ดึง Google Sheets + Chart.js + Auto-update)</td>
+                                <td>Claude Code + GAS</td>
+                                <td>Dashboard + Report</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="alert alert-warning mt-4">
+                <strong>📌 กฎ Workshop:</strong>
+                <ul class="mb-0">
+                    <li>เลือกโจทย์ตามความสามารถ (ไม่ต้องเลือกยากสุด)</li>
+                    <li>ใช้ AI ช่วยได้เต็มที่ (นั่นคือเป้าหมายของหลักสูตร!)</li>
+                    <li>ทำทีม 2-3 คนได้ หรือทำคนเดียวก็ได้</li>
+                    <li>ไม่ต้องเสร็จ 100% — ให้ demo ได้ก็พอ</li>
+                    <li>เตรียมนำเสนอ 5 นาที (ในหัวข้อ 10.4)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 10.4 -->
+        <section id="section-10-4" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">10.4 นำเสนอผลงาน</h3>
+
+            <div class="alert alert-info">
+                <strong>🎤 รูปแบบการนำเสนอ:</strong> แต่ละทีม 5 นาที + Q&A 2 นาที = 7 นาทีต่อทีม
+            </div>
+
+            <h5>Format การนำเสนอ (5 นาที)</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ลำดับ</th>
+                        <th>เนื้อหา</th>
+                        <th>เวลา</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>แนะนำ:</strong> ชื่อทีม + โจทย์ที่เลือก + เหตุผล</td>
+                        <td>30 วินาที</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Demo:</strong> แสดงผลงานที่สร้าง (เปิดหน้าจอจริง)</td>
+                        <td>2 นาที</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Process:</strong> ใช้ AI อย่างไร (แสดง prompt ที่ใช้)</td>
+                        <td>1.5 นาที</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Lessons Learned:</strong> เรียนรู้อะไร + ปัญหาที่เจอ</td>
+                        <td>1 นาที</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="mt-4">เกณฑ์ประเมิน 5 ด้าน (รวม 20 คะแนน)</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ด้าน</th>
+                        <th>คะแนน</th>
+                        <th>เกณฑ์ 4 คะแนน (ดีเยี่ยม)</th>
+                        <th>เกณฑ์ 3 คะแนน (ดี)</th>
+                        <th>เกณฑ์ 2 คะแนน (พอใช้)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. ฟังก์ชัน</strong></td>
+                        <td>4</td>
+                        <td>ทำงานได้ครบ ไม่มี error</td>
+                        <td>ทำงานได้ส่วนใหญ่</td>
+                        <td>ทำงานได้บางส่วน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. UI/UX Design</strong></td>
+                        <td>4</td>
+                        <td>สวยงาม ใช้ง่าย responsive</td>
+                        <td>ดูดี เรียบร้อย</td>
+                        <td>ใช้งานได้ แต่ไม่สวย</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. ความคิดสร้างสรรค์</strong></td>
+                        <td>4</td>
+                        <td>มีไอเดียใหม่ ประยุกต์ใช้จริงได้</td>
+                        <td>ต่อยอดจากตัวอย่าง</td>
+                        <td>ทำตามโจทย์พื้นฐาน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. การใช้ AI</strong></td>
+                        <td>4</td>
+                        <td>ใช้ AI อย่างชาญฉลาด prompt ดี</td>
+                        <td>ใช้ AI ได้ถูกต้อง</td>
+                        <td>ใช้ AI แบบเบื้องต้น</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. การนำเสนอ</strong></td>
+                        <td>4</td>
+                        <td>ชัดเจน น่าสนใจ ตรงเวลา</td>
+                        <td>เข้าใจได้ ตรงประเด็น</td>
+                        <td>นำเสนอได้ แต่ไม่ชัดเจน</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="card bg-light mt-4">
+                <div class="card-body">
+                    <h6><strong>🏆 รางวัล:</strong></h6>
+                    <ul class="mb-0">
+                        <li>🥇 คะแนนรวมสูงสุด — "Best Overall"</li>
+                        <li>🎨 UI/UX สวยที่สุด — "Best Design"</li>
+                        <li>💡 ความคิดสร้างสรรค์ที่สุด — "Most Creative"</li>
+                        <li>🤖 ใช้ AI ได้ดีที่สุด — "Best AI Usage"</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10.5 -->
+        <section id="section-10-5" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">10.5 Tips + แหล่งเรียนรู้ + ปิดอบรม</h3>
+
+            <h5>🔟 Top 10 Tips สำหรับใช้ Claude AI ในงานราชการ</h5>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <ol>
+                        <li class="mb-2"><strong>เขียน Prompt ให้ชัดเจน</strong> — ยิ่งละเอียด ผลลัพธ์ยิ่งตรงใจ ใช้สูตร RCCFO (Role-Context-Constraint-Format-Output)</li>
+                        <li class="mb-2"><strong>ใช้ตัวอย่าง (Few-shot)</strong> — ให้ตัวอย่างผลลัพธ์ที่ต้องการ AI จะทำตาม pattern ได้ดี</li>
+                        <li class="mb-2"><strong>แบ่งงานย่อย</strong> — งานใหญ่ แบ่งเป็นหลาย prompt ดีกว่า prompt เดียวยาวมาก</li>
+                        <li class="mb-2"><strong>ตรวจสอบทุกครั้ง</strong> — AI อาจผิดได้ ตรวจข้อมูลสำคัญก่อนนำไปใช้จริง</li>
+                        <li class="mb-2"><strong>ใช้ Projects (claude.ai)</strong> — จัดกลุ่มงานเป็น Project เพื่อ AI จำ context ได้</li>
+                        <li class="mb-2"><strong>Commit บ่อย (Claude Code)</strong> — ทำเสร็จทีละ feature แล้ว commit ย้อนกลับได้</li>
+                        <li class="mb-2"><strong>สร้าง CLAUDE.md</strong> — กำหนดกฎโปรเจกต์ ไม่ต้องบอกซ้ำทุกครั้ง</li>
+                        <li class="mb-2"><strong>อย่ากลัว error</strong> — ให้ Claude ช่วย debug ได้เลย วาง error message ใส่แล้วถาม</li>
+                        <li class="mb-2"><strong>เรียนรู้จาก output</strong> — อ่านโค้ดที่ Claude สร้าง เรียนรู้เทคนิคใหม่ๆ</li>
+                        <li class="mb-2"><strong>รักษาความปลอดภัย</strong> — ห้ามใส่ข้อมูลลับ (รหัสผ่าน, เลขบัตร) ใน prompt</li>
+                    </ol>
+                </div>
+            </div>
+
+            <h5>📚 แหล่งเรียนรู้เพิ่มเติม</h5>
+
+            <!-- Official Docs -->
+            <div class="card mb-3">
+                <div class="card-header"><strong>🔗 เว็บไซต์ทางการ</strong></div>
+                <div class="card-body">
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td><strong>Claude AI</strong></td>
+                                <td><code>https://claude.ai</code></td>
+                                <td>ใช้งาน Claude ผ่านเว็บ</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Anthropic Docs</strong></td>
+                                <td><code>https://docs.anthropic.com</code></td>
+                                <td>เอกสารทางการ API + Prompt Guide</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Claude Code Docs</strong></td>
+                                <td><code>https://docs.anthropic.com/en/docs/claude-code</code></td>
+                                <td>คู่มือ Claude Code</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kiro</strong></td>
+                                <td><code>https://kiro.dev</code></td>
+                                <td>ดาวน์โหลด + เอกสาร Kiro</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Anthropic Console</strong></td>
+                                <td><code>https://console.anthropic.com</code></td>
+                                <td>จัดการ API Key + Billing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prompt Engineering Guide</strong></td>
+                                <td><code>https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering</code></td>
+                                <td>คู่มือเขียน Prompt อย่างเป็นระบบ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- YouTube -->
+            <div class="card mb-3">
+                <div class="card-header"><strong>🎥 YouTube Channels แนะนำ</strong></div>
+                <div class="card-body">
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td><strong>Anthropic</strong></td>
+                                <td>ช่องทางการ — อัปเดตฟีเจอร์ใหม่</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AI Jason (ไทย)</strong></td>
+                                <td>สอน AI เป็นภาษาไทย เข้าใจง่าย</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BorntoDev (ไทย)</strong></td>
+                                <td>สอน Programming + AI ภาษาไทย</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Matt Wolfe</strong></td>
+                                <td>AI News + Tools Review (อังกฤษ)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>All About AI</strong></td>
+                                <td>Tutorial ใช้ AI tools ต่างๆ (อังกฤษ)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Community -->
+            <div class="card mb-3">
+                <div class="card-header"><strong>👥 Community + กลุ่มเรียนรู้</strong></div>
+                <div class="card-body">
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td><strong>Claude Discord</strong></td>
+                                <td>ชุมชน Claude ทั่วโลก</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Facebook: AI Thailand</strong></td>
+                                <td>กลุ่ม AI คนไทย แลกเปลี่ยนความรู้</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Facebook: Google Apps Script Thailand</strong></td>
+                                <td>กลุ่ม GAS คนไทย ถาม-ตอบ</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Line OA: WISDOMICT</strong></td>
+                                <td>ช่องทางติดต่อวิทยากร (อ.ปู)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Reddit: r/ClaudeAI</strong></td>
+                                <td>Tips + Tricks จากผู้ใช้ทั่วโลก</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h5 class="mt-4">📊 สรุปหลักสูตร 5 วัน 30 ชั่วโมง</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>วัน</th>
+                            <th>ภาค</th>
+                            <th>เนื้อหา</th>
+                            <th>ทักษะที่ได้</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2"><strong>วันที่ 1</strong></td>
+                            <td>เช้า</td>
+                            <td>รู้จัก Claude AI + สมัครใช้งาน</td>
+                            <td>ใช้ Claude.ai ได้</td>
+                        </tr>
+                        <tr>
+                            <td>บ่าย</td>
+                            <td>เทคนิค Prompt Engineering</td>
+                            <td>เขียน Prompt ที่ดี</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2"><strong>วันที่ 2</strong></td>
+                            <td>เช้า</td>
+                            <td>งานเอกสาร + ข้อมูล</td>
+                            <td>อัปโหลด/วิเคราะห์ไฟล์</td>
+                        </tr>
+                        <tr>
+                            <td>บ่าย</td>
+                            <td>งานสร้างสรรค์</td>
+                            <td>สร้างเนื้อหา + Artifacts</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2"><strong>วันที่ 3</strong></td>
+                            <td>เช้า</td>
+                            <td>Projects + Custom Instructions</td>
+                            <td>จัดการ context + ตั้งค่า</td>
+                        </tr>
+                        <tr>
+                            <td>บ่าย</td>
+                            <td>Kiro Co-Work + Spec-driven</td>
+                            <td>ใช้ Kiro + Steering files</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2"><strong>วันที่ 4</strong></td>
+                            <td>เช้า</td>
+                            <td>เริ่มต้น Claude Code</td>
+                            <td>ติดตั้ง + ใช้คำสั่งพื้นฐาน</td>
+                        </tr>
+                        <tr>
+                            <td>บ่าย</td>
+                            <td>สร้างระบบด้วย Claude Code</td>
+                            <td>สร้าง Web App + GAS</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2"><strong>วันที่ 5</strong></td>
+                            <td>เช้า</td>
+                            <td>Claude Code ขั้นสูง</td>
+                            <td>Custom Commands + CLAUDE.md + MCP</td>
+                        </tr>
+                        <tr>
+                            <td>บ่าย</td>
+                            <td>สรุป + Workshop + นำเสนอ</td>
+                            <td>ประยุกต์ใช้จริง + Present</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h5 class="mt-4">📝 ใบรับรอง (Certificate)</h5>
+            <div class="card bg-light mb-4">
+                <div class="card-body">
+                    <p><strong>เงื่อนไขรับใบรับรอง:</strong></p>
+                    <ul>
+                        <li>เข้าเรียนไม่น้อยกว่า 80% ของเวลาทั้งหมด (24 ชม. จาก 30 ชม.)</li>
+                        <li>ส่งผลงาน Workshop อย่างน้อย 1 ชิ้น</li>
+                        <li>นำเสนอผลงาน (ทีม/เดี่ยว)</li>
+                        <li>ทำแบบประเมินความพึงพอใจ</li>
+                    </ul>
+                    <p class="mb-0"><strong>ใบรับรอง:</strong> ออกโดย สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ กรมพัฒนาฝีมือแรงงาน กระทรวงแรงงาน</p>
+                </div>
+            </div>
+
+            <h5>📋 แบบประเมินหลังอบรม</h5>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <p><strong>ส่วนที่ 1: ความพึงพอใจ (5 ระดับ)</strong></p>
+                    <ol>
+                        <li>เนื้อหาหลักสูตรตรงกับความต้องการ</li>
+                        <li>ระยะเวลาเหมาะสม</li>
+                        <li>วิทยากรอธิบายชัดเจน</li>
+                        <li>สื่อการสอนเหมาะสม</li>
+                        <li>สามารถนำไปใช้งานจริงได้</li>
+                    </ol>
+                    <p class="mt-3"><strong>ส่วนที่ 2: ประเมินตนเอง</strong></p>
+                    <ol>
+                        <li>ก่อนอบรม: ความรู้ด้าน AI (1-10)</li>
+                        <li>หลังอบรม: ความรู้ด้าน AI (1-10)</li>
+                        <li>สิ่งที่จะนำไปใช้ในงานจริง (อธิบาย)</li>
+                        <li>ข้อเสนอแนะ/สิ่งที่ควรปรับปรุง</li>
+                    </ol>
+                </div>
+            </div>
+
+            <h5>🎊 ปิดอบรม</h5>
+            <div class="card border-success">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">✅ ขอบคุณที่เข้าร่วมอบรม "ใช้ปัญญาประดิษฐ์ทำงานราชการ"</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6><strong>📞 ช่องทางติดต่อวิทยากร:</strong></h6>
+                            <ul>
+                                <li><strong>ชื่อ:</strong> นายปัญญา ผาธรรม (อ.ปู)</li>
+                                <li><strong>ตำแหน่ง:</strong> เจ้าหน้าที่ฝ่ายแผนงานและสารสนเทศ</li>
+                                <li><strong>หน่วยงาน:</strong> สำนักงานพัฒนาฝีมือแรงงานสุรินทร์</li>
+                                <li><strong>โทร:</strong> 088-377-8987</li>
+                                <li><strong>Email:</strong> wisdomssk@gmail.com</li>
+                                <li><strong>Line OA:</strong> @268qhedf (WISDOMICT)</li>
+                                <li><strong>Facebook:</strong> facebook.com/wisdomict</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><strong>🔗 ลิงก์สำคัญ:</strong></h6>
+                            <ul>
+                                <li><strong>คู่มือนี้:</strong> เข้าถึงได้ตลอดที่ URL ที่แจก</li>
+                                <li><strong>ไฟล์ Workshop:</strong> แชร์ผ่าน Google Drive</li>
+                                <li><strong>กลุ่ม Line:</strong> สำหรับถาม-ตอบหลังอบรม</li>
+                                <li><strong>YouTube:</strong> @wisdomssk (วิดีโอประกอบ)</li>
+                            </ul>
+                            <div class="alert alert-info mt-3 mb-0">
+                                <strong>💬 ข้อความจากวิทยากร:</strong><br>
+                                "AI ไม่ได้มาแทนที่เรา แต่คนที่ใช้ AI เป็น จะแทนที่คนที่ไม่ใช้"<br>
+                                — เริ่มใช้ AI วันนี้ เพื่องานราชการที่ดีกว่าเดิม 🚀
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+            <a href="chapter09.html" class="btn btn-outline-dark">← บทที่ 9: Claude Code ขั้นสูง</a>
+            <a href="index.html" class="btn btn-dark">📚 สารบัญ →</a>
+        </nav>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p>คู่มือฝึกอบรม Claude AI — ใช้ปัญญาประดิษฐ์ทำงานราชการ</p>
+        <p class="opacity-75">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

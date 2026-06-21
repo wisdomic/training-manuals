@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 8: NotebookLM + AI เครื่องมืออื่น — คู่มือ NotebookLM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4)">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ NotebookLM</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter01.html">บทที่ 1</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter02.html">บทที่ 2</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter03.html">บทที่ 3</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter04.html">บทที่ 4</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter05.html">บทที่ 5</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter06.html">บทที่ 6</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter07.html">บทที่ 7</a></li>
+                <li class="nav-item"><a class="nav-link active" href="chapter08.html">บทที่ 8</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter09.html">บทที่ 9</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter10.html">บทที่ 10</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<div class="container mt-4">
+    <div class="mb-4">
+        <span class="day-badge">วันที่ 4</span>
+        <span class="time-badge ms-2">บ่าย 13:00 – 16:00</span>
+    </div>
+    <h1 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">🔗 บทที่ 8: NotebookLM + AI เครื่องมืออื่น</h1>
+    <p class="lead text-muted">ต่อยอดผลลัพธ์ NotebookLM ด้วย ChatGPT, Gamma, Canva สร้างสื่อครบชุด</p>
+
+    <!-- สารบัญบท -->
+    <div class="card p-3 mb-4">
+        <h5>📑 ในบทนี้</h5>
+        <ul class="mb-0">
+            <li><a href="#section-8-1">8.1 NotebookLM สรุป → ChatGPT เขียนบทความ</a></li>
+            <li><a href="#section-8-2">8.2 NotebookLM → Gamma สร้างสไลด์</a></li>
+            <li><a href="#section-8-3">8.3 NotebookLM + Canva ทำ Infographic</a></li>
+            <li><a href="#section-8-4">8.4 Workflow ครบชุด: NotebookLM → ChatGPT → Canva</a></li>
+            <li><a href="#section-8-5">8.5 Lab: สรุปรายงาน → สร้าง Infographic</a></li>
+        </ul>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- Section 8.1 -->
+    <!-- ============================================ -->
+    <section id="section-8-1" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">8.1 NotebookLM สรุป → ChatGPT เขียนบทความ</h2>
+
+        <p>NotebookLM เก่งเรื่องสรุปจากเอกสารจริง แต่ถ้าต้องการเขียนบทความ/โพสต์/content ที่มีลีลาภาษาดี ChatGPT จะช่วยต่อยอดได้ดีกว่า</p>
+
+        <h4 class="mt-4">Workflow: NotebookLM → ChatGPT</h4>
+        <div class="row g-3">
+            <div class="col-md-3">
+                <div class="card p-3 text-center h-100" style="border-top: 3px solid #8b5cf6;">
+                    <h1>📄</h1>
+                    <h6>Step 1</h6>
+                    <p class="small mb-0">อัปโหลดเอกสารเข้า NotebookLM</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-3 text-center h-100" style="border-top: 3px solid #8b5cf6;">
+                    <h1>🤖</h1>
+                    <h6>Step 2</h6>
+                    <p class="small mb-0">ให้ NotebookLM สรุปประเด็นสำคัญ</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-3 text-center h-100" style="border-top: 3px solid #8b5cf6;">
+                    <h1>💬</h1>
+                    <h6>Step 3</h6>
+                    <p class="small mb-0">Copy สรุป → วาง ChatGPT เขียนบทความ</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-3 text-center h-100" style="border-top: 3px solid #8b5cf6;">
+                    <h1>✅</h1>
+                    <h6>Step 4</h6>
+                    <p class="small mb-0">ได้บทความพร้อมเผยแพร่</p>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4">ตัวอย่าง Prompt ใน ChatGPT</h4>
+        <div class="card p-3 bg-light">
+            <p class="mb-2"><strong>Prompt:</strong></p>
+            <p class="mb-0 fst-italic">"จากข้อมูลสรุปนี้ [วางสรุปจาก NotebookLM] ช่วยเขียนบทความสั้นๆ 500 คำ สำหรับโพสต์ใน Facebook ของหน่วยงานราชการ ภาษาเข้าใจง่าย มีหัวข้อน่าสนใจ เน้นให้ประชาชนเข้าใจสิทธิ์ของคนพิการ"</p>
+        </div>
+
+        <h4 class="mt-4">ข้อดีของการใช้ร่วมกัน</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>เครื่องมือ</th>
+                        <th>จุดแข็ง</th>
+                        <th>จุดอ่อน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>NotebookLM</strong></td>
+                        <td>สรุปจากเอกสารจริง มี citation ไม่แต่งเรื่อง</td>
+                        <td>เขียนบทความ/content ได้ไม่ดีเท่า</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ChatGPT</strong></td>
+                        <td>เขียนบทความเก่ง ปรับลีลาภาษาได้ดี สร้าง content หลากหลาย</td>
+                        <td>อาจแต่งเรื่องเอง ไม่มี citation จากเอกสาร</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ใช้ร่วมกัน</strong></td>
+                        <td colspan="2">ข้อมูลถูกต้อง (จาก NotebookLM) + ภาษาดี (จาก ChatGPT) = สื่อคุณภาพ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 8.2 -->
+    <!-- ============================================ -->
+    <section id="section-8-2" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">8.2 NotebookLM → Gamma สร้างสไลด์</h2>
+
+        <p><strong>Gamma</strong> (gamma.app) คือ AI ที่สร้างสไลด์นำเสนอได้อัตโนมัติ เพียงใส่เนื้อหาก็ได้สไลด์สวยงามภายในไม่กี่นาที</p>
+
+        <h4 class="mt-4">ขั้นตอน: NotebookLM → Gamma</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>สรุปเนื้อหาด้วย NotebookLM</h5>
+            <p class="mb-0">ใช้ Chat หรือ Notebook Guide สรุปเอกสารเป็นหัวข้อ 5-10 ข้อ</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>Copy ผลลัพธ์</h5>
+            <p class="mb-0">Copy สรุปหัวข้อ + รายละเอียดย่อจาก NotebookLM</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>เข้า Gamma.app → Paste + Generate</h5>
+            <p class="mb-0">เข้า gamma.app → Create → Paste เนื้อหา → เลือก Template → Generate</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h5>แก้ไขสไลด์ตามต้องการ</h5>
+            <p class="mb-0">ปรับสี ขนาดตัวอักษร เพิ่มรูปภาพ แก้ไขเนื้อหา</p>
+        </div>
+
+        <div class="screenshot-placeholder mt-3">
+            <p>ภาพ: ตัวอย่างสไลด์ที่ Gamma สร้างจากสรุป NotebookLM</p>
+        </div>
+
+        <div class="info-box mt-4">
+            <h5>💡 Tips: Prompt สำหรับ NotebookLM ก่อนส่ง Gamma</h5>
+            <p class="mb-0">"สรุปเนื้อหานี้เป็น 8 หัวข้อ แต่ละหัวข้อมี bullet point 3 ข้อ เหมาะสำหรับทำสไลด์นำเสนอ"</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 8.3 -->
+    <!-- ============================================ -->
+    <section id="section-8-3" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">8.3 NotebookLM + Canva ทำ Infographic</h2>
+
+        <p><strong>Canva</strong> เป็นเครื่องมือออกแบบกราฟิกที่ใช้ง่าย มีเทมเพลต Infographic สำเร็จรูป เหมาะกับการนำข้อมูลจาก NotebookLM มาทำเป็นภาพสื่อสาร</p>
+
+        <h4 class="mt-4">ขั้นตอน: NotebookLM → Canva</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>สรุปข้อมูลสำคัญจาก NotebookLM</h5>
+            <p class="mb-0">Prompt: "สรุปสิทธิ์คนพิการ 5 ข้อสำคัญที่สุด แต่ละข้อไม่เกิน 15 คำ"</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>เข้า Canva → เลือก Template "Infographic"</h5>
+            <p class="mb-0">ค้นหา "infographic" → เลือกเทมเพลตที่เหมาะสม</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>ใส่ข้อมูลจาก NotebookLM</h5>
+            <p class="mb-0">เปลี่ยนข้อความใน Template เป็นข้อมูลที่สรุปมา</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h5>ปรับแต่ง + ดาวน์โหลด</h5>
+            <p class="mb-0">เปลี่ยนสี โลโก้หน่วยงาน → ดาวน์โหลดเป็น PNG/PDF</p>
+        </div>
+
+        <h4 class="mt-4">ตัวอย่าง Infographic ที่ทำได้</h4>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card p-3 text-center h-100">
+                    <h1>📊</h1>
+                    <h6>สิทธิ์คนพิการ 5 ข้อ</h6>
+                    <p class="small mb-0">สรุปสิทธิ์หลักเป็น icon + ข้อความสั้น</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3 text-center h-100">
+                    <h1>🗺️</h1>
+                    <h6>ขั้นตอนทำบัตรคนพิการ</h6>
+                    <p class="small mb-0">Flowchart ขั้นตอน 1-5</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3 text-center h-100">
+                    <h1>📞</h1>
+                    <h6>ติดต่อหน่วยงาน</h6>
+                    <p class="small mb-0">QR Code + เบอร์โทร + ที่อยู่</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="screenshot-placeholder mt-3">
+            <p>ภาพ: ตัวอย่าง Infographic "สิทธิ์คนพิการ 5 ข้อที่ต้องรู้" จาก Canva</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 8.4 -->
+    <!-- ============================================ -->
+    <section id="section-8-4" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">8.4 Workflow ครบชุด: NotebookLM → ChatGPT → Canva</h2>
+
+        <p>เมื่อรวมเครื่องมือทั้งหมดเข้าด้วยกัน จะได้ชุดสื่อสื่อสารครบจากเอกสาร 1 ชุด</p>
+
+        <h4 class="mt-4">Full Workflow — จากเอกสาร → สื่อครบชุด</h4>
+        <div class="card p-4" style="background: linear-gradient(135deg, #ede9fe, #ecfeff);">
+            <div class="row g-3 text-center">
+                <div class="col-md-2">
+                    <div class="card p-2">
+                        <h2>📄</h2>
+                        <p class="small mb-0"><strong>เอกสาร</strong><br>PDF/ระเบียบ</p>
+                    </div>
+                </div>
+                <div class="col-md-1 d-flex align-items-center justify-content-center">
+                    <h3>→</h3>
+                </div>
+                <div class="col-md-2">
+                    <div class="card p-2">
+                        <h2>🤖</h2>
+                        <p class="small mb-0"><strong>NotebookLM</strong><br>สรุป + FAQ</p>
+                    </div>
+                </div>
+                <div class="col-md-1 d-flex align-items-center justify-content-center">
+                    <h3>→</h3>
+                </div>
+                <div class="col-md-2">
+                    <div class="card p-2">
+                        <h2>💬</h2>
+                        <p class="small mb-0"><strong>ChatGPT</strong><br>บทความ/โพสต์</p>
+                    </div>
+                </div>
+                <div class="col-md-1 d-flex align-items-center justify-content-center">
+                    <h3>→</h3>
+                </div>
+                <div class="col-md-2">
+                    <div class="card p-2">
+                        <h2>🎨</h2>
+                        <p class="small mb-0"><strong>Canva</strong><br>Infographic</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4">ผลลัพธ์ที่ได้จาก Workflow นี้</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Output</th>
+                        <th>เครื่องมือ</th>
+                        <th>ใช้ที่ไหน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>📋 FAQ 10 ข้อ</td>
+                        <td>NotebookLM</td>
+                        <td>ติดบอร์ดหน่วยงาน / เว็บไซต์</td>
+                    </tr>
+                    <tr>
+                        <td>📝 บทความ Facebook</td>
+                        <td>ChatGPT</td>
+                        <td>โพสต์ Facebook / Line OA</td>
+                    </tr>
+                    <tr>
+                        <td>🎨 Infographic</td>
+                        <td>Canva</td>
+                        <td>แชร์ Social Media / พิมพ์แจก</td>
+                    </tr>
+                    <tr>
+                        <td>🎙️ Podcast AI</td>
+                        <td>NotebookLM Audio</td>
+                        <td>Line OA / YouTube / เสียงตามสาย</td>
+                    </tr>
+                    <tr>
+                        <td>📊 สไลด์นำเสนอ</td>
+                        <td>Gamma</td>
+                        <td>ประชุม / อบรม / บรรยาย</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box mt-4">
+            <h5>💡 Tips: ประหยัดเวลาด้วย AI Workflow</h5>
+            <ul class="mb-0">
+                <li><strong>วิธีเดิม:</strong> อ่านเอกสาร → สรุป → เขียนบทความ → ออกแบบ = 1-2 วัน</li>
+                <li><strong>วิธี AI:</strong> อัปโหลด → สรุป → เขียน → ออกแบบ = 1-2 ชั่วโมง</li>
+                <li>ประหยัดเวลา <strong>80%+</strong> และข้อมูลถูกต้องตามเอกสารต้นฉบับ</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 8.5 -->
+    <!-- ============================================ -->
+    <section id="section-8-5" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">8.5 Lab: สรุปรายงาน → สร้าง Infographic</h2>
+
+        <div class="exercise-box">
+            <h4>🧪 Lab ปฏิบัติ: จากรายงาน → Infographic สิทธิ์คนพิการ</h4>
+            <p><strong>⏱️ เวลา:</strong> 50 นาที | <strong>รูปแบบ:</strong> จับคู่ 2 คน</p>
+
+            <h5 class="mt-3">📋 โจทย์</h5>
+            <p>ใช้ NotebookLM สรุปเอกสารสิทธิ์คนพิการ → นำผลลัพธ์ไปสร้าง Infographic ด้วย Canva</p>
+
+            <h5 class="mt-3">📝 ขั้นตอน</h5>
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <h5>สรุปด้วย NotebookLM (15 นาที)</h5>
+                <p class="mb-0">ใช้ Notebook "สิทธิ์คนพิการ" จาก Lab บทที่ 7 → Prompt: "สรุปสิทธิ์คนพิการ 5 ข้อสำคัญที่สุด แต่ละข้อไม่เกิน 20 คำ พร้อมไอคอนที่เหมาะสม"</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <h5>เขียน Caption ด้วย ChatGPT (10 นาที)</h5>
+                <p class="mb-0">วาง สรุปจาก NotebookLM → Prompt ChatGPT: "เขียน Caption สำหรับโพสต์ Infographic นี้ใน Facebook ยาว 3-5 บรรทัด"</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <h5>สร้าง Infographic ด้วย Canva (20 นาที)</h5>
+                <p class="mb-0">เข้า Canva → เลือก Template Infographic → ใส่ข้อมูล 5 ข้อ → ปรับแต่งสี/โลโก้</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <h5>นำเสนอผลงาน (5 นาที)</h5>
+                <p class="mb-0">แสดง Infographic + Caption ที่สร้าง → เพื่อนให้ Feedback</p>
+            </div>
+
+            <h5 class="mt-4">✅ เกณฑ์สำเร็จ</h5>
+            <ul>
+                <li>สรุปข้อมูลจาก NotebookLM ได้กระชับ ถูกต้อง</li>
+                <li>สร้าง Infographic ได้สวยงาม อ่านง่าย</li>
+                <li>มี Caption สำหรับโพสต์ Social Media</li>
+                <li>ข้อมูลตรงกับเอกสารต้นฉบับ (ตรวจ citation)</li>
+            </ul>
+        </div>
+
+        <div class="info-box mt-4">
+            <h5>💡 Tips สำหรับ Lab</h5>
+            <ul class="mb-0">
+                <li>เลือก Template Canva สีสดใส อ่านง่าย ตัวอักษรใหญ่</li>
+                <li>ใส่โลโก้หน่วยงาน + QR Code ติดต่อ</li>
+                <li>ทดสอบดูบนมือถือว่าอ่านชัดหรือไม่</li>
+                <li>ดาวน์โหลดทั้ง PNG (สำหรับ Social) และ PDF (สำหรับพิมพ์)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Chapter Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter07.html">← บทที่ 7</a>
+        <a href="chapter09.html">บทที่ 9 →</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p class="mb-1">คู่มือฝึกอบรม NotebookLM — เปลี่ยนเอกสารเป็นความรู้ด้วย AI</p>
+        <p class="mb-0 text-muted">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

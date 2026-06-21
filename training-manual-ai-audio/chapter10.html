@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 10: Workshop — AI เสียงและดนตรี</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📖 AI เสียงและดนตรี</span>
+            <span class="nav-text text-light">บทที่ 10: Workshop</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+            <!-- Chapter Header -->
+            <div class="chapter-header text-center">
+                <h1>🎬 บทที่ 10: Workshop</h1>
+                <p class="lead">สร้างชุดเสียงครบสำหรับวิดีโอโปรโมตองค์กร — เพลง Intro + เสียงบรรยาย + SFX + เพลงปิด</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>สร้างชุดเสียงครบสำหรับวิดีโอโปรโมตองค์กร 1 ชิ้น</li>
+                    <li>บูรณาการเครื่องมือ AI เสียงทั้งหมดที่เรียนมา</li>
+                    <li>จัดลำดับเสียงใน Timeline ให้สมดุลและน่าฟัง</li>
+                    <li>Export วิดีโอสำเร็จพร้อมใช้งานจริง</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">📘 10.1 ภาพรวม Workshop</h3>
+            <section>
+                <p>ใน Workshop นี้ เราจะสร้างวิดีโอโปรโมตองค์กรความยาว 60-90 วินาที ที่มีชุดเสียงครบ 4 ส่วน:</p>
+
+                <div class="info-card">
+                    <h5>🎬 โครงสร้างวิดีโอโปรโมตองค์กร</h5>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ส่วน</th>
+                                <th>เวลา</th>
+                                <th>เสียง</th>
+                                <th>เครื่องมือ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. Intro</strong></td>
+                                <td>0:00 - 0:10</td>
+                                <td>เพลง Intro + SFX Whoosh</td>
+                                <td>Suno/Udio</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. เนื้อหา</strong></td>
+                                <td>0:10 - 0:50</td>
+                                <td>เสียงบรรยาย + Background Music</td>
+                                <td>ElevenLabs + Suno</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Contact</strong></td>
+                                <td>0:50 - 1:00</td>
+                                <td>เสียงบอกช่องทางติดต่อ</td>
+                                <td>ElevenLabs/CapCut</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. Outro</strong></td>
+                                <td>1:00 - 1:15</td>
+                                <td>เพลงปิด (Fade out)</td>
+                                <td>Suno/Udio</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-card">
+                    <h5>🛠️ เครื่องมือที่ต้องใช้</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul>
+                                <li><strong>Suno AI / Udio AI</strong> — สร้างเพลง Intro + Outro + Background</li>
+                                <li><strong>ElevenLabs</strong> — สร้างเสียงบรรยาย</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul>
+                                <li><strong>CapCut</strong> — ตัดต่อวิดีโอ + จัดเรียงเสียง</li>
+                                <li><strong>Gemini</strong> — ช่วยเขียนสคริปต์ + Prompt</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 10.2 ขั้นตอนที่ 1: เตรียมสคริปต์</h3>
+            <section>
+                <p>เขียนสคริปต์ทั้งหมดก่อนเริ่มสร้างเสียง:</p>
+
+                <div class="prompt-example">
+                    <strong>📝 ตัวอย่างสคริปต์วิดีโอโปรโมตองค์กร:</strong><br><br>
+                    <strong>[Intro — 10 วินาที]</strong><br>
+                    (เพลง Intro สั้น + โลโก้องค์กร)<br><br>
+                    <strong>[เนื้อหาส่วน 1 — 15 วินาที]</strong><br>
+                    เสียงบรรยาย: "ศูนย์บริการคนพิการจังหวัดสุรินทร์, พร้อมให้บริการครบวงจร. เราดูแลทุกท่านด้วยหัวใจ, ตั้งแต่การฟื้นฟูสมรรถภาพ, การฝึกอาชีพ, ไปจนถึงการให้คำปรึกษาด้านสิทธิ์."<br><br>
+                    <strong>[เนื้อหาส่วน 2 — 15 วินาที]</strong><br>
+                    เสียงบรรยาย: "เราเชื่อว่าทุกคนมีศักยภาพ. ไม่ว่าจะเป็นผู้พิการทางสายตา, ทางการได้ยิน, ทางการเคลื่อนไหว, หรือทางสติปัญญา. เราพร้อมสนับสนุนให้ทุกคนก้าวไปข้างหน้า."<br><br>
+                    <strong>[เนื้อหาส่วน 3 — 10 วินาที]</strong><br>
+                    เสียงบรรยาย: "บริการของเรา ได้แก่, ฝึกอาชีพ, กายภาพบำบัด, จัดหางาน, และส่งเสริมการศึกษา."<br><br>
+                    <strong>[Contact — 10 วินาที]</strong><br>
+                    เสียงบรรยาย: "ติดต่อเราได้ที่, ศูนย์บริการคนพิการจังหวัดสุรินทร์. เปิดบริการวันจันทร์ถึงศุกร์, เวลาแปดจุดสามสิบ, ถึง, สิบหกจุดสามสิบนาฬิกา."<br><br>
+                    <strong>[Outro — 15 วินาที]</strong><br>
+                    (เพลงปิด Fade out + โลโก้)
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>💡 ใช้ Gemini ช่วยเขียนสคริปต์:</strong> พูดกับ Gemini Live: "ช่วยเขียนสคริปต์วิดีโอโปรโมตองค์กรคนพิการ ความยาว 60 วินาที ให้มีเสียงบรรยาย 3 ส่วน"
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 10.3 ขั้นตอนที่ 2: สร้างเพลง Intro</h3>
+            <section>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิด Suno AI</strong> — ไปที่ Create → Custom Mode
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ติ๊ก Instrumental</strong> — ไม่ต้องมีเสียงร้อง
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ใส่ Style</strong>
+                </div>
+
+                <div class="prompt-example">
+                    <strong>📝 Prompt เพลง Intro:</strong><br>
+                    "Cinematic corporate intro, 15 seconds, piano and strings, building energy, starts soft then powerful, inspiring, professional, no drums at start, drums enter at 8 seconds"
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>Generate</strong> — สร้าง 2-3 ครั้ง เลือกที่ดีที่สุด
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>Download MP3</strong> — บันทึกเป็น "intro-music.mp3"
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 10.4 ขั้นตอนที่ 3: สร้างเสียงบรรยาย</h3>
+            <section>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิด ElevenLabs</strong> — ไปที่ Text to Speech
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>เลือกเสียง</strong> — เสียงไทย Professional (ผู้ชายหรือผู้หญิง)
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ตั้งค่า</strong> — Stability: 70%, Clarity: 80%, Speed: 0.95x
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ใส่สคริปต์ทีละส่วน</strong> — แบ่ง 3-4 ท่อน สร้างแยกกัน
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>ฟังตรวจสอบ</strong> — ปรับจนพอใจ
+                </div>
+                <div class="step-item">
+                    <span class="step-number">6</span>
+                    <strong>Download</strong> — บันทึกแต่ละส่วนแยกไฟล์
+                    <ul>
+                        <li>voiceover-part1.mp3</li>
+                        <li>voiceover-part2.mp3</li>
+                        <li>voiceover-part3.mp3</li>
+                        <li>voiceover-contact.mp3</li>
+                    </ul>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 10.5 ขั้นตอนที่ 4: สร้าง Background Music</h3>
+            <section>
+                <div class="prompt-example">
+                    <strong>📝 Prompt Background Music:</strong><br>
+                    "Soft ambient corporate music, gentle piano and light strings, calm and inspiring, instrumental, 60 seconds, loop-friendly, background music for narration, not too loud, minimal percussion"
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>สร้างใน Suno/Udio</strong> — ใช้ Prompt ด้านบน
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ฟังทดสอบ</strong> — ต้องเป็นเพลงเบาๆ ไม่กลบเสียงพูด
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>Download</strong> — บันทึกเป็น "background-music.mp3"
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 10.6 ขั้นตอนที่ 5: สร้างเพลงปิด (Outro)</h3>
+            <section>
+                <div class="prompt-example">
+                    <strong>📝 Prompt เพลง Outro:</strong><br>
+                    "Gentle acoustic guitar and piano outro, warm and thankful mood, soft and calm, fade out gradually, 15 seconds, inspiring ending, no vocal, corporate style"
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>สร้างใน Suno/Udio</strong> — ใช้ Prompt ด้านบน
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ฟัง</strong> — ต้องให้ความรู้สึกจบสวยงาม
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>Download</strong> — บันทึกเป็น "outro-music.mp3"
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 10.7 ขั้นตอนที่ 6: ประกอบทุกอย่างใน CapCut</h3>
+            <section>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>สร้างโปรเจกต์ใหม่</strong> — เปิด CapCut → New Video (16:9)
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>อัปโหลดรูปภาพ/วิดีโอ</strong> — ใส่ภาพองค์กร 5-8 รูป ลงใน Timeline
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>จัดลำดับภาพ</strong> — จัดให้ตรงกับสคริปต์ (Intro → เนื้อหา → Contact → Outro)
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ใส่เพลง Intro</strong> — ลาก intro-music.mp3 ไว้ช่วง 0:00-0:10
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>ใส่ Background Music</strong> — ลาก background-music.mp3 ไว้ช่วง 0:10-1:00, ลด Volume เหลือ 15-20%
+                </div>
+                <div class="step-item">
+                    <span class="step-number">6</span>
+                    <strong>ใส่เสียงบรรยาย</strong> — วางแต่ละส่วนตรงตำแหน่งที่เหมาะสม, Volume 100%
+                </div>
+                <div class="step-item">
+                    <span class="step-number">7</span>
+                    <strong>ใส่เพลง Outro</strong> — ลาก outro-music.mp3 ไว้ท้าย
+                </div>
+                <div class="step-item">
+                    <span class="step-number">8</span>
+                    <strong>ปรับ Volume สมดุล</strong>
+                </div>
+
+                <div class="info-card">
+                    <h5>🔊 ค่า Volume แนะนำ</h5>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Audio Track</th>
+                                <th>Volume</th>
+                                <th>หมายเหตุ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>เพลง Intro</td>
+                                <td>80-100%</td>
+                                <td>ดังชัด (ยังไม่มีเสียงพูด)</td>
+                            </tr>
+                            <tr>
+                                <td>เสียงบรรยาย</td>
+                                <td>100%</td>
+                                <td>เสียงหลัก ต้องชัดที่สุด</td>
+                            </tr>
+                            <tr>
+                                <td>Background Music</td>
+                                <td>15-25%</td>
+                                <td>เบาๆ ห้ามกลบเสียงพูด</td>
+                            </tr>
+                            <tr>
+                                <td>เพลง Outro</td>
+                                <td>70-90%</td>
+                                <td>ค่อยๆ ดังขึ้นเมื่อเสียงพูดจบ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 10.8 ขั้นตอนที่ 7: ตรวจสอบและ Export</h3>
+            <section>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>Preview ทั้งคลิป</strong> — ดู/ฟังจากต้นจนจบ 2-3 รอบ
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ตรวจสอบ Checklist</strong>
+                </div>
+
+                <div class="info-card">
+                    <h5>✅ Checklist ก่อน Export</h5>
+                    <ul>
+                        <li>☐ เสียงบรรยายชัดเจน ไม่ถูกเพลงกลบ</li>
+                        <li>☐ เพลง Intro มีพลัง ดึงดูดความสนใจ</li>
+                        <li>☐ Background Music เบาพอ ไม่รบกวน</li>
+                        <li>☐ เพลง Outro จบสวยงาม Fade out เรียบร้อย</li>
+                        <li>☐ ไม่มีช่วงเงียบ (Dead Air) ที่ไม่ตั้งใจ</li>
+                        <li>☐ ภาพตรงกับเนื้อหาเสียง</li>
+                        <li>☐ ความยาวรวม 60-90 วินาที</li>
+                        <li>☐ ใส่ Credits ท้ายวิดีโอ</li>
+                    </ul>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>Export</strong> — Resolution: 1080p, Frame Rate: 30fps, Quality: High
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ตั้งชื่อไฟล์</strong> — "promo-video-องค์กร-final.mp4"
+                </div>
+            </section>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 10: Workshop สร้างวิดีโอโปรโมตองค์กร</h4>
+                <p><strong>เวลา:</strong> 120 นาที (2 ชั่วโมง)</p>
+                <hr>
+                <p><strong>ขั้นที่ 1: เตรียมการ (15 นาที)</strong></p>
+                <ol>
+                    <li>เลือกหัวข้อ: โปรโมตองค์กร/บริการ/กิจกรรมของตัวเอง</li>
+                    <li>เขียนสคริปต์เสียงบรรยาย 3-4 ส่วน (ใช้ Gemini ช่วยได้)</li>
+                    <li>เตรียมรูปภาพ 5-8 รูป (ถ่ายเอง/จาก Canva/จากองค์กร)</li>
+                    <li>กำหนดแนวเพลงที่ต้องการ</li>
+                </ol>
+
+                <p><strong>ขั้นที่ 2: สร้างเพลง (30 นาที)</strong></p>
+                <ol>
+                    <li>สร้างเพลง Intro 10-15 วินาที ด้วย Suno/Udio</li>
+                    <li>สร้าง Background Music 60 วินาที (Instrumental, เบาๆ)</li>
+                    <li>สร้างเพลง Outro 15 วินาที (Fade out)</li>
+                    <li>Download ทั้ง 3 ไฟล์เก็บไว้</li>
+                </ol>
+
+                <p><strong>ขั้นที่ 3: สร้างเสียงบรรยาย (30 นาที)</strong></p>
+                <ol>
+                    <li>เปิด ElevenLabs</li>
+                    <li>เลือกเสียงที่เหมาะสม ตั้งค่า Stability/Clarity</li>
+                    <li>สร้างเสียงทีละส่วน (3-4 ไฟล์)</li>
+                    <li>ฟังตรวจสอบทุกไฟล์ ปรับจนพอใจ</li>
+                    <li>Download ทุกไฟล์</li>
+                </ol>
+
+                <p><strong>ขั้นที่ 4: ตัดต่อใน CapCut (30 นาที)</strong></p>
+                <ol>
+                    <li>สร้างโปรเจกต์ใหม่ อัปโหลดรูปทั้งหมด</li>
+                    <li>จัดลำดับรูปตามสคริปต์</li>
+                    <li>ใส่เพลง Intro + Background + เสียงบรรยาย + Outro</li>
+                    <li>ปรับ Volume ให้สมดุล</li>
+                    <li>เพิ่ม Text/Title ถ้าต้องการ</li>
+                    <li>ใส่ Transition ระหว่างภาพ</li>
+                </ol>
+
+                <p><strong>ขั้นที่ 5: ตรวจสอบและ Export (15 นาที)</strong></p>
+                <ol>
+                    <li>ดูทั้งคลิป 2-3 รอบ</li>
+                    <li>ตรวจ Checklist ทุกข้อ</li>
+                    <li>ปรับแก้จุดที่ยังไม่พอใจ</li>
+                    <li>Export เป็น MP4 1080p</li>
+                    <li>นำเสนอผลงานต่อกลุ่ม</li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5>💡 Tips สำหรับ Workshop</h5>
+                <ul class="mb-0">
+                    <li><strong>เตรียมสคริปต์ให้ดี:</strong> 80% ของคุณภาพวิดีโออยู่ที่สคริปต์ ใช้เวลากับขั้นตอนนี้</li>
+                    <li><strong>เสียงบรรยายสำคัญสุด:</strong> ถ้าเสียงบรรยายไม่ดี ดนตรีดีแค่ไหนก็ช่วยไม่ได้</li>
+                    <li><strong>Background Music เบาๆ:</strong> ลดเหลือ 15-20% พอ ห้ามดังเท่าเสียงพูด</li>
+                    <li><strong>ทดสอบกับหูฟัง + ลำโพง:</strong> ฟังทั้ง 2 แบบ ให้แน่ใจว่าดีทุกอุปกรณ์</li>
+                    <li><strong>ถ้าเวลาไม่พอ:</strong> ทำ Intro + เสียงบรรยาย + Outro ก่อน ค่อยเพิ่ม Background Music ทีหลัง</li>
+                    <li><strong>ให้เพื่อนฟัง:</strong> ก่อน Export ให้เพื่อนฟังก่อน เพื่อรับ Feedback</li>
+                </ul>
+            </div>
+
+            <!-- ตัวอย่างผลงาน -->
+            <h3 class="section-header">📘 10.9 ตัวอย่าง Prompt ทั้งชุด</h3>
+            <section>
+                <div class="info-card">
+                    <h5>📋 Prompt ครบชุดสำหรับวิดีโอ 1 ชิ้น (Copy ไปใช้ได้เลย)</h5>
+                </div>
+
+                <div class="prompt-example">
+                    <strong>🎵 Prompt เพลง Intro (Suno/Udio):</strong><br>
+                    "Cinematic corporate intro, 12 seconds, piano and orchestral strings, starts gentle then builds to inspiring climax, professional, no vocal, hopeful mood"
+                </div>
+
+                <div class="prompt-example">
+                    <strong>🎵 Prompt Background Music (Suno/Udio):</strong><br>
+                    "Soft ambient background music for narration, gentle piano with subtle strings, calm and warm, instrumental, 90 seconds, very quiet and unobtrusive, corporate documentary style"
+                </div>
+
+                <div class="prompt-example">
+                    <strong>🎵 Prompt เพลง Outro (Suno/Udio):</strong><br>
+                    "Warm acoustic guitar and piano outro, thankful and hopeful mood, gentle fade out, 15 seconds, no vocal, ending credits style, soft and comforting"
+                </div>
+
+                <div class="prompt-example">
+                    <strong>🎙️ ค่า ElevenLabs สำหรับเสียงบรรยาย:</strong><br>
+                    Voice: Thai Professional (ผู้ชายหรือผู้หญิง)<br>
+                    Stability: 70% | Clarity: 80% | Style: 20% | Speed: 0.95x
+                </div>
+            </section>
+
+            <!-- สรุป -->
+            <div class="info-card">
+                <h4>📋 สรุปบทที่ 10</h4>
+                <ul>
+                    <li>วิดีโอโปรโมตที่ดีต้องมี: เพลง Intro + เสียงบรรยาย + Background Music + เพลง Outro</li>
+                    <li>ใช้ Suno/Udio สร้างเพลง + ElevenLabs สร้างเสียงพากย์ + CapCut ตัดต่อ</li>
+                    <li>เขียนสคริปต์ให้ดีก่อน เป็นขั้นตอนสำคัญที่สุด</li>
+                    <li>ปรับ Volume: เสียงพูด 100%, Background Music 15-25%</li>
+                    <li>ตรวจ Checklist ก่อน Export ทุกครั้ง</li>
+                </ul>
+            </div>
+
+            <!-- สรุปรวมทั้งหลักสูตร -->
+            <div class="alert alert-primary mt-5">
+                <h4>🎉 สรุปรวมทั้งหลักสูตร</h4>
+                <p>ตลอด 10 บทที่ผ่านมา ท่านได้เรียนรู้:</p>
+                <ol>
+                    <li><strong>พื้นฐาน AI เสียง</strong> — TTS, STT, AI Music คืออะไร</li>
+                    <li><strong>ElevenLabs</strong> — สร้างเสียงพากย์คุณภาพสูง</li>
+                    <li><strong>Suno AI</strong> — สร้างเพลงจาก Prompt</li>
+                    <li><strong>Udio AI</strong> — สร้างเพลงคุณภาพสตูดิโอ</li>
+                    <li><strong>Google Gemini Live</strong> — สนทนาด้วยเสียงกับ AI</li>
+                    <li><strong>OpenAI Whisper</strong> — แปลงเสียงเป็นข้อความ</li>
+                    <li><strong>CapCut AI Voice</strong> — ใส่เสียง AI ในวิดีโอ</li>
+                    <li><strong>เทคนิค Prompt</strong> — เขียน Prompt ให้ได้ผลดี</li>
+                    <li><strong>ลิขสิทธิ์</strong> — ใช้เสียง AI ถูกต้องตามกฎ</li>
+                    <li><strong>Workshop</strong> — ปฏิบัติจริง สร้างวิดีโอครบชุด</li>
+                </ol>
+                <p class="mb-0"><strong>ขอให้ทุกท่านนำความรู้ไปใช้ประโยชน์ สร้างสื่อที่ดีเพื่อคนพิการ! 🙌</strong></p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-5 mb-4">
+                <a href="chapter09.html" class="btn btn-outline-secondary">← บทที่ 9</a>
+                <a href="index.html" class="btn btn-primary">กลับหน้าหลัก</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

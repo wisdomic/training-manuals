@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 1: รู้จัก Claude AI — คู่มือฝึกอบรม Claude AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ Claude AI</a>
+        <span class="text-white nav-text">บทที่ 1 — วันที่ 1 เช้า</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+
+    <h1 class="mb-2">บทที่ 1: รู้จัก Claude AI</h1>
+    <p class="text-muted mb-4">วันที่ 1 ภาคเช้า | ระยะเวลา 3 ชั่วโมง | ระดับ: เริ่มต้น</p>
+
+    <div class="alert alert-info">
+        <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+        <ul class="mb-0">
+            <li>อธิบายความสำคัญของ AI ในงานราชการได้</li>
+            <li>เข้าใจว่า Claude AI คืออะไร แตกต่างจาก AI ตัวอื่นอย่างไร</li>
+            <li>สมัครและเริ่มใช้งาน Claude.ai ได้ด้วยตนเอง</li>
+            <li>รู้จักส่วนประกอบหน้าจอและฟีเจอร์ของ Claude</li>
+            <li>เข้าใจความแตกต่างระหว่างแผน Free / Pro / Team</li>
+        </ul>
+    </div>
+
+    <!-- Section 1.1 -->
+    <div class="section-header">
+        <h2>1.1 AI กับงานราชการ — ทำไมต้องใช้ AI</h2>
+        <p>ปัญญาประดิษฐ์ช่วยลดภาระงาน เพิ่มประสิทธิภาพ และลดข้อผิดพลาดในงานราชการ</p>
+    </div>
+
+    <h3>สถานการณ์ปัจจุบันของงานราชการ</h3>
+    <p>ข้าราชการและเจ้าหน้าที่รัฐทุกวันนี้เผชิญกับ:</p>
+    <ul>
+        <li><strong>เอกสารจำนวนมาก</strong> — หนังสือราชการ, บันทึกข้อความ, รายงาน ที่ต้องร่าง/ตรวจทาน</li>
+        <li><strong>ข้อมูลที่ต้องวิเคราะห์</strong> — สถิติ, ตัวเลข, แบบสำรวจ ที่ต้องสรุปนำเสนอ</li>
+        <li><strong>งานซ้ำซ้อน</strong> — แก้เอกสารซ้ำ, ตอบคำถามเดิมๆ, พิมพ์ข้อมูลซ้ำ</li>
+        <li><strong>เวลาจำกัด</strong> — กำหนดส่งงานเร่งด่วน แต่ต้องทำงานหลายอย่างพร้อมกัน</li>
+    </ul>
+
+    <h3>ตัวอย่างงานที่ AI ช่วยได้ทันที</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ประเภทงาน</th>
+                    <th>ตัวอย่าง</th>
+                    <th>AI ช่วยอย่างไร</th>
+                    <th>ประหยัดเวลา</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>📝 ร่างหนังสือ</strong></td>
+                    <td>หนังสือเชิญประชุม, บันทึกข้อความ</td>
+                    <td>ร่างต้นฉบับให้ แก้ไขเล็กน้อยก็ใช้ได้</td>
+                    <td>70-80%</td>
+                </tr>
+                <tr>
+                    <td><strong>📊 สรุปรายงาน</strong></td>
+                    <td>สรุปผลโครงการ, รายงานประจำปี</td>
+                    <td>สรุปข้อมูลจำนวนมากเป็น 1-2 หน้า</td>
+                    <td>60-70%</td>
+                </tr>
+                <tr>
+                    <td><strong>📈 วิเคราะห์ข้อมูล</strong></td>
+                    <td>แบบสำรวจ, สถิติการฝึกอบรม</td>
+                    <td>วิเคราะห์ตาราง หาแนวโน้ม สร้างกราฟ</td>
+                    <td>50-60%</td>
+                </tr>
+                <tr>
+                    <td><strong>🌐 แปลเอกสาร</strong></td>
+                    <td>เอกสารภาษาอังกฤษ, แปลไทย-อังกฤษ</td>
+                    <td>แปลถูกต้องตามบริบท ไม่ใช่แปลตรงตัว</td>
+                    <td>80-90%</td>
+                </tr>
+                <tr>
+                    <td><strong>❓ ตอบคำถาม</strong></td>
+                    <td>FAQ, ระเบียบ, ข้อกฎหมาย</td>
+                    <td>อธิบายง่ายๆ ชัดเจน ตอบตรงประเด็น</td>
+                    <td>40-50%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 เคล็ดลับ</h5>
+        <p class="mb-0">AI ไม่ได้มาแทนที่คน แต่มาเป็น "ผู้ช่วย" — คุณยังต้องตรวจสอบ แก้ไข และตัดสินใจ เหมือนมีเลขาฯ ที่ร่างงานให้แล้วคุณลงนามอนุมัติ</p>
+    </div>
+
+    <!-- Section 1.2 -->
+    <div class="section-header">
+        <h2>1.2 Claude คืออะไร</h2>
+        <p>ทำความรู้จัก Claude AI โดย Anthropic — AI ที่ออกแบบมาให้ปลอดภัยและน่าเชื่อถือ</p>
+    </div>
+
+    <h3>Anthropic — บริษัทผู้สร้าง Claude</h3>
+    <p>Anthropic เป็นบริษัท AI ที่ก่อตั้งในปี 2021 โดยอดีตทีมวิจัยของ OpenAI (ผู้สร้าง ChatGPT) ก่อตั้งโดย Dario Amodei และ Daniela Amodei มีจุดเด่นคือ:</p>
+    <ul>
+        <li><strong>Constitutional AI</strong> — AI ที่ฝึกด้วย "รัฐธรรมนูญ" ชุดกฎจริยธรรม ทำให้ปฏิเสธคำขอที่ไม่เหมาะสม</li>
+        <li><strong>ความปลอดภัยเป็นอันดับหนึ่ง</strong> — ออกแบบให้ซื่อสัตย์ ไม่หลอกลวง ไม่สร้างเนื้อหาอันตราย</li>
+        <li><strong>ความแม่นยำ</strong> — ถ้าไม่รู้จริง จะบอกตรงๆ ว่าไม่แน่ใจ ไม่แต่งคำตอบมั่ว</li>
+    </ul>
+
+    <h3>Claude เวอร์ชันปัจจุบัน (2025)</h3>
+    <ul>
+        <li><strong>Claude 4 Sonnet</strong> — รุ่นสมดุล เร็วและฉลาด เหมาะกับงานทั่วไป</li>
+        <li><strong>Claude 4 Opus</strong> — รุ่นท็อป ฉลาดที่สุด เหมาะกับงานซับซ้อน</li>
+        <li><strong>Claude 3.5 Haiku</strong> — รุ่นเบา เร็วมาก เหมาะกับงานง่ายๆ ที่ต้องการคำตอบทันที</li>
+    </ul>
+
+    <h3>เปรียบเทียบ AI ยอดนิยม</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>หัวข้อ</th>
+                    <th>Claude AI</th>
+                    <th>ChatGPT</th>
+                    <th>Gemini</th>
+                    <th>Copilot</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>บริษัท</strong></td>
+                    <td>Anthropic</td>
+                    <td>OpenAI</td>
+                    <td>Google</td>
+                    <td>Microsoft</td>
+                </tr>
+                <tr>
+                    <td><strong>จุดเด่น</strong></td>
+                    <td>ปลอดภัย, เขียนยาวได้ดี, วิเคราะห์เอกสาร</td>
+                    <td>ยอดนิยม, Plugin เยอะ, สร้างรูปได้</td>
+                    <td>เชื่อมกับ Google, ค้นเว็บได้, ข้อมูลใหม่</td>
+                    <td>อยู่ใน Windows/Office, สะดวก</td>
+                </tr>
+                <tr>
+                    <td><strong>ข้อจำกัด</strong></td>
+                    <td>ไม่สร้างรูป, ไม่ค้นเว็บเอง</td>
+                    <td>อาจแต่งข้อมูล (hallucinate)</td>
+                    <td>บางครั้งไม่แม่นยำ</td>
+                    <td>ข้อมูลอาจล้าสมัย</td>
+                </tr>
+                <tr>
+                    <td><strong>ภาษาไทย</strong></td>
+                    <td>ดีมาก</td>
+                    <td>ดีมาก</td>
+                    <td>ดี</td>
+                    <td>ปานกลาง</td>
+                </tr>
+                <tr>
+                    <td><strong>แผนฟรี</strong></td>
+                    <td>มี (จำกัดข้อความ/วัน)</td>
+                    <td>มี (GPT-4o mini)</td>
+                    <td>มี (เชื่อมกับ Google)</td>
+                    <td>มี (ใน Edge/Bing)</td>
+                </tr>
+                <tr>
+                    <td><strong>ราคา Pro</strong></td>
+                    <td>$20/เดือน</td>
+                    <td>$20/เดือน</td>
+                    <td>$20/เดือน</td>
+                    <td>$20/เดือน</td>
+                </tr>
+                <tr>
+                    <td><strong>เหมาะกับ</strong></td>
+                    <td>เขียนเอกสาร, วิเคราะห์, สรุป</td>
+                    <td>งานทั่วไป, สร้างภาพ, เขียนโค้ด</td>
+                    <td>ค้นข้อมูล, งานเชื่อม Google</td>
+                    <td>งาน Office, เขียนโค้ด</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-warning">
+        <h5>⚠️ ข้อควรระวัง</h5>
+        <p class="mb-0">ราคาและฟีเจอร์อาจเปลี่ยนแปลงได้ ควรตรวจสอบข้อมูลล่าสุดจากเว็บไซต์ทางการก่อนตัดสินใจซื้อ</p>
+    </div>
+
+    <!-- Section 1.3 -->
+    <div class="section-header">
+        <h2>1.3 สมัครและเริ่มใช้งาน Claude.ai</h2>
+        <p>ขั้นตอนการสมัครบัญชีและเริ่มใช้งาน Claude ฟรี</p>
+    </div>
+
+    <div class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-content">
+            <h5>เปิดเว็บไซต์ claude.ai</h5>
+            <p>เปิด Browser (Chrome/Edge) แล้วพิมพ์ <code>https://claude.ai</code> ในช่อง URL</p>
+        </div>
+    </div>
+
+    <div class="step-item">
+        <div class="step-number">2</div>
+        <div class="step-content">
+            <h5>คลิก "Sign Up" หรือ "Get Started"</h5>
+            <p>คลิกปุ่มสมัครสมาชิกที่หน้าแรก จะมีตัวเลือกการสมัคร</p>
+        </div>
+    </div>
+
+    <div class="step-item">
+        <div class="step-number">3</div>
+        <div class="step-content">
+            <h5>เลือกวิธีสมัคร</h5>
+            <p>เลือก <strong>"Continue with Google"</strong> (แนะนำ — ง่ายที่สุด) หรือ สมัครด้วย Email ส่วนตัว โดยกรอก Email → รับรหัสยืนยัน → ตั้งรหัสผ่าน</p>
+        </div>
+    </div>
+
+    <div class="step-item">
+        <div class="step-number">4</div>
+        <div class="step-content">
+            <h5>ยืนยันเบอร์โทรศัพท์</h5>
+            <p>กรอกเบอร์มือถือ → รับ SMS รหัส OTP → กรอกยืนยัน (ใช้ได้ทั้งเบอร์ไทย +66)</p>
+        </div>
+    </div>
+
+    <div class="step-item">
+        <div class="step-number">5</div>
+        <div class="step-content">
+            <h5>ยอมรับเงื่อนไข</h5>
+            <p>อ่านและยอมรับ Terms of Service → คลิก "Accept"</p>
+        </div>
+    </div>
+
+    <div class="step-item">
+        <div class="step-number">6</div>
+        <div class="step-content">
+            <h5>เริ่มใช้งาน Claude ได้ทันที!</h5>
+            <p>ระบบจะพาเข้าหน้า Chat — พิมพ์คำถามแรกได้เลย เช่น "สวัสดี Claude ช่วยแนะนำตัวหน่อย"</p>
+        </div>
+    </div>
+
+    <div class="screenshot-placeholder">
+        <i>🖼️</i>
+        📸 ภาพหน้าจอ: หน้าสมัครสมาชิก Claude.ai — ปุ่ม "Continue with Google"
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 เคล็ดลับสำหรับข้าราชการ</h5>
+        <p class="mb-0">แนะนำใช้ Email ส่วนตัว (@gmail.com) ในการสมัคร เพราะ Email ราชการบางหน่วยงานอาจถูกบล็อกไม่ให้สมัครบริการภายนอก หรืออาจใช้ Google Account ที่มีอยู่แล้วเพื่อความสะดวก</p>
+    </div>
+
+    <!-- Section 1.4 -->
+    <div class="section-header">
+        <h2>1.4 Interface — ส่วนประกอบหน้าจอ Claude</h2>
+        <p>ทำความรู้จักกับหน้าจอการทำงานของ Claude</p>
+    </div>
+
+    <h3>โครงสร้างหน้าจอหลัก</h3>
+
+    <div class="screenshot-placeholder">
+        <i>🖼️</i>
+        📸 ภาพหน้าจอ: Interface ของ Claude.ai — แสดง Sidebar, Chat area, และปุ่มต่างๆ
+    </div>
+
+    <h4>1. Sidebar (แถบด้านซ้าย)</h4>
+    <ul>
+        <li><strong>New Chat</strong> — เริ่มบทสนทนาใหม่ (แต่ละบทสนทนาเป็นอิสระจากกัน)</li>
+        <li><strong>Conversations</strong> — ประวัติบทสนทนาทั้งหมด (เรียงตามวันที่)</li>
+        <li><strong>Projects</strong> — จัดกลุ่มบทสนทนาตามโปรเจกต์ (เหมือนโฟลเดอร์)</li>
+        <li><strong>Starred</strong> — บทสนทนาที่ติดดาว (ที่ชื่นชอบ/สำคัญ)</li>
+    </ul>
+
+    <h4>2. Chat Area (พื้นที่สนทนาตรงกลาง)</h4>
+    <ul>
+        <li><strong>ช่องพิมพ์ข้อความ</strong> — อยู่ด้านล่าง พิมพ์คำถาม/คำสั่ง แล้วกด Enter หรือคลิกปุ่มส่ง</li>
+        <li><strong>ประวัติสนทนา</strong> — แสดงข้อความที่พิมพ์ไป และคำตอบของ Claude สลับกัน</li>
+        <li><strong>Copy button</strong> — ปุ่มคัดลอกคำตอบ (อยู่มุมขวาบนของแต่ละคำตอบ)</li>
+        <li><strong>Retry button</strong> — ปุ่มให้ Claude ตอบใหม่อีกครั้ง</li>
+    </ul>
+
+    <h4>3. ปุ่มและฟีเจอร์สำคัญ</h4>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ปุ่ม/ไอคอน</th>
+                    <th>ฟีเจอร์</th>
+                    <th>หน้าที่</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>📎</td>
+                    <td>Attach file</td>
+                    <td>แนบไฟล์ (PDF, รูปภาพ, Word, Excel, txt)</td>
+                </tr>
+                <tr>
+                    <td>🔲</td>
+                    <td>Artifacts</td>
+                    <td>สร้างเอกสาร/โค้ด/แผนภูมิแบบ interactive (แสดงแยกด้านขวา)</td>
+                </tr>
+                <tr>
+                    <td>🔄</td>
+                    <td>Model selector</td>
+                    <td>เลือกรุ่น AI (Sonnet/Opus/Haiku)</td>
+                </tr>
+                <tr>
+                    <td>⚙️</td>
+                    <td>Settings</td>
+                    <td>ตั้งค่าบัญชี, Appearance, Language</td>
+                </tr>
+                <tr>
+                    <td>📁</td>
+                    <td>Projects</td>
+                    <td>สร้างโปรเจกต์ใหม่ จัดกลุ่มงาน</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h4>4. Projects — จัดระเบียบงาน</h4>
+    <p>Projects ช่วยจัดกลุ่มบทสนทนาที่เกี่ยวข้องกัน เช่น:</p>
+    <ul>
+        <li>"งานร่างเอกสาร" — รวมบทสนทนาร่างหนังสือทั้งหมด</li>
+        <li>"วิเคราะห์ข้อมูลฝึกอบรม" — รวมงานวิเคราะห์สถิติ</li>
+        <li>"แปลเอกสาร" — รวมงานแปลภาษา</li>
+    </ul>
+    <p>ใน Project ยังสามารถตั้ง <strong>Custom Instructions</strong> (คำสั่งเริ่มต้น) ให้ Claude จำบริบทได้ เช่น "คุณเป็นผู้ช่วยราชการไทย ตอบเป็นภาษาไทยทุกครั้ง ใช้รูปแบบหนังสือราชการ"</p>
+
+    <!-- Section 1.5 -->
+    <div class="section-header">
+        <h2>1.5 แผน Free vs Pro vs Team</h2>
+        <p>เปรียบเทียบแผนการใช้งาน Claude — เลือกให้เหมาะกับงาน</p>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ฟีเจอร์</th>
+                    <th><span class="badge badge-plan badge-free">Free</span></th>
+                    <th><span class="badge badge-plan badge-pro">Pro ($20/เดือน)</span></th>
+                    <th><span class="badge badge-plan badge-team">Team ($25/คน/เดือน)</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ข้อความ/วัน</strong></td>
+                    <td>~30 ข้อความ</td>
+                    <td>5x มากกว่า Free</td>
+                    <td>เหมือน Pro</td>
+                </tr>
+                <tr>
+                    <td><strong>โมเดล</strong></td>
+                    <td>Sonnet (เวลามีโควต้า)</td>
+                    <td>Opus + Sonnet + Haiku</td>
+                    <td>Opus + Sonnet + Haiku</td>
+                </tr>
+                <tr>
+                    <td><strong>อัปโหลดไฟล์</strong></td>
+                    <td>✅ (จำกัดขนาด)</td>
+                    <td>✅ ไฟล์ใหญ่ขึ้น</td>
+                    <td>✅ ไฟล์ใหญ่ขึ้น</td>
+                </tr>
+                <tr>
+                    <td><strong>Projects</strong></td>
+                    <td>✅ (จำกัดจำนวน)</td>
+                    <td>✅ ไม่จำกัด</td>
+                    <td>✅ ไม่จำกัด + แชร์ทีม</td>
+                </tr>
+                <tr>
+                    <td><strong>Artifacts</strong></td>
+                    <td>✅</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td><strong>ความยาว Output</strong></td>
+                    <td>ปกติ</td>
+                    <td>ยาวกว่า</td>
+                    <td>ยาวกว่า</td>
+                </tr>
+                <tr>
+                    <td><strong>Priority Access</strong></td>
+                    <td>❌ (อาจรอคิว)</td>
+                    <td>✅ ไม่ต้องรอ</td>
+                    <td>✅ ไม่ต้องรอ</td>
+                </tr>
+                <tr>
+                    <td><strong>Admin Console</strong></td>
+                    <td>❌</td>
+                    <td>❌</td>
+                    <td>✅ จัดการทีม</td>
+                </tr>
+                <tr>
+                    <td><strong>ข้อมูลใช้ Train AI</strong></td>
+                    <td>อาจถูกใช้</td>
+                    <td>❌ ไม่ใช้</td>
+                    <td>❌ ไม่ใช้</td>
+                </tr>
+                <tr>
+                    <td><strong>เหมาะสำหรับ</strong></td>
+                    <td>ทดลองใช้, งานเบาๆ</td>
+                    <td>ใช้งานจริงทุกวัน</td>
+                    <td>ทีมงาน, หน่วยงาน</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 คำแนะนำสำหรับหน่วยงานราชการ</h5>
+        <ul class="mb-0">
+            <li><strong>เริ่มต้น:</strong> ใช้แผน Free เพื่อทดลองก่อน ถ้าพอใจค่อยอัปเกรด</li>
+            <li><strong>ใช้งานส่วนตัว:</strong> แผน Pro คุ้มค่าถ้าใช้ทุกวัน ($20 ≈ 700 บาท/เดือน)</li>
+            <li><strong>ทั้งหน่วยงาน:</strong> แผน Team เหมาะกับ 5+ คน มี Admin จัดการ</li>
+            <li><strong>ข้อมูลลับ:</strong> แผน Pro/Team ข้อมูลจะไม่ถูกนำไปฝึก AI (ปลอดภัยกว่า)</li>
+        </ul>
+    </div>
+
+    <div class="alert alert-warning">
+        <h5>⚠️ ข้อควรระวังเรื่องข้อมูลราชการ</h5>
+        <ul class="mb-0">
+            <li>ห้ามส่งข้อมูลลับ/ข้อมูลส่วนบุคคลขึ้น AI ทุกตัว</li>
+            <li>ข้อมูลที่พิมพ์ลงไปอาจถูกเก็บไว้ในเซิร์ฟเวอร์ต่างประเทศ</li>
+            <li>ใช้ข้อมูลทั่วไป ข้อมูลสาธารณะ หรือข้อมูลตัวอย่างเท่านั้น</li>
+            <li>ตรวจสอบนโยบายหน่วยงานก่อนใช้ AI กับงานราชการ</li>
+        </ul>
+    </div>
+
+    <!-- Exercises -->
+    <div class="exercise-box">
+        <h4>✏️ แบบฝึกหัดบทที่ 1</h4>
+        <ol>
+            <li><strong>สมัคร Claude.ai</strong> — สมัครบัญชี Claude ด้วย Google Account ของตนเอง ให้สำเร็จ</li>
+            <li><strong>ทักทาย Claude</strong> — พิมพ์ "สวัสดีครับ ผม/ดิฉัน ชื่อ [ชื่อจริง] เป็นเจ้าหน้าที่ [ตำแหน่ง] ที่ [หน่วยงาน] อยากให้ช่วยแนะนำว่า Claude ช่วยอะไรในงานราชการได้บ้าง"</li>
+            <li><strong>ทดลอง 3 คำถาม</strong> — ถาม Claude เกี่ยวกับ:
+                <ul>
+                    <li>ช่วยร่างหนังสือเชิญประชุมสั้นๆ</li>
+                    <li>สรุปขั้นตอนการเบิกค่าเดินทาง</li>
+                    <li>แปลประโยค "สำนักงานพัฒนาฝีมือแรงงานสุรินทร์" เป็นภาษาอังกฤษ</li>
+                </ul>
+            </li>
+            <li><strong>สำรวจ Interface</strong> — ลองคลิกดูทุกปุ่มบน Claude แล้วจดบันทึกว่าแต่ละปุ่มทำอะไร</li>
+            <li><strong>สร้าง Project</strong> — สร้าง Project ชื่อ "ฝึกอบรม AI" แล้วย้ายบทสนทนาที่ฝึกหัดเข้าไป</li>
+        </ol>
+    </div>
+
+    <!-- Navigation -->
+    <div class="chapter-nav">
+        <a href="index.html" class="btn btn-chapter-prev">← หน้าหลัก</a>
+        <a href="chapter02.html" class="btn btn-chapter-next">บทที่ 2: เทคนิค Prompt →</a>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>คู่มือฝึกอบรม Claude AI — ใช้ปัญญาประดิษฐ์ทำงานราชการ</p>
+    <p class="opacity-75">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

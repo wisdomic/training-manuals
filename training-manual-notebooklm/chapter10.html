@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 10: Workshop ขั้นสูง — ระบบ AI ช่วยงานคนพิการ — คู่มือ NotebookLM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4)">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ NotebookLM</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter01.html">บทที่ 1</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter02.html">บทที่ 2</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter03.html">บทที่ 3</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter04.html">บทที่ 4</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter05.html">บทที่ 5</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter06.html">บทที่ 6</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter07.html">บทที่ 7</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter08.html">บทที่ 8</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter09.html">บทที่ 9</a></li>
+                <li class="nav-item"><a class="nav-link active" href="chapter10.html">บทที่ 10</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<div class="container mt-4">
+    <div class="mb-4">
+        <span class="day-badge">วันที่ 5</span>
+        <span class="time-badge ms-2">บ่าย 13:00 – 16:00</span>
+    </div>
+    <h1 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">🏆 บทที่ 10: Workshop ขั้นสูง — ระบบ AI ช่วยงานคนพิการ</h1>
+    <p class="lead text-muted">รวมทุกเครื่องมือสร้างชุดสื่อ "รู้สิทธิ์คนพิการ" ครบชุด + นำเสนอ + สรุปหลักสูตร</p>
+
+    <!-- สารบัญบท -->
+    <div class="card p-3 mb-4">
+        <h5>📑 ในบทนี้</h5>
+        <ul class="mb-0">
+            <li><a href="#section-10-1">10.1 โจทย์: สร้างชุดสื่อ "รู้สิทธิ์คนพิการ" ครบชุด</a></li>
+            <li><a href="#section-10-2">10.2 ขั้นตอน Workshop — รวมทุกเครื่องมือ</a></li>
+            <li><a href="#section-10-3">10.3 นำเสนอผลงาน + Feedback</a></li>
+            <li><a href="#section-10-4">10.4 สรุปหลักสูตรทั้งหมด + แนวทางต่อยอด</a></li>
+            <li><a href="#section-10-5">10.5 ปิดอบรม + ช่องทางติดต่อ + ก้าวต่อไป</a></li>
+        </ul>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- Section 10.1 -->
+    <!-- ============================================ -->
+    <section id="section-10-1" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">10.1 โจทย์: สร้างชุดสื่อ "รู้สิทธิ์คนพิการ" ครบชุด</h2>
+
+        <div class="card p-4 mb-4" style="background: linear-gradient(135deg, #ede9fe, #ecfeff);">
+            <h4 class="text-center mb-3">🎯 Workshop สุดท้าย — ใช้ทุกทักษะที่เรียนมา</h4>
+            <p class="text-center fs-5">สร้าง <strong>"ชุดสื่อรู้สิทธิ์คนพิการ"</strong> ครบ 4 ชิ้น ภายใน 90 นาที</p>
+            <p class="text-center mb-0"><strong>⏱️ เวลา:</strong> 90 นาที | <strong>รูปแบบ:</strong> กลุ่ม 4-5 คน | <strong>นำเสนอ:</strong> 7 นาที/ทีม</p>
+        </div>
+
+        <h4 class="mt-4">ชุดสื่อที่ต้องสร้าง (4 ชิ้น)</h4>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="card p-3 h-100" style="border-left: 4px solid #8b5cf6;">
+                    <h5>📋 ชิ้นที่ 1: FAQ 10 ข้อ</h5>
+                    <p class="small mb-1"><strong>เครื่องมือ:</strong> NotebookLM (Notebook Guide + Chat)</p>
+                    <p class="small mb-0"><strong>Output:</strong> คำถาม-คำตอบ 10 ข้อ ภาษาง่ายๆ พร้อม citation</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3 h-100" style="border-left: 4px solid #06b6d4;">
+                    <h5>🎨 ชิ้นที่ 2: Infographic</h5>
+                    <p class="small mb-1"><strong>เครื่องมือ:</strong> NotebookLM (สรุป) → Canva (ออกแบบ)</p>
+                    <p class="small mb-0"><strong>Output:</strong> ภาพ Infographic "สิทธิ์คนพิการ 5 ข้อ" พร้อมแชร์</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3 h-100" style="border-left: 4px solid #10b981;">
+                    <h5>🎙️ ชิ้นที่ 3: Podcast AI</h5>
+                    <p class="small mb-1"><strong>เครื่องมือ:</strong> NotebookLM Audio Overview + Customize</p>
+                    <p class="small mb-0"><strong>Output:</strong> ไฟล์เสียง Podcast สรุปสิทธิ์คนพิการ</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3 h-100" style="border-left: 4px solid #f59e0b;">
+                    <h5>📝 ชิ้นที่ 4: บทความ</h5>
+                    <p class="small mb-1"><strong>เครื่องมือ:</strong> NotebookLM (สรุป) → ChatGPT (เขียนบทความ)</p>
+                    <p class="small mb-0"><strong>Output:</strong> บทความ 300-500 คำ สำหรับโพสต์ Facebook</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box mt-4">
+            <h5>💡 เลือกหัวข้อได้ตามสนใจ</h5>
+            <ul class="mb-0">
+                <li>สิทธิ์คนพิการทั่วไป (เบี้ย, สวัสดิการ, บริการ)</li>
+                <li>การจ้างงานคนพิการ (สำหรับนายจ้าง)</li>
+                <li>การทำบัตรคนพิการ (ขั้นตอน, เอกสาร)</li>
+                <li>กองทุนส่งเสริมฯ (สิทธิ์กู้ยืม, ขอทุน)</li>
+                <li>สิ่งอำนวยความสะดวก (Universal Design)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 10.2 -->
+    <!-- ============================================ -->
+    <section id="section-10-2" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">10.2 ขั้นตอน Workshop — รวมทุกเครื่องมือ</h2>
+
+        <h4 class="mt-4">Timeline การทำ Workshop (90 นาที)</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>เวลา</th>
+                        <th>กิจกรรม</th>
+                        <th>เครื่องมือ</th>
+                        <th>ผู้รับผิดชอบ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0-10 นาที</td>
+                        <td>จับกลุ่ม + วางแผน + แบ่งงาน</td>
+                        <td>—</td>
+                        <td>ทั้งกลุ่ม</td>
+                    </tr>
+                    <tr>
+                        <td>10-30 นาที</td>
+                        <td>สร้าง FAQ 10 ข้อ จาก NotebookLM</td>
+                        <td>NotebookLM</td>
+                        <td>คนที่ 1-2</td>
+                    </tr>
+                    <tr>
+                        <td>30-50 นาที</td>
+                        <td>สร้าง Infographic ด้วย Canva</td>
+                        <td>NotebookLM → Canva</td>
+                        <td>คนที่ 3</td>
+                    </tr>
+                    <tr>
+                        <td>30-50 นาที</td>
+                        <td>สร้าง Podcast ด้วย Audio Overview</td>
+                        <td>NotebookLM Audio</td>
+                        <td>คนที่ 4</td>
+                    </tr>
+                    <tr>
+                        <td>50-70 นาที</td>
+                        <td>เขียนบทความด้วย ChatGPT</td>
+                        <td>NotebookLM → ChatGPT</td>
+                        <td>คนที่ 5</td>
+                    </tr>
+                    <tr>
+                        <td>70-80 นาที</td>
+                        <td>รวบรวมผลงาน + ตรวจสอบ</td>
+                        <td>—</td>
+                        <td>ทั้งกลุ่ม</td>
+                    </tr>
+                    <tr>
+                        <td>80-90 นาที</td>
+                        <td>เตรียมนำเสนอ</td>
+                        <td>—</td>
+                        <td>ทั้งกลุ่ม</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mt-4">คำแนะนำสำหรับแต่ละชิ้นงาน</h4>
+
+        <div class="card p-3 mb-3" style="border-left: 4px solid #8b5cf6;">
+            <h5>📋 ชิ้นที่ 1: FAQ 10 ข้อ</h5>
+            <p class="small mb-1"><strong>Prompt แนะนำ:</strong></p>
+            <p class="small fst-italic mb-0">"สร้าง FAQ 10 ข้อ เรื่องสิทธิ์คนพิการที่ประชาชนถามบ่อย ใช้ภาษาง่ายๆ คำตอบไม่เกิน 3 บรรทัด"</p>
+        </div>
+
+        <div class="card p-3 mb-3" style="border-left: 4px solid #06b6d4;">
+            <h5>🎨 ชิ้นที่ 2: Infographic</h5>
+            <p class="small mb-1"><strong>Prompt สรุปข้อมูล:</strong></p>
+            <p class="small fst-italic mb-0">"สรุปสิทธิ์คนพิการ 5 ข้อสำคัญที่สุด แต่ละข้อไม่เกิน 10 คำ พร้อม emoji"</p>
+        </div>
+
+        <div class="card p-3 mb-3" style="border-left: 4px solid #10b981;">
+            <h5>🎙️ ชิ้นที่ 3: Podcast</h5>
+            <p class="small mb-1"><strong>Customize Prompt:</strong></p>
+            <p class="small fst-italic mb-0">"อธิบายสิทธิ์คนพิการ 5 ข้อหลัก แบบที่คนทั่วไปเข้าใจ เน้นเรื่องที่ถูกถามบ่อย ใช้น้ำเสียงเป็นมิตร"</p>
+        </div>
+
+        <div class="card p-3 mb-3" style="border-left: 4px solid #f59e0b;">
+            <h5>📝 ชิ้นที่ 4: บทความ</h5>
+            <p class="small mb-1"><strong>ChatGPT Prompt:</strong></p>
+            <p class="small fst-italic mb-0">"จากสรุปนี้ [วาง] เขียนบทความ Facebook 300 คำ เรื่อง 'รู้สิทธิ์คนพิการ' ภาษาอบอุ่น เข้าถึงง่าย มี hashtag"</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 10.3 -->
+    <!-- ============================================ -->
+    <section id="section-10-3" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">10.3 นำเสนอผลงาน + Feedback</h2>
+
+        <div class="info-box">
+            <p class="mb-0"><strong>⏱️ เวลานำเสนอ:</strong> 7 นาที/ทีม + Feedback 3 นาที</p>
+        </div>
+
+        <h4 class="mt-4">โครงสร้างการนำเสนอ (7 นาที)</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>เวลา</th>
+                        <th>เนื้อหา</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>0:00 - 0:30</td><td>แนะนำทีม + หัวข้อที่เลือก</td></tr>
+                    <tr><td>0:30 - 2:00</td><td>โชว์ FAQ 10 ข้อ (เลือก 3 ข้อเด่นๆ)</td></tr>
+                    <tr><td>2:00 - 3:30</td><td>โชว์ Infographic + อธิบายการออกแบบ</td></tr>
+                    <tr><td>3:30 - 5:00</td><td>เปิดฟัง Podcast (30 วินาที) + อธิบาย Customize</td></tr>
+                    <tr><td>5:00 - 6:00</td><td>อ่านบทความที่เขียน + ช่องทางเผยแพร่</td></tr>
+                    <tr><td>6:00 - 7:00</td><td>สรุปสิ่งที่ได้เรียนรู้ + แผนนำไปใช้จริง</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mt-4">เกณฑ์ให้คะแนน</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>เกณฑ์</th>
+                        <th>รายละเอียด</th>
+                        <th>คะแนน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. ความครบถ้วน</strong></td>
+                        <td>สร้างครบ 4 ชิ้น (FAQ + Infographic + Podcast + บทความ)</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. ความถูกต้อง</strong></td>
+                        <td>ข้อมูลตรงกับเอกสาร มี citation ไม่มีข้อผิดพลาด</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. ความสร้างสรรค์</strong></td>
+                        <td>ใช้ AI ได้อย่างมีประสิทธิภาพ Output มีคุณภาพ ใช้งานได้จริง</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. การนำเสนอ</strong></td>
+                        <td>ชัดเจน กระชับ Demo ดี อยู่ในเวลา</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. การทำงานเป็นทีม</strong></td>
+                        <td>แบ่งงานดี ทุกคนมีส่วนร่วม ช่วยเหลือกัน</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>รวม</strong></td>
+                        <td><strong>100</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mt-4">รูปแบบ Feedback</h4>
+        <div class="card p-3 bg-light">
+            <p class="mb-2"><strong>วิทยากร + เพื่อนร่วมชั้น ให้ Feedback แบบ:</strong></p>
+            <ul class="mb-0">
+                <li>⭐ <strong>จุดเด่น:</strong> สิ่งที่ทำได้ดี ประทับใจ</li>
+                <li>💡 <strong>ข้อเสนอแนะ:</strong> สิ่งที่ปรับปรุงได้ให้ดียิ่งขึ้น</li>
+                <li>🚀 <strong>ไอเดียต่อยอด:</strong> แนะนำวิธีนำไปใช้งานจริง</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 10.4 -->
+    <!-- ============================================ -->
+    <section id="section-10-4" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">10.4 สรุปหลักสูตรทั้งหมด + แนวทางต่อยอด</h2>
+
+        <h4 class="mt-4">สรุปเนื้อหา 5 วัน (10 บท)</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>วัน</th>
+                        <th>บท</th>
+                        <th>เนื้อหาหลัก</th>
+                        <th>ทักษะที่ได้</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2"><strong>วันที่ 1</strong></td>
+                        <td>1</td>
+                        <td>รู้จัก NotebookLM</td>
+                        <td>สมัคร + สร้าง Notebook + อัปโหลด Sources</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Sources + การถามตอบ</td>
+                        <td>จัดการ Sources + เทคนิคถาม 5 แบบ + Citation</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>วันที่ 2</strong></td>
+                        <td>3</td>
+                        <td>Notebook Guide + สรุป</td>
+                        <td>FAQ + Study Guide + Timeline + Briefing Doc</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Audio Overview</td>
+                        <td>สร้าง Podcast AI + Customize + เผยแพร่</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>วันที่ 3</strong></td>
+                        <td>5</td>
+                        <td>ประยุกต์ใช้ขั้นสูง</td>
+                        <td>Multi-notebook + เตรียมบรรยาย + สรุปประชุม</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Workshop + นำเสนอ</td>
+                        <td>Workshop 8 โจทย์ + ทำงานเป็นทีม</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>วันที่ 4</strong></td>
+                        <td>7</td>
+                        <td>NotebookLM กับงานคนพิการ</td>
+                        <td>วิเคราะห์กฎหมาย + FAQ สิทธิ์ + Podcast สิทธิ์</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>NotebookLM + AI อื่น</td>
+                        <td>ChatGPT + Gamma + Canva = สื่อครบชุด</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>วันที่ 5</strong></td>
+                        <td>9</td>
+                        <td>NotebookLM สำหรับทีม</td>
+                        <td>แชร์ + Knowledge Base + ระบบตอบคำถาม</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Workshop ขั้นสูง</td>
+                        <td>สร้างชุดสื่อครบ 4 ชิ้น + นำเสนอ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mt-4">ทักษะที่ได้รับ (Skill Map)</h4>
+        <div class="row g-3">
+            <div class="col-md-3">
+                <div class="card p-3 text-center h-100">
+                    <h1>📄</h1>
+                    <h6>จัดการเอกสาร</h6>
+                    <p class="small mb-0">อัปโหลด จัดหมวด Multi-notebook Knowledge Base</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-3 text-center h-100">
+                    <h1>💬</h1>
+                    <h6>AI ถามตอบ</h6>
+                    <p class="small mb-0">Prompt 5 แบบ Citation FAQ ระบบ Q&A</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-3 text-center h-100">
+                    <h1>🎙️</h1>
+                    <h6>สร้าง Content</h6>
+                    <p class="small mb-0">Podcast บทความ Infographic สไลด์</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card p-3 text-center h-100">
+                    <h1>🔗</h1>
+                    <h6>AI Workflow</h6>
+                    <p class="small mb-0">NotebookLM + ChatGPT + Canva + Gamma</p>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4">แนวทางต่อยอดหลังอบรม</h4>
+        <div class="row g-3 mt-2">
+            <div class="col-md-6">
+                <div class="card p-3 h-100">
+                    <h5>🎯 ระยะสั้น (1-2 สัปดาห์)</h5>
+                    <ul class="small mb-0">
+                        <li>สร้าง Notebook สำหรับงานจริง 1 อัน</li>
+                        <li>สร้าง FAQ หน่วยงาน 10-20 ข้อ</li>
+                        <li>ทดลองสร้าง Podcast 1 ตอน</li>
+                        <li>แชร์ Notebook ให้เพื่อนร่วมงาน 2-3 คน</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3 h-100">
+                    <h5>🚀 ระยะยาว (1-3 เดือน)</h5>
+                    <ul class="small mb-0">
+                        <li>สร้าง Knowledge Base องค์กร 3-5 หมวด</li>
+                        <li>ใช้ AI Workflow สร้างสื่อ PR ทุกเดือน</li>
+                        <li>สอนเพื่อนร่วมงานใช้ NotebookLM</li>
+                        <li>ติดตาม Feature ใหม่จาก Google</li>
+                        <li>เสนอผู้บริหารใช้เป็นนโยบายองค์กร</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 10.5 -->
+    <!-- ============================================ -->
+    <section id="section-10-5" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">10.5 ปิดอบรม + ช่องทางติดต่อ + ก้าวต่อไป</h2>
+
+        <!-- สรุปปิดอบรม -->
+        <div class="card p-4 mb-4" style="background: linear-gradient(135deg, #ede9fe, #ecfeff);">
+            <h4 class="text-center mb-3">🎓 ขอแสดงความยินดี!</h4>
+            <p class="text-center fs-5">ท่านได้สำเร็จหลักสูตร <strong>"NotebookLM — เปลี่ยนเอกสารเป็นความรู้ด้วย AI"</strong></p>
+            <p class="text-center">5 วัน 30 ชั่วโมง | 10 บท | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์</p>
+            <p class="text-center mb-0">เน้นงานคนพิการ + AI เครื่องมือหลากหลาย + การทำงานเป็นทีม</p>
+        </div>
+
+        <h4 class="mt-4">📜 วุฒิบัตร</h4>
+        <div class="card p-3 mb-4">
+            <ul class="mb-0">
+                <li><strong>ผู้เข้าอบรมที่มีเวลาเรียนครบ 80%</strong> จะได้รับวุฒิบัตรจากกรมพัฒนาฝีมือแรงงาน</li>
+                <li>วุฒิบัตรจะจัดส่งทางไปรษณีย์ภายใน 30 วันหลังอบรม</li>
+                <li>หากต้องการวุฒิบัตรดิจิทัล สามารถแจ้งวิทยากรได้</li>
+            </ul>
+        </div>
+
+        <h4 class="mt-4">👨‍🏫 ช่องทางติดต่อวิทยากร</h4>
+        <div class="card p-4 mb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>นายปัญญา ผาธรรม (อ.ปู)</h5>
+                    <p class="mb-1">เจ้าหน้าที่ฝ่ายแผนงานและสารสนเทศ</p>
+                    <p class="mb-1">สำนักงานพัฒนาฝีมือแรงงานสุรินทร์</p>
+                    <p class="mb-1">กรมพัฒนาฝีมือแรงงาน กระทรวงแรงงาน</p>
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-sm table-borderless">
+                        <tbody>
+                            <tr><td>📱 โทร:</td><td><strong>088-377-8987</strong></td></tr>
+                            <tr><td>📧 Email:</td><td><strong>wisdomssk@gmail.com</strong></td></tr>
+                            <tr><td>💬 Line:</td><td><strong>wisdomict</strong></td></tr>
+                            <tr><td>🌐 Facebook:</td><td><a href="https://www.facebook.com/wisdomict" target="_blank">fb.com/wisdomict</a></td></tr>
+                            <tr><td>🎬 YouTube:</td><td><a href="https://www.youtube.com/@wisdomssk" target="_blank">@wisdomssk</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4">📋 สิ่งที่ควรทำหลังอบรม</h4>
+        <div class="card p-3 mb-4" style="border-left: 4px solid #10b981;">
+            <ol class="mb-0">
+                <li><strong>สร้าง Notebook สำหรับงานจริง:</strong> เริ่มใช้ NotebookLM กับเอกสารของหน่วยงานทันที</li>
+                <li><strong>สร้าง FAQ หน่วยงาน:</strong> อัปโหลดคู่มือบริการ → สร้าง FAQ → ใช้ตอบประชาชน</li>
+                <li><strong>สร้างสื่อ PR ชุดแรก:</strong> ใช้ AI Workflow สร้าง Infographic + บทความ 1 ชุด</li>
+                <li><strong>แนะนำเพื่อนร่วมงาน:</strong> สอนคนในหน่วยงานให้ใช้ NotebookLM เป็น</li>
+                <li><strong>สร้าง Knowledge Base:</strong> เริ่มจาก 1-2 หมวด แล้วค่อยเพิ่ม</li>
+                <li><strong>ติดตามอัปเดต:</strong> NotebookLM มีฟีเจอร์ใหม่บ่อย ติดตามข่าวสาร</li>
+                <li><strong>ติดต่อวิทยากร:</strong> หากมีคำถามหรือปัญหา สอบถาม อ.ปู ได้ตลอด</li>
+            </ol>
+        </div>
+
+        <h4 class="mt-4">🙏 ขอบคุณ</h4>
+        <div class="card p-4 text-center" style="background: linear-gradient(135deg, #ede9fe, #ecfeff);">
+            <p class="fs-5 mb-2">ขอบคุณผู้เข้าอบรมทุกท่านที่ตั้งใจเรียนรู้ตลอด 5 วัน</p>
+            <p class="mb-2">หวังว่า NotebookLM + AI เครื่องมืออื่นจะช่วยให้การทำงานด้านคนพิการง่ายขึ้น เร็วขึ้น และเข้าถึงได้มากขึ้น</p>
+            <p class="fs-4 mb-0">📖 <strong>เปลี่ยนเอกสารเป็นความรู้ด้วย AI</strong> ♿🚀</p>
+        </div>
+
+        <!-- QR Code สำหรับติดต่อ -->
+        <div class="row g-3 mt-4">
+            <div class="col-md-4">
+                <div class="screenshot-placeholder">
+                    <p>QR Code — Line: wisdomict</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="screenshot-placeholder">
+                    <p>QR Code — Facebook: wisdomict</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="screenshot-placeholder">
+                    <p>QR Code — แบบประเมินความพึงพอใจ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter09.html">← บทที่ 9</a>
+        <a href="index.html">กลับสารบัญ →</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p class="mb-1">คู่มือฝึกอบรม NotebookLM — เปลี่ยนเอกสารเป็นความรู้ด้วย AI</p>
+        <p class="mb-0 text-muted">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

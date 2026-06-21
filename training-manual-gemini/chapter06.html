@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 6: Gemini ใน Google Sheets + Slides — คู่มือ Gemini AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark sticky-top" style="background: linear-gradient(135deg, #4285f4, #34a853)">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">📖 คู่มือ Gemini AI</a>
+            <span class="navbar-text text-white">บทที่ 6 — วันที่ 3 บ่าย (3 ชม.)</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <!-- Chapter Header -->
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold text-primary">บทที่ 6</h1>
+            <h2 class="fw-bold">Gemini ใน Google Sheets + Slides</h2>
+            <p class="lead text-muted">เรียนรู้การใช้ Gemini AI ในแอป Google Workspace เพื่อเพิ่มประสิทธิภาพงานสเปรดชีต นำเสนอ และจัดการไฟล์</p>
+            <span class="badge bg-info fs-6">⏰ วันที่ 3 ภาคบ่าย — 3 ชั่วโมง</span>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-primary mb-5">
+            <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>ใช้ Gemini ใน Google Sheets สร้างสูตร วิเคราะห์ข้อมูล และสร้างกราฟได้</li>
+                <li>ใช้ Gemini ใน Google Slides สร้างงานนำเสนออัตโนมัติได้</li>
+                <li>ใช้ Gemini ใน Google Drive ค้นหาและสรุปเอกสารด้วยภาษาธรรมชาติได้</li>
+                <li>เปรียบเทียบ Gemini Workspace กับ Microsoft Copilot 365 ได้</li>
+                <li>สร้างรายงาน + Presentation ด้วย Gemini ได้ครบกระบวนการ</li>
+            </ul>
+        </div>
+
+        <!-- Section 6.1 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">6.1 Gemini ใน Google Sheets</h3>
+            
+            <p>Gemini ใน Google Sheets ช่วยให้ข้าราชการสามารถจัดการข้อมูลตัวเลขได้อย่างรวดเร็ว ไม่ว่าจะเป็นการสร้างสูตร วิเคราะห์ข้อมูล หรือสร้างกราฟ โดยใช้ภาษาไทยสั่งงานได้เลย</p>
+
+            <div class="alert alert-warning">
+                <strong>📌 ข้อกำหนด:</strong> ต้องใช้ Google Workspace account (ไม่ใช่ Gmail ส่วนตัว) หรือ Google One AI Premium
+            </div>
+
+            <!-- Help me organize -->
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">📊 ฟีเจอร์ 1: Help me organize — จัดระเบียบข้อมูล</h5>
+                </div>
+                <div class="card-body">
+                    <p>Gemini สามารถสร้างตาราง Template ให้อัตโนมัติ เพียงบอกว่าต้องการข้อมูลอะไร</p>
+                    
+                    <h6 class="fw-bold mt-3">ตัวอย่างสำหรับงาน สนพ.สุรินทร์:</h6>
+                    <div class="bg-light p-3 rounded mb-3">
+                        <strong>Prompt:</strong>
+                        <code class="d-block mt-2">"สร้างตารางติดตามผลการฝึกอบรม มีคอลัมน์: ลำดับ, ชื่อ-สกุล, หลักสูตร, วันที่ฝึก, คะแนนก่อนเรียน, คะแนนหลังเรียน, ผลประเมิน, หมายเหตุ"</code>
+                    </div>
+                    
+                    <h6 class="fw-bold">ผลลัพธ์ที่ได้:</h6>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>ลำดับ</th>
+                                    <th>ชื่อ-สกุล</th>
+                                    <th>หลักสูตร</th>
+                                    <th>วันที่ฝึก</th>
+                                    <th>คะแนนก่อนเรียน</th>
+                                    <th>คะแนนหลังเรียน</th>
+                                    <th>ผลประเมิน</th>
+                                    <th>หมายเหตุ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>นายสมชาย ใจดี</td>
+                                    <td>ช่างเชื่อม MAG</td>
+                                    <td>15/01/2569</td>
+                                    <td>45</td>
+                                    <td>82</td>
+                                    <td>ผ่าน</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>นางสาวมะลิ สุขใส</td>
+                                    <td>คอมพิวเตอร์สำนักงาน</td>
+                                    <td>15/01/2569</td>
+                                    <td>55</td>
+                                    <td>90</td>
+                                    <td>ผ่าน</td>
+                                    <td>ดีเยี่ยม</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="step-item bg-light p-3 rounded mt-3">
+                        <h6 class="fw-bold">📝 ขั้นตอนการใช้งาน:</h6>
+                        <ol>
+                            <li>เปิด Google Sheets → คลิกไอคอน Gemini (ดาว) ที่มุมขวาบน</li>
+                            <li>พิมพ์คำสั่งในช่อง "Help me organize" หรือ "ช่วยจัดระเบียบ"</li>
+                            <li>พิมพ์ prompt ภาษาไทยตามต้องการ</li>
+                            <li>Gemini จะสร้าง Template พร้อมข้อมูลตัวอย่าง</li>
+                            <li>คลิก "Insert" เพื่อแทรกลงใน Sheet</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Formula -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">🔢 ฟีเจอร์ 2: Create Formula — สร้างสูตรอัตโนมัติ</h5>
+                </div>
+                <div class="card-body">
+                    <p>ไม่ต้องจำสูตร Excel/Sheets อีกต่อไป! บอก Gemini ว่าต้องการคำนวณอะไร แล้ว Gemini จะเขียนสูตรให้</p>
+                    
+                    <h6 class="fw-bold">ตัวอย่าง Prompt สร้างสูตร:</h6>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>สิ่งที่ต้องการ</th>
+                                    <th>Prompt ภาษาไทย</th>
+                                    <th>สูตรที่ Gemini สร้าง</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>คำนวณเกรดเฉลี่ย</td>
+                                    <td>"คำนวณค่าเฉลี่ยคะแนนคอลัมน์ E2:E50"</td>
+                                    <td><code>=AVERAGE(E2:E50)</code></td>
+                                </tr>
+                                <tr>
+                                    <td>นับจำนวนผู้ผ่าน</td>
+                                    <td>"นับจำนวนแถวที่คอลัมน์ G เท่ากับ 'ผ่าน'"</td>
+                                    <td><code>=COUNTIF(G2:G50,"ผ่าน")</code></td>
+                                </tr>
+                                <tr>
+                                    <td>ตัดเกรดอัตโนมัติ</td>
+                                    <td>"ถ้าคะแนนคอลัมน์ F มากกว่า 80 ให้เป็น 'ผ่าน' ถ้าไม่ใช่ให้เป็น 'ไม่ผ่าน'"</td>
+                                    <td><code>=IF(F2>80,"ผ่าน","ไม่ผ่าน")</code></td>
+                                </tr>
+                                <tr>
+                                    <td>คำนวณ % ผ่าน</td>
+                                    <td>"คำนวณเปอร์เซ็นต์ผ่านจากจำนวนผู้ผ่านหารด้วยจำนวนทั้งหมด"</td>
+                                    <td><code>=COUNTIF(G:G,"ผ่าน")/COUNTA(G2:G50)*100</code></td>
+                                </tr>
+                                <tr>
+                                    <td>VLOOKUP หลักสูตร</td>
+                                    <td>"ค้นหาชื่อหลักสูตรจาก Sheet 'หลักสูตร' โดยใช้รหัสใน A2"</td>
+                                    <td><code>=VLOOKUP(A2,หลักสูตร!A:B,2,FALSE)</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="alert alert-info mt-3">
+                        <strong>💡 เคล็ดลับ:</strong> บอก Gemini ว่า "อธิบายสูตรนี้ด้วย" จะได้คำอธิบายว่าสูตรทำงานอย่างไร
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analyze Data -->
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">📈 ฟีเจอร์ 3: Analyze Data — วิเคราะห์ข้อมูล</h5>
+                </div>
+                <div class="card-body">
+                    <p>Gemini สามารถวิเคราะห์ข้อมูลใน Sheet และสรุปข้อมูลเชิงลึกให้ได้ทันที</p>
+                    
+                    <h6 class="fw-bold">ตัวอย่าง: วิเคราะห์ข้อมูลฝึกอบรม สนพ.สุรินทร์</h6>
+                    <div class="bg-light p-3 rounded mb-3">
+                        <strong>Prompt:</strong>
+                        <code class="d-block mt-2">"วิเคราะห์ข้อมูลฝึกอบรมนี้ สรุปว่า: หลักสูตรไหนมีผู้ผ่านมากที่สุด, ค่าเฉลี่ยคะแนนก่อน-หลังต่างกันเท่าไร, หลักสูตรไหนควรปรับปรุง"</code>
+                    </div>
+                    
+                    <h6 class="fw-bold">ผลลัพธ์ที่ Gemini ตอบ:</h6>
+                    <div class="border p-3 rounded bg-white">
+                        <p>📊 <strong>สรุปผลการวิเคราะห์ข้อมูลฝึกอบรม:</strong></p>
+                        <ul>
+                            <li><strong>หลักสูตรที่มีผู้ผ่านมากที่สุด:</strong> คอมพิวเตอร์สำนักงาน (95% ผ่าน)</li>
+                            <li><strong>ค่าเฉลี่ยคะแนน:</strong> ก่อนเรียน 48.5 → หลังเรียน 79.2 (เพิ่มขึ้น 63.3%)</li>
+                            <li><strong>หลักสูตรที่ควรปรับปรุง:</strong> ช่างเชื่อม MAG (มีผู้ไม่ผ่าน 25%)</li>
+                            <li><strong>ข้อเสนอแนะ:</strong> เพิ่มชั่วโมงภาคปฏิบัติในหลักสูตรช่างเชื่อม</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Chart -->
+            <div class="card mb-4">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">📉 ฟีเจอร์ 4: Create Chart — สร้างกราฟ</h5>
+                </div>
+                <div class="card-body">
+                    <p>สั่ง Gemini สร้างกราฟจากข้อมูลใน Sheet ได้ทันที</p>
+                    
+                    <h6 class="fw-bold">ตัวอย่าง Prompt:</h6>
+                    <div class="bg-light p-3 rounded mb-3">
+                        <code>"สร้างกราฟแท่งเปรียบเทียบจำนวนผู้ผ่านฝึกอบรมแต่ละหลักสูตร ปี 2569"</code>
+                    </div>
+                    <div class="bg-light p-3 rounded mb-3">
+                        <code>"สร้างกราฟวงกลมแสดงสัดส่วนผู้เข้ารับการฝึกแต่ละจังหวัด"</code>
+                    </div>
+                    <div class="bg-light p-3 rounded mb-3">
+                        <code>"สร้างกราฟเส้นแสดง trend จำนวนผู้ฝึกอบรมรายเดือน ย้อนหลัง 12 เดือน"</code>
+                    </div>
+
+                    <div class="step-item bg-light p-3 rounded mt-3">
+                        <h6 class="fw-bold">📝 ขั้นตอนสร้างกราฟด้วย Gemini:</h6>
+                        <ol>
+                            <li>เลือกข้อมูลที่ต้องการสร้างกราฟ (highlight cells)</li>
+                            <li>คลิกไอคอน Gemini → พิมพ์คำสั่งสร้างกราฟ</li>
+                            <li>Gemini จะแนะนำประเภทกราฟที่เหมาะสม</li>
+                            <li>คลิก "Insert chart" เพื่อแทรกกราฟ</li>
+                            <li>ปรับแต่งสี ชื่อ label ได้ตามต้องการ</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workshop Sheets -->
+            <div class="card border-success mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-success">🏋️ Workshop: ฝึกใช้ Gemini ใน Sheets (20 นาที)</h5>
+                    <p><strong>โจทย์:</strong> สร้างตารางผลการฝึกอบรม สนพ.สุรินทร์ ไตรมาส 1/2569</p>
+                    <ol>
+                        <li>ใช้ "Help me organize" สร้างตารางข้อมูลฝึกอบรม 20 คน</li>
+                        <li>ใช้ "Create formula" สร้างสูตรคำนวณ: ค่าเฉลี่ย, % ผ่าน, ตัดเกรด</li>
+                        <li>ใช้ "Analyze data" ให้ Gemini วิเคราะห์และสรุปผล</li>
+                        <li>ใช้ "Create chart" สร้างกราฟแท่ง + กราฟวงกลม</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6.2 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">6.2 Gemini ใน Google Slides</h3>
+            
+            <p>Gemini ช่วยสร้างงานนำเสนอ (Presentation) ได้อัตโนมัติ ตั้งแต่โครงสร้าง เนื้อหา รูปภาพ จนถึง Speaker Notes — เหมาะสำหรับการทำ Presentation ผลงานราชการ</p>
+
+            <!-- Help me create -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">🎨 ฟีเจอร์ 1: Help me create — สร้าง Presentation อัตโนมัติ</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="fw-bold">ตัวอย่าง: สร้าง Presentation ผลงาน สนพ.สุรินทร์</h6>
+                    <div class="bg-light p-3 rounded mb-3">
+                        <strong>Prompt:</strong>
+                        <code class="d-block mt-2">"สร้าง presentation ผลงานสำนักงานพัฒนาฝีมือแรงงานสุรินทร์ ปีงบประมาณ 2569 ประกอมด้วย: ภาพรวมองค์กร, เป้าหมายฝึกอบรม, ผลการดำเนินงาน, สถิติผู้เข้ารับการฝึก, งบประมาณ, แผนปี 2570"</code>
+                    </div>
+                    
+                    <h6 class="fw-bold">โครงสร้างที่ Gemini สร้างให้ (8-10 สไลด์):</h6>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>สไลด์</th>
+                                    <th>หัวข้อ</th>
+                                    <th>เนื้อหา</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>หน้าปก</td><td>ชื่อเรื่อง, โลโก้ สนพ., ปีงบประมาณ</td></tr>
+                                <tr><td>2</td><td>ภาพรวมองค์กร</td><td>วิสัยทัศน์ พันธกิจ โครงสร้าง</td></tr>
+                                <tr><td>3</td><td>เป้าหมาย 2569</td><td>ตัวชี้วัด KPI จำนวนผู้ฝึก</td></tr>
+                                <tr><td>4</td><td>ผลการดำเนินงาน</td><td>กราฟแท่ง เป้า vs จริง</td></tr>
+                                <tr><td>5</td><td>สถิติผู้ฝึกอบรม</td><td>แยกตามหลักสูตร/เพศ/อายุ</td></tr>
+                                <tr><td>6</td><td>งบประมาณ</td><td>รายรับ-รายจ่าย กราฟวงกลม</td></tr>
+                                <tr><td>7</td><td>ผลสำเร็จเด่น</td><td>Best Practices, เรื่องเล่าดีๆ</td></tr>
+                                <tr><td>8</td><td>แผนงาน 2570</td><td>เป้าหมาย โครงการใหม่</td></tr>
+                                <tr><td>9</td><td>ขอบคุณ</td><td>ข้อมูลติดต่อ QR Line</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="step-item bg-light p-3 rounded mt-3">
+                        <h6 class="fw-bold">📝 ขั้นตอน:</h6>
+                        <ol>
+                            <li>เปิด Google Slides → คลิก "Create with Gemini" (ไอคอนดาว)</li>
+                            <li>พิมพ์ prompt อธิบายหัวข้อที่ต้องการ</li>
+                            <li>Gemini สร้าง Draft พร้อมข้อความ + layout</li>
+                            <li>ตรวจสอบเนื้อหา แก้ไขตัวเลขให้ถูกต้อง</li>
+                            <li>คลิก "Insert" เพื่อนำไปใช้</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generate Images -->
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">🖼️ ฟีเจอร์ 2: Generate Images — สร้างรูปภาพ AI</h5>
+                </div>
+                <div class="card-body">
+                    <p>Gemini สร้างรูปภาพประกอบ Presentation ได้ทันที ไม่ต้องหาภาพจากอินเทอร์เน็ต</p>
+                    
+                    <h6 class="fw-bold">ตัวอย่าง Prompt สร้างรูป:</h6>
+                    <div class="bg-light p-3 rounded mb-2">
+                        <code>"สร้างภาพ infographic แสดงขั้นตอนการฝึกอบรม 5 ขั้นตอน สไตล์ flat design สีน้ำเงินทอง"</code>
+                    </div>
+                    <div class="bg-light p-3 rounded mb-2">
+                        <code>"สร้างภาพ illustration คนกำลังฝึกเชื่อมโลหะในโรงฝึก สไตล์โมเดิร์น"</code>
+                    </div>
+                    <div class="bg-light p-3 rounded mb-2">
+                        <code>"สร้างภาพ icon ชุดทักษะอาชีพ 6 อย่าง: ช่างไฟ, ช่างเชื่อม, คอมพิวเตอร์, ทำอาหาร, ตัดผม, ซ่อมมือถือ"</code>
+                    </div>
+
+                    <div class="alert alert-warning mt-3">
+                        <strong>⚠️ ข้อจำกัด:</strong>
+                        <ul class="mb-0">
+                            <li>ไม่สามารถสร้างรูปคนจริง (realistic faces) ได้ — ต้องใช้สไตล์ illustration</li>
+                            <li>รูปที่สร้างเป็นของ Google — ตรวจสอบลิขสิทธิ์ก่อนใช้เผยแพร่</li>
+                            <li>ไม่รองรับข้อความภาษาไทยในรูป — ต้องเพิ่ม Text Box เอง</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Speaker Notes -->
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">🎤 ฟีเจอร์ 3: Speaker Notes — สร้างสคริปต์พูด</h5>
+                </div>
+                <div class="card-body">
+                    <p>Gemini ช่วยเขียน Speaker Notes (สคริปต์ที่ผู้นำเสนอจะพูด) ให้ทุกสไลด์</p>
+                    
+                    <div class="bg-light p-3 rounded mb-3">
+                        <strong>Prompt:</strong>
+                        <code class="d-block mt-2">"เขียน speaker notes สำหรับสไลด์นี้ ใช้ภาษาทางการ เหมาะกับนำเสนอต่อผู้บริหาร ความยาว 2-3 ประโยค"</code>
+                    </div>
+                    
+                    <h6 class="fw-bold">ผลลัพธ์ตัวอย่าง (สไลด์ผลการดำเนินงาน):</h6>
+                    <div class="border p-3 rounded bg-white fst-italic">
+                        "ในปีงบประมาณ 2569 สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ดำเนินการฝึกอบรมได้ตามเป้าหมาย คิดเป็นร้อยละ 105 ของแผนที่กำหนด โดยมีผู้เข้ารับการฝึกทั้งสิ้น 2,450 คน เพิ่มขึ้นจากปีก่อน ร้อยละ 15 โดยเฉพาะหลักสูตรด้านเทคโนโลยีสารสนเทศมีผู้สนใจเพิ่มขึ้นอย่างมาก"
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6.3 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">6.3 Gemini ใน Google Drive</h3>
+            
+            <p>Gemini ใน Google Drive ช่วยค้นหาไฟล์ สรุปเอกสาร และจัดระเบียบไฟล์ในองค์กรด้วย AI</p>
+
+            <!-- ค้นหาด้วยภาษาธรรมชาติ -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">🔍 ค้นหาไฟล์ด้วยภาษาธรรมชาติ</h5>
+                </div>
+                <div class="card-body">
+                    <p>ไม่ต้องจำชื่อไฟล์แม่นยำ ใช้ภาษาธรรมชาติค้นหาได้เลย</p>
+                    
+                    <h6 class="fw-bold">ตัวอย่าง Prompt ค้นหา:</h6>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>แบบเดิม (ค้นหาปกติ)</th>
+                                    <th>แบบ Gemini (ภาษาธรรมชาติ)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>รายงาน สนพ 2569</td>
+                                    <td>"หาไฟล์รายงานผลการฝึกอบรมที่สร้างเมื่อเดือนที่แล้ว"</td>
+                                </tr>
+                                <tr>
+                                    <td>งบประมาณ Q1</td>
+                                    <td>"ไฟล์ Excel ที่เกี่ยวกับงบประมาณไตรมาส 1 ที่ นายสมชาย แชร์ให้"</td>
+                                </tr>
+                                <tr>
+                                    <td>คำสั่ง 2569</td>
+                                    <td>"คำสั่งแต่งตั้งคณะกรรมการฝึกอบรมล่าสุด"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- สรุปเอกสาร -->
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">📄 สรุปเอกสาร</h5>
+                </div>
+                <div class="card-body">
+                    <p>Gemini สามารถสรุปเนื้อหาเอกสาร PDF, Docs, Sheets ได้ทันที</p>
+                    
+                    <div class="bg-light p-3 rounded mb-3">
+                        <strong>ตัวอย่างคำสั่ง:</strong>
+                        <ul>
+                            <li><code>"สรุปเอกสารนี้เป็น 5 ประเด็นหลัก"</code></li>
+                            <li><code>"สรุปมติที่ประชุมจากรายงานการประชุมนี้"</code></li>
+                            <li><code>"หาข้อมูลงบประมาณจากเอกสาร 3 ไฟล์นี้"</code></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- จัดระเบียบ -->
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">📂 จัดระเบียบไฟล์</h5>
+                </div>
+                <div class="card-body">
+                    <p>Gemini ช่วยแนะนำการจัดโฟลเดอร์ที่เหมาะสมสำหรับองค์กร</p>
+                    
+                    <div class="bg-light p-3 rounded mb-3">
+                        <strong>Prompt:</strong>
+                        <code class="d-block mt-2">"แนะนำโครงสร้างโฟลเดอร์สำหรับงานฝึกอบรม สนพ.สุรินทร์ แยกตามปีงบประมาณและหลักสูตร"</code>
+                    </div>
+                    
+                    <h6 class="fw-bold">ผลลัพธ์:</h6>
+                    <pre class="bg-dark text-light p-3 rounded"><code>📁 สนพ.สุรินทร์
+├── 📁 ปีงบ 2569
+│   ├── 📁 หลักสูตร
+│   │   ├── 📁 ช่างเชื่อม MAG
+│   │   ├── 📁 คอมพิวเตอร์สำนักงาน
+│   │   └── 📁 ช่างไฟฟ้าภายในอาคาร
+│   ├── 📁 รายงาน
+│   │   ├── 📁 รายเดือน
+│   │   └── 📁 ไตรมาส
+│   ├── 📁 คำสั่ง
+│   ├── 📁 งบประมาณ
+│   └── 📁 ภาพกิจกรรม
+└── 📁 ปีงบ 2570
+    └── ...</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6.4 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">6.4 เปรียบเทียบ Gemini Workspace vs Microsoft Copilot 365</h3>
+            
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>หัวข้อ</th>
+                            <th>🟦 Gemini for Workspace</th>
+                            <th>🟪 Microsoft Copilot 365</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ราคา</strong></td>
+                            <td>$20/user/เดือน (Workspace) หรือฟรีบางฟีเจอร์</td>
+                            <td>$30/user/เดือน (ต้องมี M365 E3/E5 ด้วย)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ทำงานกับ</strong></td>
+                            <td>Docs, Sheets, Slides, Gmail, Drive, Meet</td>
+                            <td>Word, Excel, PowerPoint, Outlook, Teams, OneDrive</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AI Model</strong></td>
+                            <td>Gemini 2.5 Pro / Flash</td>
+                            <td>GPT-4o</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ภาษาไทย</strong></td>
+                            <td>✅ ดี (Google มีข้อมูลภาษาไทยมาก)</td>
+                            <td>✅ ดี (GPT-4o รองรับภาษาไทย)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>สร้างรูป AI</strong></td>
+                            <td>✅ ใน Slides (Imagen)</td>
+                            <td>✅ ใน PowerPoint (DALL-E 3)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>สร้างสูตร</strong></td>
+                            <td>✅ Sheets (บอกภาษาไทยได้)</td>
+                            <td>✅ Excel (ใช้ Copilot ใน Formula bar)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>วิเคราะห์ข้อมูล</strong></td>
+                            <td>✅ Analyze ใน Sheets</td>
+                            <td>✅ Copilot ใน Excel + Pivot</td>
+                        </tr>
+                        <tr>
+                            <td><strong>สร้าง Presentation</strong></td>
+                            <td>✅ สร้างได้ทั้ง deck</td>
+                            <td>✅ สร้างได้ทั้ง deck + จาก Word</td>
+                        </tr>
+                        <tr>
+                            <td><strong>สรุปเอกสาร</strong></td>
+                            <td>✅ ใน Drive + Docs</td>
+                            <td>✅ ใน OneDrive + Word</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ค้นหาไฟล์ AI</strong></td>
+                            <td>✅ Natural Language Search</td>
+                            <td>✅ Microsoft Search + Copilot</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ข้อดีเด่น</strong></td>
+                            <td>ราคาถูกกว่า, ทำงาน Cloud, API ฟรี</td>
+                            <td>Integration กับ Office ดีกว่า, Enterprise</td>
+                        </tr>
+                        <tr>
+                            <td><strong>เหมาะกับ</strong></td>
+                            <td>หน่วยงานที่ใช้ Google Workspace</td>
+                            <td>หน่วยงานที่ใช้ Microsoft 365</td>
+                        </tr>
+                        <tr class="table-success">
+                            <td><strong>สำหรับ สนพ.สุรินทร์</strong></td>
+                            <td><strong>✅ แนะนำ</strong> (ใช้ Google Workspace อยู่แล้ว)</td>
+                            <td>⚠️ ต้องซื้อเพิ่ม (ราคาสูง)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-success">
+                <strong>💡 สรุป:</strong> สำหรับหน่วยงานราชการที่ใช้ Google Workspace อยู่แล้ว Gemini for Workspace เป็นตัวเลือกที่คุ้มค่ากว่า ทั้งราคาและความสะดวกในการใช้งาน
+            </div>
+        </section>
+
+        <!-- Section 6.5 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">6.5 Workshop: สร้างรายงาน + Presentation ด้วย Gemini in Workspace</h3>
+            
+            <div class="alert alert-danger">
+                <h5 class="alert-heading">🏋️ Workshop ภาคปฏิบัติ (60 นาที)</h5>
+                <p class="mb-0">สร้างรายงานผลการฝึกอบรมครบวงจร ตั้งแต่ข้อมูลใน Sheets จนถึง Presentation</p>
+            </div>
+
+            <!-- ขั้นตอนที่ 1 -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">📋 ขั้นตอนที่ 1: สร้างข้อมูลใน Google Sheets (15 นาที)</h5>
+                    <div class="step-item bg-light p-3 rounded">
+                        <ol>
+                            <li>เปิด Google Sheets ใหม่ → ตั้งชื่อ "รายงานฝึกอบรม สนพ.สุรินทร์ Q1-2569"</li>
+                            <li>ใช้ Gemini "Help me organize" สร้างตาราง:
+                                <div class="bg-white p-2 mt-1 rounded border">
+                                    <code>"สร้างตารางผลการฝึกอบรม 20 คน มีคอลัมน์: ลำดับ, ชื่อ-สกุล, หลักสูตร (เลือกจาก: ช่างเชื่อม/คอมพิวเตอร์/ช่างไฟฟ้า), วันที่เริ่ม, วันที่สิ้นสุด, คะแนนทฤษฎี (เต็ม 100), คะแนนปฏิบัติ (เต็ม 100), ผลรวม, เกรด"</code>
+                                </div>
+                            </li>
+                            <li>ใช้ Gemini สร้างสูตร:
+                                <ul>
+                                    <li>"คำนวณผลรวมจากคะแนนทฤษฎี + ปฏิบัติ หาร 2"</li>
+                                    <li>"ถ้าผลรวมมากกว่า 60 ให้เป็น 'ผ่าน' ไม่ถึงให้ 'ไม่ผ่าน'"</li>
+                                    <li>"นับจำนวนผู้ผ่านทั้งหมด"</li>
+                                </ul>
+                            </li>
+                            <li>ใช้ Gemini สร้างกราฟ: "สร้างกราฟแท่งเปรียบเทียบคะแนนเฉลี่ยทั้ง 3 หลักสูตร"</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ขั้นตอนที่ 2 -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">📊 ขั้นตอนที่ 2: วิเคราะห์ข้อมูล (10 นาที)</h5>
+                    <div class="step-item bg-light p-3 rounded">
+                        <ol>
+                            <li>ใช้ Gemini Analyze: "วิเคราะห์ข้อมูลนี้ สรุป 5 ประเด็นสำคัญ"</li>
+                            <li>ถาม Gemini: "หลักสูตรไหนมีปัญหา แนะนำวิธีแก้ไข"</li>
+                            <li>สร้าง Sheet ใหม่ชื่อ "สรุปผล" → ใช้ Gemini สร้างตารางสรุป</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ขั้นตอนที่ 3 -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">🎨 ขั้นตอนที่ 3: สร้าง Presentation (25 นาที)</h5>
+                    <div class="step-item bg-light p-3 rounded">
+                        <ol>
+                            <li>เปิด Google Slides ใหม่</li>
+                            <li>ใช้ Gemini "Help me create":
+                                <div class="bg-white p-2 mt-1 rounded border">
+                                    <code>"สร้าง presentation รายงานผลการฝึกอบรม สนพ.สุรินทร์ ไตรมาส 1/2569 มี: หน้าปก, สรุปผลรวม, ผลแยกตามหลักสูตร (3 หลักสูตร), ปัญหาอุปสรรค, ข้อเสนอแนะ, ขอบคุณ"</code>
+                                </div>
+                            </li>
+                            <li>แทรกกราฟจาก Sheets ลงในสไลด์</li>
+                            <li>ใช้ Gemini Generate Image: "สร้างภาพ header สไตล์ราชการ สีน้ำเงินทอง"</li>
+                            <li>ใส่ Speaker Notes ทุกสไลด์: "เขียน speaker notes สำหรับนำเสนอต่อผู้บริหาร"</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ขั้นตอนที่ 4 -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">✅ ขั้นตอนที่ 4: นำเสนอผลงาน (10 นาที)</h5>
+                    <div class="step-item bg-light p-3 rounded">
+                        <ol>
+                            <li>นำเสนอหน้าชั้น 3-5 นาที</li>
+                            <li>เพื่อนร่วมกลุ่มให้ feedback</li>
+                            <li>แชร์ลิงก์ Slides + Sheets ให้วิทยากร</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- เกณฑ์การประเมิน -->
+            <div class="card border-info mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">📝 เกณฑ์การประเมิน Workshop</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-info">
+                                <tr>
+                                    <th>รายการ</th>
+                                    <th>คะแนน</th>
+                                    <th>เกณฑ์</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>ตาราง Sheets ถูกต้อง</td><td>20</td><td>มีข้อมูลครบ + สูตรถูก</td></tr>
+                                <tr><td>การวิเคราะห์ด้วย Gemini</td><td>20</td><td>ถาม Gemini ได้ตรงประเด็น</td></tr>
+                                <tr><td>Presentation สมบูรณ์</td><td>30</td><td>มีอย่างน้อย 6 สไลด์ มีกราฟ</td></tr>
+                                <tr><td>Speaker Notes</td><td>10</td><td>มี notes ทุกสไลด์</td></tr>
+                                <tr><td>การนำเสนอ</td><td>20</td><td>ชัดเจน ตรงเวลา</td></tr>
+                                <tr class="table-dark"><td><strong>รวม</strong></td><td><strong>100</strong></td><td></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- แบบฝึกหัดท้ายบท -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">แบบฝึกหัดท้ายบท</h3>
+            
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">📝 แบบฝึกหัดบทที่ 6</h5>
+                    <ol>
+                        <li class="mb-2"><strong>Sheets:</strong> สร้างตารางงบประมาณฝึกอบรม 5 หลักสูตร พร้อมสูตรคำนวณรวม + สร้างกราฟ</li>
+                        <li class="mb-2"><strong>Sheets:</strong> ใช้ Gemini วิเคราะห์ข้อมูลการลงทะเบียนฝึกอบรม 3 เดือนย้อนหลัง → สรุปแนวโน้ม</li>
+                        <li class="mb-2"><strong>Slides:</strong> สร้าง Presentation แนะนำ สนพ.สุรินทร์ 8 สไลด์ ใช้ Gemini ทั้งเนื้อหาและรูป</li>
+                        <li class="mb-2"><strong>Drive:</strong> ค้นหาไฟล์ใน Drive ด้วยภาษาธรรมชาติ 5 แบบ จดผลลัพธ์</li>
+                        <li class="mb-2"><strong>เปรียบเทียบ:</strong> สรุป 3 ข้อดีของ Gemini Workspace ที่คุณชอบ พร้อมเหตุผล</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+            <a href="chapter05.html" class="btn btn-outline-primary">← บทที่ 5: Prompt Engineering</a>
+            <a href="chapter07.html" class="btn btn-primary">บทที่ 7: Google AI Studio →</a>
+        </nav>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p class="mb-1">คู่มือฝึกอบรม Gemini AI — ใช้ปัญญาประดิษฐ์ Google ทำงานราชการ</p>
+        <p class="mb-0 text-white-50">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

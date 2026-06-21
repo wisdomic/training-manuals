@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 5: Background Remover — คู่มือ CapCut AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark px-3">
+        <span class="navbar-brand mb-0 h1">📖 CapCut AI ตัดต่อวิดีโอ</span>
+        <span class="nav-text d-none d-md-inline">บทที่ 5: Background Remover</span>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <div class="chapter-number">บทที่ 5</div>
+                <h1>🎭 Background Remover</h1>
+                <p class="mb-0">ลบพื้นหลังวิดีโอด้วย AI, Green Screen, เปลี่ยนฉาก, ใส่ Background ใหม่</p>
+            </div>
+
+            <!-- Objectives -->
+            <div class="alert alert-info">
+                <h5 class="fw-bold">🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>ใช้ AI ลบพื้นหลังวิดีโอ/ภาพได้</li>
+                    <li>เข้าใจหลักการ Green Screen (Chroma Key)</li>
+                    <li>เปลี่ยนฉากหลังเป็นภาพหรือวิดีโออื่นได้</li>
+                    <li>ใส่ Background ใหม่ให้เหมาะกับเนื้อหาได้</li>
+                    <li>ปรับแต่งขอบตัดให้เนียนเรียบได้</li>
+                </ul>
+            </div>
+
+            <!-- Section 1 -->
+            <h3 class="section-header">5.1 Background Remover คืออะไร?</h3>
+
+            <p><strong>Background Remover</strong> คือฟีเจอร์ AI ที่สามารถ "ตัด" ตัวบุคคลหรือวัตถุออกจากพื้นหลังได้อัตโนมัติ โดยไม่ต้องใช้ Green Screen จริง</p>
+
+            <p><strong>ใช้ทำอะไรได้บ้าง:</strong></p>
+            <ul class="feature-list">
+                <li>ถ่ายวิดีโอที่ไหนก็ได้ แล้วเปลี่ยนฉากหลังทีหลัง</li>
+                <li>สร้างวิดีโอที่ดูเป็นมืออาชีพ โดยไม่ต้องมีสตูดิโอ</li>
+                <li>ซ้อนบุคคลบนกราฟิก แผนที่ หรือ Presentation</li>
+                <li>สร้าง Green Screen Effect จากวิดีโอธรรมดา</li>
+                <li>ลบพื้นหลังรกๆ ออก แทนที่ด้วยพื้นหลังสะอาด</li>
+            </ul>
+
+            <div class="alert alert-warning">
+                <strong>📌 ข้อจำกัด:</strong> AI ทำงานได้ดีที่สุดเมื่อ: ตัวบุคคลเห็นชัดเจน, ไม่มีสิ่งบดบัง, พื้นหลังไม่ซับซ้อนเกินไป
+            </div>
+
+            <!-- Section 2 -->
+            <h3 class="section-header">5.2 วิธีใช้ Auto Remove Background</h3>
+
+            <div class="step-item">
+                <span class="step-number">1</span>
+                ลากวิดีโอหรือภาพที่ต้องการลบพื้นหลังลง Timeline
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                คลิกเลือกคลิปนั้นใน Timeline
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                ไปที่แถบขวา → แท็บ <strong>"Video"</strong> → หา <strong>"Remove BG"</strong> (ลบพื้นหลัง)
+            </div>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                คลิก <strong>"Auto Removal"</strong> — AI จะเริ่มประมวลผล
+            </div>
+            <div class="step-item">
+                <span class="step-number">5</span>
+                รอ 10-30 วินาที → พื้นหลังจะหายไป เหลือแต่ตัวบุคคล
+            </div>
+            <div class="step-item">
+                <span class="step-number">6</span>
+                ตรวจสอบผลลัพธ์ใน Preview — ถ้ามีขอบไม่เรียบ ปรับแต่งเพิ่ม
+            </div>
+
+            <!-- Section 3 -->
+            <h3 class="section-header">5.3 Chroma Key (Green Screen)</h3>
+
+            <p>ถ้าถ่ายวิดีโอหน้า Green Screen จริง CapCut มีเครื่องมือ Chroma Key:</p>
+
+            <div class="step-item">
+                <span class="step-number">1</span>
+                ลากวิดีโอ Green Screen ลง Timeline
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                คลิกเลือกคลิป → แถบขวา → <strong>"Cutout"</strong> → <strong>"Chroma Key"</strong>
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                ใช้ Color Picker คลิกที่สีเขียว (หรือสีพื้นหลัง) ในหน้าจอ Preview
+            </div>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                ปรับ <strong>Intensity</strong> (ความเข้ม) จนพื้นหลังหายไปหมด
+            </div>
+            <div class="step-item">
+                <span class="step-number">5</span>
+                ปรับ <strong>Shadow/Edge</strong> ให้ขอบเนียนเรียบ
+            </div>
+
+            <p><strong>เปรียบเทียบ:</strong></p>
+            <div class="table-responsive">
+                <table class="table table-manual table-bordered">
+                    <thead>
+                        <tr>
+                            <th>คุณสมบัติ</th>
+                            <th>Auto Remove BG (AI)</th>
+                            <th>Chroma Key</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ต้องใช้ Green Screen</strong></td>
+                            <td>ไม่ต้อง</td>
+                            <td>ต้อง</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ความแม่นยำ</strong></td>
+                            <td>ดีมาก (90%)</td>
+                            <td>ดีเยี่ยม (98%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ความเร็ว</strong></td>
+                            <td>ช้ากว่า (AI ประมวลผล)</td>
+                            <td>เร็วมาก (Real-time)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>เหมาะกับ</strong></td>
+                            <td>วิดีโอทั่วไป ไม่มี Green Screen</td>
+                            <td>สตูดิโอ งานมืออาชีพ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Section 4 -->
+            <h3 class="section-header">5.4 ใส่ Background ใหม่</h3>
+
+            <p>หลังจากลบพื้นหลังแล้ว ต้องใส่ Background ใหม่:</p>
+
+            <h5 class="fw-bold mt-3">วิธีที่ 1: ใส่ภาพ/วิดีโอพื้นหลัง</h5>
+            <ol>
+                <li>Import ภาพหรือวิดีโอที่ต้องการใช้เป็นพื้นหลัง</li>
+                <li>ลากไปวาง <strong>Track ล่าง</strong> (ใต้คลิปที่ลบพื้นหลังแล้ว)</li>
+                <li>คลิปที่ลบพื้นหลังจะแสดงทับบน Background ใหม่</li>
+                <li>ปรับขนาดและตำแหน่งให้เหมาะสม</li>
+            </ol>
+
+            <h5 class="fw-bold mt-3">วิธีที่ 2: ใช้สีพื้น</h5>
+            <ol>
+                <li>ไปที่ Stock → Search "solid color" หรือ "gradient"</li>
+                <li>เลือกสีที่ต้องการ → ลากลง Track ล่าง</li>
+                <li>เหมาะสำหรับวิดีโอนำเสนอ หรือ Tutorial</li>
+            </ol>
+
+            <h5 class="fw-bold mt-3">วิธีที่ 3: ใช้ Stock Video</h5>
+            <ol>
+                <li>ไปที่ Stock → ค้นหาฉากที่ต้องการ (เช่น "office", "nature", "city")</li>
+                <li>เลือกวิดีโอ → ลากลง Track ล่าง</li>
+                <li>ได้ฉากหลังที่สวยงาม เคลื่อนไหว ดูเป็นมืออาชีพ</li>
+            </ol>
+
+            <!-- Section 5 -->
+            <h3 class="section-header">5.5 ปรับแต่งขอบตัด</h3>
+
+            <p>เมื่อ AI ตัดพื้นหลังออก อาจมีขอบไม่เรียบ สามารถปรับแต่งได้:</p>
+
+            <ul>
+                <li><strong>Edge Feather:</strong> ทำให้ขอบนุ่มลง (ค่า 1-10) ช่วยให้กลืนกับพื้นหลัง</li>
+                <li><strong>Edge Strength:</strong> ปรับความชัดของขอบ</li>
+                <li><strong>Invert:</strong> กลับด้าน (ลบตัวบุคคล เหลือแค่พื้นหลัง)</li>
+                <li><strong>Brush Tool:</strong> ระบายเพิ่ม/ลบ พื้นที่ที่ AI ตัดผิด</li>
+            </ul>
+
+            <div class="alert alert-success">
+                <strong>💡 Tips:</strong> ใช้ Edge Feather ค่า 2-3 จะทำให้ขอบดูเป็นธรรมชาติที่สุด ไม่เหมือน "ตัดแปะ"
+            </div>
+
+            <!-- Section 6 -->
+            <h3 class="section-header">5.6 การประยุกต์ใช้งานจริง</h3>
+
+            <p><strong>ตัวอย่างการใช้ Background Remover ในงานองค์กร:</strong></p>
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="info-card h-100">
+                        <h5>📹 วิดีโอผู้บริหารพูด</h5>
+                        <p class="mb-0">ถ่ายที่ห้องทำงาน → ลบพื้นหลัง → ใส่ Background องค์กร (โลโก้ + สีประจำ)</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card h-100">
+                        <h5>📊 วิดีโอนำเสนอ</h5>
+                        <p class="mb-0">ถ่ายผู้พูด → ลบพื้นหลัง → ซ้อนบน Slide/กราฟิก</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card h-100">
+                        <h5>🌍 วิดีโอข่าว</h5>
+                        <p class="mb-0">ถ่ายนักข่าว → เปลี่ยนฉากหลังเป็นสถานที่จริง</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-card h-100">
+                        <h5>🎓 วิดีโอสอน</h5>
+                        <p class="mb-0">ถ่ายผู้สอน → ซ้อนทับบนวิดีโอสาธิตหน้าจอ (PIP)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 5: ลบพื้นหลังและเปลี่ยนฉาก</h4>
+                <p><strong>เวลา:</strong> 25 นาที</p>
+                <p><strong>ไฟล์ที่ใช้:</strong> วิดีโอถ่ายบุคคล + ภาพพื้นหลัง (วิทยากรเตรียมให้)</p>
+                <ol>
+                    <li>สร้างโปรเจกต์ใหม่ ชื่อ <strong>"Lab05_BG_[ชื่อ]"</strong></li>
+                    <li>Import วิดีโอที่มีคนพูด → ลากลง Timeline</li>
+                    <li>ใช้ <strong>Auto Remove BG</strong> ลบพื้นหลัง</li>
+                    <li>สังเกตผลลัพธ์ — มีขอบไม่เรียบตรงไหนบ้าง?</li>
+                    <li>ปรับ Edge Feather = 2 → ดูว่าขอบเนียนขึ้นไหม</li>
+                    <li>Import ภาพพื้นหลัง "สำนักงาน" → ลากลง Track ล่าง</li>
+                    <li>ดู Preview — คนพูดซ้อนอยู่บนพื้นหลังใหม่</li>
+                    <li>ลองเปลี่ยนพื้นหลังเป็น Stock Video "nature" (ค้นหาใน Stock)</li>
+                    <li>ลองเปลี่ยนเป็นสีพื้น (Solid color) สีฟ้าอ่อน</li>
+                    <li>เลือกพื้นหลังที่ชอบที่สุด → กด Play ดูตัวอย่าง</li>
+                </ol>
+                <p class="mb-0"><strong>✅ สำเร็จเมื่อ:</strong> วิดีโอแสดงบุคคลบนพื้นหลังใหม่ ขอบตัดเนียน ดูเป็นธรรมชาติ</p>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5 class="fw-bold">💡 เคล็ดลับบทที่ 5</h5>
+                <ul class="mb-0">
+                    <li><strong>แสงสำคัญ:</strong> ถ่ายวิดีโอในที่แสงดี ตัวบุคคลจะตัดออกง่ายกว่า</li>
+                    <li><strong>เสื้อกับพื้นหลัง:</strong> ใส่เสื้อสีที่ต่างจากพื้นหลัง AI จะแยกได้ดีกว่า</li>
+                    <li><strong>ไม่ต้องถ่ายใหม่:</strong> ใช้วิดีโอเก่าที่มีอยู่แล้วก็ลบ Background ได้</li>
+                    <li><strong>PIP (Picture-in-Picture):</strong> ย่อขนาดคลิปให้เล็ก วางมุมจอ ใช้ทำ Tutorial ได้</li>
+                    <li><strong>หลายเลเยอร์:</strong> สามารถซ้อนหลายคลิปที่ลบพื้นหลังแล้วบนฉากเดียวกัน</li>
+                </ul>
+            </div>
+
+            <!-- Summary -->
+            <div class="info-card">
+                <h4>📝 สรุปบทที่ 5</h4>
+                <table class="table table-sm table-bordered mb-0">
+                    <tr>
+                        <td width="200"><strong>Auto Remove BG</strong></td>
+                        <td>AI ลบพื้นหลังอัตโนมัติ ไม่ต้องใช้ Green Screen</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chroma Key</strong></td>
+                        <td>ลบสีพื้นหลัง (ต้องถ่ายหน้า Green Screen)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ใส่ BG ใหม่</strong></td>
+                        <td>ลากภาพ/วิดีโอ/สีพื้นลง Track ล่าง</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ปรับขอบ</strong></td>
+                        <td>Edge Feather 2-3 ให้ขอบเนียนเป็นธรรมชาติ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ประยุกต์ใช้</strong></td>
+                        <td>วิดีโอผู้บริหาร, นำเสนอ, Tutorial, ข่าว</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Navigation -->
+            <div class="nav-buttons">
+                <a href="chapter04.html" class="btn btn-outline-secondary">← บทที่ 4</a>
+                <a href="chapter06.html" class="btn btn-primary">บทที่ 6 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

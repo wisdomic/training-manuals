@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 10: Workshop — สร้างวิดีโอโปรโมตองค์กร | AI วิดีโอครบวงจร</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">📖 AI วิดีโอครบวงจร</a>
+            <span class="nav-chapter-text">บทที่ 10: Workshop สร้างวิดีโอครบวงจร</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <div class="chapter-number">บทที่ 10</div>
+                <h1>Workshop — สร้างวิดีโอโปรโมตองค์กร</h1>
+                <p class="chapter-subtitle">สร้างวิดีโอ 1-2 นาที ครบวงจร: สคริปต์ → ภาพ → เสียง → เพลง → ตัดต่อ → Export</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>สร้างวิดีโอโปรโมตองค์กรครบกระบวนการ ตั้งแต่ต้นจนจบ</li>
+                    <li>บูรณาการเครื่องมือ AI ทั้ง 7 ตัวเข้าด้วยกัน</li>
+                    <li>ฝึกแก้ปัญหาที่เกิดขึ้นจริงระหว่างทำ</li>
+                    <li>ได้วิดีโอสำเร็จรูปพร้อมเผยแพร่</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">🎬 ภาพรวม Workshop</h3>
+
+            <p>ในบทนี้ ท่านจะสร้างวิดีโอโปรโมตองค์กร ความยาว 1-2 นาที โดยใช้ทุกทักษะที่เรียนมาตั้งแต่บทที่ 1-9 รวมกัน เป็นงานจริงที่สามารถนำไปเผยแพร่ได้ทันที</p>
+
+            <div class="info-card">
+                <h5>📋 ข้อกำหนดวิดีโอ</h5>
+                <div class="table-responsive">
+                    <table class="table table-custom">
+                        <tbody>
+                            <tr><td><strong>ความยาว</strong></td><td>1-2 นาที</td></tr>
+                            <tr><td><strong>ขนาด</strong></td><td>16:9 (1920x1080)</td></tr>
+                            <tr><td><strong>เนื้อหา</strong></td><td>แนะนำองค์กร/บริการ/กิจกรรม</td></tr>
+                            <tr><td><strong>องค์ประกอบ</strong></td><td>สคริปต์ + ภาพ + คลิปวิดีโอ + เสียงพากย์ + เพลง + ซับ</td></tr>
+                            <tr><td><strong>คุณภาพ</strong></td><td>1080p, 30fps, พร้อมเผยแพร่</td></tr>
+                            <tr><td><strong>เวลาทำ</strong></td><td>3-4 ชั่วโมง (รวมทุกขั้นตอน)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3 class="section-header">📐 Workflow 7 ขั้นตอน (ทบทวน)</h3>
+
+            <div class="step-box">
+                <span class="step-number">1</span>
+                <strong>วางแผน + เขียนสคริปต์ (30 นาที)</strong>
+                <p class="mb-0 mt-1 text-muted">ใช้ ChatGPT เขียนสคริปต์ 5-6 Scene พร้อม Prompt ภาพ</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">2</span>
+                <strong>สร้างภาพ Storyboard (30 นาที)</strong>
+                <p class="mb-0 mt-1 text-muted">ใช้ DALL-E หรือ Whisk สร้างภาพแต่ละ Scene</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">3</span>
+                <strong>สร้างคลิปวิดีโอ (30 นาที)</strong>
+                <p class="mb-0 mt-1 text-muted">ใช้ Veo 2 แปลงภาพเป็นคลิปวิดีโอ + HeyGen สร้าง Avatar</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">4</span>
+                <strong>สร้างเสียงพากย์ (20 นาที)</strong>
+                <p class="mb-0 mt-1 text-muted">ใช้ ElevenLabs สร้างเสียงพากย์ทุก Scene</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">5</span>
+                <strong>สร้างเพลงประกอบ (20 นาที)</strong>
+                <p class="mb-0 mt-1 text-muted">ใช้ Suno AI สร้าง Intro + BGM + Outro</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">6</span>
+                <strong>ตัดต่อ + ปรับแต่ง (45 นาที)</strong>
+                <p class="mb-0 mt-1 text-muted">ใช้ CapCut รวมทุกอย่าง ใส่ Transition + Caption + Color Grade</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">7</span>
+                <strong>Review + Export (15 นาที)</strong>
+                <p class="mb-0 mt-1 text-muted">ตรวจสอบ แก้ไข แล้ว Export เป็น MP4</p>
+            </div>
+
+            <h3 class="section-header">📝 ขั้นตอนที่ 1: วางแผน + เขียนสคริปต์</h3>
+
+            <div class="exercise-box">
+                <h5>🔬 Workshop ขั้นที่ 1: เขียนสคริปต์ (30 นาที)</h5>
+                <ol>
+                    <li><strong>กำหนดหัวข้อ:</strong> เลือกว่าจะทำวิดีโออะไร เช่น:
+                        <ul>
+                            <li>แนะนำศูนย์บริการคนพิการจังหวัด</li>
+                            <li>ประชาสัมพันธ์โครงการฝึกอาชีพ</li>
+                            <li>เชิญชวนลงทะเบียนรับสิทธิ์</li>
+                        </ul>
+                    </li>
+                    <li><strong>ใช้ ChatGPT เขียนสคริปต์:</strong></li>
+                </ol>
+                <div class="prompt-box">
+คุณเป็นนักเขียนบทวิดีโอประชาสัมพันธ์มืออาชีพ<br><br>
+ช่วยเขียนสคริปต์วิดีโอแนะนำ [ชื่อองค์กร] ความยาว 1.5 นาที<br>
+แบ่งเป็น 6 Scene รูปแบบตาราง:<br>
+| Scene | เวลา | บทพูด (Voice Over) | ภาพ/วิดีโอ | Prompt สร้างภาพ (EN) |<br><br>
+กลุ่มเป้าหมาย: [ระบุ]<br>
+โทน: อบอุ่น เป็นมิตร ให้กำลังใจ<br>
+ต้องมี Call to Action ตอนปิด<br>
+ภาษาง่ายๆ เข้าใจง่าย<br><br>
+Scene 1: เปิดด้วยคำถามหรือสถิติที่น่าสนใจ<br>
+Scene 2: แนะนำองค์กร<br>
+Scene 3-4: บริการหลัก<br>
+Scene 5: เสียงจากผู้ใช้บริการ (Testimonial)<br>
+Scene 6: ปิดด้วย CTA + ข้อมูลติดต่อ
+                </div>
+                <ol start="3">
+                    <li><strong>ตรวจสอบ + ปรับแต่ง:</strong> อ่านออกเสียง ปรับประโยคที่ยาวเกินไป</li>
+                    <li><strong>Save สคริปต์:</strong> เก็บไว้ใน Google Docs</li>
+                </ol>
+            </div>
+
+            <h3 class="section-header">🎨 ขั้นตอนที่ 2: สร้างภาพ</h3>
+
+            <div class="exercise-box">
+                <h5>🔬 Workshop ขั้นที่ 2: สร้างภาพ Storyboard (30 นาที)</h5>
+                <ol>
+                    <li>ใช้ Prompt ภาพจากตารางสคริปต์ที่ได้</li>
+                    <li>สร้างภาพใน DALL-E หรือ Whisk ทุก Scene (6 ภาพ)</li>
+                    <li>สิ่งสำคัญ:
+                        <ul>
+                            <li>ใช้สไตล์เดียวกันทุกภาพ (เช่น "flat illustration, warm colors")</li>
+                            <li>ขนาดแนวนอน (16:9)</li>
+                            <li>สร้าง 2-3 ภาพต่อ Scene เลือกที่ดีที่สุด</li>
+                        </ul>
+                    </li>
+                    <li>ดาวน์โหลดทุกภาพ ตั้งชื่อ: ws_scene01.png, ws_scene02.png, ...</li>
+                </ol>
+            </div>
+
+            <h3 class="section-header">🎬 ขั้นตอนที่ 3: สร้างคลิปวิดีโอ</h3>
+
+            <div class="exercise-box">
+                <h5>🔬 Workshop ขั้นที่ 3: สร้างวิดีโอ + Avatar (30 นาที)</h5>
+                <ol>
+                    <li><strong>Veo 2 — สร้างคลิปจากภาพ:</strong>
+                        <ul>
+                            <li>นำภาพ Scene 2-4 มาทำเป็นวิดีโอ (Image-to-Video)</li>
+                            <li>เพิ่ม Prompt: "slow pan, natural movement"</li>
+                            <li>ดาวน์โหลด: ws_clip01.mp4 - ws_clip03.mp4</li>
+                        </ul>
+                    </li>
+                    <li><strong>HeyGen — สร้าง Avatar:</strong>
+                        <ul>
+                            <li>ใช้สคริปต์ Scene 1 (Opening) หรือ Scene 6 (Closing)</li>
+                            <li>เลือก Avatar + Background ที่เหมาะสม</li>
+                            <li>ดาวน์โหลด: ws_avatar.mp4</li>
+                        </ul>
+                    </li>
+                    <li><strong>ทางเลือก:</strong> Scene ไหนไม่ทำเป็นวิดีโอ ใช้ภาพนิ่ง + Zoom Effect ใน CapCut แทน</li>
+                </ol>
+            </div>
+
+            <h3 class="section-header">🎙️ ขั้นตอนที่ 4: สร้างเสียงพากย์</h3>
+
+            <div class="exercise-box">
+                <h5>🔬 Workshop ขั้นที่ 4: ElevenLabs (20 นาที)</h5>
+                <ol>
+                    <li>เปิด ElevenLabs > เลือกเสียงไทยที่เหมาะสม</li>
+                    <li>วางสคริปต์ทีละ Scene (ประหยัดตัวอักษร ถ้าผิดไม่ต้องทำใหม่ทั้งหมด)</li>
+                    <li>ตั้งค่า: Stability 60%, Clarity 75%, Speed 0.95x</li>
+                    <li>Generate + Preview ฟังดูว่าถูกต้อง</li>
+                    <li>Download: ws_voice_scene01.mp3 - ws_voice_scene06.mp3</li>
+                    <li><strong>หมายเหตุ:</strong> Scene ที่ใช้ HeyGen ไม่ต้องทำเสียงแยก (Avatar พูดให้แล้ว)</li>
+                </ol>
+            </div>
+
+            <h3 class="section-header">🎵 ขั้นตอนที่ 5: สร้างเพลง</h3>
+
+            <div class="exercise-box">
+                <h5>🔬 Workshop ขั้นที่ 5: Suno AI (20 นาที)</h5>
+                <ol>
+                    <li><strong>สร้าง Background Music:</strong>
+                        <div class="prompt-box" style="margin:8px 0;">
+Soft instrumental background music, warm and inspiring,<br>
+light piano and strings, 2 minutes, calm tempo,<br>
+suitable for Thai government service promotional video,<br>
+loopable, not distracting, no vocals
+                        </div>
+                        <p>Download: ws_bgm.mp3</p>
+                    </li>
+                    <li><strong>สร้าง Intro Music (ถ้าต้องการ):</strong>
+                        <div class="prompt-box" style="margin:8px 0;">
+Short corporate intro jingle, 8 seconds,<br>
+modern and upbeat, electronic pop,<br>
+energetic and professional, instrumental only
+                        </div>
+                        <p>Download: ws_intro.mp3</p>
+                    </li>
+                    <li>ฟังแล้วตรวจสอบว่า BGM ไม่ดังเกินไป</li>
+                </ol>
+            </div>
+
+            <h3 class="section-header">✂️ ขั้นตอนที่ 6: ตัดต่อใน CapCut</h3>
+
+            <div class="exercise-box">
+                <h5>🔬 Workshop ขั้นที่ 6: ตัดต่อ (45 นาที)</h5>
+                <ol>
+                    <li><strong>สร้าง Project:</strong> CapCut > New Project > 16:9, 1080p</li>
+                    <li><strong>Import ทุกไฟล์:</strong> คลิป, ภาพ, เสียง, เพลง</li>
+                    <li><strong>จัดเรียงใน Timeline:</strong>
+                        <ul>
+                            <li>Video Track 1: Intro > คลิป/ภาพ Scene 1-6 > Outro</li>
+                            <li>Video Track 2: Avatar (ถ้ามี) ซ้อนตรง Scene ที่ใช้</li>
+                            <li>Audio Track 1: เสียงพากย์แต่ละ Scene</li>
+                            <li>Audio Track 2: BGM (ลดเสียง 20%)</li>
+                        </ul>
+                    </li>
+                    <li><strong>ปรับจังหวะ:</strong> ตัดคลิปให้พอดีกับเสียงพากย์</li>
+                    <li><strong>ใส่ Transition:</strong> Fade หรือ Dissolve ระหว่าง Scene (0.5 วินาที)</li>
+                    <li><strong>ใส่ AI Caption:</strong> Text > Auto Captions > Thai > แก้คำผิด</li>
+                    <li><strong>ใส่ข้อความ:</strong> Title ตอนเปิด + ข้อมูลติดต่อตอนปิด</li>
+                    <li><strong>Color Grade:</strong> ปรับโทนสีให้สม่ำเสมอทุก Scene</li>
+                    <li><strong>Preview ทั้งหมด:</strong> ดูจากต้นจนจบ จดจุดที่ต้องแก้ไข</li>
+                    <li><strong>แก้ไข:</strong> ปรับตามจุดที่พบ</li>
+                </ol>
+            </div>
+
+            <h3 class="section-header">📤 ขั้นตอนที่ 7: Review + Export</h3>
+
+            <div class="exercise-box">
+                <h5>🔬 Workshop ขั้นที่ 7: ตรวจสอบ + Export (15 นาที)</h5>
+                <ol>
+                    <li><strong>Checklist ก่อน Export:</strong>
+                        <ul>
+                            <li>☐ ดูทั้งวิดีโอ ไม่มีช่วงดำ/เงียบ</li>
+                            <li>☐ เสียงพากย์ตรงกับภาพ</li>
+                            <li>☐ ซับไตเติ้ลถูกต้อง อ่านง่าย</li>
+                            <li>☐ BGM ไม่ดังเกินเสียงพูด</li>
+                            <li>☐ Transition สม่ำเสมอ</li>
+                            <li>☐ สีสม่ำเสมอทุก Scene</li>
+                            <li>☐ ข้อมูลติดต่อถูกต้อง</li>
+                            <li>☐ ไม่มี typo ในข้อความ</li>
+                        </ul>
+                    </li>
+                    <li><strong>Export:</strong>
+                        <ul>
+                            <li>Resolution: 1080p (1920x1080)</li>
+                            <li>Frame Rate: 30fps</li>
+                            <li>Format: MP4</li>
+                            <li>Quality: High / Recommended</li>
+                        </ul>
+                    </li>
+                    <li><strong>ตั้งชื่อไฟล์:</strong> "วิดีโอแนะนำ_[ชื่อองค์กร]_2569.mp4"</li>
+                    <li><strong>เปิดดูวิดีโอที่ Export:</strong> ตรวจสอบคุณภาพรอบสุดท้าย</li>
+                </ol>
+            </div>
+
+            <h3 class="section-header">🏆 นำเสนอผลงาน</h3>
+
+            <div class="info-card">
+                <h5>🎤 กิจกรรมนำเสนอ (30 นาที)</h5>
+                <ol>
+                    <li>แต่ละท่าน/กลุ่ม นำเสนอวิดีโอที่ทำเสร็จ (2 นาที/คน)</li>
+                    <li>เล่าสั้นๆ:
+                        <ul>
+                            <li>ทำวิดีโอเรื่องอะไร?</li>
+                            <li>ใช้เครื่องมืออะไรบ้าง?</li>
+                            <li>พบปัญหาอะไร? แก้อย่างไร?</li>
+                        </ul>
+                    </li>
+                    <li>เพื่อนๆ ให้ Feedback:
+                        <ul>
+                            <li>ชอบอะไรมากที่สุด?</li>
+                            <li>ตรงไหนที่อยากให้ปรับ?</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <h3 class="section-header">📱 แนวทางเผยแพร่วิดีโอ</h3>
+
+            <div class="info-card">
+                <h5>📤 ช่องทางเผยแพร่</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr><th>แพลตฟอร์ม</th><th>ขนาดแนะนำ</th><th>ความยาว</th><th>เหมาะกับ</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>YouTube</td><td>16:9 (1080p)</td><td>1-5 นาที</td><td>วิดีโอยาว อธิบาย</td></tr>
+                            <tr><td>Facebook</td><td>16:9 หรือ 1:1</td><td>30 วิ - 3 นาที</td><td>PR ทั่วไป</td></tr>
+                            <tr><td>TikTok</td><td>9:16 (แนวตั้ง)</td><td>15-60 วินาที</td><td>เข้าถึงคนรุ่นใหม่</td></tr>
+                            <tr><td>Instagram Reels</td><td>9:16</td><td>15-90 วินาที</td><td>เข้าถึงวัยทำงาน</td></tr>
+                            <tr><td>Line VOOM</td><td>16:9 หรือ 1:1</td><td>1-3 นาที</td><td>กลุ่มคนไทย</td></tr>
+                            <tr><td>เว็บไซต์</td><td>16:9 (1080p)</td><td>ไม่จำกัด</td><td>ฝังในเว็บ</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5>💡 Tips & Tricks — Workshop</h5>
+                <ul class="mb-0">
+                    <li><strong>ทำ Parallel:</strong> ระหว่างรอ Veo 2 สร้างคลิป ไปทำเสียงพากย์ได้เลย</li>
+                    <li><strong>Plan B:</strong> ถ้าเครื่องมือใดใช้ไม่ได้ ใช้ภาพนิ่ง + Zoom Effect แทน</li>
+                    <li><strong>อย่ายึดติด Perfect:</strong> ทำให้ "ดีพอ" ก่อน ค่อยปรับปรุงทีหลัง</li>
+                    <li><strong>ทำงานเป็นกลุ่ม:</strong> แบ่งงาน — คนทำภาพ คนทำเสียง คนทำเพลง แล้วรวมกัน</li>
+                    <li><strong>Save ทุก 5 นาที:</strong> CapCut อาจค้าง อย่าลืม Save บ่อยๆ</li>
+                    <li><strong>Export หลายขนาด:</strong> Export 16:9 สำหรับ YouTube แล้วปรับเป็น 9:16 สำหรับ TikTok</li>
+                </ul>
+            </div>
+
+            <h3 class="section-header">📚 สรุปการอบรมทั้งหมด</h3>
+
+            <div class="summary-card">
+                <h5>🎓 สิ่งที่ได้เรียนรู้ตลอด 10 บท</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr><th>บท</th><th>เรียนรู้</th><th>เครื่องมือ</th><th>ผลลัพธ์</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>ภาพรวม + วางแผน</td><td>-</td><td>แผนงานวิดีโอ</td></tr>
+                            <tr><td>2</td><td>เขียนสคริปต์</td><td>ChatGPT</td><td>สคริปต์สมบูรณ์</td></tr>
+                            <tr><td>3</td><td>สร้างภาพ</td><td>DALL-E / Whisk</td><td>ภาพ Storyboard</td></tr>
+                            <tr><td>4</td><td>สร้างวิดีโอ</td><td>Veo 2</td><td>คลิปวิดีโอ</td></tr>
+                            <tr><td>5</td><td>AI Avatar</td><td>HeyGen</td><td>วิดีโอ Avatar</td></tr>
+                            <tr><td>6</td><td>เสียงพากย์</td><td>ElevenLabs</td><td>ไฟล์เสียง MP3</td></tr>
+                            <tr><td>7</td><td>เพลงประกอบ</td><td>Suno AI</td><td>เพลง Intro/BGM/Outro</td></tr>
+                            <tr><td>8</td><td>ตัดต่อเบื้องต้น</td><td>CapCut</td><td>วิดีโอตัดต่อแล้ว</td></tr>
+                            <tr><td>9</td><td>ตัดต่อขั้นสูง</td><td>CapCut</td><td>วิดีโอ Professional</td></tr>
+                            <tr><td>10</td><td>Workshop รวม</td><td>ทุกเครื่องมือ</td><td>วิดีโอสำเร็จรูป</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h5>🎉 ขอแสดงความยินดี!</h5>
+                <p>ท่านได้เรียนรู้กระบวนการสร้างวิดีโอด้วย AI ครบวงจรแล้ว ตั้งแต่การเขียนสคริปต์ สร้างภาพ สร้างวิดีโอ เสียงพากย์ เพลงประกอบ จนถึงการตัดต่อและส่งออก</p>
+                <p class="mb-0">ทักษะเหล่านี้สามารถนำไปใช้สร้างสื่อวิดีโอสำหรับองค์กร ประชาสัมพันธ์กิจกรรม หรือให้ความรู้กับกลุ่มเป้าหมาย โดยไม่ต้องพึ่งทีมผลิตวิดีโอมืออาชีพ ขอให้ทุกท่านนำไปใช้ประโยชน์ สร้างสื่อดีๆ เพื่อคนพิการและสังคมต่อไป 🙏</p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="chapter-nav d-flex justify-content-between">
+                <a href="chapter09.html" class="btn btn-outline-secondary">← บทที่ 9</a>
+                <a href="index.html" class="btn btn-primary">กลับหน้าหลัก</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 6: ElevenLabs Voice | AI วิดีโอครบวงจร</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">📖 AI วิดีโอครบวงจร</a>
+            <span class="nav-chapter-text">บทที่ 6: ElevenLabs Voice</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <div class="chapter-number">บทที่ 6</div>
+                <h1>ElevenLabs Voice</h1>
+                <p class="chapter-subtitle">สร้างเสียงพากย์สำหรับวิดีโอ, Voice Clone, ปรับ Emotion, Export WAV/MP3</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เข้าใจการทำงานของ ElevenLabs ในการสร้างเสียง AI</li>
+                    <li>สามารถเลือกเสียงและปรับตั้งค่าเสียงพากย์ภาษาไทยได้</li>
+                    <li>รู้จักฟีเจอร์ Voice Clone และ Emotion Control</li>
+                    <li>Export เสียงเป็น MP3/WAV สำหรับนำไปใช้ในวิดีโอ</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">🎙️ ElevenLabs คืออะไร?</h3>
+
+            <p><strong>ElevenLabs</strong> เป็น AI Text-to-Speech ที่สร้างเสียงพูดคุณภาพสูง ฟังเป็นธรรมชาติมาก ไม่เหมือนเสียงหุ่นยนต์ เหมาะสำหรับทำเสียงพากย์ (Voice Over) ในวิดีโอ</p>
+
+            <div class="info-card">
+                <h5>✨ จุดเด่นของ ElevenLabs</h5>
+                <ul>
+                    <li><strong>เสียงเป็นธรรมชาติ:</strong> ฟังเหมือนคนจริงพูด มีจังหวะ อารมณ์</li>
+                    <li><strong>รองรับ 30+ ภาษา:</strong> รวมถึงภาษาไทย</li>
+                    <li><strong>Voice Clone:</strong> สร้างเสียงเหมือนเราจากตัวอย่าง 1 นาที</li>
+                    <li><strong>Emotion Control:</strong> ปรับอารมณ์เสียงได้ (สนุก, จริงจัง, อบอุ่น)</li>
+                    <li><strong>หลายรูปแบบ:</strong> Export ได้ทั้ง MP3, WAV, OGG</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h5>📋 แผนการใช้งาน ElevenLabs</h5>
+                <div class="table-responsive">
+                    <table class="table table-custom">
+                        <thead>
+                            <tr><th>แผน</th><th>ราคา</th><th>ตัวอักษร/เดือน</th><th>เหมาะกับ</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Free</td><td>ฟรี</td><td>10,000 ตัวอักษร</td><td>ทดลอง + วิดีโอสั้น</td></tr>
+                            <tr><td>Starter</td><td>$5/เดือน</td><td>30,000 ตัวอักษร</td><td>ใช้งานประจำ</td></tr>
+                            <tr><td>Creator</td><td>$22/เดือน</td><td>100,000 ตัวอักษร</td><td>ผลิตเนื้อหาจำนวนมาก</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mb-0 mt-2"><strong>💡 ข้อมูล:</strong> สคริปต์ 1 นาที ≈ 500-700 ตัวอักษร | Free Plan ทำได้ ~15 นาทีของเสียง</p>
+            </div>
+
+            <h3 class="section-header">🚀 ขั้นตอนสร้างเสียงพากย์</h3>
+
+            <div class="step-box">
+                <span class="step-number">1</span>
+                <strong>Login เข้า ElevenLabs</strong>
+                <p class="mb-0 mt-1 text-muted">ไปที่ elevenlabs.io > Login/Sign Up</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">2</span>
+                <strong>ไปที่ Text to Speech</strong>
+                <p class="mb-0 mt-1 text-muted">เมนูซ้าย > "Text to Speech" หรือ "Speech Synthesis"</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">3</span>
+                <strong>เลือกเสียง (Voice)</strong>
+                <p class="mb-0 mt-1 text-muted">กดเลือกจาก Voice Library > กรอง Language: Thai</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">4</span>
+                <strong>วางข้อความ</strong>
+                <p class="mb-0 mt-1 text-muted">วางสคริปต์จากบทที่ 2 ลงในช่องข้อความ</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">5</span>
+                <strong>ตั้งค่าเสียง</strong>
+                <p class="mb-0 mt-1 text-muted">ปรับ Stability, Clarity, Style, Speed ตามต้องการ</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">6</span>
+                <strong>Generate & Preview</strong>
+                <p class="mb-0 mt-1 text-muted">กด Generate > ฟังตัวอย่าง > ถ้าไม่โอเคปรับตั้งค่า</p>
+            </div>
+            <div class="step-box">
+                <span class="step-number">7</span>
+                <strong>Download</strong>
+                <p class="mb-0 mt-1 text-muted">กดดาวน์โหลดเป็น MP3 หรือ WAV</p>
+            </div>
+
+            <h3 class="section-header">🎛️ การตั้งค่าเสียง (Voice Settings)</h3>
+
+            <div class="info-card">
+                <h5>📐 พารามิเตอร์สำคัญ</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr><th>พารามิเตอร์</th><th>คำอธิบาย</th><th>ค่าแนะนำ</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Stability</strong></td><td>ความคงที่ของเสียง (สูง = เรียบ, ต่ำ = มีอารมณ์)</td><td>50-70% สำหรับ VO</td></tr>
+                            <tr><td><strong>Clarity</strong></td><td>ความชัดเจน (สูง = ชัด, ต่ำ = นุ่มนวล)</td><td>70-85%</td></tr>
+                            <tr><td><strong>Style</strong></td><td>ระดับการแสดงออก (Expressive)</td><td>30-50%</td></tr>
+                            <tr><td><strong>Speed</strong></td><td>ความเร็วเสียง</td><td>0.9-1.0x สำหรับไทย</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3 class="section-header">🧬 Voice Clone — สร้างเสียงเหมือนตัวเอง</h3>
+
+            <p>ElevenLabs มีฟีเจอร์ <strong>Voice Clone</strong> ที่ช่วยให้คุณสร้างเสียง AI ที่ฟังเหมือนเสียงของตัวเอง โดยใช้ตัวอย่างเสียงเพียง 1-3 นาที</p>
+
+            <div class="info-card">
+                <h5>📋 วิธี Clone เสียง</h5>
+                <ol>
+                    <li>ไปที่ "Voice Lab" > "Add Generative or Cloned Voice"</li>
+                    <li>เลือก "Instant Voice Clone"</li>
+                    <li>อัปโหลดไฟล์เสียง (WAV/MP3) ความยาว 1-3 นาที</li>
+                    <li>ตั้งชื่อเสียง แล้วกด "Add Voice"</li>
+                    <li>เสียงที่ Clone จะปรากฏในรายการเสียงของคุณ</li>
+                </ol>
+            </div>
+
+            <div class="alert alert-warning">
+                <h5>⚠️ ข้อควรระวัง Voice Clone</h5>
+                <ul class="mb-0">
+                    <li>ใช้ได้เฉพาะแผน Starter ขึ้นไป (ไม่ได้ในแผน Free)</li>
+                    <li>ตัวอย่างเสียงควรชัดเจน ไม่มีเสียงรบกวน</li>
+                    <li>พูดด้วยน้ำเสียงปกติ อย่าทำเสียงแปลกๆ</li>
+                    <li>ห้ามใช้เสียงคนอื่นโดยไม่ได้รับอนุญาต</li>
+                </ul>
+            </div>
+
+            <h3 class="section-header">🎭 ปรับอารมณ์เสียง (Emotion)</h3>
+
+            <p>ElevenLabs สามารถปรับอารมณ์เสียงได้โดยการเปลี่ยนค่า Settings หรือใส่คำสั่งพิเศษในข้อความ:</p>
+
+            <div class="info-card">
+                <h5>💡 เทคนิคปรับอารมณ์</h5>
+                <ul>
+                    <li><strong>พูดช้า จริงจัง:</strong> Stability สูง (80%), Speed 0.9x</li>
+                    <li><strong>พูดสนุก กระตือรือร้น:</strong> Stability ต่ำ (40%), Style สูง (60%)</li>
+                    <li><strong>พูดอบอุ่น นุ่มนวล:</strong> Stability 60%, Clarity 70%, Speed 0.95x</li>
+                    <li><strong>พูดเร่งด่วน ข่าว:</strong> Speed 1.1x, Stability 70%, Clarity 85%</li>
+                </ul>
+            </div>
+
+            <h3 class="section-header">📁 Export & ไฟล์เสียง</h3>
+
+            <div class="info-card">
+                <h5>🎵 รูปแบบไฟล์</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr><th>รูปแบบ</th><th>คุณภาพ</th><th>ขนาด</th><th>ใช้กับ</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>MP3</td><td>ดี</td><td>เล็ก</td><td>ทั่วไป, CapCut</td></tr>
+                            <tr><td>WAV</td><td>ดีมาก (Lossless)</td><td>ใหญ่</td><td>ตัดต่อมืออาชีพ</td></tr>
+                            <tr><td>OGG</td><td>ดี</td><td>เล็ก</td><td>เว็บ, แอป</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mb-0 mt-2"><strong>💡 แนะนำ:</strong> ใช้ MP3 สำหรับ CapCut (คุณภาพดีพอ ไฟล์เล็ก)</p>
+            </div>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h5>🔬 Lab 6.1: สร้างเสียงพากย์ภาษาไทย</h5>
+                <p><strong>เวลา:</strong> 25 นาที</p>
+                <p><strong>คำสั่ง:</strong> ใช้ ElevenLabs สร้างเสียงพากย์จากสคริปต์ในบทที่ 2</p>
+                <ol>
+                    <li>Login เข้า ElevenLabs (elevenlabs.io)</li>
+                    <li>ไปที่ "Text to Speech"</li>
+                    <li>เลือกเสียงไทย จาก Voice Library (กรอง Thai)</li>
+                    <li>วางสคริปต์ Scene 1-2 จากบทที่ 2</li>
+                    <li>ตั้งค่า: Stability 60%, Clarity 75%, Speed 0.95x</li>
+                    <li>กด Generate แล้วฟัง</li>
+                    <li>ถ้าพอใจ ดาวน์โหลดเป็น MP3</li>
+                    <li>ทำซ้ำกับทุก Scene จนครบ</li>
+                    <li>ตั้งชื่อไฟล์: voice_scene01.mp3, voice_scene02.mp3, ...</li>
+                </ol>
+            </div>
+
+            <div class="exercise-box">
+                <h5>🔬 Lab 6.2: ทดลองเปลี่ยนเสียงและอารมณ์</h5>
+                <p><strong>เวลา:</strong> 15 นาที</p>
+                <p><strong>คำสั่ง:</strong> ใช้ข้อความเดิม แต่เปลี่ยนเสียงและอารมณ์</p>
+                <ol>
+                    <li>ใช้สคริปต์ Scene เดียว (เลือก Scene ที่สั้นๆ)</li>
+                    <li>สร้างเสียง 3 เวอร์ชัน:
+                        <ul>
+                            <li>เวอร์ชัน A: เสียงผู้ชาย, จริงจัง (Stability 80%)</li>
+                            <li>เวอร์ชัน B: เสียงผู้หญิง, อบอุ่น (Stability 50%, Style 40%)</li>
+                            <li>เวอร์ชัน C: เสียงคนรุ่นใหม่, สนุก (Stability 30%, Style 60%)</li>
+                        </ul>
+                    </li>
+                    <li>ฟังเปรียบเทียบ — อันไหนเหมาะกับวิดีโอที่ท่านทำ?</li>
+                    <li>เลือกเวอร์ชันที่ดีที่สุด ดาวน์โหลดเก็บไว้</li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5>💡 Tips & Tricks</h5>
+                <ul class="mb-0">
+                    <li><strong>แบ่งทำทีละ Scene:</strong> อย่าวางข้อความยาวๆ ทีเดียว แบ่งทำทีละ Scene จะควบคุมคุณภาพได้ดีกว่า</li>
+                    <li><strong>ใส่จุด (.) หยุดพัก:</strong> ต้องการให้หยุดพัก ใส่จุด 2-3 จุด "..." จะเว้นจังหวะ</li>
+                    <li><strong>เก็บ Character ไว้:</strong> จดค่า Settings ที่ใช้ไว้ จะได้ทำเสียงเหมือนกันทุก Scene</li>
+                    <li><strong>ประหยัดตัวอักษร:</strong> Free Plan มี 10,000 ตัว — วางแผนดีๆ ก่อนกด Generate</li>
+                    <li><strong>ใช้ MP3:</strong> สำหรับ CapCut ใช้ MP3 ก็เพียงพอ ไม่จำเป็นต้อง WAV</li>
+                    <li><strong>อ่านออกเสียงก่อน:</strong> อ่านสคริปต์ออกเสียงก่อนวาง ถ้าอ่านไม่ลื่น AI ก็จะพูดไม่ลื่น</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="summary-card">
+                <h5>📋 สรุปบทที่ 6</h5>
+                <ul class="mb-0">
+                    <li>ElevenLabs สร้างเสียงพากย์ AI คุณภาพสูง ฟังเป็นธรรมชาติ รองรับภาษาไทย</li>
+                    <li>ขั้นตอน: เลือกเสียง → วางข้อความ → ตั้งค่า → Generate → Download</li>
+                    <li>ปรับอารมณ์ได้ผ่าน Stability, Clarity, Style, Speed</li>
+                    <li>Voice Clone ช่วยสร้างเสียงเหมือนตัวเอง (Pro)</li>
+                    <li>Export เป็น MP3 สำหรับนำไปใช้ใน CapCut (บทที่ 8)</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="chapter-nav d-flex justify-content-between">
+                <a href="chapter05.html" class="btn btn-outline-secondary">← บทที่ 5</a>
+                <a href="chapter07.html" class="btn btn-primary">บทที่ 7 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

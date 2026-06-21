@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 3: Claude กับงานเอกสาร + ข้อมูล — คู่มือฝึกอบรม Claude AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ Claude AI</a>
+        <span class="text-white nav-text">บทที่ 3 — วันที่ 2 เช้า</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+
+    <h1 class="mb-2">บทที่ 3: Claude กับงานเอกสาร + ข้อมูล</h1>
+    <p class="text-muted mb-4">วันที่ 2 ภาคเช้า | ระยะเวลา 3 ชั่วโมง | ระดับ: กลาง-สูง</p>
+
+    <div class="alert alert-info">
+        <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+        <ul class="mb-0">
+            <li>อัปโหลดไฟล์ต่างๆ (PDF, Word, Excel, รูปภาพ) ให้ Claude วิเคราะห์ได้</li>
+            <li>ใช้ Claude สรุป/ดึงข้อมูล/เปรียบเทียบเอกสาร PDF</li>
+            <li>วิเคราะห์ข้อมูลตาราง สถิติ แนวโน้ม จากข้อมูล Excel/CSV</li>
+            <li>ใช้ Claude Vision อ่านรูปภาพ, OCR, อธิบายกราฟ</li>
+            <li>ใช้ Artifacts สร้างเอกสาร/โค้ด/แผนภูมิแบบ interactive</li>
+        </ul>
+    </div>
+
+    <!-- Section 3.1 -->
+    <div class="section-header">
+        <h2>3.1 อัปโหลดไฟล์ (PDF, Word, Excel, รูปภาพ)</h2>
+        <p>วิธีส่งไฟล์ให้ Claude อ่านและวิเคราะห์</p>
+    </div>
+
+    <h3>วิธีอัปโหลดไฟล์</h3>
+
+    <div class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-content">
+            <h5>คลิกไอคอน 📎 (Attach file)</h5>
+            <p>อยู่ที่ช่องพิมพ์ข้อความด้านล่าง คลิกแล้วจะเปิดหน้าต่างเลือกไฟล์</p>
+        </div>
+    </div>
+
+    <div class="step-item">
+        <div class="step-number">2</div>
+        <div class="step-content">
+            <h5>เลือกไฟล์จากเครื่อง</h5>
+            <p>เลือกไฟล์ที่ต้องการ สามารถเลือกหลายไฟล์พร้อมกันได้ หรือลาก (drag & drop) ไฟล์ลงในช่อง chat ก็ได้</p>
+        </div>
+    </div>
+
+    <div class="step-item">
+        <div class="step-number">3</div>
+        <div class="step-content">
+            <h5>พิมพ์คำสั่ง แล้วกด Enter</h5>
+            <p>หลังแนบไฟล์แล้ว พิมพ์สิ่งที่ต้องการให้ Claude ทำกับไฟล์นั้น เช่น "สรุปเอกสารนี้" หรือ "วิเคราะห์ข้อมูลในตารางนี้"</p>
+        </div>
+    </div>
+
+    <div class="screenshot-placeholder">
+        <i>🖼️</i>
+        📸 ภาพหน้าจอ: การอัปโหลดไฟล์ — แสดงปุ่ม Attach และไฟล์ที่แนบแล้ว
+    </div>
+
+    <h3>ไฟล์ที่รองรับ</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ประเภทไฟล์</th>
+                    <th>นามสกุล</th>
+                    <th>ขนาดสูงสุด</th>
+                    <th>Claude ทำอะไรได้</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>PDF</strong></td>
+                    <td>.pdf</td>
+                    <td>~30 MB</td>
+                    <td>อ่านข้อความ, สรุป, ดึงข้อมูล, เปรียบเทียบ</td>
+                </tr>
+                <tr>
+                    <td><strong>เอกสาร</strong></td>
+                    <td>.docx, .doc, .txt, .rtf</td>
+                    <td>~30 MB</td>
+                    <td>อ่านเนื้อหา, แก้ไข, สรุป, แปล</td>
+                </tr>
+                <tr>
+                    <td><strong>ตาราง</strong></td>
+                    <td>.xlsx, .csv</td>
+                    <td>~30 MB</td>
+                    <td>วิเคราะห์, สถิติ, แนวโน้ม, สร้างกราฟ</td>
+                </tr>
+                <tr>
+                    <td><strong>รูปภาพ</strong></td>
+                    <td>.jpg, .png, .gif, .webp</td>
+                    <td>~20 MB</td>
+                    <td>อ่านข้อความ (OCR), อธิบายภาพ, อ่านกราฟ</td>
+                </tr>
+                <tr>
+                    <td><strong>โค้ด</strong></td>
+                    <td>.py, .js, .html, .css, ฯลฯ</td>
+                    <td>~30 MB</td>
+                    <td>อ่าน, อธิบาย, แก้ bug, ปรับปรุง</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-warning">
+        <h5>⚠️ ข้อจำกัดที่ควรทราบ</h5>
+        <ul class="mb-0">
+            <li>PDF ที่เป็นรูปภาพ (scan) — Claude อาจอ่านได้ไม่สมบูรณ์ ใช้ Vision อ่านทีละหน้าแทน</li>
+            <li>ไฟล์ที่มีรหัสผ่า (password protected) — เปิดไม่ได้</li>
+            <li>ไฟล์ Excel ที่มีสูตรซับซ้อน — อ่านได้เฉพาะค่า ไม่เห็นสูตร</li>
+            <li>แผน Free อาจจำกัดขนาดไฟล์มากกว่าแผน Pro</li>
+        </ul>
+    </div>
+
+    <!-- Section 3.2 -->
+    <div class="section-header">
+        <h2>3.2 วิเคราะห์เอกสาร PDF — สรุป, ดึงข้อมูล, เปรียบเทียบ</h2>
+        <p>ส่งเอกสาร PDF ให้ Claude สรุป/ดึงข้อมูล/เปรียบเทียบ</p>
+    </div>
+
+    <h3>ตัวอย่างที่ 1: สรุปเอกสาร PDF</h3>
+    <div class="prompt-example">
+        [แนบไฟล์ PDF แผนปฏิบัติราชการ]<br><br>
+        สรุปเอกสารนี้ให้เหลือ 1 หน้า A4 ตามโครงสร้างนี้:<br>
+        1. ชื่อเอกสาร/แผน<br>
+        2. วัตถุประสงค์หลัก (3-5 ข้อ)<br>
+        3. เป้าหมายตัวชี้วัด (KPI) ที่สำคัญ<br>
+        4. งบประมาณรวม<br>
+        5. ระยะเวลาดำเนินการ<br>
+        6. หน่วยงานรับผิดชอบ<br>
+        7. ประเด็นสำคัญที่ต้องติดตาม
+    </div>
+
+    <h3>ตัวอย่างที่ 2: ดึงข้อมูลเฉพาะจากเอกสาร</h3>
+    <div class="prompt-example">
+        [แนบไฟล์ PDF รายงานผลโครงการ]<br><br>
+        จากเอกสารนี้ ช่วยดึงข้อมูลต่อไปนี้ จัดเป็นตาราง:<br>
+        - ชื่อโครงการ/กิจกรรม<br>
+        - งบประมาณที่ได้รับ<br>
+        - งบประมาณที่ใช้จริง<br>
+        - จำนวนกลุ่มเป้าหมาย<br>
+        - ผลสำเร็จ (%)<br>
+        - ปัญหา/อุปสรรค
+    </div>
+
+    <h3>ตัวอย่างที่ 3: เปรียบเทียบ 2 เอกสาร</h3>
+    <div class="prompt-example">
+        [แนบไฟล์ PDF 2 ฉบับ: แผนปี 67 และ แผนปี 68]<br><br>
+        เปรียบเทียบ 2 เอกสารนี้:<br>
+        1. อะไรเหมือนกัน (ยังคงอยู่)<br>
+        2. อะไรเพิ่มใหม่ในปี 68<br>
+        3. อะไรถูกตัดออก/ลดลง<br>
+        4. งบประมาณเปลี่ยนแปลงอย่างไร<br>
+        5. เป้าหมายตัวชี้วัดเปลี่ยนแปลงอย่างไร<br><br>
+        จัดเป็นตาราง 3 คอลัมน์: หัวข้อ | ปี 67 | ปี 68
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 เคล็ดลับการทำงานกับ PDF</h5>
+        <ul class="mb-0">
+            <li>ถ้า PDF ยาวมาก (50+ หน้า) ให้บอก Claude ว่า "อ่านเฉพาะหน้า 1-10" หรือ "สนใจเฉพาะบทที่ 3"</li>
+            <li>ถ้าต้องการข้อมูลเฉพาะ ให้ระบุชัดเจน เช่น "หาตัวเลขงบประมาณในตาราง"</li>
+            <li>ส่ง 2-3 ไฟล์พร้อมกันได้ สำหรับงานเปรียบเทียบ</li>
+            <li>ถ้าอ่านได้ไม่ดี (เป็น scan) ให้ลอง screenshot หน้าที่ต้องการแล้วส่งเป็นรูปแทน</li>
+        </ul>
+    </div>
+
+    <!-- Section 3.3 -->
+    <div class="section-header">
+        <h2>3.3 วิเคราะห์ตาราง Excel/CSV — สถิติ, กราฟ, แนวโน้ม</h2>
+        <p>อัปโหลดหรือ paste ข้อมูลตาราง → ได้การวิเคราะห์ครบถ้วน</p>
+    </div>
+
+    <h3>วิธีที่ 1: อัปโหลดไฟล์ Excel/CSV</h3>
+    <div class="prompt-example">
+        [แนบไฟล์ Excel: สถิติฝึกอบรม_2568.xlsx]<br><br>
+        วิเคราะห์ข้อมูลในไฟล์นี้:<br>
+        1. สรุปภาพรวมทั้งปี<br>
+        2. เปรียบเทียบรายไตรมาส<br>
+        3. หลักสูตรที่ผลงานดีที่สุด/ต้องปรับปรุง<br>
+        4. แนวโน้ม (trend) ที่เห็น<br>
+        5. ข้อเสนอแนะ<br><br>
+        แสดงผลเป็นตารางและ bullet points
+    </div>
+
+    <h3>วิธีที่ 2: Paste ข้อมูลตรงๆ</h3>
+    <div class="prompt-example">
+        วิเคราะห์ข้อมูลแบบประเมินความพึงพอใจผู้เข้าฝึกอบรม:<br><br>
+        หัวข้อ | คะแนนเฉลี่ย (เต็ม 5)<br>
+        เนื้อหาตรงตามความต้องการ | 4.5<br>
+        วิทยากรมีความรู้ | 4.8<br>
+        สื่อการสอนเหมาะสม | 4.2<br>
+        ระยะเวลาเหมาะสม | 3.8<br>
+        สถานที่/อุปกรณ์ | 4.0<br>
+        นำไปใช้ประโยชน์ได้ | 4.6<br>
+        ภาพรวมพึงพอใจ | 4.3<br><br>
+        ช่วย:<br>
+        1. สรุปผลโดยรวม (อยู่ระดับไหน)<br>
+        2. จุดแข็ง (คะแนนสูง)<br>
+        3. จุดที่ต้องปรับปรุง (คะแนนต่ำ)<br>
+        4. เสนอแนวทางปรับปรุง
+    </div>
+
+    <div class="prompt-example output">
+        📊 <strong>ผลวิเคราะห์ความพึงพอใจ</strong><br><br>
+        <strong>สรุปภาพรวม:</strong> คะแนนเฉลี่ยรวม 4.31/5.00 = ระดับ "ดีมาก" (เกณฑ์ ≥4.00)<br><br>
+        <strong>จุดแข็ง (คะแนน ≥ 4.5):</strong><br>
+        🌟 วิทยากรมีความรู้ — 4.8 (สูงสุด)<br>
+        🌟 นำไปใช้ประโยชน์ได้ — 4.6<br>
+        🌟 เนื้อหาตรงตามความต้องการ — 4.5<br><br>
+        <strong>จุดที่ต้องปรับปรุง (คะแนน < 4.0):</strong><br>
+        ⚠️ ระยะเวลาเหมาะสม — 3.8 (ต่ำสุด)<br><br>
+        <strong>แนวทางปรับปรุง:</strong><br>
+        1. เพิ่มระยะเวลาฝึกอบรม หรือ ลดเนื้อหาที่ไม่จำเป็นออก<br>
+        2. เพิ่มเวลาฝึกปฏิบัติ ลดบรรยาย<br>
+        3. ปรับปรุงสื่อการสอนให้ทันสมัยขึ้น (4.2 ยังมีที่ปรับปรุงได้)
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 เคล็ดลับ: ขอให้สร้าง Artifact</h5>
+        <p class="mb-0">ถ้าต้องการกราฟ ให้สั่ง Claude ว่า "สร้าง Artifact เป็นกราฟแท่งเปรียบเทียบคะแนน" — Claude จะสร้างกราฟ interactive ให้ในแผง Artifacts ด้านขวา</p>
+    </div>
+
+    <!-- Section 3.4 -->
+    <div class="section-header">
+        <h2>3.4 อ่านรูปภาพ (Vision) — OCR, อธิบายรูป, อ่านกราฟ</h2>
+        <p>ส่งรูปถ่าย, screenshot, infographic → Claude อธิบาย/ดึงข้อมูลให้</p>
+    </div>
+
+    <h3>Claude Vision ทำอะไรได้บ้าง?</h3>
+    <ul>
+        <li><strong>OCR</strong> — อ่านข้อความจากรูป (ป้าย, เอกสาร, ใบเสร็จ, บัตรนามบัตร)</li>
+        <li><strong>อธิบายรูป</strong> — บอกว่ารูปนี้มีอะไรบ้าง</li>
+        <li><strong>อ่านกราฟ/แผนภูมิ</strong> — อ่านค่าจากกราฟแท่ง, กราฟวงกลม, line chart</li>
+        <li><strong>อ่าน Infographic</strong> — ดึงข้อมูลจาก infographic เป็นข้อความ</li>
+        <li><strong>เปรียบเทียบรูป</strong> — บอกความแตกต่างระหว่าง 2 รูป</li>
+    </ul>
+
+    <h3>ตัวอย่างที่ 1: OCR — อ่านข้อความจากรูป</h3>
+    <div class="prompt-example">
+        [แนบรูปถ่ายเอกสาร]<br><br>
+        อ่านข้อความทั้งหมดจากรูปนี้ จัดเป็นข้อความที่อ่านง่าย<br>
+        ถ้ามีตาราง ให้จัดเป็นตาราง<br>
+        ถ้ามีตัวเลข ให้ตรวจสอบให้แม่นยำ
+    </div>
+
+    <h3>ตัวอย่างที่ 2: อ่านกราฟ</h3>
+    <div class="prompt-example">
+        [แนบ screenshot กราฟแท่งจาก Excel]<br><br>
+        จากกราฟนี้ ช่วย:<br>
+        1. อ่านค่าของแต่ละแท่ง<br>
+        2. จัดเป็นตารางข้อมูล<br>
+        3. วิเคราะห์แนวโน้ม<br>
+        4. สรุปสิ่งที่น่าสนใจ
+    </div>
+
+    <h3>ตัวอย่างที่ 3: อ่าน Infographic</h3>
+    <div class="prompt-example">
+        [แนบรูป infographic ของหน่วยงาน]<br><br>
+        ดึงข้อมูลทั้งหมดจาก infographic นี้ แปลงเป็น:<br>
+        1. ข้อความ (text) ที่อ่านง่าย<br>
+        2. ตัวเลข/สถิติที่สำคัญ<br>
+        3. ข้อมูลติดต่อ (ถ้ามี)
+    </div>
+
+    <div class="screenshot-placeholder">
+        <i>🖼️</i>
+        📸 ภาพหน้าจอ: ตัวอย่างการส่งรูปให้ Claude Vision อ่าน — แสดงผลลัพธ์ OCR
+    </div>
+
+    <div class="do-dont">
+        <div class="do-box">
+            <h5>✅ รูปที่อ่านได้ดี</h5>
+            <ul>
+                <li>รูปชัด ไม่เบลอ</li>
+                <li>ข้อความตัวใหญ่พอ</li>
+                <li>แสงสว่างเพียงพอ</li>
+                <li>ถ่ายตรงๆ ไม่เอียง</li>
+                <li>ไม่มีเงาทับข้อความ</li>
+            </ul>
+        </div>
+        <div class="dont-box">
+            <h5>❌ รูปที่อ่านยาก</h5>
+            <ul>
+                <li>เบลอ/ไม่ชัด</li>
+                <li>ตัวอักษรเล็กมาก</li>
+                <li>มืด/แสงไม่พอ</li>
+                <li>ถ่ายเอียง/บิดเบี้ยว</li>
+                <li>มีลายน้ำทับ</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Section 3.5 -->
+    <div class="section-header">
+        <h2>3.5 Artifacts — สร้างเอกสาร, Code, แผนภูมิ แบบ Interactive</h2>
+        <p>ฟีเจอร์พิเศษของ Claude ที่สร้างชิ้นงานแยกออกมาแก้ไขได้</p>
+    </div>
+
+    <h3>Artifacts คืออะไร?</h3>
+    <p>Artifacts เป็นฟีเจอร์ที่ให้ Claude สร้าง "ชิ้นงาน" แยกออกมาจากบทสนทนา แสดงในแผงด้านขวา สามารถ copy, ดาวน์โหลด, หรือแก้ไขเพิ่มเติมได้ เหมือนมี canvas แยกให้ทำงาน</p>
+
+    <h3>ประเภท Artifacts</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ประเภท</th>
+                    <th>ตัวอย่าง</th>
+                    <th>ใช้ทำอะไร</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>📄 Document</strong></td>
+                    <td>Markdown, Text</td>
+                    <td>เขียนบทความ, รายงาน, เอกสาร ที่แก้ไขเพิ่มได้</td>
+                </tr>
+                <tr>
+                    <td><strong>💻 Code</strong></td>
+                    <td>Python, JavaScript, HTML</td>
+                    <td>เขียนโค้ด, script, ที่รันทดสอบได้</td>
+                </tr>
+                <tr>
+                    <td><strong>🎨 SVG</strong></td>
+                    <td>Vector graphics</td>
+                    <td>สร้างแผนภูมิ, ไอคอน, diagram</td>
+                </tr>
+                <tr>
+                    <td><strong>🌐 HTML</strong></td>
+                    <td>HTML + CSS + JS</td>
+                    <td>สร้างหน้าเว็บ, แบบฟอร์ม, dashboard ที่ preview ได้ทันที</td>
+                </tr>
+                <tr>
+                    <td><strong>📊 React</strong></td>
+                    <td>React components</td>
+                    <td>สร้าง interactive chart, app, UI components</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>วิธีใช้ Artifacts</h3>
+
+    <div class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-content">
+            <h5>สั่ง Claude สร้าง Artifact</h5>
+            <p>พิมพ์คำสั่งที่ต้องการสร้างชิ้นงาน เช่น "สร้างตาราง HTML เปรียบเทียบแผนการฝึกอบรม" — Claude จะสร้าง Artifact อัตโนมัติ</p>
+        </div>
+    </div>
+
+    <div class="step-item">
+        <div class="step-number">2</div>
+        <div class="step-content">
+            <h5>ดู Artifact ในแผงด้านขวา</h5>
+            <p>Artifact จะแสดงในแผงแยก สามารถ Preview ได้ทันที (กรณี HTML จะเห็นหน้าเว็บจริง)</p>
+        </div>
+    </div>
+
+    <div class="step-item">
+        <div class="step-number">3</div>
+        <div class="step-content">
+            <h5>แก้ไข/ปรับปรุง</h5>
+            <p>สั่ง Claude แก้ไขเพิ่มเติม เช่น "เพิ่มสีพื้นหลัง", "เปลี่ยนข้อมูลในตาราง", "เพิ่มคอลัมน์" — Claude จะ update Artifact ให้</p>
+        </div>
+    </div>
+
+    <div class="step-item">
+        <div class="step-number">4</div>
+        <div class="step-content">
+            <h5>คัดลอก/ดาวน์โหลด</h5>
+            <p>คลิก "Copy" เพื่อคัดลอกโค้ด/เนื้อหา หรือ "Download" เพื่อบันทึกไฟล์</p>
+        </div>
+    </div>
+
+    <h3>ตัวอย่าง Prompt สร้าง Artifacts</h3>
+
+    <h4>สร้างตาราง HTML สวยๆ</h4>
+    <div class="prompt-example">
+        สร้าง Artifact เป็น HTML ตารางเปรียบเทียบหลักสูตรฝึกอบรมปี 2569 ของ สนพ.สุรินทร์:<br><br>
+        | หลักสูตร | ระยะเวลา | จำนวนรับ | ค่าใช้จ่าย | สถานะ |<br>
+        | ช่างไฟฟ้าภายในอาคาร ระดับ 1 | 30 ชม. | 25 คน | ฟรี | เปิดรับ |<br>
+        | ช่างเชื่อม MAG | 30 ชม. | 20 คน | ฟรี | เปิดรับ |<br>
+        | คอมพิวเตอร์สำนักงาน | 18 ชม. | 30 คน | ฟรี | เต็ม |<br>
+        | ภาษาอังกฤษเพื่อการทำงาน | 30 ชม. | 25 คน | ฟรี | เปิดรับ |<br><br>
+        ออกแบบสวยงาม มีสีพื้นหลัง header, status badge สี, responsive
+    </div>
+
+    <h4>สร้างกราฟ interactive</h4>
+    <div class="prompt-example">
+        สร้าง Artifact เป็นกราฟแท่ง (bar chart) แสดงผลการฝึกอบรม:<br><br>
+        ข้อมูล:<br>
+        - ไตรมาส 1: เป้า 125 คน, ผลจริง 120 คน<br>
+        - ไตรมาส 2: เป้า 125 คน, ผลจริง 95 คน<br>
+        - ไตรมาส 3: เป้า 125 คน, ผลจริง 140 คน<br>
+        - ไตรมาส 4: เป้า 125 คน, ผลจริง 130 คน<br><br>
+        ใช้สี 2 สี (เป้า vs ผลจริง), มี legend, title, ตัวเลขบนแท่ง
+    </div>
+
+    <div class="screenshot-placeholder">
+        <i>🖼️</i>
+        📸 ภาพหน้าจอ: ตัวอย่าง Artifact — กราฟแท่งแสดงผลเปรียบเทียบเป้าหมาย vs ผลจริง
+    </div>
+
+    <div class="alert alert-success">
+        <h5>💡 Artifacts ที่มีประโยชน์ในงานราชการ</h5>
+        <ul class="mb-0">
+            <li><strong>Dashboard สรุปผลงาน</strong> — สร้าง HTML dashboard แสดง KPI</li>
+            <li><strong>แบบฟอร์มออนไลน์</strong> — สร้างแบบฟอร์มลงทะเบียน preview ได้ทันที</li>
+            <li><strong>Timeline โครงการ</strong> — สร้าง Gantt chart / timeline</li>
+            <li><strong>Flowchart กระบวนการ</strong> — สร้าง SVG diagram ขั้นตอนการทำงาน</li>
+            <li><strong>รายงาน PDF-ready</strong> — สร้างเอกสาร markdown ที่แปลงเป็น PDF ได้</li>
+        </ul>
+    </div>
+
+    <!-- Exercises -->
+    <div class="exercise-box">
+        <h4>✏️ แบบฝึกหัดบทที่ 3</h4>
+        <ol>
+            <li><strong>อัปโหลด PDF</strong> — นำเอกสาร PDF ของหน่วยงาน (ที่ไม่ลับ) เช่น แผนงาน, รายงาน → ให้ Claude สรุปใน 1 หน้า</li>
+            <li><strong>วิเคราะห์ Excel</strong> — นำข้อมูลจาก Excel (ข้อมูลสาธารณะ) → paste หรืออัปโหลด → ขอให้วิเคราะห์ + สรุป</li>
+            <li><strong>ทดสอบ Vision</strong> — ถ่ายรูปเอกสาร 1 แผ่น ด้วยมือถือ → ส่งให้ Claude → ขอให้ OCR (อ่านข้อความ)</li>
+            <li><strong>อ่านกราฟ</strong> — Screenshot กราฟจาก Excel หรือ PowerPoint → ส่งให้ Claude → ขอให้วิเคราะห์</li>
+            <li><strong>สร้าง Artifact</strong> — ให้ Claude สร้าง:
+                <ul>
+                    <li>ตาราง HTML สวยๆ (เรื่องอะไรก็ได้ที่เกี่ยวกับงาน)</li>
+                    <li>กราฟแท่งเปรียบเทียบข้อมูล</li>
+                    <li>Flowchart ขั้นตอนการทำงาน 1 กระบวนการ</li>
+                </ul>
+            </li>
+            <li><strong>ท้าทาย</strong> — ส่งรูป infographic ของหน่วยงาน → ขอให้ Claude ดึงข้อมูลเป็นตาราง → แล้วสั่งให้สร้าง Artifact เป็น HTML infographic ใหม่</li>
+        </ol>
+    </div>
+
+    <!-- Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter02.html" class="btn btn-chapter-prev">← บทที่ 2: เทคนิค Prompt</a>
+        <a href="chapter04.html" class="btn btn-chapter-next">บทที่ 4: งานสร้างสรรค์ →</a>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>คู่มือฝึกอบรม Claude AI — ใช้ปัญญาประดิษฐ์ทำงานราชการ</p>
+    <p class="opacity-75">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 9: Deploy Web App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📖 Google Apps Script</span>
+            <span class="nav-text text-light">บทที่ 9: Deploy Web App</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <h1>บทที่ 9: Deploy Web App</h1>
+                <p class="lead">เผยแพร่ Web App ให้คนอื่นใช้งานได้ — ขั้นตอน Deploy, อัปเดต, แก้ปัญหา</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h4>🎯 วัตถุประสงค์การเรียนรู้</h4>
+                <ul class="mb-0">
+                    <li>Deploy Web App ได้อย่างถูกต้อง</li>
+                    <li>เข้าใจเรื่อง Permission (สิทธิ์การเข้าถึง)</li>
+                    <li>อัปเดต Web App เมื่อแก้ไขโค้ด</li>
+                    <li>แก้ปัญหาที่พบบ่อยในการ Deploy</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h2 class="section-header">📚 Deploy คืออะไร?</h2>
+            <p><strong>Deploy</strong> คือการ "เผยแพร่" Script ให้คนอื่นเข้าถึงได้ผ่าน URL เปรียบเหมือนการเปิดร้านค้า — เขียนโค้ดเสร็จ (สร้างร้าน) แต่ถ้าไม่ Deploy (เปิดร้าน) คนอื่นก็ใช้ไม่ได้</p>
+
+            <div class="info-card">
+                <h4>🔄 ก่อน vs หลัง Deploy</h4>
+                <table class="table table-bordered mb-0">
+                    <tr>
+                        <td><strong>ก่อน Deploy</strong></td>
+                        <td>มีแค่เราใช้ได้ — รันจาก Script Editor เท่านั้น</td>
+                    </tr>
+                    <tr>
+                        <td><strong>หลัง Deploy</strong></td>
+                        <td>ได้ URL — ใครก็เปิดใช้งานได้ (ตามสิทธิ์ที่กำหนด)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 class="section-header">🚀 ขั้นตอนการ Deploy</h2>
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <p>เปิด Script Editor → คลิก <strong>"Deploy"</strong> (มุมขวาบน)</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <p>เลือก <strong>"New deployment"</strong></p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <p>คลิก ⚙️ → เลือก <strong>"Web app"</strong></p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <p>ตั้งค่า:</p>
+            </div>
+
+            <div class="info-card">
+                <h4>⚙️ ตั้งค่า Deployment</h4>
+                <table class="table table-bordered">
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td>คำอธิบาย เช่น "v1.0 - ระบบลงทะเบียน"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Execute as</strong></td>
+                        <td>
+                            <strong>Me</strong> — ทำงานด้วยสิทธิ์ของเรา (แนะนำ)<br>
+                            User accessing — ทำงานด้วยสิทธิ์ของผู้เข้าใช้
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Who has access</strong></td>
+                        <td>
+                            <strong>Anyone</strong> — ทุกคนเข้าถึงได้ (แนะนำสำหรับ Web App สาธารณะ)<br>
+                            Anyone with Google account — ต้อง login Google ก่อน<br>
+                            Only myself — เฉพาะเรา
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="step-item">
+                <span class="step-number">5</span>
+                <p>คลิก <strong>"Deploy"</strong></p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">6</span>
+                <p>ครั้งแรกจะขอ <strong>Authorization</strong> — กด "Authorize access" → เลือกบัญชี → "Allow"</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">7</span>
+                <p>ได้ <strong>URL</strong> สำหรับเข้าใช้งาน → คัดลอกเก็บไว้!</p>
+            </div>
+
+            <div class="prompt-example">
+                <strong>ตัวอย่าง URL:</strong><br>
+                <code>https://script.google.com/macros/s/AKfycbz9C1KOVt13HRy5aO.../exec</code>
+            </div>
+
+            <h2 class="section-header">🔄 อัปเดต Web App (หลังแก้ไขโค้ด)</h2>
+            <p><strong>สำคัญมาก!</strong> เมื่อแก้ไขโค้ดแล้ว ต้อง Deploy ใหม่ถึงจะเห็นการเปลี่ยนแปลง</p>
+
+            <h4>วิธีที่ 1: Deploy ใหม่ (URL ไม่เปลี่ยน)</h4>
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <p>Deploy → <strong>"Manage deployments"</strong></p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <p>คลิก ✏️ (Edit) ที่ deployment ที่ต้องการ</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <p>ที่ Version เลือก <strong>"New version"</strong></p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <p>ใส่ Description (เช่น "v2.0 - เพิ่มฟีเจอร์ X") → Deploy</p>
+            </div>
+
+            <h4 class="mt-4">วิธีที่ 2: ใช้ Test URL (สำหรับทดสอบ)</h4>
+<pre><code>// Test URL ใช้โค้ดล่าสุดเสมอ (ไม่ต้อง deploy ใหม่)
+// แต่ใช้ได้เฉพาะตัวเอง
+
+// Deploy → Test deployments → Copy URL
+// URL จะลงท้ายด้วย /dev แทน /exec
+</code></pre>
+
+            <div class="alert alert-warning">
+                <strong>⚠️ ความแตกต่างระหว่าง /exec กับ /dev</strong>
+                <table class="table table-bordered mb-0 mt-2">
+                    <tr>
+                        <td><strong>/exec</strong></td>
+                        <td>URL สาธารณะ — ใช้ version ที่ deploy ล่าสุด — ทุกคนเข้าถึงได้</td>
+                    </tr>
+                    <tr>
+                        <td><strong>/dev</strong></td>
+                        <td>URL ทดสอบ — ใช้โค้ดปัจจุบัน — เฉพาะเจ้าของเข้าถึงได้</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 class="section-header">🔐 Permission (สิทธิ์)</h2>
+<pre><code>// Execute as: Me
+// → GAS ใช้สิทธิ์ของเรา (เจ้าของ Script) ในการทำงาน
+// → ผู้ใช้ไม่ต้อง login Google
+// → ผู้ใช้ไม่ต้องมีสิทธิ์เข้าถึง Sheet
+// → เหมาะกับ Web App สาธารณะ
+
+// Execute as: User accessing the web app
+// → GAS ใช้สิทธิ์ของผู้เข้าใช้
+// → ผู้ใช้ต้อง login Google
+// → ผู้ใช้ต้องมีสิทธิ์เข้าถึง Sheet ที่เกี่ยวข้อง
+// → เหมาะกับ Web App ภายในองค์กร
+</code></pre>
+
+            <h2 class="section-header">🐛 ปัญหาที่พบบ่อยและวิธีแก้</h2>
+            <div class="info-card">
+                <h4>❌ ปัญหาที่ 1: "This app isn't verified"</h4>
+                <p><strong>สาเหตุ:</strong> Google ยังไม่ verify app ของเรา (ปกติสำหรับ app ภายใน)</p>
+                <p><strong>วิธีแก้:</strong> คลิก "Advanced" → "Go to [project name] (unsafe)" → "Allow"</p>
+            </div>
+            <div class="info-card">
+                <h4>❌ ปัญหาที่ 2: แก้โค้ดแล้วไม่เห็นการเปลี่ยนแปลง</h4>
+                <p><strong>สาเหตุ:</strong> ยังไม่ได้ Deploy version ใหม่</p>
+                <p><strong>วิธีแก้:</strong> Manage deployments → Edit → New version → Deploy</p>
+            </div>
+            <div class="info-card">
+                <h4>❌ ปัญหาที่ 3: "Authorization required"</h4>
+                <p><strong>สาเหตุ:</strong> เพิ่ม Service ใหม่ (เช่น DriveApp) แต่ยังไม่ได้ขอสิทธิ์</p>
+                <p><strong>วิธีแก้:</strong> รันฟังก์ชันจาก Editor → Authorize → Deploy ใหม่</p>
+            </div>
+            <div class="info-card">
+                <h4>❌ ปัญหาที่ 4: "Script function not found: doGet"</h4>
+                <p><strong>สาเหตุ:</strong> ไม่มีฟังก์ชัน doGet() ใน Code.gs</p>
+                <p><strong>วิธีแก้:</strong> ตรวจสอบว่ามี <code>function doGet(e) { ... }</code> อยู่ในไฟล์</p>
+            </div>
+
+            <h2 class="section-header">📋 Deploy Checklist</h2>
+<pre><code>// ✅ Checklist ก่อน Deploy
+// 1. ทดสอบฟังก์ชันทุกตัวจาก Editor แล้ว ✓
+// 2. ตรวจ Error ใน Execution log แล้ว ✓
+// 3. ทดสอบจาก /dev URL แล้ว ✓
+// 4. ใส่ try-catch ป้องกัน crash แล้ว ✓
+// 5. ตรวจ Permission (Execute as / Who has access) ✓
+// 6. ใส่ Description ที่สื่อความหมาย ✓
+// 7. จดบันทึก Version + วันที่ Deploy ✓
+</code></pre>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 11: Deploy Web App แรก</h4>
+                <p><strong>เวลา:</strong> 20 นาที</p>
+                <hr>
+                <p><strong>โจทย์:</strong> Deploy Web App ง่ายๆ แล้วแชร์ URL ให้เพื่อน</p>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <p>สร้าง Code.gs:</p>
+                </div>
+<pre><code>function doGet(e) {
+  return HtmlService.createHtmlOutputFromFile("index")
+    .setTitle("Web App แรกของฉัน");
+}
+
+function getServerTime() {
+  return Utilities.formatDate(new Date(), "Asia/Bangkok", "dd/MM/yyyy HH:mm:ss");
+}
+
+function getMyName() {
+  return "ชื่อของฉัน";  // ← เปลี่ยนเป็นชื่อจริง
+}
+</code></pre>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <p>สร้าง index.html:</p>
+                </div>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;base target="_top"&gt;
+  &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container text-center mt-5"&gt;
+    &lt;h1&gt;🎉 Web App แรกของฉัน!&lt;/h1&gt;
+    &lt;p class="lead"&gt;Deploy สำเร็จแล้ว!&lt;/p&gt;
+    &lt;div class="card mx-auto" style="max-width:400px"&gt;
+      &lt;div class="card-body"&gt;
+        &lt;p&gt;ชื่อ: &lt;strong id="name"&gt;กำลังโหลด...&lt;/strong&gt;&lt;/p&gt;
+        &lt;p&gt;เวลา Server: &lt;strong id="time"&gt;กำลังโหลด...&lt;/strong&gt;&lt;/p&gt;
+        &lt;button onclick="refresh()" class="btn btn-primary"&gt;🔄 Refresh&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;script&gt;
+    window.onload = function() { refresh(); };
+    function refresh() {
+      google.script.run.withSuccessHandler(function(t) {
+        document.getElementById('time').textContent = t;
+      }).getServerTime();
+      google.script.run.withSuccessHandler(function(n) {
+        document.getElementById('name').textContent = n;
+      }).getMyName();
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <p>Deploy → Web app → Execute as: Me → Anyone → Deploy</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <p>คัดลอก URL แล้วเปิดในเบราว์เซอร์ — ควรเห็นหน้าเว็บ!</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <p>แชร์ URL ให้เพื่อนทดสอบ</p>
+                </div>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h4>💡 Tips</h4>
+                <ul class="mb-0">
+                    <li><strong>ทดสอบด้วย /dev ก่อน:</strong> ไม่ต้อง deploy ทุกครั้งที่แก้โค้ด</li>
+                    <li><strong>Version:</strong> ใส่ Description ที่สื่อความหมาย เช่น "v3 - เพิ่มปุ่มลบ"</li>
+                    <li><strong>URL ไม่เปลี่ยน:</strong> เมื่อ update deployment URL เดิมยังใช้ได้</li>
+                    <li><strong>Deploy ID:</strong> ส่วนที่อยู่ระหว่าง /s/ กับ /exec คือ Deploy ID — เปลี่ยนเมื่อสร้าง New deployment</li>
+                    <li><strong>จดบันทึก:</strong> บันทึก Version, วันที่, สิ่งที่เปลี่ยน ทุกครั้งที่ deploy</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card">
+                <h4>📝 สรุปบทที่ 9</h4>
+                <table class="table table-sm">
+                    <tr>
+                        <td><strong>Deploy</strong></td>
+                        <td>เผยแพร่ Script เป็น URL ที่คนอื่นเข้าถึงได้</td>
+                    </tr>
+                    <tr>
+                        <td><strong>New deployment</strong></td>
+                        <td>สร้าง URL ใหม่ (Deploy ID ใหม่)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Update deployment</strong></td>
+                        <td>อัปเดตโค้ด โดย URL เดิมยังใช้ได้</td>
+                    </tr>
+                    <tr>
+                        <td><strong>/exec vs /dev</strong></td>
+                        <td>exec = สาธารณะ (version ล่าสุด), dev = ทดสอบ (โค้ดปัจจุบัน)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Permission</strong></td>
+                        <td>Execute as Me + Anyone = Web App สาธารณะ</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Navigation -->
+            <div class="nav-buttons">
+                <a href="chapter08.html" class="btn btn-outline-secondary">← บทที่ 8</a>
+                <a href="chapter10.html" class="btn btn-primary">บทที่ 10 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

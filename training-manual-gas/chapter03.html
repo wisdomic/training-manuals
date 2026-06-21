@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 3: ฟังก์ชัน CRUD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📖 Google Apps Script</span>
+            <span class="nav-text text-light">บทที่ 3: ฟังก์ชัน CRUD</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <h1>บทที่ 3: ฟังก์ชัน CRUD</h1>
+                <p class="lead">สร้าง/อ่าน/แก้ไข/ลบ ข้อมูลใน Google Sheets อย่างเป็นระบบ</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h4>🎯 วัตถุประสงค์การเรียนรู้</h4>
+                <ul class="mb-0">
+                    <li>เข้าใจแนวคิด CRUD (Create, Read, Update, Delete)</li>
+                    <li>เขียนฟังก์ชัน appendRow() เพิ่มข้อมูลใหม่ได้</li>
+                    <li>เขียนฟังก์ชันค้นหาข้อมูล (findRow) ได้</li>
+                    <li>แก้ไขและลบข้อมูลในแถวที่ต้องการได้</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h2 class="section-header">📚 CRUD คืออะไร?</h2>
+            <p>CRUD คือ 4 การทำงานพื้นฐานกับข้อมูลทุกระบบ:</p>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="info-card text-center">
+                        <h3>🟢 C</h3>
+                        <strong>Create</strong><br>สร้าง/เพิ่มข้อมูลใหม่
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="info-card text-center">
+                        <h3>🔵 R</h3>
+                        <strong>Read</strong><br>อ่าน/ค้นหาข้อมูล
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="info-card text-center">
+                        <h3>🟡 U</h3>
+                        <strong>Update</strong><br>แก้ไข/อัปเดตข้อมูล
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="info-card text-center">
+                        <h3>🔴 D</h3>
+                        <strong>Delete</strong><br>ลบข้อมูล
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-header">🟢 Create — เพิ่มข้อมูลใหม่</h2>
+<pre><code>function createRecord(name, province, phone) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("สมาชิก");
+  
+  // สร้าง ID อัตโนมัติ
+  var lastRow = sheet.getLastRow();
+  var newId = lastRow;  // ID = ลำดับแถว
+  
+  // เพิ่มข้อมูลแถวใหม่
+  var timestamp = new Date();
+  sheet.appendRow([newId, name, province, phone, timestamp]);
+  
+  Logger.log("เพิ่มสมาชิกสำเร็จ: " + name + " (ID: " + newId + ")");
+  return newId;
+}
+
+// ตัวอย่างการใช้งาน
+function testCreate() {
+  createRecord("นายทดสอบ ทดลอง", "สุรินทร์", "081-111-2222");
+  createRecord("นางสาวใจดี มีสุข", "ปราจีนบุรี", "089-333-4444");
+}
+</code></pre>
+
+            <h2 class="section-header">🔵 Read — อ่าน/ค้นหาข้อมูล</h2>
+<pre><code>// ค้นหาแถวตาม ID
+function findRowById(id) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("สมาชิก");
+  var data = sheet.getDataRange().getValues();
+  
+  for (var i = 1; i < data.length; i++) {
+    if (String(data[i][0]) === String(id)) {
+      return {
+        rowIndex: i + 1,  // +1 เพราะ Sheet เริ่มนับแถวที่ 1
+        data: data[i]
+      };
+    }
+  }
+  return null;  // ไม่พบ
+}
+
+// ค้นหาตามชื่อ (แบบ contains)
+function findByName(keyword) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("สมาชิก");
+  var data = sheet.getDataRange().getValues();
+  var results = [];
+  
+  for (var i = 1; i < data.length; i++) {
+    if (String(data[i][1]).indexOf(keyword) !== -1) {
+      results.push({
+        rowIndex: i + 1,
+        data: data[i]
+      });
+    }
+  }
+  return results;
+}
+
+// อ่านข้อมูลทั้งหมด
+function readAllRecords() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("สมาชิก");
+  var data = sheet.getDataRange().getValues();
+  var headers = data[0];
+  var records = [];
+  
+  for (var i = 1; i < data.length; i++) {
+    var record = {};
+    for (var j = 0; j < headers.length; j++) {
+      record[headers[j]] = data[i][j];
+    }
+    records.push(record);
+  }
+  return records;
+}
+</code></pre>
+
+            <h2 class="section-header">🟡 Update — แก้ไขข้อมูล</h2>
+<pre><code>function updateRecord(id, newName, newProvince, newPhone) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("สมาชิก");
+  var found = findRowById(id);
+  
+  if (!found) {
+    Logger.log("ไม่พบข้อมูล ID: " + id);
+    return false;
+  }
+  
+  var rowNum = found.rowIndex;
+  
+  // อัปเดตเฉพาะฟิลด์ที่ส่งมา
+  if (newName) sheet.getRange(rowNum, 2).setValue(newName);
+  if (newProvince) sheet.getRange(rowNum, 3).setValue(newProvince);
+  if (newPhone) sheet.getRange(rowNum, 4).setValue(newPhone);
+  
+  Logger.log("อัปเดตสำเร็จ ID: " + id);
+  return true;
+}
+
+// ตัวอย่าง
+function testUpdate() {
+  updateRecord(1, "นายปัญญา ผาธรรม (อ.ปู)", "สุรินทร์", "088-377-8987");
+}
+</code></pre>
+
+            <h2 class="section-header">🔴 Delete — ลบข้อมูล</h2>
+<pre><code>function deleteRecord(id) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("สมาชิก");
+  var found = findRowById(id);
+  
+  if (!found) {
+    Logger.log("ไม่พบข้อมูล ID: " + id);
+    return false;
+  }
+  
+  // ลบแถว
+  sheet.deleteRow(found.rowIndex);
+  Logger.log("ลบสำเร็จ ID: " + id + " (ชื่อ: " + found.data[1] + ")");
+  return true;
+}
+
+// ⚠️ ระวัง: ลบหลายแถวต้องลบจากล่างขึ้นบน
+function deleteMultipleRows(ids) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("สมาชิก");
+  var data = sheet.getDataRange().getValues();
+  
+  // หาแถวที่ต้องลบ แล้วเรียงจากมากไปน้อย
+  var rowsToDelete = [];
+  for (var i = 1; i < data.length; i++) {
+    if (ids.indexOf(data[i][0]) !== -1) {
+      rowsToDelete.push(i + 1);
+    }
+  }
+  rowsToDelete.sort(function(a, b) { return b - a; });
+  
+  // ลบจากล่างขึ้นบน (เพื่อไม่ให้ index เลื่อน)
+  for (var i = 0; i < rowsToDelete.length; i++) {
+    sheet.deleteRow(rowsToDelete[i]);
+  }
+  Logger.log("ลบ " + rowsToDelete.length + " รายการสำเร็จ");
+}
+</code></pre>
+
+            <div class="alert alert-warning">
+                <strong>⚠️ ข้อควรระวังเรื่องการลบ</strong>
+                <ul class="mb-0">
+                    <li>ลบแล้วกู้คืนไม่ได้ (ยกเว้นใช้ Version History ของ Sheets)</li>
+                    <li>ลบหลายแถว ต้องลบจากแถวล่างขึ้นบน ไม่งั้น index จะเลื่อน</li>
+                    <li>ควรมีระบบยืนยันก่อนลบ (confirm)</li>
+                </ul>
+            </div>
+
+            <h2 class="section-header">🔧 รวม CRUD เป็นระบบเดียว</h2>
+<pre><code>// ===== ระบบจัดการสมาชิก CRUD =====
+
+var SHEET_NAME = "สมาชิก";
+
+function getSheet() {
+  return SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+}
+
+function generateId() {
+  var sheet = getSheet();
+  var lastRow = sheet.getLastRow();
+  if (lastRow <= 1) return 1;
+  var lastId = sheet.getRange(lastRow, 1).getValue();
+  return Number(lastId) + 1;
+}
+
+function crud_create(data) {
+  var sheet = getSheet();
+  var id = generateId();
+  sheet.appendRow([id, data.name, data.province, data.phone, new Date()]);
+  return { success: true, id: id, message: "เพิ่มสำเร็จ" };
+}
+
+function crud_read(id) {
+  var found = findRowById(id);
+  if (!found) return { success: false, message: "ไม่พบข้อมูล" };
+  return { success: true, data: found.data };
+}
+
+function crud_update(id, data) {
+  var sheet = getSheet();
+  var found = findRowById(id);
+  if (!found) return { success: false, message: "ไม่พบข้อมูล" };
+  
+  var row = found.rowIndex;
+  if (data.name) sheet.getRange(row, 2).setValue(data.name);
+  if (data.province) sheet.getRange(row, 3).setValue(data.province);
+  if (data.phone) sheet.getRange(row, 4).setValue(data.phone);
+  return { success: true, message: "อัปเดตสำเร็จ" };
+}
+
+function crud_delete(id) {
+  var sheet = getSheet();
+  var found = findRowById(id);
+  if (!found) return { success: false, message: "ไม่พบข้อมูล" };
+  
+  sheet.deleteRow(found.rowIndex);
+  return { success: true, message: "ลบสำเร็จ" };
+}
+</code></pre>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 5: ทดสอบ CRUD ครบวงจร</h4>
+                <p><strong>เวลา:</strong> 25 นาที</p>
+                <hr>
+                <p><strong>โจทย์:</strong> สร้างระบบจัดการรายชื่อผู้เข้าอบรม</p>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <p>สร้าง Sheet ชื่อ "ผู้เข้าอบรม" พร้อม Header: ID | ชื่อ | หน่วยงาน | โทร | วันที่ลงทะเบียน</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <p>คัดลอกโค้ด CRUD ด้านบน แล้วเปลี่ยน SHEET_NAME เป็น "ผู้เข้าอบรม"</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <p>เขียนฟังก์ชันทดสอบ:</p>
+                </div>
+<pre><code>function lab5_testCRUD() {
+  // Create — เพิ่ม 3 คน
+  var r1 = crud_create({name: "สมชาย ทดสอบ", province: "สุรินทร์", phone: "081-111-1111"});
+  var r2 = crud_create({name: "สมหญิง ทดลอง", province: "ยโสธร", phone: "082-222-2222"});
+  var r3 = crud_create({name: "สมศักดิ์ ใจดี", province: "ปราจีนบุรี", phone: "083-333-3333"});
+  Logger.log("สร้าง: " + r1.message + " ID=" + r1.id);
+  Logger.log("สร้าง: " + r2.message + " ID=" + r2.id);
+  Logger.log("สร้าง: " + r3.message + " ID=" + r3.id);
+  
+  // Read — อ่านข้อมูล ID 1
+  var read = crud_read(1);
+  Logger.log("อ่าน ID 1: " + JSON.stringify(read));
+  
+  // Update — แก้ไข ID 2
+  var upd = crud_update(2, {name: "สมหญิง แก้ไขแล้ว", phone: "099-999-9999"});
+  Logger.log("แก้ไข: " + upd.message);
+  
+  // Delete — ลบ ID 3
+  var del = crud_delete(3);
+  Logger.log("ลบ: " + del.message);
+  
+  Logger.log("\n===== ทดสอบ CRUD เสร็จสิ้น =====");
+}
+</code></pre>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <p>รันแล้วตรวจสอบ: ดู Log + ดู Sheet ว่าข้อมูลถูกต้อง</p>
+                </div>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h4>💡 Tips</h4>
+                <ul class="mb-0">
+                    <li><strong>ID ควรเป็นตัวเลขไม่ซ้ำ</strong> — ใช้ lastRow หรือ UUID</li>
+                    <li><strong>ค้นหาแบบ String</strong> — แปลงเป็น String() ก่อนเปรียบเทียบเสมอ (เพราะ Sheets อาจเก็บเป็นตัวเลข)</li>
+                    <li><strong>ประสิทธิภาพ:</strong> อ่านข้อมูลทั้งหมดมาเก็บใน Array แล้วค้นหาใน Array (เร็วกว่าอ่านทีละเซลล์มาก)</li>
+                    <li><strong>Return Object:</strong> ให้ฟังก์ชันคืนค่า {success, message, data} เพื่อให้เรียกใช้งานง่าย</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card">
+                <h4>📝 สรุปบทที่ 3</h4>
+                <table class="table table-sm">
+                    <tr>
+                        <td><strong>Create</strong></td>
+                        <td>appendRow() เพิ่มข้อมูลท้าย Sheet</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Read</strong></td>
+                        <td>getDataRange().getValues() + วนลูปค้นหา</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Update</strong></td>
+                        <td>หาแถว → getRange(row, col).setValue()</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Delete</strong></td>
+                        <td>หาแถว → deleteRow() (ลบจากล่างขึ้นบน)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pattern</strong></td>
+                        <td>return {success, message, data} ทุกฟังก์ชัน</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Navigation -->
+            <div class="nav-buttons">
+                <a href="chapter02.html" class="btn btn-outline-secondary">← บทที่ 2</a>
+                <a href="chapter04.html" class="btn btn-primary">บทที่ 4 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

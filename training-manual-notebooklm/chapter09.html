@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 9: NotebookLM สำหรับทีม — คู่มือ NotebookLM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4)">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ NotebookLM</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter01.html">บทที่ 1</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter02.html">บทที่ 2</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter03.html">บทที่ 3</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter04.html">บทที่ 4</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter05.html">บทที่ 5</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter06.html">บทที่ 6</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter07.html">บทที่ 7</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter08.html">บทที่ 8</a></li>
+                <li class="nav-item"><a class="nav-link active" href="chapter09.html">บทที่ 9</a></li>
+                <li class="nav-item"><a class="nav-link" href="chapter10.html">บทที่ 10</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<div class="container mt-4">
+    <div class="mb-4">
+        <span class="day-badge">วันที่ 5</span>
+        <span class="time-badge ms-2">เช้า 09:00 – 12:00</span>
+    </div>
+    <h1 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">👥 บทที่ 9: NotebookLM สำหรับทีม</h1>
+    <p class="lead text-muted">แชร์ Notebook สร้าง Knowledge Base องค์กร และออกแบบระบบตอบคำถามภายใน</p>
+
+    <!-- สารบัญบท -->
+    <div class="card p-3 mb-4">
+        <h5>📑 ในบทนี้</h5>
+        <ul class="mb-0">
+            <li><a href="#section-9-1">9.1 แชร์ Notebook กับเพื่อนร่วมงาน</a></li>
+            <li><a href="#section-9-2">9.2 สร้าง Knowledge Base องค์กร</a></li>
+            <li><a href="#section-9-3">9.3 ออกแบบระบบตอบคำถามภายในองค์กร</a></li>
+            <li><a href="#section-9-4">9.4 Best Practices การดูแล Notebook ระยะยาว</a></li>
+            <li><a href="#section-9-5">9.5 Lab: สร้าง Knowledge Base 3 หมวด</a></li>
+        </ul>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- Section 9.1 -->
+    <!-- ============================================ -->
+    <section id="section-9-1" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">9.1 แชร์ Notebook กับเพื่อนร่วมงาน</h2>
+
+        <p>NotebookLM สามารถแชร์ Notebook ให้ผู้อื่นเข้าถึงได้ เหมือนกับ Google Docs ทำให้ทำงานร่วมกันเป็นทีมได้สะดวก</p>
+
+        <h4 class="mt-4">วิธีแชร์ Notebook</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>เปิด Notebook ที่ต้องการแชร์</h5>
+            <p class="mb-0">เข้า Notebook → คลิกปุ่ม Share (มุมบนขวา)</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>เพิ่ม Email ผู้ร่วมงาน</h5>
+            <p class="mb-0">พิมพ์ Email (Gmail) ของเพื่อนร่วมงาน → เลือกสิทธิ์ (Viewer / Editor)</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>กดส่งคำเชิญ</h5>
+            <p class="mb-0">คลิก Share → ผู้รับจะได้รับ Email แจ้งเตือน</p>
+        </div>
+
+        <h4 class="mt-4">ระดับสิทธิ์การเข้าถึง</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ระดับ</th>
+                        <th>สิทธิ์ที่ได้</th>
+                        <th>เหมาะสำหรับ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Viewer</strong></td>
+                        <td>ดู Sources, ถาม Chat, ดู Notes ได้ แต่แก้ไขไม่ได้</td>
+                        <td>ผู้บริหาร, เจ้าหน้าที่ที่ต้องการค้นข้อมูล</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Editor</strong></td>
+                        <td>ทำทุกอย่างได้ — เพิ่ม/ลบ Sources, แก้ Notes, สร้าง Audio</td>
+                        <td>ทีมงานที่ดูแล Notebook ร่วมกัน</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="screenshot-placeholder mt-3">
+            <p>ภาพ: หน้าจอ Share Notebook + กำหนดสิทธิ์</p>
+        </div>
+
+        <div class="info-box mt-4">
+            <h5>💡 Tips: การจัดการทีม</h5>
+            <ul class="mb-0">
+                <li>กำหนดคน 1-2 คน เป็น Editor ดูแลเนื้อหา (Admin ของ Notebook)</li>
+                <li>คนอื่นๆ เป็น Viewer — ใช้งานถามตอบได้ แต่ไม่แก้ไข Sources</li>
+                <li>สร้าง Notebook แยกตามทีม/หน่วยงานย่อย</li>
+                <li>ตั้งชื่อ Notebook ให้ชัดเจน เช่น "[ฝ่ายบริการ] คู่มือสิทธิ์คนพิการ"</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 9.2 -->
+    <!-- ============================================ -->
+    <section id="section-9-2" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">9.2 สร้าง Knowledge Base องค์กร</h2>
+
+        <p>Knowledge Base (ฐานความรู้) คือการรวบรวมเอกสาร ระเบียบ คู่มือ ขององค์กรไว้ในที่เดียว ที่ทุกคนค้นหาได้ด้วย AI</p>
+
+        <h4 class="mt-4">โครงสร้าง Knowledge Base แนะนำ (5 Notebooks)</h4>
+        <div class="row g-3">
+            <div class="col-md-6 col-lg-4">
+                <div class="card p-3 h-100" style="border-left: 4px solid #8b5cf6;">
+                    <h5>📋 NB1: กฎหมาย/ระเบียบ</h5>
+                    <ul class="small mb-0">
+                        <li>พ.ร.บ. ส่งเสริมฯ คนพิการ</li>
+                        <li>ระเบียบ พก. ทุกฉบับ</li>
+                        <li>ประกาศกระทรวง</li>
+                        <li>หนังสือเวียน</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card p-3 h-100" style="border-left: 4px solid #06b6d4;">
+                    <h5>📖 NB2: คู่มือปฏิบัติงาน</h5>
+                    <ul class="small mb-0">
+                        <li>คู่มือขึ้นทะเบียนคนพิการ</li>
+                        <li>คู่มือการให้บริการ</li>
+                        <li>ขั้นตอนการเบิกจ่าย</li>
+                        <li>แบบฟอร์มต่างๆ</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card p-3 h-100" style="border-left: 4px solid #10b981;">
+                    <h5>📊 NB3: รายงาน/สถิติ</h5>
+                    <ul class="small mb-0">
+                        <li>รายงานประจำปี</li>
+                        <li>สถิติคนพิการในพื้นที่</li>
+                        <li>ผลงานเด่น</li>
+                        <li>แผนยุทธศาสตร์</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card p-3 h-100" style="border-left: 4px solid #f59e0b;">
+                    <h5>🎓 NB4: อบรม/พัฒนาบุคลากร</h5>
+                    <ul class="small mb-0">
+                        <li>เอกสารอบรมทั้งหมด</li>
+                        <li>คู่มือใช้งานระบบ</li>
+                        <li>FAQ พนักงานใหม่</li>
+                        <li>วิดีโอสอนงาน (YouTube links)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card p-3 h-100" style="border-left: 4px solid #ef4444;">
+                    <h5>📢 NB5: สื่อ/ประชาสัมพันธ์</h5>
+                    <ul class="small mb-0">
+                        <li>เนื้อหาสื่อ PR ทั้งหมด</li>
+                        <li>ข่าวประชาสัมพันธ์</li>
+                        <li>แผ่นพับ/โบรชัวร์</li>
+                        <li>บทความเผยแพร่</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4">วิธีจัดหมวดหมู่ Sources</h4>
+        <div class="card p-3 bg-light">
+            <p class="mb-2"><strong>หลักการ:</strong> แบ่ง Notebook ตาม "หัวข้อที่คนถามบ่อย" ไม่ใช่ตาม "ประเภทเอกสาร"</p>
+            <ul class="mb-0">
+                <li>✅ ดี: "สิทธิ์คนพิการ" (รวมทุกเอกสารเกี่ยวกับสิทธิ์)</li>
+                <li>❌ ไม่ดี: "PDF ทั้งหมด" (รวมทุก PDF ไม่ว่าเรื่องอะไร)</li>
+                <li>✅ ดี: "การจ้างงานคนพิการ" (รวม พ.ร.บ. + ระเบียบ + คู่มือ เฉพาะเรื่องจ้างงาน)</li>
+                <li>❌ ไม่ดี: "พ.ร.บ. ทุกฉบับ" (รวมกฎหมายทุกเรื่องปนกัน)</li>
+            </ul>
+        </div>
+
+        <div class="info-box mt-4">
+            <h5>💡 Tips: จำนวน Sources ที่เหมาะสม</h5>
+            <ul class="mb-0">
+                <li>แต่ละ Notebook ควรมี 5-30 Sources (ไม่เกิน 50)</li>
+                <li>Sources ควรเป็นเรื่องเดียวกันหรือเกี่ยวข้องกัน</li>
+                <li>ถ้ามีเอกสาร 100+ ฉบับ ให้แบ่งเป็น 3-5 Notebooks</li>
+                <li>ตั้งชื่อ Notebook ให้คนอื่นเห็นแล้วเข้าใจทันที</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 9.3 -->
+    <!-- ============================================ -->
+    <section id="section-9-3" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">9.3 ออกแบบระบบตอบคำถามภายในองค์กร</h2>
+
+        <p>ใช้ NotebookLM เป็น "ระบบตอบคำถาม" ให้เจ้าหน้าที่สอบถามข้อมูลได้ทันที โดยไม่ต้องค้นเอกสารเอง</p>
+
+        <h4 class="mt-4">แนวคิด: NotebookLM เป็น Q&A Bot ขององค์กร</h4>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card p-3 text-center h-100">
+                    <h1>❓</h1>
+                    <h6>เจ้าหน้าที่มีคำถาม</h6>
+                    <p class="small mb-0">"เบี้ยคนพิการจ่ายวันไหน?"</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3 text-center h-100">
+                    <h1>🤖</h1>
+                    <h6>ถาม NotebookLM</h6>
+                    <p class="small mb-0">เปิด Notebook ที่เกี่ยวข้อง → พิมพ์คำถาม</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3 text-center h-100">
+                    <h1>✅</h1>
+                    <h6>ได้คำตอบ + Citation</h6>
+                    <p class="small mb-0">คำตอบพร้อมอ้างอิงจากเอกสารจริง</p>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4">ขั้นตอนออกแบบระบบ</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <h5>รวบรวมคำถามที่ถูกถามบ่อย</h5>
+            <p class="mb-0">สอบถามเจ้าหน้าที่ว่าคำถามที่ถูกถามบ่อยคืออะไร → จัดหมวดหมู่</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <h5>รวบรวมเอกสารที่ใช้ตอบ</h5>
+            <p class="mb-0">หาเอกสาร/ระเบียบที่ใช้ตอบคำถามเหล่านั้น → อัปโหลดเข้า Notebook</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <h5>ทดสอบถามคำถามจริง</h5>
+            <p class="mb-0">ทดลองถามคำถามบ่อย 20 ข้อ → ตรวจว่าคำตอบถูกต้องหรือไม่</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <h5>เพิ่ม Sources จนตอบได้ครอบคลุม</h5>
+            <p class="mb-0">ถ้าตอบไม่ได้ = ขาดเอกสาร → เพิ่ม Sources ที่เกี่ยวข้อง</p>
+        </div>
+        <div class="step-item">
+            <div class="step-number">5</div>
+            <h5>แชร์ให้ทีมใช้งาน</h5>
+            <p class="mb-0">แชร์ Notebook (Viewer) ให้ทุกคนในทีม พร้อมคำแนะนำวิธีถาม</p>
+        </div>
+
+        <div class="screenshot-placeholder mt-3">
+            <p>ภาพ: ตัวอย่างการถาม NotebookLM แล้วได้คำตอบพร้อม citation</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 9.4 -->
+    <!-- ============================================ -->
+    <section id="section-9-4" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">9.4 Best Practices การดูแล Notebook ระยะยาว</h2>
+
+        <p>Notebook ที่ดีต้องได้รับการดูแลอย่างต่อเนื่อง เหมือนกับเว็บไซต์หรือฐานข้อมูลองค์กร</p>
+
+        <h4 class="mt-4">Checklist การดูแล Notebook</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ความถี่</th>
+                        <th>สิ่งที่ต้องทำ</th>
+                        <th>ผู้รับผิดชอบ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ทุกสัปดาห์</strong></td>
+                        <td>ตรวจว่ามีเอกสารใหม่ที่ต้องเพิ่มหรือไม่</td>
+                        <td>Admin Notebook</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ทุกเดือน</strong></td>
+                        <td>ลบ Sources ที่เก่า/ยกเลิกแล้ว เพิ่มฉบับใหม่</td>
+                        <td>Admin Notebook</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ทุก 3 เดือน</strong></td>
+                        <td>ทดสอบถามคำถาม 10 ข้อ ตรวจว่ายังตอบถูกต้อง</td>
+                        <td>ทีมงาน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ทุก 6 เดือน</strong></td>
+                        <td>ทบทวนโครงสร้าง Notebook ทั้งหมด ปรับหมวดหมู่ถ้าจำเป็น</td>
+                        <td>หัวหน้าฝ่าย</td>
+                    </tr>
+                    <tr>
+                        <td><strong>เมื่อมีกฎหมายใหม่</strong></td>
+                        <td>อัปโหลดเอกสารใหม่ ลบฉบับเก่าที่ถูกแทนที่</td>
+                        <td>Admin Notebook</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mt-4">Do's and Don'ts</h4>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="card p-3 h-100" style="border-top: 3px solid #10b981;">
+                    <h5 class="text-success">✅ ควรทำ</h5>
+                    <ul class="small mb-0">
+                        <li>ตั้งชื่อ Notebook ชัดเจน มีวันที่อัปเดต</li>
+                        <li>มีคนรับผิดชอบดูแลแต่ละ Notebook</li>
+                        <li>บันทึก FAQ/Notes ที่ดีไว้เป็น Reference</li>
+                        <li>ทดสอบคำตอบก่อนแชร์ให้ผู้อื่น</li>
+                        <li>แจ้งทีมเมื่อเพิ่ม/ลบ Sources</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3 h-100" style="border-top: 3px solid #ef4444;">
+                    <h5 class="text-danger">❌ ไม่ควรทำ</h5>
+                    <ul class="small mb-0">
+                        <li>รวมเอกสารทุกเรื่องไว้ใน Notebook เดียว</li>
+                        <li>อัปโหลดเอกสารลับราชการ</li>
+                        <li>ปล่อยให้ Sources เก่าค้างไว้โดยไม่อัปเดต</li>
+                        <li>ให้สิทธิ์ Editor กับทุกคน (ควร Viewer ก่อน)</li>
+                        <li>เชื่อคำตอบ 100% โดยไม่ตรวจ citation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box mt-4">
+            <h5>💡 Tips: การตั้งชื่อ Notebook</h5>
+            <div class="card p-3 bg-light mt-2">
+                <ul class="mb-0">
+                    <li>✅ "[ฝ่ายบริการ] สิทธิ์คนพิการ — อัปเดต มิ.ย. 2569"</li>
+                    <li>✅ "[HR] คู่มือพนักงานใหม่ v2.0"</li>
+                    <li>✅ "[ผู้บริหาร] สรุปผลงาน Q1-2569"</li>
+                    <li>❌ "Notebook 1" / "test" / "เอกสารต่างๆ"</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- Section 9.5 -->
+    <!-- ============================================ -->
+    <section id="section-9-5" class="mb-5">
+        <h2 class="border-start border-4 ps-3" style="border-color: #8b5cf6 !important">9.5 Lab: สร้าง Knowledge Base 3 หมวด</h2>
+
+        <div class="exercise-box">
+            <h4>🧪 Lab ปฏิบัติ: ออกแบบ Knowledge Base สำหรับองค์กร</h4>
+            <p><strong>⏱️ เวลา:</strong> 50 นาที | <strong>รูปแบบ:</strong> กลุ่ม 3-4 คน</p>
+
+            <h5 class="mt-3">📋 โจทย์</h5>
+            <p>ออกแบบและสร้าง Knowledge Base 3 หมวด สำหรับองค์กรเพื่อคนพิการ โดยสร้าง Notebook จริง 3 อัน จัดหมวดหมู่ Sources และทดสอบการใช้งาน</p>
+
+            <h5 class="mt-3">📝 ขั้นตอน</h5>
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <h5>วางแผน Knowledge Base (10 นาที)</h5>
+                <p class="mb-0">กำหนดชื่อ 3 Notebooks + รายการ Sources ที่ต้องอัปโหลดในแต่ละอัน</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <h5>สร้าง 3 Notebooks (15 นาที)</h5>
+                <p class="mb-0">สร้าง Notebook ตั้งชื่อให้ชัดเจน → อัปโหลด Sources (อย่างน้อย 3 sources/notebook)</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <h5>ทดสอบถามคำถาม (15 นาที)</h5>
+                <p class="mb-0">ถามคำถาม 5 ข้อ/Notebook → ตรวจว่าตอบได้ถูกต้อง + มี citation</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <h5>สร้าง FAQ สำหรับแต่ละหมวด (5 นาที)</h5>
+                <p class="mb-0">ใช้ Notebook Guide → FAQ → บันทึกเป็น Note</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">5</div>
+                <h5>นำเสนอ Knowledge Base (5 นาที)</h5>
+                <p class="mb-0">อธิบายโครงสร้าง + Demo ถาม 1 คำถาม/Notebook</p>
+            </div>
+
+            <h5 class="mt-4">📌 ตัวอย่าง 3 หมวดที่แนะนำ</h5>
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Notebook</th>
+                            <th>เนื้อหา</th>
+                            <th>Sources ตัวอย่าง</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. สิทธิ์และสวัสดิการ</td>
+                            <td>กฎหมาย + สิทธิ์ + การเบิกจ่าย</td>
+                            <td>พ.ร.บ. ส่งเสริมฯ, ระเบียบเบี้ยความพิการ</td>
+                        </tr>
+                        <tr>
+                            <td>2. คู่มือให้บริการ</td>
+                            <td>ขั้นตอน + แบบฟอร์ม + Checklist</td>
+                            <td>คู่มือขึ้นทะเบียน, แบบฟอร์ม, Flow</td>
+                        </tr>
+                        <tr>
+                            <td>3. รายงาน + แผนงาน</td>
+                            <td>สถิติ + ผลงาน + แผนปี</td>
+                            <td>รายงานประจำปี, แผนยุทธศาสตร์</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h5 class="mt-4">✅ เกณฑ์สำเร็จ</h5>
+            <ul>
+                <li>สร้าง Notebook ครบ 3 อัน ตั้งชื่อชัดเจน</li>
+                <li>แต่ละอันมี Sources อย่างน้อย 3 ชิ้น</li>
+                <li>ทดสอบถามคำถามได้คำตอบถูกต้อง</li>
+                <li>สร้าง FAQ ได้อย่างน้อย 1 หมวด</li>
+                <li>อธิบายได้ว่าจะนำไปใช้งานจริงอย่างไร</li>
+            </ul>
+        </div>
+
+        <div class="info-box mt-4">
+            <h5>💡 Tips สำหรับ Lab</h5>
+            <ul class="mb-0">
+                <li>แบ่งงานในกลุ่ม — คนละ 1 Notebook ทำพร้อมกัน</li>
+                <li>ใช้เอกสารที่เตรียมมาจากหน่วยงาน (ที่เปิดเผยได้)</li>
+                <li>ถ้าไม่มีเอกสาร ใช้ข้อมูลจากเว็บไซต์ พก. แทนได้</li>
+                <li>หลัง Lab แชร์ Notebook ให้เพื่อนร่วมกลุ่ม (Viewer)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Chapter Navigation -->
+    <div class="chapter-nav">
+        <a href="chapter08.html">← บทที่ 8</a>
+        <a href="chapter10.html">บทที่ 10 →</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p class="mb-1">คู่มือฝึกอบรม NotebookLM — เปลี่ยนเอกสารเป็นความรู้ด้วย AI</p>
+        <p class="mb-0 text-muted">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

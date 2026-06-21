@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 4: Google Sheets เป็นฐานข้อมูล — คู่มือ Kiro AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">📖 คู่มือฝึกอบรม Kiro AI</a>
+        <span class="navbar-text text-white">บทที่ 4 | วันที่ 2 (เช้า)</span>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+
+            <div class="chapter-header text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">บทที่ 4</h1>
+                <h2 class="h3 text-secondary">พื้นฐาน Google Sheets เป็นฐานข้อมูล</h2>
+                <p class="lead text-muted">ระยะเวลา: 1.5 ชั่วโมง | วันที่ 2 (09:00 - 10:30)</p>
+                <hr class="w-50 mx-auto">
+            </div>
+
+            <div class="alert alert-info mb-4">
+                <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>ออกแบบตารางข้อมูล (Schema) ใน Google Sheets ได้</li>
+                    <li>ตั้งชื่อคอลัมน์ตามมาตรฐานได้</li>
+                    <li>เข้าใจชนิดข้อมูลและความสัมพันธ์ระหว่างตาราง</li>
+                </ul>
+            </div>
+
+            <!-- 4.1 ออกแบบตาราง -->
+            <section class="mb-5" id="section-4-1">
+                <h3 class="border-start border-4 border-primary ps-3">4.1 ออกแบบตาราง (Schema Design)</h3>
+
+                <p>ใน Google Sheets เราจะใช้:</p>
+                <ul>
+                    <li><strong>1 Sheet = 1 ตาราง</strong> (เหมือน 1 Table ใน Database)</li>
+                    <li><strong>แถวที่ 1 = หัวคอลัมน์</strong> (Column Headers)</li>
+                    <li><strong>แถวที่ 2 เป็นต้นไป = ข้อมูล</strong> (Data Rows)</li>
+                </ul>
+
+                <h5>ตัวอย่าง: ระบบลงทะเบียนฝึกอบรม</h5>
+                <p>ต้องการเก็บข้อมูล: ผู้สมัคร, หลักสูตร, การลงทะเบียน</p>
+
+                <div class="card mb-3">
+                    <div class="card-header bg-primary text-white">Sheet: TRAINEES (ผู้เข้าอบรม)</div>
+                    <div class="card-body p-0">
+                        <table class="table table-sm table-bordered mb-0">
+                            <thead class="table-light">
+                                <tr><th>trainee_id</th><th>prefix</th><th>first_name</th><th>last_name</th><th>id_card</th><th>phone</th><th>email</th><th>created_at</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>T001</td><td>นาย</td><td>สมชาย</td><td>ใจดี</td><td>3201xxxxx</td><td>08x-xxx-xxxx</td><td>som@mail.com</td><td>2569-06-01</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header bg-info text-white">Sheet: COURSES (หลักสูตร)</div>
+                    <div class="card-body p-0">
+                        <table class="table table-sm table-bordered mb-0">
+                            <thead class="table-light">
+                                <tr><th>course_id</th><th>course_name</th><th>hours</th><th>start_date</th><th>end_date</th><th>max_seats</th><th>status</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>C001</td><td>ช่างไฟฟ้าภายในอาคาร</td><td>30</td><td>2569-07-01</td><td>2569-07-05</td><td>25</td><td>เปิดรับ</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4.2 ชนิดข้อมูล -->
+            <section class="mb-5" id="section-4-2">
+                <h3 class="border-start border-4 border-primary ps-3">4.2 ชนิดข้อมูล + การตั้งชื่อคอลัมน์</h3>
+
+                <h5>กฎการตั้งชื่อคอลัมน์</h5>
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr><th>กฎ</th><th>ตัวอย่างถูก</th><th>ตัวอย่างผิด</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>ใช้ภาษาอังกฤษ lowercase</td><td>first_name</td><td>ชื่อ, FirstName</td></tr>
+                        <tr><td>ใช้ underscore คั่นคำ</td><td>created_at</td><td>createdAt, created-at</td></tr>
+                        <tr><td>ขึ้นต้นด้วย ID สำหรับ primary key</td><td>trainee_id</td><td>id, no</td></tr>
+                        <tr><td>ลงท้ายด้วย _at สำหรับวันเวลา</td><td>updated_at</td><td>update_date</td></tr>
+                        <tr><td>ลงท้ายด้วย _id สำหรับ foreign key</td><td>course_id</td><td>course_no</td></tr>
+                    </tbody>
+                </table>
+
+                <h5>ชนิดข้อมูลที่ใช้บ่อย</h5>
+                <table class="table table-bordered">
+                    <thead class="table-primary">
+                        <tr><th>ชนิด</th><th>ตัวอย่าง</th><th>หมายเหตุ</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Text (ข้อความ)</td><td>ชื่อ, ที่อยู่, อีเมล</td><td>ใช้บ่อยที่สุด</td></tr>
+                        <tr><td>Number (ตัวเลข)</td><td>จำนวน, ราคา, คะแนน</td><td>คำนวณได้</td></tr>
+                        <tr><td>Date (วันที่)</td><td>2569-06-01</td><td>ใช้รูปแบบ YYYY-MM-DD</td></tr>
+                        <tr><td>Boolean (ใช่/ไม่)</td><td>TRUE/FALSE</td><td>หรือใช้ 1/0</td></tr>
+                        <tr><td>ID (รหัสเฉพาะ)</td><td>T001, C001</td><td>ห้ามซ้ำ</td></tr>
+                        <tr><td>Status (สถานะ)</td><td>เปิดรับ, ปิดรับ</td><td>เลือกจากค่าที่กำหนด</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 4.3 ความสัมพันธ์ -->
+            <section class="mb-5" id="section-4-3">
+                <h3 class="border-start border-4 border-primary ps-3">4.3 ความสัมพันธ์ระหว่างตาราง</h3>
+
+                <p>ตารางเชื่อมกันด้วย <strong>Foreign Key</strong> (รหัสอ้างอิง):</p>
+
+                <div class="card bg-light mb-3">
+                    <div class="card-body text-center">
+                        <code class="fs-5">TRAINEES.trainee_id</code> ←→ <code class="fs-5">REGISTRATIONS.trainee_id</code> ←→ <code class="fs-5">COURSES.course_id</code>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header bg-success text-white">Sheet: REGISTRATIONS (การลงทะเบียน)</div>
+                    <div class="card-body p-0">
+                        <table class="table table-sm table-bordered mb-0">
+                            <thead class="table-light">
+                                <tr><th>reg_id</th><th>trainee_id</th><th>course_id</th><th>reg_date</th><th>status</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>R001</td><td>T001</td><td>C001</td><td>2569-06-15</td><td>ยืนยัน</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>💡 เคล็ดลับ:</strong> เมื่อบอก Kiro ว่า "trainee_id เชื่อมกับ TRAINEES" — Kiro จะสร้าง JOIN Query ให้อัตโนมัติ!
+                </div>
+            </section>
+
+            <!-- 4.4 ข้อดีข้อเสีย -->
+            <section class="mb-5" id="section-4-4">
+                <h3 class="border-start border-4 border-primary ps-3">4.4 ข้อดีข้อเสียของ Google Sheets เป็น Database</h3>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-success text-white">✅ ข้อดี</div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>ฟรี ไม่มีค่าใช้จ่าย</li>
+                                    <li>ไม่ต้องติดตั้ง Database Server</li>
+                                    <li>ดูข้อมูลได้ทันทีผ่าน Google Sheets</li>
+                                    <li>แก้ไขข้อมูลด้วยมือได้ง่าย</li>
+                                    <li>แชร์ให้ทีมดูได้</li>
+                                    <li>Export เป็น Excel/CSV ได้ทันที</li>
+                                    <li>Google สำรองข้อมูลให้อัตโนมัติ</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-danger h-100">
+                            <div class="card-header bg-danger text-white">⚠️ ข้อจำกัด</div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>ช้ากว่า Database จริง (เมื่อข้อมูลเกิน 10,000 แถว)</li>
+                                    <li>ไม่มี Transaction (อาจข้อมูลชนกัน)</li>
+                                    <li>จำกัด 10 ล้าน cell ต่อ spreadsheet</li>
+                                    <li>API Call จำกัด (ต่อวัน)</li>
+                                    <li>ไม่เหมาะกับข้อมูลมหาศาล</li>
+                                </ul>
+                                <p class="mt-2 mb-0"><strong>เหมาะกับ:</strong> ข้อมูลไม่เกิน 5,000-10,000 แถว, ผู้ใช้พร้อมกันไม่เกิน 30 คน</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+                <a href="chapter03.html" class="btn btn-outline-primary btn-lg">← บทที่ 3</a>
+                <a href="chapter05.html" class="btn btn-primary btn-lg">บทที่ 5: Google Apps Script →</a>
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p class="mb-1">คู่มือฝึกอบรม "Kiro AI สร้างระบบราชการด้วยปัญญาประดิษฐ์"</p>
+    <p class="mb-0 text-muted small">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

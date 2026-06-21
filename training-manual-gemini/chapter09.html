@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 9: Gemini Code Assist — คู่มือ Gemini AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark sticky-top" style="background: linear-gradient(135deg, #4285f4, #34a853)">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">📖 คู่มือ Gemini AI</a>
+            <span class="navbar-text text-white">บทที่ 9 — วันที่ 5 เช้า (3 ชม.)</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <!-- Chapter Header -->
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold text-primary">บทที่ 9</h1>
+            <h2 class="fw-bold">Gemini Code Assist</h2>
+            <p class="lead text-muted">AI Coding Assistant ใน VS Code — ช่วยเขียนโค้ด อธิบายโค้ด แก้ bug และ generate code อัตโนมัติ</p>
+            <span class="badge bg-info fs-6">⏰ วันที่ 5 ภาคเช้า — 3 ชั่วโมง</span>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-primary mb-5">
+            <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>เข้าใจว่า Gemini Code Assist คืออะไร ต่างจาก Copilot อย่างไร</li>
+                <li>ติดตั้ง Gemini Code Assist Extension ใน VS Code ได้</li>
+                <li>ใช้ฟีเจอร์หลัก: Code completion, Chat, Generate, Explain, Fix</li>
+                <li>ใช้ Gemini Code Assist เขียน Google Apps Script + HTML + JavaScript</li>
+                <li>เปรียบเทียบ AI Coding Tools ต่างๆ ได้</li>
+            </ul>
+        </div>
+
+        <!-- Section 9.1 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">9.1 Gemini Code Assist คืออะไร</h3>
+            
+            <p><strong>Gemini Code Assist</strong> เป็น AI Coding Assistant ของ Google ที่ทำงานใน IDE (VS Code, JetBrains) ช่วยเขียนโค้ดอัตโนมัติ อธิบายโค้ด แก้ bug และ generate code — คล้ายกับ GitHub Copilot แต่ใช้ Gemini model</p>
+
+            <div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <div class="card h-100 border-primary">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">🆓 Free Tier</h5>
+                            <ul>
+                                <li>Code completions: ไม่จำกัด</li>
+                                <li>Chat: 240 ข้อความ/วัน (รีเซ็ตเที่ยงคืน Pacific)</li>
+                                <li>ใช้ได้กับ Google Account ฟรี</li>
+                                <li>รองรับ 20+ ภาษา</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 border-warning">
+                        <div class="card-body">
+                            <h5 class="card-title text-warning">💼 Enterprise</h5>
+                            <ul>
+                                <li>Code completions: ไม่จำกัด</li>
+                                <li>Chat: ไม่จำกัด</li>
+                                <li>Code customization (private codebase)</li>
+                                <li>IP indemnification</li>
+                                <li>$19/user/เดือน</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <strong>💡 สำหรับงานราชการ:</strong> Free tier เพียงพอสำหรับการเรียนรู้และใช้งานทั่วไป ไม่ต้องเสียเงิน!
+            </div>
+
+            <!-- ภาษาที่รองรับ -->
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">🌐 ภาษาโปรแกรมที่รองรับ</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <ul class="list-unstyled">
+                                <li>✅ JavaScript</li>
+                                <li>✅ TypeScript</li>
+                                <li>✅ Python</li>
+                                <li>✅ Java</li>
+                                <li>✅ Go</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="list-unstyled">
+                                <li>✅ C/C++</li>
+                                <li>✅ C#</li>
+                                <li>✅ Kotlin</li>
+                                <li>✅ Swift</li>
+                                <li>✅ Rust</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="list-unstyled">
+                                <li>✅ PHP</li>
+                                <li>✅ Ruby</li>
+                                <li>✅ HTML/CSS</li>
+                                <li>✅ SQL</li>
+                                <li>✅ Shell/Bash</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="list-unstyled">
+                                <li>✅ Dart</li>
+                                <li>✅ Scala</li>
+                                <li>✅ Terraform</li>
+                                <li>✅ YAML</li>
+                                <li>✅ Google Apps Script</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9.2 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">9.2 ติดตั้ง Gemini Code Assist Extension ใน VS Code</h3>
+            
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">📥 ขั้นตอนติดตั้ง (Step-by-Step)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="step-item bg-light p-3 rounded mb-3">
+                        <h6 class="fw-bold">ขั้นตอนที่ 1: ติดตั้ง VS Code</h6>
+                        <ol>
+                            <li>ดาวน์โหลดจาก <code>https://code.visualstudio.com</code></li>
+                            <li>ติดตั้งตามขั้นตอนปกติ (Next → Next → Install)</li>
+                            <li>เปิด VS Code</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-item bg-light p-3 rounded mb-3">
+                        <h6 class="fw-bold">ขั้นตอนที่ 2: ติดตั้ง Extension</h6>
+                        <ol>
+                            <li>คลิกไอคอน Extensions (□ สี่เหลี่ยม) ที่ sidebar ซ้าย หรือกด <kbd>Ctrl+Shift+X</kbd></li>
+                            <li>พิมพ์ค้นหา: <code>Gemini Code Assist</code></li>
+                            <li>เลือก "Gemini Code Assist" โดย Google (ตรวจสอบ Publisher: Google)</li>
+                            <li>คลิก <strong>"Install"</strong></li>
+                            <li>รอ 10-20 วินาที จนติดตั้งเสร็จ</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-item bg-light p-3 rounded mb-3">
+                        <h6 class="fw-bold">ขั้นตอนที่ 3: Sign in กับ Google Account</h6>
+                        <ol>
+                            <li>จะเห็นไอคอน Gemini (ดาว) ที่ sidebar ซ้าย → คลิก</li>
+                            <li>คลิก <strong>"Sign in with Google"</strong></li>
+                            <li>เบราว์เซอร์จะเปิดขึ้น → เลือก Google Account → อนุญาต</li>
+                            <li>กลับมาที่ VS Code → จะเห็นสถานะ "Signed in"</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-item bg-light p-3 rounded">
+                        <h6 class="fw-bold">ขั้นตอนที่ 4: ทดสอบ</h6>
+                        <ol>
+                            <li>สร้างไฟล์ใหม่: <code>test.js</code></li>
+                            <li>พิมพ์: <code>// ฟังก์ชันคำนวณ BMI</code> แล้วกด Enter</li>
+                            <li>Gemini จะเสนอโค้ดสีเทา (ghost text)</li>
+                            <li>กด <kbd>Tab</kbd> เพื่อยอมรับ หรือ <kbd>Esc</kbd> เพื่อปฏิเสธ</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning">
+                <strong>⚠️ ปัญหาที่อาจพบ:</strong>
+                <ul class="mb-0">
+                    <li><strong>ไม่เห็นไอคอน Gemini:</strong> Reload VS Code (Ctrl+Shift+P → "Reload Window")</li>
+                    <li><strong>Sign in ไม่ได้:</strong> ตรวจสอบ Firewall/Proxy ขององค์กร</li>
+                    <li><strong>ไม่ suggest code:</strong> ตรวจว่าไฟล์เป็นภาษาที่รองรับ (.js, .py, .html)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 9.3 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">9.3 ฟีเจอร์หลัก Gemini Code Assist</h3>
+            
+            <!-- Feature 1: Code Completion -->
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">⌨️ 1. Code Completion — เติมโค้ดอัตโนมัติ</h5>
+                </div>
+                <div class="card-body">
+                    <p>Gemini จะเสนอโค้ดถัดไปแบบ real-time ขณะที่คุณพิมพ์</p>
+                    
+                    <h6 class="fw-bold">วิธีใช้:</h6>
+                    <ul>
+                        <li>พิมพ์โค้ดปกติ → Gemini จะเสนอส่วนที่เหลือ (ghost text สีเทา)</li>
+                        <li><kbd>Tab</kbd> = ยอมรับทั้งหมด</li>
+                        <li><kbd>Ctrl+→</kbd> = ยอมรับทีละคำ</li>
+                        <li><kbd>Esc</kbd> = ปฏิเสธ</li>
+                    </ul>
+
+                    <h6 class="fw-bold mt-3">ตัวอย่าง: พิมพ์ comment แล้ว Gemini สร้างโค้ดให้</h6>
+                    <pre class="bg-dark text-light p-3 rounded"><code>// ฟังก์ชันตรวจสอบเลขบัตรประชาชน 13 หลัก
+function validateThaiID(id) {
+  // ← Gemini จะเสนอโค้ดทั้งฟังก์ชันให้!
+  if (id.length !== 13) return false;
+  var sum = 0;
+  for (var i = 0; i < 12; i++) {
+    sum += parseInt(id[i]) * (13 - i);
+  }
+  var checkDigit = (11 - (sum % 11)) % 10;
+  return checkDigit === parseInt(id[12]);
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Feature 2: Chat -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">💬 2. Chat — ถามตอบเกี่ยวกับโค้ด</h5>
+                </div>
+                <div class="card-body">
+                    <p>เปิด Chat panel เพื่อถามคำถามเกี่ยวกับโค้ด ขอคำแนะนำ หรือให้ช่วยเขียนโค้ด</p>
+                    
+                    <h6 class="fw-bold">วิธีเปิด Chat:</h6>
+                    <ul>
+                        <li>คลิกไอคอน Gemini ที่ sidebar → เปิด Chat panel</li>
+                        <li>หรือกด <kbd>Ctrl+Shift+P</kbd> → พิมพ์ "Gemini: Open Chat"</li>
+                    </ul>
+
+                    <h6 class="fw-bold mt-3">ตัวอย่างคำถามใน Chat:</h6>
+                    <div class="bg-light p-3 rounded">
+                        <ul class="mb-0">
+                            <li><code>"เขียนฟังก์ชัน GAS ที่ส่ง Email พร้อม PDF attachment"</code></li>
+                            <li><code>"อธิบายโค้ดนี้ทำงานอย่างไร" (select code แล้วถาม)</code></li>
+                            <li><code>"แก้ bug ในโค้ดนี้ — มันส่ง email ซ้ำ 2 ครั้ง"</code></li>
+                            <li><code>"เขียน unit test สำหรับฟังก์ชัน validateThaiID"</code></li>
+                            <li><code>"refactor โค้ดนี้ให้อ่านง่ายขึ้น"</code></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3: Code Generation -->
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">🔨 3. Code Generation — สร้างโค้ดจากคำอธิบาย</h5>
+                </div>
+                <div class="card-body">
+                    <p>ใช้ comment หรือ Chat เพื่อให้ Gemini สร้างโค้ดทั้งไฟล์ได้</p>
+                    
+                    <h6 class="fw-bold">ตัวอย่าง: สร้างฟอร์มลงทะเบียนด้วย comment</h6>
+                    <pre class="bg-dark text-light p-3 rounded"><code>// สร้างฟอร์ม HTML ลงทะเบียนฝึกอบรม สนพ.สุรินทร์
+// มี field: ชื่อ-สกุล, เลขบัตรประชาชน, โทรศัพท์, email, หลักสูตร (dropdown)
+// ใช้ Bootstrap 5, validate ด้วย JavaScript
+// ส่งข้อมูลไปยัง Google Apps Script
+
+// ← วาง cursor ที่นี่ แล้ว Gemini จะ generate ทั้ง HTML form!</code></pre>
+                </div>
+            </div>
+
+            <!-- Feature 4: Explain Code -->
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">📖 4. Explain Code — อธิบายโค้ด</h5>
+                </div>
+                <div class="card-body">
+                    <p>Select โค้ดที่ไม่เข้าใจ → คลิกขวา → "Gemini: Explain this code"</p>
+                    
+                    <h6 class="fw-bold">ตัวอย่าง: Select โค้ดนี้แล้วให้อธิบาย</h6>
+                    <pre class="bg-dark text-light p-3 rounded"><code>var hash = Utilities.computeDigest(
+  Utilities.DigestAlgorithm.SHA_256, 
+  password + salt
+).map(function(b) { 
+  return ('0' + (b & 0xFF).toString(16)).slice(-2); 
+}).join('');</code></pre>
+                    
+                    <h6 class="fw-bold mt-3">Gemini จะอธิบาย:</h6>
+                    <div class="border p-3 rounded bg-white">
+                        <p>โค้ดนี้ทำ <strong>Password Hashing</strong> ด้วย SHA-256:</p>
+                        <ol class="mb-0">
+                            <li><code>Utilities.computeDigest()</code> — คำนวณ hash จาก password + salt</li>
+                            <li><code>.map(function(b)...)</code> — แปลง byte array เป็น hex string</li>
+                            <li><code>(b & 0xFF)</code> — แปลง signed byte เป็น unsigned (0-255)</li>
+                            <li><code>.toString(16)</code> — แปลงเป็น hexadecimal</li>
+                            <li><code>.slice(-2)</code> — เติม 0 นำหน้าให้ครบ 2 หลัก</li>
+                            <li><code>.join('')</code> — รวมเป็น string เดียว</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 5: Fix Bugs -->
+            <div class="card mb-4">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">🐛 5. Fix Bugs — หา + แก้ Bug</h5>
+                </div>
+                <div class="card-body">
+                    <p>Select โค้ดที่มีปัญหา → "Gemini: Fix this code" หรือถามใน Chat</p>
+                    
+                    <h6 class="fw-bold">ตัวอย่าง: โค้ดที่มี Bug</h6>
+                    <pre class="bg-dark text-light p-3 rounded"><code>// Bug: ฟังก์ชันนี้ไม่ส่ง email เมื่อชื่อมีอักขระพิเศษ
+function sendWelcomeEmail(name, email) {
+  var subject = 'ยินดีต้อนรับ ' + name + ' สู่ สนพ.สุรินทร์';
+  var body = '&lt;h1&gt;สวัสดี ' + name + '&lt;/h1&gt;';
+  GmailApp.sendEmail(email, subject, '', {htmlBody: body});
+}</code></pre>
+                    
+                    <h6 class="fw-bold mt-3">Gemini แนะนำแก้ไข:</h6>
+                    <pre class="bg-dark text-light p-3 rounded"><code>// Fixed: เพิ่ม HTML escape ป้องกัน XSS + จัดการ error
+function sendWelcomeEmail(name, email) {
+  try {
+    // Escape HTML entities ป้องกัน XSS
+    var safeName = name.replace(/&/g, '&amp;amp;')
+                       .replace(/</g, '&amp;lt;')
+                       .replace(/>/g, '&amp;gt;');
+    var subject = 'ยินดีต้อนรับ ' + safeName + ' สู่ สนพ.สุรินทร์';
+    var body = '&lt;h1&gt;สวัสดี ' + safeName + '&lt;/h1&gt;';
+    GmailApp.sendEmail(email, subject, '', {htmlBody: body});
+    return true;
+  } catch (e) {
+    Logger.log('Email error: ' + e.toString());
+    return false;
+  }
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9.4 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">9.4 ใช้ Gemini Code Assist เขียน GAS + HTML + JavaScript</h3>
+            
+            <div class="alert alert-danger">
+                <h5 class="alert-heading">🏋️ Workshop (60 นาที)</h5>
+                <p class="mb-0">ใช้ Gemini Code Assist สร้างระบบลงทะเบียนฝึกอบรมออนไลน์แบบง่าย</p>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">📋 ขั้นตอนที่ 1: สร้างโปรเจกต์ (5 นาที)</h5>
+                    <div class="step-item bg-light p-3 rounded">
+                        <ol>
+                            <li>สร้างโฟลเดอร์ใหม่: <code>training-registration</code></li>
+                            <li>เปิดใน VS Code: File → Open Folder</li>
+                            <li>สร้างไฟล์ 3 ไฟล์: <code>Code.gs</code>, <code>index.html</code>, <code>appsscript.json</code></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">💻 ขั้นตอนที่ 2: ใช้ Gemini สร้าง Code.gs (20 นาที)</h5>
+                    <p>เปิดไฟล์ <code>Code.gs</code> → พิมพ์ comment → ให้ Gemini generate</p>
+                    <pre class="bg-dark text-light p-3 rounded"><code>// ⬇️ พิมพ์ comment นี้ แล้ว Gemini จะ generate ให้ ⬇️
+
+// ระบบลงทะเบียนฝึกอบรม สนพ.สุรินทร์
+// - doGet() แสดงหน้า HTML
+// - doPost() รับข้อมูลลงทะเบียน บันทึกลง Google Sheets
+// - Sheet: REGISTRATIONS (id, name, idcard, phone, email, course, date, status)
+// - ส่ง email ยืนยันหลังลงทะเบียน
+// - ส่ง Line Notify แจ้ง admin
+
+function doGet() {
+  return HtmlService.createHtmlOutputFromFile('index')
+    .setTitle('ลงทะเบียนฝึกอบรม - สนพ.สุรินทร์')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
+function doPost(e) {
+  var data = JSON.parse(e.postData.contents);
+  
+  // validate
+  if (!data.name || !data.idcard || !data.phone || !data.course) {
+    return ContentService.createTextOutput(JSON.stringify({
+      success: false, message: 'กรุณากรอกข้อมูลให้ครบ'
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+  
+  // บันทึกลง Sheet
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName('REGISTRATIONS');
+  var id = 'REG-' + new Date().getTime();
+  
+  sheet.appendRow([
+    id, data.name, data.idcard, data.phone, 
+    data.email, data.course, new Date(), 'รอดำเนินการ'
+  ]);
+  
+  // ส่ง email ยืนยัน
+  if (data.email) {
+    sendConfirmEmail(data.email, data.name, data.course, id);
+  }
+  
+  return ContentService.createTextOutput(JSON.stringify({
+    success: true, message: 'ลงทะเบียนสำเร็จ', id: id
+  })).setMimeType(ContentService.MimeType.JSON);
+}
+
+// ← Gemini จะช่วยเขียน sendConfirmEmail() ต่อ</code></pre>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">🎨 ขั้นตอนที่ 3: ใช้ Gemini สร้าง HTML (20 นาที)</h5>
+                    <p>ใน Chat panel → พิมพ์:</p>
+                    <div class="bg-light p-3 rounded mb-3">
+                        <code>"สร้างหน้า HTML ฟอร์มลงทะเบียนฝึกอบรม สนพ.สุรินทร์ ใช้ Bootstrap 5 มี: ชื่อ-สกุล, เลขบัตรประชาชน 13 หลัก (validate), โทรศัพท์, email, เลือกหลักสูตร (dropdown: ช่างเชื่อม/คอมพิวเตอร์/ช่างไฟฟ้า/ตัดผม), ปุ่มส่ง, แสดงผลสำเร็จ"</code>
+                    </div>
+                    <p>Gemini จะ generate HTML ทั้งหน้าให้!</p>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">🐛 ขั้นตอนที่ 4: ใช้ Gemini Fix Bug (10 นาที)</h5>
+                    <ol>
+                        <li>ทดสอบระบบ → หาจุดที่ผิดพลาด</li>
+                        <li>Select โค้ดที่มีปัญหา → คลิกขวา → "Gemini: Fix this"</li>
+                        <li>หรือถามใน Chat: <code>"ทำไมฟอร์มส่งข้อมูลแล้ว error 403"</code></li>
+                        <li>Gemini จะแนะนำวิธีแก้ไข</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Tips -->
+            <div class="card border-info mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-info">💡 เคล็ดลับใช้ Gemini Code Assist อย่างมีประสิทธิภาพ</h5>
+                    <ul>
+                        <li><strong>เขียน comment ก่อน:</strong> comment ที่ละเอียดจะได้โค้ดที่แม่นยำ</li>
+                        <li><strong>ใช้ภาษาอังกฤษใน comment:</strong> ได้ผลดีกว่าภาษาไทย (สำหรับ code generation)</li>
+                        <li><strong>ตั้งชื่อฟังก์ชันให้สื่อ:</strong> Gemini จะเข้าใจ context จากชื่อ</li>
+                        <li><strong>เปิดไฟล์ที่เกี่ยวข้อง:</strong> Gemini ดูจากไฟล์ที่เปิดอยู่ด้วย</li>
+                        <li><strong>อย่ายอมรับโค้ดโดยไม่ตรวจ:</strong> ต้อง review ก่อนเสมอ!</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9.5 -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">9.5 เปรียบเทียบ AI Coding Tools</h3>
+            
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>หัวข้อ</th>
+                            <th>🟦 Gemini Code Assist</th>
+                            <th>⬛ GitHub Copilot</th>
+                            <th>🟤 Claude Code</th>
+                            <th>🟩 Kiro (AWS)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ผู้พัฒนา</strong></td>
+                            <td>Google</td>
+                            <td>GitHub/Microsoft</td>
+                            <td>Anthropic</td>
+                            <td>Amazon (AWS)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AI Model</strong></td>
+                            <td>Gemini 2.5</td>
+                            <td>GPT-4o / Claude</td>
+                            <td>Claude 4 Sonnet/Opus</td>
+                            <td>Claude (Anthropic)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ราคา/เดือน</strong></td>
+                            <td>ฟรี (Enterprise $19)</td>
+                            <td>$10 (Individual) / $19 (Biz)</td>
+                            <td>$20 (Pro) / ตามใช้งาน</td>
+                            <td>ฟรี (ช่วง Preview)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Free Tier</strong></td>
+                            <td>✅ 240 chat/วัน + completion ไม่จำกัด</td>
+                            <td>✅ 2,000 completions/เดือน</td>
+                            <td>⚠️ จำกัดมาก</td>
+                            <td>✅ ฟรีระหว่าง Preview</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IDE</strong></td>
+                            <td>VS Code, JetBrains, Cloud Shell</td>
+                            <td>VS Code, JetBrains, Neovim</td>
+                            <td>Terminal (CLI), VS Code</td>
+                            <td>VS Code (แยก IDE)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Code Completion</strong></td>
+                            <td>✅ Real-time</td>
+                            <td>✅ Real-time</td>
+                            <td>❌ (ใช้ Chat เป็นหลัก)</td>
+                            <td>✅ Real-time</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Chat in IDE</strong></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅ (Terminal-based)</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Multi-file Edit</strong></td>
+                            <td>⚠️ จำกัด</td>
+                            <td>✅ (Workspace agent)</td>
+                            <td>✅ (เก่งมาก)</td>
+                            <td>✅ (Spec-driven)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Explain Code</strong></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fix Bugs</strong></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Google Workspace</strong></td>
+                            <td>✅ ทำงานร่วมกันดี</td>
+                            <td>⚠️ ไม่เกี่ยว</td>
+                            <td>⚠️ ไม่เกี่ยว</td>
+                            <td>⚠️ ไม่เกี่ยว</td>
+                        </tr>
+                        <tr>
+                            <td><strong>จุดเด่น</strong></td>
+                            <td>ฟรี + Google Integration</td>
+                            <td>Ecosystem + ผู้ใช้เยอะ</td>
+                            <td>ฉลาดมาก + แก้ไฟล์หลายไฟล์</td>
+                            <td>Spec-driven + Auto tasks</td>
+                        </tr>
+                        <tr class="table-success">
+                            <td><strong>เหมาะกับ</strong></td>
+                            <td>ผู้ใช้ Google Workspace / เริ่มต้น</td>
+                            <td>นักพัฒนาทั่วไป</td>
+                            <td>นักพัฒนาขั้นสูง</td>
+                            <td>ทีมพัฒนา + Project ใหญ่</td>
+                        </tr>
+                        <tr class="table-primary">
+                            <td><strong>สำหรับ สนพ.สุรินทร์</strong></td>
+                            <td><strong>✅ แนะนำอันดับ 1</strong><br>(ฟรี + ใช้กับ GAS ดี)</td>
+                            <td>✅ ตัวเลือกดี<br>(ถ้ามีงบ)</td>
+                            <td>⚠️ สำหรับขั้นสูง</td>
+                            <td>✅ กำลังใช้อยู่!<br>(เขียนคู่มือนี้)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-info mt-3">
+                <strong>💡 คำแนะนำ:</strong> สำหรับข้าราชการที่เพิ่งเริ่มเขียนโค้ด แนะนำ <strong>Gemini Code Assist</strong> เพราะฟรี ใช้ง่าย และทำงานร่วมกับ Google Workspace ได้ดี ส่วนผู้ที่มีประสบการณ์แล้วอาจพิจารณา GitHub Copilot หรือ Claude Code เพิ่มเติม
+            </div>
+        </section>
+
+        <!-- แบบฝึกหัดท้ายบท -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 ps-3 mb-4" style="border-color: #4285f4 !important">แบบฝึกหัดท้ายบท</h3>
+            
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">📝 แบบฝึกหัดบทที่ 9</h5>
+                    <ol>
+                        <li class="mb-2"><strong>ติดตั้ง:</strong> ติดตั้ง Gemini Code Assist ใน VS Code ให้เรียบร้อย ทดสอบว่าทำงานได้</li>
+                        <li class="mb-2"><strong>Code Completion:</strong> สร้างฟังก์ชัน GAS 3 ฟังก์ชัน โดยใช้ comment-driven development (เขียน comment ก่อน ให้ Gemini generate)</li>
+                        <li class="mb-2"><strong>Chat:</strong> ใช้ Chat ขอให้ Gemini สร้างระบบ CRUD ง่ายๆ สำหรับจัดการข้อมูลหลักสูตร</li>
+                        <li class="mb-2"><strong>Explain:</strong> หาโค้ดที่ซับซ้อน 3 ชิ้น ให้ Gemini อธิบาย → จดสิ่งที่เรียนรู้</li>
+                        <li class="mb-2"><strong>ท้าทาย:</strong> ใช้ Gemini Code Assist สร้างระบบลงทะเบียนฝึกอบรมครบ (ฟอร์ม + GAS + Sheets) ภายใน 30 นาที</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+            <a href="chapter08.html" class="btn btn-outline-primary">← บทที่ 8: Gemini API + สร้างแอป</a>
+            <a href="chapter10.html" class="btn btn-primary">บทที่ 10: สรุป + Workshop →</a>
+        </nav>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p class="mb-1">คู่มือฝึกอบรม Gemini AI — ใช้ปัญญาประดิษฐ์ Google ทำงานราชการ</p>
+        <p class="mb-0 text-white-50">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

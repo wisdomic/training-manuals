@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 6: OpenAI Whisper — AI เสียงและดนตรี</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📖 AI เสียงและดนตรี</span>
+            <span class="nav-text text-light">บทที่ 6: OpenAI Whisper</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+            <!-- Chapter Header -->
+            <div class="chapter-header text-center">
+                <h1>📝 บทที่ 6: OpenAI Whisper</h1>
+                <p class="lead">แปลงเสียงเป็นข้อความ (Transcription) — รองรับภาษาไทย แม่นยำสูง</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เข้าใจว่า Whisper คืออะไร และทำงานอย่างไร</li>
+                    <li>สามารถแปลงเสียงเป็นข้อความภาษาไทยได้</li>
+                    <li>ใช้ Whisper แปลภาษาจากเสียงได้</li>
+                    <li>ใช้งานผ่าน ChatGPT ได้สะดวก</li>
+                </ul>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">📘 6.1 OpenAI Whisper คืออะไร?</h3>
+            <section>
+                <p>Whisper เป็นโมเดล AI ของ OpenAI ที่เชี่ยวชาญด้านการแปลงเสียงพูดเป็นข้อความ (Speech-to-Text) จุดเด่น:</p>
+                <ul>
+                    <li><strong>รองรับ 100+ ภาษา</strong> รวมภาษาไทย</li>
+                    <li><strong>แม่นยำสูง</strong> แม้เสียงมีสำเนียงหรือ Noise</li>
+                    <li><strong>ใส่เครื่องหมายวรรคตอน</strong> อัตโนมัติ</li>
+                    <li><strong>แปลภาษา</strong> จากเสียงภาษาไทย → ข้อความภาษาอังกฤษ</li>
+                    <li><strong>ฟรี</strong> ผ่าน ChatGPT (แผน Free)</li>
+                </ul>
+
+                <div class="info-card">
+                    <h5>🔧 วิธีใช้ Whisper</h5>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>วิธี</th>
+                                <th>ความยาก</th>
+                                <th>ค่าใช้จ่าย</th>
+                                <th>เหมาะกับ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ผ่าน ChatGPT</td>
+                                <td>ง่ายมาก ⭐</td>
+                                <td>ฟรี (มี limit)</td>
+                                <td>ผู้เริ่มต้น</td>
+                            </tr>
+                            <tr>
+                                <td>ผ่าน Google Colab</td>
+                                <td>ปานกลาง ⭐⭐</td>
+                                <td>ฟรี</td>
+                                <td>ไฟล์ยาว</td>
+                            </tr>
+                            <tr>
+                                <td>ติดตั้งในเครื่อง</td>
+                                <td>ยาก ⭐⭐⭐</td>
+                                <td>ฟรี</td>
+                                <td>นักพัฒนา</td>
+                            </tr>
+                            <tr>
+                                <td>ผ่าน API</td>
+                                <td>ปานกลาง ⭐⭐</td>
+                                <td>$0.006/นาที</td>
+                                <td>ใช้งานมาก</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-muted mb-0">* ในหลักสูตรนี้เราจะใช้ผ่าน ChatGPT เป็นหลัก (วิธีง่ายที่สุด)</p>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 6.2 ใช้ Whisper ผ่าน ChatGPT</h3>
+            <section>
+                <p>วิธีง่ายที่สุดคือใช้ผ่าน ChatGPT ทั้งบนคอมพิวเตอร์และมือถือ:</p>
+
+                <p><strong>วิธีที่ 1: อัปโหลดไฟล์เสียง (คอมพิวเตอร์)</strong></p>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิด ChatGPT</strong> — ไปที่ <code>chat.openai.com</code>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>คลิกไอคอนแนบไฟล์</strong> — ปุ่ม 📎 ข้างช่องพิมพ์
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เลือกไฟล์เสียง</strong> — MP3, WAV, M4A, WEBM (ไม่เกิน 25MB)
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>พิมพ์คำสั่ง</strong> — "ถอดเสียงเป็นข้อความภาษาไทย"
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>รอผลลัพธ์</strong> — ChatGPT จะแสดงข้อความที่ถอดได้
+                </div>
+
+                <p><strong>วิธีที่ 2: พูดผ่านไมโครโฟน (มือถือ)</strong></p>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิดแอป ChatGPT</strong> — บนมือถือ
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>กดปุ่มไมโครโฟน</strong> — ไอคอน 🎙️ ข้างช่องพิมพ์
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>พูดภาษาไทย</strong> — ChatGPT จะแปลงเสียงเป็นข้อความทันที
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>กดส่ง</strong> — ข้อความจะถูกส่งเป็น Prompt
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 6.3 Transcription ภาษาไทย</h3>
+            <section>
+                <p>การถอดเสียงภาษาไทยมีเทคนิคช่วยให้ผลลัพธ์ดีขึ้น:</p>
+
+                <div class="prompt-example">
+                    <strong>📝 คำสั่งสำหรับ Transcription:</strong><br><br>
+                    <strong>พื้นฐาน:</strong> "ถอดเสียงไฟล์นี้เป็นข้อความภาษาไทย"<br><br>
+                    <strong>ละเอียด:</strong> "ถอดเสียงเป็นข้อความภาษาไทย ใส่เครื่องหมายวรรคตอน แบ่งย่อหน้า"<br><br>
+                    <strong>ประชุม:</strong> "ถอดเทปการประชุมนี้ ระบุผู้พูดแต่ละคน (ถ้าแยกได้)"<br><br>
+                    <strong>สรุป:</strong> "ถอดเสียงแล้วสรุปเป็นหัวข้อสำคัญ 5 ข้อ"
+                </div>
+
+                <div class="info-card">
+                    <h5>🎯 เทคนิคให้ผล Transcription ดีขึ้น</h5>
+                    <ul>
+                        <li><strong>ไฟล์เสียงชัด:</strong> ยิ่งเสียงชัด ไม่มี Noise ผลยิ่งดี</li>
+                        <li><strong>พูดชัด:</strong> ออกเสียงชัด ไม่พูดเร็วเกินไป</li>
+                        <li><strong>ไฟล์สั้น:</strong> แบ่งไฟล์ยาวเป็นหลายๆ ไฟล์สั้น (5-10 นาที)</li>
+                        <li><strong>บอก Context:</strong> บอก ChatGPT ว่าเนื้อหาเกี่ยวกับอะไร จะถอดได้แม่นขึ้น</li>
+                        <li><strong>ตรวจทาน:</strong> ตรวจผลลัพธ์เสมอ โดยเฉพาะชื่อเฉพาะ ตัวเลข</li>
+                    </ul>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 6.4 แปลภาษาจากเสียง</h3>
+            <section>
+                <p>Whisper สามารถแปลจากเสียงภาษาไทยเป็นข้อความภาษาอังกฤษได้โดยตรง:</p>
+
+                <div class="prompt-example">
+                    <strong>📝 คำสั่งสำหรับแปลภาษาจากเสียง:</strong><br><br>
+                    "ถอดเสียงไฟล์นี้แล้วแปลเป็นภาษาอังกฤษ"<br><br>
+                    "Listen to this audio and translate to English"<br><br>
+                    "ถอดเสียงเป็นทั้งภาษาไทยและแปลเป็นอังกฤษด้วย"
+                </div>
+
+                <div class="info-card">
+                    <h5>🌐 ตัวอย่างการใช้งานแปลภาษา</h5>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>สถานการณ์</th>
+                                <th>Input</th>
+                                <th>Output</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ถอดเทปประชุม</td>
+                                <td>ไฟล์เสียงประชุมภาษาไทย</td>
+                                <td>บันทึกข้อความภาษาไทย</td>
+                            </tr>
+                            <tr>
+                                <td>ทำ Subtitle</td>
+                                <td>วิดีโอพูดภาษาไทย</td>
+                                <td>ข้อความแบ่งตาม Timeline</td>
+                            </tr>
+                            <tr>
+                                <td>แปลสำหรับต่างชาติ</td>
+                                <td>ไฟล์เสียงภาษาไทย</td>
+                                <td>ข้อความภาษาอังกฤษ</td>
+                            </tr>
+                            <tr>
+                                <td>จดบันทึก</td>
+                                <td>เสียงบันทึกแนวคิด</td>
+                                <td>ข้อความพร้อมใช้งาน</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 6.5 ใช้ Whisper สร้าง Subtitle</h3>
+            <section>
+                <p>หนึ่งในการใช้งานที่ได้ประโยชน์มากคือการสร้าง Subtitle สำหรับวิดีโอ:</p>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>แยกเสียงจากวิดีโอ</strong> — ใช้ CapCut หรือเว็บ online-audio-converter.com
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>อัปโหลดเสียงไป ChatGPT</strong> — แนบไฟล์ MP3
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>สั่งถอดเสียงพร้อม Timestamp</strong> — "ถอดเสียงเป็นข้อความ พร้อมระบุเวลา (Timestamp) ทุก 5 วินาที"
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ได้ Subtitle</strong> — นำไปใส่ในวิดีโอด้วย CapCut หรือโปรแกรมตัดต่อ
+                </div>
+
+                <div class="prompt-example">
+                    <strong>📝 Prompt สำหรับสร้าง Subtitle:</strong><br><br>
+                    "ถอดเสียงไฟล์นี้เป็นรูปแบบ SRT subtitle ภาษาไทย โดยแบ่งบรรทัดละ 1-2 ประโยค พร้อม Timestamp"
+                </div>
+            </section>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 6: ถอดเสียงด้วย Whisper</h4>
+                <p><strong>เวลา:</strong> 45 นาที</p>
+                <hr>
+                <p><strong>กิจกรรมที่ 1: ถอดเสียงจากไมโครโฟน (15 นาที)</strong></p>
+                <ol>
+                    <li>เปิด ChatGPT บนมือถือ</li>
+                    <li>อัดเสียงตัวเอง 30 วินาที เล่าเรื่อง "หน้าที่ความรับผิดชอบในงาน"</li>
+                    <li>ส่งไฟล์เสียงไป ChatGPT</li>
+                    <li>สั่ง: "ถอดเสียงเป็นข้อความภาษาไทย ใส่วรรคตอน"</li>
+                    <li>ตรวจดูความแม่นยำ สังเกตจุดที่ผิดพลาด</li>
+                </ol>
+
+                <p><strong>กิจกรรมที่ 2: ถอดเทปและสรุป (15 นาที)</strong></p>
+                <ol>
+                    <li>อัดเสียง 2-3 คนพูดคุยกัน 1-2 นาที (จำลองประชุม)</li>
+                    <li>ส่งไฟล์ไป ChatGPT</li>
+                    <li>สั่ง: "ถอดเทปการประชุมนี้ แล้วสรุปเป็นหัวข้อสำคัญ"</li>
+                    <li>ดูว่า AI แยกผู้พูดได้หรือไม่</li>
+                    <li>ลองสั่ง: "จัดทำบันทึกการประชุมจากข้อมูลนี้"</li>
+                </ol>
+
+                <p><strong>กิจกรรมที่ 3: แปลภาษาจากเสียง (15 นาที)</strong></p>
+                <ol>
+                    <li>อัดเสียงพูดภาษาไทย 3-4 ประโยคเกี่ยวกับองค์กร</li>
+                    <li>ส่งไฟล์ไป ChatGPT</li>
+                    <li>สั่ง: "ถอดเสียงเป็นภาษาไทยแล้วแปลเป็นภาษาอังกฤษ"</li>
+                    <li>ตรวจสอบว่าแปลได้ถูกต้องหรือไม่</li>
+                    <li>ลองสั่ง: "ทำเป็นรูปแบบ 2 คอลัมน์ ไทย-อังกฤษ"</li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h5>💡 Tips</h5>
+                <ul class="mb-0">
+                    <li><strong>ไฟล์ใหญ่:</strong> แบ่งไฟล์ยาวเป็นช่วงละ 5-10 นาที จะถอดได้แม่นยำกว่า</li>
+                    <li><strong>ลด Noise:</strong> ใช้แอป "Noise Reduction" ลดเสียงรบกวนก่อนถอดเทป</li>
+                    <li><strong>บอก Context:</strong> บอก ChatGPT ว่า "นี่คือเสียงประชุมเรื่อง..." จะถอดชื่อเฉพาะได้ดีขึ้น</li>
+                    <li><strong>ตรวจทานเสมอ:</strong> AI อาจฟังผิดโดยเฉพาะชื่อคน ชื่อสถานที่ ตัวเลข</li>
+                    <li><strong>ใช้ร่วมกับ Gemini:</strong> ถ้า ChatGPT เต็ม Limit ให้ใช้ Gemini ถอดเทปแทนได้</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card">
+                <h4>📋 สรุปบทที่ 6</h4>
+                <ul>
+                    <li>OpenAI Whisper แปลงเสียงเป็นข้อความได้แม่นยำ รองรับภาษาไทย</li>
+                    <li>ใช้งานง่ายที่สุดผ่าน ChatGPT (อัปโหลดไฟล์เสียงหรือพูดผ่านไมค์)</li>
+                    <li>สามารถถอดเทปประชุม สร้าง Subtitle และแปลภาษาได้</li>
+                    <li>ผลลัพธ์ดีขึ้นถ้าเสียงชัด ไม่มี Noise และบอก Context</li>
+                    <li>ตรวจทานผลลัพธ์เสมอ โดยเฉพาะชื่อเฉพาะและตัวเลข</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-5 mb-4">
+                <a href="chapter05.html" class="btn btn-outline-secondary">← บทที่ 5</a>
+                <a href="chapter07.html" class="btn btn-primary">บทที่ 7 →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 7: AI กับจริยธรรมและความปลอดภัย — พื้นฐาน AI ทุกมิติ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 พื้นฐาน AI ทุกมิติ</a>
+        <span class="text-white nav-text">บทที่ 7</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 7</h1>
+            <h2 class="fw-normal text-muted">AI กับจริยธรรมและความปลอดภัย</h2>
+            <p class="lead">รู้เท่าทันข้อจำกัดของ AI ป้องกันความเสี่ยง และใช้งานอย่างรับผิดชอบ</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>รู้ว่าข้อมูลใดไม่ควรบอก AI และเหตุผล</li>
+                <li>ตรวจจับ Hallucination (ข้อมูลที่ AI แต่งขึ้น) ได้</li>
+                <li>เข้าใจ PDPA และแนวปฏิบัติการใช้ AI ในหน่วยงานภาครัฐ</li>
+            </ul>
+        </div>
+
+        <!-- 7.1 ข้อมูลที่ไม่ควรบอก AI -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">7.1 ข้อมูลที่ไม่ควรบอก AI</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>⚠️ กฎสำคัญ: AI ไม่ใช่ที่เก็บความลับ!</h5>
+                <p class="mb-0">ข้อมูลที่คุณพิมพ์ลงไปในแชท AI อาจถูกใช้ในการฝึก (training) ของ AI ในอนาคต — หมายความว่า <strong>ข้อมูลของคุณอาจรั่วไหลได้</strong> ถ้าเป็นข้อมูลที่ไม่ควรเปิดเผย อย่าบอก AI!</p>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th style="width:5%">#</th>
+                            <th style="width:20%">ข้อมูลที่ห้ามบอก</th>
+                            <th style="width:30%">เหตุผล</th>
+                            <th style="width:25%">ตัวอย่าง</th>
+                            <th style="width:20%">ทางเลือก</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>🔒 ข้อมูลลับราชการ</strong></td>
+                            <td>อาจรั่วไหลและผิดกฎหมายข้อมูลข่าวสารราชการ ตามมาตรา 15 พ.ร.บ.ข้อมูลข่าวสาร</td>
+                            <td>เอกสารลับ แผนความมั่นคง ข้อมูลการสืบสวน</td>
+                            <td>ใช้ข้อมูลจำลอง (dummy data) แทน</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>🪪 เลขบัตรประชาชน</strong></td>
+                            <td>เป็นข้อมูลส่วนบุคคลที่ระบุตัวตนได้ ผิด PDPA</td>
+                            <td>เลข 13 หลักของผู้ใช้บริการ/คนพิการ</td>
+                            <td>ใช้เลขสมมุติ เช่น "1-XXXX-XXXXX-XX-X"</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>🔑 รหัสผ่าน</strong></td>
+                            <td>AI ไม่จำเป็นต้องรู้ และอาจถูกบันทึกในระบบ</td>
+                            <td>รหัส email, ระบบงาน, Wi-Fi สำนักงาน</td>
+                            <td>ไม่ต้องบอก ถ้าต้องทดสอบใช้ "password123" จำลอง</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>🏥 ข้อมูลผู้ป่วย/คนพิการ</strong></td>
+                            <td>เป็นข้อมูลอ่อนไหว (Sensitive Data) ตาม PDPA มาตรา 26</td>
+                            <td>ประวัติการรักษา ประเภทความพิการ ชื่อจริง+อาการ</td>
+                            <td>ใช้ชื่อสมมุติ ไม่ระบุตัวตน</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><strong>💰 ข้อมูลการเงิน</strong></td>
+                            <td>อาจถูกใช้ในทางมิชอบ</td>
+                            <td>เลขบัญชีธนาคาร บัตรเครดิต เงินเดือนรายบุคคล</td>
+                            <td>ใช้ตัวเลขสมมุติ</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><strong>⚖️ ข้อมูลคดีความ</strong></td>
+                            <td>อาจกระทบสิทธิผู้เกี่ยวข้องและผิดจริยธรรม</td>
+                            <td>รายละเอียดคดี ชื่อผู้ต้องหา พยานหลักฐาน</td>
+                            <td>ถามเป็นหลักการทั่วไป ไม่ระบุรายละเอียดคดีจริง</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-warning mt-3">
+                <h6>💡 หลักง่ายๆ ในการตัดสินใจ:</h6>
+                <p class="mb-0"><strong>"ถ้าข้อมูลนี้ไปขึ้นหนังสือพิมพ์ คุณจะเดือดร้อนไหม?"</strong><br>
+                ถ้าคำตอบคือ "ใช่" → อย่าบอก AI!</p>
+            </div>
+        </section>
+
+        <!-- 7.2 Hallucination -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">7.2 Hallucination คืออะไร วิธีตรวจสอบ</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🤥 Hallucination = AI แต่งเรื่อง!</h5>
+                <p><strong>Hallucination</strong> คือปรากฏการณ์ที่ AI สร้างข้อมูลเท็จ แต่พูดอย่างมั่นใจเหมือนจริง</p>
+                <p class="mb-0">เหมือน "คนที่จำผิด แต่พูดอย่างมั่นใจมาก" — ถ้าไม่ตรวจสอบ อาจเชื่อผิดๆ ได้</p>
+            </div>
+
+            <div class="alert alert-danger">
+                <h6>🚨 ตัวอย่างที่ AI มักแต่งขึ้น (ระวังเป็นพิเศษ!):</h6>
+                <ul class="mb-0">
+                    <li><strong>อ้างกฎหมาย</strong> — บอกมาตราผิด หรืออ้างกฎหมายที่ไม่มีจริง</li>
+                    <li><strong>อ้างงานวิจัย</strong> — แต่งชื่อผู้วิจัย ชื่อวารสาร ปีที่ตีพิมพ์ผิด</li>
+                    <li><strong>อ้างสถิติ</strong> — บอกตัวเลขที่ดูน่าเชื่อ แต่ไม่มีแหล่งข้อมูลจริง</li>
+                    <li><strong>อ้างเหตุการณ์</strong> — เล่าเรื่องที่ไม่เคยเกิดขึ้น</li>
+                    <li><strong>อ้างบุคคล</strong> — บอกว่า "ผู้เชี่ยวชาญกล่าวว่า..." ทั้งที่ไม่เคยกล่าว</li>
+                </ul>
+            </div>
+
+            <h5 class="mt-4 mb-3">🔍 5 วิธีตรวจจับ Hallucination</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th style="width:5%">#</th>
+                            <th style="width:20%">วิธี</th>
+                            <th style="width:40%">วิธีทำ</th>
+                            <th style="width:35%">ตัวอย่าง</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>🔎 ตรวจกับแหล่งจริง</strong></td>
+                            <td>เอาข้อมูลที่ AI ให้ ไปค้นในแหล่งข้อมูลต้นฉบับ (ราชกิจจาฯ, เว็บหน่วยงาน)</td>
+                            <td>AI บอก "พ.ร.บ.คนพิการ มาตรา 20 ว่าด้วย..." → ไปเปิดตัวบทจริงดู</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>❓ ถาม AI ซ้ำ</strong></td>
+                            <td>ถามคำถามเดิมซ้ำ ถ้าคำตอบเปลี่ยนไปเรื่อย = น่าจะแต่ง</td>
+                            <td>ถาม "มาตราไหนของ PDPA พูดเรื่องข้อมูลสุขภาพ" 2-3 ครั้ง</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>🤔 สังเกตความเฉพาะเจาะจง</strong></td>
+                            <td>ถ้า AI ให้ข้อมูลเฉพาะมาก (ตัวเลข วันที่ ชื่อคน) โดยไม่ได้อ้างแหล่ง = ระวัง</td>
+                            <td>"มีคนพิการในสุรินทร์ 12,847 คน (ข้อมูล มี.ค. 2569)" → ตรวจกับ DEP</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>🔄 ใช้ AI ตัวอื่นตรวจ</strong></td>
+                            <td>ถาม AI อีกตัวหนึ่ง ถ้าตอบตรงกัน = น่าเชื่อถือมากขึ้น</td>
+                            <td>ChatGPT บอกว่า "..." → ถาม Claude/Gemini ยืนยัน</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><strong>📋 ขอแหล่งอ้างอิง</strong></td>
+                            <td>บอก AI ว่า "ช่วยใส่แหล่งอ้างอิงด้วย" แล้วไปตรวจว่าแหล่งนั้นมีจริงไหม</td>
+                            <td>AI อ้าง "รายงานประจำปี กรมส่งเสริมฯ 2567 หน้า 45" → ไปหาดู</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 7.3 Deepfake -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">7.3 Deepfake และการใช้งานที่ผิดกฎหมาย</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🎭 Deepfake คืออะไร?</h5>
+                <p><strong>Deepfake</strong> = เทคโนโลยี AI ที่สร้างภาพ เสียง หรือวิดีโอปลอม ที่ดูเหมือนจริงมาก</p>
+                <p class="mb-0">เช่น สร้างคลิปวิดีโอที่ใบหน้าและเสียงเหมือนคนจริง แต่เป็นของปลอมทั้งหมด</p>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-success">
+                        <div class="card-header bg-success text-white"><strong>✅ การใช้ที่ถูกกฎหมาย</strong></div>
+                        <div class="card-body">
+                            <ul class="mb-0">
+                                <li>สร้าง Avatar สำหรับนำเสนองาน</li>
+                                <li>ทำสื่อการสอน (ระบุว่าเป็น AI)</li>
+                                <li>ดัดแปลงหน้าตนเองเพื่อความบันเทิง</li>
+                                <li>ใช้ในงานศิลปะ/ภาพยนตร์ (มีอนุญาต)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-danger">
+                        <div class="card-header bg-danger text-white"><strong>❌ การใช้ที่ผิดกฎหมาย</strong></div>
+                        <div class="card-body">
+                            <ul class="mb-0">
+                                <li>สร้างข่าวปลอม (Fake News) — ผิด พ.ร.บ.คอมพิวเตอร์ มาตรา 14</li>
+                                <li>แอบอ้างเป็นบุคคลอื่น — ผิดกฎหมายอาญา มาตรา 341 (ฉ้อโกง)</li>
+                                <li>สร้างคลิปลามก — ผิด พ.ร.บ.คอมพิวเตอร์ + อาญา</li>
+                                <li>หลอกโอนเงิน — ผิดกฎหมายฉ้อโกง</li>
+                                <li>ทำลายชื่อเสียง — ผิดกฎหมายหมิ่นประมาท</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning">
+                <h6>⚖️ กฎหมายที่เกี่ยวข้อง:</h6>
+                <ul class="mb-0">
+                    <li><strong>พ.ร.บ.คอมพิวเตอร์ พ.ศ. 2560</strong> มาตรา 14 — นำเข้าข้อมูลเท็จ โทษจำคุก 5 ปี ปรับ 100,000 บาท</li>
+                    <li><strong>ประมวลกฎหมายอาญา</strong> มาตรา 341 — ฉ้อโกง โทษจำคุก 3 ปี ปรับ 60,000 บาท</li>
+                    <li><strong>ประมวลกฎหมายอาญา</strong> มาตรา 326-328 — หมิ่นประมาท โทษจำคุก 1-2 ปี</li>
+                    <li><strong>พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล (PDPA)</strong> — ใช้ภาพ/เสียงบุคคลโดยไม่ได้รับอนุญาต</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 7.4 ลิขสิทธิ์ของงานที่ AI สร้าง -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">7.4 ลิขสิทธิ์ของงานที่ AI สร้าง</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>❓ ใครเป็นเจ้าของงานที่ AI สร้าง?</h5>
+                <p>คำตอบ: <strong>ยังไม่มีกฎหมายไทยฉบับใดกำหนดชัดเจน</strong> — แต่มีแนวทางปฏิบัติ:</p>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-dark text-white"><strong>📜 สถานะปัจจุบัน (2569)</strong></div>
+                        <div class="card-body">
+                            <ul>
+                                <li>พ.ร.บ.ลิขสิทธิ์ไทย กำหนดว่าเจ้าของลิขสิทธิ์ต้องเป็น <strong>"บุคคล"</strong></li>
+                                <li>AI ไม่ใช่บุคคลธรรมชาติ → <strong>งานที่ AI สร้าง 100% อาจไม่ได้รับความคุ้มครอง</strong></li>
+                                <li>แต่ถ้ามนุษย์มีส่วนร่วมอย่างมาก (ออกแบบ Prompt, แก้ไข, ปรับปรุง) → <strong>อาจได้รับความคุ้มครอง</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-dark text-white"><strong>📋 แนวปฏิบัติที่แนะนำ</strong></div>
+                        <div class="card-body">
+                            <ul>
+                                <li>✅ ใช้ผลงาน AI เป็น "ร่างแรก" แล้วแก้ไขเพิ่มเติมด้วยตนเอง</li>
+                                <li>✅ ระบุว่า "จัดทำโดยมี AI ช่วยเหลือ" (ถ้าจำเป็น)</li>
+                                <li>✅ เก็บหลักฐานว่าคุณมีส่วนร่วมในการสร้างผลงาน</li>
+                                <li>❌ อย่าอ้างว่าเป็นผลงานตนเอง 100% ถ้า AI สร้างทั้งหมด</li>
+                                <li>❌ อย่านำภาพ AI ไปจดทะเบียนลิขสิทธิ์โดยไม่แก้ไข</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7.5 PDPA กับการใช้ AI -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">7.5 PDPA กับการใช้ AI</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🛡️ PDPA คืออะไร?</h5>
+                <p><strong>PDPA = Personal Data Protection Act (พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562)</strong></p>
+                <p class="mb-0">กฎหมายที่คุ้มครองข้อมูลส่วนบุคคลของประชาชน — หน่วยงานที่เก็บ/ใช้/เปิดเผยข้อมูลต้องปฏิบัติตาม</p>
+            </div>
+
+            <h5>สาระสำคัญของ PDPA ที่เกี่ยวกับการใช้ AI:</h5>
+            <ul class="mb-4">
+                <li><strong>ต้องได้รับความยินยอม</strong> ก่อนนำข้อมูลส่วนบุคคลไปใช้</li>
+                <li><strong>ข้อมูลอ่อนไหว</strong> (สุขภาพ ความพิการ ศาสนา เชื้อชาติ) — ต้องขอยินยอมเป็นหนังสือ</li>
+                <li><strong>ต้องใช้ข้อมูลตามวัตถุประสงค์</strong> ที่แจ้งไว้เท่านั้น</li>
+                <li><strong>เจ้าของข้อมูลมีสิทธิ</strong> ขอลบ ขอแก้ไข ขอระงับการใช้ได้</li>
+            </ul>
+
+            <h5>Do's & Don'ts — การใช้ AI กับข้อมูลส่วนบุคคล</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th style="width:5%">#</th>
+                            <th style="width:45%">✅ Do's (ทำได้)</th>
+                            <th style="width:45%">❌ Don'ts (ห้ามทำ)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>ใช้ข้อมูลสมมุติ/ข้อมูลที่ลบชื่อแล้ว ในการทดลองกับ AI</td>
+                            <td>นำข้อมูลจริงของผู้ใช้บริการไปใส่ใน AI โดยไม่ได้รับอนุญาต</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>แจ้งผู้ใช้บริการว่าจะใช้ AI ช่วยในการให้บริการ</td>
+                            <td>ใช้ AI วิเคราะห์ข้อมูลคนพิการโดยไม่แจ้งให้ทราบ</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>เก็บ Prompt/Log ไว้ในระบบภายในหน่วยงานเท่านั้น</td>
+                            <td>แชร์ผลลัพธ์ที่มีข้อมูลส่วนบุคคลในโซเชียลมีเดีย</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>ใช้ AI เวอร์ชันองค์กร (Enterprise) ที่ไม่ใช้ข้อมูลฝึกสอน</td>
+                            <td>ใช้ AI เวอร์ชันฟรีกับข้อมูลลับหน่วยงาน</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>ตรวจสอบผลลัพธ์จาก AI ก่อนนำไปใช้จริง</td>
+                            <td>ส่งผลลัพธ์จาก AI ไปให้ผู้ใช้บริการโดยไม่ตรวจสอบ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 7.6 แนวปฏิบัติการใช้ AI ในองค์กรภาครัฐ -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">7.6 แนวปฏิบัติการใช้ AI ในองค์กรภาครัฐ</h3>
+
+            <p>8 ข้อปฏิบัติที่ทุกคนในองค์กรควรทำตาม:</p>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="info-card p-3 bg-light rounded h-100">
+                        <h6>1. 🔐 แยกข้อมูลก่อนใช้ AI</h6>
+                        <p class="mb-0">ลบชื่อ เลขบัตร เบอร์โทร ที่อยู่ ออกก่อนส่งให้ AI — ใช้ข้อมูลที่ไม่ระบุตัวตน (de-identified)</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="info-card p-3 bg-light rounded h-100">
+                        <h6>2. ✅ ตรวจสอบทุกผลลัพธ์</h6>
+                        <p class="mb-0">อย่าเชื่อ AI 100% — ตรวจทุกครั้งก่อนนำไปใช้ โดยเฉพาะข้อมูลตัวเลข กฎหมาย วันที่</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="info-card p-3 bg-light rounded h-100">
+                        <h6>3. 📝 บันทึกการใช้งาน</h6>
+                        <p class="mb-0">จดบันทึกว่าใช้ AI ทำอะไร เมื่อไหร่ ได้ผลลัพธ์อะไร — เพื่อตรวจสอบย้อนหลังได้</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="info-card p-3 bg-light rounded h-100">
+                        <h6>4. 🏷️ ระบุว่าใช้ AI ช่วย</h6>
+                        <p class="mb-0">ถ้าเอกสารมี AI ช่วยสร้าง ควรระบุไว้ (เช่น "จัดทำโดยมี AI ช่วยร่าง") — เพื่อความโปร่งใส</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="info-card p-3 bg-light rounded h-100">
+                        <h6>5. 🚫 ห้ามใช้ตัดสินใจแทนมนุษย์</h6>
+                        <p class="mb-0">AI ช่วย "เสนอ" ได้ แต่การตัดสินใจสุดท้าย (อนุมัติ/ปฏิเสธ) ต้องเป็นมนุษย์เสมอ</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="info-card p-3 bg-light rounded h-100">
+                        <h6>6. 🔄 อัปเดตความรู้สม่ำเสมอ</h6>
+                        <p class="mb-0">เทคโนโลยี AI เปลี่ยนเร็ว — ติดตามข่าวสารและแนวปฏิบัติใหม่ๆ อย่างน้อยเดือนละครั้ง</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="info-card p-3 bg-light rounded h-100">
+                        <h6>7. 👥 แบ่งปันความรู้ในทีม</h6>
+                        <p class="mb-0">ถ้าเจอเทคนิคดีๆ หรือข้อผิดพลาด ควรบอกเพื่อนร่วมงาน — เรียนรู้ร่วมกัน</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="info-card p-3 bg-light rounded h-100">
+                        <h6>8. 🎯 ใช้ AI เป็น "ผู้ช่วย" ไม่ใช่ "ผู้ทำแทน"</h6>
+                        <p class="mb-0">AI ช่วยให้เร็วขึ้น ดีขึ้น — แต่ความรับผิดชอบยังเป็นของเราเสมอ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lab -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3 mt-5">🔬 Lab ปฏิบัติ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 7.1 — ตรวจจับ Hallucination</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>ถาม AI เรื่องกฎหมาย 3 ข้อ ต่อไปนี้:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-primary mt-2">
+                        <p><strong>คำถามที่ 1:</strong> <code>"พ.ร.บ.ส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ พ.ศ. 2550 มาตรา 20 กำหนดสิทธิอะไรบ้าง?"</code></p>
+                        <p><strong>คำถามที่ 2:</strong> <code>"PDPA กำหนดโทษสูงสุดเท่าไหร่ สำหรับการเปิดเผยข้อมูลอ่อนไหวโดยไม่ได้รับอนุญาต?"</code></p>
+                        <p class="mb-0"><strong>คำถามที่ 3:</strong> <code>"ระเบียบสำนักนายกรัฐมนตรีว่าด้วยการใช้ AI ในภาครัฐ มีเนื้อหาอะไรบ้าง?"</code></p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ตรวจสอบคำตอบกับแหล่งข้อมูลจริง:</strong>
+                    <ul class="mt-2">
+                        <li>ข้อ 1: เปิด พ.ร.บ.คนพิการ ตัวจริงจากราชกิจจานุเบกษา</li>
+                        <li>ข้อ 2: ตรวจจากเว็บไซต์สำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล</li>
+                        <li>ข้อ 3: ค้นหาว่าระเบียบนี้มีจริงหรือไม่</li>
+                    </ul>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>บันทึกผลการตรวจสอบ:</strong>
+                    <table class="table table-bordered table-sm mt-2">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>คำถาม</th>
+                                <th>AI ตอบว่าอะไร</th>
+                                <th>ข้อมูลจริง</th>
+                                <th>ถูก/ผิด/แต่ง</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ข้อ 1</td><td></td><td></td><td></td></tr>
+                            <tr><td>ข้อ 2</td><td></td><td></td><td></td></tr>
+                            <tr><td>ข้อ 3</td><td></td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 7.2 — นับ Hallucination</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>จากผลการตรวจสอบใน Lab 7.1 — บันทึกว่าพบ Hallucination กี่ข้อ:</strong>
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-warning mt-2">
+                        <p class="mb-0">
+                        จำนวน Hallucination ที่พบ: _____ ข้อ จาก 3 ข้อ<br><br>
+                        ประเภท Hallucination ที่พบ:<br>
+                        □ อ้างมาตราผิด<br>
+                        □ อ้างกฎหมายที่ไม่มีจริง<br>
+                        □ ตัวเลขผิด<br>
+                        □ แต่งรายละเอียดเพิ่ม<br>
+                        □ อื่นๆ: _______________
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>สรุปบทเรียน:</strong> อะไรที่ควรระวังเป็นพิเศษเมื่อถาม AI เรื่องกฎหมาย?
+                    <div class="prompt-example bg-white p-3 rounded border-start border-4 border-warning mt-2">
+                        <p class="mb-0">บทเรียนที่ได้: _______________</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับบทนี้</h5>
+            <ul class="mb-0">
+                <li><strong>ข้อมูลที่ลงใน AI อาจไม่กลับมาเป็นส่วนตัวอีก</strong> — คิดก่อนพิมพ์ทุกครั้ง</li>
+                <li><strong>AI ตอบมั่นใจ ≠ AI ตอบถูก</strong> — ต้องตรวจสอบเสมอ โดยเฉพาะข้อมูลกฎหมายและตัวเลข</li>
+                <li><strong>ใช้ข้อมูลสมมุติเมื่อทดลอง</strong> — ป้องกันความเสี่ยง PDPA</li>
+                <li><strong>ระเบียบ AI ภาครัฐยังอยู่ระหว่างพัฒนา</strong> — ติดตามแนวปฏิบัติจาก DGA และ สพร.</li>
+                <li><strong>ถ้าไม่แน่ใจว่าข้อมูลไหนบอก AI ได้</strong> → อย่าบอก! ปลอดภัยไว้ก่อน</li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปท้ายบท</h5>
+            <ul>
+                <li><strong>6 ข้อมูลห้ามบอก AI:</strong> ข้อมูลลับราชการ, เลขบัตร, รหัสผ่าน, ข้อมูลผู้ป่วย, การเงิน, คดีความ</li>
+                <li><strong>Hallucination</strong> = AI แต่งเรื่อง — ต้องตรวจสอบทุกครั้ง โดยเฉพาะกฎหมาย/ตัวเลข/ชื่อ</li>
+                <li><strong>Deepfake</strong> ผิดกฎหมายถ้าใช้หลอกลวง สร้างข่าวปลอม หรือทำลายชื่อเสียงผู้อื่น</li>
+                <li><strong>ลิขสิทธิ์งาน AI:</strong> ยังไม่ชัดเจน แต่ควรมีส่วนร่วมในการสร้าง/แก้ไขผลงาน</li>
+                <li><strong>PDPA:</strong> ใช้ข้อมูลสมมุติ แจ้งผู้ใช้บริการ ไม่แชร์ข้อมูลส่วนบุคคลผ่าน AI</li>
+                <li><strong>8 แนวปฏิบัติ:</strong> แยกข้อมูล ตรวจสอบ บันทึก ระบุ AI ไม่ตัดสินใจแทน อัปเดต แบ่งปัน ใช้เป็นผู้ช่วย</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="chapter06.html" class="btn btn-outline-dark">← บทที่ 6</a>
+            <a href="chapter08.html" class="btn btn-dark">บทที่ 8 →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

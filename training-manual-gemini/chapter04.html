@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 4: Gemini สำหรับงานสร้างสรรค์ — คู่มือ Gemini AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark sticky-top" style="background: linear-gradient(135deg, #4285f4, #34a853);">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 คู่มือ Gemini AI</a>
+        <span class="navbar-text text-white-50">บทที่ 4 | วันที่ 2 บ่าย</span>
+    </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">หน้าหลัก</a></li>
+            <li class="breadcrumb-item active">บทที่ 4: Gemini สำหรับงานสร้างสรรค์</li>
+        </ol>
+    </nav>
+</div>
+
+<!-- Chapter Header -->
+<section class="py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="fw-bold text-google-blue">บทที่ 4: Gemini สำหรับงานสร้างสรรค์</h1>
+                <p class="lead text-muted">เขียนเนื้อหา, สร้าง Presentation, แบบประเมิน, NotebookLM และความปลอดภัย</p>
+            </div>
+            <div class="col-md-4 text-end">
+                <span class="badge-day me-2">วันที่ 2 บ่าย</span>
+                <span class="badge-hours">3 ชั่วโมง</span>
+            </div>
+        </div>
+        <hr>
+    </div>
+</section>
+
+<!-- สารบัญ -->
+<section class="pb-4">
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-google-blue text-white">
+                <h5 class="mb-0"><i class="fas fa-list me-2"></i>เนื้อหาในบทนี้</h5>
+            </div>
+            <div class="card-body">
+                <ul class="toc-list">
+                    <li><a href="#section-4-1">4.1 เขียนเนื้อหา — บทความ, โพสต์ Facebook, ข่าว PR</a></li>
+                    <li><a href="#section-4-2">4.2 สร้าง Presentation + วางแผนโครงการ</a></li>
+                    <li><a href="#section-4-3">4.3 สร้างแบบสอบถาม/แบบประเมิน + Pre-Post Test</a></li>
+                    <li><a href="#section-4-4">4.4 NotebookLM — สรุปเอกสาร, Podcast AI, FAQ</a></li>
+                    <li><a href="#section-4-5">4.5 ความปลอดภัย — ข้อมูลที่ห้ามใส่ + ข้อจำกัด</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 4.1 -->
+<section class="py-4" id="section-4-1">
+    <div class="container">
+        <h2 class="section-header">4.1 เขียนเนื้อหา — บทความ, โพสต์ Facebook, ข่าว PR</h2>
+
+        <p>Gemini เป็นผู้ช่วยเขียนเนื้อหาที่ดีเยี่ยม สามารถสร้างเนื้อหาหลากหลายรูปแบบสำหรับงานราชการ:</p>
+
+        <h4 class="mt-4 mb-3">📰 เขียนข่าว PR / Press Release</h4>
+        <div class="prompt-example">
+            เขียนข่าว PR สำหรับเว็บไซต์หน่วยงาน:<br><br>
+            เรื่อง: สนพ.สุรินทร์ จัดฝึกอบรม "AI สำหรับข้าราชการ" รุ่นที่ 1<br>
+            รายละเอียด:<br>
+            - จัดวันที่ 1-5 ก.ค. 2569<br>
+            - ผู้เข้าอบรม 100 คน จากหน่วยงานราชการในจังหวัดสุรินทร์<br>
+            - วิทยากร: นายปัญญา ผาธรรม<br>
+            - สถานที่: ห้องประชุมชั้น 3 สนพ.สุรินทร์<br>
+            - ฟรี ไม่เสียค่าใช้จ่าย<br><br>
+            เขียนให้:<br>
+            - ยาว 3-4 ย่อหน้า<br>
+            - มีคำพูดผู้อำนวยการ (quote)<br>
+            - ท้ายข่าวมีข้อมูลติดต่อ<br>
+            - ภาษาทางการแต่อ่านง่าย
+        </div>
+
+        <div class="output-example">
+            <p><strong>สนพ.สุรินทร์ เปิดอบรม "AI สำหรับข้าราชการ" ยกระดับทักษะดิจิทัลบุคลากรภาครัฐ</strong></p>
+            <p>สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ จัดฝึกอบรมหลักสูตร "การใช้ Gemini AI สำหรับงานราชการ" รุ่นที่ 1 ระหว่างวันที่ 1-5 กรกฎาคม 2569 ณ ห้องประชุมชั้น 3 โดยมีข้าราชการและเจ้าหน้าที่ภาครัฐจากหน่วยงานต่างๆ ในจังหวัดสุรินทร์ เข้าร่วม 100 คน...</p>
+            <p class="small text-muted">(ตัวอย่างย่อ — Gemini จะเขียนเต็มรูปแบบ)</p>
+        </div>
+
+        <h4 class="mt-5 mb-3">📱 เขียนโพสต์ Facebook</h4>
+        <div class="prompt-example">
+            เขียนโพสต์ Facebook ประชาสัมพันธ์กิจกรรม:<br><br>
+            - กิจกรรม: วันเปิดฝึกอบรม AI ข้าราชการ<br>
+            - บรรยากาศ: คึกคัก, ผู้เข้าอบรมตื่นเต้น, เรียนรู้ AI ครั้งแรก<br>
+            - เป้าหมาย: แชร์ข่าว + กระตุ้นให้คนอื่นสนใจรุ่นถัดไป<br><br>
+            สไตล์:<br>
+            - น่าสนใจ กระชับ<br>
+            - ใช้ emoji พอเหมาะ (ไม่เยอะเกินไป)<br>
+            - มี hashtag 5-7 อัน<br>
+            - มี call-to-action (กดติดตาม/สมัครรุ่นถัดไป)
+        </div>
+
+        <div class="output-example">
+            <p>🎉 เปิดการฝึกอบรมแล้ว!</p>
+            <p>วันนี้ สนพ.สุรินทร์ เปิดหลักสูตร "AI สำหรับข้าราชการ" รุ่นที่ 1 อย่างเป็นทางการ 🤖✨</p>
+            <p>ผู้เข้าอบรม 100 คน จากหน่วยงานราชการทั่วจังหวัดสุรินทร์ มาเรียนรู้การใช้ Gemini AI ช่วยทำงานราชการ...</p>
+            <p>📌 สนใจสมัครรุ่นถัดไป ติดต่อ 088-377-8987</p>
+            <p>#AIสำหรับราชการ #GeminiAI #สนพสุรินทร์ #DigitalSkills #พัฒนาฝีมือแรงงาน #UpskillReskill #AI2569</p>
+        </div>
+
+        <h4 class="mt-5 mb-3">📝 เขียนบทความ</h4>
+        <div class="prompt-example">
+            เขียนบทความสำหรับเว็บไซต์หน่วยงาน:<br><br>
+            หัวข้อ: "5 เหตุผลที่ข้าราชการควรเรียนรู้ AI ในปี 2569"<br><br>
+            - ยาว 800-1000 คำ<br>
+            - มี intro น่าสนใจ<br>
+            - เนื้อหา 5 ข้อ พร้อมอธิบาย<br>
+            - มีตัวอย่างประกอบ<br>
+            - สรุปท้ายบทความ<br>
+            - ภาษากึ่งทางการ อ่านง่าย
+        </div>
+    </div>
+</section>
+
+<!-- Section 4.2 -->
+<section class="py-4 bg-light" id="section-4-2">
+    <div class="container">
+        <h2 class="section-header">4.2 สร้าง Presentation + วางแผนโครงการ</h2>
+
+        <h4 class="mb-3">📊 สร้างโครงร่าง Presentation</h4>
+        <div class="prompt-example">
+            สร้างโครงร่าง PowerPoint สำหรับบรรยายเรื่อง "การใช้ AI สำหรับงานราชการ"<br><br>
+            - จำนวน: 15-20 สไลด์<br>
+            - เวลาบรรยาย: 3 ชั่วโมง<br>
+            - กลุ่มเป้าหมาย: ข้าราชการอายุ 30-50 ปี (มีพื้นฐานคอมฯ ปานกลาง)<br><br>
+            แต่ละสไลด์ให้มี:<br>
+            - หัวข้อ<br>
+            - เนื้อหาหลัก (bullet points 3-5 ข้อ)<br>
+            - หมายเหตุสำหรับผู้บรรยาย (speaker notes)<br>
+            - แนะนำรูปภาพ/กราฟที่ควรใส่
+        </div>
+
+        <div class="output-example">
+            <p><strong>โครงร่าง Presentation: การใช้ AI สำหรับงานราชการ</strong></p>
+            <p><strong>สไลด์ 1:</strong> หน้าปก — ชื่อหลักสูตร, วิทยากร, วันที่</p>
+            <p><strong>สไลด์ 2:</strong> AI คืออะไร? — นิยาม, ตัวอย่างในชีวิตประจำวัน</p>
+            <p><strong>สไลด์ 3:</strong> ทำไมข้าราชการต้องรู้? — 5 เหตุผล</p>
+            <p><strong>สไลด์ 4:</strong> เครื่องมือ AI ที่ใช้ได้ฟรี — ตาราง</p>
+            <p class="small text-muted">... (ต่อจนครบ 15-20 สไลด์)</p>
+        </div>
+
+        <h4 class="mt-5 mb-3">📋 วางแผนโครงการ</h4>
+        <div class="prompt-example">
+            ช่วยวางแผนโครงการฝึกอบรม:<br><br>
+            ชื่อโครงการ: พัฒนาทักษะดิจิทัลด้วย AI สำหรับข้าราชการ<br>
+            หน่วยงาน: สำนักงานพัฒนาฝีมือแรงงานสุรินทร์<br>
+            ปีงบประมาณ: 2569<br>
+            งบประมาณ: 200,000 บาท<br>
+            เป้าหมาย: อบรม 100 คน<br><br>
+            สร้าง:<br>
+            1. หลักการและเหตุผล (3 ย่อหน้า อ้างยุทธศาสตร์ชาติ)<br>
+            2. วัตถุประสงค์ (3-5 ข้อ, SMART)<br>
+            3. กลุ่มเป้าหมาย<br>
+            4. ระยะเวลา + Timeline (Gantt Chart)<br>
+            5. งบประมาณ (แยกรายการ)<br>
+            6. ตัวชี้วัดความสำเร็จ (KPI)<br>
+            7. ผลที่คาดว่าจะได้รับ
+        </div>
+
+        <div class="tip-box mt-3">
+            <strong><i class="fas fa-lightbulb me-2"></i>เคล็ดลับ:</strong> หลังได้โครงร่าง สามารถถามต่อได้ เช่น "ขยายหมวดงบประมาณให้ละเอียดตามระเบียบกระทรวงการคลัง" หรือ "เพิ่มหลักการอ้างยุทธศาสตร์ชาติ 20 ปี"
+        </div>
+    </div>
+</section>
+
+<!-- Section 4.3 -->
+<section class="py-4" id="section-4-3">
+    <div class="container">
+        <h2 class="section-header">4.3 สร้างแบบสอบถาม/แบบประเมิน + Pre-Post Test</h2>
+
+        <h4 class="mb-3">📝 แบบประเมินความพึงพอใจ</h4>
+        <div class="prompt-example">
+            สร้างแบบประเมินความพึงพอใจการฝึกอบรม:<br><br>
+            หลักสูตร: "การใช้ AI สำหรับงานราชการ"<br>
+            รูปแบบ: Likert Scale 5 ระดับ (มากที่สุด-น้อยที่สุด)<br><br>
+            หมวด:<br>
+            1. ด้านเนื้อหา (5 ข้อ)<br>
+            2. ด้านวิทยากร (5 ข้อ)<br>
+            3. ด้านสถานที่/สิ่งอำนวยความสะดวก (3 ข้อ)<br>
+            4. ด้านการนำไปใช้ประโยชน์ (4 ข้อ)<br>
+            5. ข้อเสนอแนะ (ปลายเปิด 2 ข้อ)<br><br>
+            เขียนให้เป็นทางการ เหมาะกับแบบประเมินราชการ
+        </div>
+
+        <div class="output-example">
+            <p><strong>แบบประเมินความพึงพอใจการฝึกอบรม</strong></p>
+            <p><strong>ตอนที่ 1: ด้านเนื้อหาหลักสูตร</strong></p>
+            <table class="table table-sm table-bordered">
+                <thead>
+                    <tr>
+                        <th>ข้อ</th>
+                        <th>รายการประเมิน</th>
+                        <th>5</th><th>4</th><th>3</th><th>2</th><th>1</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>เนื้อหาครอบคลุมตรงตามวัตถุประสงค์</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>2</td><td>เนื้อหามีความทันสมัย เหมาะกับยุคปัจจุบัน</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>3</td><td>ลำดับเนื้อหาเหมาะสม เข้าใจง่าย</td><td></td><td></td><td></td><td></td><td></td></tr>
+                </tbody>
+            </table>
+            <p class="small text-muted">(ตัวอย่างย่อ — Gemini จะสร้างครบทุกหมวด)</p>
+        </div>
+
+        <h4 class="mt-5 mb-3">📝 Pre-Post Test</h4>
+        <div class="prompt-example">
+            สร้างแบบทดสอบ Pre-Post Test:<br><br>
+            หลักสูตร: "การใช้ Gemini AI สำหรับงานราชการ"<br>
+            จำนวน: 20 ข้อ (ปรนัย 4 ตัวเลือก)<br>
+            ระดับ: ง่าย 40%, ปานกลาง 40%, ยาก 20%<br><br>
+            เนื้อหาครอบคลุม:<br>
+            - ความรู้ทั่วไปเรื่อง AI (5 ข้อ)<br>
+            - การใช้ Gemini เบื้องต้น (5 ข้อ)<br>
+            - เทคนิค Prompt (5 ข้อ)<br>
+            - การประยุกต์ใช้ในงานราชการ (5 ข้อ)<br><br>
+            ให้เฉลยพร้อมอธิบายเหตุผลด้วย
+        </div>
+
+        <div class="output-example">
+            <p><strong>ข้อที่ 1 (ง่าย):</strong> Gemini AI พัฒนาโดยบริษัทใด?</p>
+            <p>ก. Microsoft &nbsp; ข. Google &nbsp; ค. Meta &nbsp; ง. OpenAI</p>
+            <p class="text-success small"><strong>เฉลย: ข.</strong> Gemini พัฒนาโดย Google (Google DeepMind)</p>
+            <hr>
+            <p><strong>ข้อที่ 2 (ปานกลาง):</strong> ข้อใดเป็นจุดเด่นของ Gemini ที่แตกต่างจาก AI ตัวอื่น?</p>
+            <p>ก. ใช้ได้ฟรีเท่านั้น &nbsp; ข. ค้นเว็บ Google ได้โดยตรง &nbsp; ค. ต้องใช้ผ่าน API เท่านั้น &nbsp; ง. รองรับเฉพาะภาษาอังกฤษ</p>
+            <p class="text-success small"><strong>เฉลย: ข.</strong> Gemini สามารถค้นข้อมูลจาก Google Search ได้โดยตรง ข้อมูลจึงอัพเดทอยู่เสมอ</p>
+        </div>
+    </div>
+</section>
+
+<!-- Section 4.4 -->
+<section class="py-4 bg-light" id="section-4-4">
+    <div class="container">
+        <h2 class="section-header">4.4 NotebookLM — สรุปเอกสาร, Podcast AI, FAQ</h2>
+
+        <p><strong>NotebookLM</strong> (notebooklm.google.com) เป็นเครื่องมือ AI ของ Google ที่ออกแบบมาเพื่อ "ทำงานกับเอกสาร" โดยเฉพาะ — อัปโหลดเอกสารหลายชิ้น แล้วถามคำถาม สรุป หรือสร้าง Podcast AI ได้!</p>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-3">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-book fa-2x text-google-blue mb-2"></i>
+                        <h6>อัปโหลดเอกสาร</h6>
+                        <p class="small text-muted mb-0">PDF, Docs, Slides, เว็บไซต์, YouTube</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-comments fa-2x text-google-green mb-2"></i>
+                        <h6>ถาม-ตอบ</h6>
+                        <p class="small text-muted mb-0">ถามคำถามจากเอกสาร พร้อมอ้างอิง</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-podcast fa-2x text-google-yellow mb-2"></i>
+                        <h6>สร้าง Podcast AI</h6>
+                        <p class="small text-muted mb-0">สร้างพอดแคสต์จากเอกสาร (Audio Overview)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-file-alt fa-2x text-google-red mb-2"></i>
+                        <h6>สร้าง FAQ/สรุป</h6>
+                        <p class="small text-muted mb-0">สร้าง FAQ, Timeline, Study Guide</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4 mb-3">วิธีใช้ NotebookLM</h4>
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>ไปที่ notebooklm.google.com</strong><br>
+                ลงชื่อเข้าใช้ด้วย Google Account (ใช้ได้ฟรี!)
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>สร้าง Notebook ใหม่</strong><br>
+                คลิก "New notebook" ตั้งชื่อตามเรื่องที่ต้องการศึกษา
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>เพิ่ม Sources (แหล่งข้อมูล)</strong><br>
+                อัปโหลด: PDF, Google Docs, Google Slides, Paste text, Website URL, YouTube video<br>
+                สามารถเพิ่มได้สูงสุด 50 sources!
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>ใช้งาน:</strong><br>
+                - <strong>Chat:</strong> ถามคำถามเกี่ยวกับเอกสาร (มี citation อ้างอิง)<br>
+                - <strong>Audio Overview:</strong> สร้าง Podcast AI สรุปเนื้อหา (เสียงเหมือนคนจริง!)<br>
+                - <strong>Notebook Guide:</strong> สร้าง FAQ, Study Guide, Timeline, Briefing Doc
+            </div>
+        </div>
+
+        <div class="screenshot-placeholder">
+            <i class="fas fa-image d-block"></i>
+            <p class="mb-0">📸 ภาพหน้าจอ: NotebookLM Interface — Sources + Chat + Audio Overview</p>
+        </div>
+
+        <h5 class="mt-4">ตัวอย่างการใช้ NotebookLM ในงานราชการ</h5>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>งาน</th>
+                        <th>Sources</th>
+                        <th>สิ่งที่ NotebookLM สร้างได้</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>สรุประเบียบ</td>
+                        <td>อัปโหลดระเบียบ 5-10 ฉบับ</td>
+                        <td>สรุปเปรียบเทียบ, FAQ, Timeline การแก้ไข</td>
+                    </tr>
+                    <tr>
+                        <td>เตรียมบรรยาย</td>
+                        <td>เอกสารประกอบการสอน</td>
+                        <td>Study Guide, คำถามที่อาจถูกถาม, Podcast สรุป</td>
+                    </tr>
+                    <tr>
+                        <td>ศึกษานโยบาย</td>
+                        <td>เอกสารนโยบาย + แผนยุทธศาสตร์</td>
+                        <td>Briefing Doc, ประเด็นสำคัญ, ข้อเสนอแนะ</td>
+                    </tr>
+                    <tr>
+                        <td>ประชุม</td>
+                        <td>รายงานการประชุมหลายครั้ง</td>
+                        <td>สรุปมติ, ติดตามงาน, ประเด็นค้าง</td>
+                    </tr>
+                    <tr>
+                        <td>ฝึกอบรม</td>
+                        <td>เอกสารหลักสูตร + วิดีโอ</td>
+                        <td>Pre-Post Test, สรุปเนื้อหา, คู่มือย่อ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box mt-3">
+            <strong><i class="fas fa-podcast me-2"></i>Audio Overview (Podcast AI):</strong> NotebookLM สามารถสร้าง Podcast 5-15 นาที จากเอกสาร โดยมี "พิธีกร" 2 คนพูดคุยสรุปเนื้อหาอย่างน่าสนใจ — เสียงเหมือนคนจริงมาก! เหมาะสำหรับทำสื่อประชาสัมพันธ์หรือสรุปเอกสารให้ผู้บริหารฟัง
+        </div>
+    </div>
+</section>
+
+<!-- Section 4.5 -->
+<section class="py-4" id="section-4-5">
+    <div class="container">
+        <h2 class="section-header">4.5 ความปลอดภัย — ข้อมูลที่ห้ามใส่ + ข้อจำกัด</h2>
+
+        <div class="danger-box mb-4">
+            <h5><i class="fas fa-shield-alt me-2"></i>⚠️ ข้อมูลที่ห้ามใส่ใน Gemini (หรือ AI ใดๆ)</h5>
+            <p class="mb-2">ข้อมูลต่อไปนี้ <strong>ห้ามพิมพ์หรืออัปโหลด</strong> เข้า Gemini อย่างเด็ดขาด:</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="mb-0">
+                        <li>🔴 เลขบัตรประชาชน</li>
+                        <li>🔴 รหัสผ่าน / PIN / OTP</li>
+                        <li>🔴 เลขบัญชีธนาคาร / บัตรเครดิต</li>
+                        <li>🔴 ข้อมูลสุขภาพส่วนบุคคล</li>
+                        <li>🔴 ข้อมูลลับของหน่วยงาน (ลับ/ลับมาก)</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="mb-0">
+                        <li>🔴 ข้อมูลคดีความ/สืบสวน</li>
+                        <li>🔴 ข้อมูลส่วนบุคคลของผู้อื่น (ไม่ได้รับอนุญาต)</li>
+                        <li>🔴 เอกสารที่จัดชั้นความลับ</li>
+                        <li>🔴 API Keys / Tokens / Credentials</li>
+                        <li>🔴 ข้อมูลที่อยู่ระหว่างดำเนินคดี</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4 mb-3">Google AI Policy — สิ่งที่ต้องรู้</h4>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h6><i class="fas fa-database me-2 text-google-blue"></i>การเก็บข้อมูล</h6>
+                        <ul class="small mb-0">
+                            <li>Google <strong>อาจ</strong> ใช้ข้อมูลสนทนาปรับปรุง AI</li>
+                            <li>สนทนาถูกเก็บไว้ 18 เดือน (default)</li>
+                            <li>สามารถปิดการเก็บข้อมูลได้ใน Settings</li>
+                            <li>Google Workspace — ข้อมูลจะไม่ถูกใช้ train AI</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h6><i class="fas fa-cog me-2 text-google-blue"></i>ตั้งค่าความเป็นส่วนตัว</h6>
+                        <ul class="small mb-0">
+                            <li>ไปที่ Settings → Gemini Apps Activity</li>
+                            <li>ปิด "Gemini Apps Activity" = ไม่เก็บประวัติ</li>
+                            <li>ลบสนทนาเก่าได้ (กด 🗑️ ที่แต่ละสนทนา)</li>
+                            <li>ใช้ Incognito Mode ใน Chrome สำหรับงานอ่อนไหว</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-5 mb-3">ข้อจำกัดของ Gemini ที่ต้องระวัง</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width:30%">ข้อจำกัด</th>
+                        <th>รายละเอียด</th>
+                        <th style="width:25%">วิธีรับมือ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Hallucination</strong></td>
+                        <td>อาจสร้างข้อมูลที่ไม่จริงแต่ดูน่าเชื่อถือ</td>
+                        <td>Fact-check เสมอ, ใช้ "Check response"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ข้อมูลผิดพลาด</strong></td>
+                        <td>ตัวเลข, วันที่, ชื่อคน อาจไม่ถูกต้อง</td>
+                        <td>ตรวจสอบข้อมูลสำคัญจากแหล่งต้น</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bias</strong></td>
+                        <td>อาจมีอคติตามข้อมูลที่ใช้ฝึก</td>
+                        <td>ตระหนักรู้ ไม่ใช้เป็นผู้ตัดสินใจเดียว</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ข้อมูลเก่า</strong></td>
+                        <td>แม้ค้นเว็บได้ แต่บางข้อมูลอาจไม่อัพเดท</td>
+                        <td>ตรวจสอบวันที่ของแหล่งอ้างอิง</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ความลับ</strong></td>
+                        <td>ข้อมูลที่ใส่อาจไม่ปลอดภัย 100%</td>
+                        <td>ไม่ใส่ข้อมูลลับ/อ่อนไหว</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="mt-5 mb-3">แนวทางใช้ AI อย่างปลอดภัยในราชการ</h4>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="do-box">
+                    <h6>✅ ใช้ AI ได้ปลอดภัย</h6>
+                    <ul class="small mb-0">
+                        <li>ร่างเอกสารทั่วไป (ไม่มีข้อมูลลับ)</li>
+                        <li>ค้นหาข้อมูลสาธารณะ</li>
+                        <li>สรุประเบียบ/กฎหมายที่เปิดเผยแล้ว</li>
+                        <li>สร้างแบบทดสอบ/แบบประเมิน</li>
+                        <li>แปลภาษาเอกสารทั่วไป</li>
+                        <li>ระดมสมอง/ไอเดีย</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="dont-box">
+                    <h6>❌ ไม่ควรใช้ AI</h6>
+                    <ul class="small mb-0">
+                        <li>ข้อมูลลับ/ลับมากของราชการ</li>
+                        <li>ข้อมูลส่วนบุคคลจำนวนมาก</li>
+                        <li>เอกสารที่อยู่ระหว่างพิจารณาคดี</li>
+                        <li>ตัดสินใจสำคัญโดยใช้ AI เพียงอย่างเดียว</li>
+                        <li>ข้อมูลการเงินที่ยังไม่เปิดเผย</li>
+                        <li>งานที่ต้องรับรองความถูกต้อง 100%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- แบบฝึกหัด -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="exercise-box">
+            <h5><i class="fas fa-pencil-alt me-2"></i>แบบฝึกหัดท้ายบทที่ 4</h5>
+            <hr>
+            <ol>
+                <li class="mb-3">
+                    <strong>เขียนโพสต์ FB:</strong> ให้ Gemini เขียนโพสต์ประชาสัมพันธ์กิจกรรมของหน่วยงานท่าน ลองปรับ 3 เวอร์ชัน (ทางการ, สนุก, กระชับ)
+                    <br><small class="text-muted">✓ เปรียบเทียบว่าเวอร์ชันไหนเหมาะที่สุด</small>
+                </li>
+                <li class="mb-3">
+                    <strong>วางแผนโครงการ:</strong> ให้ Gemini ร่างโครงการฝึกอบรมพร้อมงบประมาณและ KPI
+                    <br><small class="text-muted">✓ ลองถามต่อ: "ปรับ KPI ให้เป็น SMART" / "เพิ่มรายละเอียดงบ"</small>
+                </li>
+                <li class="mb-3">
+                    <strong>Pre-Post Test:</strong> สร้างข้อสอบ 10 ข้อ เรื่องที่ท่านรับผิดชอบ พร้อมเฉลย
+                    <br><small class="text-muted">✓ ลองให้ Gemini ตรวจสอบความถูกต้องของข้อสอบ</small>
+                </li>
+                <li class="mb-3">
+                    <strong>NotebookLM:</strong> ไปที่ notebooklm.google.com → สร้าง Notebook → อัปโหลด PDF 2-3 ชิ้น → ถามคำถาม → ลอง Audio Overview
+                    <br><small class="text-muted">✓ ลองสร้าง Podcast AI จากเอกสารของหน่วยงาน</small>
+                </li>
+                <li class="mb-3">
+                    <strong>ตรวจสอบความปลอดภัย:</strong> ไปที่ Settings ใน Gemini → ตรวจสอบการตั้งค่า Activity → พิจารณาว่าควรปิดอะไร
+                    <br><small class="text-muted">✓ ทำความเข้าใจว่าข้อมูลไหนถูกเก็บ/ไม่ถูกเก็บ</small>
+                </li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation -->
+<section class="py-4">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <a href="chapter03.html" class="btn btn-outline-secondary"><i class="fas fa-arrow-left me-2"></i>บทที่ 3</a>
+            <a href="chapter05.html" class="btn btn-primary" style="background: var(--google-blue); border-color: var(--google-blue);">บทที่ 5: Docs + Gmail <i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <p class="mb-1">คู่มือฝึกอบรม Gemini AI — ใช้ปัญญาประดิษฐ์ Google ทำงานราชการ</p>
+        <p class="mb-0 text-white-50">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

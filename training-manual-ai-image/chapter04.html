@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 4: Google Whisk — ผสมภาพสไตล์ AI — AI สร้างรูปภาพ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">📖 AI สร้างรูปภาพ</a>
+        <span class="text-white nav-text">บทที่ 4</span>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content-area">
+    <div class="container py-4">
+
+        <!-- Chapter Header -->
+        <div class="chapter-header text-center mb-5">
+            <h1>บทที่ 4</h1>
+            <h2 class="fw-normal text-muted">Google Whisk — ผสมภาพสไตล์ AI</h2>
+            <p class="lead">สร้างภาพใหม่โดยผสม Subject + Scene + Style เข้าด้วยกัน</p>
+        </div>
+
+        <!-- วัตถุประสงค์ -->
+        <div class="alert alert-info">
+            <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+            <ul class="mb-0">
+                <li>เข้าใจหลักการทำงานของ Google Whisk</li>
+                <li>ใช้ Whisk ผสมภาพ 3 องค์ประกอบได้</li>
+                <li>ประยุกต์ใช้กับงานออกแบบโลโก้และสื่อองค์กร</li>
+                <li>เปรียบเทียบ Whisk กับเครื่องมืออื่นได้</li>
+            </ul>
+        </div>
+
+        <!-- 4.1 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">4.1 Whisk คืออะไร</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>🌀 Google Whisk — AI ผสมภาพ</h5>
+                <p>Whisk เป็นเครื่องมือจาก Google Labs ที่ทำงานต่างจาก AI สร้างภาพทั่วไป — แทนที่จะพิมพ์ Prompt เป็นข้อความ คุณ <strong>"ใส่ภาพ"</strong> เข้าไป 3 ส่วน แล้ว AI จะผสมให้กลายเป็นภาพใหม่!</p>
+
+                <div class="row mt-3">
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <h5 class="text-primary">👤 Subject</h5>
+                                <p class="small mb-0">ใส่ภาพ "ตัวแบบ" — คน, สัตว์, วัตถุ ที่ต้องการเป็นตัวหลัก</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-body">
+                                <h5 class="text-success">🏞️ Scene</h5>
+                                <p class="small mb-0">ใส่ภาพ "ฉาก/พื้นหลัง" — สถานที่, บรรยากาศ ที่ต้องการ</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="card h-100 border-warning">
+                            <div class="card-body">
+                                <h5 class="text-warning">🎨 Style</h5>
+                                <p class="small mb-0">ใส่ภาพ "สไตล์" — ลักษณะการวาด, สี, เทคนิค ที่ต้องการ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <h5>💡 เปรียบเทียบง่ายๆ</h5>
+                <p class="mb-0">Whisk เหมือน "เครื่องปั่น" ที่ใส่ส่วนผสม 3 อย่าง แล้วได้สิ่งใหม่ออกมา! — ใส่ภาพแมว + ภาพทะเล + ภาพสีน้ำ = ได้ภาพแมวที่ทะเลสไตล์สีน้ำ!</p>
+            </div>
+        </section>
+
+        <!-- 4.2 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">4.2 วิธีใช้งาน Whisk</h3>
+
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <strong>เปิด <a href="https://labs.google/whisk" target="_blank">labs.google/whisk</a></strong>
+                <p class="mb-0 mt-1">Login ด้วย Google Account</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <strong>ใส่ภาพ Subject</strong>
+                <p class="mb-0 mt-1">อัปโหลดภาพ หรือเลือกจาก Sample ที่ Whisk มีให้</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <strong>ใส่ภาพ Scene</strong>
+                <p class="mb-0 mt-1">เลือกพื้นหลัง/ฉากที่ต้องการ</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <strong>ใส่ภาพ Style</strong>
+                <p class="mb-0 mt-1">เลือกสไตล์ที่ต้องการ (เช่น ภาพสีน้ำ, ภาพวาดดินสอ, การ์ตูน)</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">5</span>
+                <strong>กด "Whisk it!" → AI สร้างภาพผสมออกมา</strong>
+            </div>
+            <div class="step-item">
+                <span class="step-number">6</span>
+                <strong>ปรับ Prompt เพิ่มเติมได้ (ถ้าต้องการ)</strong>
+            </div>
+
+            <div class="alert alert-warning mt-3">
+                <h5>📌 ข้อสังเกต</h5>
+                <ul class="mb-0">
+                    <li>ไม่จำเป็นต้องใส่ครบ 3 ช่อง — ใส่แค่ 1-2 ช่องก็ได้</li>
+                    <li>Whisk ใช้ Gemini เป็น AI เบื้องหลัง</li>
+                    <li>ฟรี! ไม่มีค่าใช้จ่าย (อาจมีข้อจำกัดจำนวน)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4.3 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">4.3 ประยุกต์ใช้กับงานจริง</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <h5>💼 ตัวอย่างการใช้งาน Whisk ในองค์กร</h5>
+
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>งาน</th>
+                            <th>Subject</th>
+                            <th>Scene</th>
+                            <th>Style</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>สร้างมาสคอตองค์กร</td>
+                            <td>ภาพหุ่นยนต์น่ารัก</td>
+                            <td>ภาพสำนักงาน</td>
+                            <td>ภาพการ์ตูน 3D</td>
+                        </tr>
+                        <tr>
+                            <td>โปสเตอร์กิจกรรม</td>
+                            <td>ภาพคนพิการยิ้ม</td>
+                            <td>ภาพงานสัมมนา</td>
+                            <td>ภาพ flat design</td>
+                        </tr>
+                        <tr>
+                            <td>ภาพปก Social Media</td>
+                            <td>ภาพโลโก้องค์กร</td>
+                            <td>ภาพท้องฟ้าสวย</td>
+                            <td>ภาพ gradient modern</td>
+                        </tr>
+                        <tr>
+                            <td>สื่อประชาสัมพันธ์</td>
+                            <td>ภาพผลิตภัณฑ์</td>
+                            <td>ภาพร้านค้า</td>
+                            <td>ภาพถ่ายสไตล์แมกกาซีน</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4.4 -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">4.4 Whisk vs เครื่องมืออื่น</h3>
+
+            <div class="info-card p-4 bg-light rounded mb-4">
+                <table class="table table-bordered mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>คุณสมบัติ</th>
+                            <th>Whisk</th>
+                            <th>DALL-E 3</th>
+                            <th>Firefly</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Input</td>
+                            <td>ภาพ + ข้อความ</td>
+                            <td>ข้อความอย่างเดียว</td>
+                            <td>ข้อความ + ภาพ</td>
+                        </tr>
+                        <tr>
+                            <td>ภาษาไทย</td>
+                            <td>รองรับ</td>
+                            <td>รองรับดี</td>
+                            <td>อังกฤษเท่านั้น</td>
+                        </tr>
+                        <tr>
+                            <td>ราคา</td>
+                            <td>ฟรี</td>
+                            <td>ฟรี/Plus</td>
+                            <td>ฟรี (จำกัด)</td>
+                        </tr>
+                        <tr>
+                            <td>จุดเด่น</td>
+                            <td>ผสมสไตล์ง่าย</td>
+                            <td>เข้าใจบริบทดี</td>
+                            <td>แก้ไขภาพเดิม</td>
+                        </tr>
+                        <tr>
+                            <td>เหมาะกับ</td>
+                            <td>ไอเดียสร้างสรรค์</td>
+                            <td>ภาพทั่วไป</td>
+                            <td>แก้ไข/ปรับแต่ง</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Lab -->
+        <section>
+            <h3 class="section-header border-start border-4 border-dark ps-3">🔬 Lab ปฏิบัติ</h3>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 4.1 — สร้าง Visual Identity ด้วย Whisk</h5>
+
+                <p><strong>โจทย์:</strong> สร้างภาพมาสคอตสำหรับกิจกรรม AI เพื่อคนพิการ</p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>Subject:</strong> ค้นหาภาพหุ่นยนต์น่ารักจาก Google (หรือใช้ Sample)
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>Scene:</strong> ใส่ภาพห้องเรียน/ห้องอบรม
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>Style:</strong> เลือกภาพการ์ตูน 3D หรือ Flat Design
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>กด Whisk it! → ดูผลลัพธ์</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>ลองเปลี่ยน Style 3 แบบ เปรียบเทียบ</strong>
+                </div>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึกภาพมาสคอต 3 สไตล์
+                </div>
+            </div>
+
+            <div class="exercise-box p-4 rounded border border-2 border-success bg-light mb-4">
+                <h5 class="text-success">💻 Lab 4.2 — สร้างภาพปก Facebook ด้วย Whisk</h5>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>Subject:</strong> ภาพโลโก้หรือสัญลักษณ์องค์กร
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>Scene:</strong> ภาพทิวทัศน์สวยๆ หรือภาพนามธรรม
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>Style:</strong> ภาพ gradient สีสดใส
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>สร้างภาพ → ดาวน์โหลด → ใช้เป็นภาพปก</strong>
+                </div>
+
+                <div class="screenshot-placeholder mt-3">
+                    📸 บันทึกภาพปก Facebook ที่สร้าง
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <div class="alert alert-success">
+            <h5>💡 Tips สำหรับบทนี้</h5>
+            <ul class="mb-0">
+                <li>Whisk เหมาะมากสำหรับ "หาไอเดีย" — ผสมภาพได้ไม่จำกัด</li>
+                <li>ไม่ต้องใส่ครบ 3 ช่อง — ใส่แค่ Subject + Style ก็ได้ผลดี</li>
+                <li>ใช้ภาพจาก DALL-E มาเป็น Input ของ Whisk ได้!</li>
+                <li>ผลลัพธ์ Whisk อาจไม่เหมือนต้นฉบับ 100% — แต่ได้ไอเดียใหม่ๆ</li>
+            </ul>
+        </div>
+
+        <!-- สรุปท้ายบท -->
+        <div class="info-card p-4 bg-light rounded">
+            <h5>📝 สรุปท้ายบท</h5>
+            <ul>
+                <li><strong>Google Whisk</strong> ผสม Subject + Scene + Style ได้ภาพใหม่</li>
+                <li><strong>ใช้ฟรี</strong> Login ด้วย Google Account</li>
+                <li><strong>จุดเด่น:</strong> ไม่ต้องเขียน Prompt ยาว แค่ใส่ภาพก็ได้ผลลัพธ์</li>
+                <li><strong>เหมาะกับ:</strong> หาไอเดีย, สร้างมาสคอต, ผสมสไตล์ใหม่ๆ</li>
+                <li><strong>ใช้ร่วมกับ DALL-E/Firefly</strong> ได้ผลดีมาก</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 mb-4">
+            <a href="chapter03.html" class="btn btn-outline-dark">← บทที่ 3</a>
+            <a href="chapter05.html" class="btn btn-dark">บทที่ 5 →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    <p class="opacity-75">การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ | 2569</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

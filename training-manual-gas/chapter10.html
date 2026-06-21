@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 10: Workshop — ระบบลงทะเบียนกิจกรรม</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📖 Google Apps Script</span>
+            <span class="nav-text text-light">บทที่ 10: Workshop</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <h1>บทที่ 10: Workshop — สร้างระบบลงทะเบียนกิจกรรมครบวงจร</h1>
+                <p class="lead">รวมทุกอย่างที่เรียนมา สร้างระบบจริงที่ใช้งานได้ (Form → Sheet → Email → Web App)</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h4>🎯 วัตถุประสงค์การเรียนรู้</h4>
+                <ul class="mb-0">
+                    <li>สร้างระบบลงทะเบียนกิจกรรมที่ใช้งานได้จริง</li>
+                    <li>เชื่อมต่อ Google Form → Sheet → Email → Web App</li>
+                    <li>ประยุกต์ใช้ CRUD, Trigger, MailApp, HTML Service ร่วมกัน</li>
+                    <li>Deploy ระบบให้คนอื่นใช้งานได้</li>
+                </ul>
+            </div>
+
+            <!-- ภาพรวมระบบ -->
+            <h2 class="section-header">🏗️ ภาพรวมระบบที่จะสร้าง</h2>
+            <div class="info-card">
+                <h4>📋 ระบบลงทะเบียนกิจกรรม ประกอบด้วย:</h4>
+                <ol>
+                    <li><strong>Google Form</strong> — ฟอร์มลงทะเบียน (ชื่อ, หน่วยงาน, อีเมล, โทร)</li>
+                    <li><strong>Google Sheet</strong> — เก็บข้อมูลผู้ลงทะเบียนทั้งหมด</li>
+                    <li><strong>Email อัตโนมัติ</strong> — ส่งยืนยันเมื่อลงทะเบียนสำเร็จ</li>
+                    <li><strong>Web App (Admin)</strong> — หน้าดูรายชื่อ + จัดการข้อมูล</li>
+                    <li><strong>Trigger</strong> — ส่งรายงานสรุปทุกเช้า</li>
+                </ol>
+                <div class="prompt-example mt-3">
+                    <strong>Flow:</strong> ผู้ใช้กรอก Form → ข้อมูลลง Sheet อัตโนมัติ → GAS ส่ง Email ยืนยัน → Admin ดูข้อมูลผ่าน Web App → รายงานสรุปทุกเช้า
+                </div>
+            </div>
+
+            <!-- ขั้นตอนที่ 1 -->
+            <h2 class="section-header">📝 ขั้นตอนที่ 1: สร้าง Google Sheet</h2>
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <p>สร้าง Google Sheets ใหม่ ตั้งชื่อ "ระบบลงทะเบียนกิจกรรม"</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <p>เปลี่ยนชื่อ Sheet เป็น "registrations"</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <p>สร้าง Header:</p>
+            </div>
+<pre><code>// Header (แถวที่ 1):
+// A: timestamp | B: name | C: organization | D: email | E: phone | F: status | G: email_sent
+</code></pre>
+
+            <!-- ขั้นตอนที่ 2 -->
+            <h2 class="section-header">📋 ขั้นตอนที่ 2: สร้าง Google Form</h2>
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <p>สร้าง Google Form ใหม่ ตั้งชื่อ "ฟอร์มลงทะเบียนกิจกรรม"</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <p>เพิ่มคำถาม 4 ข้อ: ชื่อ-นามสกุล (บังคับ) | หน่วยงาน | อีเมล (บังคับ) | โทรศัพท์</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <p>เชื่อม Response กับ Sheet: ที่ Form → Responses → Link to Sheets → เลือก Sheet ที่สร้างไว้</p>
+            </div>
+
+            <!-- ขั้นตอนที่ 3 -->
+            <h2 class="section-header">⚙️ ขั้นตอนที่ 3: เขียน Backend (Code.gs)</h2>
+<pre><code>// ===== ระบบลงทะเบียนกิจกรรม =====
+// Workshop: Google Apps Script สำหรับผู้เริ่มต้น
+// โครงการ AI เพื่อคนพิการ | สนพ.สุรินทร์
+
+var SHEET_NAME = "registrations";
+var ADMIN_EMAIL = "wisdomssk@gmail.com";
+
+// ===== แสดงหน้าเว็บ Admin =====
+function doGet(e) {
+  var page = e.parameter.page || "admin";
+  
+  if (page === "admin") {
+    return HtmlService.createHtmlOutputFromFile("admin")
+      .setTitle("Admin - ระบบลงทะเบียน")
+      .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  }
+  
+  // API mode
+  if (page === "api") {
+    return handleApi(e);
+  }
+  
+  return HtmlService.createHtmlOutput("404 - ไม่พบหน้าที่ต้องการ");
+}
+
+function handleApi(e) {
+  var action = e.parameter.action || "count";
+  var result = {};
+  
+  if (action === "count") {
+    var sheet = getSheet();
+    result = { count: sheet.getLastRow() - 1 };
+  } else if (action === "list") {
+    result = { data: getRegistrations() };
+  }
+  
+  return ContentService.createTextOutput(JSON.stringify(result))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+// ===== HELPER FUNCTIONS =====
+function getSheet() {
+  return SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+}
+
+// ===== CRUD =====
+function getRegistrations() {
+  var sheet = getSheet();
+  var data = sheet.getDataRange().getValues();
+  var registrations = [];
+  
+  for (var i = 1; i < data.length; i++) {
+    registrations.push({
+      row: i + 1,
+      timestamp: data[i][0],
+      name: data[i][1],
+      organization: data[i][2],
+      email: data[i][3],
+      phone: data[i][4],
+      status: data[i][5] || "รอยืนยัน",
+      emailSent: data[i][6] || ""
+    });
+  }
+  return registrations;
+}
+
+function updateStatus(row, status) {
+  var sheet = getSheet();
+  sheet.getRange(row, 6).setValue(status);
+  Logger.log("อัปเดตสถานะแถว " + row + " เป็น " + status);
+  return { success: true, message: "อัปเดตสถานะสำเร็จ" };
+}
+
+function deleteRegistration(row) {
+  var sheet = getSheet();
+  var name = sheet.getRange(row, 2).getValue();
+  sheet.deleteRow(row);
+  Logger.log("ลบข้อมูล: " + name);
+  return { success: true, message: "ลบ " + name + " สำเร็จ" };
+}
+
+function getStats() {
+  var registrations = getRegistrations();
+  var total = registrations.length;
+  var confirmed = 0;
+  var pending = 0;
+  var cancelled = 0;
+  
+  for (var i = 0; i < registrations.length; i++) {
+    var status = registrations[i].status;
+    if (status === "ยืนยันแล้ว") confirmed++;
+    else if (status === "ยกเลิก") cancelled++;
+    else pending++;
+  }
+  
+  return {
+    total: total,
+    confirmed: confirmed,
+    pending: pending,
+    cancelled: cancelled
+  };
+}
+</code></pre>
+
+            <!-- ขั้นตอนที่ 4 -->
+            <h2 class="section-header">📧 ขั้นตอนที่ 4: ระบบส่ง Email อัตโนมัติ</h2>
+<pre><code>// ===== Form Submit Trigger =====
+function onFormSubmit(e) {
+  var values = e.values;
+  // values[0] = Timestamp
+  // values[1] = ชื่อ
+  // values[2] = หน่วยงาน
+  // values[3] = อีเมล
+  // values[4] = โทรศัพท์
+  
+  var name = values[1];
+  var email = values[3];
+  
+  // ส่ง Email ยืนยัน
+  sendConfirmationEmail(name, email);
+  
+  // อัปเดตสถานะ
+  var sheet = getSheet();
+  var lastRow = sheet.getLastRow();
+  sheet.getRange(lastRow, 6).setValue("รอยืนยัน");
+  sheet.getRange(lastRow, 7).setValue("ส่งแล้ว " + new Date().toLocaleString("th-TH"));
+  
+  // แจ้ง Admin
+  sendAdminNotification(name, values[2], email);
+  
+  Logger.log("ลงทะเบียนใหม่: " + name + " (" + email + ")");
+}
+
+function sendConfirmationEmail(name, email) {
+  var htmlBody = '';
+  htmlBody += '<div style="max-width:600px; margin:0 auto; font-family:sans-serif;">';
+  htmlBody += '<div style="background:#198754; color:white; padding:20px; text-align:center; border-radius:8px 8px 0 0;">';
+  htmlBody += '<h2>✅ ลงทะเบียนสำเร็จ!</h2></div>';
+  htmlBody += '<div style="padding:20px; border:1px solid #ddd;">';
+  htmlBody += '<p>สวัสดีคุณ <strong>' + name + '</strong></p>';
+  htmlBody += '<p>คุณได้ลงทะเบียนเข้าร่วมกิจกรรม:</p>';
+  htmlBody += '<div style="background:#f8f9fa; padding:15px; border-left:4px solid #198754; margin:10px 0;">';
+  htmlBody += '<strong>📚 การประยุกต์ใช้ปัญญาประดิษฐ์ในทุกมิติ เพื่อคนพิการ</strong><br>';
+  htmlBody += '📅 20-24 กรกฎาคม 2569<br>';
+  htmlBody += '📍 โรงแรมฮิลล์ไซด์ เขาใหญ่ จ.ปราจีนบุรี<br>';
+  htmlBody += '👨‍🏫 วิทยากร: นายปัญญา ผาธรรม, นายพรพจน์ แสวงดี</div>';
+  htmlBody += '<p>📌 กรุณามาลงทะเบียนหน้างานก่อน 08:30 น.</p>';
+  htmlBody += '<p>สอบถามเพิ่มเติม: 088-377-8987</p>';
+  htmlBody += '</div>';
+  htmlBody += '<div style="text-align:center; padding:10px; color:#666; font-size:12px;">';
+  htmlBody += 'โครงการ AI เพื่อคนพิการ | สนพ.สุรินทร์</div></div>';
+  
+  MailApp.sendEmail({
+    to: email,
+    subject: "✅ ยืนยันการลงทะเบียน - โครงการ AI เพื่อคนพิการ",
+    htmlBody: htmlBody,
+    name: "ระบบลงทะเบียนอัตโนมัติ"
+  });
+}
+
+function sendAdminNotification(name, org, email) {
+  var message = "🔔 ลงทะเบียนใหม่!\n\n";
+  message += "ชื่อ: " + name + "\n";
+  message += "หน่วยงาน: " + org + "\n";
+  message += "อีเมล: " + email + "\n";
+  message += "เวลา: " + new Date().toLocaleString("th-TH");
+  
+  MailApp.sendEmail(ADMIN_EMAIL, "🔔 ลงทะเบียนใหม่: " + name, message);
+}
+</code></pre>
+
+            <!-- ขั้นตอนที่ 5 -->
+            <h2 class="section-header">🖥️ ขั้นตอนที่ 5: หน้า Admin (admin.html)</h2>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;base target="_top"&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+  &lt;style&gt;
+    body { font-family: 'Sarabun', sans-serif; }
+    .stat-card { text-align: center; padding: 1rem; border-radius: 8px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;nav class="navbar navbar-dark bg-success"&gt;
+    &lt;div class="container"&gt;
+      &lt;span class="navbar-brand"&gt;📋 Admin - ระบบลงทะเบียน&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;div class="container mt-4"&gt;
+    &lt;!-- สถิติ --&gt;
+    &lt;div class="row mb-4" id="statsRow"&gt;
+      &lt;div class="col-md-3"&gt;
+        &lt;div class="stat-card bg-light"&gt;
+          &lt;h3 id="statTotal"&gt;-&lt;/h3&gt;&lt;small&gt;ทั้งหมด&lt;/small&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="col-md-3"&gt;
+        &lt;div class="stat-card bg-success bg-opacity-10"&gt;
+          &lt;h3 id="statConfirmed"&gt;-&lt;/h3&gt;&lt;small&gt;ยืนยันแล้ว&lt;/small&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="col-md-3"&gt;
+        &lt;div class="stat-card bg-warning bg-opacity-10"&gt;
+          &lt;h3 id="statPending"&gt;-&lt;/h3&gt;&lt;small&gt;รอยืนยัน&lt;/small&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="col-md-3"&gt;
+        &lt;div class="stat-card bg-danger bg-opacity-10"&gt;
+          &lt;h3 id="statCancelled"&gt;-&lt;/h3&gt;&lt;small&gt;ยกเลิก&lt;/small&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- ตาราง --&gt;
+    &lt;div class="card"&gt;
+      &lt;div class="card-header"&gt;&lt;h5&gt;📋 รายชื่อผู้ลงทะเบียน&lt;/h5&gt;&lt;/div&gt;
+      &lt;div class="card-body"&gt;
+        &lt;div id="loading" class="text-center py-3"&gt;กำลังโหลด...&lt;/div&gt;
+        &lt;div class="table-responsive"&gt;
+          &lt;table class="table table-striped" id="dataTable" style="display:none"&gt;
+            &lt;thead&gt;
+              &lt;tr&gt;
+                &lt;th&gt;#&lt;/th&gt;&lt;th&gt;ชื่อ&lt;/th&gt;&lt;th&gt;หน่วยงาน&lt;/th&gt;
+                &lt;th&gt;อีเมล&lt;/th&gt;&lt;th&gt;สถานะ&lt;/th&gt;&lt;th&gt;จัดการ&lt;/th&gt;
+              &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody id="tableBody"&gt;&lt;/tbody&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    window.onload = function() { loadData(); };
+    
+    function loadData() {
+      google.script.run.withSuccessHandler(showStats).getStats();
+      google.script.run.withSuccessHandler(showTable).getRegistrations();
+    }
+    
+    function showStats(stats) {
+      document.getElementById('statTotal').textContent = stats.total;
+      document.getElementById('statConfirmed').textContent = stats.confirmed;
+      document.getElementById('statPending').textContent = stats.pending;
+      document.getElementById('statCancelled').textContent = stats.cancelled;
+    }
+    
+    function showTable(data) {
+      var html = '';
+      for (var i = 0; i &lt; data.length; i++) {
+        var d = data[i];
+        var badge = d.status === 'ยืนยันแล้ว' ? 'bg-success' : 
+                    d.status === 'ยกเลิก' ? 'bg-danger' : 'bg-warning';
+        html += '&lt;tr&gt;';
+        html += '&lt;td&gt;' + (i+1) + '&lt;/td&gt;';
+        html += '&lt;td&gt;' + d.name + '&lt;/td&gt;';
+        html += '&lt;td&gt;' + d.organization + '&lt;/td&gt;';
+        html += '&lt;td&gt;' + d.email + '&lt;/td&gt;';
+        html += '&lt;td&gt;&lt;span class="badge ' + badge + '"&gt;' + d.status + '&lt;/span&gt;&lt;/td&gt;';
+        html += '&lt;td&gt;';
+        html += '&lt;button class="btn btn-success btn-sm" onclick="confirmReg(' + d.row + ')"&gt;✓&lt;/button&gt; ';
+        html += '&lt;button class="btn btn-danger btn-sm" onclick="deleteReg(' + d.row + ')"&gt;✗&lt;/button&gt;';
+        html += '&lt;/td&gt;&lt;/tr&gt;';
+      }
+      document.getElementById('tableBody').innerHTML = html;
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('dataTable').style.display = 'table';
+    }
+    
+    function confirmReg(row) {
+      google.script.run.withSuccessHandler(function() { loadData(); })
+        .updateStatus(row, 'ยืนยันแล้ว');
+    }
+    
+    function deleteReg(row) {
+      if (!confirm('ยืนยันลบ?')) return;
+      google.script.run.withSuccessHandler(function() { loadData(); })
+        .deleteRegistration(row);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+            <!-- ขั้นตอนที่ 6 -->
+            <h2 class="section-header">⏰ ขั้นตอนที่ 6: ตั้ง Trigger</h2>
+<pre><code>// ===== TRIGGERS =====
+
+function setupTriggers() {
+  // ลบ Trigger เดิม
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    ScriptApp.deleteTrigger(triggers[i]);
+  }
+  
+  // 1. onFormSubmit — ส่ง Email เมื่อมีคนลงทะเบียน
+  ScriptApp.newTrigger("onFormSubmit")
+    .forSpreadsheet(SpreadsheetApp.getActiveSpreadsheet())
+    .onFormSubmit()
+    .create();
+  
+  // 2. Daily Report — ส่งรายงานทุกเช้า 08:00
+  ScriptApp.newTrigger("sendDailyReport")
+    .timeBased()
+    .atHour(8)
+    .everyDays(1)
+    .create();
+  
+  Logger.log("ตั้ง Trigger สำเร็จ! (2 ตัว)");
+}
+
+function sendDailyReport() {
+  var stats = getStats();
+  var message = "📊 รายงานประจำวัน - ระบบลงทะเบียน\n\n";
+  message += "📅 " + new Date().toLocaleDateString("th-TH") + "\n\n";
+  message += "👥 ผู้ลงทะเบียนทั้งหมด: " + stats.total + " คน\n";
+  message += "✅ ยืนยันแล้ว: " + stats.confirmed + " คน\n";
+  message += "⏳ รอยืนยัน: " + stats.pending + " คน\n";
+  message += "❌ ยกเลิก: " + stats.cancelled + " คน\n";
+  
+  MailApp.sendEmail(ADMIN_EMAIL, "📊 รายงานลงทะเบียน (" + stats.total + " คน)", message);
+  Logger.log("ส่งรายงานประจำวันสำเร็จ");
+}
+</code></pre>
+
+            <!-- ขั้นตอนที่ 7 -->
+            <h2 class="section-header">🚀 ขั้นตอนที่ 7: Deploy และทดสอบ</h2>
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <p>รัน <code>setupTriggers()</code> เพื่อตั้ง Trigger</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <p>Deploy → New deployment → Web app → Execute as Me → Anyone</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <p>เปิด URL ที่ได้ → ควรเห็นหน้า Admin</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <p>ทดสอบกรอก Google Form → ตรวจ Sheet → ตรวจ Email → ดูหน้า Admin</p>
+            </div>
+            <div class="step-item">
+                <span class="step-number">5</span>
+                <p>ทดสอบกดปุ่มยืนยัน/ลบ ในหน้า Admin</p>
+            </div>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🔬 Lab 12: Workshop ปฏิบัติ — สร้างระบบครบวงจร</h4>
+                <p><strong>เวลา:</strong> 60 นาที</p>
+                <hr>
+                <p><strong>โจทย์:</strong> สร้างระบบลงทะเบียนกิจกรรมตามขั้นตอนทั้ง 7 ข้อด้านบน</p>
+                <ol>
+                    <li>สร้าง Google Sheets + ตั้งชื่อ Sheet "registrations" (5 นาที)</li>
+                    <li>สร้าง Google Form 4 คำถาม + เชื่อม Sheet (10 นาที)</li>
+                    <li>เขียน Code.gs — doGet, CRUD, getStats (15 นาที)</li>
+                    <li>เขียน admin.html — สถิติ + ตาราง + ปุ่มจัดการ (15 นาที)</li>
+                    <li>เขียน onFormSubmit + Email (10 นาที)</li>
+                    <li>ตั้ง Trigger + Deploy (5 นาที)</li>
+                </ol>
+                <p class="mt-3"><strong>🎯 ผลที่คาดหวัง:</strong></p>
+                <ul>
+                    <li>กรอก Form แล้วได้ Email ยืนยันทันที</li>
+                    <li>เปิด Web App เห็นรายชื่อ + สถิติ</li>
+                    <li>กดยืนยัน/ลบ แล้วข้อมูลใน Sheet เปลี่ยนตาม</li>
+                    <li>ได้ Email รายงานทุกเช้า</li>
+                </ul>
+            </div>
+
+            <!-- Bonus -->
+            <h2 class="section-header">🌟 Bonus: เพิ่มฟีเจอร์เสริม</h2>
+<pre><code>// ===== BONUS FEATURES =====
+
+// 1. Export เป็น PDF
+function exportToPDF() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var pdf = ss.getAs("application/pdf");
+  pdf.setName("รายชื่อผู้ลงทะเบียน.pdf");
+  
+  MailApp.sendEmail({
+    to: ADMIN_EMAIL,
+    subject: "📎 รายชื่อผู้ลงทะเบียน (PDF)",
+    body: "แนบไฟล์ PDF รายชื่อผู้ลงทะเบียนทั้งหมด",
+    attachments: [pdf]
+  });
+}
+
+// 2. ส่งแจ้งเตือน LINE
+function sendLineNotify(message) {
+  var token = "YOUR_LINE_CHANNEL_TOKEN";
+  var userId = "YOUR_LINE_USER_ID";
+  
+  UrlFetchApp.fetch("https://api.line.me/v2/bot/message/push", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token
+    },
+    payload: JSON.stringify({
+      to: userId,
+      messages: [{ type: "text", text: message }]
+    })
+  });
+}
+
+// 3. ตรวจ Duplicate (ซ้ำ)
+function checkDuplicate(email) {
+  var registrations = getRegistrations();
+  for (var i = 0; i < registrations.length; i++) {
+    if (registrations[i].email === email) return true;
+  }
+  return false;
+}
+
+// 4. QR Code ลงทะเบียนหน้างาน
+function generateQRUrl(data) {
+  var text = "ชื่อ: " + data.name + " | หน่วยงาน: " + data.org;
+  return "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(text);
+}
+</code></pre>
+
+            <!-- Tips -->
+            <div class="alert alert-success">
+                <h4>💡 Tips สำหรับ Workshop</h4>
+                <ul class="mb-0">
+                    <li><strong>ทำทีละขั้น:</strong> อย่าเขียนทั้งหมดแล้วค่อยทดสอบ — ทำทีละส่วนแล้วทดสอบไปเรื่อยๆ</li>
+                    <li><strong>ดู Execution Log:</strong> ถ้ามี Error ให้ดูที่ Executions (เมนูด้านซ้าย)</li>
+                    <li><strong>ใช้ /dev URL ทดสอบ:</strong> ไม่ต้อง deploy ใหม่ทุกรอบ</li>
+                    <li><strong>เอา Logger.log ช่วย Debug:</strong> ใส่ทุกจุดที่สงสัย</li>
+                    <li><strong>ขอความช่วยเหลือ:</strong> ถ้าติดปัญหา ยกมือถามวิทยากรได้เลย!</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card">
+                <h4>📝 สรุปบทที่ 10 — สิ่งที่ได้เรียนรู้ทั้งหมด</h4>
+                <table class="table table-sm">
+                    <tr><td><strong>บทที่ 1</strong></td><td>GAS คืออะไร, Script Editor, Logger.log</td></tr>
+                    <tr><td><strong>บทที่ 2</strong></td><td>Sheets เป็น Database, getValues/setValues</td></tr>
+                    <tr><td><strong>บทที่ 3</strong></td><td>CRUD — สร้าง/อ่าน/แก้ไข/ลบ</td></tr>
+                    <tr><td><strong>บทที่ 4</strong></td><td>Document Template + Google Form</td></tr>
+                    <tr><td><strong>บทที่ 5</strong></td><td>Trigger — อัตโนมัติตามเวลา/เหตุการณ์</td></tr>
+                    <tr><td><strong>บทที่ 6</strong></td><td>doGet/doPost — Web App API + LINE</td></tr>
+                    <tr><td><strong>บทที่ 7</strong></td><td>HTML Service + google.script.run</td></tr>
+                    <tr><td><strong>บทที่ 8</strong></td><td>MailApp — ส่ง Email อัตโนมัติ</td></tr>
+                    <tr><td><strong>บทที่ 9</strong></td><td>Deploy — เผยแพร่ Web App</td></tr>
+                    <tr><td><strong>บทที่ 10</strong></td><td>Workshop — รวมทุกอย่างสร้างระบบจริง</td></tr>
+                </table>
+            </div>
+
+            <div class="info-card text-center">
+                <h3>🎉 ยินดีด้วย! คุณเรียนจบหลักสูตรแล้ว!</h3>
+                <p>ตอนนี้คุณมีทักษะพื้นฐานในการสร้างระบบอัตโนมัติด้วย Google Apps Script<br>
+                ลองนำไปประยุกต์ใช้ในงานจริงของคุณได้เลย!</p>
+                <p><strong>👨‍🏫 วิทยากร:</strong> นายปัญญา ผาธรรม (สนพ.สุรินทร์) | นายพรพจน์ แสวงดี (สนพ.ยโสธร)</p>
+                <p>📞 088-377-8987 | 📧 wisdomssk@gmail.com</p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="nav-buttons">
+                <a href="chapter09.html" class="btn btn-outline-secondary">← บทที่ 9</a>
+                <a href="index.html" class="btn btn-primary">กลับหน้าหลัก</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

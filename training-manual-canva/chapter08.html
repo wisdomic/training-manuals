@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 8: ฟีเจอร์ AI อื่นๆ — Canva AI ออกแบบมืออาชีพ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📖 Canva AI ออกแบบมืออาชีพ</span>
+            <span class="nav-text text-light">บทที่ 8: ฟีเจอร์ AI อื่นๆ</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+            <!-- Chapter Header -->
+            <div class="chapter-header text-center">
+                <h1>บทที่ 8</h1>
+                <h2 class="text-primary">ฟีเจอร์ AI อื่นๆ ใน Canva</h2>
+                <p class="lead">Magic Edit, Magic Eraser, Background Remover, Magic Write และ Translate</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ol class="mb-0">
+                    <li>ใช้ Magic Edit แก้ไขส่วนต่างๆ ของภาพด้วย AI ได้</li>
+                    <li>ใช้ Magic Eraser ลบวัตถุที่ไม่ต้องการออกจากภาพได้</li>
+                    <li>ใช้ Background Remover ลบพื้นหลังภาพได้</li>
+                    <li>ใช้ Magic Write เขียนข้อความด้วย AI ได้</li>
+                    <li>ใช้ Translate แปลภาษาในงานออกแบบได้</li>
+                </ol>
+            </div>
+
+            <!-- เนื้อหา -->
+            <h3 class="section-header">📘 8.1 Magic Edit — แก้ไขภาพด้วย AI</h3>
+            <section>
+                <p><strong>Magic Edit</strong> ช่วยให้เราเปลี่ยนแปลงส่วนใดส่วนหนึ่งของภาพ โดยไม่ต้องใช้ Photoshop เพียงแค่ระบายส่วนที่ต้องการเปลี่ยน แล้วพิมพ์บอกว่าอยากให้เป็นอะไร</p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เลือกภาพ</strong> ที่ต้องการแก้ไข (คลิกที่ภาพ)
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>คลิก "แก้ไขรูปภาพ" (Edit Photo)</strong> ที่แถบด้านบน
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เลือก "Magic Edit"</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ใช้แปรงระบาย (Brush)</strong> ส่วนที่ต้องการเปลี่ยน
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>พิมพ์อธิบาย</strong> ว่าต้องการให้ส่วนนั้นเป็นอะไร
+                </div>
+                <div class="step-item">
+                    <span class="step-number">6</span>
+                    <strong>คลิก "Generate"</strong> — AI จะสร้างภาพใหม่ให้ 4 แบบ
+                </div>
+
+                <div class="prompt-example">
+                    <strong>ตัวอย่างการใช้ Magic Edit:</strong><br>
+                    • ระบายท้องฟ้า → พิมพ์ "sunset sky" → ท้องฟ้าเปลี่ยนเป็นพระอาทิตย์ตก<br>
+                    • ระบายเสื้อ → พิมพ์ "blue shirt" → เปลี่ยนสีเสื้อเป็นฟ้า<br>
+                    • ระบายโต๊ะ → พิมพ์ "flowers on table" → เพิ่มดอกไม้บนโต๊ะ
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 8.2 Magic Eraser — ลบวัตถุจากภาพ</h3>
+            <section>
+                <p><strong>Magic Eraser</strong> ช่วยลบสิ่งที่ไม่ต้องการออกจากภาพ เช่น คนที่เดินผ่าน ป้าย สายไฟ โดย AI จะเติมพื้นหลังให้อัตโนมัติ</p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เลือกภาพ → "แก้ไขรูปภาพ"</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>เลือก "Magic Eraser"</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ระบายทับวัตถุที่ต้องการลบ</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>AI จะลบวัตถุ</strong> และเติมพื้นหลังให้ดูเป็นธรรมชาติ
+                </div>
+
+                <div class="alert alert-warning">
+                    <h5>⚠️ ข้อจำกัด</h5>
+                    <ul class="mb-0">
+                        <li>Magic Eraser เป็นฟีเจอร์ <strong>Canva Pro</strong> (ต้องเสียเงิน)</li>
+                        <li>ผลลัพธ์อาจไม่สมบูรณ์ 100% กับภาพที่ซับซ้อน</li>
+                        <li>เหมาะกับการลบวัตถุเล็กๆ มากกว่าวัตถุใหญ่</li>
+                    </ul>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 8.3 Background Remover — ลบพื้นหลัง</h3>
+            <section>
+                <p><strong>Background Remover</strong> ลบพื้นหลังของภาพออก เหลือเฉพาะวัตถุหลัก เหมาะสำหรับนำรูปคน/สินค้าไปวางบนพื้นหลังอื่น</p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เลือกภาพ → "แก้ไขรูปภาพ"</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>เลือก "BG Remover" หรือ "ลบพื้นหลัง"</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>รอ AI ประมวลผล</strong> (3-5 วินาที)
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ผลลัพธ์:</strong> พื้นหลังถูกลบ เหลือเฉพาะวัตถุหลัก
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>(ทำเพิ่ม)</strong> ใช้ Brush ลบส่วนที่เหลือ หรือเรียกคืนส่วนที่ถูกลบผิด
+                </div>
+
+                <div class="info-card">
+                    <h5>💼 กรณีใช้งานจริง</h5>
+                    <ul>
+                        <li>ลบพื้นหลังรูปบุคลากร → วางบนสีขององค์กร</li>
+                        <li>ลบพื้นหลังรูปโลโก้ → นำไปวางบน Design</li>
+                        <li>ลบพื้นหลังสินค้า → ทำแค็ตตาล็อก</li>
+                        <li>ลบพื้นหลังรูปกิจกรรม → ทำ Collage</li>
+                    </ul>
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 8.4 Magic Write — AI ช่วยเขียนข้อความ</h3>
+            <section>
+                <p><strong>Magic Write</strong> ช่วยเขียนข้อความให้อัตโนมัติ เช่น เนื้อหาโปสเตอร์ คำโฆษณา สรุปข้อมูล</p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>ในหน้า Editor → คลิกที่กล่องข้อความ</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>พิมพ์ "/"</strong> เพื่อเปิดเมนู Magic Write
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เลือกสิ่งที่ต้องการ:</strong>
+                    <ul class="mt-2 mb-0">
+                        <li>เขียนเนื้อหาให้ (Write)</li>
+                        <li>สรุปข้อความ (Summarize)</li>
+                        <li>เขียนใหม่ (Rewrite)</li>
+                        <li>ขยายความ (Expand)</li>
+                        <li>แปลภาษา (Translate)</li>
+                    </ul>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>พิมพ์คำสั่ง</strong> เช่น "เขียนคำโฆษณาเชิญชวนคนพิการเข้าร่วมอบรม"
+                </div>
+
+                <h5 class="mt-4">ตัวอย่าง Prompt สำหรับ Magic Write:</h5>
+                <div class="prompt-example">
+                    <strong>เขียนคำโฆษณา:</strong> "เขียนข้อความสั้น 2-3 บรรทัด เชิญชวนคนพิการสมัครอบรมคอมพิวเตอร์ฟรี โทนเป็นมิตร"
+                </div>
+                <div class="prompt-example">
+                    <strong>เขียนสโลแกน:</strong> "เขียนสโลแกนสำหรับองค์กรช่วยเหลือคนพิการ สั้น จำง่าย มีพลัง"
+                </div>
+                <div class="prompt-example">
+                    <strong>สรุปข้อมูล:</strong> "สรุปข้อมูลต่อไปนี้ให้เหลือ 3 bullet points: [วางข้อมูลยาวๆ]"
+                </div>
+            </section>
+
+            <h3 class="section-header">📘 8.5 Translate — แปลภาษาในงาน</h3>
+            <section>
+                <p><strong>Canva Translate</strong> แปลข้อความทั้งหมดในงานออกแบบเป็นภาษาอื่นได้ในคลิกเดียว</p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>ในหน้า Editor → คลิก "Apps" ด้านซ้าย</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>ค้นหา "Translate"</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เลือกภาษาที่ต้องการแปล</strong> (เช่น อังกฤษ → ไทย)
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>เลือกแปลทั้งหน้า หรือเฉพาะหน้าที่เลือก</strong>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>Canva จะสร้างสำเนาที่แปลแล้ว</strong> (ไม่ทับงานเดิม)
+                </div>
+
+                <div class="alert alert-success">
+                    <h5>💡 Tips</h5>
+                    <p class="mb-0">Translate เหมาะมากเวลาที่ต้องทำสื่อ 2 ภาษา (ไทย + อังกฤษ) เช่น สำหรับส่งให้องค์กรต่างประเทศ หรือทำ Presentation ภาษาอังกฤษ</p>
+                </div>
+            </section>
+
+            <!-- Lab -->
+            <h3 class="section-header">🔬 Lab: ปฏิบัติ</h3>
+            <div class="exercise-box">
+                <h5>🏋️ แบบฝึกหัดที่ 8.1 — Magic Edit</h5>
+                <p><strong>เวลา:</strong> 15 นาที</p>
+                <ol>
+                    <li>อัปโหลดรูปภาพ 1 รูป (รูปคน หรือรูปสถานที่)</li>
+                    <li>ใช้ Magic Edit เปลี่ยนบางส่วนของภาพ:
+                        <ul>
+                            <li>เปลี่ยนท้องฟ้าเป็นพระอาทิตย์ตก</li>
+                            <li>หรือเพิ่มดอกไม้/ต้นไม้ในภาพ</li>
+                        </ul>
+                    </li>
+                    <li>ลองทำ 2-3 ครั้ง เปรียบเทียบผลลัพธ์</li>
+                </ol>
+                <div class="prompt-example">
+                    <strong>Prompt ตัวอย่าง:</strong> "beautiful sunset sky with orange clouds" หรือ "colorful garden with flowers"
+                </div>
+            </div>
+
+            <div class="exercise-box">
+                <h5>🏋️ แบบฝึกหัดที่ 8.2 — Background Remover + วางบนพื้นหลังใหม่</h5>
+                <p><strong>เวลา:</strong> 15 นาที</p>
+                <ol>
+                    <li>อัปโหลดรูปบุคคล (รูปตัวเอง หรือรูปทั่วไป)</li>
+                    <li>ใช้ Background Remover ลบพื้นหลัง</li>
+                    <li>สร้าง Design ใหม่ (เช่น นามบัตร หรือโปสเตอร์)</li>
+                    <li>วางรูปที่ลบพื้นหลังแล้ว บนพื้นหลังสีขององค์กร</li>
+                    <li>เพิ่มชื่อ ตำแหน่ง ข้อมูลติดต่อ</li>
+                </ol>
+            </div>
+
+            <div class="exercise-box">
+                <h5>🏋️ แบบฝึกหัดที่ 8.3 — Magic Write</h5>
+                <p><strong>เวลา:</strong> 15 นาที</p>
+                <ol>
+                    <li>สร้างงานใหม่ (Poster)</li>
+                    <li>เพิ่มกล่องข้อความ → พิมพ์ "/" เพื่อเปิด Magic Write</li>
+                    <li>ลองใช้คำสั่งต่อไปนี้:</li>
+                </ol>
+                <div class="prompt-example">
+                    <strong>คำสั่ง 1:</strong> "เขียนข้อความเชิญชวน 3 บรรทัด สำหรับกิจกรรมวันคนพิการสากล โทนอบอุ่นเป็นมิตร"
+                </div>
+                <div class="prompt-example">
+                    <strong>คำสั่ง 2:</strong> "เขียน 5 สโลแกนสำหรับองค์กรเพื่อคนพิการ สั้น มีพลัง จำง่าย"
+                </div>
+                <div class="prompt-example">
+                    <strong>คำสั่ง 3:</strong> "เขียนคำอธิบายสั้นๆ สำหรับโบชัวร์ เกี่ยวกับบริการฝึกอาชีพคนพิการ 50 คำ"
+                </div>
+                <ol start="4">
+                    <li>เลือกข้อความที่ดีที่สุด นำไปใส่ในงานออกแบบ</li>
+                </ol>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success mt-4">
+                <h5>💡 Tips & Tricks บทนี้</h5>
+                <ul class="mb-0">
+                    <li><strong>Magic Edit:</strong> ระบายให้เกินขอบเล็กน้อย จะได้ผลลัพธ์ที่กลมกลืนกว่า</li>
+                    <li><strong>Magic Eraser:</strong> ลบวัตถุเล็กๆ ได้ผลดี ไม่แนะนำลบวัตถุใหญ่มาก</li>
+                    <li><strong>BG Remover:</strong> รูปที่พื้นหลังตัดกับวัตถุชัด จะลบได้ดีกว่า</li>
+                    <li><strong>Magic Write:</strong> ตรวจสอบข้อความที่ AI เขียน อาจมีข้อมูลไม่ถูกต้อง</li>
+                    <li><strong>Translate:</strong> ตรวจสอบคำแปลเสมอ AI แปลอาจไม่เป็นธรรมชาติ 100%</li>
+                    <li>ฟีเจอร์ AI ส่วนใหญ่มี <strong>จำนวนครั้งจำกัด</strong> ต่อเดือน</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card">
+                <h5>📝 สรุปบทที่ 8</h5>
+                <ul class="mb-0">
+                    <li><strong>Magic Edit:</strong> เปลี่ยนแปลงส่วนของภาพด้วย AI — ระบาย + พิมพ์บอก</li>
+                    <li><strong>Magic Eraser:</strong> ลบวัตถุที่ไม่ต้องการ AI เติมพื้นหลังให้ (Pro only)</li>
+                    <li><strong>Background Remover:</strong> ลบพื้นหลังภาพ เหลือเฉพาะวัตถุหลัก (Pro only)</li>
+                    <li><strong>Magic Write:</strong> AI ช่วยเขียนข้อความ สรุป ขยายความ เขียนใหม่</li>
+                    <li><strong>Translate:</strong> แปลภาษาทั้งงานในคลิกเดียว สร้างสื่อ 2 ภาษาง่าย</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-5 mb-4">
+                <a href="chapter07.html" class="btn btn-outline-secondary">← บทที่ 7</a>
+                <a href="chapter09.html" class="btn btn-primary">บทที่ 9 →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

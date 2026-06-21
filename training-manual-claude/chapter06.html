@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 6: ทำงานเป็นทีมกับ Claude | คู่มือ Claude AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/manual-style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">📖 คู่มือ Claude AI</a>
+            <span class="text-white">บทที่ 6 | วันที่ 3 บ่าย</span>
+        </div>
+    </nav>
+
+    <!-- Chapter Header -->
+    <div class="chapter-header bg-light py-4">
+        <div class="container">
+            <h1 class="display-5 fw-bold">บทที่ 6: ทำงานเป็นทีมกับ Claude</h1>
+            <p class="lead text-muted">วันที่ 3 บ่าย (3 ชั่วโมง) — แชร์ Projects, สร้าง Prompt Library, นโยบาย AI ในองค์กร</p>
+            <div class="d-flex gap-2 flex-wrap">
+                <span class="badge bg-dark">Team Plan</span>
+                <span class="badge bg-dark">Shared Projects</span>
+                <span class="badge bg-dark">Prompt Library</span>
+                <span class="badge bg-dark">AI Policy</span>
+                <span class="badge bg-dark">Security</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+
+        <!-- สารบัญ -->
+        <div class="card mb-5">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">📋 สารบัญบทที่ 6</h5>
+            </div>
+            <div class="card-body">
+                <ul class="toc-list">
+                    <li><a href="#section-6-1">6.1 Claude Team Plan — แชร์ Projects กับทีม</a></li>
+                    <li><a href="#section-6-2">6.2 Shared Conversations — สนทนาร่วมกัน</a></li>
+                    <li><a href="#section-6-3">6.3 Prompt Library — รวม Prompt ที่ใช้บ่อย</a></li>
+                    <li><a href="#section-6-4">6.4 Best Practices — กฎการใช้ AI ในองค์กร</a></li>
+                    <li><a href="#section-6-5">6.5 ความปลอดภัย — ข้อมูลที่ห้ามใส่, ข้อจำกัด</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 6.1 -->
+        <section id="section-6-1" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">6.1 Claude Team Plan — แชร์ Projects กับทีม</h3>
+
+            <div class="alert alert-info">
+                <strong>💡 สรุปง่ายๆ:</strong> Team Plan ช่วยให้ทีมใช้ Claude ร่วมกัน แชร์ Projects ข้อมูลอ้างอิง และ Prompt ได้ โดยมี Admin จัดการสิทธิ์
+            </div>
+
+            <h5>Team Plan คืออะไร?</h5>
+            <p>Claude Team Plan เป็นแพ็กเกจสำหรับองค์กร ราคา $30/คน/เดือน (ขั้นต่ำ 5 คน) ที่เพิ่มความสามารถในการ:</p>
+            <ul>
+                <li>แชร์ Projects กับสมาชิกในทีม</li>
+                <li>จัดการสิทธิ์ Admin / Member</li>
+                <li>ใช้ Claude ได้มากกว่า Pro Plan ถึง 2 เท่า</li>
+                <li>ข้อมูลไม่ถูกนำไปฝึก AI (Data privacy)</li>
+            </ul>
+
+            <h5 class="mt-4">เปรียบเทียบ Pro vs Team Plan</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ฟีเจอร์</th>
+                        <th>Pro ($20/เดือน)</th>
+                        <th>Team ($30/คน/เดือน)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>จำนวนผู้ใช้</td>
+                        <td>1 คน</td>
+                        <td>5 คนขึ้นไป</td>
+                    </tr>
+                    <tr>
+                        <td>ปริมาณใช้งาน</td>
+                        <td>สูง</td>
+                        <td>สูงกว่า 2 เท่า</td>
+                    </tr>
+                    <tr>
+                        <td>Projects</td>
+                        <td>✅ ส่วนตัว</td>
+                        <td>✅ ส่วนตัว + แชร์ทีม</td>
+                    </tr>
+                    <tr>
+                        <td>แชร์ Projects</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Admin Console</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Data Privacy</td>
+                        <td>ไม่นำไปฝึก</td>
+                        <td>ไม่นำไปฝึก + Admin controls</td>
+                    </tr>
+                    <tr>
+                        <td>Billing</td>
+                        <td>บุคคล</td>
+                        <td>รวม (จ่ายทีเดียว)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="mt-4">สิทธิ์ Admin vs Member</h5>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-primary">
+                        <div class="card-header bg-primary text-white">👑 Admin</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>เพิ่ม/ลบสมาชิกทีม</li>
+                                <li>จัดการ Billing</li>
+                                <li>ตั้งค่า Team settings</li>
+                                <li>ดูรายงานการใช้งาน</li>
+                                <li>สร้าง/แชร์ Projects</li>
+                                <li>กำหนดนโยบาย AI ของทีม</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-secondary">
+                        <div class="card-header bg-secondary text-white">👤 Member</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>ใช้งาน Claude ได้ตามปกติ</li>
+                                <li>เข้าถึง Shared Projects ของทีม</li>
+                                <li>สร้าง Projects ส่วนตัวได้</li>
+                                <li>แชร์ Conversations ได้</li>
+                                <li>❌ ไม่สามารถจัดการสมาชิก</li>
+                                <li>❌ ไม่สามารถดู Billing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-4">วิธีแชร์ Project กับทีม</h5>
+            <ol>
+                <li>เปิด Project ที่ต้องการแชร์</li>
+                <li>คลิก <code>Share</code> หรือไอคอนแชร์</li>
+                <li>เลือก <code>Share with team</code></li>
+                <li>สมาชิกทุกคนในทีมจะเห็น Project นี้ในรายการ</li>
+            </ol>
+
+            <div class="alert alert-success">
+                <strong>💡 ข้อดีสำหรับราชการ:</strong> ทีม 5-10 คนที่ทำงานด้วยกัน สามารถแชร์ Knowledge Base เดียวกัน เช่น ระเบียบ คู่มือ FAQ ทำให้ทุกคนตอบคำถามได้ตรงกัน ลดความผิดพลาด
+            </div>
+        </section>
+
+        <!-- Section 6.2 -->
+        <section id="section-6-2" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">6.2 Shared Conversations — สนทนาร่วมกัน</h3>
+
+            <p>นอกจากแชร์ Projects แล้ว ยังสามารถแชร์ <strong>บทสนทนาเฉพาะ</strong> กับเพื่อนร่วมงานได้ เหมือนส่งลิงก์ Line ให้คนอื่นอ่าน</p>
+
+            <h5>วิธีแชร์ Conversation</h5>
+            <ol>
+                <li>เปิด Conversation ที่ต้องการแชร์</li>
+                <li>คลิกไอคอน <code>Share</code> (มุมขวาบนของ chat)</li>
+                <li>เลือก <code>Create share link</code></li>
+                <li>คัดลอกลิงก์ แล้วส่งให้เพื่อนร่วมงาน</li>
+            </ol>
+
+            <h5 class="mt-4">ใช้เมื่อไร?</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card border-success mb-3">
+                        <div class="card-header bg-success text-white">✅ เหมาะสำหรับ</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>แชร์ผลลัพธ์ที่ Claude ช่วยสร้าง เช่น ร่างเอกสาร, สรุปข้อมูล</li>
+                                <li>ให้เพื่อนร่วมงานดูวิธีที่เราถาม Claude (เรียนรู้ Prompt)</li>
+                                <li>ส่งงานให้หัวหน้าตรวจทาน</li>
+                                <li>เก็บเป็นตัวอย่างสำหรับทีม</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card border-danger mb-3">
+                        <div class="card-header bg-danger text-white">❌ ไม่เหมาะสำหรับ</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Conversation ที่มีข้อมูลส่วนบุคคล</li>
+                                <li>Conversation ที่มีข้อมูลลับราชการ</li>
+                                <li>ลิงก์อาจถูกส่งต่อให้คนนอกองค์กร</li>
+                                <li>ไม่เหมาะกับข้อมูลที่เปลี่ยนแปลงบ่อย</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-3">ข้อดี / ข้อเสียของ Shared Conversations</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ข้อดี</th>
+                        <th>ข้อเสีย</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ง่าย ส่งลิงก์ให้ใครก็ได้</td>
+                        <td>คนที่ได้ลิงก์ต้องมีบัญชี Claude</td>
+                    </tr>
+                    <tr>
+                        <td>เก็บประวัติสนทนาทั้งหมด</td>
+                        <td>ไม่สามารถแก้ไขหลังแชร์</td>
+                    </tr>
+                    <tr>
+                        <td>ผู้รับสามารถ "ต่อยอด" สนทนาได้</td>
+                        <td>ต้องระวังข้อมูลส่วนตัว</td>
+                    </tr>
+                    <tr>
+                        <td>ดีสำหรับแชร์ best practices</td>
+                        <td>ลิงก์ไม่หมดอายุ (ต้องลบเอง)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section 6.3 -->
+        <section id="section-6-3" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">6.3 Prompt Library — รวม Prompt ที่ใช้บ่อย</h3>
+
+            <p>Prompt Library คือการรวบรวม Prompt Templates ที่ทีมใช้บ่อยไว้ด้วยกัน เพื่อให้ทุกคนใช้ได้ทันที ไม่ต้องคิดใหม่ทุกครั้ง</p>
+
+            <div class="alert alert-info">
+                <strong>💡 แนวคิด:</strong> สร้าง "คลัง Prompt" ที่ทุกคนในทีมเข้าถึงได้ เหมือนมี template สำเร็จรูป แค่เปลี่ยนข้อมูลก็ใช้ได้เลย
+            </div>
+
+            <h5>วิธีสร้าง Prompt Library</h5>
+            <ol>
+                <li>รวบรวม Prompt ที่แต่ละคนใช้บ่อยและได้ผลดี</li>
+                <li>จัดหมวดหมู่ตามประเภทงาน</li>
+                <li>เก็บไว้ใน Google Docs / Sheets ที่ทีมเข้าถึงได้</li>
+                <li>หรือใส่เป็น Text content ใน Shared Project</li>
+            </ol>
+
+            <h5 class="mt-4">📚 ตัวอย่าง Prompt Library สำหรับงานราชการ</h5>
+
+            <div class="accordion" id="promptLibrary">
+                <!-- Prompt 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#prompt1">
+                            📝 1. ร่างบันทึกข้อความ (หนังสือภายใน)
+                        </button>
+                    </h2>
+                    <div id="prompt1" class="accordion-collapse collapse show" data-bs-parent="#promptLibrary">
+                        <div class="accordion-body">
+<pre><code>ร่างบันทึกข้อความ ดังนี้:
+- จาก: [ตำแหน่ง/หน่วยงาน]
+- ถึง: [ตำแหน่ง/หน่วยงาน]  
+- เรื่อง: [เรื่อง]
+- รายละเอียด: [อธิบายสิ่งที่ต้องการ]
+- สิ่งที่ต้องการ: [ขออนุมัติ/เพื่อทราบ/เพื่อพิจารณา]
+
+ใช้รูปแบบหนังสือราชการตามระเบียบสำนักนายกรัฐมนตรี 
+ภาษาสุภาพ กระชับ ชัดเจน</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prompt2">
+                            📋 2. สรุปรายงานการประชุม
+                        </button>
+                    </h2>
+                    <div id="prompt2" class="accordion-collapse collapse" data-bs-parent="#promptLibrary">
+                        <div class="accordion-body">
+<pre><code>สรุปรายงานการประชุมจากข้อมูลต่อไปนี้:
+
+[วางเนื้อหาบันทึกการประชุม หรือ voice-to-text]
+
+รูปแบบผลลัพธ์:
+1. หัวข้อการประชุม + วัน/เวลา/สถานที่
+2. ผู้เข้าร่วม
+3. วาระที่ 1, 2, 3... (สรุปประเด็นสำคัญ)
+4. มติที่ประชุม
+5. ผู้รับผิดชอบ + กำหนดเวลา
+6. นัดประชุมครั้งถัดไป</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt 3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prompt3">
+                            📊 3. วิเคราะห์ข้อมูลสถิติ
+                        </button>
+                    </h2>
+                    <div id="prompt3" class="accordion-collapse collapse" data-bs-parent="#promptLibrary">
+                        <div class="accordion-body">
+<pre><code>วิเคราะห์ข้อมูลต่อไปนี้:
+
+[วางข้อมูลตัวเลข/ตาราง]
+
+ต้องการ:
+1. สรุปภาพรวม (ค่าสูงสุด, ต่ำสุด, เฉลี่ย)
+2. เปรียบเทียบกับเป้าหมาย [ระบุเป้า]
+3. แนวโน้ม (เพิ่มขึ้น/ลดลง/คงที่)
+4. จุดเด่น 3 ข้อ
+5. จุดที่ต้องปรับปรุง 3 ข้อ
+6. ข้อเสนอแนะ
+
+แสดงผลเป็นตาราง + bullet points</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt 4 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prompt4">
+                            📄 4. ร่างโครงการฝึกอบรม
+                        </button>
+                    </h2>
+                    <div id="prompt4" class="accordion-collapse collapse" data-bs-parent="#promptLibrary">
+                        <div class="accordion-body">
+<pre><code>ร่างโครงการฝึกอบรม ดังนี้:
+- ชื่อหลักสูตร: [ชื่อ]
+- กลุ่มเป้าหมาย: [ใคร] จำนวน [กี่] คน
+- ระยะเวลา: [กี่] ชั่วโมง/วัน
+- วัตถุประสงค์: [ระบุ]
+- งบประมาณ: [จำนวน] บาท
+
+โครงสร้างโครงการ:
+1. หลักการและเหตุผล
+2. วัตถุประสงค์
+3. เป้าหมาย (เชิงปริมาณ + เชิงคุณภาพ)
+4. กลุ่มเป้าหมาย
+5. วิธีดำเนินการ
+6. ระยะเวลาและสถานที่
+7. งบประมาณ (แจกแจงรายการ)
+8. ผลที่คาดว่าจะได้รับ
+9. ตัวชี้วัดความสำเร็จ</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt 5 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prompt5">
+                            ✉️ 5. ร่างหนังสือภายนอก (ถึงหน่วยงานอื่น)
+                        </button>
+                    </h2>
+                    <div id="prompt5" class="accordion-collapse collapse" data-bs-parent="#promptLibrary">
+                        <div class="accordion-body">
+<pre><code>ร่างหนังสือภายนอก:
+- ที่: สร./[เลขที่]
+- ลงวันที่: [วันที่]
+- เรื่อง: [เรื่อง]
+- เรียน: [ตำแหน่งผู้รับ]
+- อ้างถึง: [หนังสือ/ระเบียบ] (ถ้ามี)
+- สิ่งที่ส่งมาด้วย: [รายการ] (ถ้ามี)
+- เนื้อหา: [อธิบายรายละเอียด]
+- จุดประสงค์: [เพื่อโปรดทราบ/พิจารณา/ดำเนินการ]
+- ลงนาม: ผู้อำนวยการสำนักงานพัฒนาฝีมือแรงงานสุรินทร์
+
+ใช้ภาษาราชการที่สุภาพ กระชับ ตรงประเด็น</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt 6 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prompt6">
+                            📈 6. สร้างรายงานผลการดำเนินงาน
+                        </button>
+                    </h2>
+                    <div id="prompt6" class="accordion-collapse collapse" data-bs-parent="#promptLibrary">
+                        <div class="accordion-body">
+<pre><code>สร้างรายงานผลการดำเนินงาน:
+- ระยะเวลา: [ไตรมาส/เดือน/ปี]
+- ข้อมูลผลงาน: [วางตัวเลข]
+- เป้าหมาย: [ตัวเลขเป้า]
+
+รูปแบบรายงาน:
+1. บทสรุปผู้บริหาร (Executive Summary) ไม่เกิน 1 หน้า
+2. ผลการดำเนินงานตามตัวชี้วัด (ตาราง)
+3. เปรียบเทียบผลงาน vs เป้าหมาย (%)
+4. ปัญหาอุปสรรค
+5. แนวทางแก้ไข
+6. แผนงานระยะถัดไป
+
+ใช้ภาษาทางการ มีตัวเลขสนับสนุน</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt 7 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prompt7">
+                            📢 7. ร่างประกาศรับสมัครฝึกอบรม
+                        </button>
+                    </h2>
+                    <div id="prompt7" class="accordion-collapse collapse" data-bs-parent="#promptLibrary">
+                        <div class="accordion-body">
+<pre><code>ร่างประกาศรับสมัครฝึกอบรม:
+- หลักสูตร: [ชื่อ]
+- ระยะเวลา: [วันที่เริ่ม - สิ้นสุด]
+- จำนวนรับ: [กี่] คน
+- คุณสมบัติ: [อายุ/วุฒิ/อื่นๆ]
+- สถานที่: [ที่ไหน]
+- ค่าใช้จ่าย: [ฟรี/มีค่าใช้จ่าย]
+- วิธีสมัคร: [ช่องทาง]
+- ปิดรับสมัคร: [วันที่]
+
+รูปแบบ: เข้าใจง่าย มี emoji หัวข้อ 
+เหมาะสำหรับโพสต์ Facebook + เอกสารราชการ (2 เวอร์ชัน)</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt 8 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prompt8">
+                            🔍 8. ตรวจสอบและแก้ไขเอกสาร
+                        </button>
+                    </h2>
+                    <div id="prompt8" class="accordion-collapse collapse" data-bs-parent="#promptLibrary">
+                        <div class="accordion-body">
+<pre><code>ตรวจสอบเอกสารต่อไปนี้:
+
+[วางเอกสาร]
+
+ตรวจสอบ:
+1. การสะกดคำ (ภาษาไทย + ภาษาอังกฤษ)
+2. ไวยากรณ์และโครงสร้างประโยค
+3. ความสอดคล้องของข้อมูล (ตัวเลข วันที่)
+4. รูปแบบตามระเบียบสารบรรณ (ถ้าเป็นหนังสือราชการ)
+5. ความชัดเจนของสาร
+
+แสดงผล:
+- ✅ จุดที่ถูกต้อง
+- ❌ จุดที่ผิด + แก้ไขให้
+- 💡 ข้อเสนอแนะ</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt 9 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prompt9">
+                            💰 9. คำนวณงบประมาณฝึกอบรม
+                        </button>
+                    </h2>
+                    <div id="prompt9" class="accordion-collapse collapse" data-bs-parent="#promptLibrary">
+                        <div class="accordion-body">
+<pre><code>คำนวณงบประมาณจัดฝึกอบรม:
+- หลักสูตร: [ชื่อ]
+- จำนวนผู้เข้าอบรม: [กี่] คน
+- ระยะเวลา: [กี่] วัน
+- สถานที่: [ภายใน/ภายนอก]
+- วิทยากร: [ภายใน/ภายนอก] จำนวน [กี่] คน
+
+รายการที่ต้องคำนวณ:
+1. ค่าตอบแทนวิทยากร (ชม.ละ xxx บาท)
+2. ค่าอาหาร/อาหารว่าง (คนละ xxx บาท/วัน)
+3. ค่าวัสดุฝึก
+4. ค่าเอกสาร
+5. ค่าสถานที่ (ถ้ามี)
+6. ค่าเดินทาง (ถ้ามี)
+7. ค่าใช้จ่ายอื่นๆ
+
+สรุปเป็นตารางรายการ + ยอดรวม
+อ้างอิงระเบียบค่าใช้จ่ายที่เกี่ยวข้อง</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt 10 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prompt10">
+                            🎯 10. เขียน KPI และตัวชี้วัด
+                        </button>
+                    </h2>
+                    <div id="prompt10" class="accordion-collapse collapse" data-bs-parent="#promptLibrary">
+                        <div class="accordion-body">
+<pre><code>ช่วยเขียนตัวชี้วัด KPI สำหรับ:
+- ภารกิจ/โครงการ: [ชื่อ]
+- กลุ่มเป้าหมาย: [ใคร]
+- ระยะเวลา: [ปี/ไตรมาส]
+- เป้าหมายหลัก: [อธิบาย]
+
+ต้องการ:
+1. ตัวชี้วัดเชิงปริมาณ (Output) 3-5 ข้อ
+2. ตัวชี้วัดเชิงคุณภาพ (Outcome) 2-3 ข้อ
+3. ค่าเป้าหมายที่เป็นไปได้
+4. วิธีวัดผล/เก็บข้อมูล
+5. ความถี่ในการรายงาน
+
+แสดงเป็นตาราง: ตัวชี้วัด | เป้าหมาย | วิธีวัด | รอบรายงาน</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt 11 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prompt11">
+                            📱 11. เขียนโพสต์ประชาสัมพันธ์ (Social Media)
+                        </button>
+                    </h2>
+                    <div id="prompt11" class="accordion-collapse collapse" data-bs-parent="#promptLibrary">
+                        <div class="accordion-body">
+<pre><code>เขียนโพสต์ประชาสัมพันธ์:
+- เนื้อหา: [อธิบายสิ่งที่จะประชาสัมพันธ์]
+- กลุ่มเป้าหมาย: [ใคร]
+- ช่องทาง: [Facebook / Line / ทั้งสอง]
+- โทนเสียง: [เป็นทางการ / กึ่งทางการ / เป็นกันเอง]
+
+ต้องการ:
+- หัวข้อที่ดึงดูด (มี emoji)
+- เนื้อหากระชับ อ่านง่าย
+- มี Call to action (ให้ทำอะไร)
+- Hashtag ที่เกี่ยวข้อง (3-5 อัน)
+- ความยาว: ไม่เกิน 500 ตัวอักษร
+
+สร้าง 2 เวอร์ชัน:
+A) เวอร์ชัน Facebook (ยาวหน่อย + รูป suggestion)
+B) เวอร์ชัน Line OA (สั้น + กระชับ)</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt 12 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prompt12">
+                            📑 12. สร้างแผนการสอน/หลักสูตร
+                        </button>
+                    </h2>
+                    <div id="prompt12" class="accordion-collapse collapse" data-bs-parent="#promptLibrary">
+                        <div class="accordion-body">
+<pre><code>สร้างแผนการสอน:
+- หลักสูตร: [ชื่อ]
+- ระยะเวลารวม: [กี่] ชั่วโมง
+- กลุ่มผู้เรียน: [คุณสมบัติ/ระดับ]
+- วัตถุประสงค์: [ผู้เรียนจะทำอะไรได้]
+
+รูปแบบแผนการสอน:
+| วัน/เวลา | หัวข้อ | เนื้อหา | กิจกรรม | สื่อ/อุปกรณ์ | การวัดผล |
+
+ต้องการ:
+- แบ่งเนื้อหาตามวัน (ถ้าหลายวัน)
+- มีทั้งภาคทฤษฎีและปฏิบัติ (70:30 ปฏิบัติ:ทฤษฎี)
+- กิจกรรม Ice Breaking ตอนเช้า
+- พักเบรก ตาม schedule (10.30, 14.30)
+- กิจกรรม Workshop/กลุ่ม
+- Pre-test / Post-test</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success mt-4">
+                <strong>💡 วิธีจัดเก็บ Prompt Library:</strong>
+                <ul class="mb-0 mt-2">
+                    <li><strong>Google Sheets</strong> — สร้างตาราง: ชื่อ Prompt | หมวด | เนื้อหา | ผู้สร้าง</li>
+                    <li><strong>Google Docs</strong> — รวม Prompt แบ่งหมวดหมู่ แชร์ลิงก์ให้ทีม</li>
+                    <li><strong>Claude Project</strong> — ใส่เป็น text content ใน Shared Project</li>
+                    <li><strong>Notion/Wiki</strong> — สร้าง database แยกหมวด ค้นหาง่าย</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 6.4 -->
+        <section id="section-6-4" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">6.4 Best Practices — กฎการใช้ AI ในองค์กร</h3>
+
+            <p>การใช้ AI ในองค์กรราชการ จำเป็นต้องมี <strong>นโยบาย (AI Policy)</strong> ที่ชัดเจน เพื่อป้องกันความเสี่ยงและใช้ประโยชน์อย่างเหมาะสม</p>
+
+            <h5>หลักการ 5 ข้อ สำหรับนโยบาย AI ที่ดี</h5>
+
+            <div class="row mt-3">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <h1>🔍</h1>
+                            <h6 class="card-title">1. ตรวจสอบเสมอ</h6>
+                            <p class="card-text small">ผลลัพธ์จาก AI ต้องผ่านการตรวจสอบจากมนุษย์ก่อนใช้งานจริง ห้ามเชื่อ 100%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <h1>🔒</h1>
+                            <h6 class="card-title">2. ไม่ใส่ข้อมูลลับ</h6>
+                            <p class="card-text small">ห้ามใส่ข้อมูลลับราชการ ข้อมูลส่วนบุคคล หรือข้อมูลที่ยังไม่เปิดเผย</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <h1>📝</h1>
+                            <h6 class="card-title">3. อ้างอิง AI</h6>
+                            <p class="card-text small">เมื่อใช้ AI ช่วยผลิตผลงาน ควรระบุว่าใช้ AI ช่วย (โดยเฉพาะงานเผยแพร่)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <h1>👤</h1>
+                            <h6 class="card-title">4. Human-in-the-Loop</h6>
+                            <p class="card-text small">มนุษย์ต้องเป็นผู้ตัดสินใจสุดท้าย AI เป็นเพียงผู้ช่วย ไม่ใช่ผู้ตัดสินใจ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <h1>📊</h1>
+                            <h6 class="card-title">5. รับผิดชอบ</h6>
+                            <p class="card-text small">ผู้ใช้ AI รับผิดชอบผลลัพธ์ ไม่ว่า AI จะสร้างอะไรมา คนเป็นผู้รับผิดชอบ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <h1>⚖️</h1>
+                            <h6 class="card-title">6. เป็นธรรม</h6>
+                            <p class="card-text small">ระวัง bias ของ AI ตรวจสอบว่าผลลัพธ์ไม่เลือกปฏิบัติหรือลำเอียง</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-4">ตัวอย่างนโยบาย AI สำหรับหน่วยงานราชการ</h5>
+            <div class="card">
+                <div class="card-header bg-dark text-white">📋 นโยบายการใช้ AI — สำนักงานพัฒนาฝีมือแรงงานสุรินทร์</div>
+                <div class="card-body">
+                    <ol>
+                        <li><strong>การใช้ AI ที่อนุญาต:</strong>
+                            <ul>
+                                <li>ร่างเอกสาร หนังสือราชการ รายงาน (ต้องตรวจทานก่อนส่ง)</li>
+                                <li>วิเคราะห์ข้อมูลสถิติ (ต้องตรวจสอบตัวเลขก่อนใช้)</li>
+                                <li>สรุปเอกสาร บันทึกการประชุม</li>
+                                <li>สร้างสื่อประชาสัมพันธ์</li>
+                                <li>แปลภาษา ตรวจคำผิด</li>
+                            </ul>
+                        </li>
+                        <li class="mt-3"><strong>การใช้ AI ที่ห้าม:</strong>
+                            <ul>
+                                <li>ห้ามใส่ข้อมูลส่วนบุคคลของประชาชน</li>
+                                <li>ห้ามใส่ข้อมูลลับราชการ</li>
+                                <li>ห้ามใช้ AI ตัดสินใจแทนผู้มีอำนาจ</li>
+                                <li>ห้ามเผยแพร่ผลงาน AI โดยไม่ตรวจสอบ</li>
+                            </ul>
+                        </li>
+                        <li class="mt-3"><strong>ขั้นตอนการตรวจสอบ:</strong>
+                            <ul>
+                                <li>ผลลัพธ์จาก AI ต้องผ่านการตรวจจากเจ้าของงาน</li>
+                                <li>เอกสารสำคัญ ต้องผ่านหัวหน้างานก่อนเผยแพร่</li>
+                                <li>ตัวเลข/สถิติ ต้อง cross-check กับแหล่งข้อมูลจริง</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="alert alert-warning mt-4">
+                <strong>⚠️ สำคัญ — Human-in-the-Loop:</strong> AI เป็นเครื่องมือช่วย ไม่ใช่ผู้ตัดสินใจ ทุกครั้งที่ใช้ AI ในงานราชการ ผู้รับผิดชอบต้องตรวจสอบความถูกต้อง ตรวจทานข้อมูล และลงนามรับรองก่อนส่งงาน
+            </div>
+        </section>
+
+        <!-- Section 6.5 -->
+        <section id="section-6-5" class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">6.5 ความปลอดภัย — ข้อมูลที่ห้ามใส่, ข้อจำกัด</h3>
+
+            <div class="alert alert-danger">
+                <strong>🚨 คำเตือนสำคัญ:</strong> ข้อมูลที่ใส่ใน Claude จะถูกส่งไปประมวลผลบน Cloud Server ของ Anthropic (สหรัฐอเมริกา) แม้จะมีนโยบายไม่นำข้อมูลไปฝึก AI แต่ก็ต้องระมัดระวังข้อมูลที่ใส่
+            </div>
+
+            <h5>ตาราง Do / Don't — ข้อมูลที่ใส่ได้ vs ห้ามใส่</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th style="width:50%">✅ ใส่ได้ (Do)</th>
+                        <th style="width:50%">❌ ห้ามใส่ (Don't)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ข้อมูลทั่วไปที่เปิดเผยได้</td>
+                        <td class="table-danger"><strong>เลขบัตรประชาชน</strong> ของประชาชน/บุคลากร</td>
+                    </tr>
+                    <tr>
+                        <td>ระเบียบ กฎหมาย หนังสือเวียน (เปิดเผย)</td>
+                        <td class="table-danger"><strong>ข้อมูลส่วนบุคคล</strong> ชื่อ-นามสกุล + ที่อยู่ + โทรศัพท์ ของผู้อื่น</td>
+                    </tr>
+                    <tr>
+                        <td>สถิติที่เผยแพร่แล้ว</td>
+                        <td class="table-danger"><strong>ข้อมูลลับราชการ</strong> ที่มีชั้นความลับ</td>
+                    </tr>
+                    <tr>
+                        <td>ร่างเอกสาร (ไม่มีข้อมูลส่วนบุคคล)</td>
+                        <td class="table-danger"><strong>รหัสผ่าน</strong> ทุกประเภท</td>
+                    </tr>
+                    <tr>
+                        <td>คำถามทั่วไปเกี่ยวกับระเบียบ</td>
+                        <td class="table-danger"><strong>ข้อมูลทางการเงิน</strong> เลขบัญชีธนาคารของผู้อื่น</td>
+                    </tr>
+                    <tr>
+                        <td>ข้อมูลสถิติรวม (ไม่ระบุตัวบุคคล)</td>
+                        <td class="table-danger"><strong>ข้อมูลสุขภาพ</strong> ประวัติการรักษาพยาบาล</td>
+                    </tr>
+                    <tr>
+                        <td>ตัวอย่างเอกสาร (ลบชื่อ/ข้อมูลจริงออก)</td>
+                        <td class="table-danger"><strong>เอกสารสัญญา</strong> ที่ยังไม่ลงนาม/ยังไม่เปิดเผย</td>
+                    </tr>
+                    <tr>
+                        <td>คำถามความรู้ทั่วไป</td>
+                        <td class="table-danger"><strong>ข้อสอบ/ข้อมูลการสอบ</strong> ที่ยังไม่เปิดเผย</td>
+                    </tr>
+                    <tr>
+                        <td>โค้ดทั่วไป ไม่มี credentials</td>
+                        <td class="table-danger"><strong>API Keys, Tokens, Secrets</strong></td>
+                    </tr>
+                    <tr>
+                        <td>แผนงานทั่วไปที่เปิดเผยได้</td>
+                        <td class="table-danger"><strong>ข้อมูลการสอบสวน</strong> ทางวินัย</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="mt-4">เทคนิคป้องกัน — ทำอย่างไรเมื่อต้องใช้ข้อมูลจริง</h5>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header"><strong>🔄 วิธีที่ 1: ใช้ข้อมูลสมมติ</strong></div>
+                        <div class="card-body">
+<pre><code>❌ แบบผิด:
+"ร่างหนังสือถึง นายสมชาย ใจดี 
+เลขบัตร 1-3201-xxxxx-xx-x"
+
+✅ แบบถูก:
+"ร่างหนังสือถึง [ชื่อผู้รับ] 
+เลขบัตร [เลขบัตรประชาชน]"</code></pre>
+                            <p class="small text-muted">ใช้ placeholder แทนข้อมูลจริง แล้วเติมข้อมูลจริงตอนสุดท้าย</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header"><strong>🔄 วิธีที่ 2: ลบข้อมูลระบุตัว</strong></div>
+                        <div class="card-body">
+<pre><code>❌ แบบผิด:
+"วิเคราะห์ข้อมูลผู้เข้าอบรม:
+1. นายสมชาย ใจดี อายุ 35 
+2. นางสาวสมหญิง รักดี อายุ 28"
+
+✅ แบบถูก:
+"วิเคราะห์ข้อมูลผู้เข้าอบรม:
+1. ผู้เข้าอบรมคนที่ 1 อายุ 35 
+2. ผู้เข้าอบรมคนที่ 2 อายุ 28"</code></pre>
+                            <p class="small text-muted">ลบชื่อจริง ใช้เลขหรือรหัสแทน</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-4">ข้อจำกัดของ Claude ที่ต้องรู้</h5>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ข้อจำกัด</th>
+                        <th>รายละเอียด</th>
+                        <th>วิธีแก้</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ข้อมูลไม่ real-time</strong></td>
+                        <td>Claude ไม่ได้เชื่อมต่ออินเทอร์เน็ต ไม่รู้เหตุการณ์ปัจจุบัน</td>
+                        <td>ใส่ข้อมูลล่าสุดใน Project / วาง text ให้</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hallucination</strong></td>
+                        <td>อาจแต่งข้อมูล ตัวเลข อ้างอิงที่ไม่มีจริง</td>
+                        <td>ตรวจสอบข้อเท็จจริงเสมอ อย่าเชื่อตัวเลข 100%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Context จำกัด</strong></td>
+                        <td>จำข้อมูลได้แค่ในบทสนทนา ไม่จำข้ามครั้ง</td>
+                        <td>ใช้ Projects เก็บข้อมูลถาวร</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ไม่มีความเห็นส่วนตัว</strong></td>
+                        <td>Claude ไม่สามารถ "ตัดสินใจ" แทนคนได้</td>
+                        <td>ให้ AI เสนอทางเลือก คนเป็นผู้ตัดสิน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ภาษาไทยอาจคลาดเคลื่อน</strong></td>
+                        <td>บางครั้งใช้คำที่ฟังไม่เป็นธรรมชาติ</td>
+                        <td>ตรวจทาน แก้ไขภาษาก่อนส่ง</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="mt-4">Checklist ก่อนใส่ข้อมูลเข้า Claude</h5>
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" disabled>
+                        <label class="form-check-label">☐ ข้อมูลนี้เปิดเผยได้หรือไม่? (ถ้าไม่ — ห้ามใส่)</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" disabled>
+                        <label class="form-check-label">☐ มีข้อมูลส่วนบุคคลหรือไม่? (ถ้ามี — ลบออกก่อน)</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" disabled>
+                        <label class="form-check-label">☐ มีรหัสผ่าน/API Key หรือไม่? (ถ้ามี — ลบออก)</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" disabled>
+                        <label class="form-check-label">☐ ข้อมูลนี้ถ้าหลุดออกไป จะเสียหายหรือไม่? (ถ้าเสียหาย — ห้ามใส่)</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" disabled>
+                        <label class="form-check-label">☐ หัวหน้าจะอนุญาตให้ใส่ข้อมูลนี้หรือไม่? (ถ้าไม่แน่ใจ — ถามก่อน)</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- แบบฝึกหัด -->
+        <section class="mb-5">
+            <h3 class="border-start border-4 border-dark ps-3">📝 แบบฝึกหัดท้ายบทที่ 6</h3>
+
+            <div class="card">
+                <div class="card-body">
+                    <p><strong>แบบฝึกหัด 6.1:</strong> ร่างนโยบาย AI Policy สำหรับหน่วยงานของท่าน (อ้างอิงจากตัวอย่างข้างต้น) ไม่น้อยกว่า 10 ข้อ</p>
+
+                    <p><strong>แบบฝึกหัด 6.2:</strong> สร้าง Prompt Library สำหรับงานที่ท่านทำบ่อย 5 prompt โดย:</p>
+                    <ul>
+                        <li>ระบุชื่อ Prompt</li>
+                        <li>เขียน template (มี placeholder สำหรับเปลี่ยนข้อมูล)</li>
+                        <li>ระบุตัวอย่างการใช้งาน 1 ตัวอย่าง</li>
+                    </ul>
+
+                    <p><strong>แบบฝึกหัด 6.3:</strong> จากข้อมูลสมมติต่อไปนี้ ให้ระบุว่าอันไหน ✅ ใส่ได้ / ❌ ห้ามใส่:</p>
+                    <ol>
+                        <li>"สรุปจำนวนผู้ผ่านการฝึกอบรมปี 2568 จำนวน 1,500 คน" — <em>[ตอบ: ?]</em></li>
+                        <li>"นายสมชาย ใจดี เลขบัตร 1-3201-00001-00-1 ผ่านการทดสอบ" — <em>[ตอบ: ?]</em></li>
+                        <li>"ระเบียบกรมพัฒนาฝีมือแรงงาน ว่าด้วยค่าใช้จ่ายฯ พ.ศ. 2563" — <em>[ตอบ: ?]</em></li>
+                        <li>"รหัสผ่าน admin ระบบ e-budget คือ P@ssw0rd123" — <em>[ตอบ: ?]</em></li>
+                        <li>"สถิติผู้ว่างงานจังหวัดสุรินทร์ ไตรมาส 1/2569 (เผยแพร่แล้ว)" — <em>[ตอบ: ?]</em></li>
+                    </ol>
+
+                    <p><strong>แบบฝึกหัด 6.4 (กลุ่ม):</strong> จับกลุ่ม 3-4 คน สร้าง Shared Project สำหรับทีม โดย:</p>
+                    <ul>
+                        <li>เลือกหัวข้อ 1 เรื่องที่ทั้งกลุ่มสนใจ</li>
+                        <li>แบ่งกันหาเอกสารอ้างอิง</li>
+                        <li>ตั้ง Custom Instructions ร่วมกัน</li>
+                        <li>ทดสอบถามคำถาม 5 ข้อ + ให้คะแนนความพอใจ</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-5 pt-4 border-top">
+            <a href="chapter05.html" class="btn btn-outline-dark">← บทที่ 5: Claude Projects</a>
+            <a href="chapter07.html" class="btn btn-dark">บทที่ 7: เริ่มต้น Claude Code →</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p class="mb-1">คู่มือฝึกอบรม Claude AI — ใช้ปัญญาประดิษฐ์ทำงานราชการ</p>
+        <p class="mb-0 text-white-50">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

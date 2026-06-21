@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 9: NotebookLM สำหรับงานราชการ | AI สำหรับงานราชการ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">📖 AI สำหรับงานราชการ</a>
+            <span class="navbar-text nav-text text-light">บทที่ 9</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header text-center mb-4">
+                <h1>📓 บทที่ 9</h1>
+                <h2>NotebookLM สำหรับงานราชการ</h2>
+                <p class="lead text-muted">อัปโหลดเอกสาร กฎหมาย ระเบียบ แล้วถาม-ตอบได้ทันที ด้วย Google NotebookLM</p>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info">
+                <h5>🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เข้าใจว่า NotebookLM คืออะไร ใช้งานอย่างไร</li>
+                    <li>อัปโหลดเอกสารราชการ แล้วถาม-ตอบได้ทันที</li>
+                    <li>สร้าง Podcast สรุปเอกสารองค์กร</li>
+                    <li>ใช้ Multi-document เปรียบเทียบหลายเอกสารพร้อมกัน</li>
+                </ul>
+            </div>
+
+            <!-- 9.1 NotebookLM คืออะไร -->
+            <section>
+                <h3 class="section-header">9.1 NotebookLM คืออะไร</h3>
+                <p><strong>NotebookLM</strong> คือเครื่องมือ AI จาก Google ที่ให้คุณอัปโหลดเอกสาร แล้วถาม-ตอบเกี่ยวกับเนื้อหาได้ทันที เหมือนมีผู้ช่วยที่อ่านเอกสารให้หมดแล้ว</p>
+
+                <div class="info-card">
+                    <h5>🌐 เข้าใช้งาน</h5>
+                    <p><a href="https://notebooklm.google.com" target="_blank" class="btn btn-primary btn-sm">🔗 notebooklm.google.com</a></p>
+                    <p class="mb-0">เข้าสู่ระบบด้วย Google Account (ฟรี)</p>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="info-card h-100">
+                            <h6>✅ สิ่งที่ทำได้</h6>
+                            <ul class="mb-0">
+                                <li>อัปโหลด PDF, Google Docs, ข้อความ</li>
+                                <li>ถาม-ตอบเกี่ยวกับเนื้อหาเอกสาร</li>
+                                <li>สรุปเอกสารยาว ๆ ให้กระชับ</li>
+                                <li>สร้าง Audio Overview (Podcast)</li>
+                                <li>เปรียบเทียบหลายเอกสาร</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card h-100">
+                            <h6>💡 เหมาะกับงานราชการอย่างไร</h6>
+                            <ul class="mb-0">
+                                <li>อัปโหลด พ.ร.บ. → ถามประเด็นที่สงสัย</li>
+                                <li>อัปโหลดระเบียบ → หาข้อกำหนดเฉพาะ</li>
+                                <li>อัปโหลดคู่มือ → สรุปขั้นตอนสำคัญ</li>
+                                <li>เปรียบเทียบระเบียบเก่า-ใหม่</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9.2 อัปโหลดระเบียบ กฎหมาย คู่มือ → ถามได้ทันที -->
+            <section>
+                <h3 class="section-header">9.2 อัปโหลดระเบียบ กฎหมาย คู่มือ → ถามได้ทันที</h3>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>สร้าง Notebook ใหม่</strong>
+                    <p class="mb-0 mt-2">เข้า notebooklm.google.com → คลิก "New Notebook" → ตั้งชื่อ เช่น "ระเบียบ สนพ.สุรินทร์"</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>อัปโหลดเอกสาร</strong>
+                    <p class="mb-0 mt-2">คลิก "Add Source" → เลือกไฟล์ PDF / Google Docs / วางข้อความ → รอระบบประมวลผล</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>เริ่มถาม-ตอบ</strong>
+                    <p class="mb-0 mt-2">พิมพ์คำถามในช่อง Chat → NotebookLM จะตอบจากเนื้อหาเอกสารที่อัปโหลด พร้อมอ้างอิงแหล่งที่มา</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>ใช้ฟีเจอร์เสริม</strong>
+                    <p class="mb-0 mt-2">ดู Summary อัตโนมัติ, สร้าง Study Guide, สร้าง Audio Overview, หรือถามคำถามเพิ่มเติม</p>
+                </div>
+
+                <h5 class="mt-4">ตัวอย่างคำถามที่ถามได้:</h5>
+                <div class="info-card">
+                    <ul>
+                        <li>"สรุปสาระสำคัญของระเบียบนี้ใน 5 ข้อ"</li>
+                        <li>"ขั้นตอนการขอรับบริการมีกี่ขั้นตอน อะไรบ้าง?"</li>
+                        <li>"คนพิการประเภทใดมีสิทธิ์ตามมาตรานี้?"</li>
+                        <li>"เอกสารที่ต้องเตรียมสำหรับยื่นคำร้องคืออะไร?"</li>
+                        <li>"เปรียบเทียบข้อกำหนดระหว่างหมวด 3 กับหมวด 4"</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 9.3 สร้าง Podcast สรุปเอกสารองค์กร -->
+            <section>
+                <h3 class="section-header">9.3 สร้าง Podcast สรุปเอกสารองค์กร</h3>
+                <p>NotebookLM มีฟีเจอร์ <strong>Audio Overview</strong> ที่จะสร้างเสียง Podcast 2 คนสนทนา สรุปเนื้อหาเอกสารให้ฟังง่าย</p>
+
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปิด Notebook ที่มีเอกสาร</strong>
+                    <p class="mb-0 mt-2">ตรวจสอบว่าอัปโหลดเอกสารครบแล้ว (แนะนำ 1-3 ไฟล์ต่อ Podcast)</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>คลิก "Audio Overview"</strong>
+                    <p class="mb-0 mt-2">อยู่ที่มุมขวาบน → กด "Generate" → รอ 2-5 นาที (ขึ้นอยู่กับความยาวเอกสาร)</p>
+                </div>
+
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>ฟังและแชร์</strong>
+                    <p class="mb-0 mt-2">ได้ Podcast ความยาว 5-15 นาที สามารถดาวน์โหลด MP3 หรือแชร์ลิงก์ให้ทีมฟัง</p>
+                </div>
+
+                <div class="alert alert-success mt-3">
+                    <strong>💡 Tips:</strong> ใช้ Audio Overview สำหรับบรีฟทีมก่อนประชุม — อัปโหลดเอกสารวาระ แล้วให้ทุกคนฟัง Podcast สรุปก่อนเข้าห้องประชุม
+                </div>
+            </section>
+
+            <!-- 9.4 การใช้ Multi-document -->
+            <section>
+                <h3 class="section-header">9.4 การใช้ Multi-document</h3>
+                <p>NotebookLM รองรับการอัปโหลดหลายไฟล์ใน Notebook เดียวกัน ทำให้สามารถเปรียบเทียบหรือถามข้ามเอกสารได้</p>
+
+                <div class="info-card">
+                    <h5>📚 การใช้งาน Multi-document</h5>
+                    <table class="table table-bordered table-sm">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>สิ่งที่ทำได้</th>
+                                <th>ตัวอย่าง</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>เปรียบเทียบ 2 เอกสาร</td>
+                                <td>"เปรียบเทียบสิทธิ์คนพิการใน พ.ร.บ. 2550 กับฉบับแก้ไข 2556"</td>
+                            </tr>
+                            <tr>
+                                <td>ถามข้ามเอกสาร</td>
+                                <td>"ระเบียบไหนกำหนดเรื่องงบประมาณการฝึกอาชีพ?"</td>
+                            </tr>
+                            <tr>
+                                <td>สรุปรวม</td>
+                                <td>"สรุปสาระสำคัญของทุกเอกสารที่อัปโหลดใน 10 ข้อ"</td>
+                            </tr>
+                            <tr>
+                                <td>หาข้อขัดแย้ง</td>
+                                <td>"มีข้อกำหนดใดที่ขัดแย้งกันระหว่าง 2 ระเบียบนี้?"</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="alert alert-warning mt-3">
+                    <strong>⚠️ ข้อจำกัด:</strong> NotebookLM รองรับสูงสุด 50 แหล่งข้อมูลต่อ Notebook แต่ละไฟล์ไม่เกิน 500,000 คำ
+                </div>
+            </section>
+
+            <!-- 9.5 ตัวอย่าง: อัปโหลด พ.ร.บ.คนพิการ -->
+            <section>
+                <h3 class="section-header">9.5 ตัวอย่าง: อัปโหลด พ.ร.บ.คนพิการ → ถามประเด็นที่ต้องการ</h3>
+                <p>สาธิตการอัปโหลด พ.ร.บ.ส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ พ.ศ. 2550 แล้วถามคำถาม</p>
+
+                <h5>📝 ตัวอย่าง 5 คำถามที่ถาม NotebookLM:</h5>
+                <div class="prompt-example">
+                    <strong>คำถามที่ 1:</strong> สรุปสิทธิ์ของคนพิการตาม พ.ร.บ. นี้มีกี่ด้าน อะไรบ้าง?
+                </div>
+                <div class="prompt-example">
+                    <strong>คำถามที่ 2:</strong> นายจ้างต้องจ้างคนพิการกี่คนต่อลูกจ้างกี่คน? ถ้าไม่จ้างต้องทำอย่างไร?
+                </div>
+                <div class="prompt-example">
+                    <strong>คำถามที่ 3:</strong> กองทุนส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ มีวัตถุประสงค์อะไร ใครเป็นผู้บริหาร?
+                </div>
+                <div class="prompt-example">
+                    <strong>คำถามที่ 4:</strong> คนพิการมีสิทธิ์เข้าถึงสิ่งอำนวยความสะดวกอะไรบ้างตาม พ.ร.บ. นี้?
+                </div>
+                <div class="prompt-example">
+                    <strong>คำถามที่ 5:</strong> หน่วยงานรัฐมีหน้าที่ต่อคนพิการอย่างไรบ้างตามกฎหมายนี้?
+                </div>
+
+                <div class="alert alert-success mt-3">
+                    <strong>💡 Tips:</strong> NotebookLM จะตอบพร้อมอ้างอิงมาตราและข้อความจากเอกสาร ทำให้ตรวจสอบความถูกต้องได้ง่าย
+                </div>
+            </section>
+
+            <!-- Lab -->
+            <div class="exercise-box">
+                <h4>🧪 Lab: ทดสอบ NotebookLM กับเอกสารหน่วยงาน</h4>
+                <p><strong>โจทย์:</strong> อัปโหลดระเบียบหน่วยงาน 2-3 ไฟล์ แล้วทดสอบถาม-ตอบ 5 คำถาม</p>
+
+                <p><strong>ขั้นตอน:</strong></p>
+                <ol>
+                    <li>เข้า <a href="https://notebooklm.google.com" target="_blank">notebooklm.google.com</a> → สร้าง Notebook ใหม่</li>
+                    <li>อัปโหลดเอกสาร 2-3 ไฟล์ (เช่น ระเบียบการลา, คู่มือปฏิบัติงาน, พ.ร.บ. ที่เกี่ยวข้อง)</li>
+                    <li>ถามคำถาม 5 ข้อที่เกี่ยวกับงานของท่าน</li>
+                    <li>ตรวจสอบคำตอบว่าถูกต้อง ตรงกับเอกสารหรือไม่</li>
+                    <li>ลองใช้ Audio Overview สร้าง Podcast สรุป</li>
+                </ol>
+
+                <p class="mt-2"><strong>ส่งงาน:</strong> จับภาพหน้าจอ (Screenshot) คำถาม-คำตอบ 5 ข้อ พร้อมระบุว่าคำตอบถูกต้องหรือไม่</p>
+            </div>
+
+            <!-- Tips -->
+            <div class="alert alert-success mt-4">
+                <h5>💡 Tips</h5>
+                <ul class="mb-0">
+                    <li>เอกสาร PDF ต้องเป็นแบบที่ copy ข้อความได้ (ไม่ใช่ภาพสแกน)</li>
+                    <li>ถ้าเป็นไฟล์สแกน ให้ใช้ Google Drive แปลงเป็น Google Docs ก่อน</li>
+                    <li>ตั้งชื่อ Notebook ให้ชัดเจน เช่น "กฎหมายคนพิการ", "ระเบียบการเงิน"</li>
+                    <li>Audio Overview ใช้เวลาสร้าง 2-5 นาที แต่ฟังเข้าใจง่ายมาก</li>
+                </ul>
+            </div>
+
+            <!-- สรุป -->
+            <div class="info-card mt-4">
+                <h4>📌 สรุปบทที่ 9</h4>
+                <ul>
+                    <li>NotebookLM ให้อัปโหลดเอกสาร แล้วถาม-ตอบได้ทันที ฟรี</li>
+                    <li>เหมาะสำหรับอ่าน พ.ร.บ., ระเบียบ, คู่มือ ที่ยาวและซับซ้อน</li>
+                    <li>Audio Overview สร้าง Podcast สรุปเอกสาร ฟังระหว่างเดินทางได้</li>
+                    <li>Multi-document เปรียบเทียบหลายเอกสารพร้อมกัน</li>
+                    <li>ตอบพร้อมอ้างอิง — ตรวจสอบความถูกต้องได้ง่าย</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-5 mb-4">
+                <a href="chapter08.html" class="btn btn-outline-dark">← บทที่ 8</a>
+                <a href="chapter10.html" class="btn btn-outline-dark">บทที่ 10 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

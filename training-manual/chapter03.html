@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 3: รู้จัก Kiro IDE — คู่มือ Kiro AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">📖 คู่มือฝึกอบรม Kiro AI</a>
+        <span class="navbar-text text-white">บทที่ 3 | วันที่ 1-2</span>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+
+            <div class="chapter-header text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">บทที่ 3</h1>
+                <h2 class="h3 text-secondary">รู้จัก Kiro IDE</h2>
+                <p class="lead text-muted">ระยะเวลา: 2 ชั่วโมง | วันที่ 1 (15:30-16:00) + วันที่ 2 (09:00-10:30)</p>
+                <hr class="w-50 mx-auto">
+            </div>
+
+            <div class="alert alert-info mb-4">
+                <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>อธิบายส่วนประกอบหน้าจอ Kiro ได้</li>
+                    <li>ใช้ Vibe Mode สนทนาสร้างโค้ดได้</li>
+                    <li>เข้าใจ Spec Mode และขั้นตอนการทำงาน</li>
+                    <li>สร้าง Steering File กำหนดกฎให้ AI ได้</li>
+                    <li>สร้าง Hook อัตโนมัติได้</li>
+                </ul>
+            </div>
+
+            <!-- 3.1 หน้าจอ Kiro -->
+            <section class="mb-5" id="section-3-1">
+                <h3 class="border-start border-4 border-primary ps-3">3.1 หน้าจอ Kiro — สำรวจ Interface</h3>
+
+                <p>Kiro สร้างบนพื้นฐาน VS Code ดังนั้นผู้ที่เคยใช้ VS Code จะคุ้นเคย แต่มีเพิ่ม AI Panel ด้านขวา</p>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h6>ส่วนประกอบหลัก 5 ส่วน:</h6>
+                        <table class="table table-sm">
+                            <tr><td>1. <strong>Activity Bar</strong> (ซ้ายสุด)</td><td>ไอคอน Explorer, Search, Git, Extensions, Kiro Features</td></tr>
+                            <tr><td>2. <strong>Side Panel</strong> (ซ้าย)</td><td>แสดงไฟล์, ผลการค้นหา, Git changes</td></tr>
+                            <tr><td>3. <strong>Editor</strong> (กลาง)</td><td>พื้นที่แก้ไขโค้ด — เปิดหลายไฟล์เป็น tab ได้</td></tr>
+                            <tr><td>4. <strong>Kiro Chat</strong> (ขวา)</td><td>แชทกับ AI — สั่งงาน, ถาม, สร้างโค้ด</td></tr>
+                            <tr><td>5. <strong>Terminal</strong> (ล่าง)</td><td>รันคำสั่ง command line (git, clasp, npm)</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="screenshot-placeholder">
+                    📸 ภาพหน้าจอ: Kiro IDE พร้อมอธิบายแต่ละส่วน
+                </div>
+
+                <h5 class="mt-4">Keyboard Shortcuts ที่ควรรู้</h5>
+                <table class="table table-bordered table-sm">
+                    <thead class="table-dark">
+                        <tr><th>Shortcut</th><th>การทำงาน</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>Ctrl + Shift + P</code></td><td>Command Palette (ค้นหาคำสั่ง)</td></tr>
+                        <tr><td><code>Ctrl + `</code></td><td>เปิด/ปิด Terminal</td></tr>
+                        <tr><td><code>Ctrl + B</code></td><td>เปิด/ปิด Side Panel</td></tr>
+                        <tr><td><code>Ctrl + S</code></td><td>บันทึกไฟล์</td></tr>
+                        <tr><td><code>Ctrl + Shift + E</code></td><td>เปิด Explorer</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 3.2 Vibe Mode -->
+            <section class="mb-5" id="section-3-2">
+                <h3 class="border-start border-4 border-primary ps-3">3.2 Vibe Mode — สนทนาสร้างโค้ด</h3>
+
+                <p><strong>Vibe Mode</strong> คือโหมดแชทอิสระ — คุณพิมพ์คำสั่งภาษาไทยหรืออังกฤษ Kiro จะสร้างโค้ดให้ทันที</p>
+
+                <h5>วิธีใช้</h5>
+                <ol>
+                    <li>คลิกที่ช่อง Chat ด้านขวา</li>
+                    <li>ตรวจสอบว่าอยู่ในโหมด <strong>"Vibe"</strong> (ด้านบนของ Chat)</li>
+                    <li>พิมพ์สิ่งที่ต้องการ เช่น:</li>
+                </ol>
+
+                <div class="card bg-light mb-3">
+                    <div class="card-header"><strong>ตัวอย่าง Prompt ภาษาไทย:</strong></div>
+                    <div class="card-body">
+                        <pre><code>สร้างไฟล์ HTML หน้าลงทะเบียน มีฟอร์มกรอก ชื่อ นามสกุล เบอร์โทร อีเมล 
+ใช้ Bootstrap 5 สวยงาม มี validation ภาษาไทย</code></pre>
+                    </div>
+                </div>
+
+                <div class="card bg-light mb-3">
+                    <div class="card-header"><strong>ตัวอย่าง Prompt อื่นๆ:</strong></div>
+                    <div class="card-body">
+                        <ul class="mb-0">
+                            <li><code>สร้าง Code.gs สำหรับอ่านข้อมูลจาก Google Sheet แล้วส่งกลับเป็น JSON</code></li>
+                            <li><code>แก้ไขไฟล์ index.html เพิ่มตารางแสดงข้อมูล</code></li>
+                            <li><code>อธิบายฟังก์ชัน doGet() ในไฟล์ Code.gs ให้หน่อย</code></li>
+                            <li><code>หา bug ในไฟล์นี้ แล้วแก้ให้</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h5>โหมดการทำงาน 2 แบบ</h5>
+                <table class="table table-bordered">
+                    <tr>
+                        <td><strong>Autopilot</strong> (ค่าเริ่มต้น)</td>
+                        <td>Kiro ทำงานอัตโนมัติจนเสร็จ — สร้างไฟล์, แก้ไข, รันคำสั่ง โดยไม่ถามทุกขั้นตอน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Supervised</strong></td>
+                        <td>Kiro หยุดถามทุกขั้นตอน — คุณต้องกด Accept/Reject ทีละการเปลี่ยนแปลง</td>
+                    </tr>
+                </table>
+
+                <div class="alert alert-success">
+                    <strong>💡 เคล็ดลับ:</strong> ผู้เริ่มต้นแนะนำใช้ <strong>Autopilot</strong> เพื่อให้เห็นผลลัพธ์เร็ว จากนั้นค่อยเปลี่ยนเป็น Supervised เมื่อต้องการควบคุมมากขึ้น
+                </div>
+            </section>
+
+            <!-- 3.3 Spec Mode -->
+            <section class="mb-5" id="section-3-3">
+                <h3 class="border-start border-4 border-primary ps-3">3.3 Spec Mode — Requirements → Design → Tasks</h3>
+
+                <p><strong>Spec Mode</strong> เป็นจุดเด่นของ Kiro — สร้างระบบแบบมีแบบแปลน เหมาะกับระบบขนาดกลาง-ใหญ่</p>
+
+                <h5>ขั้นตอนการทำงาน</h5>
+                <div class="row text-center mb-4">
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body">
+                                <div class="display-6 text-primary">📋</div>
+                                <h6 class="mt-2">1. Requirements</h6>
+                                <p class="small">พิมพ์ว่าต้องการอะไร<br>Kiro จะสร้าง User Stories<br>+ Acceptance Criteria ให้</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 border-info">
+                            <div class="card-body">
+                                <div class="display-6 text-info">🏗️</div>
+                                <h6 class="mt-2">2. Design</h6>
+                                <p class="small">Kiro ออกแบบ Architecture<br>Database Schema<br>API Endpoints</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-body">
+                                <div class="display-6 text-success">✅</div>
+                                <h6 class="mt-2">3. Tasks</h6>
+                                <p class="small">แบ่งงานเป็นขั้นตอน<br>กดทำทีละ Task<br>Kiro เขียนโค้ดให้</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>วิธีใช้ Spec Mode</h5>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>เปลี่ยนเป็น Spec Mode</strong>
+                    <p class="mb-0">ที่ด้านบนของ Chat Panel → คลิกเปลี่ยนจาก "Vibe" เป็น "Spec"</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>พิมพ์ Requirement</strong>
+                    <pre><code>สร้างระบบลงทะเบียนฝึกอบรม โดยมีฟอร์มกรอกข้อมูลผู้เข้าอบรม 
+หน้า Admin ดูรายชื่อ ค้นหา แก้ไข ลบได้ ใช้ Google Sheets เป็นฐานข้อมูล</code></pre>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <strong>Review Requirements</strong>
+                    <p class="mb-0">Kiro จะสร้าง requirements.md — ตรวจสอบแล้วกด Approve</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <strong>Review Design</strong>
+                    <p class="mb-0">Kiro สร้าง design.md — ตรวจสอบ Architecture แล้วกด Approve</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">5</span>
+                    <strong>Execute Tasks</strong>
+                    <p class="mb-0">Kiro แสดง tasks.md — กดทำทีละ Task จนครบ</p>
+                </div>
+            </section>
+
+            <!-- 3.4 Steering -->
+            <section class="mb-5" id="section-3-4">
+                <h3 class="border-start border-4 border-primary ps-3">3.4 Steering Files — กำหนดกฎให้ AI</h3>
+
+                <p><strong>Steering</strong> คือไฟล์กำหนดกฎ/มาตรฐานที่ AI ต้องปฏิบัติตามทุกครั้ง — เหมือน "คู่มือพนักงาน" ให้ AI</p>
+
+                <h5>ทำไมต้องใช้ Steering?</h5>
+                <ul>
+                    <li>ไม่ต้องพิมพ์ซ้ำทุกครั้งว่า "ใช้ Bootstrap", "เขียนภาษาไทย"</li>
+                    <li>ทุกไฟล์ที่ AI สร้างจะเป็นมาตรฐานเดียวกัน</li>
+                    <li>กำหนดข้อห้าม เช่น "ห้ามใช้ template literal"</li>
+                </ul>
+
+                <h5>วิธีสร้าง Steering File</h5>
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <strong>สร้างโฟลเดอร์</strong>
+                    <p class="mb-0">สร้างโฟลเดอร์ <code>.kiro/steering/</code> ในโปรเจกต์</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <strong>สร้างไฟล์ .md</strong>
+                    <p class="mb-1">สร้างไฟล์ เช่น <code>.kiro/steering/project-rules.md</code></p>
+                    <pre><code># กฎการพัฒนา
+
+## เทคโนโลยี
+- ใช้ Google Apps Script (GAS) เป็น Backend
+- ใช้ Google Sheets เป็นฐานข้อมูล
+- ใช้ HTML5 + Bootstrap 5 เป็น Frontend
+- ภาษาสื่อสาร: ไทย
+
+## ข้อห้าม
+- ห้ามใช้ template literal (backtick) ใน HTML
+- ห้ามใช้ SVG ใน HTML
+- ทุกลิงก์ข้ามหน้าต้องมี target="_top"
+
+## มาตรฐาน
+- ตั้งชื่อฟังก์ชันเป็น camelCase
+- ตั้งชื่อ Sheet เป็นภาษาอังกฤษ UPPERCASE
+- Comment เป็นภาษาไทย</code></pre>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>💡 Steering จะถูกส่งให้ AI อัตโนมัติ</strong> ทุกครั้งที่คุณแชทกับ Kiro — ไม่ต้องพิมพ์กฎเหล่านี้ซ้ำ!
+                </div>
+            </section>
+
+            <!-- 3.5 Hooks -->
+            <section class="mb-5" id="section-3-5">
+                <h3 class="border-start border-4 border-primary ps-3">3.5 Hooks — อัตโนมัติเมื่อเกิดเหตุการณ์</h3>
+
+                <p><strong>Hooks</strong> คือ "กฎอัตโนมัติ" ที่สั่งให้ Kiro ทำงานบางอย่างเมื่อเกิดเหตุการณ์ เช่น:</p>
+
+                <table class="table table-bordered">
+                    <thead class="table-primary">
+                        <tr><th>เหตุการณ์ (Event)</th><th>ตัวอย่างการใช้งาน</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>fileEdited — แก้ไขไฟล์</td><td>รัน lint ทุกครั้งที่แก้ไขไฟล์ .ts</td></tr>
+                        <tr><td>fileCreated — สร้างไฟล์ใหม่</td><td>เพิ่ม header comment อัตโนมัติ</td></tr>
+                        <tr><td>promptSubmit — ส่งข้อความ</td><td>เตือนให้ git pull ก่อนทำงาน</td></tr>
+                        <tr><td>agentStop — ทำงานเสร็จ</td><td>เตือนให้ git push</td></tr>
+                        <tr><td>userTriggered — กดปุ่ม</td><td>ปุ่ม deploy, ปุ่ม backup</td></tr>
+                    </tbody>
+                </table>
+
+                <h5>ตัวอย่าง Hook: เตือน Git Pull</h5>
+                <pre><code>{
+  "name": "เตือน Git Pull",
+  "version": "1.0.0",
+  "when": {
+    "type": "promptSubmit"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "เตือนให้ git pull ก่อนแก้ไขไฟล์"
+  }
+}</code></pre>
+
+                <div class="alert alert-success">
+                    <strong>💡 วิธีสร้าง Hook:</strong> ใช้ Command Palette (Ctrl+Shift+P) → พิมพ์ "Open Kiro Hook UI" หรือบอก Kiro ใน Chat ว่า "สร้าง hook เตือนให้ push หลังทำงานเสร็จ"
+                </div>
+            </section>
+
+            <!-- 3.6 MCP -->
+            <section class="mb-5" id="section-3-6">
+                <h3 class="border-start border-4 border-primary ps-3">3.6 MCP — เชื่อมต่อเครื่องมือภายนอก</h3>
+
+                <p><strong>MCP (Model Context Protocol)</strong> คือวิธีเชื่อมต่อ Kiro กับเครื่องมือภายนอก เช่น Database, API, Cloud Services</p>
+
+                <div class="card bg-light mb-3">
+                    <div class="card-body">
+                        <h6>ตัวอย่างการใช้งาน MCP:</h6>
+                        <ul class="mb-0">
+                            <li>เชื่อมต่อกับ AWS Documentation — ค้นหาเอกสาร AWS</li>
+                            <li>เชื่อมต่อกับ Database — อ่าน/เขียนข้อมูล</li>
+                            <li>เชื่อมต่อกับ Google Drive — จัดการไฟล์</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="text-muted">* MCP เป็นเนื้อหาขั้นสูง จะกลับมาเรียนรู้เพิ่มเติมในวันที่ 5</p>
+            </section>
+
+            <!-- Navigation -->
+            <nav class="d-flex justify-content-between mt-5 pt-4 border-top">
+                <a href="chapter02.html" class="btn btn-outline-primary btn-lg">← บทที่ 2</a>
+                <a href="chapter04.html" class="btn btn-primary btn-lg">บทที่ 4: Google Sheets →</a>
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <p class="mb-1">คู่มือฝึกอบรม "Kiro AI สร้างระบบราชการด้วยปัญญาประดิษฐ์"</p>
+    <p class="mb-0 text-muted small">โดย นายปัญญา ผาธรรม | สำนักงานพัฒนาฝีมือแรงงานสุรินทร์ | 2569</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

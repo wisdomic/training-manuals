@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทที่ 4: เขียนโครงการและแผนงาน — AI สำหรับงานราชการ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/manual-style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">📖 AI สำหรับงานราชการ</a>
+            <span class="navbar-text text-light nav-text">บทที่ 4</span>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-area">
+        <div class="container py-4">
+
+            <!-- Chapter Header -->
+            <div class="chapter-header text-center mb-4">
+                <h1>📋 บทที่ 4</h1>
+                <h2 class="text-muted">เขียนโครงการและแผนงาน</h2>
+            </div>
+
+            <!-- วัตถุประสงค์ -->
+            <div class="alert alert-info" role="alert">
+                <h5 class="alert-heading">🎯 วัตถุประสงค์การเรียนรู้</h5>
+                <ul class="mb-0">
+                    <li>เข้าใจโครงสร้างโครงการราชการมาตรฐาน 8 องค์ประกอบ</li>
+                    <li>สามารถใช้ AI เขียนโครงการฉบับสมบูรณ์ใน 5 นาที</li>
+                    <li>ปรับแต่งโครงการให้ตรงงบประมาณด้วยเทคนิค Iterative</li>
+                    <li>เขียนแผนปฏิบัติการประจำปี (Action Plan) ได้</li>
+                    <li>สร้าง KPI และตัวชี้วัดที่เหมาะสมกับโครงการ</li>
+                </ul>
+            </div>
+
+            <!-- 4.1 โครงสร้างโครงการราชการมาตรฐาน -->
+            <section>
+                <h3 class="section-header">4.1 โครงสร้างโครงการราชการมาตรฐาน</h3>
+                <p>โครงการราชการต้องมี 8 องค์ประกอบหลัก ซึ่ง AI สามารถร่างให้ครบทุกข้อได้ภายในครั้งเดียว:</p>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="info-card h-100">
+                            <h6><span class="step-number">1</span> ชื่อโครงการ</h6>
+                            <p class="small mb-0">ชื่อที่สื่อความหมายชัดเจน บอกให้รู้ว่าทำอะไร ให้ใคร เช่น "โครงการฝึกอบรมการใช้ AI สำหรับเจ้าหน้าที่องค์กรเพื่อคนพิการ"</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card h-100">
+                            <h6><span class="step-number">2</span> หลักการและเหตุผล</h6>
+                            <p class="small mb-0">อธิบายสภาพปัญหา ความจำเป็น นโยบายที่เกี่ยวข้อง และเหตุผลที่ต้องจัดโครงการนี้</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card h-100">
+                            <h6><span class="step-number">3</span> วัตถุประสงค์</h6>
+                            <p class="small mb-0">เขียนเป็นข้อๆ ใช้คำว่า "เพื่อ..." ต้องวัดได้ ปฏิบัติได้จริง สอดคล้องกับปัญหา</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card h-100">
+                            <h6><span class="step-number">4</span> เป้าหมาย (เชิงปริมาณ + เชิงคุณภาพ)</h6>
+                            <p class="small mb-0">เชิงปริมาณ: จำนวนคน/ครั้ง/ชิ้น | เชิงคุณภาพ: ผลลัพธ์ที่คาดหวัง</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card h-100">
+                            <h6><span class="step-number">5</span> กิจกรรมดำเนินการ</h6>
+                            <p class="small mb-0">ขั้นตอนการทำงาน แบ่งเป็นระยะ: เตรียมการ → ดำเนินการ → สรุปผล</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card h-100">
+                            <h6><span class="step-number">6</span> งบประมาณ</h6>
+                            <p class="small mb-0">แจกแจงรายละเอียด: ค่าวิทยากร, ค่าวัสดุ, ค่าอาหาร, ค่าที่พัก, ค่าเดินทาง พร้อมหมวดงบ</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card h-100">
+                            <h6><span class="step-number">7</span> ตัวชี้วัดความสำเร็จ</h6>
+                            <p class="small mb-0">KPI ที่วัดได้จริง เช่น จำนวนผู้ผ่านการอบรม, คะแนนประเมิน, ร้อยละความพึงพอใจ</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card h-100">
+                            <h6><span class="step-number">8</span> ผลที่คาดว่าจะได้รับ</h6>
+                            <p class="small mb-0">ผลลัพธ์ระยะสั้นและระยะยาว ประโยชน์ต่อหน่วยงานและผู้รับบริการ</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4.2 Prompt เขียนโครงการ -->
+            <section>
+                <h3 class="section-header">4.2 Prompt เขียนโครงการฉบับสมบูรณ์ใน 5 นาที</h3>
+                <p>ใช้ Prompt นี้เพื่อให้ AI เขียนโครงการครบทุกองค์ประกอบในครั้งเดียว:</p>
+
+                <div class="prompt-example">
+                    <strong>Prompt เขียนโครงการฉบับสมบูรณ์:</strong><br><br>
+                    ช่วยเขียนโครงการราชการฉบับสมบูรณ์ ครบ 8 องค์ประกอบ ดังนี้:<br><br>
+                    <strong>ข้อมูลโครงการ:</strong><br>
+                    - ชื่อโครงการ: [ชื่อ]<br>
+                    - หน่วยงานรับผิดชอบ: [หน่วยงาน]<br>
+                    - กลุ่มเป้าหมาย: [ใคร จำนวนเท่าไหร่]<br>
+                    - ระยะเวลา: [วันที่ เดือน ปี]<br>
+                    - สถานที่: [ที่ไหน]<br>
+                    - งบประมาณ: [จำนวน] บาท<br>
+                    - แหล่งงบ: [หมวดงบประมาณ]<br>
+                    - นโยบายที่เกี่ยวข้อง: [ถ้ามี]<br><br>
+                    <strong>องค์ประกอบที่ต้องมี (ครบ 8 ข้อ):</strong><br>
+                    1. ชื่อโครงการ<br>
+                    2. หลักการและเหตุผล (อ้างนโยบาย + สภาพปัญหา + ความจำเป็น)<br>
+                    3. วัตถุประสงค์ (3-5 ข้อ ใช้คำว่า "เพื่อ...")<br>
+                    4. เป้าหมาย (เชิงปริมาณ + เชิงคุณภาพ)<br>
+                    5. กิจกรรมดำเนินการ (แบ่ง 3 ระยะ: เตรียม/ดำเนิน/สรุป)<br>
+                    6. งบประมาณ (แจกแจงรายละเอียดเป็นรายการ)<br>
+                    7. ตัวชี้วัดความสำเร็จ (KPI 3-5 ตัว)<br>
+                    8. ผลที่คาดว่าจะได้รับ (ระยะสั้น + ระยะยาว)<br><br>
+                    เขียนเป็นภาษาราชการ ครบถ้วน พร้อมเสนอผู้บริหาร
+                </div>
+            </section>
+
+            <!-- 4.3 การปรับแต่งโครงการ -->
+            <section>
+                <h3 class="section-header">4.3 การปรับแต่งโครงการให้ตรงงบประมาณ</h3>
+                <p>หลังจากได้ร่างแรกจาก AI แล้ว มักต้องปรับแต่งให้ตรงกับข้อจำกัดด้านงบประมาณ ใช้เทคนิค <strong>Iterative Prompting</strong> (สั่งทีละขั้น):</p>
+
+                <div class="card mb-3">
+                    <div class="card-header bg-light fw-bold">💰 เทคนิค Iterative — ปรับโครงการตามงบ</div>
+                    <div class="card-body">
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <strong>ลดงบประมาณ:</strong>
+                            <div class="prompt-example mt-2">ปรับลดงบประมาณโครงการนี้จาก 200,000 บาท เหลือ 150,000 บาท โดยยังคงคุณภาพ ช่วยเสนอว่าควรตัดรายการไหน</div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <strong>เพิ่มกิจกรรม:</strong>
+                            <div class="prompt-example mt-2">เพิ่มกิจกรรมศึกษาดูงานหน่วยงานต้นแบบเข้าไปในโครงการ โดยไม่เพิ่มงบประมาณ ปรับจากส่วนไหนได้บ้าง</div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <strong>ปรับเป้าหมาย:</strong>
+                            <div class="prompt-example mt-2">เปลี่ยนกลุ่มเป้าหมายจาก 50 คน เป็น 30 คน แล้วปรับงบประมาณ กิจกรรม และ KPI ให้สอดคล้อง</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>💡 เคล็ดลับ:</strong> ไม่ต้องเริ่มใหม่ทั้งหมด ให้ AI ปรับจากร่างเดิม จะเร็วกว่าและได้ผลที่สอดคล้องกัน
+                </div>
+            </section>
+
+            <!-- 4.4 แผนปฏิบัติการประจำปี -->
+            <section>
+                <h3 class="section-header">4.4 เขียนแผนปฏิบัติการประจำปี (Action Plan)</h3>
+                <p>แผนปฏิบัติการประจำปี (Action Plan) เป็นเอกสารที่แปลงแผนยุทธศาสตร์เป็นกิจกรรมที่ทำได้จริงในแต่ละปี:</p>
+
+                <div class="info-card">
+                    <h6 class="fw-bold">📋 โครงสร้าง Action Plan</h6>
+                    <ul class="mb-0">
+                        <li><strong>ยุทธศาสตร์:</strong> สอดคล้องกับแผนระดับไหน</li>
+                        <li><strong>เป้าประสงค์:</strong> ต้องการบรรลุอะไร</li>
+                        <li><strong>ตัวชี้วัด:</strong> วัดอย่างไร + ค่าเป้าหมาย</li>
+                        <li><strong>กิจกรรม:</strong> ทำอะไรบ้าง</li>
+                        <li><strong>ระยะเวลา:</strong> ทำเมื่อไหร่ (Gantt Chart)</li>
+                        <li><strong>ผู้รับผิดชอบ:</strong> ใครทำ</li>
+                        <li><strong>งบประมาณ:</strong> ใช้เท่าไหร่</li>
+                    </ul>
+                </div>
+
+                <h5 class="mt-4 mb-3">Prompt Template</h5>
+                <div class="prompt-example">
+                    <strong>Prompt:</strong><br>
+                    ช่วยเขียนแผนปฏิบัติการประจำปี (Action Plan) ของ [หน่วยงาน] ประจำปีงบประมาณ [ปี] ดังนี้:<br><br>
+                    - ยุทธศาสตร์ที่สอดคล้อง: [ยุทธศาสตร์/นโยบาย]<br>
+                    - เป้าหมายรวม: [เป้าหมายของแผน]<br>
+                    - จำนวนกิจกรรม/โครงการ: [จำนวน] กิจกรรม<br>
+                    - งบประมาณรวม: [จำนวน] บาท<br>
+                    - ระยะเวลา: ต.ค. [ปี] - ก.ย. [ปี]<br><br>
+                    แสดงเป็นตาราง มีคอลัมน์: ลำดับ, กิจกรรม, ตัวชี้วัด, เป้าหมาย, ระยะเวลา (ไตรมาส), งบประมาณ, ผู้รับผิดชอบ
+                </div>
+            </section>
+
+            <!-- 4.5 สร้าง KPI และตัวชี้วัด -->
+            <section>
+                <h3 class="section-header">4.5 สร้าง KPI และตัวชี้วัด</h3>
+                <p>KPI (Key Performance Indicator) ที่ดีต้องเป็น <strong>SMART</strong>: Specific (ชัดเจน), Measurable (วัดได้), Achievable (ทำได้), Relevant (สอดคล้อง), Time-bound (มีกำหนด)</p>
+
+                <h5 class="mt-3 mb-3">ตัวอย่าง KPI สำหรับโครงการฝึกอบรม</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>ตัวชี้วัด (KPI)</th>
+                                <th>ค่าเป้าหมาย</th>
+                                <th>วิธีวัด</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>ร้อยละผู้เข้าอบรมต่อเป้าหมาย</td>
+                                <td>ไม่น้อยกว่า 80%</td>
+                                <td>จำนวนผู้เข้าจริง / เป้าหมาย × 100</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>คะแนนทดสอบหลังอบรม</td>
+                                <td>เฉลี่ยไม่น้อยกว่า 70%</td>
+                                <td>แบบทดสอบหลังเรียน</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>ระดับความพึงพอใจ</td>
+                                <td>ไม่น้อยกว่า 4.00 จาก 5.00</td>
+                                <td>แบบประเมินความพึงพอใจ</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>ร้อยละผู้นำไปใช้งานจริง (3 เดือนหลังอบรม)</td>
+                                <td>ไม่น้อยกว่า 60%</td>
+                                <td>แบบติดตามผล 3 เดือน</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>เวลาที่ประหยัดได้จากการใช้ AI</td>
+                                <td>ไม่น้อยกว่า 50%</td>
+                                <td>เปรียบเทียบก่อน-หลัง</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h5 class="mt-4 mb-3">Prompt สร้าง KPI</h5>
+                <div class="prompt-example">
+                    <strong>Prompt:</strong><br>
+                    ช่วยสร้าง KPI สำหรับโครงการ [ชื่อโครงการ] จำนวน 5 ตัวชี้วัด ที่เป็น SMART โดยมีรายละเอียด:<br><br>
+                    - ประเภทโครงการ: [ฝึกอบรม/พัฒนา/บริการ]<br>
+                    - กลุ่มเป้าหมาย: [ใคร จำนวน]<br>
+                    - ผลลัพธ์ที่คาดหวัง: [อะไร]<br><br>
+                    แสดงเป็นตาราง มีคอลัมน์: ตัวชี้วัด, ค่าเป้าหมาย, วิธีวัด, แหล่งข้อมูล, ผู้รับผิดชอบ
+                </div>
+            </section>
+
+            <!-- Lab -->
+            <section>
+                <div class="exercise-box">
+                    <h4>🔬 Lab: เขียนโครงการจริง 1 โครงการ (ครบทุกองค์ประกอบ)</h4>
+
+                    <div class="info-card mt-3">
+                        <h5 class="fw-bold">📌 โจทย์</h5>
+                        <p>เขียนโครงการ <strong>"จัดอบรม AI สำหรับเจ้าหน้าที่องค์กรเพื่อคนพิการ"</strong> โดยมีรายละเอียด:</p>
+                        <ul>
+                            <li><strong>กลุ่มเป้าหมาย:</strong> เจ้าหน้าที่องค์กรเพื่อคนพิการ จำนวน 50 คน</li>
+                            <li><strong>งบประมาณ:</strong> 200,000 บาท</li>
+                            <li><strong>ระยะเวลา:</strong> 5 วัน (20-24 กรกฎาคม 2569)</li>
+                            <li><strong>สถานที่:</strong> โรงแรมฮิลล์ไซด์ เขาใหญ่ จ.ปราจีนบุรี</li>
+                            <li><strong>หน่วยงาน:</strong> สำนักงานพัฒนาฝีมือแรงงานสุรินทร์</li>
+                            <li><strong>นโยบาย:</strong> โครงการ AI เพื่อคนพิการ</li>
+                        </ul>
+                    </div>
+
+                    <h5 class="mt-3">ขั้นตอน</h5>
+                    <div class="step-item">
+                        <span class="step-number">1</span>
+                        ใช้ Prompt จากหัวข้อ 4.2 เพื่อร่างโครงการ (5 นาที)
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">2</span>
+                        ตรวจสอบว่ามีครบ 8 องค์ประกอบหรือไม่ (3 นาที)
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">3</span>
+                        ปรับแต่งงบประมาณให้สมจริง (5 นาที)
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">4</span>
+                        เพิ่ม KPI 5 ตัว ด้วย Prompt จากหัวข้อ 4.5 (5 นาที)
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">5</span>
+                        อ่านทวนทั้งหมด ปรับภาษาให้เหมาะสม (7 นาที)
+                    </div>
+
+                    <p class="mt-3 mb-0"><strong>⏱️ เวลา:</strong> 25 นาที</p>
+                </div>
+            </section>
+
+            <!-- Tips -->
+            <div class="alert alert-success mt-4">
+                <h5 class="alert-heading">💡 Tips</h5>
+                <ul class="mb-0">
+                    <li>ให้ AI ร่างครบ 8 ข้อก่อน แล้วค่อยสั่งปรับทีละส่วน จะได้โครงการที่สมบูรณ์เร็วกว่า</li>
+                    <li>ตรวจสอบงบประมาณให้ตรงกับระเบียบ เช่น ค่าอาหาร ค่าที่พัก ค่าวิทยากร ตามอัตราที่กำหนด</li>
+                    <li>ถ้าโครงการต้องอ้างนโยบาย ให้บอก AI ว่า "อ้างนโยบาย [ชื่อนโยบาย]" จะได้หลักการและเหตุผลที่สอดคล้อง</li>
+                    <li>KPI ที่ดีต้อง "วัดได้จริง" — อย่าใช้คำกว้างๆ เช่น "ดีขึ้น" ให้ใช้ตัวเลข เช่น "เพิ่มขึ้น 20%"</li>
+                    <li>ใช้ Claude สำหรับโครงการยาวๆ เพราะจัดโครงสร้างได้ดีและเขียนละเอียด</li>
+                </ul>
+            </div>
+
+            <!-- สรุปท้ายบท -->
+            <section>
+                <h3 class="section-header">📝 สรุปท้ายบท</h3>
+                <div class="info-card">
+                    <ul class="mb-0">
+                        <li>โครงการราชการมี 8 องค์ประกอบ — AI เขียนครบได้ใน Prompt เดียว</li>
+                        <li>ใช้ Prompt ละเอียด: ชื่อ + กลุ่มเป้าหมาย + งบ + เวลา + สถานที่</li>
+                        <li>เทคนิค Iterative: ปรับทีละขั้น (ลดงบ / เพิ่มกิจกรรม / เปลี่ยนเป้า)</li>
+                        <li>Action Plan แสดงเป็นตาราง: กิจกรรม + เวลา + งบ + ผู้รับผิดชอบ</li>
+                        <li>KPI ต้อง SMART: ชัดเจน วัดได้ ทำได้ สอดคล้อง มีกำหนด</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-5 mb-4">
+                <a href="chapter03.html" class="btn btn-outline-dark">← บทที่ 3</a>
+                <a href="chapter05.html" class="btn btn-dark">บทที่ 5 →</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <small>โครงการ AI เพื่อคนพิการ · วิทยากร: นายปัญญา ผาธรรม · สนพ.สุรินทร์</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
